@@ -1,6 +1,8 @@
 # Impressionist Scala
 
-Functional programming concepts:
+<div class="callout callout-info">
+*Functional programming concepts*
+
  - Composition
  - Evaluation model
  - Names/values
@@ -9,11 +11,39 @@ Functional programming concepts:
  - Comprehensions
  - Types
  - Functions (animation: Int => Shape)
+</div>
 
 ## Formats
 Two lengths: 2 hours and 8 hours
 
 ## Expressions, Values, and Types
+
+Scala programs have three fundamental building blocks:
+*expressions*, *values*, and *types*:
+
+An *expression* is a fragment of Scala code that we write in an a text editor.
+Valid expressions have a *type* and calculate a *value*. For example,
+this expression has the type `String` and calculates the value `HELLO WORLD!`
+
+~~~ scala
+"Hello world!".toUpperCase()
+~~~
+
+A Scala program goes through two distinct stages. First it is *compiled*;
+if compiles successfully it can then be *executed*.
+
+The most important distinction between types and values is that
+types are determined at compile time,
+whereas values can only be determined at run time.
+Values can change each time we run the code, whereas types are fixed.
+
+For example, the following expression is certainly of type `String`,
+but its value could change each time we evaluate it
+(depending on the text the user enters):
+
+~~~ scala
+readLine().toUpperCase()
+~~~
 
 ### Literals
 Literals are the atoms of programming
