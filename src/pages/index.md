@@ -48,7 +48,7 @@ scala> readLine.toUpperCase
 
 Let's look at the text in the example above to see what it all means.
 The text `scala>` is the prompt.
-`"Hello world!".toUpperCase` is the user input---our expression.
+`"Hello world!".toUpperCase` is the user input - our expression.
 
 When we enter a valid expression, it is compiled and evaluated.
 `String` is the type, `"HELLO WORLD!`" is the value, and
@@ -119,6 +119,12 @@ scala> 1 + 2 + 3 + 4
 res1: Int = 10
 ~~~
 
+## Constructor expressions
+
+TODO: `new` expressions
+
+TODO: Singleton objects and `apply`
+
 ## Conditionals
 
 Many other syntactic constructs are expressions in Scala,
@@ -148,31 +154,68 @@ For example, the type of an `if` expression is determined
 by its positive and negative arms (but not its test expression),
 and its value is determined by evaluating one arm but not the other.
 
-## TODO: Statements/Unit/Side-Effects?
+## Images
 
-## TODO: Images
+Numbers and text are boring.
+Let's switch to something more interesting---images!
+Grab the *Doodle* project from [https://github.com/underscoreio/doodle]().
+This is a toy drawing library we've put together for this course.
+Start up a Scala console to try Doodle out:
 
-Numbers and strings are boring. Let's switch to images.
+~~~ bash
+bash$ git clone https://github.com/underscoreio/doodle.git
 
-Examples. E.g. Circle(20)
+bash$ cd doodle
 
-We can combine images with methods like on, beside, and above.
+bash$ ./sbt.sh console
+[info] Loading project definition from /.../doodle/project
+[info] Set current project to doodle (in build file:/.../doodle/)
+[info] Compiling 1 Scala source to /.../doodle/jvm/target/scala-2.11/classes...
+[info] Starting scala interpreter...
+[info]
+import doodle.core._
+import doodle.syntax._
+import doodle.jvm._
+Welcome to Scala version 2.11.5 (Java HotSpot(TM) 64-Bit Server VM, Java 1.7.0_45).
+Type in expressions to have them evaluated.
+Type :help for more information.
 
-Checkerboard example
+scala>
+~~~
+
+The Doodle project gives us access to some useful drawing tools
+as well as the regular Scala core library. Try creating a simple shape:
 
 ~~~ scala
-(
-  ( square(10) fillColor red   ) beside
-  ( square(10) fillColor black ) beside
-  ( square(10) fillColor red   ) beside
-  ( square(10) fillColor black )
-) above (
-  ( square(10) fillColor red   ) beside
-  ( square(10) fillColor black ) beside
-  ( square(10) fillColor red   ) beside
-  ( square(10) fillColor black )
-)
+scala> Circle(10)
+res0: doodle.core.Circle = Circle(10.0)
 ~~~
+
+Notice the type and value of the expression we just entered.
+The type is `doodle.core.Circle`
+and the value is `Circle(10.0)`---a circle with a 10 pixel radius.
+
+We can draw this circle (and other shapes) using Doodle's `draw()` function,
+which should have been brought into scope automatically.
+Try drawing the circle now. A window should appear containing a black outline:
+
+~~~ scala
+scala> draw(res0)
+~~~
+
+Doodle supports two "primitive" images: circles and rectangles.
+We can combine these in various ways to produce more complex images.
+Try the following code---you should see a circle and a rectangle
+displayed beside another:
+
+~~~ scala
+scala> Circle(10) beside Rectangle(10, 20)
+res1: doodle.core.Image = Beside(Circle(10.0),Rectangle(10.0,20.0))
+
+scala> draw(res1)
+~~~
+
+## TODO: Statements/Unit/Side-Effects?
 
 ## TODO: Exercises
 
