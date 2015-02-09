@@ -269,17 +269,10 @@ module.exports = (grunt) ->
     "pandoc:epub"
   ]
 
-  grunt.registerTask "serve", [
-    "build"
-    "connect:server"
-    "watchImpl"
-  ]
-
   grunt.registerTask "watch", [
     "html"
     "connect:server"
     "watchImpl"
-    "serve"
   ]
 
   grunt.registerTask "default", [

@@ -101,7 +101,25 @@ scala> true.toString
 res5: String = "true"
 ~~~
 
-## Other Simple Expressions
+## Operator expressions
+
+Operators in Scala are actually method calls under the hood.
+Scala has a set of convenient syntactic shorthands
+to allow us to write normal-looking code
+without excessive numbers of parentheses.
+The most common of these is *infix syntax*,
+which allows us to write any expression of the form `a.b(c)`
+as `a b c`, without the full stop or parentheses:
+
+~~~ scala
+scala> 1 .+(2).+(3).+(4) // the space prevents `1` being treated as a double
+res0: Int = 10
+
+scala> 1 + 2 + 3 + 4
+res1: Int = 10
+~~~
+
+## Conditionals
 
 Many other syntactic constructs are expressions in Scala,
 including some that are statements in Java.
@@ -113,29 +131,24 @@ scala> if(123 > 456) "Higher!" else "Lower!"
 res6: String = Lower!
 ~~~
 
-There are other examples of expressions in Scala,
-including `for` expressions, `try`/`catch` expressions, and blocks.
+There are other examples of expressions in Scala
+including `for` comprehensions, `try`/`catch` expressions, and blocks.
 We'll see more of these later.
 
 ## Compound Expressions
 
 Many of the expressions we have seen so far are made up of smaller expressions.
-For example, the expression `"Hello world!".toUpperCase` is the result of
-calling a method on the result of a smaller expression, `"Hello world!"`.
-Similarly, the expression `if(123 > 456) "Higher!" else "Lower!"` is made up
-of several sub-expressions:
-
- - `123 > 456` (which is in turn made from the expressions `123` and `456`);
- - `"Higher!"`
- - `"Lower!"`
+For example, the expression `1 + 2` is built from
+the sub-expressions `1` and `2`, combined using the method `+`.
 
 The type and value of a compound expression are
-determined by the types and values of its sub-expressions.
-Not all sub-expressions are considered in all cases---it depends
-on the semantics of the compound expression involved.
-For example, the type of an `if` expression is determined by
-its positive and negative arms (but not its test expression),
+determined in part by the types and values of its sub-expressions.
+However, sometimes only a subset of the sub-expressions is considered.
+For example, the type of an `if` expression is determined
+by its positive and negative arms (but not its test expression),
 and its value is determined by evaluating one arm but not the other.
+
+## TODO: Statements/Unit/Side-Effects?
 
 ## TODO: Images
 
@@ -146,6 +159,20 @@ Examples. E.g. Circle(20)
 We can combine images with methods like on, beside, and above.
 
 Checkerboard example
+
+~~~ scala
+(
+  ( square(10) fillColor red   ) beside
+  ( square(10) fillColor black ) beside
+  ( square(10) fillColor red   ) beside
+  ( square(10) fillColor black )
+) above (
+  ( square(10) fillColor red   ) beside
+  ( square(10) fillColor black ) beside
+  ( square(10) fillColor red   ) beside
+  ( square(10) fillColor black )
+)
+~~~
 
 ## TODO: Exercises
 
@@ -170,24 +197,25 @@ They are similar to *variable declarations*
 except that they cannot be assigned to:
 
 ~~~ scala
-scala> val total = 1 + 2 + 3
-total: Int = 6
+scala> val blackSquare = Rectangle(10, 10) fillColour Colour.rgb(0, 0, 0)
+blackSquare: doodle.Image = // ...
 
-scala> val greeting = "Hello world!".toUpperCase
-greeting: String = HELLO WORLD!
+scala> val redSquare = Rectangle(10, 10) fillColour Colour.rgb(1, 0, 0)
+redSquare: doodle.Image = // ...
 ~~~
 
 Values can be used as sub-expressions within other expressions and declarations:
 
 ~~~ scala
-scala> total * total
-res0: Int = 36
-
-scala> val len = greeting.length
-len: Int = 12
+scala> val twoByTwoGrid = {
+     |   (blackSquare beside redSquare) above
+     |   (redSquare beside blackSquare)
+     | }
+twoByTwoGrid: doodle.Image = // ...
 ~~~
 
-## Class definitions
+<!--
+## Class declarations
 
 We can define our own types of data by defining new `classes`.
 Scala also provides a short syntax for defining `case classes`,
@@ -221,30 +249,105 @@ res1: Double = 3.0
 scala> b.height
 res2: Double = 6.0
 ~~~
+-->
 
-## Method definitions
+## Method and function declarations
 
-We can define *methods* to allow us to
-interact with values of a class.
+We can define *methods* to produce values given certain inputs.
 Again, method definitions themselves are not expressions.
-However, method calls *are* expressions
-with corresponding types and values:
+However, method calls *are* expressions with corresponding types and values:
 
 ~~~ scala
-scala> case class Rectangle(width: Double, height: Double) {
-     |   def area: Double = width * height
-     |
-     |   def scale(factor: Double): Rectangle =
-     |     Rectangle(width * factor, height * factor)
-     | }
-defined class Rectangle
+scala> def twoByTwo(a: Image, b: Image): Image =
+     |   (a beside b) above (b beside a)
+twoByTwo: (a: doodle.Image, b: doodle.Image)doodle.Image
 
-scala> Rectangle(3, 4).area
-res3: Double = 12.0
+scala> twoByTwo(redSquare, blackSquare)
+res0: doodle.Image = // ...
 
-scala> res3.scale(2)
-res4: Rectangle = Rectangle(6, 8)
+scala> twoByTwo(redSquare, Circle(10) fillColour Colour.rgb(0, 1, 0))
+res1: doodle.Image = // ...
 ~~~
+
+Scala also allows us to create *functions*,
+which are similar to methods but can be treated as values:
+
+~~~ scala
+scala> val outline = (image: Image) =>
+     |   image lineWidth 2 lineColour Colour.rgb(0, 0, 0)
+outline: doodle.Image => doodle.Image = <function1>
+
+scala> outline(redSquare)
+res5: doodle.Image = // ...
+~~~
+
+You might ask: if functions are simply methods that are also values,
+why have methods at all?
+The answer is an implementation detail:
+there is no such thing as a first class function on the JVM.
+The Scala compiler implements functions as objects with an `apply` method,
+but methods still exist for efficiency and Java compatibility.
+
+We can treat any Scala method as a function---the compiler
+will insert an invisible conversion into our code.
+We can make the conversion explicit by following a method with a `_`:
+
+~~~ scala
+scala> val twoByTwoFunc = (twoByTwo _)
+twoByTwoFunc: (doodle.Image, doodle.Image) => doodle.Image = <function2>
+
+scala> twoByTwoFunc(redSquare, blackSquare)
+res6: doodle.Image = // ...
+~~~
+
+## Functions as values
+
+**TODO: This isn't a compelling example!**
+
+Why have functions that can be treated as first class values at all?
+This property allows us to write *higher order* functions and methods
+that consume and generate functions as parameters or return values.
+
+Consider the following code that fills and outlines shapes
+without first class functions:
+
+~~~ scala
+scala> import doodle.syntax.normalised._
+import doodle.syntax.normalised._
+
+scala> def fill(image: Image, colour: Colour): Image =
+     |   image fillColour colour
+fill: (image: doodle.Image, colour: doodle.Colour)doodle.Image
+
+scala> def outline(image: Image, colour: Colour): Image =
+     |   image lineWidth 2 lineColour colour
+outline: (image: doodle.Image, colour: doodle.Colour)doodle.Image
+
+scala> def fillAndOutline(image: Image, colour: Colour): Image =
+     |   outline(fill(image, colour), colour darken 0.1.clip)
+fillAndOutline: (image: doodle.Image, colour: doodle.Colour)doodle.Image
+~~~
+
+to this code that does uses first class functions
+to represent and compose the fill and outline transformations:
+
+~~~ scala
+scala> def fill(colour: Colour) = (image: Image) =>
+     |   image fillColour colour
+fill: (colour: doodle.Colour)doodle.Image => doodle.Image
+
+scala> def outline(colour: Colour) = (image: Image) =>
+     |   image lineWidth 2 lineColour colour
+outline: (colour: doodle.Colour)doodle.Image => doodle.Image
+
+scala> def fillAndOutline(colour: Colour) =
+     |   fill(colour) andThen outline(colour darken 0.1.clip)
+fillAndOutline: (colour: doodle.Colour)doodle.Image => doodle.Image
+~~~
+
+In this case, the functional style is much more declarative:
+define blocks of functionality, name them,
+and compose them to produce larger blocks.
 
 ## Substitution
 
@@ -275,7 +378,7 @@ Checkerboard using names:
 - 4x4 is built from 2x2
 - 8x8 is built from 4x4
 
-## TODO: Colour
+## TODO: Color
 
 Lines and fills
 
@@ -298,7 +401,7 @@ Concentric circles
 
 Checkerboards
 
-# Extended Exercise: Colour palettes
+# Extended Exercise: Color palettes
 Interesting sequences of colours
 - Analagous colours, complements, triads, tetrads.
 - Period of repetition
