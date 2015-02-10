@@ -265,9 +265,10 @@ Operator              Result  Description                Example
                               on top of one another.
 ----------------------------------------------------------------------------------------
 
-### Exercise: Layout
+### Exercise: Stay on Target
 
 Create a line drawing of an archery target with three concentric scoring bands.
+For bonus credit add a stand so we can place the target on a range.
 
 <div class="solution">
 The simplest solution is to create three concentric circles using the `on` operator:
@@ -278,13 +279,15 @@ draw(Circle(10) on Circle(20) on Circle(30))
 
 ![Simple archery target](src/pages/target1.png)
 
-For extra artistic merit we can combine this with two rectangles to create a stand.
-Note the use of parentheses to enforce the correct order of combination:
+For the extra credit we can create a stand using two rectangles:
 
 ~~~ scala
 draw(
-  (Circle(10) on Circle(20) on Circle(30)) above
-  (Rectangle(6, 20) above Rectangle(20, 6))
+  Circle(10) on
+  Circle(20) on
+  Circle(30) above
+  Rectangle(6, 20) above
+  Rectangle(20, 6)
 )
 ~~~
 
@@ -293,12 +296,6 @@ draw(
 </div>
 
 ## TODO: Statements/Unit/Side-Effects?
-
-## TODO: Exercises
-
-Concentric circles
-
-Stick figure Vitruvian man
 
 # Declarations
 
