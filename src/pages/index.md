@@ -16,8 +16,7 @@ Two formats: 2 hours and 8 hours
 # Expressions, Values, and Types
 
 Scala programs have three fundamental building blocks:
-*expressions*, *values*, and *types*:
-
+*expressions*, *values*, and *types*.
 An *expression* is a fragment of Scala code that we write in an a text editor.
 Valid expressions have a *type* and calculate a *value*. For example,
 this expression has the type `String` and calculates the value `HELLO WORLD!`
@@ -29,7 +28,6 @@ res0: String = "HELLO WORLD!"
 
 A Scala program goes through two distinct stages. First it is *compiled*;
 if compiles successfully it can then be *executed*.
-
 The most important distinction between types and values is that
 types are determined at compile time,
 whereas values can only be determined at run time.
@@ -42,26 +40,18 @@ but its value depends on the the user input each time it is run:
 scala> readLine.toUpperCase
 ~~~
 
-<!--
-<div class="callout callout-info">
-*Understanding the Scala Console*
+We are used to thinking of types that refer to sets of literals
+such as `Int`, `Boolean`, and `String`,
+but in general a type is defined as
+*anything we can infer about a program without running it*.
+Scala developer use types to gain assurances about our programs
+before we put them into production.
 
-Let's look at the text in the example above to see what it all means.
-The text `scala>` is the prompt.
-`"Hello world!".toUpperCase` is the user input - our expression.
+## Simple Scala Expressions
 
-When we enter a valid expression, it is compiled and evaluated.
-`String` is the type, `"HELLO WORLD!`" is the value, and
-`res0` is a variable name that we can use in subsequent expressions:
+Let's look at some of the basic kinds of expressions we can write in Scala:
 
-~~~ scala
-scala> res0 + "?"
-res1: String = "HELLO WORLD!?"
-~~~
-</div>
--->
-
-## Literals
+### Literals
 
 The simplest kinds of expressions are *literals*.
 These are fragments of code that "stand for themselves".
@@ -87,7 +77,7 @@ res3: String = Hello world!
 // And so on...
 ~~~
 
-## Method Calls
+### Method calls
 
 Scala is a completely object-oriented programming language,
 so all values are objects with methods that we can call.
@@ -101,7 +91,36 @@ scala> true.toString
 res5: String = "true"
 ~~~
 
-## Operator expressions
+### Constructor calls
+
+**TODO: Do we need this section?
+I've included it to cover expressions `Circle(10)` later on.**
+
+Scala only has literals for a small set of types
+(`Int`, `Boolean`, `String`, and so on).
+To create values of other types we either need to call a method,
+or we need to call a *constructor* using the `new` keyword.
+This behaves similarly to `new` in Java:
+
+~~~ scala
+scala> import java.util.Date
+import java.util.Date
+
+scala> new Date()
+res4: java.util.Date = Tue Feb 10 10:30:21 GMT 2015
+~~~
+
+For reasons we shall see later on,
+Scala libraries typically provide factory methods to wrap constructor calls.
+We don't often see the `new` operator in Scala code unless
+we are interacting with Java libraries:
+
+~~~ scala
+scala> List(1, 2, 3)
+res6: List[Int] = List(1, 2, 3)
+~~~
+
+### Operators
 
 Operators in Scala are actually method calls under the hood.
 Scala has a set of convenient syntactic shorthands
@@ -119,13 +138,7 @@ scala> 1 + 2 + 3 + 4
 res1: Int = 10
 ~~~
 
-## Constructor expressions
-
-TODO: `new` expressions
-
-TODO: Singleton objects and `apply`
-
-## Conditionals
+### Conditionals
 
 Many other syntactic constructs are expressions in Scala,
 including some that are statements in Java.
@@ -137,10 +150,7 @@ scala> if(123 > 456) "Higher!" else "Lower!"
 res6: String = Lower!
 ~~~
 
-There are other examples of expressions in Scala
-including `for` comprehensions, `try`/`catch` expressions, and blocks.
-We'll see more of these later.
-
+<!--
 ## Compound Expressions
 
 Many of the expressions we have seen so far are made up of smaller expressions.
@@ -153,17 +163,20 @@ However, sometimes only a subset of the sub-expressions is considered.
 For example, the type of an `if` expression is determined
 by its positive and negative arms (but not its test expression),
 and its value is determined by evaluating one arm but not the other.
+-->
 
 ## Images
 
 Numbers and text are boring.
 Let's switch to something more interesting---images!
 Grab the *Doodle* project from [https://github.com/underscoreio/doodle]().
-This is a toy drawing library we've put together for this course.
-Start up a Scala console to try Doodle out:
+This toy drawing library will provide the basis for
+most of the exercises in this course.
+Start a Scala console to try Doodle out:
 
 ~~~ bash
 bash$ git clone https://github.com/underscoreio/doodle.git
+# Cloning ...
 
 bash$ cd doodle
 
@@ -183,6 +196,8 @@ Type :help for more information.
 scala>
 ~~~
 
+### Primitive Images
+
 The Doodle project gives us access to some useful drawing tools
 as well as the regular Scala core library. Try creating a simple shape:
 
@@ -197,23 +212,85 @@ and the value is `Circle(10.0)`---a circle with a 10 pixel radius.
 
 We can draw this circle (and other shapes) using Doodle's `draw()` function,
 which should have been brought into scope automatically.
-Try drawing the circle now. A window should appear containing a black outline:
+Try drawing the circle now.
 
 ~~~ scala
 scala> draw(res0)
 ~~~
 
+A window should appear containing the following:
+
+![A circle](src/pages/circle.png)
+
 Doodle supports two "primitive" images: circles and rectangles.
-We can combine these in various ways to produce more complex images.
-Try the following code---you should see a circle and a rectangle
-displayed beside another:
+Let's try drawing a rectangle:
 
 ~~~ scala
-scala> Circle(10) beside Rectangle(10, 20)
-res1: doodle.core.Image = Beside(Circle(10.0),Rectangle(10.0,20.0))
-
-scala> draw(res1)
+scala> draw(Rectangle(50, 100))
 ~~~
+
+![A rectangle](src/pages/rectangle.png)
+
+### Simple Layout
+
+We can combine images to produce more complex images.
+Try the following code---you should see a circle and a rectangle
+displayed next to one another:
+
+~~~ scala
+scala> draw(Circle(10) beside Rectangle(10, 20))
+~~~
+
+![A circle beside a rectangle](src/pages/circle-beside-rectangle.png)
+
+Doodle contains several layout operators for combining images.
+Try them out now to see what they do:
+
+----------------------------------------------------------------------------------------
+Operator              Result  Description                Example
+--------------------- ------- -------------------------- -------------------------------
+`Image beside Image`  `Image` Places images horizontally `Circle(10) beside Circle(20)`
+                              next to one another.
+
+`Image above Image`   `Image` Places images vertically   `Circle(10) above Circle(20)`
+                              next to one another.
+
+`Image below Image`   `Image` Places images vertically   `Circle(10) below Circle(20)`
+                              next to one another.
+
+`Image on Image`      `Image` Places images centered     `Circle(10) on Circle(20)`
+                              on top of one another.
+
+`Image under Image`   `Image` Places images centered     `Circle(10) under Circle(20)`
+                              on top of one another.
+----------------------------------------------------------------------------------------
+
+### Exercise: Layout
+
+Create a line drawing of an archery target with three concentric scoring bands.
+
+<div class="solution">
+The simplest solution is to create three concentric circles using the `on` operator:
+
+~~~ scala
+draw(Circle(10) on Circle(20) on Circle(30))
+~~~
+
+![Simple archery target](src/pages/target1.png)
+
+For extra artistic merit we can combine this with two rectangles to create a stand.
+Note the use of parentheses to enforce the correct order of combination:
+
+~~~ scala
+draw(
+  (Circle(10) on Circle(20) on Circle(30)) above
+  (Rectangle(6, 20) above Rectangle(20, 6))
+)
+~~~
+
+![Archery target with a stand](src/pages/target2.png)
+
+</div>
 
 ## TODO: Statements/Unit/Side-Effects?
 
@@ -240,10 +317,10 @@ They are similar to *variable declarations*
 except that they cannot be assigned to:
 
 ~~~ scala
-scala> val blackSquare = Rectangle(10, 10) fillColour Colour.rgb(0, 0, 0)
+scala> val blackSquare = Rectangle(10, 10) fillColor Color.rgb(0, 0, 0)
 blackSquare: doodle.Image = // ...
 
-scala> val redSquare = Rectangle(10, 10) fillColour Colour.rgb(1, 0, 0)
+scala> val redSquare = Rectangle(10, 10) fillColor Color.rgb(1, 0, 0)
 redSquare: doodle.Image = // ...
 ~~~
 
@@ -308,7 +385,7 @@ twoByTwo: (a: doodle.Image, b: doodle.Image)doodle.Image
 scala> twoByTwo(redSquare, blackSquare)
 res0: doodle.Image = // ...
 
-scala> twoByTwo(redSquare, Circle(10) fillColour Colour.rgb(0, 1, 0))
+scala> twoByTwo(redSquare, Circle(10) fillColor Color.rgb(0, 1, 0))
 res1: doodle.Image = // ...
 ~~~
 
@@ -317,7 +394,7 @@ which are similar to methods but can be treated as values:
 
 ~~~ scala
 scala> val outline = (image: Image) =>
-     |   image lineWidth 2 lineColour Colour.rgb(0, 0, 0)
+     |   image lineWidth 2 lineColor Color.rgb(0, 0, 0)
 outline: doodle.Image => doodle.Image = <function1>
 
 scala> outline(redSquare)
@@ -358,34 +435,34 @@ without first class functions:
 scala> import doodle.syntax.normalised._
 import doodle.syntax.normalised._
 
-scala> def fill(image: Image, colour: Colour): Image =
-     |   image fillColour colour
-fill: (image: doodle.Image, colour: doodle.Colour)doodle.Image
+scala> def fill(image: Image, color: Color): Image =
+     |   image fillColor color
+fill: (image: doodle.Image, color: doodle.Color)doodle.Image
 
-scala> def outline(image: Image, colour: Colour): Image =
-     |   image lineWidth 2 lineColour colour
-outline: (image: doodle.Image, colour: doodle.Colour)doodle.Image
+scala> def outline(image: Image, color: Color): Image =
+     |   image lineWidth 2 lineColor color
+outline: (image: doodle.Image, color: doodle.Color)doodle.Image
 
-scala> def fillAndOutline(image: Image, colour: Colour): Image =
-     |   outline(fill(image, colour), colour darken 0.1.clip)
-fillAndOutline: (image: doodle.Image, colour: doodle.Colour)doodle.Image
+scala> def fillAndOutline(image: Image, color: Color): Image =
+     |   outline(fill(image, color), color darken 0.1.clip)
+fillAndOutline: (image: doodle.Image, color: doodle.Color)doodle.Image
 ~~~
 
 to this code that does uses first class functions
 to represent and compose the fill and outline transformations:
 
 ~~~ scala
-scala> def fill(colour: Colour) = (image: Image) =>
-     |   image fillColour colour
-fill: (colour: doodle.Colour)doodle.Image => doodle.Image
+scala> def fill(color: Color) = (image: Image) =>
+     |   image fillColor color
+fill: (color: doodle.Color)doodle.Image => doodle.Image
 
-scala> def outline(colour: Colour) = (image: Image) =>
-     |   image lineWidth 2 lineColour colour
-outline: (colour: doodle.Colour)doodle.Image => doodle.Image
+scala> def outline(color: Color) = (image: Image) =>
+     |   image lineWidth 2 lineColor color
+outline: (color: doodle.Color)doodle.Image => doodle.Image
 
-scala> def fillAndOutline(colour: Colour) =
-     |   fill(colour) andThen outline(colour darken 0.1.clip)
-fillAndOutline: (colour: doodle.Colour)doodle.Image => doodle.Image
+scala> def fillAndOutline(color: Color) =
+     |   fill(color) andThen outline(color darken 0.1.clip)
+fillAndOutline: (color: doodle.Color)doodle.Image => doodle.Image
 ~~~
 
 In this case, the functional style is much more declarative:
@@ -427,7 +504,7 @@ Lines and fills
 
 RGB and HSL
 
-Checkerboard using colour
+Checkerboard using color
 
 ## TODO: For comprehensions? Map and flatMap? First class functions?
 
@@ -445,8 +522,8 @@ Concentric circles
 Checkerboards
 
 # Extended Exercise: Color palettes
-Interesting sequences of colours
-- Analagous colours, complements, triads, tetrads.
+Interesting sequences of colors
+- Analagous colors, complements, triads, tetrads.
 - Period of repetition
 - GCD
 - Linear congruential generator
