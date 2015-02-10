@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="800px" height="290.5px"
+	 viewBox="0 0 800 290.5" enable-background="new 0 0 800 290.5" xml:space="preserve">
+<title>scala-type-hierarchy</title>
+<description>Created with Sketch (http://www.bohemiancoding.com/sketch)</description>
+<g id="Page-1" sketch:type="MSPage">
+	<text transform="matrix(1 0 0 1 384.2993 23)" font-family="'OpenSans'" font-size="14">Any</text>
+	<text transform="matrix(1 0 0 1 169.6626 112)" font-family="'OpenSans'" font-size="14">AnyVal</text>
+	<text transform="matrix(1 0 0 1 29.8335 211)" font-family="'OpenSans'" font-size="14">Int</text>
+	<text transform="matrix(1 0 0 1 6.9897 232.4258)" fill="#4A4A4A" font-family="'OpenSans'" font-size="12">= java int</text>
+	<text transform="matrix(1 0 0 1 118.9912 211)" font-family="'OpenSans'" font-size="14">Double</text>
+	<text transform="matrix(1 0 0 1 98.8096 232.4258)" fill="#4A4A4A" font-family="'OpenSans'" font-size="12">= java double</text>
+	<text transform="matrix(1 0 0 1 219.7446 211)" font-family="'OpenSans'" font-size="14">Boolean</text>
+	<text transform="matrix(1 0 0 1 199.5405 232.4258)" fill="#4A4A4A" font-family="'OpenSans'" font-size="12">= java boolean</text>
+	<text transform="matrix(1 0 0 1 522.7363 211)" font-family="'OpenSans'" font-size="14">Array[T]</text>
+	<text transform="matrix(1 0 0 1 509.8633 232.4258)" fill="#4A4A4A" font-family="'OpenSans'" font-size="12">= java array</text>
+	<text transform="matrix(1 0 0 1 629.6895 211)" font-family="'OpenSans'" font-size="14">All Java</text>
+	<text transform="matrix(1 0 0 1 675.3105 211)" font-family="'OpenSans'" font-size="14"> </text>
+	<text transform="matrix(1 0 0 1 621.9844 231.3301)" font-family="'OpenSans'" font-size="14">classes</text>
+	<text transform="matrix(1 0 0 1 732.1387 211)" font-family="'OpenSans'" font-size="14">All Scala</text>
+	<text transform="matrix(1 0 0 1 784.8613 211)" font-family="'OpenSans'" font-size="14"> </text>
+	<text transform="matrix(1 0 0 1 727.9844 231.3301)" font-family="'OpenSans'" font-size="14">classes</text>
+	<text transform="matrix(1 0 0 1 397.1255 211)" font-family="'OpenSans'" font-size="14">java.lang.String</text>
+	<text transform="matrix(1 0 0 1 583.665 112)" font-family="'OpenSans'" font-size="14">AnyRef</text>
+	<text transform="matrix(1 0 0 1 551 133.4258)" fill="#4A4A4A" font-family="'OpenSans'" font-size="12">= java.lang.Object</text>
+	<text transform="matrix(1 0 0 1 318.436 212)" font-family="'OpenSans'" font-size="14">Unit</text>
+	<text transform="matrix(1 0 0 1 296.1079 233.4258)" fill="#4A4A4A" font-family="'OpenSans'" font-size="12">~ java void</text>
+	<text transform="matrix(1 0 0 1 175.3501 275)" font-family="'OpenSans'" font-size="14">etc…</text>
+	<path id="Line" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" stroke-linejoin="round" d="
+		M397.517,32.5l-206.033,60"/>
+	<path id="Line-decoration-1" fill="none" stroke="#979797" stroke-linecap="round" stroke-linejoin="round" d="M201.582,86.435
+		c-3.336,2.065-6.195,3.835-9.531,5.9c3.923-0.049,7.286-0.09,11.208-0.139"/>
+	<path id="Line_1_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M397.483,32.5l206.033,59"
+		/>
+	<path id="Line-decoration-1_1_" fill="none" stroke="#979797" stroke-linecap="round" d="M592.006,91.324
+		c3.923,0.031,7.285,0.058,11.209,0.089c-3.346-2.05-6.212-3.807-9.557-5.857"/>
+	<path id="Line_2_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M191.482,121.339
+		l54.035,68.161"/>
+	<path id="Line-decoration-1_2_" fill="none" stroke="#979797" stroke-linecap="round" d="M235.848,182.132
+		c3.171,2.31,5.889,4.29,9.06,6.6c-1.525-3.614-2.833-6.712-4.358-10.327"/>
+	<path id="Line_3_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M191.638,121.322
+		L333.517,190.5"/>
+	<path id="Line-decoration-1_3_" fill="none" stroke="#979797" stroke-linecap="round" d="M321.734,188.093
+		c3.858,0.713,7.165,1.324,11.022,2.037c-2.938-2.601-5.456-4.83-8.393-7.43"/>
+	<path id="Line_4_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M190.518,121.339
+		L136.482,189.5"/>
+	<path id="Line-decoration-1_4_" fill="none" stroke="#979797" stroke-linecap="round" d="M180.848,182.132
+		c3.171,2.31,5.889,4.29,9.06,6.6c-1.525-3.614-2.833-6.712-4.358-10.327"/>
+	<path id="Line_5_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M188.362,120.322
+		L46.483,189.5"/>
+	<path id="Line-decoration-1_5_" fill="none" stroke="#979797" stroke-linecap="round" d="M176.734,187.093
+		c3.858,0.713,7.165,1.324,11.022,2.037c-2.938-2.601-5.456-4.83-8.393-7.43"/>
+	<path id="Line_6_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M606.515,142.5l-163.029,50
+		"/>
+	<path id="Line-decoration-1_6_" fill="none" stroke="#979797" stroke-linecap="round" d="M453.433,186.312
+		c-3.306,2.112-6.14,3.922-9.446,6.035c3.922-0.104,7.283-0.194,11.205-0.298"/>
+	<path id="Line_7_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M606.516,142.5l-60.031,49"
+		/>
+	<path id="Line-decoration-1_7_" fill="none" stroke="#979797" stroke-linecap="round" d="M553.334,182.037
+		c-2.265,3.204-4.205,5.949-6.47,9.153c3.593-1.577,6.672-2.928,10.264-4.505"/>
+	<path id="Line_8_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M606.478,142.5l42.045,48"
+		/>
+	<path id="Line-decoration-1_8_" fill="none" stroke="#979797" stroke-linecap="round" d="M638.615,183.743
+		c3.281,2.151,6.093,3.996,9.373,6.147c-1.701-3.535-3.158-6.565-4.859-10.101"/>
+	<path id="Line_9_" sketch:type="MSShapeGroup" fill="none" stroke="#979797" stroke-linecap="round" d="M606.484,142.5l150.031,47"
+		/>
+	<path id="Line-decoration-1_9_" fill="none" stroke="#979797" stroke-linecap="round" d="M745.102,189.068
+		c3.921,0.128,7.282,0.238,11.203,0.366c-3.293-2.132-6.116-3.959-9.409-6.091"/>
+</g>
+</svg>

@@ -252,8 +252,13 @@ Operator              Type    Description                Example
 
 ### Exercise: Compilation Target
 
-Create a line drawing of an archery target with three concentric scoring bands.
-For bonus credit add a stand so we can place the target on a range.
+Create a line drawing of an archery target with three concentric scoring bands:
+
+![Simple archery target](src/pages/expressions/target1.png)
+
+For bonus credit add a stand so we can place the target on a range:
+
+![Archery target with a stand](src/pages/expressions/target2.png)
 
 <div class="solution">
 The simplest solution is to create three concentric circles using the `on` operator:
@@ -261,8 +266,6 @@ The simplest solution is to create three concentric circles using the `on` opera
 ~~~ scala
 draw(Circle(10) on Circle(20) on Circle(30))
 ~~~
-
-![Simple archery target](src/pages/expressions/target1.png)
 
 For the extra credit we can create a stand using two rectangles:
 
@@ -275,8 +278,6 @@ draw(
   Rectangle(20, 6)
 )
 ~~~
-
-![Archery target with a stand](src/pages/expressions/target2.png)
 </div>
 
 ### Colour
@@ -296,7 +297,7 @@ Operator                Type    Description                 Example
 
 `Image lineWidth Int`   `Image` Outlines the image with     `Circle(10) lineWIdth 3`
                                 the specified stroke width.
---------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------
 
 Doodle has various ways of creating colours.
 The simplest are the predefined colours in
@@ -324,7 +325,9 @@ Color                   Type    Example
 ### Exercise: Stay on Target
 
 Colour your target red and white, the stand in brown (if applicable),
-and if you're feeling adventurous add some ground in green.
+and some ground in green:
+
+![Colour archery target](src/pages/expressions/target3.png)
 
 <div class="solution">
 The trick here is using parentheses to control the order of composition.
@@ -340,8 +343,57 @@ draw(
   ( Rectangle(80, 25) lineWidth 0 fillColor Color.green )
 )
 ~~~
-
-![Colour archery target](src/pages/expressions/target3.png)
 </div>
 
-## TODO: Statements/Unit/Side-Effects?
+## A Note on Types
+
+We've seen several types so far,
+including primitive Scala types such as `Int`, `Boolean`, and `String`,
+the `Date` type from the Java standard library,
+and the `Circle`, `Rectangle`, `Image`, and `Color` types from Doodle.
+Let's take a moment to see how all of these fit together:
+
+\makebox[\linewidth]{\includegraphics[width=0.8\textwidth]{src/pages/expressions/scala-type-hierarchy.pdf}}
+
+<div class="figure">
+<div class="text-center">
+<img src="src/pages/expressions/scala-type-hierarchy.svg" alt="Scala type hierarchy" />
+</div>
+</div>
+
+All types in Scala fall into a single *inheritance hierarchy*,
+with a grand supertype called `Any` at the top.
+`Any` has two subtypes, `AnyVal` and `AnyRef`:
+
+`AnyVal` is the supertype of the JVM's fixed set of stack-allocated value types.
+Some of these types are simply Scala aliases for types that exist in Java:
+`Int` is `int`, `Boolean` is `boolean`, and `AnyRef` is `java.lang.Object`.
+The exception is the `Unit` type, which we will discuss in a moment.
+`AnyRef` is the supertype of all "reference types" or classes.
+All regular Scala and Java classes are subtypes of `AnyRef`.
+
+`Unit` is Scala's equivalent of `void` in Java or C---we use it
+to write code that evaluates to "no interesting value":
+
+~~~ scala
+scala> val uninteresting = println("Hello world!")
+Hello world!
+uninteresting: Unit = ()
+~~~
+
+While `void` is simply a syntax we use when writing a method,
+`Unit` is an acutal type with an actual value `()`.
+Having a proper type and value allows us to reason about imperative
+side-effecting code using the same semantics as functional code.
+It is essential for a language like Scala that bridges the
+worlds of the imperative and the functional.
+
+We have so far seen two imperative-style methods that return `Unit`:
+the `println` method from the Scala standard library,
+and Doodle's `draw` method. Each of these methods does something useful
+when we call it, but neither returns a useful result:
+
+~~~ scala
+scala> val alsoUninteresting = draw(Circle(10))
+alsoUninteresting: Unit = ()
+~~~
