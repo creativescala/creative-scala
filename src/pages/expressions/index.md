@@ -135,20 +135,71 @@ scala> if(123 > 456) "Higher!" else "Lower!"
 res6: String = Lower!
 ~~~
 
-<!--
-## Compound Expressions
+### Blocks and Side-Effects
 
-Many of the expressions we have seen so far are made up of smaller expressions.
-For example, the expression `1 + 2` is built from
-the sub-expressions `1` and `2`, combined using the method `+`.
+Blocks are another type of expression in Scala.
+Running a block runs each contained expression in order.
+The type and return value of the block are determined
+by the *last* contained expression:
 
-The type and value of a compound expression are
-determined in part by the types and values of its sub-expressions.
-However, sometimes only a subset of the sub-expressions is considered.
-For example, the type of an `if` expression is determined
-by its positive and negative arms (but not its test expression),
-and its value is determined by evaluating one arm but not the other.
--->
+~~~ scala
+scala> {
+     |   println("First line")
+     |   println("Second line")
+     |   1 + 2 + 3
+     | }
+res0: Int = 6
+~~~
+
+In functional programming we make the distiction between
+"pure expressions" and expressions that have "side effects":
+
+ - *pure expressions* do nothing more than calculate a value;
+
+ - expressions with *side effects* do something else aside from
+   calculate their result---for example,
+   `println` prints a message to the console.
+
+Because the results of intermediate expressions in a block are thrown away,
+it doesn't make sense to use pure expressions there.
+The Scala console even warns us when we try this:
+
+~~~ scala
+scala> {
+     |   1 + 2 + 3
+     |   4 + 5 + 6
+     | }
+<console>:9: warning: a pure expression does nothing in statement position;
+             you may be omitting necessary parentheses
+               1 + 2 + 3
+                     ^
+res0: Int = 15
+~~~
+
+The message here is warning us that
+the intermediate expression `1 + 2 + 3` is wasted computation.
+All it does is calculate the value `6`.
+We immediately throw the result away and calculate `4 + 5 + 6` instead.
+We might as well simply write `4 + 5 + 6` and get rid of the block.
+
+Side-effecting expressions, by contrast, make perfect sense within a block.
+`println` expressions are a great example of this---they
+do something useful even though they don't return a useful value:
+
+~~~ scala
+scala> {
+     |   println("Intermediate result: " + (1 + 2 + 3))
+     |   4 + 5 + 6
+     | }
+Intermediate result: 6
+res0: Int = 15
+~~~
+
+Scala developers tend to prefer pure expressions to side-effects
+because they are easier to reason about.
+See the section on [Substitution](#sec-substitution) for more information.
+We won't use blocks in anger until the next chapter when
+we start declaring intermediate values and re-use them in later expressions.
 
 ## Images
 
@@ -250,7 +301,7 @@ Operator              Type    Description                Example
                               on top of one another.
 ----------------------------------------------------------------------------------------
 
-### Exercise: Compilation Target
+**Exercise: Compilation Target**
 
 Create a line drawing of an archery target with three concentric scoring bands:
 
@@ -322,7 +373,7 @@ Color                   Type    Example
 `Color.brown`           `Color` `Circle(10) fillColor Color.brown`
 ------------------------------------------------------------------
 
-### Exercise: Stay on Target
+**Exercise: Stay on Target**
 
 Colour your target red and white, the stand in brown (if applicable),
 and some ground in green:
@@ -345,7 +396,31 @@ draw(
 ~~~
 </div>
 
-## A Note on Types
+## Take Home Points
+
+### Substitution {#sec-substitution}
+
+In the absence of side-effects such as variable assignment and input/output,
+an expression will always evaluate to the same value.
+For example,`3 + 4` will always evaluate to `7`,
+no matter how many times we compile or run the code.
+
+Given these restrictions, the expressions `3 + 4` and `7`
+become interchangeable from a user's point of view.
+This is known as the *subs􏰂titution model* of evaluation,
+although you may remember it as "simplifying formulae"
+from your maths class at school.
+
+As programmers we must develop a mental model of how our code operates.
+In the absence of side-effects, the subs􏰂tution model always works.
+If we know the types and values of each component of an expression,
+we know the type and value of the expression as a whole.
+
+Functional programmers aim to avoid side-effects for this reason:
+it makes our programs easy to reason about
+without having to look beyond the current block of code.
+
+### Types in Scala
 
 We've seen several types so far,
 including primitive Scala types such as `Int`, `Boolean`, and `String`,
@@ -363,16 +438,19 @@ Let's take a moment to see how all of these fit together:
 
 All types in Scala fall into a single *inheritance hierarchy*,
 with a grand supertype called `Any` at the top.
-`Any` has two subtypes, `AnyVal` and `AnyRef`:
+`Any` has two subtypes, `AnyVal` and `AnyRef`.
 
-`AnyVal` is the supertype of the JVM's fixed set of stack-allocated value types.
-Some of these types are simply Scala aliases for types that exist in Java:
-`Int` is `int`, `Boolean` is `boolean`, and `AnyRef` is `java.lang.Object`.
-The exception is the `Unit` type, which we will discuss in a moment.
-`AnyRef` is the supertype of all "reference types" or classes.
-All regular Scala and Java classes are subtypes of `AnyRef`.
+ - `AnyVal` is a supertype of the JVM's fixed set of "value types",
+   all of which which we know from Java:
+   `Int` is `int`, `Boolean` is `boolean`, and so on.
+   `AnyVal` is also the supertype of `Unit`, which we will discuss in a moment.
 
-`Unit` is Scala's equivalent of `void` in Java or C---we use it
+ - `AnyRef` is the supertype of all JVM "reference types".
+   It is an alias for Java's `Object` type.
+   `AnyRef` is the supertype of all "reference types" or classes.
+   All regular Scala and Java classes are subtypes of `AnyRef`.
+
+The `Unit` type is Scala's equivalent of `void` in Java or C---we use it
 to write code that evaluates to "no interesting value":
 
 ~~~ scala
@@ -381,17 +459,19 @@ Hello world!
 uninteresting: Unit = ()
 ~~~
 
-While `void` is simply a syntax we use when writing a method,
-`Unit` is an acutal type with an actual value `()`.
-Having a proper type and value allows us to reason about imperative
-side-effecting code using the same semantics as functional code.
+While `void` is simply a syntax,
+`Unit` is an actual type with a single value, `()`.
+Having an actual type and value allows us to reason about
+code that evaluates to `Unit` with
+the same principles we use for functional code.
 It is essential for a language like Scala that bridges the
 worlds of the imperative and the functional.
 
 We have so far seen two imperative-style methods that return `Unit`:
 the `println` method from the Scala standard library,
-and Doodle's `draw` method. Each of these methods does something useful
-when we call it, but neither returns a useful result:
+and Doodle's `draw` method.
+Each of these methods does something useful
+but neither returns a useful result:
 
 ~~~ scala
 scala> val alsoUninteresting = draw(Circle(10))
