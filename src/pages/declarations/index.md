@@ -31,7 +31,8 @@ Use intermediate value declarations to make your code as compact as possible:
 ![Chess board](src/pages/declarations/chessboard.png)
 
 <div class="solution">
-An 8x8 chess board can be decomposed into four 2x2 boards,
+An 8x8 chess board can be decomposed into four 4x4 boards,
+which can each be decomposed into four 2x2 boards,
 each consisting 2x2 squares:
 
 ~~~ scala
@@ -42,9 +43,13 @@ val twoByTwo =
   (redSquare   beside blackSquare) above
   (blackSquare beside redSquare)
 
-val chessBoard =
+val fourByFour =
   (twoByTwo beside twoByTwo) above
   (twoByTwo beside twoByTwo)
+
+val chessBoard =
+  (fourByFour beside fourByFour) above
+  (fourByFour beside fourByFour)
 ~~~
 
 This is significantly clearer and more compact
@@ -80,7 +85,7 @@ def twoByTwo(color1: Color, color2: Color): Image = {
   (square1 beside square2) above
   (square2 beside square1)
 }
-~~~ 
+~~~
 
 This declares a method called `twoByTwo`. The method has two parameters, called `color1` and `color2`, which we have declared to have type `Color`. We have also declared the type of the value the method returns when called, which is `Image`. The body of the method, which is enclosed with optional braces (the `{` and `}` pair) defines how we create the `Image`. This mirrors the process for creating a two by two chess board that we saw above, but in this case we are using the colors we are passed as parameters.
 
@@ -90,7 +95,7 @@ This declares a method called `twoByTwo`. The method has two parameters, called 
 
 **Exercise: Chess Board**
 
-Declare a method called `fourByFour` that constructs a four-by-four chess board using `twoByTwo` declared above. The method should have two parameters, both `Color`s, that it passes on to `twoByTwo`. 
+Declare a method called `fourByFour` that constructs a four-by-four chess board using `twoByTwo` declared above. The method should have two parameters, both `Color`s, that it passes on to `twoByTwo`.
 
 You should be able to call `fourByFour` like so
 
@@ -132,13 +137,7 @@ Let's start with a simple example---a set of concentric circles.
 We can create this image by recursing over the natural numbers.
 Each number corresponds to the next layer of the image:
 
-\makebox[\linewidth]{\includegraphics[width=0.8\textwidth]{src/pages/declarations/concentric-circles-steps.pdf}}
-
-<div class="figure">
-<div class="text-center">
-<img src="src/pages/declarations/concentric-circles-steps.svg" alt="Concentric circles" />
-</div>
-</div>
+![Concentric circles (n = 1 to 3)](src/pages/declarations/concentric-circles-steps.pdf+svg)
 
 Note the recursive pattern here:
 
@@ -163,12 +162,12 @@ def concentricCircles(n: Int): Image =
 Create an image containing 20 concentric circles
 using the approach described above:
 
-![Concentric circles](src/pages/declarations/concentric-circles.png)
+![Concentric circles (n = 20)](src/pages/declarations/concentric-circles.png)
 
 For extra credit, give each circle its own hue or opacity
 by gradually changing the colour at each level of recursion:
 
-![Concentric circles IN COLOUR!](src/pages/declarations/concentric-circles2.png)
+![Concentric circles IN COLOUR! (n = 20)](src/pages/declarations/concentric-circles2.png)
 
 <div class="solution">
 The basic structure of our solution involves two methods:
@@ -237,13 +236,8 @@ def severalImages(n: Int): Image =
 Sierpinski triangles are a more interesting example of a recursive drawing
 algorithm. The pattern is illustrated below:
 
-\makebox[\linewidth]{\includegraphics[width=0.8\textwidth]{src/pages/declarations/sierpinski-steps.pdf}}
 
-<div class="figure">
-<div class="text-center">
-<img src="src/pages/declarations/sierpinski-steps.svg" alt="Sierpinski triangles" />
-</div>
-</div>
+![Sierpinski triangles (n = 1 to 4)](src/pages/declarations/sierpinski-steps.pdf+svg)
 
 Here is an English description of the recursive pattern:
 
@@ -262,7 +256,7 @@ Start by dealing with the `n = 1` case, then solve the `n = 2` case,
 then generalise your code for any value of `n`. Finish by drawing the
 `n = 10` *Sier**pink**ski* triangle below:
 
-![Sierpinski triangle](src/pages/declarations/sierpinski.png)
+![Sierpinski triangle (n = 10)](src/pages/declarations/sierpinski.png)
 
 You may notice that the final result is extremely large!
 For extra credit, rewrite your code so you can specify

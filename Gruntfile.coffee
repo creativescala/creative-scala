@@ -159,6 +159,7 @@ module.exports = (grunt) ->
                      --filter=lib/filters/pdf/callout.coffee
                      --filter=lib/filters/pdf/columns.coffee
                      --filter=lib/filters/pdf/solutions.coffee
+                     --filter=lib/filters/pdf/vector-images.coffee
                    """
         extras   = joinLines """
                      --include-before-body=lib/templates/cover-notes.tex
@@ -171,6 +172,7 @@ module.exports = (grunt) ->
         filters  = joinLines """
                      --filter=lib/filters/html/tables.coffee
                      --filter=lib/filters/html/solutions.coffee
+                     --filter=lib/filters/html/vector-images.coffee
                    """
         extras   = joinLines """
                      --toc-depth=2
@@ -183,6 +185,7 @@ module.exports = (grunt) ->
         template = "--template=lib/templates/template.epub.html"
         filters  = joinLines """
                      --filter=lib/filters/epub/solutions.coffee
+                     --filter=lib/filters/epub/vector-images.coffee
                    """
         extras   = joinLines """
                      --epub-stylesheet=dist/temp/main.css
