@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="320px" height="112px" viewBox="0 0 320 112" enable-background="new 0 0 320 112" xml:space="preserve">
+<circle fill="#FFFFFF" stroke="#ED1C24" stroke-miterlimit="10" cx="64" cy="48" r="16"/>
+<circle fill="#FFFFFF" stroke="#ED1C24" stroke-miterlimit="10" cx="160" cy="48" r="24"/>
+<circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="160" cy="48" r="16"/>
+<circle fill="#FFFFFF" stroke="#ED1C24" stroke-miterlimit="10" cx="256" cy="48" r="32"/>
+<circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="256" cy="48" r="24"/>
+<circle fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" cx="256" cy="48" r="16"/>
+<text transform="matrix(1 0 0 1 54.0161 96.0005)" font-family="'MyriadPro-Regular'" font-size="12">n=1</text>
+<text transform="matrix(1 0 0 1 150.0161 96.0005)" font-family="'MyriadPro-Regular'" font-size="12">n=2</text>
+<text transform="matrix(1 0 0 1 246.0156 96)" font-family="'MyriadPro-Regular'" font-size="12">n=3</text>
+</svg>
