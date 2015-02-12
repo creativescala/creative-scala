@@ -1,4 +1,4 @@
-# Extended Exercise: Color Palettes
+## Extended Exercise: Color Palettes
 
 In this exercise we will explore the creation of color palettes.
 An attractive picture must make good choices for color.
@@ -7,7 +7,7 @@ We will use color theory,
 and some neat tricks from mathematics and computer science,
 to create programs that can automatically create attractive color palettes.
 
-## Color Theory
+### Color Theory
 
 We have see that we can represent colors in two ways:
 
@@ -20,9 +20,9 @@ If we arrange colors in the familiar color wheel,
 distance from the center corrsponds to lightness
 and steps around the outside correspond to changes in hue:
 
-![Color wheel](src/pages/declarations/color-wheel.png)
+![A color wheel. A full turn around the wheel represents a 360 degree change in hue.](src/pages/declarations/color-wheel.png)
 
-### Complementary Colors
+#### Complementary Colors
 
 A simple way to generate colors that look good together
 is to use *complementary colors*.
@@ -32,7 +32,7 @@ Complementary pairs have high contrast and make for striking compositions:
 
 ![Aubergines by <a href="https://www.flickr.com/photos/36179943@N00/219265991">Estaban Cavrico</a> <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0</a>. The green and purple of the aubergins are near complements.](src/pages/declarations/aubergines.jpg)
 
-### Exercise: Complementary Colors
+**Exercise: Complementary Colors**
 
 Create a method `complement` that takes a `Color` as input and returns its complement.
 You can use the method `spin` on a `Color` to rotate its hue by a given `Angle`.
@@ -44,7 +44,7 @@ def complement(color: Color): Color =
 ~~~
 </div>
 
-### Exercise: Complementary Concentric Circles
+**Exercise: Complementary Chess Boards** 
 
 Using `complement` write a method `concentricCircles` that creates concentric circles,
 where adjacent circles have complementary colors.
@@ -69,7 +69,7 @@ Let's explore another color scheme, *analogous colors*, that gives us more flexi
 In analogous color is simply one that is close on the color wheel to a given color.
 We can generate an analogous color by spinning hue, say, fifteen degrees.
 
-### Exercise: Analogous Colors
+**Exercise: Analogous Colors**
 
 Create a method `analogous` that takes a `Color` as input and returns an analogous color.
 
@@ -80,7 +80,7 @@ def analogous(color: Color): Color =
 ~~~
 </div>
 
-### Exercise: Analogous Concentric Circles
+**Exercise: Analogous Concentric Circles**
 
 <div class="callout callout-danger">
 TODO: Complete this exercise and examples
