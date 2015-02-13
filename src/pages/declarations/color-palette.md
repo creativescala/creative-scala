@@ -1,6 +1,6 @@
 # Extended Exercise: Color Palettes
 
-In this exercise we will explore the creation of color palettes. 
+In this exercise we will explore the creation of color palettes.
 An attractive picture must make good choices for color.
 Color theory has developed to explain combinations of color that go together.
 We will use color theory,
@@ -39,7 +39,7 @@ def complement(color: Color): Color =
 ~~~
 </div>
 
-### Exercise: Complementary Concentric Circles 
+### Exercise: Complementary Concentric Circles
 
 Using `complement` write a method `concentricCircles` that creates concentric circles, where adjacent circles have complementary colors. You will have to pass the current color to `concentricCircles`, so use this method declaration:
 
@@ -66,7 +66,8 @@ Create a method `analogous` that takes a `Color` as input and returns an analogo
 def analogous(color: Color): Color =
   color.spin(15.degrees)
 ~~~
+</div>
 
 ### Exercise: Analogous Concentric Circles
 
-Change 
+Change

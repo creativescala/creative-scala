@@ -13,14 +13,15 @@ exercisesRepo: null # "git@github.com:underscoreio/doodle.git"
 # Used by Grunt to assemble pandoc command line:
 pages:
   - src/pages/expressions/index.md
-
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
   - src/pages/declarations/color-palette.md
-
+  - src/pages/fp/index.md
+  - src/pages/fp/recursion.md
+  - src/pages/fp/functions.md
   - src/pages/collections/index.md
-  - src/pages/index.md
-  - src/pages/thanks.md
+  - src/pages/quickreference/index.md
   - src/pages/solutions.md
+  - src/pages/thanks.md
 ...
