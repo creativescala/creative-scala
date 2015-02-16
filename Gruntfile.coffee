@@ -2,7 +2,7 @@
 
 "use strict"
 
-ebook = require 'underscore-ebook'
+ebook = require 'underscore-ebook-template'
 
 module.exports = (grunt) ->
   ebook(grunt)

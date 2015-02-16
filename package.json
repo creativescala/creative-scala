@@ -2,7 +2,7 @@
   "name": "eescala",
   "version": "1.0.0",
   "devDependencies": {
-    "underscore-ebook": "git+https://e15c4fa26b8e7e66011058ee5305f252d90781d7:x-oauth-basic@github.com/underscoreio/ebook-template.git#0.0.2"
+    "underscore-ebook-template": "git+https://github.com/underscoreio/underscore-ebook-template.git#0.0.3"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
