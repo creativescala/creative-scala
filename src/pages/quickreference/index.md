@@ -1,6 +1,6 @@
 \appendix
 
-# Syntax quick reference
+# Syntax quick reference {#syntax-quick-reference}
 
 ## Literals and expressions
 

@@ -1,6 +1,7 @@
 # Collections
 
-**TODO: Somewhere in here: Colour wheel**
-- Map over list of indices
+<div class="callout callout-danger">
+**TODO: Somewhere in here: Colour wheel (map over list of indicates)**
 
 **TODO: For comprehensions? Map and flatMap? First class functions?**
+</div>

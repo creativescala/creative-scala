@@ -22,8 +22,8 @@ Use intermediate value declarations to make your code as compact as possible:
 ![Chess board](src/pages/declarations/chessboard.png)
 
 <div class="solution">
-An 8x8 chess board can be decomposed into four 2x2 boards,
-each consisting 2x2 squares:
+An 8x8 chess board can be decomposed into four 4x4 boards,
+each consisting four 2x2 boards, each consisting four squares:
 
 ~~~ scala
 val blackSquare = Rectangle(30, 30) fillColor Color.black
@@ -33,9 +33,13 @@ val twoByTwo =
   (redSquare   beside blackSquare) above
   (blackSquare beside redSquare)
 
-val chessBoard =
+val fourByFour =
   (twoByTwo beside twoByTwo) above
   (twoByTwo beside twoByTwo)
+
+val chessBoard =
+  (fourByFour beside fourByFour) above
+  (fourByFour beside fourByFour)
 ~~~
 
 This is significantly clearer and more compact

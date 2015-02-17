@@ -65,6 +65,7 @@ What other advantages do we get from treating code as values?
  - we can create methods that return functions as their results.
 
 Let's consider the pattern from the concentric circles exercise as an example:
+
 ~~~ scala
 def manyShapes(n: Int): Image =
   if(n == 1) {
@@ -113,4 +114,6 @@ val redCircles: Image =
   manyShapes(10, redCircle _)
 ~~~
 
+<div class="callout callout-danger">
 **TODO: Exercise: Colors and Shapes**
+</div>

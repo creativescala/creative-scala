@@ -23,5 +23,4 @@ pages:
   - src/pages/collections/index.md
   - src/pages/quickreference/index.md
   - src/pages/solutions.md
-  - src/pages/thanks.md
 ...

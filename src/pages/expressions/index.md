@@ -78,9 +78,6 @@ res5: String = "true"
 
 ### Constructor calls
 
-**TODO: Do we need this section?
-I've included it to cover expressions `Circle(10)` later on.**
-
 Scala only has literals for a small set of types
 (`Int`, `Boolean`, `String`, and so on).
 To create values of other types we either need to call a method,
