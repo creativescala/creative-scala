@@ -397,7 +397,7 @@ draw(
 
 ### Substitution {#sec-substitution}
 
-In the absence of side-effects such as variable assignment and input/output,
+In the absence of side-effects,
 an expression will always evaluate to the same value.
 For example,`3 + 4` will always evaluate to `7`,
 no matter how many times we compile or run the code.

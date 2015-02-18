@@ -94,11 +94,11 @@ In fact, `concentricCircles` doesn't care about circles at all!
 A more general naming system would be more suitable:
 
 ~~~
-def singleImage(n: Int): Image =
+def singleShape(n: Int): Image =
   ???
 
-def severalImages(n: Int): Image =
-  if(n == 1) singleImage(n) else singleImage(n) on severalImages(n - 1)
+def manyShapes(n: Int): Image =
+  if(n == 1) singleShape(n) else (singleShape(n) on manyShapes(n - 1))
 ~~~
 </div>
 
