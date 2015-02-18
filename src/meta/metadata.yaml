@@ -1,13 +1,13 @@
 ---
 # Used by Pandoc to print covers:
-title: "Impressionist Scala"
+title: "Creative Scala"
 author: "Noel Welsh and Dave Gurnell"
 date: "February 2015"
 # Used by Pandoc to generate the PDF cover...
 # see src/css/book.css for HTML/ePub covers:
 coverColor: "25AAE1"
 # Used by Grunt to name output files:
-filenameStem: "impressionist-scala"
+filenameStem: "creative-scala"
 # Used by Grunt to create a ZIP of source code:
 exercisesRepo: null # "git@github.com:underscoreio/doodle.git"
 # Used by Grunt to assemble pandoc command line:
