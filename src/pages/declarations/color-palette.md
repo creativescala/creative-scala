@@ -3,8 +3,7 @@
 In this exercise we will explore the creation of color palettes.
 An attractive picture must make good choices for color.
 Color theory has developed to explain combinations of color that go together.
-We will use color theory,
-and some neat tricks from mathematics and computer science,
+We will use color theory
 to create programs that can automatically create attractive color palettes.
 
 ### Color Theory

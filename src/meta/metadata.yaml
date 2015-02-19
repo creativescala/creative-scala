@@ -20,6 +20,7 @@ pages:
   - src/pages/fp/index.md
   - src/pages/fp/recursion.md
   - src/pages/fp/functions.md
+  - src/pages/fp/color-palette.md
   - src/pages/collections/index.md
   - src/pages/quickreference/index.md
   - src/pages/solutions.md
