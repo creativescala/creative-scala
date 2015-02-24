@@ -1,4 +1,5 @@
-[doodle]: https://github.com/underscoreio/doodle
+[github-doodle]: https://github.com/underscoreio/doodle
+[github-creative-scala]: https://github.com/underscoreio/creative-scala
 [essential-scala]: http://underscore.io/training/courses/essential-scala
 [underscore-github]: https://github.com/underscoreio
 [underscore-gitter]: https://gitter.im/underscoreio/scala

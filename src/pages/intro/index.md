@@ -1,36 +1,33 @@
 # Foreword {-}
 
-Creative Scala is aimed at developers who are brand new to Scala.
+Creative Scala is aimed at developers who have no prior experience in Scala.
+It is designed to give you a vital first taste of functional programming.
 We assume you have some familiarity with another programming language
-but little or no experience with Scala or functional programming.
+but little or no experience with Scala or other functional languages.
 
-Our goal is to provide a taster of functional programming in Scala,
-demonstrating the building blocks that developers use to create programs.
-Working through the material and exercises should take two to three hours,
+Our goal is to demonstrate the building blocks that Scala developers use
+to create programs in a clear, succinct, declarative manner.
+Working through the exercises in the book should take two to three hours,
 after which we hope you will have a feel of what Scala can do
 for your applications.
 
-Although Creative Scala will give you the basic
-functional programming mind-set required to become competent with Scala,
-you won't finish the book with *everything* you need to be self-sufficient.
-For example, we don't cover the object-oriented parts of Scala
-such as defining classes and traits.
-For further advancement we recommend you consider one of the many excellent
+Although this book will give you the basic mental model
+required to become competent with Scala,
+you won't finish knowing *everything* you need to be self-sufficient.
+For further advancement we recommend considering one of the many excellent
 Scala textbooks out there, including our own [Essential Scala][essential-scala].
-
-The majority of Creative Scala uses
-a toy graphics library called [Doodle][doodle].
-We developed Doodle to make learning Scala fun,
-but we based it on classical functional programming concepts
-that can be applied in many business applications.
-The source code for this book and Doodle are open source
-and available from [Underscore's Github account][underscore-github].
 
 If you are working through the exercises on your own,
 we highly recommend joining our [Gitter chat room][underscore-gitter]
 to provide get help with the exercises and provide feedback on the book.
 
-That's all. Thanks for downloading and happy creative programming!
+The text of [Creative Scala][github-creative-scala] is open souce,
+as is the source code for the [Doodle][github-doodle]
+drawing library used in the exercises.
+You can grab the code from our [Github account][underscore-github].
+Contact us on Gitter or by email if you would like to contribute.
+
+Thanks for downloading and happy creative programming!
 
 ---Dave and Noel
 
