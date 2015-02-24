@@ -1,0 +1,29 @@
+---
+# Used by Pandoc to print covers:
+title: "Creative Scala"
+author: "Dave Gurnell and Noel Welsh"
+date: "February 2015"
+# Used by Pandoc to generate the PDF cover...
+# see src/css/book.css for HTML/ePub covers:
+coverColor: "25AAE1"
+# Used by Grunt to name output files:
+filenameStem: "creative-scala"
+# Used by Grunt to create a ZIP of source code:
+exercises:
+  repo: "git@github.com:underscoreio/doodle.git"
+  name: "doodle"
+pages:
+  - src/pages/intro/index.md
+  - src/pages/expressions/index.md
+  - src/pages/declarations/index.md
+  - src/pages/declarations/value-declarations.md
+  - src/pages/declarations/method-declarations.md
+  - src/pages/declarations/color-palette.md
+  - src/pages/fp/index.md
+  - src/pages/fp/recursion.md
+  - src/pages/fp/functions.md
+  - src/pages/collections/index.md
+  - src/pages/quickreference/index.md
+  - src/pages/solutions.md
+  - src/pages/links.md
+...
