@@ -1,7 +1,7 @@
 ---
 # Used by Pandoc to print covers:
 title: "Creative Scala"
-author: "Noel Welsh and Dave Gurnell"
+author: "Dave Gurnell and Noel Welsh"
 date: "February 2015"
 # Used by Pandoc to generate the PDF cover...
 # see src/css/book.css for HTML/ePub covers:

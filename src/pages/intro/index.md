@@ -27,8 +27,8 @@ The source code for this book and Doodle are open source
 and available from [Underscore's Github account][underscore-github].
 
 If you are working through the exercises on your own,
-we highly recommend joining our [Gitter chat room]
-to provide us with feedback and get help with the exercises.
+we highly recommend joining our [Gitter chat room][underscore-gitter]
+to provide get help with the exercises and provide feedback on the book.
 
 That's all. Thanks for downloading and happy creative programming!
 
