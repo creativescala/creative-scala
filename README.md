@@ -24,8 +24,6 @@ a functional graphics library called [Doodle][doodle].
 Although Doodle is primarily designed to make programming fun and creative,
 it is based on universal concepts that can be applied to any business application.
 
-[doodle]: https://github.com/underscoreio/doodle
-
 ## Building
 
 Creative Scala uses [Underscore's ebook build system][ebook-template],
@@ -65,4 +63,5 @@ and rebuild if you change any files:
 grunt watch
 ~~~
 
+[doodle]: https://github.com/underscoreio/doodle
 [ebook-template]: https://github.com/underscoreio/underscore-ebook-template
