@@ -12,6 +12,7 @@ filenameStem: "creative-scala"
 exercisesRepo: null # "git@github.com:underscoreio/doodle.git"
 # Used by Grunt to assemble pandoc command line:
 pages:
+  - src/pages/intro/index.md
   - src/pages/expressions/index.md
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
@@ -23,4 +24,5 @@ pages:
   - src/pages/collections/index.md
   - src/pages/quickreference/index.md
   - src/pages/solutions.md
+  - src/pages/links.md
 ...
