@@ -9,8 +9,9 @@ coverColor: "25AAE1"
 # Used by Grunt to name output files:
 filenameStem: "creative-scala"
 # Used by Grunt to create a ZIP of source code:
-exercisesRepo: null # "git@github.com:underscoreio/doodle.git"
-# Used by Grunt to assemble pandoc command line:
+exercises:
+  repo: "git@github.com:underscoreio/doodle.git"
+  name: "doodle"
 pages:
   - src/pages/intro/index.md
   - src/pages/expressions/index.md
