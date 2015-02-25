@@ -58,15 +58,22 @@ scala> new Date()
 res4: java.util.Date = Tue Feb 10 10:30:21 GMT 2015
 ~~~
 
-For reasons we shall see later on,
-Scala libraries typically provide factory methods to wrap constructor calls.
-We don't often see the `new` operator in Scala code unless
-we are interacting with Java libraries:
+The `new` operator tends to be a distraction when writing
+larger, more complex expressions. For this reason,
+Scala libraries typically provide *factory methods* to wrap constructor calls.
+The effective difference is that we can create many
+Scala data types without writing `new`:
 
 ~~~ scala
 scala> List(1, 2, 3)
 res6: List[Int] = List(1, 2, 3)
 ~~~
+
+Other than the lack of a `new` keyword,
+the semantics here are similar to the `Date` example above:
+
+ - `List(1, 2, 3)` is an expression that returns a value;
+ - `List[Int]` is its type.
 
 ### Operators
 

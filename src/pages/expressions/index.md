@@ -17,7 +17,6 @@ The most important distinction between types and values is that
 types are determined at compile time,
 whereas values can only be determined at run time.
 Values can change each time we run the code, whereas types are fixed.
-
 For example, the following expression is certainly of type `String`,
 but its value depends on the the user input each time it is run:
 

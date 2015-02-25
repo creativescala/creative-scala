@@ -31,8 +31,9 @@ scala>
 
 ### Primitive Images
 
-The Doodle project gives us access to some useful drawing tools
-as well as the regular Scala core library. Try creating a simple shape:
+The Doodle console gives us access to some useful drawing tools
+as well as the regular Scala standard library.
+Try creating a simple shape:
 
 ~~~ scala
 scala> Circle(10)
@@ -43,9 +44,9 @@ Notice the type and value of the expression we just entered.
 The type is `doodle.core.Circle`
 and the value is `Circle(10.0)`---a circle with a 10 pixel radius.
 
-We can draw this circle (and other shapes) using Doodle's `draw()` function,
-which should have been brought into scope automatically.
-Try drawing the circle now.
+We can draw this circle (and other images) using Doodle's `draw()` function,
+which has been brought into scope automatically.
+Try drawing the circle now:
 
 ~~~ scala
 scala> draw(res0)
@@ -55,7 +56,8 @@ A window should appear containing the following:
 
 ![A circle](src/pages/expressions/circle.png)
 
-Doodle supports two "primitive" images: circles and rectangles.
+Doodle supports a handful "primitive" images:
+circles, rectangles, and triangles.
 Let's try drawing a rectangle:
 
 ~~~ scala
@@ -64,11 +66,19 @@ scala> draw(Rectangle(50, 100))
 
 ![A rectangle](src/pages/expressions/rectangle.png)
 
+Finally let's try a triangle:
+
+~~~ scala
+scala> draw(Triangle(60, 40))
+~~~
+
+![A triangle](src/pages/expressions/triangle.png)
+
 ### Layout
 
-We can combine images to produce more complex images.
+We can write expressions to combine images producing more complex images.
 Try the following code---you should see a circle and a rectangle
-displayed next to one another:
+displayed beside one another:
 
 ~~~ scala
 scala> draw(Circle(10) beside Rectangle(10, 20))
@@ -179,12 +189,13 @@ and some ground in green:
 
 <div class="solution">
 The trick here is using parentheses to control the order of composition.
-Colours and line widths apply to anything that isn't already explicitly styled,
-so we must make sure we only apply styles where necessary:
+The `fillColor()`, `lineColor()`, and `lineWidth()` methods
+apply to a single image---we need to make sure that image
+comprises the correct set of shapes:
 
 ~~~ scala
 draw(
-  ( Circle(10) fillColor Color.red   ) on
+  ( Circle(10) fillColor Color.red ) on
   ( Circle(20) fillColor Color.white ) on
   ( Circle(30) fillColor Color.red lineWidth 2 ) above
   ( Rectangle(6, 20) above Rectangle(20, 6) fillColor Color.brown ) above

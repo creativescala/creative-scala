@@ -4,7 +4,7 @@
 
 In the absence of side-effects,
 an expression will always evaluate to the same value.
-For example,`3 + 4` will always evaluate to `7`,
+For example, `3 + 4` will always evaluate to `7`
 no matter how many times we compile or run the code.
 
 Given these restrictions, the expressions `3 + 4` and `7`
@@ -27,16 +27,11 @@ without having to look beyond the current block of code.
 We've seen several types so far,
 including primitive Scala types such as `Int`, `Boolean`, and `String`,
 the `Date` type from the Java standard library,
+`List` from the Scala standard library,
 and the `Circle`, `Rectangle`, `Image`, and `Color` types from Doodle.
 Let's take a moment to see how all of these fit together:
 
-\makebox[\linewidth]{\includegraphics[width=0.8\textwidth]{src/pages/expressions/scala-type-hierarchy.pdf}}
-
-<div class="figure">
-<div class="text-center">
-<img src="src/pages/expressions/scala-type-hierarchy.svg" alt="Scala type hierarchy" />
-</div>
-</div>
+![Scala's type hierarchy](src/pages/expressions/scala-type-hierarchy.pdf+svg)
 
 All types in Scala fall into a single *inheritance hierarchy*,
 with a grand supertype called `Any` at the top.
@@ -49,8 +44,7 @@ with a grand supertype called `Any` at the top.
 
  - `AnyRef` is the supertype of all JVM "reference types".
    It is an alias for Java's `Object` type.
-   `AnyRef` is the supertype of all "reference types" or classes.
-   All regular Scala and Java classes are subtypes of `AnyRef`.
+   `AnyRef` is the supertype of all Java and Scala classes.
 
 The `Unit` type is Scala's equivalent of `void` in Java or C---we use it
 to write code that evaluates to "no interesting value":
@@ -63,19 +57,24 @@ uninteresting: Unit = ()
 
 While `void` is simply a syntax,
 `Unit` is an actual type with a single value, `()`.
-Having an actual type and value allows us to reason about
-code that evaluates to `Unit` with
-the same principles we use for functional code.
-It is essential for a language like Scala that bridges the
+Having an concrete type for `Unit` and value allows us to reason about
+side-effecting code with the same principles as functional code.
+This is essential for a language like Scala that bridges the
 worlds of the imperative and the functional.
 
 We have so far seen two imperative-style methods that return `Unit`:
-the `println` method from the Scala standard library,
-and Doodle's `draw` method.
-Each of these methods does something useful
-but neither returns a useful result:
+the `println` method from the Scala standard library and Doodle's `draw` method.
+Each of these methods does something useful but neither returns a useful result:
 
 ~~~ scala
 scala> val alsoUninteresting = draw(Circle(10))
 alsoUninteresting: Unit = ()
 ~~~
+
+Designing programs in a functional way involves limiting
+the side-effects spread throughout our code.
+Doodle is a classic example of functional design---we assemble
+a *representation* of the scene we want in a purely functional manner,
+and then *interpret* the scene to produce output.
+The `draw()` method---our interpreter---can use imperative libraries
+and mutable state without them intruding into the rest of our application.
