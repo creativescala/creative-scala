@@ -183,11 +183,35 @@ How does Scala relate to these languages,
 and why would you want to choose it over
 the other available options?
 
-TODO:
+Perhaps the most significant draw to Scala is its type system.
+This distinguishes Scala from mainstream functional languages
+such as Ruby, Python, Javascript, and Clojure, which are weakly typed.
+Having strong types in a language is undeniably a trade-off---writing
+code is slower because we have to satisfy the compiler at every stage.
+However, once our code compiles we can be reasonably
+confident about its quality.
 
- - Scala advantages:
-    - Type system
-    - Object oriented features
-    - Compatibility with Java
+Another major draw is Scala's blending of
+object-oriented and functional programming paradigms.
+We saw a little of this in the first shapter---every value is an object
+with methods, fields, and a class (its type).
+However, we haven't created any of our own data types in this book.
+Creating types is synonymous with declaring classes,
+and Scala supports a full gamut of features
+such as classes, traits, interitance, and generics.
 
- - Links to Essential Scala
+Finally, a major benefit of Scala is its compatibility with Java.
+In many ways Scala can be seen as a superset of Java,
+and interoperation between the two languages is quite straightforward.
+This opens up a world of Java libraries to our Scala applications,
+and allows flexibility when translating Java applications to Scala.
+
+## Next Steps
+
+We hope you enjoyed Creative Scala and drawing diagrams with Doodle.
+If you would like to learn more about Scala,
+we recommend that you pick one of the many great books available on the language.
+
+Our own book, [Essential Scala][essential-scala], is available from our web site
+and continues Creative Scala's approach of teaching Scala by
+discussing and demonstrating core design patterns and the benefits they offer.
