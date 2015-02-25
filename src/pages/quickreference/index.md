@@ -1,8 +1,8 @@
 \appendix
 
-# Syntax quick reference {#syntax-quick-reference}
+# Syntax Quick Reference {#syntax-quick-reference}
 
-## Literals and expressions
+## Literals and Expressions
 
 ~~~ scala
 // Literals:
@@ -41,7 +41,7 @@ if(booleanExpression) expressionA else expressionB
 }
 ~~~
 
-## Value and method declarations
+## Value and Method Declarations
 
 ~~~ scala
 // Value declaration syntax:
@@ -74,7 +74,33 @@ methodName(arg, arg)
 methodName
 ~~~
 
-## Doodle reference guide
+## Functions as Values
+
+~~~ scala
+// Function value syntax:
+(argName: ArgType, argName: ArgType) => resultExpression
+
+// Use blocks if you want multi-line bodies:
+(argName: ArgType, argName: ArgType) => {
+  sideEffectExpression1
+  sideEffectExpression2
+  resultExpression
+}
+
+// Function type syntax
+// (use as a return type or parameter type):
+(ArgType, ArgType) => ResultType
+
+// Passing a function as a parameter:
+def myMethod(funcName: (ArgType, ArgType) => ResultType) =
+  resultExpression
+
+// Returning a function:
+def myMethod(...): (ArgType, ArgType) => ResultType =
+  resultExpression
+~~~
+
+## Doodle Reference Guide
 
 ~~~ scala
 // These imports get you everything you need:
@@ -91,17 +117,17 @@ val i: Image = imageA beside imageB // horizontally adjacent
 val i: Image = imageA above  imageB // vertically adjacent
 val i: Image = imageA below  imageB // vertically adjacent
 val i: Image = imageA on     imageB // superimposed
-val i: Image = imageA on     imageB // superimposed
+val i: Image = imageA under  imageB // superimposed
 
 // Compound images written using method call syntax:
 val i: Image = imageA.beside(imageB)
 // etc...
 
 // Styling images written using operator syntax:
-val i: Image = image fillColor color   // fill with a different color (doesn't change line)
-val i: Image = image lineColor color   // outline with a different color (doesn't change fill)
-val i: Image = image lineWidth integer // outline with a different width (doesn't change fill)
-val i: Image = image fillColor color lineColor otherColor // specify new fill and line
+val i: Image = image fillColor color   // new fill color (doesn't change line)
+val i: Image = image lineColor color   // new line color (doesn't change fill)
+val i: Image = image lineWidth integer // new line width (doesn't change fill)
+val i: Image = image fillColor color lineColor otherColor // new fill and line
 
 // Styling images using method call syntax:
 val i: Image = imageA.fillColor(color)

@@ -1,13 +1,13 @@
 # Foreword {-}
 
 Creative Scala is aimed at developers who have no prior experience in Scala.
-It is designed to give you a vital first taste of functional programming.
+It is designed to give you a fun introduction to functional programming.
 We assume you have some familiarity with another programming language
 but little or no experience with Scala or other functional languages.
 
 Our goal is to demonstrate the building blocks that Scala developers use
 to create programs in a clear, succinct, declarative manner.
-Working through the exercises in the book should take two to three hours,
+Working through the exercises in the book should take a few hours,
 after which we hope you will have a feel of what Scala can do
 for your applications.
 

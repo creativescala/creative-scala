@@ -1,4 +1,4 @@
-## Functions as values
+## Functions as Values
 
 The defining feature of a functional programming programming language
 is the ability to define *functions that are first class values*.
@@ -55,7 +55,7 @@ scala> res4(255, 0, 0)
 res5: doodle.core.Color = ...
 ~~~
 
-## Higher order methods and functions
+## Higher Order Methods and Functions
 
 Why are functions useful?
 We can already use methods to package up and name reusable fragments of code.
@@ -113,6 +113,10 @@ def redCircle(n: Int): Image =
 val redCircles: Image =
   manyShapes(10, redCircle _)
 ~~~
+
+<div class="callout callout-danger">
+TODO: Recap the syntax for function types and function values.
+</div>
 
 **Exercise: The Colour and the Shape**
 

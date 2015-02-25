@@ -15,14 +15,23 @@ exercises:
 pages:
   - src/pages/intro/index.md
   - src/pages/expressions/index.md
+  - src/pages/expressions/simple.md
+  - src/pages/expressions/images.md
+  - src/pages/expressions/take-home-points.md
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
   - src/pages/declarations/color-palette.md
+  - src/pages/declarations/take-home-points.md
   - src/pages/fp/index.md
   - src/pages/fp/recursion.md
   - src/pages/fp/functions.md
+  - src/pages/fp/take-home-points.md
   - src/pages/collections/index.md
+  - src/pages/collections/create.md
+  - src/pages/collections/transform.md
+  - src/pages/collections/take-home-points.md
+  - src/pages/summary/index.md
   - src/pages/quickreference/index.md
   - src/pages/solutions.md
   - src/pages/links.md
