@@ -3,7 +3,7 @@
 In this text we have covered a handful of the essential
 functional programming tools available in Scala.
 
-## Representations and Interpretters
+## Representations and Interpreters
 
 We started by writing expressions to create and compose images.
 Each program we wrote went through two distinct phases:
@@ -12,14 +12,18 @@ Each program we wrote went through two distinct phases:
  2. Call the `draw()` method to display the image
 
 This process demonstrates two important functional programming patterns:
-*bulding intermediate representations* of the result we want,
-and *interpretting the representations* to produce output.
-The advantage of intermediate representations is that they allow
-us to model the aspects of the result that we consider important.
+*building intermediate representations* of the result we want,
+and *interpreting the representations* to produce output.
+
+## Abstraction
+
+Building an intermediate representation allows
+us to only model the aspects of the result that we consider important
+and *abstract* irrelevant details.
 
 For example, Doodle directly represents the primitive shapes
 and geometric relationships in our drawings,
-without worrying about implementational details such as x,y coordinates.
+without worrying about implementation details such as screen coordinates.
 This keeps our code clear and maintainable,
 and limits the number of "magic numbers" we need to write.
 For example, it is a lot easier to determine
@@ -55,11 +59,19 @@ The difference is we have hidden it away into the `draw()` method.
 filling in all of the details about coordinates, paths,
 and graphics contexts that we don't want to think about in our code.
 
-## Functional Data Strutures
+Separating the immediate value and the interpreter
+also allows us to change how interpretation is performed.
+Doodle already comes with two interpreters,
+one of which draws in the Java2D framework
+while the other draws in the HTML canvas.
+You can image yet more interpreters to, for example,
+achieve artistic effects such as drawing images in a hand-drawn style.
+
+## Composition
 
 In addition to making our programs clearer,
 the functional approach employed by Doodle
-allows us to re-use images as components of other images.
+allows us to *compose* images from other images.
 For example, we can re-use our house to draw a street:
 
 ~~~ scala
@@ -71,8 +83,12 @@ street: Image = // ...
 ~~~
 
 The `Image` and `Color` values we create are immutable
-so we can easily re-use a single`house` three times within the same image.
-This technique, called *structure sharing*,
+so we can easily re-use a single `house` three times within the same image.
+
+This approach allows us to break down a complex image into simpler parts
+that we then combine together to create the desired result.
+
+Reusing immutable data, a technique called *structure sharing*,
 is the basis of many fast, memory efficient immutable data structures.
 The quintissential example in Doodle is the Sierpinski triangle
 where we re-used a single `Triangle` object to represent an image
@@ -184,16 +200,16 @@ and why would you want to choose it over
 the other available options?
 
 Perhaps the most significant draw to Scala is its type system.
-This distinguishes Scala from mainstream functional languages
+This distinguishes Scala from popular
 such as Ruby, Python, Javascript, and Clojure, which are weakly typed.
 Having strong types in a language is undeniably a trade-off---writing
 code is slower because we have to satisfy the compiler at every stage.
-However, once our code compiles we can be reasonably
+However, once our code compiles we gain
 confident about its quality.
 
 Another major draw is Scala's blending of
 object-oriented and functional programming paradigms.
-We saw a little of this in the first shapter---every value is an object
+We saw a little of this in the first chapter---every value is an object
 with methods, fields, and a class (its type).
 However, we haven't created any of our own data types in this book.
 Creating types is synonymous with declaring classes,
