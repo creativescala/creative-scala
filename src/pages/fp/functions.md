@@ -114,6 +114,10 @@ val redCircles: Image =
   manyShapes(10, redCircle _)
 ~~~
 
+<div class="callout callout-danger">
+TODO: Recap the syntax for function types and function values.
+</div>
+
 **Exercise: The Colour and the Shape**
 
 Starting with the code below, write color and shape functions

@@ -1,7 +1,7 @@
 ## Recursive Algorithms
 
 Recursion is a natural part of functional programming.
-The classic functional data structure---the single linked list---is recursive.
+The classic functional data structure---the single linked list---is recursive in nature.
 We can similarly create interesting drawings using recursion.
 
 Let's start with a simple example---a set of concentric circles.
@@ -207,13 +207,13 @@ We can re-use a single smaller Sierpinski three times
 to save on computation time and memory use.
 
 The code above actually shows the optimal case.
-We use a temporary variable, `smaller` to ensure
+We use a temporary variable, `smaller`, to ensure
 we only call `sierpinski(n - 1)` once at each level of recursion.
 This means we only call `triangle()` once,
 no matter what value of `n` we start with.
 
 We only need to create one `Triangle` object for the whole picture!
-Of course, the algorithm that Doodle uses to render the picture
-process this single triangle 19,683 times, but
-building the `Image` to begin with is extremely efficient.
+Of course, the `draw()` method has to process this single triangle 19,683 times
+to draw the picture, but the representation we build to begin with
+is extremely efficient.
 </div>
