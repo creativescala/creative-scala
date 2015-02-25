@@ -1,4 +1,4 @@
-## Value declarations
+## Value Declarations
 
 The simplest type of declaration binds a name to the result an expression.
 These are called *value declarations*.
