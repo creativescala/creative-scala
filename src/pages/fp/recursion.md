@@ -1,4 +1,4 @@
-## Recursive algorithms
+## Recursive Algorithms
 
 Recursion is a natural part of functional programming.
 The classic functional data structure---the single linked list---is recursive.

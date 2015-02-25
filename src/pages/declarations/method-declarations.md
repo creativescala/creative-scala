@@ -1,4 +1,4 @@
-## Method declarations
+## Method Declarations
 
 Sometimes we want to repeat a process,
 but each time we do it we change some part of what we're doing.
