@@ -33,10 +33,31 @@ scala> List(1, 2, 3).map(x => x * 2)
 res0: List[Int] = List(2, 4, 6)
 ~~~
 
-The key point about the `map` method is that it only makes sense
-in a world where we have functions that are also first class values.
-It is the concept of a first class function that allows us to pass
-a "doubling operation" as a parameter to `map`.
-Without this we have no way of disentangling
-the doubling operation from the library code that
-creates a new sequence to accumulate values.
+The key point about `map` is that it only makes sense in a world
+where we have functions that are also first class values.
+The same can be said for many of the other cohort of combinators
+such as `filter`, `find`, and `flatMap`.
+First class functions allow us to pass operations to these methods as parameters,
+separating user code from the implementational detail of allocating
+temporary buffers.
+
+Because many transformation methods return sequences,
+we can chain calls to perform complex transformations in a series of simple steps.
+Here is an example that demonstrates the power of thie approach:
+
+~~~ scala
+// Print all even numbers from 1 to 100 that are also divisible by 3:
+scala> (1 to 50).toList.
+     |   map(x => x * 2).
+     |   filter(x => x % 3 == 0).
+     |   foreach(println)
+~~~
+
+The structure of this computation looks similar
+to the structure of our Doodle programs:
+we build an intermediate representation
+by creating, combining, and transforming primitives,
+and perform side-effects at the end of the program.
+Obviously we've put less thought into this program than into Doodle,
+but it's interesting to note that even ad hoc functional programs
+can follow the same basic structure.
