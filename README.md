@@ -39,7 +39,8 @@ bash$ npm install -g grunt-cli
 bash$ npm install
 ~~~
 
-You will also need to install *Latex* to generate PDF output.
+You will also need to install *LaTeX* to generate PDF output.
+Mac users are encouraged to install [MacTeX][mactex].
 
 Once you have installed the required dependencies,
 use the following commands to build a single format.
@@ -67,3 +68,4 @@ grunt watch
 
 [doodle]: https://github.com/underscoreio/doodle
 [ebook-template]: https://github.com/underscoreio/underscore-ebook-template
+[mactex]: https://tug.org/mactex/
