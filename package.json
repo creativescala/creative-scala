@@ -1,7 +1,11 @@
 {
-  "name": "eescala",
+  "name": "creative-scala",
   "version": "1.0.0",
-  "devDependencies": {
+  "repository" : {
+    "type" : "git",
+    "url"  : "https://github.com/underscoreio/creative-scala.git"
+   },
+   "devDependencies": {
     "underscore-ebook-template": "git+https://github.com/underscoreio/underscore-ebook-template.git#0.0.10"
   },
   "scripts": {
