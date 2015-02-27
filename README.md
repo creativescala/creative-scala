@@ -39,6 +39,8 @@ bash$ npm install -g grunt-cli
 bash$ npm install
 ~~~
 
+You will also need to install *Latex* to generate PDF output.
+
 Once you have installed the required dependencies,
 use the following commands to build a single format.
 Targets are placed in the `dist` directory:
