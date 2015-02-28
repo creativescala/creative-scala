@@ -129,10 +129,11 @@ This implementation will generate alternatively odd and even outputs if we feed 
 
 Fundamentally, a linear congruential generator is very similar to the hue manipulation we've just discussed. We can view `a` as a rotation around a circle with `m` elements. The constant `c` just acts as an offset to the rotation.  Thus if `a` and `m` are coprime our generator will have a large period before the pattern starts to repeat. If the GCD is close to `m` the pattern will repeat after only a few numbers.
 
-The linear congruential generator will never output a number greater than `m`. A signed `Int` (32-bits), can represent numbers from -2147483648 to 2147483647, so the choice of `m` above won't  be able to represent the full range of `Ints`. That's ok, as we're only inputing hues from 0 to 360, and we're converting the output to a number between 0 and 1.
+A linear congruential generator will never output a number greater than `m`. A signed `Int` (32-bits), can represent numbers from -2147483648 to 2147483647, so the choice of `m` above means the output won't cover the full range of `Ints`. That's ok, as we're only inputing hues from 0 to 360, and we're converting the output to a number between 0 and 1. Since the maximum output of the linear congruential generator is `m`, we can simply divide by `m` to scale the output to be between 0 and 1.
+
+We can see that similar inputs to the linear congruential generator will still generate similar outputs, unless they happen to straddle a boundary around `m`. With the choice of constants above each degree of hue will result in a (8121 / 134456) = 0.06 = 6% change in output. A 360 degree change of hue will result in (8121 * 360 / 134456) = 21 periods. These numbers seem alright -- a one degree change of hue should give a perceptable change in output, and the period is short enough that moderate changes in hue will lead to widely different lightness and saturation. Of course the proof is in the result, so let's see what it looks like!
 </div>
 
-
-Choose some values `a`, `b`, and `c` and implement this. Pro-tip: use relatively prime numbers. Does it work well. (Scaling results to between 0 and 1.)
+Implement a lcg to transform hue to lightness and saturation (maybe we make one a rotation of the other).
 
 Compare to Scala's built-in hash functions. Do you see an appreciable difference?
