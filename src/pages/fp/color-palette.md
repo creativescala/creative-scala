@@ -11,6 +11,63 @@ We saw that we can create attractive color palettes using complementary and anal
 
 ![Concentric circles using a palette of complementary colors](src/pages/fp/complement-circles.png)
 
+Our definitions of `complement` and `analogous` were:
+
+~~~ scala
+def complement(color: Color): Color =
+  color.spin(180.degrees)
+
+def analogous(color: Color): Color =
+  color.spin(15.degrees)
+~~~
+
+Implement a variant on `concentricCircles` called `complementCircles` that renders concentric circles with complementary colors. Hint: you might use a signature for `complementCircle` like `def complementCircle(n: Int, c: Color): Image` and change `singleCircle` to accept a `Color` parameter.
+
+<div class="solution">
+My implementation looks like
+
+~~~ scala
+def singleCircle(n: Int, color: Color): Image =
+  Circle(50 + 10 * n) lineColor color lineWidth 10
+
+def complementCircles(n: Int, c: Color): Image = {
+  val color = complement(c)
+  if(n == 1) {
+    singleCircle(n, color)
+  } else {
+    complementCircles(n - 1, color) on singleCircle(n, color)
+  }
+}
+~~~
+
+Given the implementation of `complement` it is natural to pass around the current color, which we transform every iteration. Strictly speaking we don't need the current color, just the iteration number `n`. We can use the base color when `n` is odd and its complement when `n` is even. We still need to known the base color, however, so this isn't going to save us passing around that parameter ... unless we use nested method declarations. We can write a method that, given a base color, returns a function that creates an image of concentric circles like so:
+
+~~~ scala
+def makeComplementCircles(baseColor: Color): Int => Image = {
+  val complementColor = complement(base)
+
+  def singleCircle(n: Int): Image = {
+    val color = if(n % 2 == 0) baseColor else complementColor
+
+    Circle(circleMinimum + circleIncrement * n) lineColor color lineWidth circleIncrement
+  }
+
+  def complementCircles(n: Int): Image =
+    if(n == 1) {
+      singleCircle(n)
+    } else {
+      complementCircles(n - 1) on singleCircle(n)
+    }
+
+  complementCircles _
+}
+~~~
+
+**Talk about lexical scope and closures here?**
+
+**Talk about % operator here**
+</div>
+
 <div class="callout callout-danger">
 // Description here. First class function closing over local scope
 
