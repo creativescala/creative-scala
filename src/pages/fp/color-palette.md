@@ -63,9 +63,9 @@ def makeComplementCircles(baseColor: Color): Int => Image = {
 }
 ~~~
 
-**Talk about lexical scope and closures here?**
+This works because `baseColor` is declared in code that surrounds the declaration of `complementCircle`. The declarations that are visible at a point in the program are called the declarations in *scope*. Scala is a *lexically scoped* language, meaning that scope is determined by purely by the structure of the program text. Specifically, the declarations that are in scope are those declarations that are made within code blocks that enclose the current place (including declarations imported into scope; something we haven't discussed). The important upshot of this is that `complementCircles` maintains its scope even when it is returned as a value from a call to `makeComplementCircles`. This behaviour is essential to maintaining the substitution model.
 
-**Talk about % operator here**
+The decision of which color to use is made by the line `if(n % 2 == 0) baseColor else complementColor`. The `%` method, called the [modulo](http://en.wikipedia.org/wiki/Modulo_operation), returns the remainder of dividing `n` by 2. This will be `0` if `n` is even, and `1` otherwise.
 </div>
 
 <div class="callout callout-danger">
