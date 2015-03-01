@@ -9,6 +9,8 @@ and explore some interesting concepts from mathematics and computer science.
 
 We saw that we can create attractive color palettes using complementary and analogous colors. We can combine these ideas with our programs to draw concentric circles giving us pictures like the below.
 
+![Concentric circles using a palette of complementary colors](src/pages/fp/complement-circles.png)
+
 <div class="callout callout-danger">
 // Description here. First class function closing over local scope
 
