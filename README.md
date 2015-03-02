@@ -33,9 +33,7 @@ first time you check the project out:
 
 ~~~
 bash$ brew install pandoc
-
-bash$ npm install -g grunt-cli
-
+bash$ npm install -g grunt-cli coffee-script
 bash$ npm install
 ~~~
 
