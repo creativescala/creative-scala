@@ -76,28 +76,55 @@ methodName
 
 ## Functions as Values
 
+Function values are written `(argName: ArgType, ...) => resultExpression`:
+
 ~~~ scala
-// Function value syntax:
-(argName: ArgType, argName: ArgType) => resultExpression
+val double = (num: Int) => num * 2
+// double: Int => Int = <function1>
 
-// Use blocks if you want multi-line bodies:
-(argName: ArgType, argName: ArgType) => {
-  sideEffectExpression1
-  sideEffectExpression2
-  resultExpression
+val sum = (a: Int, b: Int) => a + b
+sum: (Int, Int) => Int = <function2>
+~~~
+
+Multi-line functions are written using block expressions:
+
+~~~ scala
+val printAndDouble = (num: Int) => {
+  println("The number was " + num)
+  num * 2
 }
+// printAndDouble: Int => Int = <function1>
 
-// Function type syntax
-// (use as a return type or parameter type):
-(ArgType, ArgType) => ResultType
+scala> printAndDouble(10)
+// The number was 10
+// res0: Int = 20
+~~~
 
-// Passing a function as a parameter:
-def myMethod(funcName: (ArgType, ArgType) => ResultType) =
-  resultExpression
+We have to write function types when declaring parameters and return types.
+The syntax is `ArgType => ResultType` or `(ArgType, ...) => ResultType`:
 
-// Returning a function:
-def myMethod(...): (ArgType, ArgType) => ResultType =
-  resultExpression
+~~~ scala
+def doTwice(value: Int, func: Int => Int): Int =
+  func(func(value))
+// doTwice: (value: Int, func: Int => Int)Int
+
+doTwice(1, double)
+// res0: Int = 4
+~~~
+
+Function values can be written inline as normal expressions:
+
+~~~ scala
+doTwice(1, (num: Int) => num * 10)
+// res1: Int = 100
+~~~
+
+We can sometimes omit the argument types,
+assuming the compiler can figure things out for us:
+
+~~~ scala
+doTwice(1, num => num * 10)
+// res2: Int = 100
 ~~~
 
 ## Doodle Reference Guide

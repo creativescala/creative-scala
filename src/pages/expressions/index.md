@@ -7,8 +7,8 @@ Valid expressions have a *type* and calculate a *value*. For example,
 this expression has the type `String` and calculates the value `HELLO WORLD!`
 
 ~~~ scala
-scala> "Hello world!".toUpperCase
-res0: String = "HELLO WORLD!"
+"Hello world!".toUpperCase
+// res0: String = "HELLO WORLD!"
 ~~~
 
 A Scala program goes through two distinct stages. First it is *compiled*;
@@ -21,7 +21,7 @@ For example, the following expression is certainly of type `String`,
 but its value depends on the the user input each time it is run:
 
 ~~~ scala
-scala> readLine.toUpperCase
+readLine.toUpperCase
 ~~~
 
 We are used to thinking of types that refer to sets of literals

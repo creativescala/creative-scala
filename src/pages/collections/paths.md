@@ -4,15 +4,15 @@ Doodle provides another type of `Image` that makes particular use of sequences.
 `Paths` represent arbitrary shapes created using sequences of pen movements:
 
 ~~~ scala
-scala> Path(List(
-     |   MoveTo(Vec(0, 0)),
-     |   LineTo(Vec(100, 0)),
-     |   LineTo(Vec(50, 100)),
-     |   BezierCurveTo(Vec(50, 0), Vec(0, 100), Vec(0, 0))
-     | ))
-res0: Path = // ...
+val image = Path(List(
+  MoveTo(Vec(0, 0)),
+  LineTo(Vec(100, 0)),
+  LineTo(Vec(50, 100)),
+  BezierCurveTo(Vec(50, 0), Vec(0, 100), Vec(0, 0))
+))
+// image: Path = // ...
 
-scala> draw(res0)
+draw(image)
 ~~~
 
 ![An example Path](src/pages/collections/path.png)
@@ -64,18 +64,18 @@ Code                       Result    Description                     Example
 We can use these operations to create paths quickly by adding vectors:
 
 ~~~ scala
-scala> val points = (0 to 360 by 36).map { angle =>
-     |   (Vec.unitX * 100) rotate angle.degrees
-     | }
-points: scala.collection.immutable.IndexedSeq[doodle.core.Vec] = // ...
+val points = (0 to 360 by 36).map { angle =>
+  (Vec.unitX * 100) rotate angle.degrees
+}
+// points: scala.collection.immutable.IndexedSeq[doodle.core.Vec] = // ...
 
-scala> val elements = points map (p => LineTo(p))
-elements: scala.collection.immutable.IndexedSeq[doodle.core.LineTo] = // ...
+val elements = points map (p => LineTo(p))
+// elements: scala.collection.immutable.IndexedSeq[doodle.core.LineTo] = // ...
 
-scala> val decagon = Path(elements)
-decagon: doodle.core.Path = // ...
+val decagon = Path(elements)
+// decagon: doodle.core.Path = // ...
 
-scala> draw(decagon)
+draw(decagon)
 ~~~
 
 ![A Decagon](src/pages/collections/decagon.png)

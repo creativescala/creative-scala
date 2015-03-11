@@ -30,11 +30,11 @@ In Scala and Java 8 we can represent doubling succinctly
 using a function literal, aka a "closure":
 
 ~~~ scala
-scala> (x: Int) => x * 2
-res2: Int => Int = <function1>
+(x: Int) => x * 2
+// res2: Int => Int = <function1>
 
-scala> res2(10)
-res3: Int = 20
+res2(10)
+// res3: Int = 20
 ~~~
 
 Scala's `List` class has a method called `map` that allows us to
@@ -43,19 +43,19 @@ exploit functions to remove all of the boilerplate from our Java 7 example.
 created by applying the function to every item:
 
 ~~~ scala
-scala> List(1, 2, 3, 4, 5).map(i => i * 2)
-res4: List[Int] = List(2, 4, 6, 8, 10)
+List(1, 2, 3, 4, 5).map(i => i * 2)
+// res4: List[Int] = List(2, 4, 6, 8, 10)
 ~~~
 
 We can use the `map` method to convert `Lists` of values
 to `Lists` of `Images`:
 
 ~~~ scala
-scala> val radii = List(10, 20, 30, 40, 50)
-radii: List[Int] = List(10, 20, 30, 40, 50)
+val radii = List(10, 20, 30, 40, 50)
+// radii: List[Int] = List(10, 20, 30, 40, 50)
 
-scala> val circles = radii.map(i => Circle(i * 10))
-circles: List[doodle.core.Circle] = // ...
+val circles = radii.map(i => Circle(i * 10))
+// circles: List[doodle.core.Circle] = // ...
 ~~~
 
 Doodle contains a handful of convenient methods to convert
@@ -64,7 +64,7 @@ One of these is `allBeside`,
 which lays a list of images out beside one another:
 
 ~~~ scala
-scala> draw(allBeside(circles))
+draw(allBeside(circles))
 ~~~
 
 ![A row of circles](src/pages/collections/circles.png)
@@ -95,13 +95,13 @@ using `allOn` or `allUnder`.
 Much simpler than writing a recursive method!
 
 ~~~ scala
-scala> val radii = List(10, 20, 30, 40, 50)
-radii: List[Int] = List(10, 20, 30, 40, 50)
+val radii = List(10, 20, 30, 40, 50)
+// radii: List[Int] = List(10, 20, 30, 40, 50)
 
-scala> val circles = radii.map(i => Circle(i))
-circles: List[Circle] = // ...
+val circles = radii.map(i => Circle(i))
+// circles: List[Circle] = // ...
 
-scala> draw(allOn(circles))
+draw(allOn(circles))
 ~~~
 
 **Exercise: Colour Palette**
@@ -124,11 +124,11 @@ Here are some tips:
  2. You can create an HSL colour as follows:
 
     ~~~ scala
-    scala> val hue = 180.degrees
+    val hue = 180.degrees
 
-    scala> val lightness = 0.5
+    val lightness = 0.5
 
-    scala> val color = Color.hsl(hue, 1.0, lightness)
+    val color = Color.hsl(hue, 1.0, lightness)
     ~~~
 
 For extra credit, allow the user to specify parameters for

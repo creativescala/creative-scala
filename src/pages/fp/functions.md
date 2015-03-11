@@ -6,11 +6,11 @@ Scala has special syntax for functions and function types.
 Here's a function that calculates
 
 ~~~ scala
-scala> (a: Double, b: Double) => math.sqrt(a*a + b*b)
-res0: (Double, Double) => Double = <function2>
+(a: Double, b: Double) => math.sqrt(a*a + b*b)
+// res0: (Double, Double) => Double = <function2>
 
-scala> res0(3, 4)
-res1: Double = 5.0
+res0(3, 4)
+// res1: Double = 5.0
 ~~~
 
 Because Scala is an object oriented language,
@@ -19,28 +19,28 @@ This means functions are objects, not methods!
 In fact, functions themselves have useful methods for composition:
 
 ~~~ scala
-scala> (a: Int) => a + 10
-res0: Int => Int = <function1>
+(a: Int) => a + 10
+// res0: Int => Int = <function1>
 
-scala> (a: Int) => a * 2
-res1: Int => Int = <function1>
+(a: Int) => a * 2
+// res1: Int => Int = <function1>
 
-scala> res0 andThen res1 // this composes the two functions
-res2: Int => Int = <function1>
+res0 andThen res1 // this composes the two functions
+// res2: Int => Int = <function1>
 
-scala> res2(5)
-res3: Int = 30
+res2(5)
+// res3: Int = 30
 ~~~
 
 It may seem surprising and restrictive that Scala methods are not values.
 We can prove this by attempting to refer to a method without invoking it:
 
 ~~~ scala
-scala> Color.rgb
-<console>:20: error: missing arguments for method rgb in object Color;
-follow this method with `_' if you want to treat it as a partially applied function
-              Color.rgb
-                    ^
+Color.rgb
+// <console>:20: error: missing arguments for method rgb in object Color;
+// follow this method with `_' if you want to treat it as a partially applied function
+//               Color.rgb
+//                     ^
 ~~~
 
 Fortunately, as the error message above suggests,
@@ -48,11 +48,11 @@ we can convert any method to a function using the `_` operator
 and call it with the same parameters:
 
 ~~~ scala
-scala> Color.rgb _
-res4: (Int, Int, Int) => doodle.core.Color = <function3>
+Color.rgb _
+// res4: (Int, Int, Int) => doodle.core.Color = <function3>
 
-scala> res4(255, 0, 0)
-res5: doodle.core.Color = ...
+res4(255, 0, 0)
+// res5: doodle.core.Color = ...
 ~~~
 
 ## Higher Order Methods and Functions
@@ -115,51 +115,11 @@ val redCircles: Image =
 ~~~
 
 <div class="callout callout-info">
-*Function syntax*
+*Function Syntax*
 
-We're introducing a lot of syntax. If you get lost,
-consult the [quick reference](#quick-reference) in the appendices.
-Here's a quick recap of function syntax for convenience.
-
-Function values are written `(argName: ArgType, ...) => resultExpression`:
-
-~~~ scala
-scala> val double = (num: Int) => num * 2
-
-scala> val sum = (a: Int, b: Int) => a + b
-~~~
-
-Function types are written `ArgType => ResultType` or `(ArgType, ...) => ResultType`.
-We need these when parameter types, or return types that are functions:
-
-~~~ scala
-scala> def doTwice(value: Int, func: Int => Int): Int =
-     |   func(func(value))
-
-scala> doTwice(1, double)
-res0: Int = 4
-~~~
-
-We can write function values as expressions inline.
-We can sometimes omit the argument types,
-if the compiler can figure out what the types should be:
-
-~~~
-scala> doTwice(1, (num: Int) => num * 10)
-res1: Int = 100
-
-scala> doTwice(1, num => num * 10)
-res2: Int = 100
-~~~
-
-We can also optionally write explicit types when declaring functions.
-This can sometimes make code clearer and prevent mistakes,
-although it can also lead to needless repetition and verbosity:
-
-~~~ scala
-scala> val multiply: (Int, Int) => Int = (a: Int, b: Int) => a * b
-multiply: (Int, Int) => Int = <function2>
-~~~
+We're introducing a lot of syntax here!
+There's a dedicated section on function syntax in the
+[quick reference](#quick-reference) if you get lost!
 </div>
 
 **Exercise: The Colour and the Shape**

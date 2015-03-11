@@ -36,9 +36,26 @@ as well as the regular Scala standard library.
 Try creating a simple shape:
 
 ~~~ scala
+Circle(10)
+// res0: doodle.core.Circle = Circle(10.0)
+~~~
+
+<div class="callout callout-info">
+*How To Run This Example*
+
+When you see an example like the one above,
+enter the line of Scala code at the `scala>` prompt in the console.
+You should see the text in the comment as output:
+
+~~~ scala
 scala> Circle(10)
 res0: doodle.core.Circle = Circle(10.0)
 ~~~
+
+We haven't written the `scala>` prompts in the examples in this book
+because they make it difficult to copy and paste text into the console.
+We've written the console output as comments for the same reason.
+</div>
 
 Notice the type and value of the expression we just entered.
 The type is `doodle.core.Circle`
@@ -49,7 +66,7 @@ which has been brought into scope automatically.
 Try drawing the circle now:
 
 ~~~ scala
-scala> draw(res0)
+draw(res0)
 ~~~
 
 A window should appear containing the following:
@@ -61,7 +78,7 @@ circles, rectangles, and triangles.
 Let's try drawing a rectangle:
 
 ~~~ scala
-scala> draw(Rectangle(50, 100))
+draw(Rectangle(50, 100))
 ~~~
 
 ![A rectangle](src/pages/expressions/rectangle.png)
@@ -69,7 +86,7 @@ scala> draw(Rectangle(50, 100))
 Finally let's try a triangle:
 
 ~~~ scala
-scala> draw(Triangle(60, 40))
+draw(Triangle(60, 40))
 ~~~
 
 ![A triangle](src/pages/expressions/triangle.png)
@@ -81,7 +98,7 @@ Try the following code---you should see a circle and a rectangle
 displayed beside one another:
 
 ~~~ scala
-scala> draw(Circle(10) beside Rectangle(10, 20))
+draw(Circle(10) beside Rectangle(10, 20))
 ~~~
 
 ![A circle beside a rectangle](src/pages/expressions/circle-beside-rectangle.png)

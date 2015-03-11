@@ -70,7 +70,7 @@ def fourByFour(color1: Color, color2: Color): Image = {
 </div>
 
 <div class="callout callout-info">
-*Syntax summary*
+*Syntax Summary*
 
 We've seen quite a lot of Scala syntax so far.
 If you can't remember everything we've covered, don't panic!

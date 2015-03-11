@@ -29,8 +29,8 @@ We looked at one kind of transform operation in this chapter: the `map` method.
 returning a new sequence of the results:
 
 ~~~ scala
-scala> List(1, 2, 3).map(x => x * 2)
-res0: List[Int] = List(2, 4, 6)
+List(1, 2, 3).map(x => x * 2)
+// res0: List[Int] = List(2, 4, 6)
 ~~~
 
 The key point about `map` is that it only makes sense in a world
@@ -47,10 +47,14 @@ Here is an example that demonstrates the power of thie approach:
 
 ~~~ scala
 // Print all even numbers from 1 to 100 that are also divisible by 3:
-scala> (1 to 50).toList.
-     |   map(x => x * 2).
-     |   filter(x => x % 3 == 0).
-     |   foreach(println)
+(1 to 50).toList.
+  map(x => x * 2).
+  filter(x => x % 3 == 0).
+  foreach(println)
+// 6
+// 12
+// 18
+// etc...
 ~~~
 
 The structure of this computation looks similar

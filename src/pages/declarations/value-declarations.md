@@ -6,11 +6,11 @@ They are similar to *variable declarations*,
 except we cannot assign new values to them after declaration:
 
 ~~~ scala
-scala> val blackSquare = Rectangle(30, 30) fillColor Color.black
-blackSquare: doodle.Image = // ...
+val blackSquare = Rectangle(30, 30) fillColor Color.black
+// blackSquare: doodle.Image = // ...
 
-scala> val redSquare = Rectangle(30, 30) fillColor Color.red
-redSquare: doodle.Image = // ...
+val redSquare = Rectangle(30, 30) fillColor Color.red
+// redSquare: doodle.Image = // ...
 ~~~
 
 **Exercise: Chess Board**
