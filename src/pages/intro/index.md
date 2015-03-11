@@ -31,7 +31,7 @@ Thanks for downloading and happy creative programming!
 
 ---Dave and Noel
 
-## Notes on the Pre-Release Edition {-}
+## Notes on the Early Access Edition {-}
 
 <div class="callout callout-danger">
 This is an *early access* release of Creative Scala.
