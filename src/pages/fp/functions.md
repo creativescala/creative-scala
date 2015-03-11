@@ -114,8 +114,52 @@ val redCircles: Image =
   manyShapes(10, redCircle _)
 ~~~
 
-<div class="callout callout-danger">
-TODO: Recap the syntax for function types and function values.
+<div class="callout callout-info">
+*Function syntax*
+
+We're introducing a lot of syntax. If you get lost,
+consult the [quick reference](#quick-reference) in the appendices.
+Here's a quick recap of function syntax for convenience.
+
+Function values are written `(argName: ArgType, ...) => resultExpression`:
+
+~~~ scala
+scala> val double = (num: Int) => num * 2
+
+scala> val sum = (a: Int, b: Int) => a + b
+~~~
+
+Function types are written `ArgType => ResultType` or `(ArgType, ...) => ResultType`.
+We need these when parameter types, or return types that are functions:
+
+~~~ scala
+scala> def doTwice(value: Int, func: Int => Int): Int =
+     |   func(func(value))
+
+scala> doTwice(1, double)
+res0: Int = 4
+~~~
+
+We can write function values as expressions inline.
+We can sometimes omit the argument types,
+if the compiler can figure out what the types should be:
+
+~~~
+scala> doTwice(1, (num: Int) => num * 10)
+res1: Int = 100
+
+scala> doTwice(1, num => num * 10)
+res2: Int = 100
+~~~
+
+We can also optionally write explicit types when declaring functions.
+This can sometimes make code clearer and prevent mistakes,
+although it can also lead to needless repetition and verbosity:
+
+~~~ scala
+scala> val multiply: (Int, Int) => Int = (a: Int, b: Int) => a * b
+multiply: (Int, Int) => Int = <function2>
+~~~
 </div>
 
 **Exercise: The Colour and the Shape**
