@@ -240,4 +240,6 @@ in the Doodle codebase for some suggestions:
 
 ![Koch Triangle (Koch.scala)](src/pages/summary/koch.png)
 
+![Suburban Scene (Street.scala)](src/pages/summary/street.png)
+
 ![Mandelbrot Fractal by Mat Moore (Mandelbrot.scala)](src/pages/summary/mandelbrot.png)
