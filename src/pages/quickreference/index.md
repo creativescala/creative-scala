@@ -102,11 +102,17 @@ def myMethod(...): (ArgType, ArgType) => ResultType =
 
 ## Doodle Reference Guide
 
+### Imports
+
 ~~~ scala
 // These imports get you everything you need:
 import doodle.core._
 import doodle.syntax._
+~~~
 
+### Creating Images
+
+~~~ scala
 // Primitive images (black outline, no fill):
 val i: Image = Circle(radius)
 val i: Image = Rectangle(width, height)
@@ -122,7 +128,11 @@ val i: Image = imageA under  imageB // superimposed
 // Compound images written using method call syntax:
 val i: Image = imageA.beside(imageB)
 // etc...
+~~~
 
+### Styling Images
+
+~~~ scala
 // Styling images written using operator syntax:
 val i: Image = image fillColor color   // new fill color (doesn't change line)
 val i: Image = image lineColor color   // new line color (doesn't change fill)
@@ -133,7 +143,11 @@ val i: Image = image fillColor color lineColor otherColor // new fill and line
 val i: Image = imageA.fillColor(color)
 val i: Image = imageA.fillColor(color).lineColor(otherColor)
 // etc...
+~~~
 
+### Colours
+
+~~~ scala
 // Basic colors:
 val c: Color = Color.red                       // predefined colors
 val c: Color = Color.rgb(255, 127, 0)          // RGB color
@@ -154,4 +168,55 @@ val c: Color = someColor fadeOut    0.1.normalized // change opacity
 val c: Color = someColor.spin(10.degrees)
 val c: Color = someColor.lighten(0.1.normalized)
 // etc...
+~~~
+
+### Paths
+
+~~~ scala
+// Create path from list of PathElements:
+val i: Image = Path(List(
+  MoveTo(Vec(0, 0)),
+  LineTo(Vec(10, 10))
+))
+
+// Create path from other sequence of PathElements:
+val i: Image = Path(
+  (0 until 360 by 30) map { i =>
+    LineTo(Vec.polar(i.degrees, 100))
+  }
+)
+
+// Types of element:
+val e1: PathElement = MoveTo(toVec)                        // no line
+val e2: PathElement = LineTo(toVec)                        // straight line
+val e3: PathElement = BezierCurveTo(cp1Vec, cp2Vec, toVec) // curved line
+
+// NOTE: If the first element isn't a MoveTo,
+//       it is converted to one
+~~~
+
+### Angles and Vecs
+
+~~~ scala
+val a: Angle = 30.degrees                // angle in degrees
+val a: Angle = 1.5.radians               // angle in radians
+val a: Angle = math.Pi.radians           // π radians
+val a: Angle = 1.turns                   // angle in complete turns
+
+val v: Vec = Vec.zero                    // zero vector (0,0)
+val v: Vec = Vec.unitX                   // unit x vector (1,0)
+val v: Vec = Vec.unitY                   // unit y vector (0,1)
+
+val v: Vec = Vec(3, 4)                   // vector from cartesian coords
+val v: Vec = Vec.polar(30.degrees, 5)    // vector from polar coords
+val v: Vec = Vec(2, 1) * 10              // multiply length
+val v: Vec = Vec(20, 10) / 10            // divide length
+val v: Vec = Vec(2, 1) + Vec(1, 3)       // add vectors
+val v: Vec = Vec(5, 5) - Vec(2, 1)       // subtract vectors
+val v: Vec = Vec(5, 5) rotate 45.degrees // rotate counterclockwise
+
+val x: Double = Vec(3, 4).x              // x coordinate
+val y: Double = Vec(3, 4).y              // y coordinate
+val a: Angle  = Vec(3, 4).angle          // counterclockwise from (1, 0)
+val l: Double = Vec(3, 4).length         // length
 ~~~
