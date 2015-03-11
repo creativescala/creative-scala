@@ -32,11 +32,9 @@ You'll need to install the Grunt project dependencies the
 first time you check the project out:
 
 ~~~
-bash$ brew install pandoc
-
-bash$ npm install -g grunt-cli
-
-bash$ npm install
+brew install pandoc
+npm install -g grunt-cli coffee-script
+npm install
 ~~~
 
 You will also need to install *LaTeX* to generate PDF output.
