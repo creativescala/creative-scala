@@ -30,6 +30,7 @@ pages:
   - src/pages/collections/index.md
   - src/pages/collections/create.md
   - src/pages/collections/transform.md
+  - src/pages/collections/paths.md
   - src/pages/collections/take-home-points.md
   - src/pages/summary/index.md
   - src/pages/quickreference/index.md
