@@ -231,3 +231,13 @@ we recommend that you pick one of the many great books available on the language
 Our own book, [Essential Scala][essential-scala], is available from our web site
 and continues Creative Scala's approach of teaching Scala by
 discussing and demonstrating core design patterns and the benefits they offer.
+
+If you want to challenge yourself,
+try drawing something more complex with Doodle and
+sharing it with us via [Gitter][underscore-gitter].
+There are lots of things you can try---check the `examples` directory
+in the Doodle codebase for some suggestions:
+
+![Koch Triangle (Koch.scala)](src/pages/summary/koch.png)
+
+![Mandelbrot Fractal by Mat Moore (Mandelbrot.scala)](src/pages/summary/mandelbrot.png)
