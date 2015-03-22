@@ -68,21 +68,51 @@ This works because `baseColor` is declared in code that surrounds the declaratio
 The decision of which color to use is made by the line `if(n % 2 == 0) baseColor else complementColor`. The `%` method, called the [modulo](http://en.wikipedia.org/wiki/Modulo_operation), returns the remainder of dividing `n` by 2. This will be `0` if `n` is even, and `1` otherwise.
 </div>
 
-<div class="callout callout-danger">
-// Description here. First class function closing over local scope
-
-// blah ... blah
-</div>
-
 ### Never Being Boring
 
-There is a problem with these color palettes -- they are a bit boring. With only a few colors to play with our pictures quickly get repetitious. What is we want to make like Kandinsky and really rock out with the palettes? We'll have to do something a bit more involved.
+There is a problem with these color palettes -- they are a bit boring. With only a few colors to play with our pictures quickly get repetitious. What if we wanted to make like Kandinsky and really rock out with the palettes? We'll have to do something a bit more involved.
 
 If we rotate hue by 170 degrees, instead of the 180 degree rotation we perform in `complement`, we will generate many more colors before we get a repeat.
 
-<div class="callout callout-danger">Implement this</div>
+Implement a method `nearComplement` that creates a nearly complementary color using a spin of 170 degrees. Then implement `nearComplementCircles` that renders concentric circles using a nearly complementary color scheme.
 
-It's natural to ask how many colors we will get before the pattern starts repeating. We can answer this question by looking at the *greatest common divisor* (GCD) of 360 degrees (a full rotation of the circle) and the rotation we apply to hue. The greatest common divisor of two positive integers is the largest integer that divides both without a remainder. The GCD of 360 and 180 is 180. If we divide 360 by 180 we get 2, which is the number of colours in the palette that `complement` creates. If we try to use more than two colors we will find it starts to repeat. What about 360 and 170?
+<div class="solution">
+This code is very similar to `complement and `complementCircles`.
+
+~~~ scala
+def nearComplement(c: Color): Color =
+  c.spin(170.degrees)
+
+def nearComplementCircles(n: Int, c: Color): Image = {
+  val color = nearComplement(c)
+  if(n == 1) {
+    singleCircle(n, color)
+  } else {
+    nearComplementCircles(n - 1, color) on singleCircle(n, color)
+  }
+}
+~~~
+</div>
+
+The code for a nearly complementary color scheme is exactly the same as that for a complementary color scheme except for a single change (the choice of color scheme). Surely we avoid this duplication? Write a method `coloredCircles` that renders concentric circles using a color scheme provided by the user. Hint: what are we trying to abstract over, and what tool do we use to make this abstraction?
+
+<div class="solution">
+`nearComplementCircles` and `complementCircles` differ only in the method they call to generate the color palette. We have just learned that we can abstract over methods using functions, and that is a natural abstraction to make in `coloredCircles`. Here's my implementation:
+
+~~~ scala
+def coloredCircles(n: Int, c: Color, palette: Color => Color) = {
+  val color = palette(c)
+  if(n == 1) {
+    singleCircle(n, color)
+  } else {
+    coloredCircles(n - 1, color, palette) on singleCircle(n, color)
+  }
+}
+~~~
+</div>
+
+
+It's natural to ask how many colors we will get before the pattern starts repeating. This quantity is known as the *period* of the sequence. We can answer this question by looking at the *greatest common divisor* (GCD) of 360 degrees (a full rotation of the circle) and the rotation we apply to hue. The greatest common divisor of two positive integers is the largest integer that divides both without a remainder. The GCD of 360 and 180 is 180. If we divide 360 by 180 we get 2, which is the number of colours in the palette that `complement` creates, or in other words its period. If we try to use more than two colors we will find it starts to repeat. What about 360 and 170?
 
 We could exhaustively search to find the GCD, but there is a better way known as Euclid's algorithm[^euclid]. Euclid's algorithm is very simple to state:
 
@@ -136,11 +166,11 @@ Is this really the maximum number of colors we can generate? No, because
 1. hue is not restricted to being an integer; and
 2. we can also adjust saturation and lightness.
 
-Before we look at changing saturation and lightness lets talk about fractional hues. Internally a computer represents colors as a triple of red, green, and blue components. Each component uses 8 bits. This gives a total of 24 bits of resolution, yielding 2^24 = 16777216 colors in total[^24-bit]. In Doodle we represent hue, saturation, and lightness as `Double`, with 64 bits of precision each. This gives us a total 192 bits. Clearly we can't retain all the information in 192 bits if we only have 24 bits in the "true" representation of colors that the computer uses. Thus in most cases fractional hues are going to yield no discernable change in color.
+Before we look at changing saturation and lightness lets talk about fractional hues. Internally a computer represents colors as a triple of red, green, and blue components. Each component uses 8 bits. This gives a total of 24 bits of resolution, yielding 2^24 = 16777216 colors in total[^24-bit]. In Doodle we represent hue, saturation, and lightness as a `Double`, with 64 bits of precision each. This gives us a total 192 bits. Clearly we can't retain all the information in 192 bits if we only have 24 bits in the "true" representation of colors that the computer uses. Thus in most cases fractional hues are going to yield no discernable change in color.
 
 [^24-bit]: If you are old enough you might remember when computers could only render considerably fewer colors. The Amiga, for example, could render 4096 colors. The VGA graphics standard, popular in early 90s, could display 256 colors in a stunning 320x240 resolution. There are about this many pixels in a square inch on a modern phone. 
 
-We know how to manipulate hue so we can get interesting changes in color. What about hue and lightness. They are numbers between 0 and 1, but we could use the same trick of "wrap-around" arithmetic to generate new values. There is a problem with this, however. We don't want changes in the three color components to be correlated. That is, we don't want all the reds to have similar saturation and lightness, or the greens, or the blues. We would like colors that are close in hue to be different in saturation and lightness.
+We know how to manipulate hue so we can get interesting changes in color. What about hue and lightness. They are numbers between 0 and 1, but we could use the same trick of "wrap-around" or modulo arithmetic to generate new values. We don't want changes in the three color components to be correlated. That is, we don't want all the reds to have similar saturation and lightness, or the greens, or the blues. We would like colors that are close in hue to be different in saturation and lightness. We could implement this by using rotations with different periods for each of hue, lightness, and saturation. This simple idea is an example of a more general concept in Computer Science, the hash function, with many useful applications. Let's take a look at hash functions.
 
 A *hash function* is a kind of function that transforms its inputs in a way that is difficult to predict. The output of a good hash function is uncorrelated, meaning if we know the output of the hash function for one input this knowledge doesn't help predict the output for other inputs.
 
@@ -184,15 +214,15 @@ def lcg(input: Int): Int = {
 }
 ~~~
 
-This implementation will generate alternatively odd and even outputs if we feed the output into the input. This lack of variability in the lower-order bits is one well known problem with this algorithm. The Wikipedia pages lists a number of other properties, which go beyond what we have time to explore, but we can make some elementary observations.
+This implementation will generate alternatively odd and even outputs if we feed the output into the input. This lack of variability in the lower-order bits is one well known problem with this algorithm. The [Wikipedia page](http://en.wikipedia.org/wiki/Linear_congruential_generator) lists a number of other properties, which go beyond what we have time to explore, but we can make some elementary observations.
 
-Fundamentally, a linear congruential generator is very similar to the hue manipulation we've just discussed. We can view `a` as a rotation around a circle with `m` elements. The constant `c` just acts as an offset to the rotation.  Thus if `a` and `m` are coprime our generator will have a large period before the pattern starts to repeat. If the GCD is close to `m` the pattern will repeat after only a few numbers.
+Fundamentally, a linear congruential generator is very similar to the hue manipulation we've just discussed. We can view `a` as a rotation around a circle with `m` elements. The constant `c` just acts as an offset to the rotation.  Thus if `a` and `m` are coprime our generator will have a large period before the pattern starts to repeat. If the GCD of `a` and `m` is close to `m` the pattern will repeat after only a few numbers.
 
 A linear congruential generator will never output a number greater than `m`. A signed `Int` (32-bits), can represent numbers from -2147483648 to 2147483647, so the choice of `m` above means the output won't cover the full range of `Ints`. That's ok, as we're only inputing hues from 0 to 360, and we're converting the output to a number between 0 and 1. Since the maximum output of the linear congruential generator is `m`, we can simply divide by `m` to scale the output to be between 0 and 1.
 
 We can see that similar inputs to the linear congruential generator will still generate similar outputs, unless they happen to straddle a boundary around `m`. With the choice of constants above each degree of hue will result in a (8121 / 134456) = 0.06 = 6% change in output. A 360 degree change of hue will result in (8121 * 360 / 134456) = 21 periods. These numbers seem alright -- a one degree change of hue should give a perceptable change in output, and the period is short enough that moderate changes in hue will lead to widely different lightness and saturation. Of course the proof is in the result, so let's see what it looks like!
 </div>
 
-Implement a lcg to transform hue to lightness and saturation (maybe we make one a rotation of the other).
+Implement a linear congruential generator in Scala, and then implement a `Color => Color` function that spins hues by an amount of your choosing and uses your linear congruential generator to transform hue to lightness and saturation. (You will want to use different constants for the LCG you use to transform hue to lightness and saturation, or the two outputs *TODO*)
 
 Compare to Scala's built-in hash functions. Do you see an appreciable difference?
