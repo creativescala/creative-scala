@@ -3,13 +3,12 @@
 In this exercise we will explore the creation of color palettes.
 An attractive picture must make good choices for color.
 Color theory has developed to explain combinations of color that go together.
-We will use color theory,
-and some neat tricks from mathematics and computer science,
-to create programs that can automatically create attractive color palettes.
+We will use color theory
+to create programs that can automatically construct attractive color palettes.
 
-### Color Theory
+### Color Representation
 
-We have see that we can represent colors in two ways:
+In Doodle we can represent a color in one of two ways:
 
 1. as triples containing red, green, and blue values (RGB); or
 2. as hue, saturation, and lightness (HSL).
@@ -22,7 +21,34 @@ and steps around the outside correspond to changes in hue:
 
 ![A color wheel. A full turn around the wheel represents a 360 degree change in hue.](src/pages/declarations/color-wheel.png)
 
-#### Complementary Colors
+Saturation, the third dimension,
+corresponds to intensity of color.
+The strip of colors below shows the effect of varying saturation from 0.0 to 1.0,
+for fixed hue (170 degrees) and lightness (0.5).
+As you can see,
+changing hue goes from a dull gray to a bright and vibrant color.
+
+![The effect of changing saturation while keeping hue and lightness fixed. Saturation increases from left to right, starting at zero and finishing at one.](src/pages/declarations/saturation.png)
+
+### The Color API
+
+Before we can create color schemes
+we need to know how to create and manipulate colors.
+
+There are two main methods to create colours:
+
+~~~ scala
+Color.hsl(hue: Angle, saturation: Normalized, lightness: Normalized)
+Color.rgb(red: UnsignedByte, green: UnsignedByte, blue: UnsignedByte)
+~~~
+
+These methods use types --- `Angle`, `Normalized`, and `UnsignedByte` --- that have not seen before.
+A quick explanation is in order.
+The types all represent numbers in a restricted range. A `Normalized` is a number between 0 and 1, for example.
+
+An `Angle` represents an 
+
+### Complementary Colors
 
 A simple way to generate colors that look good together
 is to use *complementary colors*.
