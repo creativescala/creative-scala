@@ -223,6 +223,21 @@ A linear congruential generator will never output a number greater than `m`. A s
 We can see that similar inputs to the linear congruential generator will still generate similar outputs, unless they happen to straddle a boundary around `m`. With the choice of constants above each degree of hue will result in a (8121 / 134456) = 0.06 = 6% change in output. A 360 degree change of hue will result in (8121 * 360 / 134456) = 21 periods. These numbers seem alright -- a one degree change of hue should give a perceptable change in output, and the period is short enough that moderate changes in hue will lead to widely different lightness and saturation. Of course the proof is in the result, so let's see what it looks like!
 </div>
 
-Implement a linear congruential generator in Scala, and then implement a `Color => Color` function that spins hues by an amount of your choosing and uses your linear congruential generator to transform hue to lightness and saturation. (You will want to use different constants for the LCG you use to transform hue to lightness and saturation, or the two outputs *TODO*)
+With our linear congruential generator we can now transform hue into saturation and lightness. There are two ways to do this: we can either create two generators with different constants, or we can apply the generator once to generate saturation from hue, and again to generate lightness from saturation. For either strategy we need to convert the `Int` that our generator returns into a `Normalized` value. Since the maximum value our generator can return is `m` we can simply divide the output by `m` (after converting to a `Double`) to get a value between zero and one.
 
-Compare to Scala's built-in hash functions. Do you see an appreciable difference?
+Implement a method `normalize` that accepts two `Ints` (the current value and maximum) and returns a `Normalized`. Hint: use the method `toDouble` to convert an `Int` to a `Double`.
+
+<div class="solution">
+~~~ scala
+def normalize(value: Int, max: Int): Normalized =
+  (value.toDouble / max.toDouble).normalized
+~~~
+</div>
+
+<div class="callout callout-warn">
+*Implement two lcgs with different constants*
+*Implement Color => Color function using these transforms*
+*Implement rescale to change the range of our output to be in useful range*
+*Draw pictures*
+*Compare to Scala's built-in hash functions. Do you see an appreciable difference?*
+</div>
