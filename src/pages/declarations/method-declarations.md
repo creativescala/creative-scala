@@ -4,7 +4,7 @@ Sometimes we want to repeat a process,
 but each time we do it we change some part of what we're doing.
 For example, imagine creating chess boards where each chess board
 has a different combination of colors.
-It would be extremely tedious to declaration each chess board
+It would be extremely tedious to declare each chess board
 as we have above for each choice of colors.
 What we'd like is to be able to define
 some process for making chess boards that
