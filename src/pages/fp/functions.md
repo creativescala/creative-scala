@@ -105,7 +105,7 @@ All we have to do is pass in a suitable definition of `singleShape`:
 val blackCircles: Image =
   manyShapes(10, (n: Int) => Circle(50 + 5*n))
 
-// Converting a function to a method:
+// Converting a method to a function:
 
 def redCircle(n: Int): Image =
   Circle(50 + 5*n) lineColor Color.red
