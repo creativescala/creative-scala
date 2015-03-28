@@ -126,9 +126,9 @@ Here are some tips:
     ~~~ scala
     val hue = 180.degrees
 
-    val lightness = 0.5
+    val lightness = 0.5.normalized
 
-    val color = Color.hsl(hue, 1.0, lightness)
+    val color = Color.hsl(hue, 1.0.normalized, lightness)
     ~~~
 
 For extra credit, allow the user to specify parameters for
@@ -143,7 +143,7 @@ and specify `size`, `hue`, and `lightness` as parameters:
 
 ~~~ scala
 def cell(size: Int, hue: Int, lightness: Double): Image =
-  Rectangle(size, size) lineWidth 0 fillColor Color.hsl(hue, 1.0, lightness)
+  Rectangle(size, size) lineWidth 0 fillColor Color.hsl(hue.degrees, 1.0.normalized, lightness.normalized)
 ~~~
 
 Next let's create a single column of varying lightness.
@@ -195,11 +195,11 @@ type CellFunc = (Int, Double) => Image
 
 def squareCell(size: Int): CellFunc =
   (hue: Int, lightness: Double) =>
-    Rectangle(size, size) lineWidth 0 fillColor Color.hsl(hue, 1.0, lightness)
+    Rectangle(size, size) lineWidth 0 fillColor Color.hsl(hue.degrees, 1.0.normalized, lightness.normalized)
 
 def circleCell(size: Int): CellFunc =
   (hue: Int, lightness: Double) =>
-    Circle(size/2) lineWidth 0 fillColor Color.hsl(hue, 1.0, lightness)
+    Circle(size/2) lineWidth 0 fillColor Color.hsl(hue.degrees, 1.0.normalized, lightness.normalized)
 
 // Code to construct a palette:
 

@@ -177,10 +177,10 @@ val i: Image = imageA.fillColor(color).lineColor(otherColor)
 ~~~ scala
 // Basic colors:
 val c: Color = Color.red                       // predefined colors
-val c: Color = Color.rgb(255, 127, 0)          // RGB color
-val c: Color = Color.rgba(255, 127, 0, 0.5)    // RGBA color
-val c: Color = Color.hsl(0.5, 0.25, 0.5)       // HSL color
-val c: Color = Color.hsla(0.5, 0.25, 0.5, 0.5) // HSLA color
+val c: Color = Color.rgb(255.uByte, 127.uByte, 0.uByte)          // RGB color
+val c: Color = Color.rgba(255.uByte, 127.uByte, 0.uByte, 0.5.normalized)    // RGBA color
+val c: Color = Color.hsl(15.degrees, 0.25.normalized, 0.5.normalized)       // HSL color
+val c: Color = Color.hsla(15.degrees, 0.25.normalized, 0.5.normalized, 0.5.normalized) // HSLA color
 
 // Transforming/mixing colors using operator syntax:
 val c: Color = someColor spin       10.degrees     // change hue

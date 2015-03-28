@@ -153,8 +153,8 @@ def star(sides: Int, skip: Int, radius: Double) = {
 
   Path(elements).
     lineWidth(2).
-    lineColor(Color.hsl(centerAngle, 1, .25)).
-    fillColor(Color.hsl(centerAngle, 1, .75))
+    lineColor(Color.hsl(centerAngle, 1.normalized, .25.normalized)).
+    fillColor(Color.hsl(centerAngle, 1.normalized, .75.normalized))
 }
 ~~~
 
