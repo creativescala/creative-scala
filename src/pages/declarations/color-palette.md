@@ -26,7 +26,7 @@ corresponds to intensity of color.
 The strip of colors below shows the effect of varying saturation from 0.0 to 1.0,
 for fixed hue (170 degrees) and lightness (0.5).
 As you can see,
-changing hue goes from a dull gray to a bright and vibrant color.
+changing saturation goes from a dull gray to a bright and vibrant color.
 
 ![The effect of changing saturation while keeping hue and lightness fixed. Saturation increases from left to right, starting at zero and finishing at one.](src/pages/declarations/saturation.png)
 
