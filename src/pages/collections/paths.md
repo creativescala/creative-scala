@@ -61,16 +61,19 @@ Code                       Result    Description                     Example
 
 -------------------------------------------------------------------------------------------------------
 
-We can use these operations to create paths quickly by adding vectors:
+We can use these operations to create paths quickly by adding vectors. Notice how we start the shape with a `MoveTo` element (all paths implicitly start at the origin). This is a very common pattern.
 
 ~~~ scala
-val points = (0 to 360 by 36).map { angle =>
-  (Vec.unitX * 100) rotate angle.degrees
+val elements = (0 to 360 by 36).map { angle =>
+  val point = (Vec.unitX * 100) rotate angle.degrees
+  val element =
+    if(angle == 0)
+      MoveTo(point)
+    else
+      LineTo(point)
+  element
 }
-// points: scala.collection.immutable.IndexedSeq[doodle.core.Vec] = // ...
-
-val elements = points map (p => LineTo(p))
-// elements: scala.collection.immutable.IndexedSeq[doodle.core.LineTo] = // ...
+// elements: scala.collection.immutable.IndexedSeq[doodle.core.PathElement] = // ...
 
 val decagon = Path(elements)
 // decagon: doodle.core.Path = // ...
@@ -115,7 +118,11 @@ def star(sides: Int, skip: Int, radius: Double) = {
   val centerAngle = 360.degrees * skip / sides
 
   val elements = (0 to sides) map { index =>
-    LineTo(Vec.polar(centerAngle * index, radius))
+    val point = Vec.polar(centerAngle * index, radius)
+    if(index == 0)
+      MoveTo(point)
+    else 
+      LineTo(point)
   }
 
   Path(elements) lineWidth 2
@@ -148,7 +155,11 @@ def star(sides: Int, skip: Int, radius: Double) = {
   val centerAngle = 360.degrees * skip / sides
 
   val elements = (0 to sides) map { index =>
-    LineTo(Vec.polar(centerAngle * index, radius))
+    val point = Vec.polar(centerAngle * index, radius) 
+    if(index == 0)
+      MoveTo(point)
+    else
+      LineTo(point)
   }
 
   Path(elements).
