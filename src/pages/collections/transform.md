@@ -21,7 +21,7 @@ List<Integer> result = doubleAll(new ArrayList<Integer>(1, 2, 3, 4, 5));
 
 There are a lot of lines in this example, many of which
 aren't to do with the desired operation of doubling numbers.
-We have to alloate a temporary list and push numbers onto it
+We have to allocate a temporary list and push numbers onto it
 before returning it, all of which ought to be be handled by library code.
 
 We can't easily abstract away the temporary list allocation in Java 7

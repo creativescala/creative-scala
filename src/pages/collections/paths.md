@@ -144,7 +144,7 @@ When you've finished your row of stars,
 try constructing a larger image from different values of `p` and `n`.
 Here's an example:
 
-![Stars with `p=3 to 11` and `n=1 to p/2`](src/pages/collections/stars2.png)
+![Stars with `p=3 to 33 by 2` and `n=1 to p/2`](src/pages/collections/stars2.png)
 
 <div class="solution">
 To create the image above, we started by adding colours

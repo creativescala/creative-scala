@@ -200,12 +200,12 @@ and why would you want to choose it over
 the other available options?
 
 Perhaps the most significant draw to Scala is its type system.
-This distinguishes Scala from popular
-such as Ruby, Python, Javascript, and Clojure, which are weakly typed.
-Having strong types in a language is undeniably a trade-off---writing
+This distinguishes Scala from popular languages
+such as Ruby, Python, Javascript, and Clojure, which are dynamically typed.
+Having static types in a language is undeniably a trade-off---writing
 code is slower because we have to satisfy the compiler at every stage.
 However, once our code compiles we gain
-confident about its quality.
+confidence about its quality.
 
 Another major draw is Scala's blending of
 object-oriented and functional programming paradigms.

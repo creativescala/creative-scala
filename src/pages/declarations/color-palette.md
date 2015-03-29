@@ -16,7 +16,7 @@ In Doodle we can represent a color in one of two ways:
 We will use the HSL representation as it
 better corresponds to our perception of color.
 If we arrange colors in the familiar color wheel,
-distance from the center corrsponds to lightness
+distance from the center corresponds to lightness
 and steps around the outside correspond to changes in hue:
 
 ![A color wheel. A full turn around the wheel represents a 360 degree change in hue.](src/pages/declarations/color-wheel.png)

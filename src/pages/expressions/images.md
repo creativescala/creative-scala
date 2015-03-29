@@ -170,7 +170,7 @@ Operator                Type    Description                 Example
 `Image lineColor Color` `Image` Outlines the image with     `Circle(10) lineColor Color.blue`
                                 the specified colour.
 
-`Image lineWidth Int`   `Image` Outlines the image with     `Circle(10) lineWIdth 3`
+`Image lineWidth Int`   `Image` Outlines the image with     `Circle(10) lineWidth 3`
                                 the specified stroke width.
 ---------------------------------------------------------------------------------------------
 
