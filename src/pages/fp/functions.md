@@ -167,7 +167,7 @@ We can pass a reference to this method to `manyShapes` to create
 an image of concentric black outlined circles:
 
 ~~~ scala
-draw(manyShapes(10, outlinedCircle))
+manyShapes(10, outlinedCircle).draw
 ~~~
 
 ![Many outlined circles](src/pages/fp/colors-and-shapes-step1.png)
@@ -180,7 +180,7 @@ the desired combinations of colours and shapes:
 def circleOrSquare(n: Int) =
   if(n % 2 == 0) Rectangle(n*20, n*20) else Circle(n*10)
 
-draw(manyShapes(10, outlinedCircle) beside manyShapes(10, circleOrSquare))
+(manyShapes(10, outlinedCircle) beside manyShapes(10, circleOrSquare)).draw
 ~~~
 
 ![Many outlined circles beside many circles and squares](src/pages/fp/colors-and-shapes-step2.png)

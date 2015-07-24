@@ -12,7 +12,7 @@ val image = Path(List(
 ))
 // image: Path = // ...
 
-draw(image)
+image.draw
 ~~~
 
 ![An example Path](src/pages/collections/path.png)
@@ -78,7 +78,7 @@ val elements = (0 to 360 by 36).map { angle =>
 val decagon = Path(elements)
 // decagon: doodle.core.Path = // ...
 
-draw(decagon)
+decagon.draw
 ~~~
 
 ![A Decagon](src/pages/collections/decagon.png)
@@ -134,9 +134,9 @@ We only need to use values of `skip`
 from `1` to `sides/2` rounded down:
 
 ~~~ scala
-draw(allBeside((1 to 5) map { skip =>
+(allBeside((1 to 5) map { skip =>
   star(sides, skip, 100)
-}))
+})).draw
 ~~~
 </div>
 

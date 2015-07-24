@@ -9,7 +9,7 @@ We started by writing expressions to create and compose images.
 Each program we wrote went through two distinct phases:
 
  1. Build an `Image`
- 2. Call the `draw()` method to display the image
+ 2. Call the `draw` method to display the image
 
 This process demonstrates two important functional programming patterns:
 *building intermediate representations* of the result we want,
@@ -54,8 +54,8 @@ def drawImage(g: Graphics2D): Unit = {
 
 It's important to realise that all of the imperative Java2D
 code is still present in Doodle.
-The difference is we have hidden it away into the `draw()` method.
-`draw()` acts as *interpreter* for our `Images`,
+The difference is we have hidden it away into the `draw` method.
+`draw` acts as *interpreter* for our `Images`,
 filling in all of the details about coordinates, paths,
 and graphics contexts that we don't want to think about in our code.
 

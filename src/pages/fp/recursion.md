@@ -213,7 +213,7 @@ This means we only call `triangle()` once,
 no matter what value of `n` we start with.
 
 We only need to create one `Triangle` object for the whole picture!
-Of course, the `draw()` method has to process this single triangle 19,683 times
+Of course, the `draw` method has to process this single triangle 19,683 times
 to draw the picture, but the representation we build to begin with
 is extremely efficient.
 </div>

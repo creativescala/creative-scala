@@ -67,7 +67,7 @@ the `println` method from the Scala standard library and Doodle's `draw` method.
 Each of these methods does something useful but neither returns a useful result:
 
 ~~~ scala
-val alsoUninteresting = draw(Circle(10))
+val alsoUninteresting = Circle(10).draw
 // alsoUninteresting: Unit = ()
 ~~~
 
@@ -76,5 +76,5 @@ the side-effects spread throughout our code.
 Doodle is a classic example of functional design---we assemble
 a *representation* of the scene we want in a purely functional manner,
 and then *interpret* the scene to produce output.
-The `draw()` method---our interpreter---can use imperative libraries
+The `draw` method---our interpreter---can use imperative libraries
 and mutable state without them intruding into the rest of our application.

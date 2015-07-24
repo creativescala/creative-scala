@@ -64,7 +64,7 @@ One of these is `allBeside`,
 which lays a list of images out beside one another:
 
 ~~~ scala
-draw(allBeside(circles))
+allBeside(circles).draw
 ~~~
 
 ![A row of circles](src/pages/collections/circles.png)
@@ -101,7 +101,7 @@ val radii = List(10, 20, 30, 40, 50)
 val circles = radii.map(i => Circle(i))
 // circles: List[Circle] = // ...
 
-draw(allOn(circles))
+allOn(circles).draw
 ~~~
 
 **Exercise: Colour Palette**
