@@ -81,9 +81,27 @@
       * Line drawing
       * Coloured
 
-### Compound Expressions
+### Conditional Expressions
+  * Conditionals
+    * Evaluate an expression based on some condition
+    * Syntax
+    * Examples
+    * The entire conditional evaluates to the value of the expression that is evaluated
+  * Exercises
+    * Math.random() generates a random number between 0 and 1. This is a side-effect, as it differs everytime we run it.
+    * Draw a circle with randomly chosen hue, saturation, and lightness.
+    * Draw two circles with randomly chosen hue, saturation, and lightness. This can get tedious. What would make this less tedious? (Functions)
+    * What if we wanted to make a sequence of boxes coloured with a gradient that starts with a randomly chosen color. What do we need to do this? (Functions or names)
+    * Using Math.random() write a program that evaluates to a blue circle if the random number is < 0.5 and a red square otherwise.
+    * Using Math.random() write a program that evaluates to a circle or a square inside a circle. (Emphasising that if is an expression.)
+
+### The Substitution Model of Evaluation
   * We need to build a mental model of how Scala expressions are evaluated so we can understand what our programs are doing.
   * In this section we look at more complex expressions, and start developing that mental model.
+  * Blocks
+    * A group of expressions
+    * Evaluates to the value of the last expression
+    * At the moment these aren't so useful to us but we'll see a use soon
   * Method calls
     * Our first stop is something we already know: method calls. In what order are method calls evaluated?
     * Left-to-right eager evaluation (evaluated once)
@@ -92,23 +110,15 @@
     * Observe using side effects (`println`)
     * A side effect, for now, is any expression that has an observable difference depending on the order of evaluation or the number of times it is evaluated. `draw` is a side-effect.
     * Unit. Many (but not all) side-effecting expressions evaluate to Unit, as we evaluate them for their side effect (printing, drawing), not for their value. Unit is the "uninteresting" value.
-  * Conditionals
-    * Evaluate an expression based on some condition
-    * Syntax
-    * Examples
-    * The entire conditional evaluates to the value of the expression that is evaluated
-  * Blocks
-    * A group of expressions
-    * Evaluates to the value of the last expression
-    * At the moment these aren't so useful to us but we'll see a use in the next chapter
-  * Exercises
-    * Math.random() generates a random number between 0 and 1. This is a side-effect, as it differs everytime we run it.
-    * Using Math.random() write a program that evaluates to a blue circle if the random number is < 0.5 and a red square otherwise.
-    * Using Math.random() six times, write a program that evalutes to two circles with randomly chosen colors.
 
 ### Declarations
-  * Naming values
-  * The substitution model of evaluation
+  * We're now going to add the ability to give names to values.
+  * Anywhere we might we use a value we can instead use it's name, if we have previously given it a name.
+  * This allows us to write simpler programs.
+  * Example: boxes in a line with gradient fill
+  * It also allows us to write programs that were previously impossible
+  * Example: Five boxes in a line with gradient fill starting from random color.
+  * How does this fit with our mental model of evaluation? 
   * Chessboard
 
 ### First-order Methods
