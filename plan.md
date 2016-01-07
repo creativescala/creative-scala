@@ -88,7 +88,7 @@
     * Examples
     * The entire conditional evaluates to the value of the expression that is evaluated
   * Exercises
-    * Math.random() generates a random number between 0 and 1. This is a side-effect, as it differs everytime we run it.
+    * Math.random() generates a random number between 0 and 1. This is a side-effect, as it differs everytime we run it. We'll talk more about side-effects in the next section.
     * Draw a circle with randomly chosen hue, saturation, and lightness.
     * Draw two circles with randomly chosen hue, saturation, and lightness. This can get tedious. What would make this less tedious? (Functions)
     * What if we wanted to make a sequence of boxes coloured with a gradient that starts with a randomly chosen color. What do we need to do this? (Functions or names)
@@ -97,29 +97,43 @@
 
 ### The Substitution Model of Evaluation
   * We need to build a mental model of how Scala expressions are evaluated so we can understand what our programs are doing.
-  * In this section we look at more complex expressions, and start developing that mental model.
+  * We've been getting by with an informal model so far. In this section we make our model a bit more formal.
+  * Take an expression like (1 + 2) + (3 + 4). This consists of sub expressions (1 + 2) and (3 + 4) combined together.
+  * When we see an expression, we can subsistute in the value it evaluates to. So 
+    (1 + 2) + (3 + 4) == 3 + 7 == 10
+  * This is known as *substitution*, *reducing an expression*, or *equational reasoning* (and no doubt some terms I have forgotten). The latter term is an allusion to doing the same operation in high school algebra.
+  * In what order does substitution take place? Does it matter?
+  * We can't tell the order. Expressions that we can freely substitute are sometimes called *pure*.
+  * We need to add *side effects* or *impure* expressions so we can observe order of evaluation.
   * Blocks
     * A group of expressions
     * Evaluates to the value of the last expression
-    * At the moment these aren't so useful to us but we'll see a use soon
-  * Method calls
-    * Our first stop is something we already know: method calls. In what order are method calls evaluated?
-    * Left-to-right eager evaluation (evaluated once)
-    * Not the only choice, but we won't go into detail on other possibilities.
-    * For the programs we've written so far it doesn't actually matter!
-    * Observe using side effects (`println`)
-    * A side effect, for now, is any expression that has an observable difference depending on the order of evaluation or the number of times it is evaluated. `draw` is a side-effect.
-    * Unit. Many (but not all) side-effecting expressions evaluate to Unit, as we evaluate them for their side effect (printing, drawing), not for their value. Unit is the "uninteresting" value.
+  * Println
+    * Expression that prints on the console and returns Unit.
+    * Many (but not all) side-effecting expressions evaluate to Unit, as we evaluate them for their side effect (printing, drawing), not for their value. Unit is the "uninteresting" value.
+    * Can't substitute calls to println. Example.
+  * With blocks and println we can observe order of evaluation. Example: {println("a"); 3} + {println("b"); 4}
+  * Exercises
+    * What is the order of evaluation for expressions? (Left to right)
+    * What is the order of evaluation for expressions in a block? (left to right and top to bottom)
 
 ### Declarations
-  * We're now going to add the ability to give names to values.
-  * Anywhere we might we use a value we can instead use it's name, if we have previously given it a name.
+  * We're now going to add the ability to give names to values. We *bind* names to values.
+  * Anywhere we might we use expression we can instead use the name bound to the value the expression evalutes to, if we have previously given it a name. Example.
+  * Names allow us to *abstract* over expressions, replacing repetition of an expression with the name.
   * This allows us to write simpler programs.
   * Example: boxes in a line with gradient fill
   * It also allows us to write programs that were previously impossible
   * Example: Five boxes in a line with gradient fill starting from random color.
-  * How does this fit with our mental model of evaluation? 
-  * Chessboard
+  * Exercise: Can substitution using names change the meaning of a program? (Give example.) (Like other expressions, we can't substitute where there are side effects)
+  * Scope
+    * There is also a concept of *scope*, which determines which names we can use in which parts of our program. If we can use a name, it is *in scope* or *bound*.
+    * Scala has what is called *lexical scoping*, which basically means if you can find a name declared above where it is used AND in an enclosing block it is in scope. Example.
+  * Exercises
+    * Rainbow nested circles
+    * Gradient grid
+    * Chessboard
+    * Using Math.random() write a program that evaluates to a sequence of gradient filled circle if the random number is < 0.5 and a sequence of gradient filled squares otherwise. Make the color starting the gradient random.
 
 ### First-order Methods
   * Abstract over expressions
