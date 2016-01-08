@@ -135,13 +135,101 @@
     * Chessboard
     * Using Math.random() write a program that evaluates to a sequence of gradient filled circle if the random number is < 0.5 and a sequence of gradient filled squares otherwise. Make the color starting the gradient random.
 
+### Writing Larger Programs
+  * We're getting to the point where it's inconvenient to type programs into the console
+  * Saving code to a file and using :load and :paste
+  * Using the console is not going to work for real programs. 
+  * Install sbt
+  * Create a build.sbt
+  * Run sbt
+  * compile, console, run
+  * Adding doodle as a dependency
+  * Code is different in a real program
+    * Can't write methods and vals without wrapping them in an object
+    * objects
+    * imports
+    * packages
+
 ### First-order Methods
-  * Abstract over expressions
-  * Type declarations
+  * Vals allow us to abstract over values. Methods allow us to abstract over expressions.
+  * We've already used methods. Now we'll see how to write our own methods.
+  * Method syntax
+    * def name
+    * parameters
+    * Type declarations
+    * = body (can use a block)
+  * Method semantics
+    * Parameters are in the scope in the body
+    * The value of a method call is value of the body expression
+    * Method is in scope in the block in which it's defined
+    * We can substitute a method call with the value it evaluates to, if the body of the method is pure (has no side-effects)
+  * Exercises
+    * Gradient boxes as a method
+    * Gradient nested circles as a method
+    * Gradient square where starting color is given as a parameter
+    * Abstract over shape that is drawn
+    * Chessboard as a method (w/o recursion)
+    * Nested circles, but replace circles with a call to gradient circles
+    * When are the arguments of a method evaluated? 
+    * Is a method a value?
 
 ### Recursion
+  * Methods can call other methods. We've seen examples before.
+  * Methods can call themselves. Example: nested circles
+  * Understanding recursion
+    * Substitution
+    * Attempting to expand recursive calls is the road to madness
+    * Assume the recursive call works, and see what we do on this step
+    * We can do better than that, with a recipe for writing recursive functions that always work
   * Structural recursion over the natural numbers
+    * Base case
+    * Inductive case
+  * Now we have all the tools to create some interesting pictures
+  * Exercises
+    * Gradient sequence of shape with length
+    * Concentric circles
+    * Chessboard
+    * Variant of chessboard with varying size squares (similar to square limit)
+    * Sierpinski triangle
+    * Sierpinski triangle w/ colors
+    * Mutually recursive many shapes
+    * Trees using polar coordinates?
+    * Spirals?
+    * Random circles?
+    
+### Digital Art
+  * Do we have a section on ideas for creating digital art? Just some basics? Fractals, random art, etc.
+  * A larger project to create something interesting on a particular theme?
 
 ### Higher-order Methods
-  * Animations
+  * We can make methods values by following the name of the method with the mighty underscore!
+  * This is called a function
+  * We can also write function literals. Function literal syntax.
+  * This means methods can evaluate to functions, and take functions as parameters.
+  * Methods or functions that take functions as parameters are known as higher-order methods /functions
+  * Exercises
+    * Draw many shapes where the function to draw individual shapes is a parameter parameterised by color
+    * Fractals doing the same
 
+### Animations
+  * We're now going to introduce animations. Good use of higher-order functions.
+  * Overview of animation AP
+    * Streams of events
+    * One of these streams is the screen refresh
+    * map. Example 
+    * scan, carry some state---like a recursive function. Example
+    * Exercises
+      * Animate drawing some of the examples we've already seen
+      * Need to think more about these
+        * 
+### Case Classes
+  * Define our own types
+  * A class is a template for creating objects
+  * Particle effects
+
+### Next Steps
+  * Translating techniques here into other domains
+    * Collections, Spark
+  * Other bits of Scala
+    * Algebraic data types
+    * Structural recursion extended beyond natural numbers
