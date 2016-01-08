@@ -221,7 +221,7 @@
     * Exercises
       * Animate drawing some of the examples we've already seen
       * Need to think more about these
-        * 
+        
 ### Case Classes
   * Define our own types
   * A class is a template for creating objects
