@@ -16,6 +16,7 @@ pages:
   - src/pages/intro/index.md
  
   - src/pages/expressions/index.md
+  - src/pages/expressions/literals.md
   - src/pages/expressions/simple.md
   - src/pages/expressions/images.md
   - src/pages/expressions/take-home-points.md

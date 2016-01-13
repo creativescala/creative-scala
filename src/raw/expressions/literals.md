@@ -8,4 +8,44 @@ We'll now start to explore the various forms of expressions in Scala, starting w
 
 A literal evaluates to "itself." How we write the expression and how the console prints the value are the same. Remember though, there is a difference between the written representation of a value and its actual representation in the computer's memory.
 
-Scala has many different forms of literals. We've already seen `Int` literals.
+Scala has many different forms of literals. We've already seen `Int` literals. There is a different type, and a different literal syntax, for what are called *floating point numbers*. This corresponds to a computer's approximation of the real numbers. Here's an example:
+
+```tut:book
+0.1
+```
+
+As you can see, the type is called `Double`.
+
+### Exercises
+
+#### Floating Point Failings
+
+Why did I say above that `Double` is an approximation of the real numbers? Think about representing numbers like ⅓ and π.
+
+<div class="solution">
+`Double` is an approximation because it has the fit within the computer's finite memory. A `Double` takes up precisely 64-bits, which is enough space to store a lot of digits but not enough to store a number that, like π, has an infinite expansion.
+
+The number ⅓ also has an infinite expansion in decimal. As `Doubles` are stored in binary there are some numbers that can be represented in a finite number of decimal digits but have no finite representation in binary. 0.1 turns out to be one such number.
+
+In general, floating point numbers can lead to nasty surprises if you expect them to act like the reals. They are fine for our purposes in Creative Scala, but don't go using them to write accounting software!
+</div>
+
+Numbers are well and good, but what about text. There is a type in Scala called a `String`, which represents a sequence of characters. We write literal strings by putting their contents in double quotes.
+
+```tut:book
+"To be fond of dancing was a certain step towards falling in love."
+```
+
+Sometimes we want to write strings that span several lines. We can do this by using triple double quotes, as below.
+
+
+```tut:book
+"""
+A new, a vast, and a powerful language is developed for the future use of analysis,
+in which to wield its truths so that these may become of more speedy and accurate
+practical application for the purposes of mankind than the means hitherto in our
+possession have rendered possible. 
+
+  -- Ada Lovelace, the world's first programmer
+"""
+```
