@@ -51,13 +51,16 @@
     * Exercises
       * Write an expression using integer literals, addition, and subtraction that evaluates to 42.
       * Append strings using the `++` method using both method style and operator style
+      * Precedence rules for operators
   * Now we can write more complex expressions we can talk about another use of types: stopping us from writing programs that don't make sense.
     * The types tells the computer what methods an object has.
     * If we try to call a method an object doesn't have, or give a parameter of the wrong type, the computer won't let us try to evaluate our code.
     * Examples
     * We can write expressions that fail to evaluate, but, because types are a compile time property, we can still give a type to.
     * Examples
-    * Exercises. Which of these expressions can we evaluate? Which of these expressions evaluate successfully? Which expressions can we give a type to?
+    * Exercises. 
+      * Which of these expressions can we evaluate? Which of these expressions evaluate successfully? Which expressions can we give a type to?
+      * *Challenge Exercise*: Our current model of computation is an expression (program text) evaluates to a value (something within the computer's memory). Is this sufficient? Can you think of ways to extend this model? (This is very open ended. Possible answers include effects, names, functions, etc.)
   * This is our most basic model. We will elaborate on it throughout the book.
 
 ### Pictures
@@ -80,6 +83,7 @@
     * The archery target
       * Line drawing
       * Coloured
+    * *Challenge Exercise* Create a picture of your own devising on the theme of bubbles.
 
 ### Conditional Expressions
   * Conditionals
@@ -94,6 +98,7 @@
     * What if we wanted to make a sequence of boxes coloured with a gradient that starts with a randomly chosen color. What do we need to do this? (Functions or names)
     * Using Math.random() write a program that evaluates to a blue circle if the random number is < 0.5 and a red square otherwise.
     * Using Math.random() write a program that evaluates to a circle or a square inside a circle. (Emphasising that if is an expression.)
+    * *Challenge Exercise* Add an element of randomness to the picture you created in the previous challenge exercise.
 
 ### The Substitution Model of Evaluation
   * We need to build a mental model of how Scala expressions are evaluated so we can understand what our programs are doing.
@@ -119,7 +124,7 @@
 
 ### Declarations
   * We're now going to add the ability to give names to values. We *bind* names to values.
-  * Anywhere we might we use expression we can instead use the name bound to the value the expression evalutes to, if we have previously given it a name. Example.
+  * Anywhere we might we use expression we can instead use the name bound to the value the expression evaluates to, if we have previously given it a name. Example.
   * Names allow us to *abstract* over expressions, replacing repetition of an expression with the name.
   * This allows us to write simpler programs.
   * Example: boxes in a line with gradient fill
@@ -134,6 +139,8 @@
     * Gradient grid
     * Chessboard
     * Using Math.random() write a program that evaluates to a sequence of gradient filled circle if the random number is < 0.5 and a sequence of gradient filled squares otherwise. Make the color starting the gradient random.
+    * *Challenge Exercise* What happens if we have two bindings with the same name in scope at a given point in the program? Example. (The inner most binding shadows the outermost binding.)
+    * *Challenge Exercise* Why have scoping rules? Why not just make all names visible in all places? (How would we resolve aliasing? How would we control modularity?)
 
 ### Writing Larger Programs
   * We're getting to the point where it's inconvenient to type programs into the console
@@ -170,8 +177,8 @@
     * Abstract over shape that is drawn
     * Chessboard as a method (w/o recursion)
     * Nested circles, but replace circles with a call to gradient circles
-    * When are the arguments of a method evaluated? 
-    * Is a method a value?
+    * When are the arguments of a method evaluated? (Before the method is called)
+    * *Challenge Exercise* Is a method a value?
 
 ### Recursion
   * Methods can call other methods. We've seen examples before.
@@ -190,16 +197,8 @@
     * Concentric circles
     * Chessboard
     * Variant of chessboard with varying size squares (similar to square limit)
-    * Sierpinski triangle
-    * Sierpinski triangle w/ colors
-    * Mutually recursive many shapes
-    * Trees using polar coordinates?
-    * Spirals?
-    * Random circles?
-    
-### Digital Art
-  * Do we have a section on ideas for creating digital art? Just some basics? Fractals, random art, etc.
-  * A larger project to create something interesting on a particular theme?
+    * *Challenge Exercise* Sierpinski triangle
+    * *Challenge Exercise* Sierpinski triangle w/ gradient colors
 
 ### Higher-order Methods
   * We can make methods values by following the name of the method with the mighty underscore!
@@ -211,21 +210,76 @@
     * Draw many shapes where the function to draw individual shapes is a parameter parameterised by color
     * Fractals doing the same
 
+### Challenge Chapter: Substitution
+  * In this chapter we look deeper into the substitution model.
+  * We have seen that Scala evaluates method parameters before the method is called. This is not the only possibility. We could delay evaluation of parameters until they are used in the method body. Example. This is called *call-by-need* or *lazy* evaluation, whereas the model that Scala uses is called *call-by-value* or *eager* evaluation. Example.
+  * Can we write `if` as a method in a call-by-value language (e.g. Scala)? If yes, how, if not, why not? For simplicity, write `if` as a method where the true and false clauses are expressions that evaluate in an `Int`. Note that `if` is a *reserved word* in Scala, meaning we can't use it for our own method. So we might write a method like
+  
+    `perhaps(condition: Boolean, ifTrue: Int, ifFalse: Int)`
+    
+    Consider this expression `if(1 < 2, 0, {println("foo"); 1})`. (No we can't.)
+    
+    Could we write `if` as a method in a call-by-need language? (Yes!)
+  * Considering only pure expressions to start with, can you find any expression that evaluates to a different value under the two evaluation strategies? (No, they are the same.)
+      
+    Now considering impure expressions (i.e. expressions that have side-effects.) Is there a difference between the two strategies. (Yes!)
+      
+    Which do you think is preferrable when expressions have side-effects? (Open-ended, but the consensus answer is that strict is easier to understand than lazy in the presence of side-effects.)
+  * Name capture in substitution.
+
+### Challenge Chapter: Digital Art
+  * Techniques for digital art
+    * Theme and variation
+      * Symmetry, shape, and color
+      * Naturally applies to recursive images
+      * Mixing the random and the deterministic
+    * Color
+      * complementary and adjacent palettes
+      * saturation and transparency 
+    * Layout using polar coordinates
+    * Examples
+      Spirals
+      Wandering lines
+      Circle of overlapping circles
+      Trees
+  * Using everything you've learned, create an image on the theme of
+    * Drops of water
+    * Soft sunlight
+    * The agony and ecstasy of consciousness in an uncaring universe
+    Show the steps you used to arrive at your final image, and describe how you structured your program to reach the final effect.
+
 ### Animations
   * We're now going to introduce animations. Good use of higher-order functions.
-  * Overview of animation AP
+  * Overview of animation API
     * Streams of events
     * One of these streams is the screen refresh
-    * map. Example 
-    * scan, carry some state---like a recursive function. Example
-    * Exercises
-      * Animate drawing some of the examples we've already seen
-      * Need to think more about these
+    * map. Transform a stream of one type of events into a stream of another type of events. Example.
+    * scan. Transform a stream of one type of events into a stream of another type of events, carrying some state from one step to another. Example.
+    * Sequence transformations together. Example: transform to stream of number, render these numbers of width of a circle.
+  * Exercises
+    * Animate drawing some of the examples we've already seen
+    * Need to think more about these
         
+### Sequences
+  * Collections of objects
+  * List API
+    * Construction
+    * map
+    * scanLeft and foldLeft
+  * Particle Effects
+  
+### Project Chapter
+  * Animation
+  
 ### Case Classes
   * Define our own types
   * A class is a template for creating objects
-  * Particle effects
+  
+### Pattern Matching
+  * Structural recursion over algebraic data types
+  * Keyboard input and join
+
+### Project Chapter
 
 ### Next Steps
   * Translating techniques here into other domains
