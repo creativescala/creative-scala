@@ -30,14 +30,13 @@ The number ⅓ also has an infinite expansion in decimal. As `Doubles` are store
 In general, floating point numbers can lead to nasty surprises if you expect them to act like the reals. They are fine for our purposes in Creative Scala, but don't go using them to write accounting software!
 </div>
 
-Numbers are well and good, but what about text. There is a type in Scala called a `String`, which represents a sequence of characters. We write literal strings by putting their contents in double quotes.
+Numbers are well and good, but what about text. Scala's `String` type represents a sequence of characters. We write literal strings by putting their contents in double quotes.
 
 ```tut:book
 "To be fond of dancing was a certain step towards falling in love."
 ```
 
 Sometimes we want to write strings that span several lines. We can do this by using triple double quotes, as below.
-
 
 ```tut:book
 """
@@ -48,4 +47,17 @@ possession have rendered possible.
 
   -- Ada Lovelace, the world's first programmer
 """
+```
+
+A `String` is a sequence of characters. Characters themselves have a type, `Char`, and character literals are written in single quotes.
+
+```tut:book
+'a'
+```
+
+Finally we'll look at the literal representations of the `Boolean` type, named after English logician [George Boolean](https://en.wikipedia.org/wiki/George_Boole). The fancy name just means a value that can be either `true` or `false`, and this indeed is how we write boolean literals.
+
+```tut:book
+true
+false
 ```
