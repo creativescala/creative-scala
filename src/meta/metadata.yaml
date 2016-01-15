@@ -18,6 +18,8 @@ pages:
   - src/pages/expressions/index.md
   - src/pages/expressions/literals.md
   - src/pages/expressions/objects.md
+  - src/pages/expressions/types.md
+
   - src/pages/expressions/simple.md
   - src/pages/expressions/images.md
   - src/pages/expressions/take-home-points.md
