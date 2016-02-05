@@ -25,6 +25,8 @@ pages:
   - src/pages/expressions/take-home-points.md
   - src/pages/expressions/exercises.md
 
+  - src/pages/pictures/index.md
+
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
