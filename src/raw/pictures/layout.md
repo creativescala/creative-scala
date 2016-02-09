@@ -1,7 +1,6 @@
 ## Layout
 
-We can write expressions to combine images producing more complex images.
-Try the following code---you should see a circle and a rectangle
+We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle
 displayed beside one another:
 
 ~~~ scala
@@ -10,7 +9,7 @@ displayed beside one another:
 
 ![A circle beside a rectangle](src/pages/expressions/circle-beside-rectangle.png)
 
-Doodle contains several layout operators for combining images.
+Doodle contains several layout methods for combining images.
 Try them out now to see what they do:
 
 ----------------------------------------------------------------------------------------
@@ -32,7 +31,9 @@ Operator              Type    Description                Example
                               on top of one another.
 ----------------------------------------------------------------------------------------
 
-**Exercise: Compilation Target**
+## Exercise
+
+#### Compilation Target
 
 Create a line drawing of an archery target with three concentric scoring bands:
 
