@@ -85,7 +85,7 @@ Which of the following expressions will not compile? Of the expressions that wil
 This expression has type `Int` and evaluates to `3`.
 
 
-```tut:fail:book
+```tut:book
 "3".toInt
 ```
 
