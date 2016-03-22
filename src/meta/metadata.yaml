@@ -26,6 +26,7 @@ pages:
   - src/pages/expressions/exercises.md
 
   - src/pages/pictures/index.md
+  - src/pages/pictures/images.md
   - src/pages/pictures/layout.md
   - src/pages/pictures/color.md
   - src/pages/pictures/creating-color.md
