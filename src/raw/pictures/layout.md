@@ -4,7 +4,7 @@ We can seen how to create primitive images. We can combine together images using
 displayed beside one another:
 
 ~~~ scala
-(Circle(10) beside Rectangle(10, 20)).draw
+(circle(10) beside rectangle(10, 20)).draw
 ~~~
 
 ![A circle beside a rectangle](src/pages/expressions/circle-beside-rectangle.png)
@@ -15,19 +15,19 @@ Try them out now to see what they do:
 ----------------------------------------------------------------------------------------
 Operator              Type    Description                Example
 --------------------- ------- -------------------------- -------------------------------
-`Image beside Image`  `Image` Places images horizontally `Circle(10) beside Circle(20)`
+`Image beside Image`  `Image` Places images horizontally `circle(10) beside circle(20)`
                               next to one another.
 
-`Image above Image`   `Image` Places images vertically   `Circle(10) above Circle(20)`
+`Image above Image`   `Image` Places images vertically   `circle(10) above circle(20)`
                               next to one another.
 
-`Image below Image`   `Image` Places images vertically   `Circle(10) below Circle(20)`
+`Image below Image`   `Image` Places images vertically   `circle(10) below circle(20)`
                               next to one another.
 
-`Image on Image`      `Image` Places images centered     `Circle(10) on Circle(20)`
+`Image on Image`      `Image` Places images centered     `circle(10) on circle(20)`
                               on top of one another.
 
-`Image under Image`   `Image` Places images centered     `Circle(10) under Circle(20)`
+`Image under Image`   `Image` Places images centered     `circle(10) under circle(20)`
                               on top of one another.
 ----------------------------------------------------------------------------------------
 
@@ -47,18 +47,18 @@ For bonus credit add a stand so we can place the target on a range:
 The simplest solution is to create three concentric circles using the `on` operator:
 
 ~~~ scala
-(Circle(10) on Circle(20) on Circle(30)).draw
+(circle(10) on circle(20) on circle(30)).draw
 ~~~
 
 For the extra credit we can create a stand using two rectangles:
 
 ~~~ scala
 (
-  Circle(10) on
-  Circle(20) on
-  Circle(30) above
-  Rectangle(6, 20) above
-  Rectangle(20, 6)
+  circle(10) on
+  circle(20) on
+  circle(30) above
+  rectangle(6, 20) above
+  rectangle(20, 6)
 ).draw
 ~~~
 </div>
