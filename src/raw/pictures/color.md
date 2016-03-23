@@ -1,4 +1,12 @@
-### Color
+## Color
+
+```tut:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+```
 
 In addition to layout, Doodle has some simple operators
 to add a splash of colour to our images.
@@ -18,9 +26,8 @@ Operator                Type    Description                 Example
 ---------------------------------------------------------------------------------------------
 
 Doodle has various ways of creating colours.
-The simplest are the predefined colours in [CommonColors.scala][common-colors]
-`shared/src/main/scala/doodle/core/CommonColors.scala`.
-Here are a few of the most important:
+The simplest are the predefined colours in [CommonColors.scala][common-colors].
+Here are a few of the most commonly used:
 
 ------------------------------------------------------------------
 Color                   Type    Example
@@ -40,28 +47,21 @@ Color                   Type    Example
 `Color.brown`           `Color` `Circle(10) fillColor Color.brown`
 ------------------------------------------------------------------
 
-## Exercise
+### Exercise
 
-#### Stay on Target
+#### Evil Eye
 
-Colour your target red and white, the stand in brown (if applicable),
-and some ground in green:
+Make the following image, designed to look like a traditional amulet protecting against the evil eye. I used `cornflowBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
 
-![Colour archery target](src/pages/expressions/target3.png)
+![No evil eyes here!](src/pages/pictures/evil-eye.png)
 
 <div class="solution">
-The trick here is using parentheses to control the order of composition.
-The `fillColor()`, `lineColor()`, and `lineWidth()` methods
-apply to a single image---we need to make sure that image
-comprises the correct set of shapes:
+Here's my amulet:
 
-~~~ scala
-(
-  ( Circle(10) fillColor Color.red ) on
-  ( Circle(20) fillColor Color.white ) on
-  ( Circle(30) fillColor Color.red lineWidth 2 ) above
-  ( Rectangle(6, 20) above Rectangle(20, 6) fillColor Color.brown ) above
-  ( Rectangle(80, 25) lineWidth 0 fillColor Color.green )
-).draw
-~~~
+```tut:book
+((circle(10) fillColor Color.black) on
+ (circle(20) fillColor Color.cornflowerBlue) on
+ (circle(30) fillColor Color.white) on
+ (circle(50) fillColor Color.darkBlue))
+```
 </div>

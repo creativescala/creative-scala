@@ -1,16 +1,12 @@
 ## Creating Colors
 
-<div class="callout callout-info">
-If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
-
-```tut:book
+```tut:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
 import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
-</div>
 
 We've seen how to use predefined colors in our images. What about creating our own colors? In this section we will see how to create colors of our own, and transform existing colors into new ones.
 
@@ -46,9 +42,9 @@ The RGB color representation is not very easy to use. The hue-saturation-lightne
 - *saturation*, which is a number between 0 and 1 giving the intensity of the color from a drab gray to a pure color; and
 - *lightness* between 0 and 1 giving the color a brightness varying from black to pure white.
 
-![A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1.](src/pages/declarations/color-wheel.png)
+![A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1.](src/pages/pictures/color-wheel.png)
 
-![A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right.](src/pages/declarations/saturation.png)
+![A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right.](src/pages/pictures/saturation.png)
 
 We can construct a color in the HSL representation using the `Color.hsl` method. This method takes as parameters the hue, saturation, and lightness. The hue is an `Angle`. We can convert a `Double` to an `Angle` using the `degrees` (or `radians`) methods.
 

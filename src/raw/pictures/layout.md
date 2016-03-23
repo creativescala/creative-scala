@@ -1,5 +1,13 @@
 ## Layout
 
+```tut:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+```
+
 We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle
 displayed beside one another:
 
@@ -31,34 +39,18 @@ Operator              Type    Description                Example
                               on top of one another.
 ----------------------------------------------------------------------------------------
 
-## Exercise
+### Exercises
 
-#### Compilation Target
+#### The Width of a Circle
 
-Create a line drawing of an archery target with three concentric scoring bands:
+Create the following following picture using the layout methods and basic images we've covered so far.
 
-![Simple archery target](src/pages/expressions/target1.png)
-
-For bonus credit add a stand so we can place the target on a range:
-
-![Archery target with a stand](src/pages/expressions/target2.png)
+![The width of a circle](src/pages/pictures/width-of-a-circle.png)
 
 <div class="solution">
-The simplest solution is to create three concentric circles using the `on` operator:
+It's three small circles on top of a bigger circle, and we can just about state this as is in code.
 
-~~~ scala
-(circle(10) on circle(20) on circle(30)).draw
-~~~
-
-For the extra credit we can create a stand using two rectangles:
-
-~~~ scala
-(
-  circle(10) on
-  circle(20) on
-  circle(30) above
-  rectangle(6, 20) above
-  rectangle(20, 6)
-).draw
-~~~
+```tut:book
+(circle(20) beside circle(20) beside circle(20)) on circle(60)
+```
 </div>

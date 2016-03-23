@@ -30,6 +30,7 @@ pages:
   - src/pages/pictures/layout.md
   - src/pages/pictures/color.md
   - src/pages/pictures/creating-color.md
+  - src/pages/pictures/exercises.md
 
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
