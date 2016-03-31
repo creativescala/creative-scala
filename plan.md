@@ -73,6 +73,38 @@
   * Layout
     * above / beside / on
     * at 
+    
+### Writing Larger Programs
+  * We're getting to the point where it's inconvenient to type programs into the console
+  * Saving code to a file and using :load and :paste
+  * Using the console is not going to work for real programs. 
+  * Install sbt
+  * Create a build.sbt
+  * Run sbt
+  * compile, console, run
+  * Adding doodle as a dependency
+  * Code is different in a real program
+    * Can't write methods and vals without wrapping them in an object
+    * objects
+    * imports
+    * packages
+  * Exercises
+    * The archery target
+      * Line drawing
+      * Coloured
+
+### Declarations
+  * We're now going to add the ability to give names to values. We *bind* names to values.
+  * Anywhere we might we use expression we can instead use the name bound to the value the expression evaluates to, if we have previously given it a name. Example.
+  * Names allow us to *abstract* over expressions, replacing repetition of an expression with the name.
+  * This allows us to write simpler programs.
+  * Example: boxes in a line with gradient fill
+  * It also allows us to write programs that were previously impossible
+  * Example: Five boxes in a line with gradient fill starting from random color.
+  * Exercise: Can substitution using names change the meaning of a program? (Give example.) (Like other expressions, we can't substitute where there are side effects)
+  * Scope
+    * There is also a concept of *scope*, which determines which names we can use in which parts of our program. If we can use a name, it is *in scope* or *bound*.
+    * Scala has what is called *lexical scoping*, which basically means if you can find a name declared above where it is used AND in an enclosing block it is in scope. Example.
   * Exercises
     * Make five boxes in a line
     * Fill the boxes so they have a gradient in saturation from left to right. 
@@ -80,25 +112,13 @@
     * Give the circles a line color so they make a rainbow gradient (i.e. from red to violet).
     * Arrange nine boxes in a square
     * Fill the boxes so they have a gradient in saturation from left to right and in hue from top to bottom
-    * The archery target
-      * Line drawing
-      * Coloured
+    * Rainbow nested circles
+    * Gradient grid
+    * Chessboard
+    * Using Math.random() write a program that evaluates to a sequence of gradient filled circle if the random number is < 0.5 and a sequence of gradient filled squares otherwise. Make the color starting the gradient random.
+    * *Challenge Exercise* What happens if we have two bindings with the same name in scope at a given point in the program? Example. (The inner most binding shadows the outermost binding.)
+    * *Challenge Exercise* Why have scoping rules? Why not just make all names visible in all places? (How would we resolve aliasing? How would we control modularity?)
     * *Challenge Exercise* Create a picture of your own devising on the theme of bubbles.
-
-### Conditional Expressions
-  * Conditionals
-    * Evaluate an expression based on some condition
-    * Syntax
-    * Examples
-    * The entire conditional evaluates to the value of the expression that is evaluated
-  * Exercises
-    * Math.random() generates a random number between 0 and 1. This is a side-effect, as it differs everytime we run it. We'll talk more about side-effects in the next section.
-    * Draw a circle with randomly chosen hue, saturation, and lightness.
-    * Draw two circles with randomly chosen hue, saturation, and lightness. This can get tedious. What would make this less tedious? (Functions)
-    * What if we wanted to make a sequence of boxes coloured with a gradient that starts with a randomly chosen color. What do we need to do this? (Functions or names)
-    * Using Math.random() write a program that evaluates to a blue circle if the random number is < 0.5 and a red square otherwise.
-    * Using Math.random() write a program that evaluates to a circle or a square inside a circle. (Emphasising that if is an expression.)
-    * *Challenge Exercise* Add an element of randomness to the picture you created in the previous challenge exercise.
 
 ### The Substitution Model of Evaluation
   * We need to build a mental model of how Scala expressions are evaluated so we can understand what our programs are doing.
@@ -121,41 +141,6 @@
   * Exercises
     * What is the order of evaluation for expressions? (Left to right)
     * What is the order of evaluation for expressions in a block? (left to right and top to bottom)
-
-### Declarations
-  * We're now going to add the ability to give names to values. We *bind* names to values.
-  * Anywhere we might we use expression we can instead use the name bound to the value the expression evaluates to, if we have previously given it a name. Example.
-  * Names allow us to *abstract* over expressions, replacing repetition of an expression with the name.
-  * This allows us to write simpler programs.
-  * Example: boxes in a line with gradient fill
-  * It also allows us to write programs that were previously impossible
-  * Example: Five boxes in a line with gradient fill starting from random color.
-  * Exercise: Can substitution using names change the meaning of a program? (Give example.) (Like other expressions, we can't substitute where there are side effects)
-  * Scope
-    * There is also a concept of *scope*, which determines which names we can use in which parts of our program. If we can use a name, it is *in scope* or *bound*.
-    * Scala has what is called *lexical scoping*, which basically means if you can find a name declared above where it is used AND in an enclosing block it is in scope. Example.
-  * Exercises
-    * Rainbow nested circles
-    * Gradient grid
-    * Chessboard
-    * Using Math.random() write a program that evaluates to a sequence of gradient filled circle if the random number is < 0.5 and a sequence of gradient filled squares otherwise. Make the color starting the gradient random.
-    * *Challenge Exercise* What happens if we have two bindings with the same name in scope at a given point in the program? Example. (The inner most binding shadows the outermost binding.)
-    * *Challenge Exercise* Why have scoping rules? Why not just make all names visible in all places? (How would we resolve aliasing? How would we control modularity?)
-
-### Writing Larger Programs
-  * We're getting to the point where it's inconvenient to type programs into the console
-  * Saving code to a file and using :load and :paste
-  * Using the console is not going to work for real programs. 
-  * Install sbt
-  * Create a build.sbt
-  * Run sbt
-  * compile, console, run
-  * Adding doodle as a dependency
-  * Code is different in a real program
-    * Can't write methods and vals without wrapping them in an object
-    * objects
-    * imports
-    * packages
 
 ### First-order Methods
   * Vals allow us to abstract over values. Methods allow us to abstract over expressions.
@@ -191,7 +176,9 @@
   * Structural recursion over the natural numbers
     * Base case
     * Inductive case
-  * Now we have all the tools to create some interesting pictures
+    * Implementation using pattern matching
+    * Conditional expressions as another form of pattern matching
+    * Semantics of pattern matching / conditional in terms of substituti Now we have all the tools to create some interesting pictures
   * Exercises
     * Gradient sequence of shape with length
     * Concentric circles
