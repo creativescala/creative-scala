@@ -121,3 +121,30 @@ We can also add a degree of transparency to our colors, by adding an *alpha* val
 ```
 
 ![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.png){#fig:pictures:rgb-alpha}
+
+#### Exercises
+
+##### Complementary Triangles
+
+Create three triangles, arranged in a triangle, with complementary colors. Complementary colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:complementary-triangles].
+
+![Complementary triangles. The colors chosen are variations on `darkSlateBlue`](./src/pages/pictures/complementary-triangles.png){#fig:pictures:complementary-triangles}
+
+<div class="solution">
+These sort of examples are getting a bit too long to write out at the console. We'll look at a way around this next.
+
+```tut:book
+((triangle(40, 40)
+       lineWidth 6.0
+       lineColor Color.darkSlateBlue
+       fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin 10.degrees)) above
+  ((triangle(40, 40)
+      lineWidth 6.0
+      lineColor (Color.darkSlateBlue spin (-30.degrees))
+      fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (-20.degrees))) beside
+     (triangle(40, 40)
+        lineWidth 6.0
+        lineColor (Color.darkSlateBlue spin (30.degrees))
+        fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (40.degrees)))))
+```
+</div>
