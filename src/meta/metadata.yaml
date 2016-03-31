@@ -19,10 +19,6 @@ pages:
   - src/pages/expressions/literals.md
   - src/pages/expressions/objects.md
   - src/pages/expressions/types.md
-
-  - src/pages/expressions/simple.md
-  - src/pages/expressions/images.md
-  - src/pages/expressions/take-home-points.md
   - src/pages/expressions/exercises.md
 
   - src/pages/pictures/index.md
