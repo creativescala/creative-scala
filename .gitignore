@@ -12,3 +12,6 @@ Thumbs.db
 /node_modules/
 
 *.sublime-workspace
+
+src/pages/expressions
+src/pages/pictures
