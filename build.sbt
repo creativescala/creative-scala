@@ -1,6 +1,10 @@
 lazy val root = project.in(file("."))
   .settings(tutSettings)
 
+resolvers += Resolver.bintrayRepo("underscoreio", "training")
+
+libraryDependencies += "underscoreio" %% "doodle" % "0.2.0"
+
 tutSourceDirectory := sourceDirectory.value / "raw"
 
 tutTargetDirectory := sourceDirectory.value / "pages"
