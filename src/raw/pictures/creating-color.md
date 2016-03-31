@@ -69,13 +69,9 @@ We can now create colors using the HSL representation.
 Color.hsl(0.degrees, 0.8.normalized, 0.6.normalized) // A pastel red
 ```
 
-To view this color we can render it in a picture. Here's an example.
+To view this color we can render it in a picture. See [@fig:pictures:triangle-pastel-red] for an example.
 
-![Rendering pastel red in a triangle](./src/pages/pictures/triangle-pastel-red.png)
-
-### Transparency
-
-We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value.
+![Rendering pastel red in a triangle](./src/pages/pictures/triangle-pastel-red.png){#fig:pictures:triangle-pastel-red}
 
 ### Manipulating Colors
 
@@ -93,11 +89,11 @@ For example,
     (Circle(100) fillColor Color.red.spin(30.degrees))).lineWidth(5.0)
 ```
 
-produces the following picture
+produces [@fig:pictures:three-circles-spin].
 
-![Three circles, starting with Color.red and spinning by 15 degrees for each successive circle](./src/pages/pictures/three-circles-spin.png)
+![Three circles, starting with Color.red and spinning by 15 degrees for each successive circle](./src/pages/pictures/three-circles-spin.png){#fig:pictures:three-circles-spin}
 
-Here's a similar example, this time manipulating saturation and lightness.
+Here's a similar example, this time manipulating saturation and lightness, shown in [@fig:pictures:saturate-and-lighten].
 
 ```tut:book
 (((circle(20) fillColor (Color.red darken 0.2.normalized))
@@ -107,6 +103,21 @@ Here's a similar example, this time manipulating saturation and lightness.
   beside (rectangle(40,40) fillColor (Color.red desaturate 0.3.normalized))
   beside (rectangle(40,40) fillColor Color.red)))
 ```
-![The top three circles show the effect of changing lighteness, and the bottom three squares show the effect of changing saturation.](./src/pages/pictures/three-circles-spin.png)
+
+![The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation.](./src/pages/pictures/saturate-and-lighten.png){#fig:pictures:saturate-and-lighten}
 
 [^byte]: A byte is a number with 256 possible values, which takes 8 bits within a computer to represent. A signed byte has integer values from -128 to 127, while an unsigned byte ranges from 0 to 255.
+
+
+### Transparency
+
+We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value. We can also create a new color with a different transparency by using the `alpha` method on a color. Here's an example, shown in [@fig:pictures:rgb-alpha].
+
+```tut:book
+((circle(40) fillColor (Color.red.alpha(0.5.normalized))) beside
+ (circle(40) fillColor (Color.blue.alpha(0.5.normalized))) on
+ (circle(40) fillColor (Color.green.alpha(0.5.normalized))))
+
+```
+
+![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.png){#fig:pictures:rgb-alpha}

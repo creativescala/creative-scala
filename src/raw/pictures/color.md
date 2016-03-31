@@ -8,9 +8,7 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-In addition to layout, Doodle has some simple operators
-to add a splash of colour to our images.
-Try these out to see how they work:
+In addition to layout, Doodle has some simple operators to add a splash of colour to our images. Try these out the methods described in [@tbl:pictures:color] to see how they work.
 
 ---------------------------------------------------------------------------------------------
 Operator                Type    Description                 Example
@@ -25,9 +23,11 @@ Operator                Type    Description                 Example
                                 the specified stroke width.
 ---------------------------------------------------------------------------------------------
 
+: Some of the methods to add color to images in Doodle. {#tbl:pictures:color}
+
 Doodle has various ways of creating colours.
 The simplest are the predefined colours in [CommonColors.scala][common-colors].
-Here are a few of the most commonly used:
+Some of the most commonly used are described in [@tbl:pictures:colors].
 
 ------------------------------------------------------------------
 Color                   Type    Example
@@ -47,13 +47,15 @@ Color                   Type    Example
 `Color.brown`           `Color` `Circle(10) fillColor Color.brown`
 ------------------------------------------------------------------
 
-### Exercise
+: Some of the most common predefined colors. {#tbl:pictures:colors}
 
-#### Evil Eye
+#### Exercise
 
-Make the following image, designed to look like a traditional amulet protecting against the evil eye. I used `cornflowBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
+##### Evil Eye
 
-![No evil eyes here!](src/pages/pictures/evil-eye.png)
+Make the image in [@fig:pictures:evil-eye], designed to look like a traditional amulet protecting against the evil eye. I used `cornflowBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
+
+![No evil eyes here!](src/pages/pictures/evil-eye.png){#fig:pictures:evil-eye}
 
 <div class="solution">
 Here's my amulet:

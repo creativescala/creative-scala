@@ -1,16 +1,12 @@
 ## Images
 
-<div class="callout callout-info">
-If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
-
-```tut:book
+```tut:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
 import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
-</div>
 
 Let's start with some simple shapes, programming at the console as we've done before.
 
@@ -20,7 +16,11 @@ Image.circle(10)
 
 What is happening here? `Image` is an object and `circle` a method on that object. We pass to `circle` a parameter, `10` that gives the radius of the circle we're constructing. Note the type of the result---an `Image`.
 
-(We can also write just `circle(10)`, as if you run the console within Doodle it automatically makes this and other methods to construct images available.)
+We can also write just `circle(10)`, as if you run the console within Doodle it automatically makes this and other methods to construct images available.
+
+```tut:book
+circle(10)
+```
 
 We draw the circle by calling the `draw` method.
 
@@ -28,36 +28,37 @@ We draw the circle by calling the `draw` method.
 circle(10).draw
 ```
 
-A window should appear containing the following:
+A window should appear as shown in [@fig:pictures:circle].
 
-![A circle](src/pages/expressions/circle.png)
+![A circle](src/pages/pictures/circle.png){#fig:pictures:circle}
 
-Doodle supports a handful of "primitive" images:
-circles, rectangles, and triangles.
-Let's try drawing a rectangle:
+Doodle supports a handful of "primitive" images: circles, rectangles, and triangles. Let's try drawing a rectangle.
 
 ``` scala
 rectangle(50, 100).draw
 ```
 
-![A rectangle](src/pages/expressions/rectangle.png)
+The output is shown in [@fig:pictures:rectangle].
 
-Finally let's try a triangle:
+![A rectangle](src/pages/pictures/rectangle.png){#fig:pictures:rectangle}
+
+Finally let's try a triangle, for which the output is shown in [@fig:pictures:triangle].
+
 
 ~~~ scala
 triangle(60, 40).draw
 ~~~
 
-![A triangle](src/pages/expressions/triangle.png)
+![A triangle\label{fig:pictures:triangle}](src/pages/pictures/triangle.png)
 
-### Exercises
+#### Exercises
 
-#### I Go Round in Circles
+##### I Go Round in Circles
 
 Create circles that are 1, 10, and 100 units wide. Now draw them!
 
 <div class="solution">
-In this exercise we're checking that our Doodle install is working correctly and we're getting used to using the library.
+In this exercise we're checking that our Doodle install is working correctly and we're getting used to using the library. One of the important points in Doodle is we separate *defining the image* from *drawing the image*. We'll talk more about this throughout the book.
 
 We can create circles with the code below.
 
@@ -77,7 +78,7 @@ circle(100).draw
 </div>
 
 
-#### My Type of Art
+##### My Type of Art
 
 What is the type of a circle? A rectangle? A triangle?
 

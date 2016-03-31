@@ -8,17 +8,15 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle
-displayed beside one another:
+We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle displayed beside one another, as in [@fig:picture:circle-rect].
 
 ~~~ scala
 (circle(10) beside rectangle(10, 20)).draw
 ~~~
 
-![A circle beside a rectangle](src/pages/expressions/circle-beside-rectangle.png)
+![A circle beside a rectangle](src/pages/expressions/circle-beside-rectangle.png){#fig:picture:circle-rect}
 
-Doodle contains several layout methods for combining images.
-Try them out now to see what they do:
+Doodle contains several layout methods for combining images, described in [@tbl:pictures:layout]. Try them out now to see what they do.
 
 ----------------------------------------------------------------------------------------
 Operator              Type    Description                Example
@@ -39,13 +37,18 @@ Operator              Type    Description                Example
                               on top of one another.
 ----------------------------------------------------------------------------------------
 
-### Exercises
+: Layout methods available in Doodle {#tbl:pictures:layout}
 
-#### The Width of a Circle
+#### Exercises
 
-Create the following following picture using the layout methods and basic images we've covered so far.
+<!-- This page break is needed for PDF layout. Without it the "width of a circle" image is laid out so it is partially off the page -->
+\pagebreak
 
-![The width of a circle](src/pages/pictures/width-of-a-circle.png)
+##### The Width of a Circle
+
+Create the picture [@fig:picture:width-of-a-circle] using the layout methods and basic images we've covered so far.
+
+![The width of a circle](src/pages/pictures/width-of-a-circle.png){#fig:picture:width-of-a-circle}
 
 <div class="solution">
 It's three small circles on top of a bigger circle, and we can just about state this as is in code.
