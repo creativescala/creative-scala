@@ -14,7 +14,7 @@ We can seen how to create primitive images. We can combine together images using
 (circle(10) beside rectangle(10, 20)).draw
 ~~~
 
-![A circle beside a rectangle](src/pages/expressions/circle-beside-rectangle.png){#fig:picture:circle-rect}
+![A circle beside a rectangle](src/pages/pictures/circle-beside-rectangle.png){#fig:picture:circle-rect}
 
 Doodle contains several layout methods for combining images, described in [@tbl:pictures:layout]. Try them out now to see what they do.
 
