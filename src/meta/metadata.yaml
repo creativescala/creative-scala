@@ -28,6 +28,10 @@ pages:
   - src/pages/pictures/creating-color.md
   - src/pages/pictures/exercises.md
 
+  - src/pages/programs/index.md
+  - src/pages/programs/console.md
+  - src/pages/programs/outside-console.md
+
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
