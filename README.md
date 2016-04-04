@@ -31,7 +31,7 @@ Creative Scala uses [Underscore's ebook build system][ebook-template].
 The simplest way to build the book is to use [Docker Compose](http://docker.com):
 
 - install Docker Compose (`brew install docker-compose` on OS X; or download from [docker.com](http://docker.com/)); and
-- run `docker-compose run book bash`.
+- run `go.sh` (or `docker-compose run book bash` if `go.sh` doesn't work).
 
 This will open a `bash` shell running inside the Docker container which contains all the dependencies to build the book. From the shell run:
 
