@@ -26,44 +26,19 @@ it is based on universal concepts that can be applied to any business applicatio
 
 ## Building
 
-Creative Scala uses [Underscore's ebook build system][ebook-template],
-which is based on *Node*, *Pandoc*, and *Grunt*.
-You'll need to install the Grunt project dependencies the
-first time you check the project out:
+Creative Scala uses [Underscore's ebook build system][ebook-template].
 
-~~~
-brew install pandoc
-npm install -g grunt-cli coffee-script
-npm install
-~~~
+The simplest way to build the book is to use [Docker Compose](http://docker.com):
 
-You will also need to install *LaTeX* to generate PDF output.
-Mac users are encouraged to install [MacTeX][mactex].
+- install Docker Compose (`brew install docker-compose` on OS X; or download from [docker.com](http://docker.com/)); and
+- run `docker-compose run book bash`.
 
-Once you have installed the required dependencies,
-use the following commands to build a single format.
-Targets are placed in the `dist` directory:
+This will open a `bash` shell running inside the Docker container which contains all the dependencies to build the book. From the shell run:
 
-~~~
-grunt pdf
-grunt html
-grunt epub
-~~~
+- `npm install`; and then
+- `sbt`.
 
-The default behaviour is to build all formats:
-
-~~~
-grunt
-~~~
-
-Run the following to build the HTML format,
-start a local web server,
-and rebuild if you change any files:
-
-~~~
-grunt watch
-~~~
+Within `sbt` you can issue the commands `pdf`, `html`, `epub`, or `all` to build the desired version(s) of the book. Targets are placed in the `dist` directory:
 
 [doodle]: https://github.com/underscoreio/doodle
 [ebook-template]: https://github.com/underscoreio/underscore-ebook-template
-[mactex]: https://tug.org/mactex/
