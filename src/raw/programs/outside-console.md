@@ -1,5 +1,13 @@
 ## Coding Outside the Console
 
+```tut:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+```
+
 The code we've been writing inside the console will cause problems running outside the console. For example, put the following code into `Example.scala` in the Doodle examples directory. 
 
 ```tut:silent
