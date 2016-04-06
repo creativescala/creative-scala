@@ -17,3 +17,16 @@ Enough background. Let's dive in to see:
 Our motivating example for this will be drawing flowers as in [@fig:hof:flower-power].
 
 ![A flower created using the techniques in this chapter](src/pages/hof/flower-power.png){#fig:hof:flower-power}
+
+<div class="callout callout-info">
+If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
+
+```tut:silent
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+```
+</div>
+
