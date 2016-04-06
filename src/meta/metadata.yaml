@@ -32,6 +32,9 @@ pages:
   - src/pages/programs/console.md
   - src/pages/programs/outside-console.md
 
+  - src/pages/hof/index.md
+  - src/pages/hof/parametric-curves.md
+
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
