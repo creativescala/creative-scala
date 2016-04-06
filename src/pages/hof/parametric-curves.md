@@ -46,7 +46,7 @@ def sample(start: Angle, increment: Angle): Image = {
 
 This generates a useful result. [@fig:hof:triangle-circle] shows the result of `sample(0.degrees, 5.degrees)`.
 
-![Triangles arranged in a circle, using the code from `sample` above.][/src/pages/hof/triangle-circle.png]{#fig:hof:triangle-circle}
+![Triangles arranged in a circle, using the code from `sample` above.](src/pages/hof/triangle-circle.png){#fig:hof:triangle-circle}
 
 ### Flowers
 
