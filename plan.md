@@ -75,37 +75,33 @@
     * at 
     
 ### Writing Larger Programs
-  * We're getting to the point where it's inconvenient to type programs into the console
+  * We're getting to the point where it's inconvenient to type programs into the console. In this section we'll learn about two tools for writing larger programs:
+    * saving programs to a file so we can edit them in our editor; and
+    * breaking our program into reusable parts by giving names to values.
   * Saving code to a file and using :load and :paste
   * Using the console is not going to work for real programs. 
-  * Install sbt
-  * Create a build.sbt
-  * Run sbt
-  * compile, console, run
-  * Adding doodle as a dependency
   * Code is different in a real program
     * Can't write methods and vals without wrapping them in an object
     * objects
     * imports
     * packages
+    * This introduces the concept of names, so let's talk more about them
+  * Names
+    * We're now going to add the ability to give names to values. We *bind* names to values.
+    * Anywhere we might we use expression we can instead use the name bound to the value the expression evaluates to, if we have previously given it a name. Example.
+    * Names allow us to *abstract* over expressions, replacing repetition of an expression with the name.
+    * This allows us to write simpler programs.
+    * Example: boxes in a line with gradient fill
+    * It also allows us to write programs that were previously impossible
+    * Example: Five boxes in a line with gradient fill starting from random color.
+    * Exercise: Can substitution using names change the meaning of a program? (Give example.) (Like other expressions, we can't substitute where there are side effects)
+    * Scope
+      * There is also a concept of *scope*, which determines which names we can use in which parts of our program. If we can use a name, it is *in scope* or *bound*.
+      * Scala has what is called *lexical scoping*, which basically means if you can find a name declared above where it is used AND in an enclosing block it is in scope. Example.
   * Exercises
     * The archery target
       * Line drawing
       * Coloured
-
-### Declarations
-  * We're now going to add the ability to give names to values. We *bind* names to values.
-  * Anywhere we might we use expression we can instead use the name bound to the value the expression evaluates to, if we have previously given it a name. Example.
-  * Names allow us to *abstract* over expressions, replacing repetition of an expression with the name.
-  * This allows us to write simpler programs.
-  * Example: boxes in a line with gradient fill
-  * It also allows us to write programs that were previously impossible
-  * Example: Five boxes in a line with gradient fill starting from random color.
-  * Exercise: Can substitution using names change the meaning of a program? (Give example.) (Like other expressions, we can't substitute where there are side effects)
-  * Scope
-    * There is also a concept of *scope*, which determines which names we can use in which parts of our program. If we can use a name, it is *in scope* or *bound*.
-    * Scala has what is called *lexical scoping*, which basically means if you can find a name declared above where it is used AND in an enclosing block it is in scope. Example.
-  * Exercises
     * Make five boxes in a line
     * Fill the boxes so they have a gradient in saturation from left to right. 
     * Make seven nested circles
@@ -115,10 +111,17 @@
     * Rainbow nested circles
     * Gradient grid
     * Chessboard
-    * Using Math.random() write a program that evaluates to a sequence of gradient filled circle if the random number is < 0.5 and a sequence of gradient filled squares otherwise. Make the color starting the gradient random.
+    * Archery target
     * *Challenge Exercise* What happens if we have two bindings with the same name in scope at a given point in the program? Example. (The inner most binding shadows the outermost binding.)
     * *Challenge Exercise* Why have scoping rules? Why not just make all names visible in all places? (How would we resolve aliasing? How would we control modularity?)
     * *Challenge Exercise* Create a picture of your own devising on the theme of bubbles.
+  * Setting up a standalone project
+    * Running code within the Doodle framework is fine for now, but at some point you'll want to setup your own projects. Here's how to do it.
+    * Install sbt
+    * Create a build.sbt
+    * Run sbt
+    * compile, console, run
+    * Adding doodle as a dependency
 
 ### The Substitution Model of Evaluation
   * We need to build a mental model of how Scala expressions are evaluated so we can understand what our programs are doing.
@@ -187,7 +190,16 @@
     * *Challenge Exercise* Sierpinski triangle
     * *Challenge Exercise* Sierpinski triangle w/ gradient colors
 
-### Higher-order Methods
+### Horticulture and Higher-order Methods
+  * In this chapter we're going to learn how to draw flowers and use first-class functions.
+    * Define "first-class"
+  * Flowers
+    * A circle
+    * Parametric equation over angle
+    * If we modulate x and y we'll get something that looks like a flower
+    * Can layout using `at`
+    * How do we abstract over this, so we can add different modulations of radius?
+    * Need to pass a method as a parameter
   * We can make methods values by following the name of the method with the mighty underscore!
   * This is called a function
   * We can also write function literals. Function literal syntax.
