@@ -34,6 +34,7 @@ pages:
 
   - src/pages/hof/index.md
   - src/pages/hof/parametric-curves.md
+  - src/pages/hof/functions.md
 
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
