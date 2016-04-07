@@ -13,13 +13,13 @@ In addition to layout, Doodle has some simple operators to add a splash of colou
 ---------------------------------------------------------------------------------------------
 Operator                Type    Description                 Example
 ----------------------- ------- --------------------------- ---------------------------------
-`Image fillColor Color` `Image` Fills the image with        `Circle(10) fillColor Color.red`
+`Image fillColor Color` `Image` Fills the image with        `circle(10) fillColor Color.red`
                                 the specified colour.
 
-`Image lineColor Color` `Image` Outlines the image with     `Circle(10) lineColor Color.blue`
+`Image lineColor Color` `Image` Outlines the image with     `circle(10) lineColor Color.blue`
                                 the specified colour.
 
-`Image lineWidth Int`   `Image` Outlines the image with     `Circle(10) lineWidth 3`
+`Image lineWidth Int`   `Image` Outlines the image with     `circle(10) lineWidth 3`
                                 the specified stroke width.
 ---------------------------------------------------------------------------------------------
 
@@ -32,19 +32,19 @@ Some of the most commonly used are described in [@tbl:pictures:colors].
 ------------------------------------------------------------------
 Color                   Type    Example
 ----------------------- ------- ----------------------------------
-`Color.red`             `Color` `Circle(10) fillColor Color.red`
+`Color.red`             `Color` `circle(10) fillColor Color.red`
 
-`Color.blue`            `Color` `Circle(10) fillColor Color.blue`
+`Color.blue`            `Color` `circle(10) fillColor Color.blue`
 
-`Color.green`           `Color` `Circle(10) fillColor Color.green`
+`Color.green`           `Color` `circle(10) fillColor Color.green`
 
-`Color.black`           `Color` `Circle(10) fillColor Color.black`
+`Color.black`           `Color` `circle(10) fillColor Color.black`
 
-`Color.white`           `Color` `Circle(10) fillColor Color.white`
+`Color.white`           `Color` `circle(10) fillColor Color.white`
 
-`Color.gray`            `Color` `Circle(10) fillColor Color.gray`
+`Color.gray`            `Color` `circle(10) fillColor Color.gray`
 
-`Color.brown`           `Color` `Circle(10) fillColor Color.brown`
+`Color.brown`           `Color` `circle(10) fillColor Color.brown`
 ------------------------------------------------------------------
 
 : Some of the most common predefined colors. {#tbl:pictures:colors}

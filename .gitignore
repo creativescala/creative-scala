@@ -10,9 +10,14 @@ Thumbs.db
 .rvmrc
 /dist/
 /node_modules/
+.ivy2/
+.sbtopts
+project/
+target/
 
 *.sublime-workspace
 
 src/pages/expressions
 src/pages/pictures
 src/pages/programs
+src/pages/hof

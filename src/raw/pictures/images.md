@@ -51,9 +51,9 @@ triangle(60, 40).draw
 
 ![A triangle\label{fig:pictures:triangle}](src/pages/pictures/triangle.png)
 
-#### Exercises
+#### Exercises {-}
 
-##### I Go Round in Circles
+##### I Go Round in Circles {-}
 
 Create circles that are 1, 10, and 100 units wide. Now draw them!
 
@@ -78,7 +78,7 @@ circle(100).draw
 </div>
 
 
-##### My Type of Art
+##### My Type of Art {-}
 
 What is the type of a circle? A rectangle? A triangle?
 
@@ -95,7 +95,7 @@ They all have type `Image`, as we can tell from the console.
 ```
 </div>
 
-#### Not My Type of Art
+#### Not My Type of Art {-}
 
 What's the type of *drawing* an image? What does this mean?
 

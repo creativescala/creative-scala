@@ -84,9 +84,9 @@ The effectiveness of a composition often depends as much on the relationships be
 For example,
 
 ```tut:book
-((Circle(100) fillColor Color.red) beside 
-  (Circle(100) fillColor Color.red.spin(15.degrees)) beside
-    (Circle(100) fillColor Color.red.spin(30.degrees))).lineWidth(5.0)
+((circle(100) fillColor Color.red) beside 
+  (circle(100) fillColor Color.red.spin(15.degrees)) beside
+    (circle(100) fillColor Color.red.spin(30.degrees))).lineWidth(5.0)
 ```
 
 produces [@fig:pictures:three-circles-spin].
@@ -122,9 +122,9 @@ We can also add a degree of transparency to our colors, by adding an *alpha* val
 
 ![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.png){#fig:pictures:rgb-alpha}
 
-#### Exercises
+#### Exercises {-}
 
-##### Complementary Triangles
+##### Complementary Triangles {-}
 
 Create three triangles, arranged in a triangle, with complementary colors. Complementary colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:complementary-triangles].
 
