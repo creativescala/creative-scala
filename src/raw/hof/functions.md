@@ -1,277 +1,130 @@
 ## Functions
 
-The defining feature of a functional programming programming language
-is the ability to define *functions that are first class values*.
-Scala has special syntax for functions and function types.
-Here's a function that calculates the Pythagoras' formula.
+```tut:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+```
 
-~~~ scala
-(a: Double, b: Double) => math.sqrt(a*a + b*b)
-// res0: (Double, Double) => Double = <function2>
+As the error message above suggests, we can convert any method to a function using the `_` operator and call it with the same parameters.
 
-res0(3, 4)
-// res1: Double = 5.0
-~~~
 
-Because Scala is an object oriented language,
-all first class values are objects.
-This means functions are objects, not methods!
-In fact, functions themselves have useful methods for composition:
+```tut:book
+// Parametric equation for rose with k = 7
+def rose(angle: Angle) =
+  Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)
+  
+rose _
 
-~~~ scala
-(a: Int) => a + 10
-// res0: Int => Int = <function1>
+(rose _)(0.degrees)
+```
 
-(a: Int) => a * 2
-// res1: Int => Int = <function1>
+A function is basically a method, but we can use a function as a first-class value:
 
-res0 andThen res1 // this composes the two functions
-// res2: Int => Int = <function1>
+- we can pass it as an argument to a method or function; 
+- we can return it from a method or function; and
+- we can give it a name using `val`.
 
-res2(5)
-// res3: Int = 30
-~~~
+```tut:book
+val roseFn = rose _
+roseFn(0.degrees)
+```
 
-It may seem surprising and restrictive that Scala methods are not values.
-We can prove this by attempting to refer to a method without invoking it:
 
-~~~ scala
-Color.rgb
-// <console>:20: error: missing arguments for method rgb in object Color;
-// follow this method with `_' if you want to treat it as a partially applied function
-//               Color.rgb
-//                     ^
-~~~
+### Function Types
 
-Fortunately, as the error message above suggests,
-we can convert any method to a function using the `_` operator
-and call it with the same parameters:
+To pass functions to methods we need to know how to write down their types (because when we declare a parameter we have to declare its type).
 
-~~~ scala
-Color.rgb _
-// res4: (Int, Int, Int) => doodle.core.Color = <function3>
+We write a function type like `(A, B) => C` where `A` and `B` are the types of the parameters and `C` is the result type. The same pattern generalises from functions of no arguments to an arbitrary number of arguments.
 
-res4(255, 0, 0)
-// res5: doodle.core.Color = ...
-~~~
-
-## Higher Order Methods and Functions
-
-Why are functions useful?
-We can already use methods to package up and name reusable fragments of code.
-What other advantages do we get from treating code as values?
-
- - we can pass functions as parameters to other functions and methods;
- - we can create methods that return functions as their results.
-
-Let's consider the pattern from the concentric circles exercise as an example:
-
-~~~ scala
-def manyShapes(n: Int): Image =
-  if(n == 1) {
-    singleShape
-  } else {
-    singleShape on manyShapes(n - 1)
-  }
-
-def singleShape: Image = ???
-~~~
-
-This pattern allows us to create many different images
-by changing the definition of `singleShape`.
-However, each time we provide a new definition of `singleShape`,
-we also need a new definition of `manyShapes` to go with it.
-
-We can make `manyShapes` completely general by supplying
-`singleShape` as a parameter:
-
-~~~ scala
-def manyShapes(n: Int, singleShape: Int => Image): Image =
-  if(n == 1) {
-    singleShape(n)
-  } else {
-    singleShape(n) on manyShapes(n - 1, singleShape)
-  }
-~~~
-
-Now we can re-use the same definition of `manyShapes`
-to produce plain circles, circles of different hue,
-circles with different opacity, and so on.
-All we have to do is pass in a suitable definition of `singleShape`:
-
-~~~ scala
-// Passing a function literal directly:
-
-val blackCircles: Image =
-  manyShapes(10, (n: Int) => Circle(50 + 5*n))
-
-// Converting a method to a function:
-
-def redCircle(n: Int): Image =
-  Circle(50 + 5*n) lineColor Color.red
-
-val redCircles: Image =
-  manyShapes(10, redCircle _)
-~~~
+In our example above we want `f` to be a function that accepts two `Int`s as parameters and returns an `Int`. Thus we can write it as `(Int, Int) => Int`.
 
 <div class="callout callout-info">
-*Function Syntax*
+#### Function Type Declaration Syntax {-}
 
-We're introducing a lot of syntax here!
-There's a dedicated section on function syntax in the
-[quick reference](#quick-reference) if you get lost!
+To declare a function type, write
+
+```scala
+(A, B, ...) => C
+```
+
+where
+
+- `A, B, ...` are the types of the input parameters; and
+- `C` is the type of the result.
+
+If a function only has one parameter the parentheses may be dropped:
+
+```scala
+A => B
+```
 </div>
 
-**Exercise: The Colour and the Shape**
 
-Starting with the code below, write color and shape functions
-to produce the following image:
+### Function Literals
 
-![Colours and Shapes](src/pages/fp/colours-and-shapes.png)
+There is a literal syntax for functions. For example, here is a function that adds `42` to its input.
 
-~~~ scala
-def manyShapes(n: Int, singleShape: Int => Image): Image =
-  if(n == 1) {
-    singleShape(n)
-  } else {
-    singleShape(n) on manyShapes(n - 1, singleShape)
-  }
-~~~
+```tut:book
+(x: Int) => x + 42
+```
 
-The `manyShapes` method is equivalent to the
-`concentricCircles` method from previous exercises.
-The main difference is that we pass in
-the definition of `singleShape` as a parameter.
+We can apply the function to an argument in the usual way.
 
-Let's think about the problem a little.
-We need to do two things:
+```tut:book
+val add42 = (x: Int) => x + 42
+add42(0)
+```
 
- 1. write an appropriate definition of `singleShape` for each
-    of the three shapes in the target image;
+<div class="callout callout-info">
+#### Function Literal Syntax {-}
 
- 2. call `manyShapes` three times,
-    passing in the appropriate definition of `singleShape` each time
-    and putting the results `beside` one another.
+The syntax for declaring a function literal is
 
-Let's look at the definition of the `singleShape` parameter in more detail.
-The type of the parameter is `Int => Image`,
-which means a function that accepts an `Int` parameter and returns an `Image`.
-We can declare a method of this type as follows:
+```scala
+(parameter: type, ...) => expression
+```
 
-~~~ scala
-def outlinedCircle(n: Int) =
-  Circle(n * 10)
-~~~
+where
+- the optional `parameter`s are the names given to the function parameters;
+- the `type`s are the types of the function parameters; and
+- the `expression` determines the result of the function.
+</div>
 
-We can pass a reference to this method to `manyShapes` to create
-an image of concentric black outlined circles:
 
-~~~ scala
-manyShapes(10, outlinedCircle).draw
-~~~
+### Functions as Objects
 
-![Many outlined circles](src/pages/fp/colors-and-shapes-step1.png)
+Because Scala is an object oriented language, all first class values are objects.
+This means functions can have methods, including some useful means for composition:
 
-The rest of the exercise is just a matter of copying, renaming,
-and customising this function to produce
-the desired combinations of colours and shapes:
+```tut:book
+val addTen = (a: Int) => a + 10
+val double = (a: Int) => a * 2
+val combined = addTen andThen double // this composes the two functions
+combined(5)
+```
 
-~~~ scala
-def circleOrSquare(n: Int) =
-  if(n % 2 == 0) Rectangle(n*20, n*20) else Circle(n*10)
+#### Exercises {-}
 
-(manyShapes(10, outlinedCircle) beside manyShapes(10, circleOrSquare)).draw
-~~~
+##### Function Types {-}
 
-![Many outlined circles beside many circles and squares](src/pages/fp/colors-and-shapes-step2.png)
-
-For extra credit, when you've written your code to
-create the sample shapes above, refactor it so you have two sets
-of base functions---one to produce colours and one to produce shapes.
-Combine these functions using a *combinator* as follows,
-and use the result of the combinator as an argument to `manyShapes`
-
-~~~ scala
-  def colored(shape: Int => Image, color: Int => Color): Int => Image =
-    (n: Int) => ???
-~~~
+What is the type of the function `roseFn` defined above? What does this type mean?
 
 <div class="solution">
-The simplest solution is to define three `singleShapes` as follows:
-
-~~~ scala
-def manyShapes(n: Int, singleShape: Int => Image): Image =
-  if(n == 1) {
-    singleShape(n)
-  } else {
-    singleShape(n) on manyShapes(n - 1, singleShape)
-  }
-
-def rainbowCircle(n: Int) = {
-  val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
-  val shape = Circle(50 + n*12)
-  shape lineWidth 10 lineColor color
-}
-
-def fadingTriangle(n: Int) = {
-  val color = Color.blue fadeOut (1 - n / 20.0).normalized
-  val shape = Triangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
-}
-
-def rainbowSquare(n: Int) = {
-  val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
-  val shape = Rectangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
-}
-
-val answer =
-  manyShapes(10, rainbowCircle) beside
-  manyShapes(10, fadingTriangle) beside
-  manyShapes(10, rainbowSquare)
-~~~
-
-However, there is some redundancy here:
-`rainbowCircle` and `rainbowTriangle`, in particular,
-use the same definition of `color`.
-There are also repeated calls to `lineWidth(10)` and
-`lineColor(color)` that can be eliminated.
-The extra credit solution factors these out into their own functions
-and combines them with the `colored` combinator:
-
-~~~ scala
-def manyShapes(n: Int, singleShape: Int => Image): Image =
-  if(n == 1) {
-    singleShape(n)
-  } else {
-    singleShape(n) on manyShapes(n - 1, singleShape)
-  }
-
-def colored(shape: Int => Image, color: Int => Color): Int => Image =
-  (n: Int) =>
-    shape(n) lineWidth 10 lineColor color(n)
-
-def fading(n: Int): Color =
-  Color.blue fadeOut (1 - n / 20.0).normalized
-
-def spinning(n: Int): Color =
-  Color.blue desaturate 0.5.normalized spin (n * 30).degrees
-
-def size(n: Int): Double =
-  50 + 12 * n
-
-def circle(n: Int): Image =
-  Circle(size(n))
-
-def square(n: Int): Image =
-  Rectangle(2*size(n), 2*size(n))
-
-def triangle(n: Int): Image =
-  Triangle(2*size(n), 2*size(n))
-
-val answer =
-  manyShapes(10, colored(circle, spinning)) beside
-  manyShapes(10, colored(triangle, fading)) beside
-  manyShapes(10, colored(square, spinning))
-~~~
+The type is `Angle => Point`. This means `roseFn` is a function that takes of single argument of type `Angle` and returns a value of type `Point`. In other words, `roseFn` transforms an `Angle` to a `Point`.
 </div>
+
+##### Function Literals {-}
+
+Write `roseFn` as a function literal.
+
+<div class="solution">
+```tut:book
+val roseFn = (angle: Angle) =>
+  Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)
+```
+</div>
+
+

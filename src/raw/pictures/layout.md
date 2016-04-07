@@ -39,12 +39,12 @@ Operator              Type    Description                Example
 
 : Layout methods available in Doodle {#tbl:pictures:layout}
 
-#### Exercises
+#### Exercises {-}
 
 <!-- This page break is needed for PDF layout. Without it the "width of a circle" image is laid out so it is partially off the page -->
 \pagebreak
 
-##### The Width of a Circle
+##### The Width of a Circle {-}
 
 Create the picture [@fig:picture:width-of-a-circle] using the layout methods and basic images we've covered so far.
 

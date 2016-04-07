@@ -122,9 +122,9 @@ We can also add a degree of transparency to our colors, by adding an *alpha* val
 
 ![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.png){#fig:pictures:rgb-alpha}
 
-#### Exercises
+#### Exercises {-}
 
-##### Complementary Triangles
+##### Complementary Triangles {-}
 
 Create three triangles, arranged in a triangle, with complementary colors. Complementary colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:complementary-triangles].
 
