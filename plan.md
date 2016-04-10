@@ -190,6 +190,23 @@
     * *Challenge Exercise* Sierpinski triangle
     * *Challenge Exercise* Sierpinski triangle w/ gradient colors
 
+### Challenge Chapter: Substitution
+  * In this chapter we look deeper into the substitution model.
+  * We have seen that Scala evaluates method parameters before the method is called. This is not the only possibility. We could delay evaluation of parameters until they are used in the method body. Example. This is called *call-by-need* or *lazy* evaluation, whereas the model that Scala uses is called *call-by-value* or *eager* evaluation. Example.
+  * Can we write `if` as a method in a call-by-value language (e.g. Scala)? If yes, how, if not, why not? For simplicity, write `if` as a method where the true and false clauses are expressions that evaluate in an `Int`. Note that `if` is a *reserved word* in Scala, meaning we can't use it for our own method. So we might write a method like
+  
+    `perhaps(condition: Boolean, ifTrue: Int, ifFalse: Int)`
+    
+    Consider this expression `if(1 < 2, 0, {println("foo"); 1})`. (No we can't.)
+    
+    Could we write `if` as a method in a call-by-need language? (Yes!)
+  * Considering only pure expressions to start with, can you find any expression that evaluates to a different value under the two evaluation strategies? (No, they are the same.)
+      
+    Now considering impure expressions (i.e. expressions that have side-effects.) Is there a difference between the two strategies. (Yes!)
+      
+    Which do you think is preferrable when expressions have side-effects? (Open-ended, but the consensus answer is that strict is easier to understand than lazy in the presence of side-effects.)
+  * Name capture in substitution.
+
 ### Horticulture and Higher-order Methods
   * In this chapter we're going to learn how to draw flowers and use first-class functions.
     * Define "first-class"
@@ -209,22 +226,20 @@
     * Draw many shapes where the function to draw individual shapes is a parameter parameterised by color
     * Fractals doing the same
 
-### Challenge Chapter: Substitution
-  * In this chapter we look deeper into the substitution model.
-  * We have seen that Scala evaluates method parameters before the method is called. This is not the only possibility. We could delay evaluation of parameters until they are used in the method body. Example. This is called *call-by-need* or *lazy* evaluation, whereas the model that Scala uses is called *call-by-value* or *eager* evaluation. Example.
-  * Can we write `if` as a method in a call-by-value language (e.g. Scala)? If yes, how, if not, why not? For simplicity, write `if` as a method where the true and false clauses are expressions that evaluate in an `Int`. Note that `if` is a *reserved word* in Scala, meaning we can't use it for our own method. So we might write a method like
-  
-    `perhaps(condition: Boolean, ifTrue: Int, ifFalse: Int)`
-    
-    Consider this expression `if(1 < 2, 0, {println("foo"); 1})`. (No we can't.)
-    
-    Could we write `if` as a method in a call-by-need language? (Yes!)
-  * Considering only pure expressions to start with, can you find any expression that evaluates to a different value under the two evaluation strategies? (No, they are the same.)
-      
-    Now considering impure expressions (i.e. expressions that have side-effects.) Is there a difference between the two strategies. (Yes!)
-      
-    Which do you think is preferrable when expressions have side-effects? (Open-ended, but the consensus answer is that strict is easier to understand than lazy in the presence of side-effects.)
-  * Name capture in substitution.
+### Composing Shapes, Functions, and Data
+  * In this chapter we learn how to build our own shapes out of the primitive lines and curves that Doodle supplies. As we explore this will learn how to represent sequences of data, such as the sequence of points that define a shape.
+
+### Compositions of Generative Art
+  * In this chapter we'll explore techniques from generative art, which will allow us to explore key concepts for functional programming:
+    - standard methods for composing complex data;
+    - handling side effects while maintaining composition; and
+    - generic types.
+  * Generative art means art where some part of the composition is determined by an autonomous process. Concretely, for us this will mean adding an element of randomness.
+  * How do we add randomness. `math.random`. This is a side-effect. Boo. What do we do? Give up. #yolo. No! We add a new abstraction to handle this.
+  * `Distribution[A]`
+    * What is `Distribution[A]`. A distribution of some type `A`. Something that will produce a value of type `A` when we run it. Example. Two questions? What is `A`. Why do we care?
+      * `A` is a *type parameter* or *generic type*. Like a method parameter. Define / apply distinction. Examples.
+      * 
 
 ### Challenge Chapter: Digital Art
   * Techniques for digital art
