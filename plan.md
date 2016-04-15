@@ -227,7 +227,25 @@
     * Fractals doing the same
 
 ### Composing Shapes, Functions, and Data
-  * In this chapter we learn how to build our own shapes out of the primitive lines and curves that Doodle supplies. As we explore this will learn how to represent sequences of data, such as the sequence of points that define a shape.
+  * In this chapter we learn how to build our own shapes out of the primitive lines and curves that Doodle supplies. As we explore this will learn how to represent sequences of data, such as the sequence of points that define a shape, and manipulate such sequences.
+  * Paths
+    * Paths are sequences of path elements
+    * Path elements
+    * Open and closed paths
+    * Exercise: create open and closed paths demonstrating difference 
+  * My God, It's Full of Stars
+    * Create star paths
+    * Structural recursion over natural numbers---but constructing a List. Nil and ::
+    * Lists have the same structure as natural numbers
+    * We can write these expressions as transformations on lists. Hold that thought!
+  * Structures of Structural Recursion
+    * We keep writing programs that have the same shape---structural recursion
+    * This is good! Our patterns work. They are familiar.
+    * However, this is bad! We keep repeating ourselves.
+    * map
+      * We keep the structure the same
+    * range
+    * fold
 
 ### Compositions of Generative Art
   * In this chapter we'll explore techniques from generative art, which will allow us to explore key concepts for functional programming:
