@@ -38,6 +38,9 @@ pages:
   - src/pages/hof/hof.md
   - src/pages/hof/exercises.md
 
+  - src/pages/sequences/index.md
+  - src/pages/sequences/paths.md
+
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
