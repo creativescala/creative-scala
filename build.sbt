@@ -1,4 +1,4 @@
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -18,7 +18,7 @@ lazy val root = project.in(file("."))
 resolvers += Resolver.bintrayRepo("underscoreio", "training")
 
 libraryDependencies ++= Seq(
-  "underscoreio" %% "doodle" % "0.3.0",
+  "underscoreio" %% "doodle" % "0.4.0",
   "org.typelevel" %% "cats" % "0.4.0"
 )
 
