@@ -40,6 +40,7 @@ pages:
 
   - src/pages/sequences/index.md
   - src/pages/sequences/paths.md
+  - src/pages/sequences/lists.md
 
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md

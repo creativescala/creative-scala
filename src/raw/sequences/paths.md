@@ -93,6 +93,8 @@ List(circle(10), circle(20), circle(30))
 List(Color.paleGoldenrod, Color.paleGreen, Color.paleTurquoise)
 ```
 
+Notice the type of a `List` includes the type of the elements, written in square brackets. So the type of a list of integers is written `List[Int]` and a list of `PathElement` is written `List[PathElement]`.
+
 #### Exercises {-}
 
 ##### Polygons {-}
@@ -102,11 +104,9 @@ Using as few lines as possible, create paths to define a triangle, square, and p
 ![A triangle, square, and pentagon, defined using paths.](./src/pages/sequences/polygons.png){#fig:sequences:polygons}
 
 <div class="solution">
-Using polar coordinates makes it much simpler to define the location of the "corners" (vertices) of the polygons. The interior angle of the vertex for an equilateral triangle is 60 degrees, for a square it is 90 degrees, and for a polygon it is 72 degrees. If we assume each polygon is centered at the origin, each vertex is a (180 - interior angle) degrees rotation from the previous one.
+Using polar coordinates makes it much simpler to define the location of the "corners" (vertices) of the polygons. Each vertex is located an fixed rotation from the previous vertex, and after we've marked all vertices we must have done a full rotation of the circle. This mean, for example, that for a pentagon each vertex is (360 / 5) = 72 degrees from the previous one. If we start at 0 degrees, vertices are located at 0, 72, 144, 216, and 288 degrees. The distance from the origin is fixed in each case. We don't have to draw a line between the final vertex and the start---by using a closed path this will be done for us.
 
-For example, if we're defining a triangle and we decide to draw the first vertex at 0 degrees, the second vertex is at 0 + (180 - 60) = 120 degrees, and the final vertex is at (120 + 120) = 240 degrees. We don't have to draw a line between the final vertex and the start---by using a closed path this will be done for us.
-
-Here's our code to draw [@fig:sequences:polygons], which uses this idea.
+Here's our code to draw [@fig:sequences:polygons], which uses this idea. In some cases we haven't started the vertices at 0 degrees so we can rotate the shape we draw.
 
 ```tut:book
 import doodle.core.Point._
