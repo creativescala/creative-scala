@@ -8,7 +8,7 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-We've seen that using structural recursion we can create and transform lists. This pattern is simple to use and to understand, but it requires we write the same skeleton time and again. In this section we'll learn some ways to remove this boilerplate by using two methods on `List`: `map` and `foldRight`. We'll also see that other useful datatypes provide these methods and we can use them as a common interface for manipulating sequences.
+We've seen that using structural recursion we can create and transform lists. This pattern is simple to use and to understand, but it requires we write the same skeleton time and again. In this section we'll learn that we can replace structural recursion in some cases by using a method on `List` called `map`. We'll also see that other useful datatypes provide this method and we can use it as a common interface for manipulating sequences.
 
 
 ### Transforming the Elements of a List
