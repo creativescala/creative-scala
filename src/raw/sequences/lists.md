@@ -28,7 +28,7 @@ For example, we can write out the list `List(1, 2, 3, 4)` in its "long" form as
 
 Notice the similarity to the natural numbers. Earlier we noted we can expand the structure of a natural number so we could write, say, `3` as `1 + 1 + 1 + 0`. If we replace `+` with `::` and `)` with `Nil` we get the `List` `1 :: 1 :: 1 :: Nil`.
 
-What does this mean? It means we can easily transform a natural number into a `List` using our famililar tool of structural recursion[^free-monoid]. Here's a very simple example, which given a number builds a list of that length containing the `String` "hi".
+What does this mean? It means we can easily transform a natural number into a `List` using our famililar tool of structural recursion[^free-monoid]. Here's a very simple example, which given a number builds a list of that length containing the `String` "Hi".
 
 ```tut:book
 def sayHi(length: Int): List[String] =
@@ -42,7 +42,19 @@ sayHi(5)
 
 [^free-monoid]: This connection goes deeper, to something called the free monoid. This isn't relelvant to Creative Scala but you're encouraged to explore on your own!
 
-This recursive structure also means we can transform lists into other recursive structures, such a natural numbers, different lists, chessboards, and so on. Here we sum the elements of a list of integers---that is, transform a list to a natural number---using structural recursion.
+This recursive structure also means we can transform lists into other recursive structures, such a natural numbers, different lists, chessboards, and so on. Here we increment every element a list---that is, transform a list to a list---using structural recursion.
+
+```tut:book
+def increment(list: List[Int]): List[Int] =
+  list match {
+    case Nil => Nil
+    case hd :: tl => (hd + 1) :: tl
+  }
+  
+increment(List(1, 2, 3))
+```
+
+Here we sum the elements of a list of integers---that is, transform a list to a natural number---using structural recursion.
 
 ```tut:book
 def sum(list: List[Int]): Int =
@@ -240,7 +252,38 @@ fill(3, Color.blue)
 
 ##### Transforming Lists {-}
 
-In these exercises we practice the other side of list manipulation---transforming lists into elements of other types.
+In these exercises we practice the other side of list manipulation---transforming lists into elements of other types (and sometimes, into different lists).
+
+Write a method `double` that accepts a `List[Int]` and returns a list with each element doubled.
+
+```tut:invisible
+def double(list: List[Int]): List[Int] =
+  list match {
+    case Nil => Nil
+    case hd :: tl => (hd * 2) :: double(tl)
+  }
+```
+
+```tut:book
+double(List(1, 2, 3))
+double(List(4, 9, 16))
+```
+
+<div class="solution">
+This is a structural recursion over a list, building a list at each step. The destructuring of the input is mirrored by the construction of the output.
+
+```tut:book
+def double(list: List[Int]): List[Int] =
+  list match {
+    case Nil => Nil
+    case hd :: tl => (hd * 2) :: double(tl)
+  }
+
+double(List(1, 2, 3))
+double(List(4, 9, 16))
+```
+</div>
+
 
 Write a method `product` that accepts a `List[Int]` and calculates the product of all the elements.
 
@@ -377,7 +420,7 @@ reverse(List("a", "b", "c"))
 
 ##### Polygons! {-}
 
-At last, let's return to our example of drawing polygons. Write a method `polygon` that accepts the number of sides of the polygon and the starting rotation and produces a `Image` representing the specified regular polygon. *Hint:* use an interal accumulator.
+At last, let's return to our example of drawing polygons. Write a method `polygon` that accepts the number of sides of the polygon and the starting rotation and produces a `Image` representing the specified regular polygon. *Hint:* use an internal accumulator.
 
 Use this utility to create an interesting picture combining polygon. Our rather unimaginate example is in [@fig:sequences:concentric-polygons]. We're sure you can do better.
 
