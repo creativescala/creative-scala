@@ -357,7 +357,7 @@ def first[A](list: List[A], elt: A): A =
 ```
 
 ```tut:book
-first(Nil, 1)
+first(Nil, 4)
 first(List(1,2,3), 4)
 ```
 
@@ -371,7 +371,7 @@ def first[A](list: List[A], elt: A): A =
     case hd :: tl => hd
   }
   
-first(Nil, 1)
+first(Nil, 4)
 first(List(1,2,3), 4)
 ```
 </div>
