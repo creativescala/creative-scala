@@ -163,7 +163,7 @@ descending(3)
 Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero.
 
 ```tut:invisible
-def ascending(n: Int): List[Int] = {
+def ascending(n: Int): List[Int] =
   (0 until n).toList.map(x => x + 1)
 ```
 
@@ -229,4 +229,23 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   Path.closedPath(MoveTo(polar(size, initialRotation)) :: path)
 }
 ```
+</div>
+
+
+##### Challenge Exercise: Beyond Map {-}
+
+Can we use `map` to replace all uses of structural recursion? If not, can you characterise the problems that we can't implement with `map` but can implement with general structural recursion over lists?
+
+<div class="solution">
+We've seen many examples that we cannot implement with `map`: the methods `product`, `sum`, `find`, and more in the previous section cannot be implemented with `map`.
+
+In abstract, methods implemented with map obey the following equation:
+
+```bash
+List[A] map A => B = List[B]
+```
+
+If the result is not of type `List[B]` we cannot implement it with `map`. For example, methods like `product` and `sum` transform `List[Int]` to `Int` and so cannot be implemented with `map`.
+
+`Map` transforms the elements of a list, but cannot change the number of elements in the result. Even if a method fits the equation for `map` above it cannot be implemented with `map` if it requires changing the number of elements in the list.
 </div>
