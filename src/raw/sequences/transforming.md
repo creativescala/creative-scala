@@ -39,7 +39,7 @@ increment(List(1, 2, 3))
 Each element is transformed by the function we pass to `map`, in this case `x => x + 1`, but we cannot change the number of elements in the list.
 
 
-### Transforming Sequences of Integers
+### Transforming Sequences of Numbers
 
 We have also written a lot of methods that transform a natural number to a list. We briefly discussed how we can represent a natural number as a list. `3` is equivalent to `1 + 1 + 1 + 0`, which in turn we could represent as `List(1, 1, 1)`. So what? Well, it means we could write a lot of the methods that accepts natural numbers as methods that worked on lists.
 
@@ -64,4 +64,169 @@ def fill[A](n: List[Int], a: A): List[A] =
 fill(List(1, 1, 1), "Hi")
 ```
 
-This isn't very convenient though---constructing the list `List(1, 1, 1)` is much more painful than simply writing `3`.
+The implementation of this version of `fill` is more convenient to write, but it is much less convenient for the user to call it with `List(1, 1, ,1)` than just writing `3`.
+
+
+If we want to create long sequences of numbers we are better off using `Ranges`.
+We can create these using the `until` method of `Int` or `Double`:
+
+```tut:book
+0 until 10
+0.0 until 5.0
+```
+
+`Ranges` have a `by` method that allows us to change the step
+between consecutive elements of the range:
+
+```tut:book
+0 until 10 by 2
+0.0 until 1.0 by 0.3
+```
+
+`Ranges` also have a `map` method just like `List`
+
+```tut:book
+(0 until 3) map (x => x + 1) 
+```
+
+You'll notice the result has type `IndexedSeq` is implemented as a `Vector`---two types we haven't seen yet. We can treat an `IndexedSeq` much like a `List`, but for simplicity we can convert a `Range` or an `IndexedSeq` to a `List` using the `toList` method.
+
+```tut:book
+(0 until 7).toList
+(0 until 3).map(x => x + 1).toList
+```
+
+With `Ranges` in our toolbox we can write `fill` as
+
+```tut:book
+def fill[A](n: Int, a: A): List[A] =
+  (0 until n).toList.map(x => a)
+  
+fill(3, "Hi")
+```
+
+#### Exercises {-}
+
+##### Ranges, Lists, and map {-}
+
+Using our new tools, reimplement the following methods.
+
+Write a method called `ones` that accepts an `Int` `n` and returns a `List[Int]` with length `n` and every element is `1`. For example
+
+```tut:invisible
+def ones(n: Int): List[Int] =
+  (0 until n).toList.map(x => 1)
+```
+
+```tut:book
+ones(3)
+```
+
+<div class="solution">
+We can just `map` over a `Range` to achieve this.
+
+```tut:book
+def ones(n: Int): List[Int] =
+  (0 until n).toList.map(x => 1)
+  
+ones(3)
+```
+</div>
+
+
+Write a method `descending` that accepts an natural number `n` and returns a `List[Int]` containing the natural numbers from `n` to `1` or the empty list if `n` is zero. For example
+
+```tut:invisible
+def descending(n: Int): List[Int] =
+  (n until 0 by -1).toList
+```
+
+```tut:book
+descending(0)
+descending(3)
+```
+
+<div class="solution">
+We can use a `Range` but we have to set the step size or the range will be empty.
+
+```tut:book
+def descending(n: Int): List[Int] =
+  (n until 0 by -1).toList
+
+descending(0)
+descending(3)
+```
+
+</div>
+
+
+Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero.
+
+```tut:invisible
+def ascending(n: Int): List[Int] = {
+  (0 until n).toList.map(x => x + 1)
+```
+
+```tut:book
+ascending(0)
+ascending(3)
+```
+
+<div class="solution">
+Again we can use a `Range` but we need to start care of the start at `0` and increment the elements by `1`.
+
+```tut:book
+def ascending(n: Int): List[Int] = 
+  (0 until n).toList.map(x => x + 1)
+  
+ascending(0)
+ascending(3)
+```
+</div>
+
+
+Write a method `double` that accepts a `List[Int]` and returns a list with each element doubled.
+
+```tut:invisible
+def double(list: List[Int]): List[Int] =
+  list map (x => x * 2)
+```
+
+```tut:book
+double(List(1, 2, 3))
+double(List(4, 9, 16))
+```
+
+<div class="solution">
+This is a straightforward application of `map`.
+
+```tut:book
+def double(list: List[Int]): List[Int] =
+  list map (x => x * 2)
+
+double(List(1, 2, 3))
+double(List(4, 9, 16))
+```
+</div>
+
+
+##### Polygons, Again! {-}
+
+Using our new tools, rewrite the `polygon` method from the previous section.
+
+
+<div class="solution">
+Here's one possible implementation. Much easier to read than the previous implementation!
+
+```tut:book
+def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
+  import Point._
+
+  val step = (Angle.One / sides).toDegrees
+  val path = 
+    (0 to 360 by step).toList.map(deg => LineTo(polar(size, deg + initialRotation)))
+    
+  Path.closedPath(MoveTo(polar(size, initialRotation)) :: path)
+}
+```
+</div>
