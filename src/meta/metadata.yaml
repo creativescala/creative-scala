@@ -42,6 +42,7 @@ pages:
   - src/pages/sequences/paths.md
   - src/pages/sequences/lists.md
   - src/pages/sequences/map.md
+  - src/pages/sequences/stars.md
 
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
