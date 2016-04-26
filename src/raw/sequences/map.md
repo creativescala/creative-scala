@@ -67,7 +67,7 @@ fill(List(1, 1, 1), "Hi")
 The implementation of this version of `fill` is more convenient to write, but it is much less convenient for the user to call it with `List(1, 1, ,1)` than just writing `3`.
 
 
-If we want to create long sequences of numbers we are better off using `Ranges`.
+If we want to work with sequences of numbers we are better off using `Ranges`.
 We can create these using the `until` method of `Int` or `Double`:
 
 ```tut:book
@@ -224,9 +224,9 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
 
   val step = (Angle.One / sides).toDegrees
   val path = 
-    (0 to 360 by step).toList.map(deg => LineTo(polar(size, deg + initialRotation)))
+    (0.0 to 360.0 by step).toList.map(deg => LineTo(polar(size, initialRotation + deg)))
     
-  Path.closedPath(MoveTo(polar(size, initialRotation)) :: path)
+  closedPath(MoveTo(polar(size, initialRotation)) :: path)
 }
 ```
 </div>
@@ -249,3 +249,15 @@ If the result is not of type `List[B]` we cannot implement it with `map`. For ex
 
 `Map` transforms the elements of a list, but cannot change the number of elements in the result. Even if a method fits the equation for `map` above it cannot be implemented with `map` if it requires changing the number of elements in the list.
 </div>
+
+
+### A Few More Tools with Ranges
+
+We've seen the `until` method to construct `Ranges`, and the `by` method to change the increment in a `Range`. There is one more method that will be useful to know about: `to`. This constructs a `Range` like `until` but the `Range` includes the endpoint. Compare
+
+```tut:book
+1 until 5
+1 to 5
+```
+
+In technical terms, the `Range` constructed with `until` is a *half-open interval*, while the range constructed with `to` is an *open interval*.
