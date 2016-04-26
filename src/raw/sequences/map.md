@@ -224,7 +224,9 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
 
   val step = (Angle.One / sides).toDegrees
   val path = 
-    (0.0 to 360.0 by step).toList.map(deg => LineTo(polar(size, initialRotation + deg)))
+    (0.0 to 360.0 by step).toList.map{ deg => 
+      LineTo(polar(size, initialRotation + deg.degrees))
+    }
     
   closedPath(MoveTo(polar(size, initialRotation)) :: path)
 }

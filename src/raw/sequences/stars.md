@@ -1,5 +1,13 @@
 ## My God, It's Full of Stars!
 
+```tut:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+```
+
 Let's use our new tool to draw some stars.
 For the purpose of this exercise let's assume that a star is a polygon with `p` points.
 However, instead of connecting each point to its neighbours,
