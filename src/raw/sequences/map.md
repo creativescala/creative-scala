@@ -25,9 +25,7 @@ def increment(list: List[Int]): List[Int] =
 increment(List(1, 2, 3))
 ```
 
-In this example the *structure* of the list doesn't change. If we start with three elements we end with three elements.
-
-We can abstract this pattern in a method called `map`. If we have a list with elements of type `A`, we pass `map` a function of type `A => B` and we get back a list with elements of type `B`. For example, we can implement `increment` using `map` with the function `x => x + 1`.
+In this example the *structure* of the list doesn't change. If we start with three elements we end with three elements. We can abstract this pattern in a method called `map`. If we have a list with elements of type `A`, we pass `map` a function of type `A => B` and we get back a list with elements of type `B`. For example, we can implement `increment` using `map` with the function `x => x + 1`.
 
 ```tut:book
 def increment(list: List[Int]): List[Int] =
@@ -36,7 +34,7 @@ def increment(list: List[Int]): List[Int] =
 increment(List(1, 2, 3))
 ```
 
-Each element is transformed by the function we pass to `map`, in this case `x => x + 1`, but we cannot change the number of elements in the list.
+Each element is transformed by the function we pass to `map`, in this case `x => x + 1`. With `map` we can transform the elements, but we cannot change the number of elements in the list.
 
 
 ### Transforming Sequences of Numbers
@@ -89,7 +87,7 @@ between consecutive elements of the range:
 (0 until 3) map (x => x + 1) 
 ```
 
-You'll notice the result has type `IndexedSeq` is implemented as a `Vector`---two types we haven't seen yet. We can treat an `IndexedSeq` much like a `List`, but for simplicity we can convert a `Range` or an `IndexedSeq` to a `List` using the `toList` method.
+You'll notice the result has type `IndexedSeq` and is implemented as a `Vector`---two types we haven't seen yet. We can treat an `IndexedSeq` much like a `List`, but for simplicity we can convert a `Range` or an `IndexedSeq` to a `List` using the `toList` method.
 
 ```tut:book
 (0 until 7).toList
@@ -173,7 +171,7 @@ ascending(3)
 ```
 
 <div class="solution">
-Again we can use a `Range` but we need to start care of the start at `0` and increment the elements by `1`.
+Again we can use a `Range` but we need to take care to start at `0` and increment the elements by `1` so we have the correct number of elements.
 
 ```tut:book
 def ascending(n: Int): List[Int] = 
@@ -253,7 +251,7 @@ If the result is not of type `List[B]` we cannot implement it with `map`. For ex
 </div>
 
 
-### A Few More Tools with Ranges
+### Tools with Ranges
 
 We've seen the `until` method to construct `Ranges`, and the `by` method to change the increment in a `Range`. There is one more method that will be useful to know about: `to`. This constructs a `Range` like `until` but the `Range` includes the endpoint. Compare
 
@@ -263,3 +261,32 @@ We've seen the `until` method to construct `Ranges`, and the `by` method to chan
 ```
 
 In technical terms, the `Range` constructed with `until` is a *half-open interval*, while the range constructed with `to` is an *open interval*.
+
+#### Exercises {-}
+
+##### Using Open Intervals {-}
+
+Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero. *Hint:* use `to`
+
+```tut:invisible
+def ascending(n: Int): List[Int] =
+  (1 to n).toList
+```
+
+```tut:book
+ascending(0)
+ascending(3)
+```
+
+<div class="solution">
+Now that we now about `to` this is trivial to implement.
+
+```tut:book
+def ascending(n: Int): List[Int] = 
+  (1 to n).toList
+  
+ascending(0)
+ascending(3)
+```
+</div>
+

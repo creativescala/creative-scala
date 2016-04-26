@@ -13,9 +13,9 @@ At this point you might be thinking it would be nice to create a method to draw 
 
 ### The Recursive Structure of Lists
 
-You'll recall when we introduced structural recursion over the natural numbers we said we could transform their recursive structure into any other recursive structure. We demonstrated this for concentric circles are a variety of other patterns.
+You'll recall when we introduced structural recursion over the natural numbers we said we could transform their recursive structure into any other recursive structure. We demonstrated this for concentric circles and a variety of other patterns.
 
-Lists have a recursive structure, and one that is very similar to the struucture of the natural numbers. A `List` is
+Lists have a recursive structure, and one that is very similar to the structure of the natural numbers. A `List` is
 
 - the empty list `Nil`; or
 - a pair of an element `a` and a `List`, written `a :: tail`, where `tail` is the rest of the list.
@@ -26,7 +26,7 @@ For example, we can write out the list `List(1, 2, 3, 4)` in its "long" form as
 1 :: 2 :: 3 :: 4 :: Nil
 ```
 
-Notice the similarity to the natural numbers. Earlier we noted we can expand the structure of a natural number so we could write, say, `3` as `1 + 1 + 1 + 0`. If we replace `+` with `::` and `)` with `Nil` we get the `List` `1 :: 1 :: 1 :: Nil`.
+Notice the similarity to the natural numbers. Earlier we noted we can expand the structure of a natural number so we could write, say, `3` as `1 + 1 + 1 + 0`. If we replace `+` with `::` and `0` with `Nil` we get the `List` `1 :: 1 :: 1 :: Nil`.
 
 What does this mean? It means we can easily transform a natural number into a `List` using our famililar tool of structural recursion[^free-monoid]. Here's a very simple example, which given a number builds a list of that length containing the `String` "Hi".
 
@@ -79,9 +79,9 @@ def length(list: List[Int]): Int =
   }
 ```
 
-Note that we don't do anything with the elements of the list---we don't really care about their type. Using the same code skeleton can just as easily calculate the length of a `List[Int]` as a `List[HairyYak]` but we don't currently know how to write down a the type of a list where we don't care about the type of the elements.
+Note that we don't do anything with the elements of the list---we don't really care about their type. Using the same code skeleton can just as easily calculate the length of a `List[Int]` as a `List[HairyYak]` but we don't currently know how to write down the type of a list where we don't care about the type of the elements.
 
-Scala lets us write method that can work with any type by using what is called a *type variable*. A type variable is written in square brackets like `[A]` and comes after the method name and before the parameter list. A type variable can stand in for any specific type, and we can use it in the parameter list or result type to indicate some type that we don't know up front. For example, here's how we can write `length` so it works with lists of any type.
+Scala lets us write methods that can work with any type, by using what is called a *type variable*. A type variable is written in square brackets like `[A]` and comes after the method name and before the parameter list. A type variable can stand in for any specific type, and we can use it in the parameter list or result type to indicate some type that we don't know up front. For example, here's how we can write `length` so it works with lists of any type.
 
 ```tut:book
 def length[A](list: List[A]): Int =
@@ -119,9 +119,9 @@ where `f` is a problem specific method combining `hd` and result of the recursiv
 
 ##### Building Lists {-}
 
-In these exercises we get some experience constructing lists using structural recursion of the natural numbers.
+In these exercises we get some experience constructing lists using structural recursion on the natural numbers.
 
-Write a method called `ones` that accepts an `Int` `n` and returns a `List[Int]` with length `n` and every element is `1`. For example
+Write a method called `ones` that accepts an `Int` `n` and returns a `List[Int]` with length `n` and every element `1`. For example
 
 ```tut:invisible
 def ones(n: Int): List[Int] =
@@ -422,7 +422,7 @@ reverse(List("a", "b", "c"))
 
 At last, let's return to our example of drawing polygons. Write a method `polygon` that accepts the number of sides of the polygon and the starting rotation and produces a `Image` representing the specified regular polygon. *Hint:* use an internal accumulator.
 
-Use this utility to create an interesting picture combining polygon. Our rather unimaginate example is in [@fig:sequences:concentric-polygons]. We're sure you can do better.
+Use this utility to create an interesting picture combining polygons. Our rather unimaginative example is in [@fig:sequences:concentric-polygons]. We're sure you can do better.
 
 ![Concentric polygons with pastel gradient fill.](./src/pages/sequences/concentric-polygons.png){#fig:sequences:concentric-polygons}
 

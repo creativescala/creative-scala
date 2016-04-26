@@ -10,7 +10,7 @@ import doodle.backend.StandardInterpreter._
 
 All shapes in Doodle are ultimately represented as paths. You can think of a path as giving a sequence of movements for an imaginary pen, starting from the origin. Pen movements come in three varieties:
 
-- moving the pen to the point without drawing a line;
+- moving the pen to a point without drawing a line;
 
 - drawing a straight line from the current position to a point; and
 
@@ -26,6 +26,7 @@ The picture in [@fig:sequences:open-closed-paths] illustrates the components tha
 ![The same paths draw as open (top) and closed (bottom) paths. Notice how the open triangle is not properly joined at the bottom left, and the closed curve inserts a straight line to close the shape.](./src/pages/sequences/open-closed-paths.png){#fig:sequences:open-closed-paths}
 
 [bezier-curve]: https://en.wikipedia.org/wiki/Bézier_curve
+
 
 ### Creating Paths
 
@@ -99,12 +100,12 @@ Notice the type of a `List` includes the type of the elements, written in square
 
 ##### Polygons {-}
 
-Using as few lines as possible, create paths to define a triangle, square, and pentagon. Your image might look like [@fig:sequences:polygons]. *Hint:* you might find it easier to use polar coordinates to define the polygons.
+Create paths to define a triangle, square, and pentagon. Your image might look like [@fig:sequences:polygons]. *Hint:* you might find it easier to use polar coordinates to define the polygons.
 
 ![A triangle, square, and pentagon, defined using paths.](./src/pages/sequences/polygons.png){#fig:sequences:polygons}
 
 <div class="solution">
-Using polar coordinates makes it much simpler to define the location of the "corners" (vertices) of the polygons. Each vertex is located an fixed rotation from the previous vertex, and after we've marked all vertices we must have done a full rotation of the circle. This mean, for example, that for a pentagon each vertex is (360 / 5) = 72 degrees from the previous one. If we start at 0 degrees, vertices are located at 0, 72, 144, 216, and 288 degrees. The distance from the origin is fixed in each case. We don't have to draw a line between the final vertex and the start---by using a closed path this will be done for us.
+Using polar coordinates makes it much simpler to define the location of the "corners" (vertices) of the polygons. Each vertex is located a fixed rotation from the previous vertex, and after we've marked all vertices we must have done a full rotation of the circle. This means, for example, that for a pentagon each vertex is (360 / 5) = 72 degrees from the previous one. If we start at 0 degrees, vertices are located at 0, 72, 144, 216, and 288 degrees. The distance from the origin is fixed in each case. We don't have to draw a line between the final vertex and the start---by using a closed path this will be done for us.
 
 Here's our code to draw [@fig:sequences:polygons], which uses this idea. In some cases we haven't started the vertices at 0 degrees so we can rotate the shape we draw.
 
@@ -154,7 +155,7 @@ Repeat the exercise above, but this time use curves instead of straight lines to
 ![A curvy triangle, square, and polygon, defined using paths.](./src/pages/sequences/curved-polygons.png){#fig:sequences:curved-polygons}
 
 <div class="solution">
-The core of the exercise is to replace the `LineTo` expressions with `BezierCurveTo`. We can abstract curve creation into a method that takes the starting angle and the angle increment, and constructs control points at predetermined points along the rotation. This is what we did in the method `curve` below, and it gives us consistent looking curves without having to manually repeat the calculations each time. Making this abstraction also makes it easier to play around with different control points to create different shapes.
+The core of the exercise is to replace the `LineTo` expressions with `BezierCurveTo`. We can abstract curve creation into a method that takes the starting angle and the angle increment, and constructs control points at predetermined points along the rotation. This is what we did in the method `curve` below, and it gives us consistent looking curves without having to manually repeat the calculations each time. Making this abstraction also makes it easier to play around with different control points to create different outcomes.
 
 ```tut:book
 import doodle.core.Point._

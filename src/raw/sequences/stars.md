@@ -8,7 +8,7 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-Let's use our new tool to draw some stars.
+Let's use our new tools to draw some stars.
 For the purpose of this exercise let's assume that a star is a polygon with `p` points.
 However, instead of connecting each point to its neighbours,
 we'll connect them to the `nth` point around the circumference.
@@ -34,6 +34,8 @@ Here's the `star` method. We've renamed `p` and `n` to `points` and `skip` for c
 
 ```tut:book
 def star(sides: Int, skip: Int, radius: Double): Image = {
+  import Point._
+
   val rotation = 360.degrees * skip / sides
 
   val start = MoveTo(polar(radius, 0.degrees))
@@ -55,8 +57,16 @@ def allBeside(images: List[Image]): Image =
 ```
 
 We'll use `allBeside` to create the row of stars.
-We only need to use values of `skip`
+To create the picture we only need to use values of `skip`
 from `1` to `sides/2` rounded down. For example:
+
+```tut:invisible
+def allBeside(imgs: List[Image]): Image =
+  imgs match {
+    case Nil => Image.empty
+    case hd :: tl => hd beside allBeside(tl)
+  }
+```
 
 ```tut:book
 allBeside(
@@ -77,10 +87,11 @@ There is an example in [@fig:sequences:stars2]. *Hint:* You will need to create 
 To create the image in [@fig:sequences:stars2] we started by creating a method to style  a star.
 
 ```tut:book
-def style(img: Image, hue: Angle): Image =
+def style(img: Image, hue: Angle): Image = {
   img.
     lineColor(Color.hsl(hue, 1.normalized, .25.normalized)).
     fillColor(Color.hsl(hue, 1.normalized, .75.normalized))
+}
 ```
 
 We then created `allAbove`, which you will notice is very similar to `allBeside` (wouldn't it be nice if we could abstract this pattern?)
