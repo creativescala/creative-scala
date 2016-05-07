@@ -44,6 +44,11 @@ pages:
   - src/pages/sequences/map.md
   - src/pages/sequences/stars.md
 
+  - src/pages/generative/index.md
+  - src/pages/generative/generative.md
+  - src/pages/generative/random.md
+  - src/pages/generative/product.md
+
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
