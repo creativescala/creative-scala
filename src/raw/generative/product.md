@@ -117,16 +117,67 @@ Using the same box notation we saw in the previous chapter we can describe the a
 
 ![The product operator illustrated with boxes and shapes](./src/pages/generative/applicative.png){#fig:generative:applicative}
 
-We can use the product operator with `List` as shown below.
+We can use the product operator with `List` as shown below. Before doing so, think about what you'd expect if we merge two lists using `|@|`. According to our box diagram we should get a `List` where is each element is the result of merging elements from the two lists (and we haven't exactly defined what this merging is).
 
 ```tut:book
 import cats.std.list._
 val merged = List(1, 2, 3) |@| List(4, 5)
 ```
 
-This isn't giving us much insight. 
+This isn't giving us much insight. What is the type `CartesianBuilder` doing here? For technical reasons these things exist in the implementation of product. We can get back a result that coincides with our model if we call the `tupled` method.
 
-To start thinking about the product operator let's return to lists, which are a bit more concrete than `Random`. We know a list contains zero or more elements. We can abstract away details to just the type `List[A]`, being a list containing zero or more elements of type `A`. We can draw this in a picture using the boxes and circles notation
+```tut:book
+val merged = (List(1, 2, 3) |@| List(4, 5)).tupled
+```
+
+This makes more sense! The result is a `List` where the first element of the left-hand list has been paired with all the elements of the right-hand list, then the second element, and so on.
+
+How exactly have the elements been paired? They are stored in an object called a *tuple*. A tuple is just a container that lets us store a fixed number of elements of different types together. Here are some examples.
+
+```tut:book
+("freakout", 1)
+("in", 2, 4.0)
+("moonage", 42, circle(10), "daydream")
+```
+
+We can construct tuples using the syntax above. What about deconstructing them? For this we can use pattern matching.
+
+```tut:book
+("a", "b", "c") match {
+  case (x, y, z) => s"$x $y $z"
+}
+```
+
+Now we can say more precisely what the product operator is doing to the values in the boxes: it tuples them together.
+
+Now let's return to `Random`. What is the product operator doing here? `Random[A] |@| Random[B]` is merging together two programs or computations, one producing a value of type `A` at the random, and the other producing a value of type `B` at random. The result is a program that produces at random a value of type `(A, B)`. Once we have a box containing a value of `(A, B)` we can `map` over it to perform a deterministic transform. This is exactly what we did in `randomConcentricCircles`.
+
+Finally, we should ask if this means we can pass, say, a tuple of two elements to a function that expects two parameters. Let's answer this experimentally.
+
+```tut:book
+val f = (a: Int, b: Int) => a + b
+val tuple = (1, 2)
+```
+
+```tut:fail:book
+f(tuple)
+```
+
+We cannot. We'd have to write something like
+
+```tut:book
+val tupleToF = (in: (Int, Int)) => {
+    in match {
+      case (a, b) => f(a, b)
+    }
+}
+
+tupleToF(tuple)
+```
+
+This explains why we saw the `CartesianBuilder` when we first used the product operator---it converts tuples into function calls like `tupleToF` above.
+
+That's quite a lengthy explanation. The good news if we don't ever run into this if we just immediately `map` over the result of using the product operator, which is the usual case.
 
 [^esoteric]: You really want to know the estorica? Ok! There are four operators associated with the "applicative functor", the abstraction we are using. They are `|@|`, `<*>`, `*>`, and `<*`. The first two are clearly a TIE figher and a TIE interceptor respectively, and the latter two are a TIE interceptor after tangling with the Millenium Falcon (as at the end of A New Hope.) These goofy symbols are mostly found in [the paper][idiom] that introduced the concept but failed to make the connection to Star Wars.
 
