@@ -36,6 +36,14 @@ increment(List(1, 2, 3))
 
 Each element is transformed by the function we pass to `map`, in this case `x => x + 1`. With `map` we can transform the elements, but we cannot change the number of elements in the list.
 
+We find a graphical notation helps with understanding `map`. If we had some type `Circle` we can draw a `List[Circle]` as a box containing a circle, as shown in [@fig:sequences:circle-box].
+
+![A `List[Circle]` representing by a circle within a box](./src/pages/sequences/circle-box.png){#fig:sequences:circle-box}
+
+Now we can draw an equation for `map` as in [@fig:sequences:map]. If you prefer symbols instead of pictures, the picture is showing that `List[Circle] map (Circle => Triangle) = List[Triangle]`. This is exactly what holds at the type level for `map`. One feature of the graphical representation is it nicely illustrates that `map` cannot create a new "box", which represents the structure of the list---or more concretely the number of elements and their order.
+
+![`map` shown graphically](./src/pages/sequences/map.png){#fig:sequences:map}
+
 
 ### Transforming Sequences of Numbers
 

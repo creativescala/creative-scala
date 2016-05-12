@@ -41,15 +41,19 @@ def randomCircle(r: Double, color: Random[Color]): Random[Image] =
 
 Our first step might be to replace `circle` with `randomCircle` like so
 
-```tut:fail:book
+```tut:book
 val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+```
 
+```tut:fail:book
 def randomConcentricCircles(n: Int): Random[Image] =
   n match {
     case 0 => randomCircle(10, randomPastel)
     case n => randomConcentricCircles(n-1) on randomCircle(n*10, randomPastel)
   }
 ```
+
+Note that `randomConcentricCircles` returns a `Random[Image]`.
 
 This does not compile, due to the line
 
@@ -98,8 +102,33 @@ def randomConcentricCircles(n: Int): Random[Image] =
   }
 ```
 
-So what is this strange `|@|`, what is it doing, and most importantly, what do we call it? We now turn to these issues.
+Example output is shown in [@fig:generative:random-concentric-circles].
+
+![The output of one run of `randomConcentricCircles(10).run().draw`](./src/pages/generative/random-concentric-circles.png){#fig:generative:random-concentric-circles}
+
+So what is this strange `|@|`, how does it work, and most importantly, what do we call it? We now turn to these issues.
+
 
 ### The Product Operator
 
+I call `|@|` the *product operator*, or occasionally the *TIE fighter*. You might see other names used (but they are wrong, for estoric reasons[^esoteric]).
+
+Using the same box notation we saw in the previous chapter we can describe the action of the product operator with [@fig:generative:applicative]. This tells us that the product operator merges together boxes and elements. What exactly do we mean by merging? Let's see an example using `List` to help clear it up.
+
+![The product operator illustrated with boxes and shapes](./src/pages/generative/applicative.png){#fig:generative:applicative}
+
+We can use the product operator with `List` as shown below.
+
+```tut:book
+import cats.std.list._
+val merged = List(1, 2, 3) |@| List(4, 5)
+```
+
+This isn't giving us much insight. 
+
+To start thinking about the product operator let's return to lists, which are a bit more concrete than `Random`. We know a list contains zero or more elements. We can abstract away details to just the type `List[A]`, being a list containing zero or more elements of type `A`. We can draw this in a picture using the boxes and circles notation
+
+[^esoteric]: You really want to know the estorica? Ok! There are four operators associated with the "applicative functor", the abstraction we are using. They are `|@|`, `<*>`, `*>`, and `<*`. The first two are clearly a TIE figher and a TIE interceptor respectively, and the latter two are a TIE interceptor after tangling with the Millenium Falcon (as at the end of A New Hope.) These goofy symbols are mostly found in [the paper][idiom] that introduced the concept but failed to make the connection to Star Wars.
+
 [cats]: http://typelevel.org/cats
+[idiom]: http://strictlypositive.org/Idiom.pdf
