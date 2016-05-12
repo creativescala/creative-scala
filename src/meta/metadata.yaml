@@ -14,6 +14,8 @@ exercises:
   name: "doodle"
 pages:
   - src/pages/intro/index.md
+
+  - src/pages/setup/index.md
  
   - src/pages/expressions/index.md
   - src/pages/expressions/literals.md
@@ -31,6 +33,12 @@ pages:
   - src/pages/programs/index.md
   - src/pages/programs/console.md
   - src/pages/programs/outside-console.md
+
+  - src/pages/substitution/index.md
+
+  - src/pages/methods/index.md 
+
+  - src/pages/recursion/index.md 
 
   - src/pages/hof/index.md
   - src/pages/hof/parametric-curves.md
