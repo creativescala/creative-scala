@@ -48,6 +48,7 @@ pages:
   - src/pages/generative/generative.md
   - src/pages/generative/random.md
   - src/pages/generative/product.md
+  - src/pages/generative/api.md
   - src/pages/generative/exercises.md
 
   - src/pages/declarations/index.md

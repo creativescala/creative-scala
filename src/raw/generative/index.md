@@ -6,6 +6,8 @@ In this chapter we'll explore techniques from generative art, which will in turn
 - how we can handle side effects without breaking substitution; and
 - some interesting, and possibly beautiful, images that combine elements of structure and randomness.
 
+![An example image generated using the techniques in this chapter](./src/pages/generative/volcano.png){#fig:generative:volcano}
+
 <div class="callout callout-info">
 If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
 

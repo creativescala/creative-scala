@@ -53,7 +53,7 @@ def randomConcentricCircles(n: Int): Random[Image] =
   }
 ```
 
-Note that `randomConcentricCircles` returns a `Random[Image]`.
+(Note that `randomConcentricCircles` returns a `Random[Image]`.)
 
 This does not compile, due to the line
 
@@ -177,9 +177,107 @@ tupleToF(tuple)
 
 This explains why we saw the `CartesianBuilder` when we first used the product operator---it converts tuples into function calls like `tupleToF` above.
 
-That's quite a lengthy explanation. The good news if we don't ever run into this if we just immediately `map` over the result of using the product operator, which is the usual case.
+That's quite a lengthy explanation. The good news is we don't ever run into this if we just immediately `map` over the result of using the product operator, which is the usual case.
 
 [^esoteric]: You really want to know the estorica? Ok! There are four operators associated with the "applicative functor", the abstraction we are using. They are `|@|`, `<*>`, `*>`, and `<*`. The first two are clearly a TIE figher and a TIE interceptor respectively, and the latter two are a TIE interceptor after tangling with the Millenium Falcon (as at the end of A New Hope.) These goofy symbols are mostly found in [the paper][idiom] that introduced the concept but failed to make the connection to Star Wars.
+
+
+### Exercises {-}
+
+Don't forget the following imports when you attempt these exercises.
+
+```tut:book
+import doodle.random._
+import cats.syntax.cartesian._
+```
+
+
+#### Randomness and Randomness {-}
+
+What is the difference between the output of `programOne` and `programTwo` below? Why do
+they differ?
+
+```tut:book
+def randomCircle(r: Double, color: Random[Color]): Random[Image] =
+  color map (fill => Image.circle(r) fillColor fill)
+
+def randomConcentricCircles(n: Int): Random[Image] =
+  n match {
+    case 0 => randomCircle(10, randomPastel)
+    case n =>
+      randomConcentricCircles(n-1) |@| randomCircle(n * 10, randomPastel) map {
+        (circles, circle) => circles on circle
+      }
+  }
+
+val circles = randomConcentricCircles(5)
+val programOne = 
+  (circles |@| circles |@| circles) map { (c1, c2, c3) => c1 beside c2 beside c3 }
+val programTwo =
+  circles map { c => c beside c beside c }
+```
+
+<div class="solution">
+`programOne` displays three different circles in a row, while `programTwo` repeats the same circle three times. The value `circles` represents a program that generates an image of randomly colored concentric circles. Remember `map` represents a deterministic transform, so the output of `programTwo` must be the same same circle repeated thrice as we're not introducing new random choices. In `programOne` we merge `circle` with itself three times. You might think that the output should be only one random image repeated three times, not three, but remember `Random` preserves substitution. We can write `programOne` equivalently as
+
+```tut:book
+val programOne = 
+  (randomConcentricCircles(5) |@| randomConcentricCircles(5) |@| randomConcentricCircles(5)) map { 
+    (c1, c2, c3) => c1 beside c2 beside c3 
+  }
+```
+
+which makes it clearer that we're generating three different circles.
+
+
+#### Colored Boxes {-}
+
+Let's return to a problem from the beginning of the book: drawing colored boxes. This time we're going to make the gradient a little more interesting, by making each color randomly chosen.
+
+Recall the basic structural recursion for making a row of boxes
+
+```tut:book
+def rowOfBoxes(n: Int): Image =
+  n match {
+    case 0 => rectangle(20, 20)
+    case n => rectangle(20, 20) beside rowOfBoxes(n-1)
+  }
+```
+
+Let's alter this, like with did with concentric circles, to have each box filled with a random color. *Hint:* you might find it useful to reuse some of the utilities we created for `randomConcentricCircles`. Example output is shown in [@fig:generative:random-color-boxes].
+
+![Boxes filled with random colors.](./src/pages/generative/random-color-boxes.png){#fig:generative:random-color-boxes}
+
+<div class="solution">
+This code uses exactly the same pattern as `randomConcentricCircles`.
+
+```tut:book
+val randomAngle: Random[Angle] =
+  Random.double.map(x => x.turns)
+
+val randomColor: Random[Color] =
+  randomAngle map (hue => Color.hsl(hue, 0.7.normalized, 0.7.normalized))
+
+def coloredRectangle(color: Color): Image =
+  rectangle(20, 20) fillColor color
+
+def randomColorBoxes(n: Int): Random[Image] =
+  n match {
+    case 0 => randomColor map { c => coloredRectangle(c) }
+    case n =>
+      val box = randomColor map { c => coloredRectangle(c) }
+      val boxes = randomColorBoxes(n-1)
+      (box |@| boxes) map { (b, bs) => b beside bs }
+  }
+```
+</div>
+
+</div>
+
+#### Structured Randomness {-}
+
+We've gone from very structured to very random pictures. It would be nice to find a middle ground that incorporates elements of randomness and structure. 
+
 
 [cats]: http://typelevel.org/cats
 [idiom]: http://strictlypositive.org/Idiom.pdf

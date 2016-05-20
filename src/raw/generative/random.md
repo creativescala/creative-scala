@@ -1,4 +1,4 @@
-## Randomness without the Randomness
+## Randomness without Effect
 
 ```tut:invisible
 import doodle.core._
@@ -51,7 +51,7 @@ val randomAngle: Random[Angle] =
 
 When we `run` `RandomAngle` we can a randomly created `Angle`
 
-``` 
+```tut:book
 randomAngle.run()
 randomAngle.run()
 ```
