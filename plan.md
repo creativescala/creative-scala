@@ -181,7 +181,8 @@
     * Inductive case
     * Implementation using pattern matching
     * Conditional expressions as another form of pattern matching
-    * Semantics of pattern matching / conditional in terms of substituti Now we have all the tools to create some interesting pictures
+    * Semantics of pattern matching / conditional in terms of substitution.
+    * Now we have all the tools to create some interesting pictures
   * Exercises
     * Gradient sequence of shape with length
     * Concentric circles
