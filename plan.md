@@ -225,7 +225,7 @@
   * Exercises
     * Draw many shapes where the function to draw individual shapes is a parameter parameterised by color
     * Fractals doing the same
-
+    
 ### Composing Shapes, Functions, and Data
   * In this chapter we learn how to build our own shapes out of the primitive lines and curves that Doodle supplies. As we explore this will learn how to represent sequences of data, such as the sequence of points that define a shape, and manipulate such sequences.
   * Paths
@@ -247,6 +247,19 @@
     * range
     * fold
 
+### Turtle Algebra and Algebraic Data Types
+  * In this chapter we explore a new way of creating open paths---turtle graphics---and learn some new ways of manipulating lists and functions.
+  * Turtle Graphics
+    * It's often easier to define paths in terms of relative coordinates: say how to far move forward or turn relative to our current location. 
+    * This model is called turtle graphics, developed in the 60s by Seymour Papert in the programming language Logo.
+    * Example of triangle. 
+    * Exercises
+      * Polygons---not much different to doing them with paths
+      * Spirals---much easier to create with turtle graphics
+      * Stars and spirographs---parametric equations again
+      * Branching
+  * L-systems
+
 ### Compositions of Generative Art
   * In this chapter we'll explore techniques from generative art, which will allow us to explore key concepts for functional programming:
     - standard methods for composing complex data;
@@ -257,7 +270,9 @@
   * `Distribution[A]`
     * What is `Distribution[A]`. A distribution of some type `A`. Something that will produce a value of type `A` when we run it. Example. Two questions? What is `A`. Why do we care?
       * `A` is a *type parameter* or *generic type*. Like a method parameter. Define / apply distinction. Examples.
-      * 
+      
+### Rendering Random Processes
+  * In the previous chapter we saw how to add randomness in a way that maintains substitution, and we learn how to combine *independent* random values using the product operator. What we could not do was make one random event depend on the value of another. For example, we could not ... example here ...
 
 ### Challenge Chapter: Digital Art
   * Techniques for digital art
