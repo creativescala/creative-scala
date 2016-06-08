@@ -54,6 +54,7 @@ pages:
 
   - src/pages/turtles/index.md
   - src/pages/turtles/turtles.md
+  - src/pages/turtles/branching.md
 
   - src/pages/generative/index.md
   - src/pages/generative/generative.md
