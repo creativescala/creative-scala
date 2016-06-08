@@ -25,5 +25,6 @@ src/pages/substitution
 src/pages/methods
 src/pages/recursion
 src/pages/hof
+src/pages/turtles
 src/pages/sequences
 src/pages/generative

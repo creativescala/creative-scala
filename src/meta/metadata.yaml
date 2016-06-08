@@ -52,6 +52,9 @@ pages:
   - src/pages/sequences/map.md
   - src/pages/sequences/stars.md
 
+  - src/pages/turtles/index.md
+  - src/pages/turtles/turtles.md
+
   - src/pages/generative/index.md
   - src/pages/generative/generative.md
   - src/pages/generative/random.md
