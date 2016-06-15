@@ -58,7 +58,7 @@ Now we could sample a point on the circle every, say, 1 degree, giving us some f
 
 ```tut:book
 def sample(start: Angle, increment: Angle): Image = {
-  if(start > Angle.One) // Angle.One is one complete turn. I.e. 360 degrees
+  if(start > Angle.one) // Angle.one is one complete turn. I.e. 360 degrees
     Image.empty
   else
     triangle(10, 10) at (parametricCircle(start).toVec) on sample(start+increment, increment)
@@ -71,7 +71,7 @@ If we draw this we'll see a whole lot of triangles on top of each other---the ci
 
 ```tut:book
 def sample(start: Angle, increment: Angle): Image = {
-  if(start > Angle.One) { // Angle.One is one complete turn. I.e. 360 degrees 
+  if(start > Angle.one) { // Angle.one is one complete turn. I.e. 360 degrees 
     Image.empty
   } else {
     val pt = parametricCircle(start)

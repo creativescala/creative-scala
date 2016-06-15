@@ -44,7 +44,7 @@ def parametricCircle(angle: Angle): Point =
 
 ```tut:book
 def sample(start: Angle, increment: Angle, location: Angle => Point): Image = {
-  if(start > Angle.One) // Angle.One is one complete turn. I.e. 360 degrees
+  if(start > Angle.one) // Angle.one is one complete turn. I.e. 360 degrees
     Image.empty
   else
     triangle(10, 10) at location(start).toVec on sample(start+increment, increment, location)
@@ -55,7 +55,7 @@ We might like to abstract out the choice of image primitive (`triangle` above). 
 
 ```tut:book
 def sample(start: Angle, increment: Angle): Image = {
-  if(start > Angle.One) // Angle.One is one complete turn. I.e. 360 degrees
+  if(start > Angle.one) // Angle.one is one complete turn. I.e. 360 degrees
     Image.empty
   else
     triangle(10, 10) at (parametricCircle(start).toVec) on sample(start+increment, increment)
@@ -66,7 +66,7 @@ we could abstract out the base case (`Image.empty`) and the problem specific par
 
 ```tut:book
 def sample(start: Angle, increment: Angle, empty: Image, combine: (Angle, Image) => Image): Image = {
-  if(start > Angle.One) // Angle.One is one complete turn. I.e. 360 degrees
+  if(start > Angle.one) // Angle.one is one complete turn. I.e. 360 degrees
     empty
   else
     combine(start, sample(start+increment, increment, empty, combine))
@@ -97,7 +97,7 @@ def scale(factor: Double): Point => Point =
   }
 
 def sample(start: Angle, increment: Angle, location: Angle => Point): Image = {
-  if(start > Angle.One) // Angle.One is one complete turn. I.e. 360 degrees
+  if(start > Angle.one) // Angle.one is one complete turn. I.e. 360 degrees
     Image.empty
   else
     triangle(10, 10) at location(start).toVec on sample(start+increment, increment, location)
