@@ -40,9 +40,17 @@ We find a graphical notation helps with understanding `map`. If we had some type
 
 ![A `List[Circle]` representing by a circle within a box](./src/pages/sequences/circle-box.png){#fig:sequences:circle-box}
 
-Now we can draw an equation for `map` as in [@fig:sequences:map]. If you prefer symbols instead of pictures, the picture is showing that `List[Circle] map (Circle => Triangle) = List[Triangle]`. This is exactly what holds at the type level for `map`. One feature of the graphical representation is it nicely illustrates that `map` cannot create a new "box", which represents the structure of the list---or more concretely the number of elements and their order.
+Now we can draw an equation for `map` as in [@fig:sequences:map]. If you prefer symbols instead of pictures, the picture is showing that `List[Circle] map (Circle => Triangle) = List[Triangle]`. One feature of the graphical representation is it nicely illustrates that `map` cannot create a new "box", which represents the structure of the list---or more concretely the number of elements and their order.
 
 ![`map` shown graphically](./src/pages/sequences/map.png){#fig:sequences:map}
+
+The graphical drawing of `map` exactly illustrates what holds at the type level for `map`. If we prefer we can write it down symbolically:
+
+```scala
+List[A] map (A => B) = List[B]
+```
+
+The left hand side of the equation has the type of the list we map and the function we use to do the mapping. The right hand is the type of the result. We can perform algebra with this reprsentation, substituting in concrete types from our program.
 
 
 ### Transforming Sequences of Numbers
@@ -228,7 +236,7 @@ Here's one possible implementation. Much easier to read than the previous implem
 def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   import Point._
 
-  val step = (Angle.One / sides).toDegrees
+  val step = (Angle.one / sides).toDegrees
   val path = 
     (0.0 to 360.0 by step).toList.map{ deg => 
       LineTo(polar(size, initialRotation + deg.degrees))
