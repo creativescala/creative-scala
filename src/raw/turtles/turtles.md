@@ -43,23 +43,21 @@ This creates a path---an `Image`---which we can then `draw` in the usual way giv
 The complete list of turtle instructions in given in [@tbl:turtles:instructions]
 
 ---------------------------------------------------------------------------------------------
-Instruction              Description                         Example
------------------------  ----------------------------------- --------------------------------
-`forward(distance)`      Move forward the given `distance`,  `forward(100.0)`
-                         specified as a `Double`.
+Instruction                Description                         Example
+-------------------------- ----------------------------------- --------------------------------
+`forward(distance)`        Move forward the given `distance`,  `forward(100.0)`
+                           specified as a `Double`.
 
-`turn(angle)`            Turn the given `angle` (an `Angle`) `turn(10.degrees)`
-                         from the current heading.
+`turn(angle)`              Turn the given `angle` (an `Angle`) `turn(10.degrees)`
+                           from the current heading.
 
-`branch(instructions)`   Save the current position and       `branch(List(forward(10.0)))`
-                         heading, draw the given
-                         `instructions` 
-                         (a `List[Instruction]`), and
-                         then return to the saved
-                         position to draw the rest
-                         of the instructions.
-                                
-`noop`                   Do nothing!                         `noop`
+`branch(instruction, ...)` Save the current position and       `branch(turn(10.degrees), forward(10))`
+                           heading, draw the given
+                           `instructions` , and then return to
+                           the saved position to draw the rest
+                           of the instructions.
+                                  
+`noop`                     Do nothing!                         `noop`
 ---------------------------------------------------------------------------------------------
 
 : The instructions understood by the turtle. {#tbl:turtles:instructions}
