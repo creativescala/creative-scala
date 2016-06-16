@@ -97,12 +97,12 @@ and this is illustrated graphically in [@fig:turtles:flatMap]. We can see that `
 ![The type equation for flatMap illustrated 
 graphically.](src/raw/turtles/flatMap.pdf+svg){#fig:turtles:flatMap}
 
-When discussing `map` we said that it doesn't allow us to change the number of elements in the `List`. Graphically, we can't create a new "box" using `map`. With `flatMap` we can change the box.
+When discussing `map` we said that it doesn't allow us to change the number of elements in the `List`. Graphically, we can't create a new "box" using `map`. With `flatMap` we can change the box, in the case lists meaning we can change the number of elements in the list.
 
 
 ### Exercises {-}
 
-#### Double
+#### Double {-}
 
 Using `flatMap`, write a method `double` that transforms a `List` to a `List` where every element appears twice. For example
 
@@ -129,7 +129,7 @@ def double[A](in: List[A]): List[A] =
 </div>
 
 
-#### Or Nothing
+#### Or Nothing {-}
 
 Using `flatMap`, write a method `nothing` that transforms a `List` to the empty `List`. For example
 
@@ -230,6 +230,8 @@ def iterate(steps: Int,
 
 #### Plants and Other Creations {-}
 
-Use your imagination to create plants or other interesting shapes using your L-System code. The plant in [@fig:turtles:plant] was created with an L-system. The Koch curve in [@fig:turtles:koch-curve] was also created with a simple L-system.
+Create the pictures shown in [@fig:turtles:branching] and [@fig:turtles-koch-curve] using your L-system implementation.
+
+![Five iterations of the simple branching L-system.](src/raw/turtles/branching.pdf+svg){#fig:turtles:branching}
 
 ![Five iterations of the Koch curve, a fractal that is simple to create with an L-System.](src/raw/turtles/koch-curve.pdf+svg){#fig:turtles:koch-curve}

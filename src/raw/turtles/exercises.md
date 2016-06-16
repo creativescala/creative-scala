@@ -1,5 +1,15 @@
 ## Exercises
 
+```tut:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+import doodle.turtle._
+import doodle.turtle.Instruction._
+```
+
 #### Flat Polygon
 
 Using a `Range` and `flatMap`, rewrite your method to create a polygon. The signature of `polygon` is
@@ -11,13 +21,13 @@ def polygon(sides: Int, sideLength: Double): Image =
 
 
 <div class="solution">
-Using `flatMap` we can make the code more compact the explicit structural recursion we had to use before.
+Using `flatMap` we can make the code more compact than the explicit structural recursion we had to use before.
 
 ```tut:book
 def polygon(sides: Int, sideLength: Double): Image = {
   val rotation = Angle.one / sides
   
-  Turtle.draw((1 to n).toList.flatMap { n =>
+  Turtle.draw((1 to sides).toList.flatMap { n =>
     List(turn(rotation), forward(sideLength))
   })
 }
@@ -39,9 +49,14 @@ Again, the result is more compact than the previous implementation without `flat
 
 ```tut:book
 def squareSpiral(steps: Int, distance: Double, angle: Angle, increment: Double): Image = {
-  Turtle.draw((1 to n).toList.flatMap { n =>
+  Turtle.draw((1 to steps).toList.flatMap { n =>
    List(forward(distance + (n * increment)), turn(angle)) 
   })
 }
 ```
 </div>
+
+
+#### L-System Art
+
+In this exercise we want you to use your creativity to construct a picture of a natural object using your L-system implementation. You've seen many examples already that you can use an inspriation. 
