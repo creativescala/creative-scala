@@ -18,7 +18,7 @@ lazy val root = project.in(file("."))
 resolvers += Resolver.bintrayRepo("underscoreio", "training")
 
 libraryDependencies ++= Seq(
-  "underscoreio" %% "doodle" % "0.6.4",
+  "underscoreio" %% "doodle" % "0.6.5",
   "org.typelevel" %% "cats" % "0.4.0"
 )
 
