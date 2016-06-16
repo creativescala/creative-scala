@@ -165,7 +165,8 @@ def nothing[A](in: List[A]): List[A] =
 Write a method `rewrite` with signature
 
 ```tut:book
-def rewrite(instructions: List[Instruction], rule: Instruction => List[Instruction]): List[Instruction] =
+def rewrite(instructions: List[Instruction], 
+            rule: Instruction => List[Instruction]): List[Instruction] =
   ???
 ```
 
@@ -204,7 +205,9 @@ def rewrite(instructions: List[Instruction], rule: Instruction => List[Instructi
 We're now ready to create a complete L-system. Using `rewrite` from above, create a method `iterate` with signature
 
 ```tut:book
-def iterate(steps: Int, seed: List[Instruction], rule: Instruction => List[Instruction]): List[Instruction] =
+def iterate(steps: Int,
+            seed: List[Instruction], 
+            rule: Instruction => List[Instruction]): List[Instruction] =
   ???
 ```
 
@@ -214,7 +217,9 @@ This should recursively apply `rule` to `seed` for `steps` iterations.
 This is just a simple structural recursion of the natural numbers, with all the hard work done by `rewrite`.
 
 ```tut:book
-def iterate(steps: Int, seed: List[Instruction], rule: Instruction => List[Instruction]): List[Instruction] =
+def iterate(steps: Int, 
+            seed: List[Instruction], 
+            rule: Instruction => List[Instruction]): List[Instruction] =
   steps match {
     case 0 => seed
     case n => iterate(n - 1, rewrite(seed, rule), rule)
