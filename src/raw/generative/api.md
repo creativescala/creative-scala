@@ -67,7 +67,7 @@ double.run
 
 We can also create more complex distributions. Often when using random numbers in generative art, we will choose specific distributions for the shape they provide. For example, [@fig:generative:distributions] shows a thousand random points generated using a uniform, normal (or Gaussian) distribution, and a squared normal distribution respectively.
 
-![Points distributed according to uniform, normal, and squared normal distributions](./src/pages/generative/distributions.pdf+svg){#fig:generative:distributions}
+![Points distributed according to uniform, normal, and squared normal distributions](./src/raw/generative/distributions.pdf+svg){#fig:generative:distributions}
 
 Doodle provides two methods to create normally distributed numbers, from which we can create many other distributions. A normal distribution is defined by two parameters, it's *mean*, which specifies the center of the distribution, and it's *standard deviation*, which determines the spread of the distribution. The corresponding methods in Doodle are
 
