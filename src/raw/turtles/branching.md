@@ -94,9 +94,71 @@ List[A] flatMap (A => List[B]) = List[B]
 
 and this is illustrated graphically in [@fig:turtles:flatMap]. We can see that `flatMap` has the right type to combine `rule` with `List[Instruction]` to create a rewritten `List[Instruction]`.
 
-![The type equation for flatMap illustrated graphically.](src/raw/turtles/flatMap.pdf+svg){#fig:turtles:flatMap}
+![The type equation for flatMap illustrated 
+graphically.](src/raw/turtles/flatMap.pdf+svg){#fig:turtles:flatMap}
+
+When discussing `map` we said that it doesn't allow us to change the number of elements in the `List`. Graphically, we can't create a new "box" using `map`. With `flatMap` we can change the box.
+
 
 ### Exercises {-}
+
+#### Double
+
+Using `flatMap`, write a method `double` that transforms a `List` to a `List` where every element appears twice. For example
+
+```tut:invisible
+def double[A](in: List[A]): List[A] =
+  in.flatMap { x => List(x, x) }
+```
+
+```tut:book
+double(List(1, 2, 3))
+double(List("do", "ray", "me"))
+```
+
+<div class="solution">
+There are two points to this:
+
+- recognising how to use `flatMap`; and
+- remembering how to use type variables.
+
+```tut:book
+def double[A](in: List[A]): List[A] =
+  in.flatMap { x => List(x, x) }
+```
+</div>
+
+
+#### Or Nothing
+
+Using `flatMap`, write a method `nothing` that transforms a `List` to the empty `List`. For example
+
+```tut:invisible
+def nothing[A](in: List[A]): List[A] =
+  in.flatMap { x => List() }
+```
+
+```tut:book
+nothing(List(1, 2, 3))
+nothing(List("do", "ray", "me"))
+```
+
+<div class="solution">
+We could easily write this method as
+
+```tut:book
+def nothing[A](in: List[A]): List[A] =
+  List() // or List.empty or Nil
+```
+
+but the point of this exercise is to get more familiarity with using `flatMap`. With `flatMap` we can write the method as 
+
+```tut:book
+def nothing[A](in: List[A]): List[A] =
+  in.flatMap { x => List.empty }
+```
+</div>
+
 
 #### Rewriting the Rules {-}
 
