@@ -6,7 +6,7 @@
     "url"  : "https://github.com/underscoreio/creative-scala.git"
    },
    "devDependencies": {
-    "underscore-ebook-template": "git+https://github.com/underscoreio/underscore-ebook-template.git#feature/docker"
+    "underscore-ebook-template": "git+https://github.com/underscoreio/underscore-ebook-template.git#0.0.19"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
