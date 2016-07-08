@@ -64,6 +64,10 @@ pages:
   - src/pages/generative/api.md
   - src/pages/generative/exercises.md
 
+  - src/pages/adt/index.md
+  - src/pages/adt/adt.md
+  - src/pages/adt/turtle.md
+
   - src/pages/declarations/index.md
   - src/pages/declarations/value-declarations.md
   - src/pages/declarations/method-declarations.md
