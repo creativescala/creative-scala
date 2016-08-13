@@ -3,8 +3,8 @@
 title: "Creative Scala"
 author: "Dave Gurnell and Noel Welsh"
 license: "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
-date: "December 2016"
-copyright: "2015-2016"
+date: "February 2017"
+copyright: "2015-2017"
 # Used by Pandoc to generate the PDF cover...
 # see src/css/book.css for HTML/ePub covers:
 coverColor: "25AAE1"
@@ -19,6 +19,10 @@ pages:
   - intro/index.md
 
   - setup/index.md
+  - setup/background.md
+  - setup/github.md
+  - setup/terminal.md
+  - setup/intellij.md
  
   - expressions/index.md
   - expressions/literals.md
