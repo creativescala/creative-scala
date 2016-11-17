@@ -26,28 +26,12 @@ tutSourceDirectory := sourceDirectory.value / "raw"
 
 tutTargetDirectory := sourceDirectory.value / "pages"
 
-lazy val pdf = taskKey[Unit]("Build the PDF version of the book")
+lazy val pdf  = taskKey[Unit]("Build the PDF version of the book")
 lazy val html = taskKey[Unit]("Build the HTML version of the book")
 lazy val epub = taskKey[Unit]("Build the ePUB version of the book")
-lazy val all = taskKey[Unit]("Build all versions of the book")
+lazy val all  = taskKey[Unit]("Build all versions of the book")
 
-pdf := {
-  val a = tut.value
-  "grunt pdf" !
-}
-
-html := {
-  val a = tut.value
-  "grunt html" !
-}
-
-epub := {
-  val a = tut.value
-  "grunt epub" !
-}
-
-
-all := {
-  val a = tut.value
-  "grunt all" !
-}
+pdf  := { tutQuick.value ; "grunt pdf" !  }
+html := { tutQuick.value ; "grunt html" ! }
+epub := { tutQuick.value ; "grunt epub" ! }
+all  := { tutQuick.value ; "grunt all" !  }
