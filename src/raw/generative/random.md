@@ -28,7 +28,7 @@ val randomDouble = Random.double
 No random numbers are actually created until we call the `run` method.
 
 ```tut:book
-randomDouble.run()
+randomDouble.run
 ```
 
 The type `Random[Double]` indicates we have something that will produce a random `Double` when we `run` it. Just like with `Image` and `draw`, substitution holds with `Random` up until the point we call `run`.
@@ -52,8 +52,8 @@ val randomAngle: Random[Angle] =
 When we `run` `RandomAngle` we can a randomly created `Angle`
 
 ```tut:book
-randomAngle.run()
-randomAngle.run()
+randomAngle.run
+randomAngle.run
 ```
 
 #### Exercises {-}

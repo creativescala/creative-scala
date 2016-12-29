@@ -2,7 +2,9 @@
 # Used by Pandoc to print covers:
 title: "Creative Scala"
 author: "Dave Gurnell and Noel Welsh"
-date: "January 2016"
+license: "Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License"
+date: "December 2016"
+copyright: "2015-2016"
 # Used by Pandoc to generate the PDF cover...
 # see src/css/book.css for HTML/ePub covers:
 coverColor: "25AAE1"
@@ -13,77 +15,77 @@ exercises:
   repo: "git@github.com:underscoreio/doodle.git"
   name: "doodle"
 pages:
-  - src/pages/intro/index.md
+  - intro/index.md
 
-  - src/pages/setup/index.md
+  - setup/index.md
  
-  - src/pages/expressions/index.md
-  - src/pages/expressions/literals.md
-  - src/pages/expressions/objects.md
-  - src/pages/expressions/types.md
-  - src/pages/expressions/exercises.md
+  - expressions/index.md
+  - expressions/literals.md
+  - expressions/objects.md
+  - expressions/types.md
+  - expressions/exercises.md
 
-  - src/pages/pictures/index.md
-  - src/pages/pictures/images.md
-  - src/pages/pictures/layout.md
-  - src/pages/pictures/color.md
-  - src/pages/pictures/creating-color.md
-  - src/pages/pictures/exercises.md
+  - pictures/index.md
+  - pictures/images.md
+  - pictures/layout.md
+  - pictures/color.md
+  - pictures/creating-color.md
+  - pictures/exercises.md
 
-  - src/pages/programs/index.md
-  - src/pages/programs/console.md
-  - src/pages/programs/outside-console.md
+  - programs/index.md
+  - programs/console.md
+  - programs/outside-console.md
 
-  - src/pages/substitution/index.md
+  - substitution/index.md
 
-  - src/pages/methods/index.md 
+  - methods/index.md 
 
-  - src/pages/recursion/index.md 
+  - recursion/index.md 
 
-  - src/pages/hof/index.md
-  - src/pages/hof/parametric-curves.md
-  - src/pages/hof/functions.md
-  - src/pages/hof/hof.md
-  - src/pages/hof/exercises.md
+  - hof/index.md
+  - hof/parametric-curves.md
+  - hof/functions.md
+  - hof/hof.md
+  - hof/exercises.md
 
-  - src/pages/sequences/index.md
-  - src/pages/sequences/paths.md
-  - src/pages/sequences/lists.md
-  - src/pages/sequences/map.md
-  - src/pages/sequences/stars.md
+  - sequences/index.md
+  - sequences/paths.md
+  - sequences/lists.md
+  - sequences/map.md
+  - sequences/stars.md
 
-  - src/pages/turtles/index.md
-  - src/pages/turtles/turtles.md
-  - src/pages/turtles/branching.md
-  - src/pages/turtles/exercises.md
+  - turtles/index.md
+  - turtles/turtles.md
+  - turtles/branching.md
+  - turtles/exercises.md
 
-  - src/pages/generative/index.md
-  - src/pages/generative/generative.md
-  - src/pages/generative/random.md
-  - src/pages/generative/product.md
-  - src/pages/generative/api.md
-  - src/pages/generative/exercises.md
+  - generative/index.md
+  - generative/generative.md
+  - generative/random.md
+  - generative/product.md
+  - generative/api.md
+  - generative/exercises.md
 
-  - src/pages/adt/index.md
-  - src/pages/adt/adt.md
-  - src/pages/adt/turtle.md
+  - adt/index.md
+  - adt/adt.md
+  - adt/turtle.md
 
-  - src/pages/declarations/index.md
-  - src/pages/declarations/value-declarations.md
-  - src/pages/declarations/method-declarations.md
-  - src/pages/declarations/color-palette.md
-  - src/pages/declarations/take-home-points.md
-  - src/pages/fp/index.md
-  - src/pages/fp/recursion.md
-  - src/pages/fp/functions.md
-  - src/pages/fp/take-home-points.md
-  - src/pages/collections/index.md
-  - src/pages/collections/create.md
-  - src/pages/collections/transform.md
-  - src/pages/collections/paths.md
-  - src/pages/collections/take-home-points.md
-  - src/pages/summary/index.md
-  - src/pages/quickreference/index.md
-  - src/pages/solutions.md
-  - src/pages/links.md
+  - declarations/index.md
+  - declarations/value-declarations.md
+  - declarations/method-declarations.md
+  - declarations/color-palette.md
+  - declarations/take-home-points.md
+  - fp/index.md
+  - fp/recursion.md
+  - fp/functions.md
+  - fp/take-home-points.md
+  - collections/index.md
+  - collections/create.md
+  - collections/transform.md
+  - collections/paths.md
+  - collections/take-home-points.md
+  - summary/index.md
+  - quickreference/index.md
+  - solutions.md
+  - links.md
 ...
