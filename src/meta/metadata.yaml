@@ -41,6 +41,10 @@ pages:
   - methods/index.md 
 
   - recursion/index.md 
+  - recursion/boxes.md 
+  - recursion/match.md 
+  - recursion/match.md 
+  - recursion/natural-numbers.md 
 
   - hof/index.md
   - hof/parametric-curves.md
