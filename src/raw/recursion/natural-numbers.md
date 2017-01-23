@@ -254,6 +254,21 @@ No hints this time.
 We've already seen everything we need to know.
 
 <div class="solution">
-The answer has the same structure as `chessboard`.
+The key step is to recognise that the basic unit of the Sierpinski triangle is `triangle above (triangle beside triangle)`.
+Once we've worked this out, the code has exactly the same structure as `chessboard`.
+Here's our implementation.
+
+```tut:book
+
+def sierpinski(count: Int): Image = {
+  val triangle = Image.triangle(10, 10) lineColor Color.magenta
+  count match {
+    case 0 => triangle above (triangle beside triangle)
+    case n =>
+      val unit = sierpinski(n-1)
+      unit above (unit beside unit)
+  }
+}
+```
 
 </div>
