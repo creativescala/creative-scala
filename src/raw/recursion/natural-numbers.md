@@ -103,6 +103,19 @@ where `<Result>`, `<resultBase>`, `<resultUnit>`, and `<add>` are specific to th
 
 We're now ready to go explore the fun that can be had with this simple but powerful tool.
 
+<div class="info">
+### Proofs and Programs
+
+If you've studied maths you have probably come across proof by induction.
+The general pattern of a proof by induction looks very much like the general pattern of a structural recursion over the natural numbers.
+This is no coincidence; there is a deep relationship between the two.
+We can view a structural recursion over the natural numbers as exactly a proof by induction.
+When we claim the ability to write any transformation on the natural numbers in terms of the structural recursion skeleton, this claim is backed up by the mathematical foundation we're implicitly using.
+We can also prove properties of our code by using the connection between the two: any structural recursion is implicitly defining a proof of some property.
+
+This general connection between proofs and programs is known as the *Howard-Curry Isomorphism*.
+</div>
+
 ### Exercises {-}
 
 #### Cross {-}
