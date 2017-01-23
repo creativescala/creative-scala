@@ -45,6 +45,7 @@ pages:
   - recursion/match.md 
   - recursion/natural-numbers.md 
   - recursion/auxillary-parameter.md 
+  - recursion/substitution.md 
 
   - hof/index.md
   - hof/parametric-curves.md
