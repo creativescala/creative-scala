@@ -427,7 +427,7 @@ Use this utility to create an interesting picture combining polygons. Our rather
 ![Concentric polygons with pastel gradient fill.](./src/pages/sequences/concentric-polygons.png){#fig:sequences:concentric-polygons}
 
 <div class="solution">
-Here's out code. Note how we factored the code into small components---though we could have taken the factoring further is we wanted to. (Can you see how? Hint: do we need to pass, say, `start` to every call of `makeColor` when it's not changing?)
+Here's our code. Note how we factored the code into small components---though we could have taken the factoring further is we wanted to. (Can you see how? Hint: do we need to pass, say, `start` to every call of `makeColor` when it's not changing?)
 
 ```tut:book
 import Point._
