@@ -43,8 +43,8 @@ pages:
   - recursion/index.md 
   - recursion/boxes.md 
   - recursion/match.md 
-  - recursion/match.md 
   - recursion/natural-numbers.md 
+  - recursion/auxillary-parameter.md 
 
   - hof/index.md
   - hof/parametric-curves.md
