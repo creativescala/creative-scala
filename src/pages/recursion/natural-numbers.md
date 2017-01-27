@@ -215,8 +215,7 @@ val blackSquare = Image.rectangle(30, 30) fillColor Color.black
 val redSquare   = Image.rectangle(30, 30) fillColor Color.red
 
 val base =
-  (redSquare   beside blackSquare) above
-  (blackSquare beside redSquare)
+  (redSquare   beside blackSquare) above (blackSquare beside redSquare)
 ```
 
 Now to work out the unit and addition. 
@@ -232,8 +231,7 @@ def chessboard(count: Int): Image = {
   val redSquare   = Image.rectangle(30, 30) fillColor Color.red
   
   val base =
-    (redSquare   beside blackSquare) above
-    (blackSquare beside redSquare)
+    (redSquare   beside blackSquare) above (blackSquare beside redSquare)
   count match {
     case 0 => base
     case n =>

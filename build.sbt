@@ -22,16 +22,16 @@ libraryDependencies ++= Seq(
   "org.typelevel" %% "cats" % "0.4.0"
 )
 
-tutSourceDirectory := sourceDirectory.value / "raw"
+tutSourceDirectory := sourceDirectory.value / "pages"
 
-tutTargetDirectory := sourceDirectory.value / "pages"
+tutTargetDirectory := target.value / "pages"
 
 lazy val pdf  = taskKey[Unit]("Build the PDF version of the book")
 lazy val html = taskKey[Unit]("Build the HTML version of the book")
 lazy val epub = taskKey[Unit]("Build the ePUB version of the book")
 lazy val all  = taskKey[Unit]("Build all versions of the book")
 
-pdf  := { tutQuick.value ; "grunt pdf" !  }
+pdf  := { tutQuick.value ; "grunt pdf"  ! }
 html := { tutQuick.value ; "grunt html" ! }
 epub := { tutQuick.value ; "grunt epub" ! }
-all  := { tutQuick.value ; "grunt all" !  }
+all  := { pdf ; html ; epub }

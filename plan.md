@@ -328,7 +328,6 @@
   * Keyboard input and join
 
 ### Project Chapter
-
 ### Next Steps
   * Translating techniques here into other domains
     * Collections, Spark

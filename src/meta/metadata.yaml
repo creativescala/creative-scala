@@ -44,8 +44,9 @@ pages:
   - recursion/boxes.md 
   - recursion/match.md 
   - recursion/natural-numbers.md 
-  - recursion/auxillary-parameter.md 
   - recursion/substitution.md 
+  - recursion/auxillary-parameter.md 
+  - recursion/nested-methods.md 
 
   - hof/index.md
   - hof/parametric-curves.md

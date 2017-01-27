@@ -14,7 +14,7 @@ import cats.syntax.cartesian._
 
 In this exercise we'll return to one of our first examples, creating colored boxes. Start by adapting the `randomConcentricCircles` code to create a sequence of boxes, where each box has a random color. You should generate images like in [@fig:generative:random-color-boxes].
 
-![Boxes with randomly chosen colors.](./src/raw/generative/random-color-boxes.pdf){#fig:generative:random-color-boxes}
+![Boxes with randomly chosen colors.](./src/pages/generative/random-color-boxes.pdf){#fig:generative:random-color-boxes}
 
 <div class="solution">
 Our solution reuses many of the components we created from `randomConcentricCircles`. It's fundamentally just a structural recursion over the integers.
@@ -57,11 +57,11 @@ def gradientBoxes(n: Int, color: Color): Image =
 
 This creates image like [@fig:generative:gradient-color-boxes]
 
-![Boxes with a deterministic gradient.](./src/raw/generative/gradient-color-boxes.pdf){#fig:generative:gradient-color-boxes}
+![Boxes with a deterministic gradient.](./src/pages/generative/gradient-color-boxes.pdf){#fig:generative:gradient-color-boxes}
 
 Now at each step we can add some random noise to `color`. (Note we can't use the randomly altered color as the input to the next recursion. We don't currently have the tools to make a random value depend on a random value.) This results in images like [@fig:generative:noisy-gradient-color-boxes]. Implement this.
 
-![Boxes with a deterministic gradient with added random noise.](./src/raw/generative/noisy-gradient-color-boxes.pdf){#fig:generative:noisy-gradient-color-boxes}
+![Boxes with a deterministic gradient with added random noise.](./src/pages/generative/noisy-gradient-color-boxes.pdf){#fig:generative:noisy-gradient-color-boxes}
 
 <div class="solution">
 Here's our solution. It's a combination of the simple structural recursion in `gradientBoxes` with the product operator as we saw in `randomColorBoxes`.

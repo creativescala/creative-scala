@@ -1,5 +1,13 @@
 ## Reasoning about Recursion
 
+```tut:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+```
+
 We're now experienced users of structural recursion over the natural numbers.
 Let's now return to our substitution model and see if it works with our new tool of recursion.
 

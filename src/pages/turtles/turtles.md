@@ -38,7 +38,7 @@ val path = Turtle.draw(instructions)
 
 This creates a path---an `Image`---which we can then `draw` in the usual way giving the output in [@fig:turtles:square]. This is not a very exciting image, but we can change color, line width, and so on in the usual way.
 
-![A square created via the turtle graphics system.](src/raw/turtles/square.pdf+svg){#fig:turtles:square}
+![A square created via the turtle graphics system.](src/pages/turtles/square.pdf+svg){#fig:turtles:square}
 
 The complete list of turtle instructions in given in [@tbl:turtles:instructions]
 
@@ -99,7 +99,7 @@ The square spiral is shown in [@fig:turtles:square-spiral]. Write a method to cr
 
 This task requires a bit more design work than we usually ask of you. You'll have to work out how the square spiral is constructed (hint: it starts at the center) and then create a method to draw one.
 
-![The square spiral!](src/raw/turtles/square-spiral.pdf+svg){#fig:turtles:square-spiral}
+![The square spiral!](src/pages/turtles/square-spiral.pdf+svg){#fig:turtles:square-spiral}
 
 <div class="solution">
 The key insights to draw the square spiral are realising:

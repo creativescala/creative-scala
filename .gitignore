@@ -16,15 +16,3 @@ project/
 target/
 
 *.sublime-workspace
-
-src/pages/setup
-src/pages/expressions
-src/pages/pictures
-src/pages/programs
-src/pages/substitution
-src/pages/methods
-src/pages/recursion
-src/pages/hof
-src/pages/turtles
-src/pages/sequences
-src/pages/generative

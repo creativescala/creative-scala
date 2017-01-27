@@ -46,4 +46,4 @@ So where's the turtle in all this? This model was developed in the 60s by Seymou
 
 Using turtle graphics and another concept, known as an L-system, we can create images that mimic nature such as the plant in [@fig:turtles:plant].
 
-![A plant generated using turtle graphics and an L-system.](src/raw/turtles/plant.pdf+svg){#fig:turtles:plant}
+![A plant generated using turtle graphics and an L-system.](src/pages/turtles/plant.pdf+svg){#fig:turtles:plant}

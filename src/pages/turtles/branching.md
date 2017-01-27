@@ -29,7 +29,7 @@ val y = Turtle.draw(List(
         )
 ```
 
-![An image that is easy to create with a branching turtle, and comparatively difficult to create without.](src/raw/turtles/y.pdf+svg){#fig:turtles:y}
+![An image that is easy to create with a branching turtle, and comparatively difficult to create without.](src/pages/turtles/y.pdf+svg){#fig:turtles:y}
 
 Using branching we can model some forms of biological growth, producing, for example, images of plants as in [@fig:turtles:plant]. One particular model is known as an *L-system*. An L-system has consists of two parts:
 
@@ -41,7 +41,7 @@ A specific example of this process is shown in [@fig:turtles:branches]. The figu
 - each straight line doubles in size; and
 - a bud (the diamond at the end of a line) grows into two branches that end with buds.
 
-![Modelling the growth of a plant using rewrite rules.](src/raw/turtles/branches.pdf+svg){#fig:turtles:branches}
+![Modelling the growth of a plant using rewrite rules.](src/pages/turtles/branches.pdf+svg){#fig:turtles:branches}
 
 Concretely, we can write these rules as a transformation on `Instruction` assuming that we use `NoOp` to represent a bud.
 
@@ -95,7 +95,7 @@ List[A] flatMap (A => List[B]) = List[B]
 and this is illustrated graphically in [@fig:turtles:flatMap]. We can see that `flatMap` has the right type to combine `rule` with `List[Instruction]` to create a rewritten `List[Instruction]`.
 
 ![The type equation for flatMap illustrated 
-graphically.](src/raw/turtles/flatMap.pdf+svg){#fig:turtles:flatMap}
+graphically.](src/pages/turtles/flatMap.pdf+svg){#fig:turtles:flatMap}
 
 When discussing `map` we said that it doesn't allow us to change the number of elements in the `List`. Graphically, we can't create a new "box" using `map`. With `flatMap` we can change the box, in the case lists meaning we can change the number of elements in the list.
 
@@ -232,6 +232,6 @@ def iterate(steps: Int,
 
 Create the pictures shown in [@fig:turtles:branching] and [@fig:turtles-koch-curve] using your L-system implementation.
 
-![Five iterations of the simple branching L-system.](src/raw/turtles/branching.pdf+svg){#fig:turtles:branching}
+![Five iterations of the simple branching L-system.](src/pages/turtles/branching.pdf+svg){#fig:turtles:branching}
 
-![Five iterations of the Koch curve, a fractal that is simple to create with an L-System.](src/raw/turtles/koch-curve.pdf+svg){#fig:turtles:koch-curve}
+![Five iterations of the Koch curve, a fractal that is simple to create with an L-System.](src/pages/turtles/koch-curve.pdf+svg){#fig:turtles:koch-curve}

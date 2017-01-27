@@ -31,7 +31,7 @@ def growingBoxes(count: Int): Image =
 
 Using what we learned working with `boxes` earlier we can go a bit further and write down
 
-```tut:book
+```scala
 def growingBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -49,7 +49,7 @@ Here's the code.
 def growingBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => growingBoxes beside Image.rectangle(n*10, n*10)
+    case n => growingBoxes(n-1) beside Image.rectangle(n*10, n*10)
   }
 ```
 
@@ -154,4 +154,3 @@ def image: Image =
   fadeCircles(20, 50, Color.red) beside gradientCircles(20, 50, Color.royalBlue)
 ```
 </div>
-
