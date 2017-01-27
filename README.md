@@ -14,6 +14,9 @@ It is designed to give you a vital first taste of functional programming.
 We assume you have some familiarity with another programming language
 but little or no experience with Scala or other functional languages.
 
+This is version 2 of Creative Scala, which is still in development. 
+See the `master` branch for the first version.
+
 Our goal is to demonstrate the building blocks that Scala developers use
 to create programs in a clear, succinct, declarative manner.
 Working through the exercises in the book should take two to three hours,
