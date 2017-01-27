@@ -50,9 +50,9 @@ The `Unit` type is Scala's equivalent of `void` in Java or C---we use it
 to write code that evaluates to "no interesting value":
 
 ~~~ scala
-scala> val uninteresting = println("Hello world!")
-Hello world!
-uninteresting: Unit = ()
+val uninteresting = println("Hello world!")
+// Hello world!
+// uninteresting: Unit = ()
 ~~~
 
 While `void` is simply a syntax,
@@ -67,8 +67,8 @@ the `println` method from the Scala standard library and Doodle's `draw` method.
 Each of these methods does something useful but neither returns a useful result:
 
 ~~~ scala
-scala> val alsoUninteresting = draw(Circle(10))
-alsoUninteresting: Unit = ()
+val alsoUninteresting = Circle(10).draw
+// alsoUninteresting: Unit = ()
 ~~~
 
 Designing programs in a functional way involves limiting
@@ -76,5 +76,5 @@ the side-effects spread throughout our code.
 Doodle is a classic example of functional design---we assemble
 a *representation* of the scene we want in a purely functional manner,
 and then *interpret* the scene to produce output.
-The `draw()` method---our interpreter---can use imperative libraries
+The `draw` method---our interpreter---can use imperative libraries
 and mutable state without them intruding into the rest of our application.

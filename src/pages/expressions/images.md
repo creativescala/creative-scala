@@ -21,12 +21,14 @@ bash$ ./sbt.sh console
 [info]
 import doodle.core._
 import doodle.syntax._
-import doodle.jvm._
-Welcome to Scala version 2.11.5 (Java HotSpot(TM) 64-Bit Server VM, Java 1.7.0_45).
+import doodle.jvm.Java2DCanvas._
+import doodle.backend.StandardInterpreter._
+import doodle.examples._
+Welcome to Scala version 2.11.7 (Java HotSpot(TM) 64-Bit Server VM, Java 1.8.0_20-ea).
 Type in expressions to have them evaluated.
 Type :help for more information.
 
-scala>
+scala> 
 ~~~
 
 ### Primitive Images
@@ -36,20 +38,36 @@ as well as the regular Scala standard library.
 Try creating a simple shape:
 
 ~~~ scala
+Circle(10)
+// res0: doodle.core.Circle = Circle(10.0)
+~~~
+
+<div class="callout callout-info">
+*How To Run This Example*
+
+When you see an example like the one above,
+enter the line of Scala code at the `scala>` prompt in the console.
+You should see the text in the comment as output:
+
+~~~ scala
 scala> Circle(10)
 res0: doodle.core.Circle = Circle(10.0)
 ~~~
+
+We haven't written the `scala>` prompts in the examples in this book
+because they make it difficult to copy and paste text into the console.
+We've written the console output as comments for the same reason.
+</div>
 
 Notice the type and value of the expression we just entered.
 The type is `doodle.core.Circle`
 and the value is `Circle(10.0)`---a circle with a 10 pixel radius.
 
-We can draw this circle (and other images) using Doodle's `draw()` function,
-which has been brought into scope automatically.
+We can draw this circle (and other images) using the `draw` method.
 Try drawing the circle now:
 
 ~~~ scala
-scala> draw(res0)
+res0.draw
 ~~~
 
 A window should appear containing the following:
@@ -61,7 +79,7 @@ circles, rectangles, and triangles.
 Let's try drawing a rectangle:
 
 ~~~ scala
-scala> draw(Rectangle(50, 100))
+Rectangle(50, 100).draw
 ~~~
 
 ![A rectangle](src/pages/expressions/rectangle.png)
@@ -69,7 +87,7 @@ scala> draw(Rectangle(50, 100))
 Finally let's try a triangle:
 
 ~~~ scala
-scala> draw(Triangle(60, 40))
+Triangle(60, 40).draw
 ~~~
 
 ![A triangle](src/pages/expressions/triangle.png)
@@ -81,7 +99,7 @@ Try the following code---you should see a circle and a rectangle
 displayed beside one another:
 
 ~~~ scala
-scala> draw(Circle(10) beside Rectangle(10, 20))
+(Circle(10) beside Rectangle(10, 20)).draw
 ~~~
 
 ![A circle beside a rectangle](src/pages/expressions/circle-beside-rectangle.png)
@@ -122,19 +140,19 @@ For bonus credit add a stand so we can place the target on a range:
 The simplest solution is to create three concentric circles using the `on` operator:
 
 ~~~ scala
-draw(Circle(10) on Circle(20) on Circle(30))
+(Circle(10) on Circle(20) on Circle(30)).draw
 ~~~
 
 For the extra credit we can create a stand using two rectangles:
 
 ~~~ scala
-draw(
+(
   Circle(10) on
   Circle(20) on
   Circle(30) above
   Rectangle(6, 20) above
   Rectangle(20, 6)
-)
+).draw
 ~~~
 </div>
 
@@ -153,7 +171,7 @@ Operator                Type    Description                 Example
 `Image lineColor Color` `Image` Outlines the image with     `Circle(10) lineColor Color.blue`
                                 the specified colour.
 
-`Image lineWidth Int`   `Image` Outlines the image with     `Circle(10) lineWIdth 3`
+`Image lineWidth Int`   `Image` Outlines the image with     `Circle(10) lineWidth 3`
                                 the specified stroke width.
 ---------------------------------------------------------------------------------------------
 
@@ -194,12 +212,12 @@ apply to a single image---we need to make sure that image
 comprises the correct set of shapes:
 
 ~~~ scala
-draw(
+(
   ( Circle(10) fillColor Color.red ) on
   ( Circle(20) fillColor Color.white ) on
   ( Circle(30) fillColor Color.red lineWidth 2 ) above
   ( Rectangle(6, 20) above Rectangle(20, 6) fillColor Color.brown ) above
   ( Rectangle(80, 25) lineWidth 0 fillColor Color.green )
-)
+).draw
 ~~~
 </div>

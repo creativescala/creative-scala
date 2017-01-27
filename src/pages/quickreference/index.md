@@ -76,37 +76,70 @@ methodName
 
 ## Functions as Values
 
+Function values are written `(argName: ArgType, ...) => resultExpression`:
+
 ~~~ scala
-// Function value syntax:
-(argName: ArgType, argName: ArgType) => resultExpression
+val double = (num: Int) => num * 2
+// double: Int => Int = <function1>
 
-// Use blocks if you want multi-line bodies:
-(argName: ArgType, argName: ArgType) => {
-  sideEffectExpression1
-  sideEffectExpression2
-  resultExpression
+val sum = (a: Int, b: Int) => a + b
+sum: (Int, Int) => Int = <function2>
+~~~
+
+Multi-line functions are written using block expressions:
+
+~~~ scala
+val printAndDouble = (num: Int) => {
+  println("The number was " + num)
+  num * 2
 }
+// printAndDouble: Int => Int = <function1>
 
-// Function type syntax
-// (use as a return type or parameter type):
-(ArgType, ArgType) => ResultType
+scala> printAndDouble(10)
+// The number was 10
+// res0: Int = 20
+~~~
 
-// Passing a function as a parameter:
-def myMethod(funcName: (ArgType, ArgType) => ResultType) =
-  resultExpression
+We have to write function types when declaring parameters and return types.
+The syntax is `ArgType => ResultType` or `(ArgType, ...) => ResultType`:
 
-// Returning a function:
-def myMethod(...): (ArgType, ArgType) => ResultType =
-  resultExpression
+~~~ scala
+def doTwice(value: Int, func: Int => Int): Int =
+  func(func(value))
+// doTwice: (value: Int, func: Int => Int)Int
+
+doTwice(1, double)
+// res0: Int = 4
+~~~
+
+Function values can be written inline as normal expressions:
+
+~~~ scala
+doTwice(1, (num: Int) => num * 10)
+// res1: Int = 100
+~~~
+
+We can sometimes omit the argument types,
+assuming the compiler can figure things out for us:
+
+~~~ scala
+doTwice(1, num => num * 10)
+// res2: Int = 100
 ~~~
 
 ## Doodle Reference Guide
+
+### Imports
 
 ~~~ scala
 // These imports get you everything you need:
 import doodle.core._
 import doodle.syntax._
+~~~
 
+### Creating Images
+
+~~~ scala
 // Primitive images (black outline, no fill):
 val i: Image = Circle(radius)
 val i: Image = Rectangle(width, height)
@@ -122,7 +155,11 @@ val i: Image = imageA under  imageB // superimposed
 // Compound images written using method call syntax:
 val i: Image = imageA.beside(imageB)
 // etc...
+~~~
 
+### Styling Images
+
+~~~ scala
 // Styling images written using operator syntax:
 val i: Image = image fillColor color   // new fill color (doesn't change line)
 val i: Image = image lineColor color   // new line color (doesn't change fill)
@@ -133,13 +170,17 @@ val i: Image = image fillColor color lineColor otherColor // new fill and line
 val i: Image = imageA.fillColor(color)
 val i: Image = imageA.fillColor(color).lineColor(otherColor)
 // etc...
+~~~
 
+### Colours
+
+~~~ scala
 // Basic colors:
 val c: Color = Color.red                       // predefined colors
-val c: Color = Color.rgb(255, 127, 0)          // RGB color
-val c: Color = Color.rgba(255, 127, 0, 0.5)    // RGBA color
-val c: Color = Color.hsl(0.5, 0.25, 0.5)       // HSL color
-val c: Color = Color.hsla(0.5, 0.25, 0.5, 0.5) // HSLA color
+val c: Color = Color.rgb(255.uByte, 127.uByte, 0.uByte)          // RGB color
+val c: Color = Color.rgba(255.uByte, 127.uByte, 0.uByte, 0.5.normalized)    // RGBA color
+val c: Color = Color.hsl(15.degrees, 0.25.normalized, 0.5.normalized)       // HSL color
+val c: Color = Color.hsla(15.degrees, 0.25.normalized, 0.5.normalized, 0.5.normalized) // HSLA color
 
 // Transforming/mixing colors using operator syntax:
 val c: Color = someColor spin       10.degrees     // change hue
@@ -154,4 +195,55 @@ val c: Color = someColor fadeOut    0.1.normalized // change opacity
 val c: Color = someColor.spin(10.degrees)
 val c: Color = someColor.lighten(0.1.normalized)
 // etc...
+~~~
+
+### Paths
+
+~~~ scala
+// Create path from list of PathElements:
+val i: Image = Path(List(
+  MoveTo(Vec(0, 0)),
+  LineTo(Vec(10, 10))
+))
+
+// Create path from other sequence of PathElements:
+val i: Image = Path(
+  (0 until 360 by 30) map { i =>
+    LineTo(Vec.polar(i.degrees, 100))
+  }
+)
+
+// Types of element:
+val e1: PathElement = MoveTo(toVec)                        // no line
+val e2: PathElement = LineTo(toVec)                        // straight line
+val e3: PathElement = BezierCurveTo(cp1Vec, cp2Vec, toVec) // curved line
+
+// NOTE: If the first element isn't a MoveTo,
+//       it is converted to one
+~~~
+
+### Angles and Vecs
+
+~~~ scala
+val a: Angle = 30.degrees                // angle in degrees
+val a: Angle = 1.5.radians               // angle in radians
+val a: Angle = math.Pi.radians           // π radians
+val a: Angle = 1.turns                   // angle in complete turns
+
+val v: Vec = Vec.zero                    // zero vector (0,0)
+val v: Vec = Vec.unitX                   // unit x vector (1,0)
+val v: Vec = Vec.unitY                   // unit y vector (0,1)
+
+val v: Vec = Vec(3, 4)                   // vector from cartesian coords
+val v: Vec = Vec.polar(30.degrees, 5)    // vector from polar coords
+val v: Vec = Vec(2, 1) * 10              // multiply length
+val v: Vec = Vec(20, 10) / 10            // divide length
+val v: Vec = Vec(2, 1) + Vec(1, 3)       // add vectors
+val v: Vec = Vec(5, 5) - Vec(2, 1)       // subtract vectors
+val v: Vec = Vec(5, 5) rotate 45.degrees // rotate counterclockwise
+
+val x: Double = Vec(3, 4).x              // x coordinate
+val y: Double = Vec(3, 4).y              // y coordinate
+val a: Angle  = Vec(3, 4).angle          // counterclockwise from (1, 0)
+val l: Double = Vec(3, 4).length         // length
 ~~~

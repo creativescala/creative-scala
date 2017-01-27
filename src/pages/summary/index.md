@@ -9,7 +9,7 @@ We started by writing expressions to create and compose images.
 Each program we wrote went through two distinct phases:
 
  1. Build an `Image`
- 2. Call the `draw()` method to display the image
+ 2. Call the `draw` method to display the image
 
 This process demonstrates two important functional programming patterns:
 *building intermediate representations* of the result we want,
@@ -30,32 +30,32 @@ For example, it is a lot easier to determine
 that this Doodle program produces a house:
 
 ~~~ scala
-scala> def myImage: Image =
-     |   Triangle(50, 50) above Rectangle(50, 50)
-myImage: Image = // ...
+def myImage: Image =
+  Triangle(50, 50) above Rectangle(50, 50)
+// myImage: Image = // ...
 ~~~
 
 than this implementation in Java2D:
 
 ~~~ scala
-scala> def drawImage(g: Graphics2D): Unit = {
-     |   g.setStroke(new BasicStroke(1.0f))
-     |   g.setPaint(new Color(0, 0, 0))
-     |   val path = new Path2D.Double()
-     |   path.moveTo(25, 0)
-     |   path.lineTo(50, 50)
-     |   path.lineTo(0, 50)
-     |   path.lineTo(25, 0)
-     |   path.closePath()
-     |   g.draw(path)
-     |   f.drawRect(50, 50, 50, 50)
-     | }
+def drawImage(g: Graphics2D): Unit = {
+  g.setStroke(new BasicStroke(1.0f))
+  g.setPaint(new Color(0, 0, 0))
+  val path = new Path2D.Double()
+  path.moveTo(25, 0)
+  path.lineTo(50, 50)
+  path.lineTo(0, 50)
+  path.lineTo(25, 0)
+  path.closePath()
+  g.draw(path)
+  f.drawRect(50, 50, 50, 50)
+}
 ~~~
 
 It's important to realise that all of the imperative Java2D
 code is still present in Doodle.
-The difference is we have hidden it away into the `draw()` method.
-`draw()` acts as *interpreter* for our `Images`,
+The difference is we have hidden it away into the `draw` method.
+`draw` acts as *interpreter* for our `Images`,
 filling in all of the details about coordinates, paths,
 and graphics contexts that we don't want to think about in our code.
 
@@ -75,11 +75,11 @@ allows us to *compose* images from other images.
 For example, we can re-use our house to draw a street:
 
 ~~~ scala
-scala> val house = Triangle(50, 50) above Rectangle(50, 50)
-house: Image = // ...
+val house = Triangle(50, 50) above Rectangle(50, 50)
+// house: Image = // ...
 
-scala> val street = house beside house beside house
-street: Image = // ...
+val street = house beside house beside house
+// street: Image = // ...
 ~~~
 
 The `Image` and `Color` values we create are immutable
@@ -118,31 +118,31 @@ which prevents us confusing numbers and angles,
 and degrees and radians:
 
 ~~~ scala
-scala> 90
-res0: Int = 90
+90
+// res0: Int = 90
 
-scala> 90.degrees
-res1: doodle.core.Angle = Angle(1.5707963267948966)
+90.degrees
+// res1: doodle.core.Angle = Angle(1.5707963267948966)
 
-scala> 90.radians
-res2: doodle.core.Angle = Angle(2.0354056994857643)
+90.radians
+// res2: doodle.core.Angle = Angle(2.0354056994857643)
 
-scala> 90.degrees + 90.radians
-res3: doodle.core.Angle = Angle(3.606202026280661)
+90.degrees + 90.radians
+// res3: doodle.core.Angle = Angle(3.606202026280661)
 
-scala> 90 + 90.degrees
-<console>:20: error: overloaded method value + with alternatives:
-  (x: Double)Double <and>
-  (x: Float)Float <and>
-  (x: Long)Long <and>
-  (x: Int)Int <and>
-  (x: Char)Int <and>
-  (x: Short)Int <and>
-  (x: Byte)Int <and>
-  (x: String)String
- cannot be applied to (doodle.core.Angle)
-              90 + 90.degrees
-                 ^
+90 + 90.degrees
+// <console>:20: error: overloaded method value + with alternatives:
+//   (x: Double)Double <and>
+//   (x: Float)Float <and>
+//   (x: Long)Long <and>
+//   (x: Int)Int <and>
+//   (x: Char)Int <and>
+//   (x: Short)Int <and>
+//   (x: Byte)Int <and>
+//   (x: String)String
+// cannot be applied to (doodle.core.Angle)
+//              90 + 90.degrees
+//                 ^
 ~~~
 
 ## Functions as Values
@@ -153,9 +153,9 @@ For example, the method below abstracts over colours
 to produce different coloured dots:
 
 ~~~ scala
-scala> def dot(color: Color): Image =
-     |   Circle(10) lineWidth 0 fillColor color
-dot: Color => Image = // ...
+def dot(color: Color): Image =
+  Circle(10) lineWidth 0 fillColor color
+// dot: Color => Image = // ...
 ~~~
 
 Coming from object oriented languages,
@@ -164,12 +164,12 @@ More interesting is Scala's ability to turn methods into *functions*
 that can be passed around as values:
 
 ~~~ scala
-scala> def spectrum(shape: Color => Image): Image =
-     |   shape(Color.red) beside shape(Color.blue) beside shape(Color.green)
-spectrum: (Color => Image) => Image = // ...
+def spectrum(shape: Color => Image): Image =
+  shape(Color.red) beside shape(Color.blue) beside shape(Color.green)
+// spectrum: (Color => Image) => Image = // ...
 
-scala> spectrum(dot)
-res0: Image = // ...
+spectrum(dot)
+// res0: Image = // ...
 ~~~
 
 We wrote a number of programs that used functions as values,
@@ -179,8 +179,8 @@ how `map` lets us transform sequences without allocating
 and pushing values onto intermediate buffers:
 
 ~~~ scala
-scala> List(1, 2, 3).map(x => x * 2)
-res0: List[Int] = List(2, 4, 6)
+List(1, 2, 3).map(x => x * 2)
+// res0: List[Int] = List(2, 4, 6)
 ~~~
 
 Functions, and their first class status as values,
@@ -200,12 +200,12 @@ and why would you want to choose it over
 the other available options?
 
 Perhaps the most significant draw to Scala is its type system.
-This distinguishes Scala from popular
-such as Ruby, Python, Javascript, and Clojure, which are weakly typed.
-Having strong types in a language is undeniably a trade-off---writing
+This distinguishes Scala from popular languages
+such as Ruby, Python, Javascript, and Clojure, which are dynamically typed.
+Having static types in a language is undeniably a trade-off---writing
 code is slower because we have to satisfy the compiler at every stage.
 However, once our code compiles we gain
-confident about its quality.
+confidence about its quality.
 
 Another major draw is Scala's blending of
 object-oriented and functional programming paradigms.
@@ -231,3 +231,15 @@ we recommend that you pick one of the many great books available on the language
 Our own book, [Essential Scala][essential-scala], is available from our web site
 and continues Creative Scala's approach of teaching Scala by
 discussing and demonstrating core design patterns and the benefits they offer.
+
+If you want to challenge yourself,
+try drawing something more complex with Doodle and
+sharing it with us via [Gitter][underscore-gitter].
+There are lots of things you can try---check the `examples` directory
+in the Doodle codebase for some suggestions:
+
+![Koch Triangle (Koch.scala)](src/pages/summary/koch.png)
+
+![Suburban Scene (Street.scala)](src/pages/summary/street.png)
+
+![Mandelbrot Fractal by Mat Moore (Mandelbrot.scala)](src/pages/summary/mandelbrot.png)

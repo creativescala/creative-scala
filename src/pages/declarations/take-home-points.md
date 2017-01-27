@@ -12,7 +12,7 @@ re-uses the `fourByFour` value four times and the
 `twoByTwo` value sixteen times,
 resulting in a compact memory-efficient representation.
 
-Method declarations to a different job.
+Method declarations do a different job.
 They allow us to *abstract over parameters*,
 creating blocks of code that work with a variety of inputs.
 Functional programming places emphasis on

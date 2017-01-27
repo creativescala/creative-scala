@@ -3,13 +3,12 @@
 In this exercise we will explore the creation of color palettes.
 An attractive picture must make good choices for color.
 Color theory has developed to explain combinations of color that go together.
-We will use color theory,
-and some neat tricks from mathematics and computer science,
-to create programs that can automatically create attractive color palettes.
+We will use color theory
+to create programs that can automatically construct attractive color palettes.
 
-### Color Theory
+### Color Representation
 
-We have see that we can represent colors in two ways:
+In Doodle we can represent a color in one of two ways:
 
 1. as triples containing red, green, and blue values (RGB); or
 2. as hue, saturation, and lightness (HSL).
@@ -17,12 +16,168 @@ We have see that we can represent colors in two ways:
 We will use the HSL representation as it
 better corresponds to our perception of color.
 If we arrange colors in the familiar color wheel,
-distance from the center corrsponds to lightness
+distance from the center corresponds to lightness
 and steps around the outside correspond to changes in hue:
 
 ![A color wheel. A full turn around the wheel represents a 360 degree change in hue.](src/pages/declarations/color-wheel.png)
 
-#### Complementary Colors
+Saturation, the third dimension,
+corresponds to intensity of color.
+The strip of colors below shows the effect of varying saturation from 0.0 to 1.0,
+for fixed hue (170 degrees) and lightness (0.5).
+As you can see,
+changing saturation goes from a dull gray to a bright and vibrant color.
+
+![The effect of changing saturation while keeping hue and lightness fixed. Saturation increases from left to right, starting at zero and finishing at one.](src/pages/declarations/saturation.png)
+
+### The Color API
+
+Before we can create color schemes
+we need to know how to create and manipulate colors.
+
+#### Creating Colors
+
+There are two main methods to create colours:
+
+~~~ scala
+Color.hsl(hue: Angle, saturation: Normalized, lightness: Normalized)
+Color.rgb(red: UnsignedByte, green: UnsignedByte, blue: UnsignedByte)
+~~~
+
+These methods use types --- `Angle`, `Normalized`, and `UnsignedByte` --- that have not seen before.
+They all represent numbers with some special characteristics.
+A `Normalized` is a number between 0 and 1.
+An `UnsignedByte` is an integer between 0 and 255.
+An `Angle` is unrestricted in value but there are several operations that only make sense on angles (sine, cosine, and so on) and several representations (angles, radians) in common use.
+
+The `Normalized` and `UnsignedByte` types make it explicit that some conversion is necessary from raw number types like `Int` and `Double`.
+There are many different ways to handle inputs that are out of range,
+such as clipping them or raising an error,
+and we require the programmer to be explicit about the approach they want.
+
+For `Normalized` and `UnsignedByte` Doodle provides a default conversion of clipping.
+For example, if we are creating a `Normalized` (value between 0.0 and 1.0),
+any input less than 0.0 is set to 0.0 and greater than 1.0 becomes 1.0.
+To use these conversions import `doodle.syntax.normalized._` or `doodle.syntax.uByte._`
+and then numbers are *enriched* with methods `normalized` and `uByte` respectively.
+Here's a quick example. Notice how values out of range are set to the closest valid value.
+
+~~~ scala
+import doodle.syntax.normalized._
+
+0.5.normalized
+//res: doodle.core.Normalized = Normalized(0.5)
+0.0.normalized
+//res: doodle.core.Normalized = Normalized(0.0)
+-0.5.normalized
+//res: doodle.core.Normalized = Normalized(0.0)
+1.5.normalized
+//res: doodle.core.Normalized = Normalized(1.0)
+
+import doodle.syntax.uByte._
+
+128.uByte
+//res: doodle.core.UnsignedByte = UnsignedByte(0)
+0.uByte
+//res: doodle.core.UnsignedByte = UnsignedByte(-128)
+255.uByte
+//res: doodle.core.UnsignedByte = UnsignedByte(127)
+-127.uByte
+//res: doodle.core.UnsignedByte = UnsignedByte(-128)
+512.uByte
+//res: doodle.core.UnsignedByte = UnsignedByte(127)
+~~~
+
+For `Angle` we ask the programmer to specify if the raw number represents a value in degrees, radians, or turns (fractions of a circle, with a full circle being one turn).
+For `Angles` the import is `doodle.syntax.angle._`
+which enriches numbers with methods `degrees`, `radians`, and `turns`.
+Here's an example:
+
+~~~ scala
+import doodle.syntax.angle._
+
+0.degrees
+//res: doodle.core.Angle = Angle(0.0)
+180.degrees
+//res: doodle.core.Angle = Angle(3.141592653589793)
+360.degrees
+//res: doodle.core.Angle = Angle(6.283185307179586)
+
+math.Pi
+//res: Double = 3.141592653589793
+math.Pi.radians
+//res: doodle.core.Angle = Angle(3.141592653589793)
+
+0.5.turns
+//res: doodle.core.Angle = Angle(3.141592653589793)
+1.0.turns
+//res: doodle.core.Angle = Angle(6.283185307179586)
+~~~
+
+We can now create some colors:
+
+~~~ scala
+Color.hsl(170.degrees, 1.0.normalized, 0.5.normalized)
+// res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+~~~
+
+Note that the color we created has four fields. The fourth field is the `alpha` value, which specifies the opacity of the color. There are four parameter methods `Color.hsla` and `Color.rgba` that can be used to specify the `alpha` when creating a color.
+
+#### Modifying Colors
+
+There are several methods to modify colors. These methods all create a new `Color`. No `Color` is ever actually changed after it is created, as doing so breaks substitution.
+
+New `hue`, `saturation`, `lightness`, and `alpha` values can all be set with methods of the same name. Notice how the original color is unchanged.
+
+~~~ scala
+val c = Color.hsl(170.degrees, 1.0.normalized, 0.5.normalized)
+//c: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+
+c.hue(220.degrees)
+//res: doodle.core.Color = HSLA(Angle(3.839724354387525),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+
+c.saturation(0.5.normalized)
+//res: doodle.core.Color = HSLA(Angle(2.9670597283903604),Normalized(0.5),Normalized(0.5),Normalized(1.0))
+
+c.lightness(0.25.normalized)
+//res: doodle.core.Color = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.25),Normalized(1.0))
+
+c.alpha(0.5.normalized)
+//res: doodle.core.Color = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(0.5))
+
+c
+//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+~~~
+
+There are also methods to adjust the existing `hue`, `saturation`, `lightness`, and `alpha`. These methods all create a new color by adding or subtracting from the existing value of the parameter of interest.
+
+~~~ scala
+val c = Color.hsl(170.degrees, 1.0.normalized, 0.5.normalized)
+//c: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+
+c.spin(220.degrees)
+//res: doodle.core.HSLA = HSLA(Angle(6.806784082777885),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+
+c.lighten(0.2.normalized)
+//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.7),Normalized(1.0))
+
+c.darken(0.2.normalized)
+//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.3),Normalized(1.0))
+
+c.saturate(0.2.normalized)
+//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+
+c.desaturate(0.2.normalized)
+//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(0.8),Normalized(0.5),Normalized(1.0))
+
+c.fadeIn(0.2.normalized)
+//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+
+c.fadeOut(0.2.normalized)
+//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(0.8))
+~~~
+
+### Complementary Colors
 
 A simple way to generate colors that look good together
 is to use *complementary colors*.

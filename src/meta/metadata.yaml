@@ -2,7 +2,7 @@
 # Used by Pandoc to print covers:
 title: "Creative Scala"
 author: "Dave Gurnell and Noel Welsh"
-date: "February 2015"
+date: "July 2015"
 # Used by Pandoc to generate the PDF cover...
 # see src/css/book.css for HTML/ePub covers:
 coverColor: "25AAE1"
@@ -30,6 +30,7 @@ pages:
   - src/pages/collections/index.md
   - src/pages/collections/create.md
   - src/pages/collections/transform.md
+  - src/pages/collections/paths.md
   - src/pages/collections/take-home-points.md
   - src/pages/summary/index.md
   - src/pages/quickreference/index.md
