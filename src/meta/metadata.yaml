@@ -47,6 +47,7 @@ pages:
   - recursion/substitution.md 
   - recursion/auxillary-parameter.md 
   - recursion/nested-methods.md 
+  - recursion/conclusions.md
 
   - hof/index.md
   - hof/parametric-curves.md
