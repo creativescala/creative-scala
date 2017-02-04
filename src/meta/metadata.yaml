@@ -14,6 +14,7 @@ filenameStem: "creative-scala"
 exercises:
   repo: "git@github.com:underscoreio/doodle.git"
   name: "doodle"
+usePandocCrossref: true
 pages:
   - intro/index.md
 
@@ -35,6 +36,9 @@ pages:
   - programs/index.md
   - programs/console.md
   - programs/outside-console.md
+  - programs/names.md
+  - programs/abstraction.md
+  - programs/imports.md
 
   - substitution/index.md
 

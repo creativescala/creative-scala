@@ -8,18 +8,21 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-Whether you're using a text editor or an IDE, you should have no problem saving code to a file. If you're working from Doodle you can save your code in the directory `shared/src/main/scala/doodle/examples`, where we have already created a number of examples.
+Your text editor or IDE will allow you to save code to a file, but we need to save them in the right place so the Scala compiler can find them.
+If you're working from the Doodle template you should save your code in the directory `src/main/scala/`.
 
-How do we use code that you've saved to a file from the console? There are a number of special commands that only work in the console, all beginning with a colon. We've seen `:type` already. The command to run a file is called `:paste`[^load]. We follow `:paste` with the name of the file we want to run. For example, if we save as `shared/src/main/scala/doodle/examples/Example.scala` the expression
+How do we use code that we saved to a file from the console? 
+There is a special command, that only works from the console, that allows us to run code saved in a file. 
+This command is called `:paste`[^load]. We follow `:paste` with the name of the file we want to run. For example, if we save in the file `src/main/scala/Example.scala` the expression
 
-```tut:silent
+```tut:silent:book
 circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
 ```
 
 we can then run this code by writing at the console
 
 ```scala
-:paste shared/src/main/scala/doodle/examples/Tree.scala
+:paste src/main/scala/Example.scala
 // res0: doodle.core.Image = ContextTransform(<function1>,ContextTransform(<function1>,Circle(100.0)))
 ```
 
