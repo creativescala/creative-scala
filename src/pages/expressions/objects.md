@@ -28,15 +28,15 @@ A method call is an expression, and thus evaluates to an object. This means we c
 
 The syntax for a method call is
 
-~~~ scala
+```scala
 anExpression.methodName(param1, ...)
-~~~
+```
 
 or
 
-~~~ scala
+```scala
 anExpression.methodName
-~~~
+```
 
 where
 

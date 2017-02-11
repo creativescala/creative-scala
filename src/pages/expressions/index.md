@@ -4,7 +4,7 @@ Scala programs have three fundamental building blocks: *expressions*, *values*, 
 
 Here's a very simple expression:
 
-```scala
+```tut:silent:book
 1 + 2
 ```
 
@@ -22,7 +22,7 @@ The console responds with the value the expression evaluates to, and the type of
 
 The expression `1 + 2` evaluates to the value `3`. We can write down the number three here on the page, but the real value is something stored in the computer's memory. In this case, it is a 32-bit integer represented in two's-complement. The meaning of "32-bit integer represented in two's-complement" is not important. I just mention it to emphasise the fact the computer's representation of the value `3` is the true value, not the numeral written here or by the console.
 
-*Types* are the final piece of the puzzle. A type is anything we can determine about a program *without* running it. The expression `1 + 2` has the type `Int`, which means we should interpret the value the expression evaluates to as an integer. This further means we can write further expressions that make sense for integers with the expression result of this expression. We could add, subtract, multiply, or divide, but we couldn't convert it to lowercase, for example.
+*Types* are the final piece of the puzzle. A type is anything we can determine about a program *without* running it. The expression `1 + 2` has the type `Int`, which means we should interpret the value the expression evaluates to as an integer. This also means we can write further expressions with the result of this expression, but these expressions must be operations make sense for integers. We could add, subtract, multiply, or divide, but we couldn't convert an integer to lowercase, for example.
 
 Types will often tell us how we should understand the value (the "stuff" in the computer's memory) that an expression evaluates to. Should we understand it as an integer or as a stream of points giving the current position of the mouse? The types will tell us. We can use types for other things, including things that don't have any representation at run-time. These uses are a bit more advanced than we'll get into here, but don't make the mistake of thinking that types correspond to value. Types only exist at compile-time in Scala. There is not necessarily any representation at runtime of the type of the expression that produced a given a value. 
 
