@@ -28,7 +28,7 @@ We can create our own RGB colors using the `rgb` method on the `Color` object. T
 
 Now we know how to construct `UnsignedBytes` we can make RGB colors.
 
-```tut:book
+```tut:silent:book
 Color.rgb(255.uByte, 255.uByte, 255.uByte) // White
 Color.rgb(0.uByte, 0.uByte, 0.uByte) // Black
 Color.rgb(255.uByte, 0.uByte, 0.uByte) // Red
@@ -42,9 +42,11 @@ The RGB color representation is not very easy to use. The hue-saturation-lightne
 - *saturation*, which is a number between 0 and 1 giving the intensity of the color from a drab gray to a pure color; and
 - *lightness* between 0 and 1 giving the color a brightness varying from black to pure white.
 
-![A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1.](src/pages/pictures/color-wheel.png)
+[@fig:pictures:color-wheel] shows how colors vary as we change hue and lightness, and [@fig:pictures:saturation] shows the effect of changing saturation.
 
-![A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right.](src/pages/pictures/saturation.png)
+![A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1.](src/pages/pictures/color-wheel.pdf+svg){#fig:pictures:color-wheel}
+
+![A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right.](src/pages/pictures/saturation.pdf+svg){#fig:pictures:saturation}
 
 We can construct a color in the HSL representation using the `Color.hsl` method. This method takes as parameters the hue, saturation, and lightness. The hue is an `Angle`. We can convert a `Double` to an `Angle` using the `degrees` (or `radians`) methods.
 
@@ -65,13 +67,14 @@ Saturation and lightness are both normalized to between 0.0 and 1.0. We can conv
 
 We can now create colors using the HSL representation.
 
-```tut:book
+```tut:silent:book
 Color.hsl(0.degrees, 0.8.normalized, 0.6.normalized) // A pastel red
 ```
 
 To view this color we can render it in a picture. See [@fig:pictures:triangle-pastel-red] for an example.
 
-![Rendering pastel red in a triangle](./src/pages/pictures/triangle-pastel-red.png){#fig:pictures:triangle-pastel-red}
+![Rendering pastel red in a triangle](./src/pages/pictures/triangle-pastel-red.pdf+svg){#fig:pictures:triangle-pastel-red}
+
 
 ### Manipulating Colors
 
@@ -83,7 +86,7 @@ The effectiveness of a composition often depends as much on the relationships be
 
 For example,
 
-```tut:book
+```tut:silent:book
 ((circle(100) fillColor Color.red) beside 
   (circle(100) fillColor Color.red.spin(15.degrees)) beside
     (circle(100) fillColor Color.red.spin(30.degrees))).lineWidth(5.0)
@@ -91,11 +94,11 @@ For example,
 
 produces [@fig:pictures:three-circles-spin].
 
-![Three circles, starting with Color.red and spinning by 15 degrees for each successive circle](./src/pages/pictures/three-circles-spin.png){#fig:pictures:three-circles-spin}
+![Three circles, starting with Color.red and spinning by 15 degrees for each successive circle](./src/pages/pictures/three-circles-spin.pdf+svg){#fig:pictures:three-circles-spin}
 
 Here's a similar example, this time manipulating saturation and lightness, shown in [@fig:pictures:saturate-and-lighten].
 
-```tut:book
+```tut:silent:book
 (((circle(20) fillColor (Color.red darken 0.2.normalized))
   beside (circle(20) fillColor Color.red)
   beside (circle(20) fillColor (Color.red lighten 0.2.normalized))) above
@@ -104,7 +107,7 @@ Here's a similar example, this time manipulating saturation and lightness, shown
   beside (rectangle(40,40) fillColor Color.red)))
 ```
 
-![The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation.](./src/pages/pictures/saturate-and-lighten.png){#fig:pictures:saturate-and-lighten}
+![The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation.](./src/pages/pictures/saturate-and-lighten.pdf+svg){#fig:pictures:saturate-and-lighten}
 
 [^byte]: A byte is a number with 256 possible values, which takes 8 bits within a computer to represent. A signed byte has integer values from -128 to 127, while an unsigned byte ranges from 0 to 255.
 
@@ -113,22 +116,22 @@ Here's a similar example, this time manipulating saturation and lightness, shown
 
 We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value. We can also create a new color with a different transparency by using the `alpha` method on a color. Here's an example, shown in [@fig:pictures:rgb-alpha].
 
-```tut:book
+```tut:silent:book
 ((circle(40) fillColor (Color.red.alpha(0.5.normalized))) beside
  (circle(40) fillColor (Color.blue.alpha(0.5.normalized))) on
  (circle(40) fillColor (Color.green.alpha(0.5.normalized))))
-
 ```
 
-![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.png){#fig:pictures:rgb-alpha}
+![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.pdf+svg){#fig:pictures:rgb-alpha}
 
-#### Exercises {-}
 
-##### Complementary Triangles {-}
+### Exercises {-}
+
+#### Complementary Triangles {-}
 
 Create three triangles, arranged in a triangle, with complementary colors. Complementary colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:complementary-triangles].
 
-![Complementary triangles. The colors chosen are variations on `darkSlateBlue`](./src/pages/pictures/complementary-triangles.png){#fig:pictures:complementary-triangles}
+![Complementary triangles. The colors chosen are variations on `darkSlateBlue`](./src/pages/pictures/complementary-triangles.pdf+svg){#fig:pictures:complementary-triangles}
 
 <div class="solution">
 These sort of examples are getting a bit too long to write out at the console. We'll look at a way around this next.

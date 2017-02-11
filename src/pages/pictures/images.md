@@ -30,30 +30,30 @@ circle(10).draw
 
 A window should appear as shown in [@fig:pictures:circle].
 
-![A circle](src/pages/pictures/circle.png){#fig:pictures:circle}
+![A circle](src/pages/pictures/circle.pdf+svg){#fig:pictures:circle}
 
 Doodle supports a handful of "primitive" images: circles, rectangles, and triangles. Let's try drawing a rectangle.
 
-``` scala
-rectangle(50, 100).draw
+```scala
+rectangle(100, 50).draw
 ```
 
 The output is shown in [@fig:pictures:rectangle].
 
-![A rectangle](src/pages/pictures/rectangle.png){#fig:pictures:rectangle}
+![A rectangle](src/pages/pictures/rectangle.pdf+svg){#fig:pictures:rectangle}
 
 Finally let's try a triangle, for which the output is shown in [@fig:pictures:triangle].
 
 
-~~~ scala
+```scala
 triangle(60, 40).draw
-~~~
+```
 
-![A triangle\label{fig:pictures:triangle}](src/pages/pictures/triangle.png)
+![A triangle](src/pages/pictures/triangle.pdf+svg){#fig:pictures:triangle}
 
-#### Exercises {-}
+### Exercises {-}
 
-##### I Go Round in Circles {-}
+#### I Go Round in Circles {-}
 
 Create circles that are 1, 10, and 100 units wide. Now draw them!
 
@@ -62,7 +62,7 @@ In this exercise we're checking that our Doodle install is working correctly and
 
 We can create circles with the code below.
 
-```tut:book
+```tut:silent:book
 circle(1)
 circle(10)
 circle(100)
@@ -78,7 +78,7 @@ circle(100).draw
 </div>
 
 
-##### My Type of Art {-}
+#### My Type of Art {-}
 
 What is the type of a circle? A rectangle? A triangle?
 

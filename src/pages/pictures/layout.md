@@ -14,7 +14,7 @@ We can seen how to create primitive images. We can combine together images using
 (circle(10) beside rectangle(10, 20)).draw
 ~~~
 
-![A circle beside a rectangle](src/pages/pictures/circle-beside-rectangle.png){#fig:picture:circle-rect}
+![A circle beside a rectangle](src/pages/pictures/circle-beside-rectangle.pdf+svg){#fig:picture:circle-rect}
 
 Doodle contains several layout methods for combining images, described in [@tbl:pictures:layout]. Try them out now to see what they do.
 
@@ -39,16 +39,13 @@ Operator              Type    Description                Example
 
 : Layout methods available in Doodle {#tbl:pictures:layout}
 
-#### Exercises {-}
+### Exercises {-}
 
-<!-- This page break is needed for PDF layout. Without it the "width of a circle" image is laid out so it is partially off the page -->
-\pagebreak
-
-##### The Width of a Circle {-}
+#### The Width of a Circle {-}
 
 Create the picture [@fig:picture:width-of-a-circle] using the layout methods and basic images we've covered so far.
 
-![The width of a circle](src/pages/pictures/width-of-a-circle.png){#fig:picture:width-of-a-circle}
+![The width of a circle](src/pages/pictures/width-of-a-circle.pdf+svg){#fig:picture:width-of-a-circle}
 
 <div class="solution">
 It's three small circles on top of a bigger circle, and we can just about state this as is in code.

@@ -49,13 +49,13 @@ Color                   Type    Example
 
 : Some of the most common predefined colors. {#tbl:pictures:colors}
 
-#### Exercise
+### Exercises {-}
 
-##### Evil Eye
+#### Evil Eye {-}
 
 Make the image in [@fig:pictures:evil-eye], designed to look like a traditional amulet protecting against the evil eye. I used `cornflowBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
 
-![No evil eyes here!](src/pages/pictures/evil-eye.png){#fig:pictures:evil-eye}
+![No evil eyes here!](src/pages/pictures/evil-eye.pdf+svg){#fig:pictures:evil-eye}
 
 <div class="solution">
 Here's my amulet:
