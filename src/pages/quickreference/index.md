@@ -214,9 +214,9 @@ val i: Image = OpenPath(
 )
 
 // Types of element:
-val e1: PathElement = MoveTo(toVec)                        // no line
-val e2: PathElement = LineTo(toVec)                        // straight line
-val e3: PathElement = BezierCurveTo(cp1Vec, cp2Vec, toVec) // curved line
+val e1: PathElement = MoveTo(toVec.toPoint)                        // no line
+val e2: PathElement = LineTo(toVec.toPoint)                        // straight line
+val e3: PathElement = BezierCurveTo(cp1Vec.toPoint, cp2Vec.toPoint, toVec.toPoint) // curved line
 
 // NOTE: If the first element isn't a MoveTo,
 //       it is converted to one
