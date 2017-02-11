@@ -127,7 +127,7 @@
   * We need to build a mental model of how Scala expressions are evaluated so we can understand what our programs are doing.
   * We've been getting by with an informal model so far. In this section we make our model a bit more formal.
   * Take an expression like (1 + 2) + (3 + 4). This consists of sub expressions (1 + 2) and (3 + 4) combined together.
-  * When we see an expression, we can subsistute in the value it evaluates to. So 
+  * When we see an expression, we can substitute in the value it evaluates to. So 
     (1 + 2) + (3 + 4) == 3 + 7 == 10
   * This is known as *substitution*, *reducing an expression*, or *equational reasoning* (and no doubt some terms I have forgotten). The latter term is an allusion to doing the same operation in high school algebra.
   * In what order does substitution take place? Does it matter?
