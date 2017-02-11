@@ -201,15 +201,15 @@ val c: Color = someColor.lighten(0.1.normalized)
 
 ~~~ scala
 // Create path from list of PathElements:
-val i: Image = Path(List(
-  MoveTo(Vec(0, 0)),
-  LineTo(Vec(10, 10))
+val i: Image = OpenPath(List(
+  MoveTo(Vec(0, 0).toPoint),
+  LineTo(Vec(10, 10).toPoint)
 ))
 
 // Create path from other sequence of PathElements:
-val i: Image = Path(
+val i: Image = OpenPath(
   (0 until 360 by 30) map { i =>
-    LineTo(Vec.polar(i.degrees, 100))
+    LineTo(Vec.polar(i.degrees, 100).toPoint)
   }
 )
 

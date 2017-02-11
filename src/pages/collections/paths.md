@@ -4,11 +4,11 @@ Doodle provides another type of `Image` that makes particular use of sequences.
 `Paths` represent arbitrary shapes created using sequences of pen movements:
 
 ~~~ scala
-val image = Path(List(
-  MoveTo(Vec(0, 0)),
-  LineTo(Vec(100, 0)),
-  LineTo(Vec(50, 100)),
-  BezierCurveTo(Vec(50, 0), Vec(0, 100), Vec(0, 0))
+val image = OpenPath(List(
+  MoveTo(Vec(0, 0).toPoint),
+  LineTo(Vec(100, 0).toPoint),
+  LineTo(Vec(50, 100).toPoint),
+  BezierCurveTo(Vec(50, 0).toPoint, Vec(0, 100).toPoint, Vec(0, 0).toPoint)
 ))
 // image: Path = // ...
 
@@ -65,7 +65,7 @@ We can use these operations to create paths quickly by adding vectors. Notice ho
 
 ~~~ scala
 val elements = (0 to 360 by 36).map { angle =>
-  val point = (Vec.unitX * 100) rotate angle.degrees
+  val point = (Vec.unitX * 100) rotate angle.degrees toPoint
   val element =
     if(angle == 0)
       MoveTo(point)
@@ -75,7 +75,7 @@ val elements = (0 to 360 by 36).map { angle =>
 }
 // elements: scala.collection.immutable.IndexedSeq[doodle.core.PathElement] = // ...
 
-val decagon = Path(elements)
+val decagon = OpenPath(elements)
 // decagon: doodle.core.Path = // ...
 
 decagon.draw
@@ -155,14 +155,14 @@ def star(sides: Int, skip: Int, radius: Double) = {
   val centerAngle = 360.degrees * skip / sides
 
   val elements = (0 to sides) map { index =>
-    val point = Vec.polar(centerAngle * index, radius) 
+    val point = Vec.polar(centerAngle * index, radius).toPoint
     if(index == 0)
       MoveTo(point)
     else
       LineTo(point)
   }
 
-  Path(elements).
+  OpenPath(elements).
     lineWidth(2).
     lineColor(Color.hsl(centerAngle, 1.normalized, .25.normalized)).
     fillColor(Color.hsl(centerAngle, 1.normalized, .75.normalized))
