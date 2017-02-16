@@ -45,6 +45,9 @@ pages:
   - programs/imports.md
 
   - substitution/index.md
+  - substitution/substitution.md
+  - substitution/order.md
+  - substitution/local-reasoning.md
 
   - methods/index.md 
 

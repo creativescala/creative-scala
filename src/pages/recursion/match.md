@@ -37,7 +37,7 @@ So far we've seen two kinds of patterns:
  - a wildcard (as in `case n`) which matches *anything*, and introduces a binding within the right-hand side expression.
 
 Finally, the right-hand side expressions, `<expression1>` and so on, are just expresssions like any other we've written so far.
-The entire `match` expression evalutes to the value of the right-hand side expression of the *first* pattern that matches.
+The entire `match` expression evaluates to the value of the right-hand side expression of the *first* pattern that matches.
 So when we call `boxes(0)` both patterns will match (because the wildcard matches anything), but because the literal pattern comes first the expression `Image.empty` is the one that is evaluated.
 
 A `match` expression that checks for all possible cases is called an exhaustive match.
@@ -85,7 +85,7 @@ Let's check our understanding of match by guessing what each of the following ex
 
 <div class="solution">
 
-The first example evalutes to `2`, as the pattern `"abcd"` is the only match for the literal `"abcd"` amongst the patterns.
+The first example evaluates to `2`, as the pattern `"abcd"` is the only match for the literal `"abcd"` amongst the patterns.
 
 The second example evaluates to `"one"`, because the first matching case is the one that is evaluated.
 
