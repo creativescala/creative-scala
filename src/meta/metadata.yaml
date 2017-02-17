@@ -92,20 +92,20 @@ pages:
   - adt/adt.md
   - adt/turtle.md
 
-  - declarations/index.md
-  - declarations/value-declarations.md
-  - declarations/method-declarations.md
-  - declarations/color-palette.md
-  - declarations/take-home-points.md
-  - fp/index.md
-  - fp/recursion.md
-  - fp/functions.md
-  - fp/take-home-points.md
-  - collections/index.md
-  - collections/create.md
-  - collections/transform.md
-  - collections/paths.md
-  - collections/take-home-points.md
+  #- declarations/index.md
+  #- declarations/value-declarations.md
+  #- declarations/method-declarations.md
+  #- declarations/color-palette.md
+  #- declarations/take-home-points.md
+  #- fp/index.md
+  #- fp/recursion.md
+  #- fp/functions.md
+  #- fp/take-home-points.md
+  #- collections/index.md
+  #- collections/create.md
+  #- collections/transform.md
+  #- collections/paths.md
+  #- collections/take-home-points.md
   - summary/index.md
   - quickreference/index.md
   - solutions.md
