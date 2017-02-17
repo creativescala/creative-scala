@@ -50,6 +50,10 @@ pages:
   - substitution/local-reasoning.md
 
   - methods/index.md 
+  - methods/methods.md 
+  - methods/syntax.md 
+  - methods/semantics.md 
+  - methods/conclusions.md 
 
   - recursion/index.md 
   - recursion/boxes.md 

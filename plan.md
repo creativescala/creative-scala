@@ -158,6 +158,10 @@
     * The value of a method call is value of the body expression
     * Method is in scope in the block in which it's defined
     * We can substitute a method call with the value it evaluates to, if the body of the method is pure (has no side-effects)
+  * The pattern for writing a method
+    * Method skeleton
+    * Name, parameters, and result type
+    * Fill in body. Use the types.
   * Exercises
     * Gradient boxes as a method
     * Gradient nested circles as a method

@@ -15,6 +15,7 @@ We use names to refer to things.
 For example, "Professeur Emile Perrot" refers to a very fragrant rose variety, while "Cherry Parfait" is a highly disease resistant variety but barely smells at all.
 Much ink has been spilled, and many a chin stroked, on how exactly this relationship works in spoken language.
 Programming languages are much more constrained, which allows us to be much more precise: names refer to values.
+We will sometimes say names are *bound* to values, or a name introduces a *binding*.
 Wherever we would write out a value we can instead use its name, if the value has a name.
 In other words, a name evaluates to the value it refers to.
 This naturally raises the question: how do we give names to values?

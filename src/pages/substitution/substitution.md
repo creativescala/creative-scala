@@ -43,7 +43,7 @@ We have to decide which to evaluate first: the left or the right.
 Let's arbitrarily choose the right sub-expression (we'll return to this choice later.)
 
 The sub-expression `("Moonage daydream".indexOf("N"))` again consists of two sub-expressions, `"Moonage daydream"` and `"N"`.
-Let's again evalute the right-hand first, remembering that literal expressions are not values so they must be evaluated.
+Let's again evaluate the right-hand first, remembering that literal expressions are not values so they must be evaluated.
 
 The literal `"N"` evaluates to the value `"N"`.
 To avoid this confusion let's write the value as `|"N"|`.
@@ -192,4 +192,4 @@ val d = b.indexOf(c)
 ```
 
 because `e` depends on `a` and `d`, and in our top-to-bottom ordering `a` and `d` have yet to be evaluated.
-We might righly claim that this is a bit silly to even attempt, but `e` is the complete expression we're trying to evalute, and `a` to `d` are sub-expressions of `e`, and it of course we have to evaluate the sub-expressions before we evaluate the expression.
+We might righly claim that this is a bit silly to even attempt, but `e` is the complete expression we're trying to evaluate, and `a` to `d` are sub-expressions of `e`, and it of course we have to evaluate the sub-expressions before we evaluate the expression.
