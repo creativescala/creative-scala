@@ -85,25 +85,30 @@ We always have a `match` expression.
 We always have the two patterns, corresponding to the base and recursive cases.
 The right hand side expressions always consist of the base case, and the recursive case which itself hasa result specific substitute for `1` and `+`, and a recursive call for `n-1`.
 
-The general pattern is
+<div class="callout callout-info">
+#### Structural Recursion over Natural Numbers Pattern {-}
+
+The general pattern for structural recursion over the natural numbers is
 
 ```scala
-def <doSomething>(count: Int): <Result> =
+def name(count: Int): Result =
   count match {
-    case 0 => <resultBase>
-    case n => <resultUnit> <add> <doSomething>(n-1)
+    case 0 => resultBase
+    case n => resultUnit add name(n-1)
   }
 ```
 
-where `<Result>`, `<resultBase>`, `<resultUnit>`, and `<add>` are specific to the problem we're solving. So to implement a structural recursion over the natural numbers we must
+where `Result`, `resultBase`, `resultUnit`, and `add` are specific to the problem we're solving. 
+So to implement a structural recursion over the natural numbers we must
 
  - recognise the method we're writing has a natural number as it's input;
  - work out the result type; and
  - decide what should be the base, unit, and addition for the result.
+</div>
 
 We're now ready to go explore the fun that can be had with this simple but powerful tool.
 
-<div class="info">
+<div class="callout callout-info">
 ### Proofs and Programs
 
 If you've studied maths you have probably come across proof by induction.

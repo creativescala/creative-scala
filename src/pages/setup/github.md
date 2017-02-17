@@ -9,7 +9,7 @@ Once you have an account, visit the [template] (https://github.com/underscoreio/
 At the top right is button called "Fork". 
 Press this button to create your own copy of the template.
 You will be taken to a web page displaying your own fork of the template.
-Remember the name of this repository (it should be something like `<yourname>/creative-scala-template` where `<yourname>` is your Github user name) as you will need it later.
+Remember the name of this repository (it should be something like `yourname/creative-scala-template` where `yourname` is your Github user name) as you will need it later.
 
 
 [github]: https://github.com/
