@@ -188,7 +188,7 @@ In this exercise and the next we're trying to sharpen you eye for recursive stru
 Your mission in this exercise to identify the recursive structure in a chessboard, and implement a method to draw chessboards.
 The method skeleton isn't
 
-```tut:book
+```tut:silent:book
 def chessboard(count: Int): Image =
   ???
 ```
@@ -206,8 +206,8 @@ Implement `chessboard`.
 ```scala
 def chessboard(count: Int): Image =
   count match {
-    case 0 => <resultBase>
-    case n => <resultUnit> <add> cross(n-1)
+    case 0 => resultBase
+    case n => resultUnit add cross(n-1)
   }
 ```
 
@@ -215,12 +215,12 @@ As before we must decide on the base, unit, and addition for the result.
 We've given you a hint by showing the progression of chessboards in [@fig:recursion:chessboards].
 From this we can see that the base is a two-by-two chessboard.
 
-```tut:book
+```tut:silent:book
 val blackSquare = Image.rectangle(30, 30) fillColor Color.black
 val redSquare   = Image.rectangle(30, 30) fillColor Color.red
 
 val base =
-  (redSquare   beside blackSquare) above (blackSquare beside redSquare)
+  (redSquare beside blackSquare) above (blackSquare beside redSquare)
 ```
 
 Now to work out the unit and addition. 
@@ -230,7 +230,7 @@ The addition operation is `(unit beside unit) above (unit beside unit)`.
 
 Putting it all together we get
 
-```tut:book
+```tut:silent:book
 def chessboard(count: Int): Image = {
   val blackSquare = Image.rectangle(30, 30) fillColor Color.black
   val redSquare   = Image.rectangle(30, 30) fillColor Color.red
@@ -240,7 +240,7 @@ def chessboard(count: Int): Image = {
   count match {
     case 0 => base
     case n =>
-      val unit = cross(n-1)
+      val unit = chessboard(n-1)
       (unit beside unit) above (unit beside unit)
   }
 }
