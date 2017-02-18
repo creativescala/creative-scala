@@ -26,17 +26,19 @@ Now install the text editor Atom.
 Again type at the terminal
 
 ```bash
-brew install atom
+brew install Caskroom/cask/atom
 ```
+
+Install Scala support: Settings > Install > language-scala
 
 Now we will use Git to get an SBT project that will work with Creative Scala.
 Type
 
 ```bash
-git clone <yourname>/creative-scala-template
+git clone yourname/creative-scala-template
 ```
 
-replacing `<yourname>` with your Github username. 
+replacing `yourname` with your Github username. 
 If you have not forked the repository from Github you can clone the original.
 This means you won't be (easily) able to upload your work to Github and share it with others.
 
