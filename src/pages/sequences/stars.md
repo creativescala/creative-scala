@@ -35,13 +35,14 @@ Here's the `star` method. We've renamed `p` and `n` to `points` and `skip` for c
 ```tut:book
 def star(sides: Int, skip: Int, radius: Double): Image = {
   import Point._
+  import PathElement._
 
   val rotation = 360.degrees * skip / sides
 
-  val start = MoveTo(polar(radius, 0.degrees))
+  val start = moveTo(polar(radius, 0.degrees))
   val elements = (1 until sides).toList map { index =>
     val point = polar(radius, rotation * index)
-    LineTo(point)
+    lineTo(point)
   }
 
   closedPath(start :: elements) lineWidth 2

@@ -235,14 +235,15 @@ Here's one possible implementation. Much easier to read than the previous implem
 ```tut:book
 def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   import Point._
+  import PathElement._
 
   val step = (Angle.one / sides).toDegrees
   val path = 
     (0.0 to 360.0 by step).toList.map{ deg => 
-      LineTo(polar(size, initialRotation + deg.degrees))
+      lineTo(polar(size, initialRotation + deg.degrees))
     }
     
-  closedPath(MoveTo(polar(size, initialRotation)) :: path)
+  closedPath(moveTo(polar(size, initialRotation)) :: path)
 }
 ```
 </div>

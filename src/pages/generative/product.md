@@ -120,7 +120,7 @@ Using the same box notation we saw in the previous chapter we can describe the a
 We can use the product operator with `List` as shown below. Before doing so, think about what you'd expect if we merge two lists using `|@|`. According to our box diagram we should get a `List` where is each element is the result of merging elements from the two lists (and we haven't exactly defined what this merging is).
 
 ```tut:book
-import cats.std.list._
+import cats.instances.list._
 val merged = List(1, 2, 3) |@| List(4, 5)
 ```
 

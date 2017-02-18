@@ -57,7 +57,7 @@ def process(state: TurtleState, instruction: Instruction): (TurtleState, List[Pa
   
   instruction match {
     case Forward(d) =>
-      val nowAt = state.at + Vec.polar(state.heading, d)
+      val nowAt = state.at + Vec.polar(d, state.heading)
       val element = lineTo(nowAt.toPoint)
 
       (state.copy(at = nowAt), List(element))
@@ -104,7 +104,7 @@ def process(state: TurtleState, instruction: Instruction): (TurtleState, List[Pa
   
   instruction match {
     case Forward(d) =>
-      val nowAt = state.at + Vec.polar(state.heading, d)
+      val nowAt = state.at + Vec.polar(d, state.heading)
       val element = lineTo(nowAt.toPoint)
 
       (state.copy(at = nowAt), List(element))
@@ -145,7 +145,7 @@ object Turtle {
       
       instruction match {
         case Forward(d) =>
-          val nowAt = state.at + Vec.polar(state.heading, d)
+          val nowAt = state.at + Vec.polar(d, state.heading)
           val element = lineTo(nowAt.toPoint)
     
           (state.copy(at = nowAt), List(element))

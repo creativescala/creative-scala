@@ -39,7 +39,7 @@ You've used `PathElement` quite a bit so far.
 How do you think `PathElement` is defined in terms of sum and product types?
 
 <div class="solution">
-A `PathElement` is sum type, as it is:
+A `PathElement` is a sum type, as it is:
 - a `MoveTo`; or
 - a `LineTo`; or
 - a `CurveTo`.

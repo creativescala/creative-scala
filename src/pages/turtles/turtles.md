@@ -134,9 +134,9 @@ def polygon(sides: Int, size: Int): Image = {
   val rotation = Angle.one / sides
   val elts =
     (1 to sides).toList.map { i =>
-      LineTo(polar(size, rotation * i))
+      PathElement.lineTo(polar(size, rotation * i))
     }
-  closedPath(MoveTo(polar(size, Angle.zero)) :: elts)
+  closedPath(PathElement.moveTo(polar(size, Angle.zero)) :: elts)
 }
 ```
 

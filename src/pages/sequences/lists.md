@@ -431,6 +431,7 @@ Here's our code. Note how we factored the code into small components---though we
 
 ```tut:book
 import Point._
+import PathElement._
 
 def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   def iter(n: Int, rotation: Angle): List[PathElement] =
@@ -440,7 +441,7 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
       case n =>
         LineTo(polar(size, rotation * n + initialRotation)) :: iter(n - 1, rotation)
     }
-  closedPath(MoveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides))
+  closedPath(moveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides))
 }
 
 def style(img: Image): Image = {

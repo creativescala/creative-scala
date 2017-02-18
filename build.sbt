@@ -18,8 +18,8 @@ lazy val root = project.in(file("."))
 resolvers += Resolver.bintrayRepo("underscoreio", "training")
 
 libraryDependencies ++= Seq(
-  "underscoreio" %% "doodle" % "0.6.5",
-  "org.typelevel" %% "cats" % "0.4.0"
+  "underscoreio" %% "doodle" % "0.7.0",
+  "org.typelevel" %% "cats" % "0.7.2"
 )
 
 tutSourceDirectory := sourceDirectory.value / "pages"

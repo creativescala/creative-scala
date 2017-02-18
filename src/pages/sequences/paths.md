@@ -34,16 +34,17 @@ Now we know about paths, how do we create them in Doodle? Here's the code that c
 
 ```tut:book
 import doodle.core.Point._
+import doodle.core.PathElement._
 
 val triangle =
   List(
-    LineTo(cartesian(50, 100)),
-    LineTo(cartesian(100, 0)),
-    LineTo(cartesian(0, 0))
+    lineTo(cartesian(50, 100)),
+    lineTo(cartesian(100, 0)),
+    lineTo(cartesian(0, 0))
   )
 
 val curve =
-  List(BezierCurveTo(cartesian(50, 100), cartesian(100, 100), cartesian(150, 0)))
+  List(curveTo(cartesian(50, 100), cartesian(100, 100), cartesian(150, 0)))
 
 def style(image: Image): Image =
   image.
@@ -159,10 +160,11 @@ The core of the exercise is to replace the `LineTo` expressions with `BezierCurv
 
 ```tut:book
 import doodle.core.Point._
+import doodle.core.PathElement._
 import doodle.core.Color._
 
 def curve(radius: Int, start: Angle, increment: Angle): PathElement = {
-  BezierCurveTo(
+  curveTo(
     polar(radius *  .8, start + (increment * .3)),
     polar(radius * 1.2, start + (increment * .6)),
     polar(radius, start + increment)
@@ -171,7 +173,7 @@ def curve(radius: Int, start: Angle, increment: Angle): PathElement = {
 
 val triangle =
   closedPath(List(
-               MoveTo(polar(50, 0.degrees)),
+               moveTo(polar(50, 0.degrees)),
                curve(50, 0.degrees, 120.degrees),
                curve(50, 120.degrees, 120.degrees),
                curve(50, 240.degrees, 120.degrees)
@@ -179,7 +181,7 @@ val triangle =
 
 val square =
   closedPath(List(
-               MoveTo(polar(50, 45.degrees)),
+               moveTo(polar(50, 45.degrees)),
                curve(50, 45.degrees, 90.degrees),
                curve(50, 135.degrees, 90.degrees),
                curve(50, 225.degrees, 90.degrees),
@@ -188,7 +190,7 @@ val square =
 
 val pentagon =
   closedPath((List(
-                MoveTo(polar(50, 72.degrees)),
+                moveTo(polar(50, 72.degrees)),
                 curve(50, 72.degrees, 72.degrees),
                 curve(50, 144.degrees, 72.degrees),
                 curve(50, 216.degrees, 72.degrees),
