@@ -19,10 +19,10 @@ pages:
   - intro/index.md
 
   - setup/index.md
-  - setup/background.md
-  - setup/github.md
   - setup/terminal.md
   - setup/intellij.md
+  - setup/background.md
+  - setup/github.md
  
   - expressions/index.md
   - expressions/literals.md
