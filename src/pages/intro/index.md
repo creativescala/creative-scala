@@ -96,4 +96,4 @@ or by email:
 
 Creative Scala was written by [Dave Gurnell][twitter-dave] and [Noel Welsh][twitter-noel]. Many thanks to [Richard Dallaway][twitter-richard], [Jonathan Ferguson][twitter-jono], and the team at [Underscore][underscore] for their invaluable contributions and extensive proof reading.
 
-Thanks also to the many people who pointed out errors or made suggestions to improve the book: Neil Moore; Kelley Robinson, Julie Pitt, and the other ScalaBridge organizers; all the students who worked through Creative Scala at ScalaBridge, at another event, or on their own; and the many awesome members of the Scala community who gave us comments and suggestions. 
+Thanks also to the many people who pointed out errors or made suggestions to improve the book: Neil Moore; Kelley Robinson, Julie Pitt, and the other ScalaBridge organizers; d43, all the students who worked through Creative Scala at ScalaBridge, at another event, or on their own; and the many awesome members of the Scala community who gave us comments and suggestions. 
