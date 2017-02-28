@@ -8,12 +8,15 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-At this point you might be thinking it would be nice to create a method to draw polygons rather than constructing each one by hand. There is clearly a repeating pattern to their construction and we should be able to abstact this pattern but we don't know how to create a list of arbitrary size. It's time we learned more about building and manipulating lists.
+At this point you might be thinking it would be nice to create a method to draw polygons rather than constructing each one by hand. 
+There is clearly a repeating pattern to their construction and we should be able to abstact this pattern but we don't know how to create a list of arbitrary size. 
+It's time we learned more about building and manipulating lists.
 
 
 ### The Recursive Structure of Lists
 
-You'll recall when we introduced structural recursion over the natural numbers we said we could transform their recursive structure into any other recursive structure. We demonstrated this for concentric circles and a variety of other patterns.
+You'll recall when we introduced structural recursion over the natural numbers we said we could transform their recursive structure into any other recursive structure. 
+We demonstrated this for concentric circles and a variety of other patterns.
 
 Lists have a recursive structure, and one that is very similar to the structure of the natural numbers. A `List` is
 
@@ -26,9 +29,13 @@ For example, we can write out the list `List(1, 2, 3, 4)` in its "long" form as
 1 :: 2 :: 3 :: 4 :: Nil
 ```
 
-Notice the similarity to the natural numbers. Earlier we noted we can expand the structure of a natural number so we could write, say, `3` as `1 + 1 + 1 + 0`. If we replace `+` with `::` and `0` with `Nil` we get the `List` `1 :: 1 :: 1 :: Nil`.
+Notice the similarity to the natural numbers. 
+Earlier we noted we can expand the structure of a natural number so we could write, say, `3` as `1 + 1 + 1 + 0`. 
+If we replace `+` with `::` and `0` with `Nil` we get the `List` `1 :: 1 :: 1 :: Nil`.
 
-What does this mean? It means we can easily transform a natural number into a `List` using our famililar tool of structural recursion[^free-monoid]. Here's a very simple example, which given a number builds a list of that length containing the `String` "Hi".
+What does this mean? 
+It means we can easily transform a natural number into a `List` using our famililar tool of structural recursion[^free-monoid]. 
+Here's a very simple example, which given a number builds a list of that length containing the `String` "Hi".
 
 ```tut:book
 def sayHi(length: Int): List[String] =
@@ -42,7 +49,8 @@ sayHi(5)
 
 [^free-monoid]: This connection goes deeper, to something called the free monoid. This isn't relelvant to Creative Scala but you're encouraged to explore on your own!
 
-This recursive structure also means we can transform lists into other recursive structures, such a natural numbers, different lists, chessboards, and so on. Here we increment every element a list---that is, transform a list to a list---using structural recursion.
+This recursive structure also means we can transform lists into other recursive structures, such a natural numbers, different lists, chessboards, and so on. 
+Here we increment every element a list---that is, transform a list to a list---using structural recursion.
 
 ```tut:book
 def increment(list: List[Int]): List[Int] =
@@ -79,9 +87,13 @@ def length(list: List[Int]): Int =
   }
 ```
 
-Note that we don't do anything with the elements of the list---we don't really care about their type. Using the same code skeleton can just as easily calculate the length of a `List[Int]` as a `List[HairyYak]` but we don't currently know how to write down the type of a list where we don't care about the type of the elements.
+Note that we don't do anything with the elements of the list---we don't really care about their type. 
+Using the same code skeleton can just as easily calculate the length of a `List[Int]` as a `List[HairyYak]` but we don't currently know how to write down the type of a list where we don't care about the type of the elements.
 
-Scala lets us write methods that can work with any type, by using what is called a *type variable*. A type variable is written in square brackets like `[A]` and comes after the method name and before the parameter list. A type variable can stand in for any specific type, and we can use it in the parameter list or result type to indicate some type that we don't know up front. For example, here's how we can write `length` so it works with lists of any type.
+Scala lets us write methods that can work with any type, by using what is called a *type variable*. 
+A type variable is written in square brackets like `[A]` and comes after the method name and before the parameter list. 
+A type variable can stand in for any specific type, and we can use it in the parameter list or result type to indicate some type that we don't know up front. 
+For example, here's how we can write `length` so it works with lists of any type.
 
 ```tut:book
 def length[A](list: List[A]): Int =
@@ -100,7 +112,7 @@ A `List` of elements of type `A` is:
 - the empty list `Nil`; or
 - an element `a` of type `A` and a `tail` of type `List[A]`: `a :: tail`
 
-The structural recursion skeleton for transforming `list` of type `List[A]` has shape
+The structural recursion skeleton for transforming `list` of type `List[A]` to some type `B` has shape
 
 ```
 def doSomething[A,B](list: List[A]): B =
@@ -111,7 +123,6 @@ def doSomething[A,B](list: List[A]): B =
 ```
 
 where `f` is a problem specific method combining `hd` and result of the recursive call to produce something of type `B`.
-
 </div>
 
 
@@ -399,7 +410,8 @@ reverse(List("a", "b", "c"))
 ```
 
 <div class="solution">
-The trick here is to use an accumulator to hold the partially reversed list. If you managed to work this one out, congratulations---you really understand structural recursion well!
+The trick here is to use an accumulator to hold the partially reversed list. 
+If you managed to work this one out, congratulations---you really understand structural recursion well!
 
 ```tut:book
 def reverse[A](list: List[A]): List[A] = {
@@ -420,16 +432,21 @@ reverse(List("a", "b", "c"))
 
 ##### Polygons! {-}
 
-At last, let's return to our example of drawing polygons. Write a method `polygon` that accepts the number of sides of the polygon and the starting rotation and produces a `Image` representing the specified regular polygon. *Hint:* use an internal accumulator.
+At last, let's return to our example of drawing polygons. 
+Write a method `polygon` that accepts the number of sides of the polygon and the starting rotation and produces a `Image` representing the specified regular polygon. 
+*Hint:* use an internal accumulator.
 
-Use this utility to create an interesting picture combining polygons. Our rather unimaginative example is in [@fig:sequences:concentric-polygons]. We're sure you can do better.
+Use this utility to create an interesting picture combining polygons. 
+Our rather unimaginative example is in [@fig:sequences:concentric-polygons]. We're sure you can do better.
 
-![Concentric polygons with pastel gradient fill.](./src/pages/sequences/concentric-polygons.png){#fig:sequences:concentric-polygons}
+![Concentric polygons with pastel gradient fill.](./src/pages/sequences/concentric-polygons.pdf+svg){#fig:sequences:concentric-polygons}
 
 <div class="solution">
-Here's our code. Note how we factored the code into small components---though we could have taken the factoring further is we wanted to. (Can you see how? Hint: do we need to pass, say, `start` to every call of `makeColor` when it's not changing?)
+Here's our code. 
+Note how we factored the code into small components---though we could have taken the factoring further is we wanted to. 
+(Can you see how? Hint: do we need to pass, say, `start` to every call of `makeColor` when it's not changing?)
 
-```tut:book
+```tut:silent:book
 import Point._
 import PathElement._
 

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" height="74.78888888888888mm" version="1.1" viewBox="0 0 262 212" width="92.42777777777776mm" x="0mm" y="0mm" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1 0 0 -1 131 106)">
+    <path d="M-128.0,3.0 L-78.0,103.0 L-28.0,3.0 L-128.0,3.0" style="fill:none;stroke:rgb(65,105,225);stroke-width:6;stroke-miterlimit:10;"/>
+    <path d="M-128.0,3.0 L-78.0,103.0 L-28.0,3.0 L-128.0,3.0" style="fill:rgb(135,206,235);stroke:none;"/>
+    <path d="M-22.0,3.0 C28.0,103.0 78.0,103.0 128.0,3.0" style="fill:none;stroke:rgb(65,105,225);stroke-width:6;stroke-miterlimit:10;"/>
+    <path d="M-22.0,3.0 C28.0,103.0 78.0,103.0 128.0,3.0" style="fill:rgb(135,206,235);stroke:none;"/>
+    <path d="M-128.0,-103.0 L-78.0,-3.0 L-28.0,-103.0 L-128.0,-103.0 Z" style="fill:none;stroke:rgb(65,105,225);stroke-width:6;stroke-miterlimit:10;"/>
+    <path d="M-128.0,-103.0 L-78.0,-3.0 L-28.0,-103.0 L-128.0,-103.0 Z" style="fill:rgb(135,206,235);stroke:none;"/>
+    <path d="M-22.0,-103.0 C28.0,-3.0 78.0,-3.0 128.0,-103.0 Z" style="fill:none;stroke:rgb(65,105,225);stroke-width:6;stroke-miterlimit:10;"/>
+    <path d="M-22.0,-103.0 C28.0,-3.0 78.0,-3.0 128.0,-103.0 Z" style="fill:rgb(135,206,235);stroke:none;"/>
+  </g>
+</svg>
