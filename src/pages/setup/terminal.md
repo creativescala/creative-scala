@@ -1,12 +1,12 @@
 ## Installing Terminal Software and a Text Editors
 
-This section is for you if you've decided to go the terminal and text editor route. 
+This section is our recommended setup for people new to programming, and describes how to setup Creative Scala with the terminal and a text editor. 
 We need to install:
 
 - the JVM;
 - Git;
 - a text editor; and
-- the code for Creative Scala.
+- the template project for Creative Scala.
 
 
 ### OS X
@@ -50,16 +50,20 @@ Now we will use Git to get an SBT project that will work with Creative Scala.
 Type
 
 ```bash
-git clone yourname/creative-scala-template
+git clone https://github.com/underscoreio/creative-scala-template.git
 ```
 
-replacing `yourname` with your Github username. 
-If you have not forked the repository from Github you can clone the original.
-This means you won't be (easily) able to upload your work to Github and share it with others.
+<div class="callout callout-info">
+#### Sharing Your Work {-}
 
-```bash
-git clone underscoreio/creative-scala-template
-```
+There is an alternative setup that involves first forking the Creative Scala template project, and then cloning it to your computer.
+This is the setup to choose if you want to share your work with other people; for example you might be taking Creative Scala with a remote instructor or you might just (quite rightfully) be proud of your work.
+
+In this setup you first *fork* the Creative Scala template.
+Then you make a clone of *your* fork.
+This alternative setup is described in more detail in the section on Github later in this chapter.
+</div>
+
 
 Now change to the directory we just created and run SBT.
 
@@ -80,7 +84,7 @@ and an image of three circles should appear!
 
 If you've made it this far you've successfully installed all the software you need for work through Creative Scala.
 
-The final step is to load Atom and use it to open `Example.scala`.
+The final step is to load Atom and use it to open `Example.scala`, which you can find in `src/main/scala`.
 
 
 ### Windows
@@ -103,17 +107,21 @@ Select that option.
 A window will open up with a command prompt.
 Type
 
-```bash
-git clone yourname/creative-scala-template
-```
-
-replacing `yourname` with your Github username. 
-If you have not forked the repository from Github you can clone the original.
-This means you won't be (easily) able to upload your work to Github and share it with others.
 
 ```bash
-git clone underscoreio/creative-scala-template
+git clone https://github.com/underscoreio/creative-scala-template.git
 ```
+
+<div class="callout callout-info">
+#### Sharing Your Work {-}
+
+There is an alternative setup that involves first forking the Creative Scala template project, and then cloning it to your computer.
+This is the setup to choose if you want to share your work with other people; for example you might be taking Creative Scala with a remote instructor or you might just (quite rightfully) be proud of your work.
+
+In this setup you first *fork* the Creative Scala template.
+Then you make a clone of *your* fork.
+This alternative setup is described in more detail in the section on Github later in this chapter.
+</div>
 
 Open a normal command-prompt.
 Click on the Windows icon on the bottom left of the screen.
@@ -143,7 +151,7 @@ and an image of three circles should appear!
 
 If you've made it this far you've successfully installed all the software you need for work through Creative Scala.
 
-The final step is to load Atom and use it to open `Example.scala`.
+The final step is to load Atom and use it to open `Example.scala`, which you can find in the directory `src\main\scala`.
 
 
 ### Linux
