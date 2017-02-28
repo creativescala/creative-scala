@@ -201,22 +201,22 @@ val c: Color = someColor.lighten(0.1.normalized)
 
 ~~~ scala
 // Create path from list of PathElements:
-val i: Image = Path(List(
-  MoveTo(Vec(0, 0)),
-  LineTo(Vec(10, 10))
+val i: Image = OpenPath(List(
+  MoveTo(Vec(0, 0).toPoint),
+  LineTo(Vec(10, 10).toPoint)
 ))
 
 // Create path from other sequence of PathElements:
-val i: Image = Path(
+val i: Image = OpenPath(
   (0 until 360 by 30) map { i =>
-    LineTo(Vec.polar(i.degrees, 100))
+    LineTo(Vec.polar(i.degrees, 100).toPoint)
   }
 )
 
 // Types of element:
-val e1: PathElement = MoveTo(toVec)                        // no line
-val e2: PathElement = LineTo(toVec)                        // straight line
-val e3: PathElement = BezierCurveTo(cp1Vec, cp2Vec, toVec) // curved line
+val e1: PathElement = MoveTo(toVec.toPoint)                        // no line
+val e2: PathElement = LineTo(toVec.toPoint)                        // straight line
+val e3: PathElement = BezierCurveTo(cp1Vec.toPoint, cp2Vec.toPoint, toVec.toPoint) // curved line
 
 // NOTE: If the first element isn't a MoveTo,
 //       it is converted to one
