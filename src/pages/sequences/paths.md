@@ -8,7 +8,9 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-All shapes in Doodle are ultimately represented as paths. You can think of a path as giving a sequence of movements for an imaginary pen, starting from the origin. Pen movements come in three varieties:
+All shapes in Doodle are ultimately represented as paths. 
+You can think of a path as giving a sequence of movements for an imaginary pen, starting from the origin. 
+Pen movements come in three varieties:
 
 - moving the pen to a point without drawing a line;
 
@@ -23,7 +25,7 @@ Paths themselves come in two varieties:
 
 The picture in [@fig:sequences:open-closed-paths] illustrates the components that can make up a path, and shows the difference between open and closed paths.
 
-![The same paths draw as open (top) and closed (bottom) paths. Notice how the open triangle is not properly joined at the bottom left, and the closed curve inserts a straight line to close the shape.](./src/pages/sequences/open-closed-paths.png){#fig:sequences:open-closed-paths}
+![The same paths draw as open (top) and closed (bottom) paths. Notice how the open triangle is not properly joined at the bottom left, and the closed curve inserts a straight line to close the shape.](./src/pages/sequences/open-closed-paths.pdf+svg){#fig:sequences:open-closed-paths}
 
 [bezier-curve]: https://en.wikipedia.org/wiki/Bézier_curve
 
@@ -32,7 +34,7 @@ The picture in [@fig:sequences:open-closed-paths] illustrates the components tha
 
 Now we know about paths, how do we create them in Doodle? Here's the code that created [@fig:pictures:open-closed-paths].
 
-```tut:book
+```tut:silent:book
 import doodle.core.Point._
 import doodle.core.PathElement._
 
@@ -61,19 +63,21 @@ val closedPaths =
 val paths = openPaths above closedPaths
 ```
 
-From this code we can see we create paths using the `openPath` and `closePath` methods on `Image`, just we create other shapes. A paths is created from a `List` of `PathElement`. The different kinds of `PathElement` are described in [@tbl:sequences:path-element].
+From this code we can see we create paths using the `openPath` and `closePath` methods on `Image`, just as we create other shapes. 
+A path is created from a `List` of `PathElement`. 
+The different kinds of `PathElement` are created by calling methods on the `PathElement` object, as described in [@tbl:sequences:path-element].
 
 
 ---------------------------------------------------------------------------------------------
-Constructor                          Description                 Example
+Method                               Description                 Example
 ------------------------------------ --------------------------- ----------------------------
-`MoveTo(Point)`                      Move the pen to `Point`     `MoveTo(cartesian(1, 1))`
+`moveTo(Point)`                      Move the pen to `Point`     `moveTo(cartesian(1, 1))`
                                      without drawing.
 
-`LineTo(Point)`                      Draw a straight line to     `LineTo(cartesian(2, 2))`
+`lineTo(Point)`                      Draw a straight line to     `lineTo(cartesian(2, 2))`
                                      `Point`
 
-`BezierCurveTo(Point, Point, Point)` Draw a curve. The first two `BezierCurveTo(cartesian(1,0), cartesian(0,1), cartesian(1,1))`
+`curveTo(Point, Point, Point)`       Draw a curve. The first two `curveTo(cartesian(1,0), cartesian(0,1), cartesian(1,1))`
                                      points specify control
                                      points and the last point is
                                      where the curve ends.
@@ -101,41 +105,50 @@ Notice the type of a `List` includes the type of the elements, written in square
 
 ##### Polygons {-}
 
-Create paths to define a triangle, square, and pentagon. Your image might look like [@fig:sequences:polygons]. *Hint:* you might find it easier to use polar coordinates to define the polygons.
+Create paths to define a triangle, square, and pentagon. Your image might look like [@fig:sequences:polygons]. 
+*Hint:* you might find it easier to use polar coordinates to define the polygons.
 
-![A triangle, square, and pentagon, defined using paths.](./src/pages/sequences/polygons.png){#fig:sequences:polygons}
+![A triangle, square, and pentagon, defined using paths.](./src/pages/sequences/polygons.pdf+svg){#fig:sequences:polygons}
 
 <div class="solution">
-Using polar coordinates makes it much simpler to define the location of the "corners" (vertices) of the polygons. Each vertex is located a fixed rotation from the previous vertex, and after we've marked all vertices we must have done a full rotation of the circle. This means, for example, that for a pentagon each vertex is (360 / 5) = 72 degrees from the previous one. If we start at 0 degrees, vertices are located at 0, 72, 144, 216, and 288 degrees. The distance from the origin is fixed in each case. We don't have to draw a line between the final vertex and the start---by using a closed path this will be done for us.
+Using polar coordinates makes it much simpler to define the location of the "corners" (vertices) of the polygons. 
+Each vertex is located a fixed rotation from the previous vertex, and after we've marked all vertices we must have done a full rotation of the circle. 
+This means, for example, that for a pentagon each vertex is (360 / 5) = 72 degrees from the previous one. 
+If we start at 0 degrees, vertices are located at 0, 72, 144, 216, and 288 degrees. 
+The distance from the origin is fixed in each case. 
+We don't have to draw a line between the final vertex and the start---by using a closed path this will be done for us.
 
-Here's our code to draw [@fig:sequences:polygons], which uses this idea. In some cases we haven't started the vertices at 0 degrees so we can rotate the shape we draw.
+Here's our code to draw [@fig:sequences:polygons], which uses this idea. 
+In some cases we haven't started the vertices at 0 degrees so we can rotate the shape we draw.
 
-```tut:book
+```tut:silent:book
+import doodle.core.Image._
+import doodle.core.PathElement._
 import doodle.core.Point._
 import doodle.core.Color._
 
 val triangle =
   closedPath(List(
-               MoveTo(polar(50, 0.degrees)),
-               LineTo(polar(50, 120.degrees)),
-               LineTo(polar(50, 240.degrees))
+               moveTo(polar(50, 0.degrees)),
+               lineTo(polar(50, 120.degrees)),
+               lineTo(polar(50, 240.degrees))
              ))
 
 val square =
   closedPath(List(
-               MoveTo(polar(50, 45.degrees)),
-               LineTo(polar(50, 135.degrees)),
-               LineTo(polar(50, 225.degrees)),
-               LineTo(polar(50, 315.degrees))
+               moveTo(polar(50, 45.degrees)),
+               lineTo(polar(50, 135.degrees)),
+               lineTo(polar(50, 225.degrees)),
+               lineTo(polar(50, 315.degrees))
              ))
 
 val pentagon =
   closedPath((List(
-                MoveTo(polar(50, 72.degrees)),
-                LineTo(polar(50, 144.degrees)),
-                LineTo(polar(50, 216.degrees)),
-                LineTo(polar(50, 288.degrees)),
-                LineTo(polar(50, 360.degrees))
+                moveTo(polar(50, 72.degrees)),
+                lineTo(polar(50, 144.degrees)),
+                lineTo(polar(50, 216.degrees)),
+                lineTo(polar(50, 288.degrees)),
+                lineTo(polar(50, 360.degrees))
               )))
 
 val spacer =
@@ -151,14 +164,20 @@ val image =
 
 ##### Curves {-}
 
-Repeat the exercise above, but this time use curves instead of straight lines to create some interesting shapes. Our curvy polygons are shown in [@fig:sequences:curved-polygons]. *Hint:* you'll have an easier time if you abstract into a method your code for creating a curve.
+Repeat the exercise above, but this time use curves instead of straight lines to create some interesting shapes. 
+Our curvy polygons are shown in [@fig:sequences:curved-polygons]. 
+*Hint:* you'll have an easier time if you abstract into a method your code for creating a curve.
 
-![A curvy triangle, square, and polygon, defined using paths.](./src/pages/sequences/curved-polygons.png){#fig:sequences:curved-polygons}
+![A curvy triangle, square, and polygon, defined using paths.](./src/pages/sequences/curved-polygons.pdf+svg){#fig:sequences:curved-polygons}
 
 <div class="solution">
-The core of the exercise is to replace the `LineTo` expressions with `BezierCurveTo`. We can abstract curve creation into a method that takes the starting angle and the angle increment, and constructs control points at predetermined points along the rotation. This is what we did in the method `curve` below, and it gives us consistent looking curves without having to manually repeat the calculations each time. Making this abstraction also makes it easier to play around with different control points to create different outcomes.
+The core of the exercise is to replace the `lineTo` expressions with `curveTo`. 
+We can abstract curve creation into a method that takes the starting angle and the angle increment, and constructs control points at predetermined points along the rotation. 
+This is what we did in the method `curve` below, and it gives us consistent looking curves without having to manually repeat the calculations each time. 
+Making this abstraction also makes it easier to play around with different control points to create different outcomes.
 
-```tut:book
+```tut:silent:book
+import doodle.core.Image._
 import doodle.core.Point._
 import doodle.core.PathElement._
 import doodle.core.Color._

@@ -8,12 +8,16 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-We've seen that using structural recursion we can create and transform lists. This pattern is simple to use and to understand, but it requires we write the same skeleton time and again. In this section we'll learn that we can replace structural recursion in some cases by using a method on `List` called `map`. We'll also see that other useful datatypes provide this method and we can use it as a common interface for manipulating sequences.
+We've seen that using structural recursion we can create and transform lists. 
+This pattern is simple to use and to understand, but it requires we write the same skeleton time and again. 
+In this section we'll learn that we can replace structural recursion in some cases by using a method on `List` called `map`. 
+We'll also see that other useful datatypes provide this method and we can use it as a common interface for manipulating sequences.
 
 
 ### Transforming the Elements of a List
 
-In the previous section we say several examples where we transformed one list to another. For example, we incremented the elements of a list with the following code.
+In the previous section we say several examples where we transformed one list to another. 
+For example, we incremented the elements of a list with the following code.
 
 ```tut:book
 def increment(list: List[Int]): List[Int] =
@@ -25,7 +29,11 @@ def increment(list: List[Int]): List[Int] =
 increment(List(1, 2, 3))
 ```
 
-In this example the *structure* of the list doesn't change. If we start with three elements we end with three elements. We can abstract this pattern in a method called `map`. If we have a list with elements of type `A`, we pass `map` a function of type `A => B` and we get back a list with elements of type `B`. For example, we can implement `increment` using `map` with the function `x => x + 1`.
+In this example the *structure* of the list doesn't change. 
+If we start with three elements we end with three elements. 
+We can abstract this pattern in a method called `map`. 
+If we have a list with elements of type `A`, we pass `map` a function of type `A => B` and we get back a list with elements of type `B`. 
+For example, we can implement `increment` using `map` with the function `x => x + 1`.
 
 ```tut:book
 def increment(list: List[Int]): List[Int] =
@@ -34,28 +42,39 @@ def increment(list: List[Int]): List[Int] =
 increment(List(1, 2, 3))
 ```
 
-Each element is transformed by the function we pass to `map`, in this case `x => x + 1`. With `map` we can transform the elements, but we cannot change the number of elements in the list.
+Each element is transformed by the function we pass to `map`, in this case `x => x + 1`. 
+With `map` we can transform the elements, but we cannot change the number of elements in the list.
 
-We find a graphical notation helps with understanding `map`. If we had some type `Circle` we can draw a `List[Circle]` as a box containing a circle, as shown in [@fig:sequences:circle-box].
+We find a graphical notation helps with understanding `map`. 
+If we had some type `Circle` we can draw a `List[Circle]` as a box containing a circle, as shown in [@fig:sequences:circle-box].
 
-![A `List[Circle]` representing by a circle within a box](./src/pages/sequences/circle-box.png){#fig:sequences:circle-box}
+![A `List[Circle]` representing by a circle within a box](./src/pages/sequences/circle-box.pdf+svg){#fig:sequences:circle-box}
 
-Now we can draw an equation for `map` as in [@fig:sequences:map]. If you prefer symbols instead of pictures, the picture is showing that `List[Circle] map (Circle => Triangle) = List[Triangle]`. One feature of the graphical representation is it nicely illustrates that `map` cannot create a new "box", which represents the structure of the list---or more concretely the number of elements and their order.
+Now we can draw an equation for `map` as in [@fig:sequences:map]. 
+If you prefer symbols instead of pictures, the picture is showing that `List[Circle] map (Circle => Triangle) = List[Triangle]`. 
+One feature of the graphical representation is it nicely illustrates that `map` cannot create a new "box", which represents the structure of the list---or more concretely the number of elements and their order.
 
-![`map` shown graphically](./src/pages/sequences/map.png){#fig:sequences:map}
+![`map` shown graphically](./src/pages/sequences/map.pdf+svg){#fig:sequences:map}
 
-The graphical drawing of `map` exactly illustrates what holds at the type level for `map`. If we prefer we can write it down symbolically:
+The graphical drawing of `map` exactly illustrates what holds at the type level for `map`. 
+If we prefer we can write it down symbolically:
 
 ```scala
 List[A] map (A => B) = List[B]
 ```
 
-The left hand side of the equation has the type of the list we map and the function we use to do the mapping. The right hand is the type of the result. We can perform algebra with this reprsentation, substituting in concrete types from our program.
+The left hand side of the equation has the type of the list we map and the function we use to do the mapping. 
+The right hand is the type of the result. 
+We can perform algebra with this reprsentation, substituting in concrete types from our program.
 
 
 ### Transforming Sequences of Numbers
 
-We have also written a lot of methods that transform a natural number to a list. We briefly discussed how we can represent a natural number as a list. `3` is equivalent to `1 + 1 + 1 + 0`, which in turn we could represent as `List(1, 1, 1)`. So what? Well, it means we could write a lot of the methods that accepts natural numbers as methods that worked on lists.
+We have also written a lot of methods that transform a natural number to a list. 
+We briefly discussed how we can represent a natural number as a list. 
+`3` is equivalent to `1 + 1 + 1 + 0`, which in turn we could represent as `List(1, 1, 1)`. 
+So what? 
+Well, it means we could write a lot of the methods that accepts natural numbers as methods that worked on lists.
 
 For example, instead of
 
@@ -103,7 +122,8 @@ between consecutive elements of the range:
 (0 until 3) map (x => x + 1) 
 ```
 
-You'll notice the result has type `IndexedSeq` and is implemented as a `Vector`---two types we haven't seen yet. We can treat an `IndexedSeq` much like a `List`, but for simplicity we can convert a `Range` or an `IndexedSeq` to a `List` using the `toList` method.
+You'll notice the result has type `IndexedSeq` and is implemented as a `Vector`---two types we haven't seen yet. 
+We can treat an `IndexedSeq` much like a `List`, but for simplicity we can convert a `Range` or an `IndexedSeq` to a `List` using the `toList` method.
 
 ```tut:book
 (0 until 7).toList
@@ -232,7 +252,7 @@ Using our new tools, rewrite the `polygon` method from the previous section.
 <div class="solution">
 Here's one possible implementation. Much easier to read than the previous implementation!
 
-```tut:book
+```tut:silent:book
 def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   import Point._
   import PathElement._
@@ -251,7 +271,8 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
 
 ##### Challenge Exercise: Beyond Map {-}
 
-Can we use `map` to replace all uses of structural recursion? If not, can you characterise the problems that we can't implement with `map` but can implement with general structural recursion over lists?
+Can we use `map` to replace all uses of structural recursion? 
+If not, can you characterise the problems that we can't implement with `map` but can implement with general structural recursion over lists?
 
 <div class="solution">
 We've seen many examples that we cannot implement with `map`: the methods `product`, `sum`, `find`, and more in the previous section cannot be implemented with `map`.
@@ -262,15 +283,20 @@ In abstract, methods implemented with map obey the following equation:
 List[A] map A => B = List[B]
 ```
 
-If the result is not of type `List[B]` we cannot implement it with `map`. For example, methods like `product` and `sum` transform `List[Int]` to `Int` and so cannot be implemented with `map`.
+If the result is not of type `List[B]` we cannot implement it with `map`. 
+For example, methods like `product` and `sum` transform `List[Int]` to `Int` and so cannot be implemented with `map`.
 
-`Map` transforms the elements of a list, but cannot change the number of elements in the result. Even if a method fits the equation for `map` above it cannot be implemented with `map` if it requires changing the number of elements in the list.
+`Map` transforms the elements of a list, but cannot change the number of elements in the result. 
+Even if a method fits the equation for `map` above it cannot be implemented with `map` if it requires changing the number of elements in the list.
 </div>
 
 
 ### Tools with Ranges
 
-We've seen the `until` method to construct `Ranges`, and the `by` method to change the increment in a `Range`. There is one more method that will be useful to know about: `to`. This constructs a `Range` like `until` but the `Range` includes the endpoint. Compare
+We've seen the `until` method to construct `Ranges`, and the `by` method to change the increment in a `Range`. 
+There is one more method that will be useful to know about: `to`. 
+This constructs a `Range` like `until` but the `Range` includes the endpoint. 
+Compare
 
 ```tut:book
 1 until 5
@@ -283,7 +309,8 @@ In technical terms, the `Range` constructed with `until` is a *half-open interva
 
 ##### Using Open Intervals {-}
 
-Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero. *Hint:* use `to`
+Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero. 
+*Hint:* use `to`
 
 ```tut:invisible
 def ascending(n: Int): List[Int] =

@@ -17,12 +17,12 @@ For example, [@fig:sequences:stars] shows stars with `p=11` and `n=1 to 5`.
 `n=1` produces a regular polygon while
 values of `n` from `2` upwards produce stars with increasingly sharp points:
 
-![Stars with `p=11` and `n=1 to 5`](./src/pages/sequences/stars.png){#fig:sequences:stars}
+![Stars with `p=11` and `n=1 to 5`](./src/pages/sequences/stars.pdf+svg){#fig:sequences:stars}
 
 Write code to draw the diagram above.
 Start by writing a method to draw a `star` given `p` and `n`:
 
-```tut:book
+```tut:silent:book
 def star(p: Int, n: Int, radius: Double): Image =
   ???
 ```
@@ -32,7 +32,7 @@ def star(p: Int, n: Int, radius: Double): Image =
 <div class="solution">
 Here's the `star` method. We've renamed `p` and `n` to `points` and `skip` for clarity:
 
-```tut:book
+```tut:silent:book
 def star(sides: Int, skip: Int, radius: Double): Image = {
   import Point._
   import PathElement._
@@ -69,7 +69,7 @@ def allBeside(imgs: List[Image]): Image =
   }
 ```
 
-```tut:book
+```tut:silent:book
 allBeside(
   (1 to 5).toList map { skip =>
     star(11, skip, 100)
@@ -80,14 +80,14 @@ allBeside(
 
 When you've finished your row of stars,
 try constructing a larger image from different values of `p` and `n`.
-There is an example in [@fig:sequences:stars2]. *Hint:* You will need to create a method `allAbove` similar to `allBeside`.
+There is an example in [@fig:sequences:all-star]. *Hint:* You will need to create a method `allAbove` similar to `allBeside`.
 
-![Stars with `p=3 to 33 by 2` and `n=1 to p/2`](src/pages/sequences/stars2.png){#fig:sequences:stars2}
+![Stars with `p=3 to 33 by 2` and `n=1 to p/2`](src/pages/sequences/all-star.pdf+svg){#fig:sequences:all-star}
 
 <div class="solution">
-To create the image in [@fig:sequences:stars2] we started by creating a method to style  a star.
+To create the image in [@fig:sequences:stars2] we started by creating a method to style a star.
 
-```tut:book
+```tut:silent:book
 def style(img: Image, hue: Angle): Image = {
   img.
     lineColor(Color.hsl(hue, 1.normalized, .25.normalized)).
@@ -97,7 +97,7 @@ def style(img: Image, hue: Angle): Image = {
 
 We then created `allAbove`, which you will notice is very similar to `allBeside` (wouldn't it be nice if we could abstract this pattern?)
 
-```tut:book
+```tut:silent:book
 def allAbove(imgs: List[Image]): Image =
   imgs match {
     case Nil => Image.empty
@@ -107,7 +107,7 @@ def allAbove(imgs: List[Image]): Image =
 
 The updated scene then becomes:
 
-```tut:book
+```tut:silent:book
 allAbove((3 to 33 by 2).toList map { sides =>
   allBeside((1 to sides/2).toList map { skip =>
     style(star(sides, skip, 20), 360.degrees * skip / sides)
