@@ -8,14 +8,15 @@ import doodle.jvm.Java2DCanvas._
 import doodle.backend.StandardInterpreter._
 ```
 
-As the error message above suggests, we can convert any method to a function using the `_` operator and call it with the same parameters.
+As the error message we saw in the previous section above suggests, we can convert any method to a function using the `_` operator and call it with the same parameters.
 
 
-```tut:book
+```tut:silent:book
 // Parametric equation for rose with k = 7
 def rose(angle: Angle) =
   Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)
-  
+```
+```tut:book
 rose _
 
 (rose _)(0.degrees)
@@ -23,7 +24,7 @@ rose _
 
 A function is basically a method, but we can use a function as a first-class value:
 
-- we can pass it as an argument to a method or function; 
+- we can pass it as an argument or parameter to a method or function; 
 - we can return it from a method or function; and
 - we can give it a name using `val`.
 
@@ -37,7 +38,8 @@ roseFn(0.degrees)
 
 To pass functions to methods we need to know how to write down their types (because when we declare a parameter we have to declare its type).
 
-We write a function type like `(A, B) => C` where `A` and `B` are the types of the parameters and `C` is the result type. The same pattern generalises from functions of no arguments to an arbitrary number of arguments.
+We write a function type like `(A, B) => C` where `A` and `B` are the types of the parameters and `C` is the result type. 
+The same pattern generalises from functions of no arguments to an arbitrary number of arguments.
 
 In our example above we want `f` to be a function that accepts two `Int`s as parameters and returns an `Int`. Thus we can write it as `(Int, Int) => Int`.
 
@@ -65,7 +67,8 @@ A => B
 
 ### Function Literals
 
-There is a literal syntax for functions. For example, here is a function that adds `42` to its input.
+There is a literal syntax for functions. 
+For example, here is a function that adds `42` to its input.
 
 ```tut:book
 (x: Int) => x + 42

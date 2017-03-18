@@ -7,7 +7,6 @@
   * Demonstate that programming in general, and Scala in particular, can be fun
 
 ## Outline
-
 ### Introduction
   Layout goals and structure of the book
 
