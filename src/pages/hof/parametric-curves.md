@@ -184,7 +184,7 @@ We can change the value we multiply by the angle (`7` below) to get a different 
 ```tut:silent:book
 // Parametric equation for rose with k = 7
 def rose(angle: Angle) =
-  Point.polar((angle * 7).cos * 200)
+  Point.polar((angle * 7).cos * 200, angle)
 ```
 
 A densely sampled example is shown in [@fig:hof:rose].
