@@ -65,7 +65,7 @@ List[A] map (A => B) = List[B]
 
 The left hand side of the equation has the type of the list we map and the function we use to do the mapping. 
 The right hand is the type of the result. 
-We can perform algebra with this reprsentation, substituting in concrete types from our program.
+We can perform algebra with this representation, substituting in concrete types from our program.
 
 
 ### Transforming Sequences of Numbers
@@ -333,4 +333,3 @@ ascending(0)
 ascending(3)
 ```
 </div>
-

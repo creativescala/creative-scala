@@ -9,7 +9,7 @@ import doodle.backend.StandardInterpreter._
 ```
 
 All shapes in Doodle are ultimately represented as paths. 
-You can think of a path as giving a sequence of movements for an imaginary pen, starting from the origin. 
+You can think of a path as giving a sequence of movements for an imaginary pen, starting from the local origin. 
 Pen movements come in three varieties:
 
 - moving the pen to a point without drawing a line;
@@ -101,9 +101,9 @@ List(Color.paleGoldenrod, Color.paleGreen, Color.paleTurquoise)
 
 Notice the type of a `List` includes the type of the elements, written in square brackets. So the type of a list of integers is written `List[Int]` and a list of `PathElement` is written `List[PathElement]`.
 
-#### Exercises {-}
+### Exercises {-}
 
-##### Polygons {-}
+#### Polygons {-}
 
 Create paths to define a triangle, square, and pentagon. Your image might look like [@fig:sequences:polygons]. 
 *Hint:* you might find it easier to use polar coordinates to define the polygons.
@@ -162,19 +162,19 @@ val image =
 ```
 </div>
 
-##### Curves {-}
+#### Curves {-}
 
 Repeat the exercise above, but this time use curves instead of straight lines to create some interesting shapes. 
 Our curvy polygons are shown in [@fig:sequences:curved-polygons]. 
-*Hint:* you'll have an easier time if you abstract into a method your code for creating a curve.
+*Hint:* you'll have an easier time if you generalise into a method your code for creating a curve.
 
 ![A curvy triangle, square, and polygon, defined using paths.](./src/pages/sequences/curved-polygons.pdf+svg){#fig:sequences:curved-polygons}
 
 <div class="solution">
 The core of the exercise is to replace the `lineTo` expressions with `curveTo`. 
-We can abstract curve creation into a method that takes the starting angle and the angle increment, and constructs control points at predetermined points along the rotation. 
+We can generalise curve creation into a method that takes the starting angle and the angle increment, and constructs control points at predetermined points along the rotation. 
 This is what we did in the method `curve` below, and it gives us consistent looking curves without having to manually repeat the calculations each time. 
-Making this abstraction also makes it easier to play around with different control points to create different outcomes.
+Making this generalisation also makes it easier to play around with different control points to create different outcomes.
 
 ```tut:silent:book
 import doodle.core.Image._

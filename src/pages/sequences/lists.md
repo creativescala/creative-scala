@@ -9,7 +9,7 @@ import doodle.backend.StandardInterpreter._
 ```
 
 At this point you might be thinking it would be nice to create a method to draw polygons rather than constructing each one by hand. 
-There is clearly a repeating pattern to their construction and we should be able to abstact this pattern but we don't know how to create a list of arbitrary size. 
+There is clearly a repeating pattern to their construction and we would be able to generalise this pattern if we knew how to create a list of arbitrary size. 
 It's time we learned more about building and manipulating lists.
 
 
@@ -47,7 +47,12 @@ def sayHi(length: Int): List[String] =
 sayHi(5)
 ```
 
-[^free-monoid]: This connection goes deeper, to something called the free monoid. This isn't relelvant to Creative Scala but you're encouraged to explore on your own!
+The code here is transforming:
+
+ - `0` to `Nil`, for the base case; and
+ - `n` (which, remember, we think of as `1 + m`) to `"Hi" :: sayHi(n - 1)`, transforming `1` to `"Hi"`, `+` to `::`, and recursing as usual on `m` (which is `n - 1`).
+
+[^free-monoid]: This connection goes deeper. We can abstract the idea of things that can be "added" into a concept called a monoid, and a list represents a particular type of monoid called the free monoid. We aren't going to work with this abstraction in Creative Scala but you're encouraged to explore on your own!
 
 This recursive structure also means we can transform lists into other recursive structures, such a natural numbers, different lists, chessboards, and so on. 
 Here we increment every element a list---that is, transform a list to a list---using structural recursion.
@@ -73,6 +78,9 @@ def sum(list: List[Int]): Int =
   
 sum(List(1, 2, 3)) 
 ```
+
+Notice when we take a `List` apart with pattern matching we use the same `hd :: tl` syntax we use when we construct it.
+This is an intentional symmetry.
 
 
 ### Type Variables
@@ -126,9 +134,9 @@ where `f` is a problem specific method combining `hd` and result of the recursiv
 </div>
 
 
-#### Exercises {-}
+### Exercises {-}
 
-##### Building Lists {-}
+#### Building Lists {-}
 
 In these exercises we get some experience constructing lists using structural recursion on the natural numbers.
 
@@ -261,7 +269,7 @@ fill(3, Color.blue)
 ```
 </div>
 
-##### Transforming Lists {-}
+#### Transforming Lists {-}
 
 In these exercises we practice the other side of list manipulation---transforming lists into elements of other types (and sometimes, into different lists).
 
@@ -388,7 +396,7 @@ first(List(1,2,3), 4)
 </div>
 
 
-##### Challenge Exercise: Reverse {-}
+#### Challenge Exercise: Reverse {-}
 
 Write a method `reverse` that accepts a `List[A]` and reverses the list.
 
@@ -430,7 +438,7 @@ reverse(List("a", "b", "c"))
 </div>
 
 
-##### Polygons! {-}
+#### Polygons! {-}
 
 At last, let's return to our example of drawing polygons. 
 Write a method `polygon` that accepts the number of sides of the polygon and the starting rotation and produces a `Image` representing the specified regular polygon. 
