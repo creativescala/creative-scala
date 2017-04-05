@@ -13,20 +13,24 @@ Let's look over the turtle graphics API, and use it to draw a few different imag
 
 ### Instructions
 
-We control the turtle by giving it instructions. These instructions are defined as methods on the object `doodle.turtle.Instruction` (similarly to the mehods `doodle.core.Image` the create images).
+We control the turtle by giving it instructions. 
+These instructions are defined as methods on the object `doodle.turtle.Instruction` (similarly to the methods on `doodle.core.Image` that create images).
 
 We can import the methods and then create instructions.
 
-```tut:book
+```tut:silent:book
 import doodle.turtle._
 import doodle.turtle.Instruction._
+```
+```tut:book
 forward(10)
 turn(5.degrees)
 ```
 
-This doesn't do anything useful unless we assemble these commands into an image. To do so, we create a list of instructions and then ask the turtle (`doodle.turtle.Turtle` to be exact) to draw them to an `Image`.
+This doesn't do anything useful unless we assemble these commands into an image. 
+To do so, we create a list of instructions and then ask the turtle (`doodle.turtle.Turtle` to be exact) to draw them to an `Image`.
 
-```tut:book
+```tut:silent:book
 val instructions = 
   List(forward(10), turn(90.degrees), 
        forward(10), turn(90.degrees), 
@@ -36,7 +40,9 @@ val instructions =
 val path = Turtle.draw(instructions)
 ```
 
-This creates a path---an `Image`---which we can then `draw` in the usual way giving the output in [@fig:turtles:square]. This is not a very exciting image, but we can change color, line width, and so on in the usual way.
+This creates a path---an `Image`---which we can then `draw` in the usual way.
+This gives the output shown in [@fig:turtles:square]. 
+This is not a very exciting image, but we can change color, line width, and so on to create more interesting results.
 
 ![A square created via the turtle graphics system.](src/pages/turtles/square.pdf+svg){#fig:turtles:square}
 
@@ -68,7 +74,7 @@ Instruction                Description                         Example
 
 In the previous chapter we wrote a method to create a polygon. Reimplement this method using turtle graphics instead. The method header should be something like
 
-```tut:book
+```tut:silent:book
 def polygon(sides: Int, sideLength: Double): Image =
  ???
 ```
@@ -78,7 +84,7 @@ You'll have to do a bit of geometry to work out the correct turn angle, but as t
 <div class="solution">
 Here's our solution. It's a structural recursion over the natural numbers. The turn angle is exactly the same as the rotation angle used to create polygons in polar coordinates in the previous chapter, though the derivation is quite different.
 
-```tut:book
+```tut:silent:book
 def polygon(sides: Int, sideLength: Double): Image = {
   val rotation = Angle.one / sides
   def iter(n: Int): List[Instruction] =
@@ -127,7 +133,7 @@ def squareSpiral(steps: Int, distance: Double, angle: Angle, increment: Double):
 
 We can create polygons in polar coordinates using a `Range` and `map` as shown below.
 
-```tut:book
+```tut:silent:book
 import doodle.core.Point._
 
 def polygon(sides: Int, size: Int): Image = {
@@ -144,5 +150,5 @@ We cannot so easily write the same method to generate turtle instructions using 
 
 <div class="solution">
 Each side of the polygon requires two turtle instructions: a `forward` and a `turn`. Thus drawing a pentagon requires ten instructions, and in general n sides requires 2n instructions.
-Using `map` we cannot change the number of elements in a list. Therefore mapping `1 to n`, as we did int the code above, won't work. We could map over `1 to (n*2)`, and on, say, odd number move forward and on even numbers turn, but this is rather inelegant. It seems it would be simpler if we had an abstraction like `map` that allowed us to change the number of elements in the list as well as transform the individual elements.
+Using `map` we cannot change the number of elements in a list. Therefore mapping `1 to n`, as we did int the code above, won't work. We could map over `1 to (n*2)`, and on, say, odd numbers move forward and on even numbers turn, but this is rather inelegant. It seems it would be simpler if we had an abstraction like `map` that allowed us to change the number of elements in the list as well as transform the individual elements.
 </div>

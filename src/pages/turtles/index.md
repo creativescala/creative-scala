@@ -16,9 +16,10 @@ import doodle.backend.StandardInterpreter._
 
 ## Turtle Graphics
 
-It's often easier to define paths in terms of relative coordinates: say how to far move forward or turn relative to our current location. So far our paths have used an absolute coordinate system. For example, if we wanted to draw a square we'd use code like
+So far our paths have used an absolute coordinate system. 
+For example, if we wanted to draw a square we'd use code like
 
-```tut:book
+```tut:silent:book
 import doodle.core.PathElement._
 
 val path = 
@@ -27,22 +28,29 @@ val path =
   )
 ```
 
-In a turtle graphics system we specify movements relative to our current position. 
+It's often easier to define paths in terms of relative coordinates, specifying how far we move forward or turn relative to our current location.
+This is how a turtle graphics system works. 
+Here's an example.
 
-```tut:book
+```tut:silent:book
 import doodle.turtle._
 import doodle.turtle.Instruction._
 
-val instructions = 
+// Create a list of instructions for the turtle
+val instructions: List[Instruction] = 
   List(forward(10), turn(90.degrees), 
        forward(10), turn(90.degrees), 
        forward(10), turn(90.degrees), 
        forward(10))
 
-val path = Turtle.draw(instructions)
+// Ask the turtle to draw these instructions, creating an Image
+val path: Image = Turtle.draw(instructions)
 ```
 
-So where's the turtle in all this? This model was developed in the 60s by Seymour Papert in the programming language Logo. The original Logo could control a robot that drew on paper with a pen. This robot was called a turtle, due to its rounded shape, and way of programming this robot became known as turtle graphics.
+So where's the turtle in all this? 
+This model was developed in the 60s by Seymour Papert in the programming language Logo. 
+The original Logo could control a robot that drew on paper with a pen. 
+This robot was called a turtle, due to its rounded shape, and way of programming this robot became known as turtle graphics.
 
 Using turtle graphics and another concept, known as an L-system, we can create images that mimic nature such as the plant in [@fig:turtles:plant].
 

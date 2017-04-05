@@ -17,7 +17,7 @@ import doodle.turtle.Instruction._
 ```
 </div>
 
-Using the `branch` turtle instruction we can explore some shapes that have been difficult to create till this point. The `branch` instruction takes a `List[Instruction]`. It saves the current state of the turtle (it's location and heading), draws the given instructions, and returns the turtle to the saved state.
+Using the `branch` turtle instruction we can explore some shapes that are difficult to create without it. The `branch` instruction takes a `List[Instruction]`. It saves the current state of the turtle (it's location and heading), draws the given instructions, and returns the turtle to the saved state.
 
 Consider the code below, which creates the image in [@fig:turtles:y]. This is easy to draw with a branching turtle, but quite involved to create with just a path.
 
@@ -58,14 +58,14 @@ def rule(i: Instruction): List[Instruction] =
   }
 ```
 
-Note how we used pattern matching on `Instruction`, like we have on the other algebraic data types---natural numbers and `List`---we've seen so far. by importing `doodle.turtle.Instruction._` we can access all the patterns for `Instruction`, which are
+Note how we used pattern matching on `Instruction`, like we have on the other algebraic data types---natural numbers and `List`---we've seen so far. By importing `doodle.turtle.Instruction._` we can access all the patterns for `Instruction`, which are
 
 - `Forward(distance)`, where `distance` is a `Double`;
 - `Turn(angle)`, where `angle` is an `Angle`;
 - `NoOp`; and
 - `Branch(instructions)`, where `instructions` is a `List[Instruction]`.
 
-As a function, `rule` has type `Instruction => List[Instruction]`, as we're potentially transforming each instruction into several instructions (as we do in the case of `Forward`). Now how can we actually apply this rule to a `List[Instruction]` (for example, `List[noop]`)? Can we use `map`?
+As a function, `rule` has type `Instruction => List[Instruction]`, as we're potentially transforming each instruction into several instructions (as we do in the case of `Forward`). Now how can we actually apply this rule to a `List[Instruction]` to create a `List[Instruction]` (for example, applying it to `List[noop]`)? Can we use `map`?
 
 <div class="solution">
 In this case `map` is not the right solution, as the types tell us. Remember the type equation for `map` is
@@ -122,7 +122,7 @@ There are two points to this:
 - recognising how to use `flatMap`; and
 - remembering how to use type variables.
 
-```tut:book
+```tut:silent:book
 def double[A](in: List[A]): List[A] =
   in.flatMap { x => List(x, x) }
 ```
@@ -146,14 +146,14 @@ nothing(List("do", "ray", "me"))
 <div class="solution">
 We could easily write this method as
 
-```tut:book
+```tut:silent:book
 def nothing[A](in: List[A]): List[A] =
   List() // or List.empty or Nil
 ```
 
 but the point of this exercise is to get more familiarity with using `flatMap`. With `flatMap` we can write the method as 
 
-```tut:book
+```tut:silent:book
 def nothing[A](in: List[A]): List[A] =
   in.flatMap { x => List.empty }
 ```
@@ -164,7 +164,7 @@ def nothing[A](in: List[A]): List[A] =
 
 Write a method `rewrite` with signature
 
-```tut:book
+```tut:silent:book
 def rewrite(instructions: List[Instruction], 
             rule: Instruction => List[Instruction]): List[Instruction] =
   ???
@@ -187,7 +187,7 @@ There are two parts to this:
 
 The latter is an example of structural recursion, though a slighlty more complex pattern than we've seen before.
 
-```tut:book
+```tut:silent:book
 def rewrite(instructions: List[Instruction], rule: Instruction => List[Instruction]): List[Instruction] =
   instructions.flatMap { i =>
     i match {
@@ -216,7 +216,7 @@ This should recursively apply `rule` to `seed` for `steps` iterations.
 <div class="solution">
 This is just a simple structural recursion of the natural numbers, with all the hard work done by `rewrite`.
 
-```tut:book
+```tut:silent:book
 def iterate(steps: Int, 
             seed: List[Instruction], 
             rule: Instruction => List[Instruction]): List[Instruction] =
