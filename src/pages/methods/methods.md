@@ -67,8 +67,8 @@ def boxes(color: Color): Image = {
   val box =
     Image.rectangle(40, 40).
       lineWidth(5.0).
-      lineColor(Color.mistyRose.spin(30.degrees)).
-      fillColor(Color.mistyRose) 
+      lineColor(color.spin(30.degrees)).
+      fillColor(color)
 
   box beside box beside box beside box beside box
 }
