@@ -10,77 +10,6 @@ import doodle.random._
 import cats.syntax.cartesian._
 ```
 
-### Colored Boxes
-
-In this exercise we'll return to one of our first examples, creating colored boxes. Start by adapting the `randomConcentricCircles` code to create a sequence of boxes, where each box has a random color. You should generate images like in [@fig:generative:random-color-boxes].
-
-![Boxes with randomly chosen colors.](./src/pages/generative/random-color-boxes.pdf){#fig:generative:random-color-boxes}
-
-<div class="solution">
-Our solution reuses many of the components we created from `randomConcentricCircles`. It's fundamentally just a structural recursion over the integers.
-
-```tut:book
-val randomAngle: Random[Angle] =
-  Random.double.map(x => x.turns)
-
-val randomColor: Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, 0.7.normalized, 0.7.normalized))
-
-val randomSpin: Random[Double] =
-  Random.normal(15.0, 10.0)
-
-def coloredRectangle(color: Color): Image =
-   rectangle(20, 20).noFill fillColor color
-
-def randomColorBoxes(n: Int): Random[Image] =
-  n match {
-    case 0 => randomColor map { c => coloredRectangle(c) }
-    case n =>
-      val box = randomColor map { c => coloredRectangle(c) }
-      val boxes = randomColorBoxes(n-1)
-      (box |@| boxes) map { (b, bs) => b beside bs }
-  }
-```
-</div>
-
-These images are often a bit too random in their color choices. We can make some interesting images if we take an underlying structure---say a gradient---and make a random alteration to it.
-
-The code for creating the gradient boxes with randomness is
-
-```tut:book
-def gradientBoxes(n: Int, color: Color): Image =
-  n match {
-    case 0 => coloredRectangle(color)
-    case n => coloredRectangle(color) beside gradientBoxes(n-1, color.spin(15.degrees))
-  }
-```
-
-This creates image like [@fig:generative:gradient-color-boxes]
-
-![Boxes with a deterministic gradient.](./src/pages/generative/gradient-color-boxes.pdf){#fig:generative:gradient-color-boxes}
-
-Now at each step we can add some random noise to `color`. (Note we can't use the randomly altered color as the input to the next recursion. We don't currently have the tools to make a random value depend on a random value.) This results in images like [@fig:generative:noisy-gradient-color-boxes]. Implement this.
-
-![Boxes with a deterministic gradient with added random noise.](./src/pages/generative/noisy-gradient-color-boxes.pdf){#fig:generative:noisy-gradient-color-boxes}
-
-<div class="solution">
-Here's our solution. It's a combination of the simple structural recursion in `gradientBoxes` with the product operator as we saw in `randomColorBoxes`.
-
-```tut:book
-def nextColor(color: Color): Random[Color] =
-  randomSpin map { spin => color.spin(spin.degrees) }
-
-def noisyGradientBoxes(n: Int, color: Color): Random[Image] =
-  n match {
-    case 0 => nextColor(color) map { c => coloredRectangle(c) }
-    case n =>
-      val box = nextColor(color) map { c => coloredRectangle(c) }
-      val boxes = noisyGradientBoxes(n-1, color.spin(15.degrees))
-      box |@| boxes map { (b, bs) =>  b beside bs }
-  }
-```
-</div>
-
 ### Scatter Plots
 
 In this exercise we'll implement scatter plots as in [@fig:generative:distributions]. Experiment with different distributions (trying creating your own distributions by transforming ones defined on `Random`).
@@ -100,11 +29,14 @@ def makePoint(x: Random[Double], y: Random[Double]): Random[Point]
 ```
 
 <div class="solution">
-This is a nice example of composition of `Randoms` using `|@|`.
+This is a nice example of composition of `Randoms`.
 
 ```tut:book
 def makePoint(x: Random[Double], y: Random[Double]): Random[Point] =
-  x |@| y map { (x, y) => Point.cartesian(x, y) }
+  for {
+    theX <- x
+    theY <- y
+  } yield Point.cartesian(theX, theY)
 ```
 </div>
 
@@ -113,7 +45,7 @@ Now create, say, a thousand random points using the techniques we learned in the
 <div class="solution">
 Something like the following should work.
 
-```tut:book
+```tut:silent:book
 val normal = Random.normal(50, 15)
 val normal2D = makePoint(normal, normal)
 
@@ -126,14 +58,14 @@ Now let's transform our `List[Random[Point]]` into `List[Random[Image]]`. Do thi
 <div class="solution">
 We can convert a `Point` to an `Image` using a method `point` below. Note I've made each point on the scatterplot quite transparent---this makes it easier to see where a lot of points are grouped together.
 
-```tut:book
+```tut:silent:book
 def point(loc: Point): Image =
   circle(2).fillColor(Color.cadetBlue.alpha(0.3.normalized)).noLine.at(loc.toVec)
 ```
 
 Converting between the lists is just a matter of calling `map` a few times.
 
-```tut:book
+```tut:silent:book
 val points = data.map(r => r.map(point _))
 ```
 </div>
@@ -141,13 +73,17 @@ val points = data.map(r => r.map(point _))
 Now create a method that transforms a `List[Random[Image]]` to a `Random[Image]` by placing all the points `on` each other. This is the equivalent of the `allOn` method we've developed previously, but it now works with data wrapped in `Random`. 
 
 <div class="solution">
-You might recognise this pattern. It's what we used in `allOn` with the addition of `|@|`---which is exactly what `randomConcentricCircles` uses. 
+You might recognise this pattern. It's what we used in `allOn` with the addition of `flatMap` which is exactly what `randomConcentricCircles` (and many other examples) uses. 
 
-```tut:book
+```tut:silent:book
 def allOn(points: List[Random[Image]]): Random[Image] =
   points match {
     case Nil => Random.always(Image.empty)
-    case img :: imgs => img |@| allOn(imgs) map { (i, is) => i on is }
+    case img :: imgs => 
+      for {
+        i  <- img
+        is <- allOn(imgs)
+      } yield (i on is)
   }
 ```
 </div>
@@ -157,7 +93,7 @@ Now put it all together to make a scatter plot.
 <div class="solution">
 This is just calling methods and using values we've already defined.
 
-```tut:book
+```tut:silent:book
 val plot = allOn(points)
 ```
 </div>
@@ -165,12 +101,13 @@ val plot = allOn(points)
 
 ### Parametric Noise
 
-In this exercise we will combine parametric equations, from the previous chapter, with randomness.
+In this exercise we will combine parametric equations, from a previous chapter, with randomness.
 
 Let's start by making a method `perturb` that adds random noise to a `Point`. The method should have signature
 
-```scala
-def perturb(point: Point): Random[Point]
+```tut:silent:book
+def perturb(point: Point): Random[Point] =
+  ???
 ```
 
 Choose whatever noise function you like.
@@ -178,17 +115,18 @@ Choose whatever noise function you like.
 <div class="solution">
 Here's our solution. We can combine independent noise for the x- and y-coordinates using the product operator.
 
-```tut:book
+```tut:silent:book
 def perturb(point: Point): Random[Point] =
-  Random.normal(0, 10) |@| Random.normal(0, 10) map { (x,y) =>
-    Point.cartesian(point.x + x, point.y + y) 
-  }
+  for {
+    x <- Random.normal(0, 10)
+    y <- Random.normal(0, 10)
+  } yield Point.cartesian(point.x + x, point.y + y) 
 ```
 </div>
 
-Now create a parametric function, like we did in the previous chapter. You could use the rose function (the function we explored in the previous chapter) or you could create one of your own devising. Here's the definition of rose.
+Now create a parametric function, like we did in the previous chapter. You could use the rose function (the function we explored previously) or you could create one of your own devising. Here's the definition of rose.
 
-```tut:book
+```tut:silent:book
 def rose(k: Int): Angle => Point =
   (angle: Angle) => {
     Point.cartesian((angle * k).cos * angle.cos, (angle * k).cos * angle.sin)
@@ -197,7 +135,7 @@ def rose(k: Int): Angle => Point =
 
 Now we can combine our parametric function and `perturb` to create a method with type `Angle => Random[Point]`. You can write this easily using the `andThen` method on functions, or you can write this out the long way. Here's a quick example of `andThen` showing how we write the fourth power in terms of the square.
 
-```tut:book
+```tut:silent:book
 val square = (x: Double) => x * x
 val quartic = square andThen square
 ```
@@ -205,7 +143,7 @@ val quartic = square andThen square
 <div class="solution">
 Writing this with `andThen` is nice and neat.
 
-```tut:book
+```tut:silent:book
 def perturbedRose(k: Int): Angle => Random[Point] =
   rose(k) andThen perturb
 ```
@@ -216,7 +154,7 @@ Now using `allOn` create a picture that combines randomnes and structure. Be as 
 <div class="solution">
 Here's the code we used to create [#fig:generative:volcano]. It's quite a bit larger than code we've seen up to this point, but you should understand all the components this code is built from.
 
-```tut:book
+```tut:silent:book
 object ParametricNoise {
   def rose(k: Int): Angle => Point =
     (angle: Angle) => {
@@ -228,13 +166,11 @@ object ParametricNoise {
       Point.polar(pt.r * factor, pt.angle)
     }
 
-  def perturb(point: Point): Random[Point] = {
-    val noise = Random.normal(0, 10.0)
-
-    (noise |@| noise) map { (dx, dy) =>
-      Point.cartesian(point.x + dx, point.y + dy)
-    }
-  }
+  def perturb(point: Point): Random[Point] =
+    for {
+      x <- Random.normal(0, 10)
+      y <- Random.normal(0, 10)
+    } yield Point.cartesian(point.x + x, point.y + y) 
 
   def smoke(r: Normalized): Random[Image] = {
     val alpha = Random.normal(0.5, 0.1) map (a => a.normalized)
@@ -242,12 +178,18 @@ object ParametricNoise {
     val saturation = Random.double.map(s => (s * 0.8).normalized)
     val lightness = Random.normal(0.4, 0.1) map (a => a.normalized)
     val color =
-      (hue |@| saturation |@| lightness |@| alpha) map {
-        (h, s, l, a) => Color.hsla(h, s, l, a)
-      }
+      for {
+        h <- hue
+        s <- saturation
+        l <- lightness
+        a <- alpha
+      } yield Color.hsla(h, s, l, a)
     val c = Random.normal(5, 5) map (r => circle(r))
-
-    (c |@| color) map { (circle, line) => circle.lineColor(line).noFill }
+    
+    for {
+      circle <- c
+      line   <- color
+    } yield circle.lineColor(line).noFill
   }
 
   def point(
@@ -265,9 +207,10 @@ object ParametricNoise {
       val r = pt.r.normalized
       val img = image(r)
 
-      (img |@| perturbed) map { (i, pt) =>
-        i at pt.toVec.rotate(rotation)
-      }
+      for {
+        i  <- img
+        pt <- perturbed
+      } yield (i at pt.toVec.rotate(rotation))
     }
   }
 
@@ -277,7 +220,10 @@ object ParametricNoise {
         if(angle > Angle.one)
           Random.always(Image.empty)
         else
-          point(angle) |@| iter(angle + step) map { _ on _ }
+          for {
+            p  <- point
+            ps <- iter(angle + step)
+          } yield (p on ps)
       }
 
       iter(Angle.zero)
@@ -298,7 +244,10 @@ object ParametricNoise {
         }
       }
     val picture = pts.foldLeft(Random.always(Image.empty)){ (accum, img) =>
-      (accum |@| img) map { _ on _ }
+      for {
+        a <- accum
+        i <- img
+      } yield (a on i)
     }
     val background = (rectangle(650, 650) fillColor Color.black)
 

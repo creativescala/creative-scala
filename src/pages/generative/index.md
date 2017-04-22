@@ -2,7 +2,7 @@
 
 In this chapter we'll explore techniques from generative art, which will in turn allow us to explore key concepts for functional programming. We'll see:
 
-- methods for composing complex data that go beyond `map` we learned about in the previous chapter; and
+- uses for `map` and `flatMap` that go beyond manipulating collections of data that we've seen in the previous chapters; 
 - how we can handle side effects without breaking substitution; and
 - some interesting, and possibly beautiful, images that combine elements of structure and randomness.
 

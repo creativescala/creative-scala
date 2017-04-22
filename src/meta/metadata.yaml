@@ -84,7 +84,7 @@ pages:
   - generative/index.md
   - generative/generative.md
   - generative/random.md
-  - generative/product.md
+  - generative/flatmap.md
   - generative/api.md
   - generative/exercises.md
 

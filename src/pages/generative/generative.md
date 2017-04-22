@@ -12,7 +12,7 @@ Generative art means art where some part of the composition is determined by an 
 
 Let's take a really simple example. We've learned previously how to create concentric circles.
 
-```tut:book
+```tut:silent:book
 def concentricCircles(n: Int): Image =
   n match {
     case 0 => circle(10)
@@ -24,7 +24,7 @@ def concentricCircles(n: Int): Image =
 
 We also learned how we could make coloured circles, using a second parameter.
 
-```tut:book
+```tut:silent:book
 def concentricCircles(n: Int, color: Color): Image =
   n match {
     case 0 => circle(10) fillColor color
