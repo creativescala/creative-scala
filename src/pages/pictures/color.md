@@ -53,7 +53,7 @@ Color                   Type    Example
 
 #### Evil Eye {-}
 
-Make the image in [@fig:pictures:evil-eye], designed to look like a traditional amulet protecting against the evil eye. I used `cornflowBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
+Make the image in [@fig:pictures:evil-eye], designed to look like a traditional amulet protecting against the evil eye. I used `cornflowerBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
 
 ![No evil eyes here!](src/pages/pictures/evil-eye.pdf+svg){#fig:pictures:evil-eye}
 
