@@ -13,7 +13,7 @@ If we want to use fancy programmer words, we could say that *names abstract over
 This usefully captures the essence of what defining names does, so let's decode the programmer-talk.
 
 To abstract means to remove unnecessary details. 
-For example, numbers are an abstaaction.
+For example, numbers are an abstraction.
 The number "one" is never found in nature as a pure concept.
 It's always one object, such as one apple, or one copy of Creative Scala.
 When doing arithmetic the concept of numbers allows us to abstract away the unnecessary detail of the exact objects we're counting and manipulate the numbers on their own.

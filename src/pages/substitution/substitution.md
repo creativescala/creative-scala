@@ -38,7 +38,7 @@ In the previous example we were a bit fast-and-loose.
 Here we will be a bit more precise to illustrate the steps the computer would have to go through.
 We are trying to emulate the computer, after all.
 
-The expression containing the `+` consistes of two sub-expressions, `1` and `("Moonage daydream".indexOf("N"))`.
+The expression containing the `+` consists of two sub-expressions, `1` and `("Moonage daydream".indexOf("N"))`.
 We have to decide which to evaluate first: the left or the right.
 Let's arbitrarily choose the right sub-expression (we'll return to this choice later.)
 
