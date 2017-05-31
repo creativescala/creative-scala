@@ -4,14 +4,14 @@
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DCanvas._
+import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 ```
 
 The code we've been writing inside the console will cause problems running outside the console. For example, put the following code into `Example.scala` in the `src/main/scala`. 
 
 ```tut:silent:book
-circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
+Image.circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
 ```
 
 Now restart SBT and try to enter the console. You should see an error similar to
@@ -65,7 +65,7 @@ We can import these with the lines
 
 ```tut:silent:book
 import doodle.syntax._
-import doodle.jvm.Java2DCanvas._
+import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 ```
 
@@ -75,7 +75,7 @@ We should place all these imports at the top of the file, so the complete code l
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DCanvas._
+import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 
 object Example {

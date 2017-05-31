@@ -1,4 +1,4 @@
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.2"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -8,19 +8,19 @@ scalacOptions ++= Seq(
   "-language:implicitConversions",
   "-language:postfixOps",
   "-Ywarn-dead-code",
-  "-Xlint",
   "-Xfatal-warnings"
 )
 
-lazy val root = project.in(file("."))
-  .settings(tutSettings)
+enablePlugins(TutPlugin)
 
 resolvers += Resolver.bintrayRepo("underscoreio", "training")
 
 libraryDependencies ++= Seq(
-  "underscoreio" %% "doodle" % "0.7.0",
-  "org.typelevel" %% "cats" % "0.7.2"
+  "underscoreio" %% "doodle" % "0.8.0",
+  "org.typelevel" %% "cats" % "0.9.0"
 )
+
+scalacOptions in Tut := (scalacOptions in Tut).value.filterNot(Set("-Ywarn-unused-import"))
 
 tutSourceDirectory := sourceDirectory.value / "pages"
 

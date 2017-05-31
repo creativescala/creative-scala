@@ -11,7 +11,7 @@ If you run the examples from the SBT console within Doodle they will just work. 
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DCanvas._
+import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 ```
 </div>
