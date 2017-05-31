@@ -12,21 +12,26 @@ import cats.syntax.cartesian._
 
 ### Scatter Plots
 
-In this exercise we'll implement scatter plots as in [@fig:generative:distributions]. Experiment with different distributions (trying creating your own distributions by transforming ones defined on `Random`).
+In this exercise we'll implement scatter plots as in [@fig:generative:distributions]. 
+Experiment with different distributions (trying creating your own distributions by transforming ones defined on `Random`).
 
 There are three main components of a scatter plot:
 
 - we need to generate the points we'll plot;
 - we need to overlay the images on top of each other in the same coordinate system to create the plot; and
-- we need to convert a point to an image we can render; and
+- we need to convert a point to an image we can render.
 
 We tackle each task in turn.
 
-Start by writing a method `makePoint` that will accept a `Random[Double]` for the x and y coordinates of a point and return a `Random[Point]`. It should have the following signature:
+Start by writing a method `makePoint` that will accept a `Random[Double]` for the x and y coordinates of a point and return a `Random[Point]`. 
+It should have the following skeleton:
 
-```scala
-def makePoint(x: Random[Double], y: Random[Double]): Random[Point]
+```tut:silent:book
+def makePoint(x: Random[Double], y: Random[Double]): Random[Point] =
+  ???
 ```
+
+Use a for comprehension in your implementation.
 
 <div class="solution">
 This is a nice example of composition of `Randoms`.
@@ -40,7 +45,8 @@ def makePoint(x: Random[Double], y: Random[Double]): Random[Point] =
 ```
 </div>
 
-Now create, say, a thousand random points using the techniques we learned in the previous chapter and a random distribution of your choice. You should end up with a `List[Random[Point]]`.
+Now create, say, a thousand random points using the techniques we learned in the previous chapter on lists and a random distribution of your choice. 
+You should end up with a `List[Random[Point]]`.
 
 <div class="solution">
 Something like the following should work.
@@ -53,10 +59,12 @@ val data = (1 to 1000).toList.map(_ => normal2D)
 ```
 </div>
 
-Now let's transform our `List[Random[Point]]` into `List[Random[Image]]`. Do this in two steps: first write a method to convert a `Point` to an `Image`, then write code to convert `List[Random[Point]]` to `List[Random[Image]]`.
+Let's now transform our `List[Random[Point]]` into `List[Random[Image]]`. 
+Do this in two steps: first write a method to convert a `Point` to an `Image`, then write code to convert `List[Random[Point]]` to `List[Random[Image]]`.
 
 <div class="solution">
-We can convert a `Point` to an `Image` using a method `point` below. Note I've made each point on the scatterplot quite transparent---this makes it easier to see where a lot of points are grouped together.
+We can convert a `Point` to an `Image` using a method `point` below. 
+Note I've made each point on the scatterplot quite transparent---this makes it easier to see where a lot of points are grouped together.
 
 ```tut:silent:book
 def point(loc: Point): Image =
@@ -70,10 +78,12 @@ val points = data.map(r => r.map(point _))
 ```
 </div>
 
-Now create a method that transforms a `List[Random[Image]]` to a `Random[Image]` by placing all the points `on` each other. This is the equivalent of the `allOn` method we've developed previously, but it now works with data wrapped in `Random`. 
+Now create a method that transforms a `List[Random[Image]]` to a `Random[Image]` by placing all the points `on` each other. 
+This is the equivalent of the `allOn` method we've developed previously, but it now works with data wrapped in `Random`. 
 
 <div class="solution">
-You might recognise this pattern. It's what we used in `allOn` with the addition of `flatMap` which is exactly what `randomConcentricCircles` (and many other examples) uses. 
+You might recognise this pattern. 
+It's what we used in `allOn` with the addition of `flatMap`, which is exactly what `randomConcentricCircles` (and many other examples) use. 
 
 ```tut:silent:book
 def allOn(points: List[Random[Image]]): Random[Image] =
@@ -103,7 +113,8 @@ val plot = allOn(points)
 
 In this exercise we will combine parametric equations, from a previous chapter, with randomness.
 
-Let's start by making a method `perturb` that adds random noise to a `Point`. The method should have signature
+Let's start by making a method `perturb` that adds random noise to a `Point`. 
+The method should have skeleton
 
 ```tut:silent:book
 def perturb(point: Point): Random[Point] =
@@ -113,7 +124,8 @@ def perturb(point: Point): Random[Point] =
 Choose whatever noise function you like.
 
 <div class="solution">
-Here's our solution. We can combine independent noise for the x- and y-coordinates using the product operator.
+Here's our solution. 
+We've already seen very similar code in the scatter plot.
 
 ```tut:silent:book
 def perturb(point: Point): Random[Point] =
@@ -124,7 +136,8 @@ def perturb(point: Point): Random[Point] =
 ```
 </div>
 
-Now create a parametric function, like we did in the previous chapter. You could use the rose function (the function we explored previously) or you could create one of your own devising. Here's the definition of rose.
+Now create a parametric function, like we did in a previous chapter. 
+You could use the rose function (the function we explored previously) or you could create one of your own devising. Here's the definition of rose.
 
 ```tut:silent:book
 def rose(k: Int): Angle => Point =
@@ -133,7 +146,9 @@ def rose(k: Int): Angle => Point =
   }
 ```
 
-Now we can combine our parametric function and `perturb` to create a method with type `Angle => Random[Point]`. You can write this easily using the `andThen` method on functions, or you can write this out the long way. Here's a quick example of `andThen` showing how we write the fourth power in terms of the square.
+We can combine our parametric function and `perturb` to create a method with type `Angle => Random[Point]`. 
+You can write this easily using the `andThen` method on functions, or you can write this out the long way. 
+Here's a quick example of `andThen` showing how we write the fourth power in terms of the square.
 
 ```tut:silent:book
 val square = (x: Double) => x * x
@@ -149,10 +164,12 @@ def perturbedRose(k: Int): Angle => Random[Point] =
 ```
 </div>
 
-Now using `allOn` create a picture that combines randomnes and structure. Be as creative as you like, perhaps adding color, transparency, and other features to your image.
+Now using `allOn` create a picture that combines randomnes and structure. 
+Be as creative as you like, perhaps adding color, transparency, and other features to your image.
 
 <div class="solution">
-Here's the code we used to create [#fig:generative:volcano]. It's quite a bit larger than code we've seen up to this point, but you should understand all the components this code is built from.
+Here's the code we used to create [#fig:generative:volcano]. 
+It's quite a bit larger than code we've seen up to this point, but you should understand all the components this code is built from.
 
 ```tut:silent:book
 object ParametricNoise {
@@ -221,7 +238,7 @@ object ParametricNoise {
           Random.always(Image.empty)
         else
           for {
-            p  <- point
+            p  <- point(angle)
             ps <- iter(angle + step)
           } yield (p on ps)
       }

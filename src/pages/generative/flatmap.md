@@ -4,7 +4,7 @@
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DCanvas._
+import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 ```
 
@@ -299,7 +299,7 @@ val randomColor: Random[Color] =
 def coloredRectangle(color: Color): Image =
   rectangle(20, 20) fillColor color
 
-def randomColorBoxes(n: Int): Random[Image] =
+def randomColorBoxes(count: Int): Random[Image] =
   count match {
     case 0 => randomColor map { c => coloredRectangle(c) }
     case n =>
