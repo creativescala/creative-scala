@@ -4,7 +4,7 @@
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DCanvas._
+import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 import doodle.turtle._
 import doodle.turtle.Instruction._
