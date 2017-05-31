@@ -64,7 +64,7 @@ def randomGradientBoxes(count: Int, color: Color): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
     case n =>
-      val box = coloredRectangle(color)
+      val box = coloredRectangle(color, 20)
       val boxes = nextColor(color) flatMap { c => randomGradientBoxes(n-1, c) }
       boxes map { b => box beside b }
   }
@@ -74,6 +74,29 @@ Example output is shown in [@fig:generative:structured-gradient-boxes].
 
 ![Boxes filled with gradient that is partly random.](./src/pages/generative/structured-gradient-boxes.pdf+svg){#fig:generative:structured-gradient-boxes}
 
+### Exercises {-}
+
+#### Particle Systems {-}
+
+A *particle system* is a technique used in computer graphics to create large numbers of "particles" that move according to simple rules.
+In [@fig:generative:smoke] there is an example of a particle system simulating a fire and smoke.
+For the mathematically inclined, a particle system is basically a *stochastic process* or *random walk*.
+
+![A simulation of a smoky fire, generating using a particle system.](src/pages/generative/smoke.pdf+svg){#fig:generative:smoke}
+
+In this exercise we'll build a particle system, which will give you a flexible system to experiment with these ideas.
+We'll start with a fixed system and then abstract it to create reusable components.
+
+Here's a sketch of how a particle system works.
+To draw a single particle we
+
+- choose a starting position;
+- decide how many time steps we want to move the particle system for; and
+- at each timestep the position of the particle is equal to the position at the previous timestep plus some random noise and potentially some non-random (deterministic) movement such as velocity or acceleration.
+
+A particle system is just a collection of a number o fparticles---20 particles over 20 steps in [@fig:generative:smoke].
+
+- we start by generating a particle at a random location
 
 ### For Comprehensions
 

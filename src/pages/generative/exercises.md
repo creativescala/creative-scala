@@ -221,7 +221,7 @@ object ParametricNoise {
           Random.always(Image.empty)
         else
           for {
-            p  <- point
+            p  <- point(angle)
             ps <- iter(angle + step)
           } yield (p on ps)
       }
