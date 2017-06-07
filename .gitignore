@@ -12,7 +12,6 @@ Thumbs.db
 /node_modules/
 .ivy2/
 .sbtopts
-project/
 target/
 
 *.sublime-workspace
