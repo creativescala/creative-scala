@@ -211,11 +211,65 @@ def particleSystem(particles: Int, steps: Int): Random[Image] =
 that does just this.
 
 <div class="solution">
+Once again we have a structural recursion over the natural numbers.
+Unlike `walk` the recursion goes through `map`, not `flatMap`. 
+This is because `particleSystem` adds no new random choices.
+
 ```tut:silent:book
 def particleSystem(particles: Int, steps: Int): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
     case n => walk(steps) flatMap { img1 => 
+      particleSystem(n-1, steps) map { img2 => 
+        img1 on img2
+      }
+    }
+  }
+}
+```
+</div>
+
+Now render the result, and tweak it till you have something you're happy with.
+I'm not particulary happy with the result of my code. 
+I think the stars are too bunched up, and the colors are not very interesting.
+To make a more interesting result I'd consider adding more noise and changing the start color and perhaps compressing the range of colors.
+
+#### Random Abstractions {-}
+
+The implementation of `particleSystem` above hard-codes in a particular choice of particle system.
+To make it easier to experiment with we might like to abstract over the particular choice of `walk` and `start`.
+How do you think we could do this?
+
+<div class="solution">
+We could make `walk` `start`, and `render` parameters to `particleSystem`, and make `start` and `render` parameters to `walk`.
+</div>
+
+Implement this.
+
+<div class="solution">
+If we add parameters with the correct name and type the code changes required are minimal.
+This is like doing the opposite of substitution---lifting concrete representations out of our code and replacing them with method parameters.
+
+```tut:silent:book
+def walk(steps: Int, start: Random[Point], render: Point => Image): Random[Image] = {
+  def loop(count: Int, current: Point, image: Image): Random[Image] = {
+    count match {
+      case 0 => Random.always(image on render(current))
+      case n =>
+        val next = step(current)
+        next flatMap { pt =>
+          loop(count - 1, pt, image on render(current))
+        }
+    }
+  }
+ 
+  start flatMap { pt => loop(steps, pt, Image.empty) }
+}
+
+def particleSystem(particles: Int, steps: Int, start: Random[Point], render: Point => Image): Random[Image] = {
+  particles match {
+    case 0 => Random.always(Image.empty)
+    case n => walk(steps, start, render) flatMap { img1 => 
       particleSystem(n-1, steps) map { img2 => 
         img1 on img2
       }
