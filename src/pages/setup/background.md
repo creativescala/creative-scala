@@ -67,7 +67,7 @@ The output of the compiler is something called bytecode, and another program, ca
 Integrated development environments (IDEs) are an alternative approach that combine a text editor, a compiler, and several other programmer tools into a single program.
 Some people swear by IDEs, while some people prefer to use the terminal and a text editor.
 Our recommendation if you're new to programming is to take the terminal-and-text-editor approach.
-If you're already used to an IDE than IntelliJ IDEA is currently the best IDE for Scala development.
+If you're already used to an IDE then IntelliJ IDEA is currently the best IDE for Scala development.
 
 
 ### Version Control
