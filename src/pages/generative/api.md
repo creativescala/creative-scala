@@ -18,58 +18,63 @@ import doodle.random._
 ```
 </div>
 
-### Basic Distributions
+### Normal Distributions
 
-Some of the most basic ways of generating `Random` values are:
-
-- `Random.always(value)`, which constructs a `Random` that always generates the given value.
-
-```tut:book
-val starman = Random.always("Starman")
-starman.run
-starman.run
-```
-
-- `Random.oneOf(value, ...)`, which chooses one of its parameters with equal probability. If all values are equally likely we say they are uniformly distributed.
-
-```tut:book
-val doRayMe = Random.oneOf("do", "ray", "me")
-doRayMe.run
-doRayMe.run
-```
-
-- `Random.int`, which generates a uniformly distributed `Int`.
-
-```tut:book
-val int = Random.int
-int.run
-int.run
-```
-
-- `Random.natural(upperLimit)`, which generates a uniformly distrbuted `Int` between 0 and `upperLimit - 1` inclusive.
-
-```tut:book
-val nat = Random.natural(5)
-nat.run
-nat.run
-```
-
-- `Random.double`, which generates a uniformly distrbuted `Double` between 0.0 and 1.0.
-
-```tut:book
-val double = Random.double
-double.run
-double.run
-```
-
-
-### Complex Distributions
-
-We can also create more complex distributions. Often when using random numbers in generative art, we will choose specific distributions for the shape they provide. For example, [@fig:generative:distributions] shows a thousand random points generated using a uniform, normal (or Gaussian) distribution, and a squared normal distribution respectively.
+Often when using random numbers in generative art we will choose specific distributions for the shape they provide. 
+For example, [@fig:generative:distributions] shows a thousand random points generated using a uniform, normal (or Gaussian) distribution, and a squared normal distribution respectively.
 
 ![Points distributed according to uniform, normal, and squared normal distributions](./src/pages/generative/distributions.pdf+svg){#fig:generative:distributions}
 
-Doodle provides two methods to create normally distributed numbers, from which we can create many other distributions. A normal distribution is defined by two parameters, it's *mean*, which specifies the center of the distribution, and it's *standard deviation*, which determines the spread of the distribution. The corresponding methods in Doodle are
+As you can see, the normal distribution tends to generate more points nearer the center than the uniform distribution.
+
+Doodle provides two methods to create normally distributed numbers, from which we can create many other distributions. 
+A normal distribution is defined by two parameters, it's *mean*, which specifies the center of the distribution, and it's *standard deviation*, which determines the spread of the distribution. 
+The corresponding methods in Doodle are
 
 - `Random.normal`, which generates a `Double` from a normal distribution with mean 0 and standard deviation 1.0; and
 - `Random.normal(mean, stdDev)`, which generates a `Double` from a normal distribution with the specified mean and standard deviation.
+
+
+### Structured Randomness
+
+We've gone from very structured to very random pictures. 
+It would be nice to find a middle ground that incorporates elements of randomness and structure. 
+We can use `flatMap` to do this---with `flatMap` we can use one randomly generated value to create another `Random` value.
+This creates a dependency between values---the prior random value has an influence on the next one we generate.
+
+For example, we can create a method that given a color randomly perturbs it.
+
+```tut:silent:book
+def nextColor(color: Color): Random[Color] = {
+  val spin = Random.normal(15.0, 10.0)
+  spin map { s => color.spin(s.degrees) }
+}
+```
+
+Using `nextColor` we can create a series of boxes with a gradient that is partly random and partly structured: the next color in the gradient is a random perturbation of the previous one.
+
+```tut:silent:book
+def coloredRectangle(color: Color, size: Int): Image =
+  rectangle(size, size).
+    lineWidth(5.0).
+    lineColor(color.spin(30.degrees)).
+    fillColor(color)
+
+def randomGradientBoxes(count: Int, color: Color): Random[Image] =
+  count match {
+    case 0 => Random.always(Image.empty)
+    case n =>
+      val box = coloredRectangle(color)
+      val boxes = nextColor(color) flatMap { c => randomGradientBoxes(n-1, c) }
+      boxes map { b => box beside b }
+  }
+```
+
+Example output is shown in [@fig:generative:structured-gradient-boxes].
+
+![Boxes filled with gradient that is partly random.](./src/pages/generative/structured-gradient-boxes.pdf+svg){#fig:generative:structured-gradient-boxes}
+
+
+### For Comprehensions
+
+*TODO*

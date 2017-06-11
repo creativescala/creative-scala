@@ -15,7 +15,7 @@ The solution to our problem is to separate describing how we'll use random numbe
 
 We do the same thing with Doodle's `Random` type. To access this code we first need to import the `doodle.random` package.
 
-```tut:book
+```tut:silent:book
 import doodle.random._
 ```
 
@@ -33,6 +33,39 @@ randomDouble.run
 
 The type `Random[Double]` indicates we have something that will produce a random `Double` when we `run` it. Just like with `Image` and `draw`, substitution holds with `Random` up until the point we call `run`.
 
+Table [@tbl:generative:random] shows some of the ways to construct `Random` values.
+
+----------------------------------------------------------------------------------------
+Method                     Description                    Example
+-------------------------- ------------------------------ ------------------------------
+`Random.always(value)`     Creates a `Random` that        `Random.always(10)`
+                           always produces the given
+                           value.
+
+`Random.double`            Creates a `Random` that        `Random.double`
+                           generates a `Double`
+                           uniformly distributed between
+                           `0.0` and `1.0`.
+
+`Random.int`               Creates a `Random` that        `Random.int`
+                           generates an `Int`
+                           uniformly distributed across
+                           the entire range.
+
+`Random.natural(limit)`    Creates a `Random` that        `Random.natural(10)`
+                           generates a `Int`
+                           uniformly distributed in
+                           the range greater than or 
+                           equal to `0` and less than
+                           `1`.
+
+`Random.oneOf(value, ...)` Creates a `Random` that        `Random.oneOf("A", "B", "C")`
+                           generates one of the given
+                           values with equal chance.
+----------------------------------------------------------------------------------------
+
+: Some of the methods to create `Random` values. {#tbl:generative:random}
+
 
 ### Composing Random
 
@@ -44,25 +77,25 @@ We can create a random value and apply a *deterministic* transformation to it us
 
 Here's how we can create a random angle.
 
-```tut:book
+```tut:silent:book
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 ```
 
-When we `run` `RandomAngle` we can a randomly created `Angle`
+When we `run` `RandomAngle` we can generate randomly created `Angle`
 
 ```tut:book
 randomAngle.run
 randomAngle.run
 ```
 
-#### Exercises {-}
+### Exercises {-}
 
-##### Random Colors {-}
+#### Random Colors {-}
 
 Given `randomAngle` above, create a method that accepts saturation and lightness and generates a random color. Your method should have the signature
 
-```tut:book
+```tut:silent:book
 def randomColor(s: Normalized, l: Normalized): Random[Color] =
   ???
 ```
@@ -70,17 +103,17 @@ def randomColor(s: Normalized, l: Normalized): Random[Color] =
 <div class="example">
 This is a deterministic transformation of the output of `randomAngle`, so we can implement it using `map`.
 
-```tut:book
+```tut:silent:book
 def randomColor(s: Normalized, l: Normalized): Random[Color] =
   randomAngle map (hue => Color.hsl(hue, s, l))
 ```
 </div>
 
-##### Random Circles {-}
+#### Random Circles {-}
 
 Write a method that accepts a radius and a `Random[Color]`, and produces a circle of the given radius and filled with the given random color. It should have the signature
 
-```tut:book
+```tut:silent:book
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   ???
 ```
@@ -88,7 +121,7 @@ def randomCircle(r: Double, color: Random[Color]): Random[Image] =
 <div class="example">
 Once again this is a deterministic transformation of the random color, so we can use `map`.
 
-```tut:book
+```tut:silent:book
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   color map (fill => Image.circle(r) fillColor fill)
 ```
