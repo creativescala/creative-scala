@@ -12,7 +12,7 @@ Then you can save your changes back to your fork on Github.
 
 To start this process you need to create a Github account, if you do not have one already.
 
-Once you have an account, visit the [template project] (https://github.com/underscoreio/creative-scala-template) in your browser. 
+Once you have an account, visit the [template project](https://github.com/underscoreio/creative-scala-template) in your browser. 
 At the top right is button called "Fork". 
 Press this button to create your own copy of the template.
 You will be taken to a web page displaying your own fork of the template.
