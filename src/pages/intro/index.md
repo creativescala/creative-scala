@@ -26,12 +26,12 @@ The result is that many students dropped out due to the poor quality of teaching
 The students that remained tended to, like us, already have extensive programming experience.
 
 Let's think back to primary school maths, specifically column addition.
-This is the basic way we're taught to add up numbers when they're too big to do in our head. 
+This is the basic way we're taught to add up numbers when they're too big to do in our head.
 So, for example, adding up 266 + 385, we would line up the columns, carry the tens and so on.
 Now maybe maths wasn't your favorite subject but there are some important lessons here.
 The first is that we're given a systematic way to arrive at the solution.
 We can *calculate* the solution once we realise this is a problem that requires column addition.
-The second point is that we don't even have to understand why column addition works (though it helps) to use it. 
+The second point is that we don't even have to understand why column addition works (though it helps) to use it.
 So long as we follow the steps we'll get the correct answer.
 
 The remarkable thing about functional programming is that it works like column addition.
@@ -71,7 +71,7 @@ to provide get help with the exercises and provide feedback on the book.
 The text of [Creative Scala][github-creative-scala] is open souce,
 as is the source code for the [Doodle][github-doodle]
 drawing library used in the exercises.
-You can grab the code from our [Github account][underscore-github].
+You can grab the code from our [GitHub account][underscore-github].
 Contact us on Gitter or by email if you would like to contribute.
 
 Thanks for downloading and happy creative programming!
