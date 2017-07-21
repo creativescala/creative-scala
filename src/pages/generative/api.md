@@ -8,7 +8,7 @@ import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 ```
 
-So far we've seen only the very basics of using `Random`. In this section we'll see more of its features, and use these features to create more interesting pictures. 
+So far we've seen only the very basics of using `Random`. In this section we'll see more of its features, and use these features to create more interesting pictures.
 
 <div class="callout callout-info">
 In addition to the standard imports given at the start of the chapter, in this section we're assuming the following:
@@ -20,15 +20,15 @@ import doodle.random._
 
 ### Normal Distributions
 
-Often when using random numbers in generative art we will choose specific distributions for the shape they provide. 
+Often when using random numbers in generative art we will choose specific distributions for the shape they provide.
 For example, [@fig:generative:distributions] shows a thousand random points generated using a uniform, normal (or Gaussian) distribution, and a squared normal distribution respectively.
 
 ![Points distributed according to uniform, normal, and squared normal distributions](./src/pages/generative/distributions.pdf+svg){#fig:generative:distributions}
 
 As you can see, the normal distribution tends to generate more points nearer the center than the uniform distribution.
 
-Doodle provides two methods to create normally distributed numbers, from which we can create many other distributions. 
-A normal distribution is defined by two parameters, it's *mean*, which specifies the center of the distribution, and it's *standard deviation*, which determines the spread of the distribution. 
+Doodle provides two methods to create normally distributed numbers, from which we can create many other distributions.
+A normal distribution is defined by two parameters, it's *mean*, which specifies the center of the distribution, and it's *standard deviation*, which determines the spread of the distribution.
 The corresponding methods in Doodle are
 
 - `Random.normal`, which generates a `Double` from a normal distribution with mean 0 and standard deviation 1.0; and
@@ -37,8 +37,8 @@ The corresponding methods in Doodle are
 
 ### Structured Randomness
 
-We've gone from very structured to very random pictures. 
-It would be nice to find a middle ground that incorporates elements of randomness and structure. 
+We've gone from very structured to very random pictures.
+It would be nice to find a middle ground that incorporates elements of randomness and structure.
 We can use `flatMap` to do this---with `flatMap` we can use one randomly generated value to create another `Random` value.
 This creates a dependency between values---the prior random value has an influence on the next one we generate.
 
@@ -130,13 +130,13 @@ Changing the noise will change the shape of the result---it's worth playing arou
 ```tut:silent:book
 def step(current: Point): Random[Point] = {
   val drift = Point(current.x + 10, current.y)
-  val noise = 
+  val noise =
     Random.normal(0.0, 5.0) flatMap { x =>
       Random.normal(0.0, 5.0) map { y =>
         Vec(x, y)
       }
     }
-    
+
   noise.map(vec => drift + vec)
 }
 ```
@@ -153,7 +153,7 @@ The skeletons are
 ```tut:silent:book
 def render(point: Point): Image =
   ???
-  
+
 def walk(steps: Int): Random[Image] =
   ???
 ```
@@ -161,7 +161,7 @@ def walk(steps: Int): Random[Image] =
 The implementation of `render` can be whatever you fancy.
 In the implementation of `walk`, you will have to call `step` to get the next `Point`, and then call `render` to convert the point to something that can be draw.
 You will also want to have an accumulator of the `Image` so far.
-Hint: you might find it useful to define an auxillary parameter for `walk`.
+Hint: you might find it useful to define an auxiliary parameter for `walk`.
 
 <div class="solution">
 In my definition of `render` I've shown how we can use information from the point to modify the shape in an interesting way.
@@ -192,7 +192,7 @@ def walk(steps: Int): Random[Image] = {
         }
     }
   }
- 
+
   start flatMap { pt => loop(steps, pt, Image.empty) }
 }
 ```
@@ -212,15 +212,15 @@ that does just this.
 
 <div class="solution">
 Once again we have a structural recursion over the natural numbers.
-Unlike `walk` the recursion goes through `map`, not `flatMap`. 
+Unlike `walk` the recursion goes through `map`, not `flatMap`.
 This is because `particleSystem` adds no new random choices.
 
 ```tut:silent:book
 def particleSystem(particles: Int, steps: Int): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
-    case n => walk(steps) flatMap { img1 => 
-      particleSystem(n-1, steps) map { img2 => 
+    case n => walk(steps) flatMap { img1 =>
+      particleSystem(n-1, steps) map { img2 =>
         img1 on img2
       }
     }
@@ -230,7 +230,7 @@ def particleSystem(particles: Int, steps: Int): Random[Image] = {
 </div>
 
 Now render the result, and tweak it till you have something you're happy with.
-I'm not particulary happy with the result of my code. 
+I'm not particulary happy with the result of my code.
 I think the stars are too bunched up, and the colors are not very interesting.
 To make a more interesting result I'd consider adding more noise and changing the start color and perhaps compressing the range of colors.
 
@@ -252,7 +252,7 @@ This is like doing the opposite of substitution---lifting concrete representatio
 
 ```tut:silent:book
 def walk(
-  steps: Int, 
+  steps: Int,
   start: Random[Point],
   render: Point => Image
 ): Random[Image] = {
@@ -266,12 +266,12 @@ def walk(
         }
     }
   }
- 
+
   start flatMap { pt => loop(steps, pt, Image.empty) }
 }
 
 def particleSystem(
-  particles: Int, 
+  particles: Int,
   steps: Int,
   start: Random[Point],
   render: Point => Image,
@@ -279,8 +279,8 @@ def particleSystem(
 ): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
-    case n => walk(steps, start, render) flatMap { img1 => 
-      particleSystem(n-1, steps, start, render, walk) map { img2 => 
+    case n => walk(steps, start, render) flatMap { img1 =>
+      particleSystem(n-1, steps, start, render, walk) map { img2 =>
         img1 on img2
       }
     }
@@ -298,8 +298,8 @@ At this point we can apply our principle of substitution---we can replace a meth
 def particleSystem(particles: Int, walk: Random[Image]): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
-    case n => walk flatMap { img1 => 
-      particleSystem(n-1, walk) map { img2 => 
+    case n => walk flatMap { img1 =>
+      particleSystem(n-1, walk) map { img2 =>
         img1 on img2
       }
     }

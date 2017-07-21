@@ -44,7 +44,7 @@ def boxes(count: Int): Image =
   }
 ```
 
-When we developed `boxes` we just seemed to stumble upon this pattern. 
+When we developed `boxes` we just seemed to stumble upon this pattern.
 Here we see that this pattern follows directly from the definition of the natural numbers.
 Remember the recursive definition of the natural numbers: a natural number `n` is
 
@@ -64,10 +64,10 @@ means we're checking `count` for two cases, the case when `count` is 0, and the 
 
 The right hand side of the `match` expression says what we do in each case. The case for zero is `Image.empty`. The case for `n` is `aBox beside boxes(n-1)`.
 
-Now for the really important point. 
-Notice that the structure of the right-hand side mirrors the structure of the natural number we match. 
-When we match the base case 0, our result is the base case `Image.empty`. When we match the recursive case `n` the structure of the right hand side matches the structure of the recursive case in the definition of natural numbers. 
-The definition states that `n` is `1 + m`. 
+Now for the really important point.
+Notice that the structure of the right-hand side mirrors the structure of the natural number we match.
+When we match the base case 0, our result is the base case `Image.empty`. When we match the recursive case `n` the structure of the right hand side matches the structure of the recursive case in the definition of natural numbers.
+The definition states that `n` is `1 + m`.
 On the right-hand side we replace 1 with `aBox`, we replace + with `beside`, and we recursively call `boxes` with `m` (which is `n-1`) where the definition recurses.
 
 ```tut:book
@@ -83,7 +83,7 @@ To reiterate, the left hand side of the `match` expression exactly matches the d
 This general pattern holds for anything we care to write that transforms the natural numbers into some other type.
 We always have a `match` expression.
 We always have the two patterns, corresponding to the base and recursive cases.
-The right hand side expressions always consist of the base case, and the recursive case which itself hasa result specific substitute for `1` and `+`, and a recursive call for `n-1`.
+The right hand side expressions always consist of the base case, and the recursive case which itself has a result specific substitute for `1` and `+`, and a recursive call for `n-1`.
 
 <div class="callout callout-info">
 #### Structural Recursion over Natural Numbers Pattern {-}
@@ -98,7 +98,7 @@ def name(count: Int): Result =
   }
 ```
 
-where `Result`, `resultBase`, `resultUnit`, and `add` are specific to the problem we're solving. 
+where `Result`, `resultBase`, `resultUnit`, and `add` are specific to the problem we're solving.
 So to implement a structural recursion over the natural numbers we must
 
  - recognise the method we're writing has a natural number as it's input;
@@ -118,7 +118,7 @@ We can view a structural recursion over the natural numbers as exactly a proof b
 When we claim the ability to write any transformation on the natural numbers in terms of the structural recursion skeleton, this claim is backed up by the mathematical foundation we're implicitly using.
 We can also prove properties of our code by using the connection between the two: any structural recursion is implicitly defining a proof of some property.
 
-This general connection between proofs and programs is known as the *Howard-Curry Isomorphism*.
+This general connection between proofs and programs is known as the *Curry-Howard Isomorphism*.
 </div>
 
 ### Exercises {-}
@@ -182,11 +182,11 @@ def cross(count: Int): Image = {
 
 #### Chessboard {-}
 
-We saw in the cross exercise that the hard part was identifying the recursive structure in what we were trying to create. Once we'd done that filling in the structural recursion pattern was straightforward.
+We saw in the cross exercise that the hard part was identifying the recursive structure in what we were trying to create. Once we'd done that, filling in the structural recursion pattern was straightforward.
 
-In this exercise and the next we're trying to sharpen you eye for recursive structure. 
-Your mission in this exercise to identify the recursive structure in a chessboard, and implement a method to draw chessboards.
-The method skeleton isn't
+In this exercise and the next, we're trying to sharpen your eye for recursive structure.
+Your mission in this exercise is to identify the recursive structure in a chessboard, and implement a method to draw chessboards.
+The method skeleton is
 
 ```tut:silent:book
 def chessboard(count: Int): Image =
@@ -207,7 +207,7 @@ Implement `chessboard`.
 def chessboard(count: Int): Image =
   count match {
     case 0 => resultBase
-    case n => resultUnit add cross(n-1)
+    case n => resultUnit add chessboard(n-1)
   }
 ```
 
@@ -223,7 +223,7 @@ val base =
   (redSquare beside blackSquare) above (blackSquare beside redSquare)
 ```
 
-Now to work out the unit and addition. 
+Now to work out the unit and addition.
 Here we see a change from previous examples.
 The unit is the value we get from the recursive call `chessboard(n-1)`.
 The addition operation is `(unit beside unit) above (unit beside unit)`.
@@ -234,7 +234,7 @@ Putting it all together we get
 def chessboard(count: Int): Image = {
   val blackSquare = Image.rectangle(30, 30) fillColor Color.black
   val redSquare   = Image.rectangle(30, 30) fillColor Color.red
-  
+
   val base =
     (redSquare   beside blackSquare) above (blackSquare beside redSquare)
   count match {
@@ -266,7 +266,7 @@ def sierpinski(count: Int): Image =
   ???
 ```
 
-No hints this time. 
+No hints this time.
 We've already seen everything we need to know.
 
 <div class="solution">

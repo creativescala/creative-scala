@@ -8,8 +8,8 @@ import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 ```
 
-We're now ready to tackle the question of order-of-evaluation directly.
-We might wonder if the order of evaluation even matter?
+We're now ready to tackle the question of order-of-evaluation.
+We might wonder if the order of evaluation even matters?
 In the examples we've looked at so far the order doesn't seem to matter, except for the issue that we cannot evaluate an expression before it's sub-expressions.
 
 To investigate these issues further we need to introduce a new concept.
@@ -18,7 +18,7 @@ These are expressions that we can freely substitute in any order without issue[^
 
 *Impure* expressions are those where the order of evaluation matters.
 We have already used one impure expression, the method `draw`.
-If we evaluate 
+If we evaluate
 
 ```scala
 Image.circle(100).draw
@@ -49,7 +49,7 @@ Here's an example:
 println("Hello!")
 ```
 
-The side-effect of `println`---printing---gives us a convenient way to investigate the order of evaluation.
+The side-effect of `println`---printing to the console---gives us a convenient way to investigate the order of evaluation.
 For example, the result of running
 
 ```tut:book
@@ -66,7 +66,7 @@ Let's use `println` to investigate further.
 
 #### No Substitute for Println {-}
 
-In a pure program we can give a name to any expression and substitute any other occurrences of that expression with the name. 
+In a pure program we can give a name to any expression and substitute any other occurrences of that expression with the name.
 Concretely, we can rewrite
 
 ```tut:silent:book
@@ -82,7 +82,7 @@ a + a
 
 and the result of the program doesn't change.
 
-Using `println` as an example impure expression, demonstrate that this is *not* the case for impure expressions, and hence we can say that impure expressions, or side effects, break substitution.
+Using `println` as an example of an impure expression, demonstrates that this is *not* the case for impure expressions, and hence we can say that impure expressions, or side effects, break substitution.
 
 <div class="solution">
 Here is a simple example that illustrates this.
@@ -97,18 +97,18 @@ println("Happy birthday to you!")
 ```tut:book
 val a = println("Happy birthday to you!")
 a
-a 
+a
 a
 ```
 
-Therefore we cannot freely use substitution in the presence of side effects, and must be aware of the order of evaluation.
+Therefore we cannot freely use substitution in the presence of side effects, and we must be aware of the order of evaluation.
 </div>
 
 
 #### Madness to our Methods {-}
 
 When we introduced scopes we also introduced block expressions, though we didn't call them that at the time.
-A block is created by curly braces (`{}`) and evaluates all the expressions inside the braces, with the final result be the result of the last expression in the block.
+A block is created by curly braces (`{}`). It evaluates all the expressions inside the braces. The final result is the result of the last expression in the block.
 
 ```tut:book
 // Evaluates to three
@@ -121,9 +121,9 @@ A block is created by curly braces (`{}`) and evaluates all the expressions insi
 
 We can use block expressions to investigate the order in which method parameters are evaluated, by putting `println` expression inside a block that evaluates to some other useful value.
 
-Using, say, `Image.rectangle` or `Color.hsl` and block expressions determine if Scala evaluates method parameters in a fixed order, and if so what that order is.
+For example, using `Image.rectangle` or `Color.hsl` and block expressions, we can determine if Scala evaluates method parameters in a fixed order, and if so what that order is.
 
-Note you can write a block compactly on one-line by separating expressions with semicolons (`;`).
+Note that you can write a block compactly, on one line, by separating expressions with semicolons (`;`).
 This is generally not good style but might be useful for these experiments.
 Here's an example.
 
@@ -145,14 +145,14 @@ Color.hsl(
     println("b")
     1.normalized
   },
-  { 
+  {
     println("c")
     1.normalized
   }
 )
 ```
 
-We can write this more compactly as 
+We can write this more compactly as
 ```tut:book
 Color.hsl({ println("a"); 0.degrees },
           { println("b"); 1.normalized },

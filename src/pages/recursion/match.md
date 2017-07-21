@@ -13,7 +13,7 @@ How are we to understand this new kind of expression,
 and write our own?
 Let's break it down.
 
-The very first to say is that `match` is indeed an expression,
+The very first thing to say is that `match` is indeed an expression,
 which means it evaluates to a value.
 If it didn't, the `boxes` method would not work!
 
@@ -29,14 +29,14 @@ A `match` expression in general has the shape
 }
 ```
 
-`<anExpression>`, concretely `count` in the case above, is the expresssion that evaluates to the value we're matching against.
+`<anExpression>`, concretely `count` in the case above, is the expression that evaluates to the value we're matching against.
 The patterns `<pattern1>` and so on are matched against this value.
 So far we've seen two kinds of patterns:
 
  - a literal (as in `case 0`) which matches exactly the value that literal evaluates to; and
  - a wildcard (as in `case n`) which matches *anything*, and introduces a binding within the right-hand side expression.
 
-Finally, the right-hand side expressions, `<expression1>` and so on, are just expresssions like any other we've written so far.
+Finally, the right-hand side expressions, `<expression1>` and so on, are just expressions like any other we've written so far.
 The entire `match` expression evaluates to the value of the right-hand side expression of the *first* pattern that matches.
 So when we call `boxes(0)` both patterns will match (because the wildcard matches anything), but because the literal pattern comes first the expression `Image.empty` is the one that is evaluated.
 
@@ -97,7 +97,7 @@ The final example evaluates to `1` because the first matching case is evaluated.
 #### No Match {-}
 
 What happens if no pattern matches in a `match` expression?
-Take a guess, than right a `match` expression that fails to match and see if you managed to guess correctly.
+Take a guess, then write a `match` expression that fails to match and see if you managed to guess correctly.
 (At this point we have no reason to expect any particular behavior so any reasonable guess will do.)
 
 <div class="solution">

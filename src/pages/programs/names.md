@@ -9,7 +9,7 @@ import doodle.backend.StandardInterpreter._
 ```
 
 In the previous section we introduced a lot of new concepts.
-In this section we'll explore on those concepts: naming values.
+In this section we'll explore one of those concepts: naming values.
 
 We use names to refer to things.
 For example, "Professeur Emile Perrot" refers to a very fragrant rose variety, while "Cherry Parfait" is a highly disease resistant variety but barely smells at all.
@@ -201,11 +201,11 @@ We must tell Scala to look for `hi` inside `Example`.
 Example.hi
 ```
 
-We say that a name is *visible* in the places where is can be used without qualification, and we call the places where a name is visible its *scope*.
+We say that a name is *visible* in the places where it can be used without qualification, and we call the places where a name is visible its *scope*.
 So using our fancy-pants new terminology, `hi` is not visible outside of `Example`, or alternatively `hi` is not in scope outside of `Example`.
 
 How do we work out the scope of a name?
-The rule is faily simple: a name is visible from the point it is declared to the end of the nearest enclosing braces (braces are `{` and `}`).
+The rule is fairly simple: a name is visible from the point it is declared to the end of the nearest enclosing braces (braces are `{` and `}`).
 In the example above `hi` is enclosed by the braces of `Example` and so is visible there.
 It's not visible elsewhere.
 
@@ -222,7 +222,7 @@ object Example1 {
 }
 ```
 
-`hi` is in scope in `Example2` (`Example2` is defined within the braces that encolose `hi`).
+`hi` is in scope in `Example2` (`Example2` is defined within the braces that enclose `hi`).
 However the scope of `hello` is restricted to `Example2`, and so it has a smaller scope than `hi`.
 
 What happens if we declare a name within a scope where it is already declared?
@@ -248,13 +248,13 @@ So we can write
 ```tut:silent:book
 object Example {
   val good = "Good"
-  
+
   // Create a new scope
   {
-    val morning = good ++ " morning" 
+    val morning = good ++ " morning"
     val toYou = morning ++ " to you"
   }
-  
+
   val day = good ++ " day, sir!"
 }
 ```
@@ -265,7 +265,7 @@ If we had some secrets that we didn't want the rest of the program to know about
 The way nested scopes work in Scala is called *lexical scoping*.
 Not all languages have lexical scoping.
 For example, Ruby and Python do not, and Javascript has only recently acquired lexical scoping.
-It is the authors' opinion that creating a language without lexical scope is an idea on par with eating a bushell of Guatemalan insanity peppers and then going to the toilet without washing your hands.
+It is the authors' opinion that creating a language without lexical scope is an idea on par with eating a bushel of Guatemalan insanity peppers and then going to the toilet without washing your hands.
 
 
 ### Exercises {-}
@@ -305,7 +305,7 @@ Another simple example. `answer` is `1 + 2`, which is `3`. `Two.a` is not in sco
 object One {
   val a = 5
   val b = 2
-  
+
   object Answer {
     val a = 1
     val answer = a + b
@@ -314,7 +314,7 @@ object One {
 ```
 
 <div class="solution">
-Here `Answer.a` shadows `One.a` so `answer` is `1 + 2`, which is `3`. 
+Here `Answer.a` shadows `One.a` so `answer` is `1 + 2`, which is `3`.
 </div>
 
 ```tut:silent:book
@@ -332,11 +332,11 @@ This is perfectly fine. The expression `a + 1` on the right hand side of the dec
 ```tut:silent:book
 object One {
   val a = 1
-  
+
   object Two {
     val b = 2
   }
-  
+
   val answer = a + b
 }
 ```
@@ -349,12 +349,11 @@ This code doesn't compile as `b` is not in scope where `answer` is declared.
 object One {
   val a = b - 1
   val b = a + 1
-  
+
   val answer = a + b
 }
 ```
 
 <div class="solution">
-Trick question! This code doesn't work. Here `a` and `b` are defined in terms of each other which leads to a circular dependency that can't be resolved. 
+Trick question! This code doesn't work. Here `a` and `b` are defined in terms of each other which leads to a circular dependency that can't be resolved.
 </div>
-

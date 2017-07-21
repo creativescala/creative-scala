@@ -16,7 +16,7 @@ def boxes(color: Color): Image = {
     Image.rectangle(40, 40).
       lineWidth(5.0).
       lineColor(color.spin(30.degrees)).
-      fillColor(color) 
+      fillColor(color)
 
   box beside box beside box beside box beside box
 }
@@ -25,10 +25,10 @@ def boxes(color: Color): Image = {
 Let's use this as a model for understanding the syntax of declaring a method.
 The first part is the *keyword* `def`.
 A keyword is a special word that indicates something important to the Scala compiler---in this case that we're going to declare a method.
-We're already seen `object` and `val` keywords.
+We're already seen the `object` and `val` keywords.
 
 The `def` is immediately followed by the name of the method, in this case `boxes`, in the same way that `val` and `object` are immediately followed by the name they declare.
-Like a `val` declaration a method declaration is not a top-level declaration and must be wrapped in an `object` declaration (or other top-level declaration) when written in a file.
+Like a `val` declaration, a method declaration is not a top-level declaration and must be wrapped in an `object` declaration (or other top-level declaration) when written in a file.
 
 Next we have the method parameters, defined in brackets (`()`).
 The method parameters are the parts that the caller can "plug-in" to the expression that the method evaluates.
@@ -76,7 +76,7 @@ Write a method `square` that accepts an `Int` argument and returns the `Int` squ
 The solution is
 
 ```tut:silent:book
-def square(x: Int): Int = 
+def square(x: Int): Int =
   x * x
 ```
 
@@ -106,7 +106,7 @@ We don't need to wrap this in braces as there is only a single expression in the
 
 #### Halve {-}
 
-Write a method `halve` that accepts a `Double` argument and returns the `Double` that is half of it's argument. 
+Write a method `halve` that accepts a `Double` argument and returns the `Double` that is half of it's argument.
 
 <div class="solution">
 ```tut:silent:book
