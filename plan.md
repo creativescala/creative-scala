@@ -57,7 +57,7 @@
     * Examples
     * We can write expressions that fail to evaluate, but, because types are a compile time property, we can still give a type to.
     * Examples
-    * Exercises. 
+    * Exercises.
       * Which of these expressions can we evaluate? Which of these expressions evaluate successfully? Which expressions can we give a type to?
       * *Challenge Exercise*: Our current model of computation is an expression (program text) evaluates to a value (something within the computer's memory). Is this sufficient? Can you think of ways to extend this model? (This is very open ended. Possible answers include effects, names, functions, etc.)
   * This is our most basic model. We will elaborate on it throughout the book.
@@ -71,14 +71,14 @@
     * Color transformations
   * Layout
     * above / beside / on
-    * at 
-    
+    * at
+
 ### Writing Larger Programs
   * We're getting to the point where it's inconvenient to type programs into the console. In this section we'll learn about two tools for writing larger programs:
     * saving programs to a file so we can edit them in our editor; and
     * breaking our program into reusable parts by giving names to values.
   * Saving code to a file and using :load and :paste
-  * Using the console is not going to work for real programs. 
+  * Using the console is not going to work for real programs.
   * Code is different in a real program
     * Can't write methods and vals without wrapping them in an object
     * objects
@@ -102,7 +102,7 @@
       * Line drawing
       * Coloured
     * Make five boxes in a line
-    * Fill the boxes so they have a gradient in saturation from left to right. 
+    * Fill the boxes so they have a gradient in saturation from left to right.
     * Make seven nested circles
     * Give the circles a line color so they make a rainbow gradient (i.e. from red to violet).
     * Arrange nine boxes in a square
@@ -126,7 +126,7 @@
   * We need to build a mental model of how Scala expressions are evaluated so we can understand what our programs are doing.
   * We've been getting by with an informal model so far. In this section we make our model a bit more formal.
   * Take an expression like (1 + 2) + (3 + 4). This consists of sub expressions (1 + 2) and (3 + 4) combined together.
-  * When we see an expression, we can substitute in the value it evaluates to. So 
+  * When we see an expression, we can substitute in the value it evaluates to. So
     (1 + 2) + (3 + 4) == 3 + 7 == 10
   * This is known as *substitution*, *reducing an expression*, or *equational reasoning* (and no doubt some terms I have forgotten). The latter term is an allusion to doing the same operation in high school algebra.
   * In what order does substitution take place? Does it matter?
@@ -198,17 +198,17 @@
   * In this chapter we look deeper into the substitution model.
   * We have seen that Scala evaluates method parameters before the method is called. This is not the only possibility. We could delay evaluation of parameters until they are used in the method body. Example. This is called *call-by-need* or *lazy* evaluation, whereas the model that Scala uses is called *call-by-value* or *eager* evaluation. Example.
   * Can we write `if` as a method in a call-by-value language (e.g. Scala)? If yes, how, if not, why not? For simplicity, write `if` as a method where the true and false clauses are expressions that evaluate in an `Int`. Note that `if` is a *reserved word* in Scala, meaning we can't use it for our own method. So we might write a method like
-  
+
     `perhaps(condition: Boolean, ifTrue: Int, ifFalse: Int)`
-    
+
     Consider this expression `if(1 < 2, 0, {println("foo"); 1})`. (No we can't.)
-    
+
     Could we write `if` as a method in a call-by-need language? (Yes!)
   * Considering only pure expressions to start with, can you find any expression that evaluates to a different value under the two evaluation strategies? (No, they are the same.)
-      
+
     Now considering impure expressions (i.e. expressions that have side-effects.) Is there a difference between the two strategies. (Yes!)
-      
-    Which do you think is preferrable when expressions have side-effects? (Open-ended, but the consensus answer is that strict is easier to understand than lazy in the presence of side-effects.)
+
+    Which do you think is preferable when expressions have side-effects? (Open-ended, but the consensus answer is that strict is easier to understand than lazy in the presence of side-effects.)
   * Name capture in substitution.
 
 ### Horticulture and Higher-order Methods
@@ -229,14 +229,14 @@
   * Exercises
     * Draw many shapes where the function to draw individual shapes is a parameter parameterised by color
     * Fractals doing the same
-    
+
 ### Composing Shapes, Functions, and Data
   * In this chapter we learn how to build our own shapes out of the primitive lines and curves that Doodle supplies. As we explore this will learn how to represent sequences of data, such as the sequence of points that define a shape, and manipulate such sequences.
   * Paths
     * Paths are sequences of path elements
     * Path elements
     * Open and closed paths
-    * Exercise: create open and closed paths demonstrating difference 
+    * Exercise: create open and closed paths demonstrating difference
   * My God, It's Full of Stars
     * Create star paths
     * Structural recursion over natural numbers---but constructing a List. Nil and ::
@@ -254,9 +254,9 @@
 ### Turtle Algebra and Algebraic Data Types
   * In this chapter we explore a new way of creating open paths---turtle graphics---and learn some new ways of manipulating lists and functions.
   * Turtle Graphics
-    * It's often easier to define paths in terms of relative coordinates: say how to far move forward or turn relative to our current location. 
+    * It's often easier to define paths in terms of relative coordinates: say how to far move forward or turn relative to our current location.
     * This model is called turtle graphics, developed in the 60s by Seymour Papert in the programming language Logo.
-    * Example of triangle. 
+    * Example of triangle.
     * Exercises
       * Polygons---not much different to doing them with paths
       * Spirals---much easier to create with turtle graphics
@@ -274,7 +274,7 @@
   * `Distribution[A]`
     * What is `Distribution[A]`. A distribution of some type `A`. Something that will produce a value of type `A` when we run it. Example. Two questions? What is `A`. Why do we care?
       * `A` is a *type parameter* or *generic type*. Like a method parameter. Define / apply distinction. Examples.
-      
+
 ### Rendering Random Processes
   * In the previous chapter we saw how to add randomness in a way that maintains substitution, and we learn how to combine *independent* random values using the product operator. What we could not do was make one random event depend on the value of another. For example, we could not ... example here ...
 
@@ -286,7 +286,7 @@
       * Mixing the random and the deterministic
     * Color
       * complementary and adjacent palettes
-      * saturation and transparency 
+      * saturation and transparency
     * Layout using polar coordinates
     * Examples
       Spirals
@@ -310,7 +310,7 @@
   * Exercises
     * Animate drawing some of the examples we've already seen
     * Need to think more about these
-        
+
 ### Sequences
   * Collections of objects
   * List API
@@ -318,14 +318,14 @@
     * map
     * scanLeft and foldLeft
   * Particle Effects
-  
+
 ### Project Chapter
   * Animation
-  
+
 ### Case Classes
   * Define our own types
   * A class is a template for creating objects
-  
+
 ### Pattern Matching
   * Structural recursion over algebraic data types
   * Keyboard input and join

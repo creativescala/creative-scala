@@ -6,8 +6,8 @@ Substitution says that wherever we see an expression we can replace it with the 
 1 + 1
 ```
 
-we can replace it with `2`. 
-This in turn means when we see a compound expression such as 
+we can replace it with `2`.
+This in turn means when we see a compound expression such as
 
 ```tut:silent:book
 (1 + 1) + (1 + 1)
@@ -60,7 +60,7 @@ This gives us
 1 + (|"Moonage daydream"|.indexOf(|"N"|))
 ```
 
-No we're in a position to evaluate the entire expression `(|"Moonage daydream"|.indexOf(|"N"|))`, which evaluates to `|-1|` (again differentiating the integer value from the literal expression by using a vertical bar).
+Now we're in a position to evaluate the entire expression `(|"Moonage daydream"|.indexOf(|"N"|))`, which evaluates to `|-1|` (again differentiating the integer value from the literal expression by using a vertical bar).
 Once again we perform substitution and now we have
 
 ```scala
@@ -80,7 +80,7 @@ Now we can evaluate the entire expression, giving
 |0|
 ```
 
-We can ask Scala to evaluate the whole expression to check our working.
+We can ask Scala to evaluate the whole expression to check our work.
 
 ```tut:book
 1 + ("Moonage daydream".indexOf("N"))
@@ -90,12 +90,12 @@ Correct!
 
 There are some observations we might make at this point:
 
- - doing substitution rigorously like a computer might involves a lot of steps;
- - the short-cut evaluation you probably did in your head probably got to the correct answer; and
+ - doing substitution rigorously like a computer might involve a lot of steps;
+ - the shortcut evaluation you probably did in your head probably got to the correct answer; and
  - our seemingly arbitrary choice to do evaluation from right-to-left got us the correct answer.
 
 Did we somehow manage to choose the same substitution order that Scala uses (no we didn't, but we haven't investigated this yet) or does it not really matter what order we choose?
-When exactly can we take short-cuts and still reach the right result, like we did in the first example with addition?
+When exactly can we take shortcuts and still reach the right result, like we did in the first example with addition?
 We will investigate these questions in just a moment, but first let's talk about how substitution works with names.
 
 
@@ -137,7 +137,7 @@ we can give this expression a name:
 val two = 1 + 1
 ```
 
-When we see a compound expression such as 
+When we see a compound expression such as
 
 ```tut:silent:book
 (1 + 1) + (1 + 1)
@@ -155,8 +155,8 @@ Remember when we worked through the expression
 1 + ("Moonage daydream".indexOf("N"))
 ```
 
-we have to break it into sub-expressions which we then evaluated and substituted.
-Using words this was quite convoluted.
+we broke it into sub-expressions which we then evaluated and substituted.
+Using words, this was quite convoluted.
 With a few `val` declarations we can make this both more compact and easier to see.
 Here's the same expression broken into it's components.
 
@@ -181,7 +181,7 @@ val e = a + d
 ```
 
 achieves the same result as before.
-However we can't use 
+However we can't use
 
 ```scala
 val e = a + d
@@ -192,4 +192,4 @@ val d = b.indexOf(c)
 ```
 
 because `e` depends on `a` and `d`, and in our top-to-bottom ordering `a` and `d` have yet to be evaluated.
-We might righly claim that this is a bit silly to even attempt, but `e` is the complete expression we're trying to evaluate, and `a` to `d` are sub-expressions of `e`, and it of course we have to evaluate the sub-expressions before we evaluate the expression.
+We might rightly claim that this is a bit silly to even attempt. The complete expression we're trying to evaluate is  `e` but `a` to `d` are sub-expressions of `e`, so of course we have to evaluate the sub-expressions before we evaluate the expression.

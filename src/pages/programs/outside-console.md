@@ -8,7 +8,7 @@ import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._
 ```
 
-The code we've been writing inside the console will cause problems running outside the console. For example, put the following code into `Example.scala` in the `src/main/scala`. 
+The code we've been writing inside the console will cause problems running outside the console. For example, put the following code into `Example.scala` in the `src/main/scala`.
 
 ```tut:silent:book
 Image.circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
@@ -53,14 +53,14 @@ It will have a similiar issue with `Color` in the code above.
 We'll talk in more details about names in just a moment.
 Right now let's tell the compiler where it can find the values for these names by adding some `import` statements.
 The name `Color` is found inside a *package* called `doodle.core`, and the name `circle` is within the object `Image` that is in `doodle.core`.
-We can tell the compiler to use all the name in `doodle.core`, and all the names in the the object `Image` by writing
+We can tell the compiler to use all the name in `doodle.core`, and all the names in the object `Image` by writing
 
 ```tut:silent:book
 import doodle.core._
 import doodle.core.Image._
 ```
 
-There are a few other names that the compiler will need to find for the complete code to work. 
+There are a few other names that the compiler will need to find for the complete code to work.
 We can import these with the lines
 
 ```tut:silent:book

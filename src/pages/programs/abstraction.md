@@ -12,7 +12,7 @@ We've learned a lot about names in the previous section.
 If we want to use fancy programmer words, we could say that *names abstract over expressions*.
 This usefully captures the essence of what defining names does, so let's decode the programmer-talk.
 
-To abstract means to remove unnecessary details. 
+To abstract means to remove unnecessary details.
 For example, numbers are an abstraction.
 The number "one" is never found in nature as a pure concept.
 It's always one object, such as one apple, or one copy of Creative Scala.
@@ -21,14 +21,14 @@ When doing arithmetic the concept of numbers allows us to abstract away the unne
 Similarly a name stands in a for an expression.
 An expression tells us how to construct a value.
 If that value has a name then we don't need to know anything about how the value is constructed.
-The expression can have arbtirary complexity, but we don't have to care about this complexity if we just use the name.
+The expression can have arbitrary complexity, but we don't have to care about this complexity if we just use the name.
 This is what it means when we say that names abstract over expressions.
 Whenever we have an expression we can substitute a name that refers to the same value.
 
 Abstraction makes code easier to read and write.
 Let's take as an example creating a sequence of boxes like shown in [@fig:programs:sequential-boxes].
 
-![Six boxes filled with Royal Blue](./src/pages/programs/sequential-boxes.pdf+svg){#fig:programs:sequential-boxes}
+![Five boxes filled with Royal Blue](./src/pages/programs/sequential-boxes.pdf+svg){#fig:programs:sequential-boxes}
 
 We can write out a single expression that creates the picture.
 
@@ -66,7 +66,7 @@ val box =
   Image.rectangle(40, 40).
     lineWidth(5.0).
     lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue) 
+    fillColor(Color.royalBlue)
 
 box beside box beside box beside box beside box
 ```
@@ -118,7 +118,7 @@ By naming the individual components of the image you should be able to avoid a g
 ![A Street Scene](./src/pages/programs/street.pdf+svg){#fig:programs:street}
 
 <div class="solution">
-Here's our solution. 
+Here's our solution.
 As you can see, by breaking the scene down into smaller components we were able to write relatively little code.
 
 ```tut:silent:book

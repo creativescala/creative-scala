@@ -36,7 +36,7 @@ Color.rgb(255.uByte, 0.uByte, 0.uByte) // Red
 
 ### HSL Colors
 
-The RGB color representation is not very easy to use. The hue-saturation-lightness (HSL) format more closely correponds to how we perceive color. In this representation a color consists of:
+The RGB color representation is not very easy to use. The hue-saturation-lightness (HSL) format more closely corresponds to how we perceive color. In this representation a color consists of:
 
 - *hue*, which is an angle between 0 and 360 degrees giving a rotation around the color wheel.
 - *saturation*, which is a number between 0 and 1 giving the intensity of the color from a drab gray to a pure color; and
@@ -59,7 +59,7 @@ We can construct a color in the HSL representation using the `Color.hsl` method.
 Saturation and lightness are both normalized to between 0.0 and 1.0. We can convert a `Double` to a normalized value with the `.normalized` method.
 
 ```tut:book
-0.0.normalized 
+0.0.normalized
 1.0.normalized
 1.2.normalized // Too big, is clipped to 1.0
 -1.0.normalized // Too small, is clipped to 0.0
@@ -82,12 +82,12 @@ The effectiveness of a composition often depends as much on the relationships be
 
 - `spin`, which rotates the hue by an `Angle`;
 - `saturate` and `desaturate`, which respectively add and subtract a `Normalised` value from the color; and
-- `lighten` and `darken`, which respecitvely add and subtract a `Normalised` value from the lightness.
+- `lighten` and `darken`, which respectively add and subtract a `Normalised` value from the lightness.
 
 For example,
 
 ```tut:silent:book
-((circle(100) fillColor Color.red) beside 
+((circle(100) fillColor Color.red) beside
   (circle(100) fillColor Color.red.spin(15.degrees)) beside
     (circle(100) fillColor Color.red.spin(30.degrees))).lineWidth(5.0)
 ```
@@ -102,7 +102,7 @@ Here's a similar example, this time manipulating saturation and lightness, shown
 (((circle(20) fillColor (Color.red darken 0.2.normalized))
   beside (circle(20) fillColor Color.red)
   beside (circle(20) fillColor (Color.red lighten 0.2.normalized))) above
-((rectangle(40,40) fillColor (Color.red desaturate 0.6.normalized)) 
+((rectangle(40,40) fillColor (Color.red desaturate 0.6.normalized))
   beside (rectangle(40,40) fillColor (Color.red desaturate 0.3.normalized))
   beside (rectangle(40,40) fillColor Color.red)))
 ```

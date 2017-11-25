@@ -11,7 +11,7 @@ import doodle.backend.StandardInterpreter._
 We're now experienced users of structural recursion over the natural numbers.
 Let's now return to our substitution model and see if it works with our new tool of recursion.
 
-Recall that substution say we can substitute the value of an expression wherever we see a value.
+Recall that substitution says we can substitute the value of an expression wherever we see a value.
 In the case of a method call, we can substitute the body of the method with appropriate renaming of the parameters.
 
 Our very first example of recursion was `boxes`, written like so:
@@ -105,7 +105,7 @@ aBox beside {
 }
 ```
 
-Our final result, which simplies to 
+Our final result, which simplifies to
 
 ```tut:silent
 aBox beside aBox beside aBox beside Image.empty
@@ -113,7 +113,7 @@ aBox beside aBox beside aBox beside Image.empty
 
 is exactly what we expect.
 Therefore we can say that substitution works to reason about recursion.
-This is great! 
+This is great!
 However the substitutions are quite complex and difficult to keep track of without writing them down.
 A more practical way to reason about recursion is to assume that the recursion works and only worry about what new comes from each step.
 
@@ -129,7 +129,7 @@ def boxes(count: Int): Image =
 
 we can tell the base case is correct by inspection.
 Looking at the recursive case we *assume* that `boxes(n-1)` will do the right thing.
-We then ask ourselves "is what we do in the recursion case correct is the recursion itself is correct?"
+We then ask ourselves "is what we do in the recursion case correct and is the recursion itself correct?"
 The answer is yes: if the recursion `boxes(n-1)` creates `n-1` boxes in a line, sticking a box in front of them is the right thing to do.
 This way of reasoning is much more compact that using substitution *and* guaranteed to work *if* we're using structural recursion.
 
@@ -141,7 +141,7 @@ Work out if the methods do what they claim to do *without* running them.
 
 ```tut:silent
 // Given a natural number, returns that number
-// Examples: 
+// Examples:
 //   identity(0) == 0
 //   identity(3) == 3
 def identity(n: Int): Int =
@@ -152,15 +152,15 @@ def identity(n: Int): Int =
 ```
 
 <div class="solution">
-It sure does! 
-The base case is straightforward. 
-Looking at the recursive case, we assume that `identity(n-1)` returns the identity for `n-1` (which is exactly `n-1`). 
+It sure does!
+The base case is straightforward.
+Looking at the recursive case, we assume that `identity(n-1)` returns the identity for `n-1` (which is exactly `n-1`).
 The identity for `n` is then `1 + identity(n-1)`.
 </div>
 
 ```tut:silent
 // Given a natural number, double that number
-// Examples: 
+// Examples:
 //   double(0) == 0
 //   double(3) == 6
 def double(n: Int): Int =
