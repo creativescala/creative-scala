@@ -9,7 +9,7 @@ We can create scopes to hide names from the outside, but we must still deal with
 
 
 We have the same problem in natural language.
-For example, if both your brother and friend were called "Ziggy" you would have to qualify which one you meant when you used their Ziggy.
+For example, if both your brother and friend were called "Ziggy" you would have to qualify which one you meant when you used their name.
 Perhaps you could tell from context, or perhaps your friend was "Ziggy S" and your brother was just "Ziggy".
 
 In Scala we can use *packages* to organise names.
@@ -88,7 +88,7 @@ one
 
 ### Package Organisation
 
-Packages stop top-level names colliding, but what about collisions between package names?
+Packages stop top-level names from colliding, but what about collisions between package names?
 It's common to organise packages in a hierarchy, which helps to avoid collisions.
 For example, in Doodle the package `core` is defined within the package `doodle`.
 When we use the statement

@@ -10,7 +10,7 @@ import doodle.backend.StandardInterpreter._
 
 A method is a declaration.
 The body of a method can contain declarations and expressions.
-Therefore, a method declaration can contiain other method declarations.
+Therefore, a method declaration can contain other method declarations.
 
 To see why this is useful, lets look at a method we wrote earlier:
 
@@ -26,8 +26,8 @@ def cross(count: Int): Image = {
 
 We have declared `unit` inside the method `cross`.
 This means the declaration of `unit` is only in scope within the body of `cross`.
-It is good practice to limit the scope of declarations to the minimum needed, to avoid accidentally shadowing othering declarations.
-However, let's consider the runtime behavior of `cross` and we'll see that is has some undesireable characteristics.
+It is good practice to limit the scope of declarations to the minimum needed, to avoid accidentally shadowing other declarations.
+However, let's consider the runtime behavior of `cross` and we'll see that is has some undesirable characteristics.
 
 We'll use our substitution model to expand `cross(1)`.
 
@@ -49,7 +49,7 @@ cross(1)
 // Expands to
 {
   val unit = Image.circle(20)
-  unit beside (unit above 
+  unit beside (unit above
   {
     val unit = Image.circle(20)
     0 match {
@@ -62,7 +62,7 @@ cross(1)
 // Expands to
 {
   val unit = Image.circle(20)
-  unit beside (unit above 
+  unit beside (unit above
   {
     val unit = Image.circle(20)
     unit
@@ -76,7 +76,7 @@ We can prove this is true by printing something every time `unit` is created.
 
 ```tut:book
 def cross(count: Int): Image = {
-  val unit = { 
+  val unit = {
     println("Creating unit")
     Image.circle(20)
   }
@@ -89,12 +89,12 @@ def cross(count: Int): Image = {
 cross(1)
 ```
 
-This doesn't matter greatly for `unit` because it's very small, but we could be doing that takes up a lot of memory or time, and it's undesireable to repeat it when we don't have to.
+This doesn't matter greatly for `unit` because it's very small, but we could be doing that takes up a lot of memory or time, and it's undesirable to repeat it when we don't have to.
 
 We could solve this by shifting `unit` outside of `cross`.
 
 ```tut:book
-val unit = { 
+val unit = {
   println("Creating unit")
   Image.circle(20)
 }
@@ -114,7 +114,7 @@ A better solution it to use a nested or internal method.
 
 ```tut:book
 def cross(count: Int): Image = {
-  val unit = { 
+  val unit = {
     println("Creating unit")
     Image.circle(20)
   }
@@ -149,7 +149,7 @@ Rewrite `chessboard` using a nested method so that `blackSquare`, `redSquare`, a
 def chessboard(count: Int): Image = {
   val blackSquare = Image.rectangle(30, 30) fillColor Color.black
   val redSquare   = Image.rectangle(30, 30) fillColor Color.red
-  
+
   val base =
     (redSquare   beside blackSquare) above (blackSquare beside redSquare)
   count match {
@@ -178,7 +178,7 @@ def chessboard(count: Int): Image = {
         val unit = loop(n-1)
         (unit beside unit) above (unit beside unit)
     }
-    
+
   loop(count)
 }
 ```
@@ -222,7 +222,7 @@ def boxes(count: Int): Image = {
       case 0 => Image.empty
       case n => aBox beside loop(n-1)
     }
-    
+
   loop(count)
 }
 ```

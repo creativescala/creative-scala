@@ -1,6 +1,6 @@
 ## Literal Expressions
 
-We'll now start to explore the various forms of expressions in Scala, starting with the simplest expressions *literals*. Here's a literal expression:
+We'll now start to explore the various forms of expressions in Scala, starting with the simplest expressions, *literals*. Here's a literal expression:
 
 ```tut:book
 3
@@ -29,7 +29,7 @@ Sometimes we want to write strings that span several lines. We can do this by us
 A new, a vast, and a powerful language is developed for the future use of analysis,
 in which to wield its truths so that these may become of more speedy and accurate
 practical application for the purposes of mankind than the means hitherto in our
-possession have rendered possible. 
+possession have rendered possible.
 
   -- Ada Lovelace, the world's first programmer
 """
@@ -41,11 +41,11 @@ A `String` is a sequence of characters. Characters themselves have a type, `Char
 'a'
 ```
 
-Finally we'll look at the literal representations of the `Boolean` type, named after English logician [George Boolean](https://en.wikipedia.org/wiki/George_Boole). The fancy name just means a value that can be either `true` or `false`, and this indeed is how we write boolean literals.
+Finally we'll look at the literal representations of the `Boolean` type, named after English logician [George Boole](https://en.wikipedia.org/wiki/George_Boole). The fancy name just means a value that can be either `true` or `false`, and this indeed is how we write boolean literals.
 
 ```tut:book
 true
 false
 ```
 
-With literal expressions we can create values, but we won't get very far if we can't somehow interact with the values we've created. We've seen a few examples of more complex expressions like `1 + 2`. In the next section we'll learn about objects and methods, which will allow to understand how this, and more interesting expressions, work.
+With literal expressions, we can create values, but we won't get very far if we can't somehow interact with the values we've created. We've seen a few examples of more complex expressions like `1 + 2`. In the next section, we'll learn about objects and methods, which will allow us to understand how this, and more interesting expressions, work.

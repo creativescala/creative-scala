@@ -10,14 +10,14 @@ import doodle.backend.StandardInterpreter._
 
 In a previous chapter we created the image shown in [@fig:methods:sequential-boxes] using the program
 
-![Six boxes filled with Royal Blue](./src/pages/programs/sequential-boxes.pdf+svg){#fig:methods:sequential-boxes}
+![Five boxes filled with Royal Blue](./src/pages/programs/sequential-boxes.pdf+svg){#fig:methods:sequential-boxes}
 
 ```tut:silent:book
 val box =
   Image.rectangle(40, 40).
     lineWidth(5.0).
     lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue) 
+    fillColor(Color.royalBlue)
 
 box beside box beside box beside box beside box
 ```
@@ -27,11 +27,11 @@ Right now we would have to write out the expression again for each different cho
 
 ```tut:silent:book
 val paleGoldenrod = {
-  val box = 
+  val box =
     Image.rectangle(40, 40).
       lineWidth(5.0).
       lineColor(Color.paleGoldenrod.spin(30.degrees)).
-      fillColor(Color.paleGoldenrod) 
+      fillColor(Color.paleGoldenrod)
 
   box beside box beside box beside box beside box
 }
@@ -41,7 +41,7 @@ val lightSteelBlue = {
     Image.rectangle(40, 40).
       lineWidth(5.0).
       lineColor(Color.lightSteelBlue.spin(30.degrees)).
-      fillColor(Color.lightSteelBlue) 
+      fillColor(Color.lightSteelBlue)
 
   box beside box beside box beside box beside box
 }
@@ -51,7 +51,7 @@ val mistyRose = {
     Image.rectangle(40, 40).
       lineWidth(5.0).
       lineColor(Color.mistyRose.spin(30.degrees)).
-      fillColor(Color.mistyRose) 
+      fillColor(Color.mistyRose)
 
   box beside box beside box beside box beside box
 }
@@ -68,7 +68,7 @@ def boxes(color: Color): Image = {
     Image.rectangle(40, 40).
       lineWidth(5.0).
       lineColor(color.spin(30.degrees)).
-      fillColor(color) 
+      fillColor(color)
 
   box beside box beside box beside box beside box
 }
@@ -81,4 +81,4 @@ boxes(Color.mistyRose)
 
 Try this yourself to see that you get the same result using the method as you did writing everything out by hand.
 
-Now we've seen an example of declaring a method we need to explain the syntax of methods---what we write---and the semantics of method calls---how they work in terms of substitution.
+Now that we've seen an example of declaring a method, we need to explain the syntax of methods. Next, we'll look at how to write methods, the semantics of method calls, and how they work in terms of substitution.

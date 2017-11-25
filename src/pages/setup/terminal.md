@@ -1,6 +1,6 @@
 ## Installing Terminal Software and a Text Editors
 
-This section is our recommended setup for people new to programming, and describes how to setup Creative Scala with the terminal and a text editor. 
+This section is our recommended setup for people new to programming, and describes how to setup Creative Scala with the terminal and a text editor.
 We need to install:
 
 - the JVM;
@@ -24,13 +24,13 @@ If this runs you already have Java installed.
 Otherwise it will prompt you to install Java.
 
 Install homebrew.
-Paste into the terminal 
+Paste into the terminal
 
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-Install `git` using homebrew. 
+Install `git` using homebrew.
 At the terminal, type
 
 ```bash
@@ -61,7 +61,7 @@ This is the setup to choose if you want to share your work with other people; fo
 
 In this setup you first *fork* the Creative Scala template.
 Then you make a clone of *your* fork.
-This alternative setup is described in more detail in the section on Github later in this chapter.
+This alternative setup is described in more detail in the section on GitHub later in this chapter.
 </div>
 
 
@@ -120,7 +120,7 @@ This is the setup to choose if you want to share your work with other people; fo
 
 In this setup you first *fork* the Creative Scala template.
 Then you make a clone of *your* fork.
-This alternative setup is described in more detail in the section on Github later in this chapter.
+This alternative setup is described in more detail in the section on GitHub later in this chapter.
 </div>
 
 Open a normal command-prompt.

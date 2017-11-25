@@ -1,6 +1,6 @@
 ## Types
 
-Now we can write more complex expressions we can talk a little more about types. 
+Now that we can write more complex expressions, we can talk a little more about types.
 
 One use of types is stopping us from calling methods that don't exist. The type of an expression tells the compiler what methods exist on the value it evaluates to. Our code won't compile if we try to call to a method that doesn't exist. Here are some simple examples.
 
@@ -21,7 +21,7 @@ This process of *type checking* also applies to the parameter of methods.
 1.min("zero")
 ```
 
-Types are a property of expressions and thus exist at compile-time (as we have discussed before.) This means we can determine the type of expression even if evaluating it results in an error at run-time. For example, dividing an `Int` by zero causes a run-time error.
+Types are a property of expressions and thus exist at compile time (as we have discussed before.) This means we can determine the type of an expression even if evaluating it results in an error at run time. For example, dividing an `Int` by zero causes a run-time error.
 
 ```tut:fail:book
 1 / 0

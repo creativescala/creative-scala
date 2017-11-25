@@ -130,12 +130,12 @@ This expression has type `Int` but fails at run-time with a division by zero.
 
 #### Floating Point Failings
 
-When we introduced `Doubles`, I said they are an approximation to the real numbers. Why do you think this is? Think about representing numbers like ⅓ and π. How much space would it take to represent these numbers in decimal?
+When we introduced Doubles, I said they are an approximation to the real numbers. Why do you think this is? Think about representing numbers like ⅓ and π. How much space would it take to represent these numbers in decimal?
 
 <div class="solution">
 `Double` is an approximation because it has the fit within the computer's finite memory. A `Double` takes up precisely 64-bits, which is enough space to store a lot of digits but not enough to store a number that, like π, has an infinite expansion.
 
-The number ⅓ also has an infinite expansion in decimal. As `Doubles` are stored in binary there are some numbers that can be represented in a finite number of decimal digits but have no finite representation in binary. 0.1 turns out to be one such number.
+The number ⅓ also has an infinite expansion in decimal. Because Doubles are stored in binary there are some numbers that can be represented in a finite number of decimal digits but have no finite representation in binary. 0.1 turns out to be one such number.
 
 In general, floating point numbers can lead to nasty surprises if you expect them to act like the reals. They are fine for our purposes in Creative Scala, but don't go using them to write accounting software!
 </div>
@@ -145,7 +145,7 @@ In general, floating point numbers can lead to nasty surprises if you expect the
 In our current model of computation there are only three components: expressions (program text) with types, that evaluate to values (something within the computer's memory). Is this sufficient? Could we write a stock market or a computer game with just this model? Can you think of ways to extend this model?
 
 <div class="solution">
-This is very open ended question. There are several ways to go beyond the model we have so far. 
+This is very open ended question. There are several ways to go beyond the model we have so far.
 
 To be useful our programs must be capable of creating effects---changes in the world that go beyond the computer's memory. For example, displaying things on the screen, making sound, sending messages to other computers, and the like. The console implicitly does some of this for us, by printing values on the screen. We'll need to go a bit beyond that for more useful programs.
 
