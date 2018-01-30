@@ -266,7 +266,7 @@ val programOne =
 ```
 
 which makes it clearer that we're generating three different circles.
-
+</div>
 
 #### Colored Boxes {-}
 
