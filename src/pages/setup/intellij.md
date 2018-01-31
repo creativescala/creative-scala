@@ -10,7 +10,7 @@ Choose "checkout from version control", and select GitHub.
 In the dialog box that opens change "Auth type" to Token.
 Now visit GitHub in a web browser.
 Select your account (top right hand of the page).
-Choose "Settings" and then choose "Personal access tokens".
+Choose "Settings", "Developer settings", and then choose "Personal access tokens".
 Generate a token. Call it "intellij" and select the "repo" check box.
 Copy the long string of numbers and text and paste it into the "Token" box.
 Now login to GitHub.
