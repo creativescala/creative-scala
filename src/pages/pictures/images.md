@@ -14,7 +14,7 @@ Let's start with some simple shapes, programming at the console as we've done be
 Image.circle(10)
 ```
 
-What is happening here? `Image` is an object and `circle` a method on that object. We pass to `circle` a parameter, `10` that gives the radius of the circle we're constructing. Note the type of the result---an `Image`.
+What is happening here? `Image` is an object and `circle` a method on that object. We pass to `circle` a parameter, `10` that gives the diameter of the circle we're constructing. Note the type of the result---an `Image`.
 
 We can also write just `circle(10)`, as if you run the console within Doodle it automatically makes this and other methods to construct images available.
 
