@@ -93,7 +93,7 @@ Constructing a `List` is straight-forward: we just call `List` with the elements
 List(1, 2, 3)
 
 // List of Image
-List(circle(10), circle(20), circle(30))
+List(Image.circle(10), Image.circle(20), Image.circle(30))
 
 // List of Color
 List(Color.paleGoldenrod, Color.paleGreen, Color.paleTurquoise)

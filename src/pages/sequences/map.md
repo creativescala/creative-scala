@@ -101,11 +101,10 @@ The implementation of this version of `fill` is more convenient to write, but it
 
 
 If we want to work with sequences of numbers we are better off using `Ranges`.
-We can create these using the `until` method of `Int` or `Double`:
+We can create these using the `until` method of `Int`.
 
 ```tut:book
 0 until 10
-0.0 until 5.0
 ```
 
 `Ranges` have a `by` method that allows us to change the step
@@ -113,7 +112,6 @@ between consecutive elements of the range:
 
 ```tut:book
 0 until 10 by 2
-0.0 until 1.0 by 0.3
 ```
 
 `Ranges` also have a `map` method just like `List`
@@ -137,6 +135,36 @@ def fill[A](n: Int, a: A): List[A] =
   (0 until n).toList.map(x => a)
   
 fill(3, "Hi")
+```
+
+### Ranges over Doubles
+
+If we try to create a `Range` over `Double` we get an error.
+
+```tut:book:fail
+0.0 to 10.0 by 1.0
+```
+
+There are two ways around this. We can use an equivalent `Range` over `Int`. In this case we could just write
+
+```tut:book:silent
+0 to 10 by 1
+```
+
+We can use the `.toInt` method to convert a `Double` to an `Int` if needed.
+
+Alternatively we can write a `Range` using `BigDecimal`.
+
+```tut:book:silent
+import scala.math.BigDecimal
+BigDecimal(0.0) to 10.0 by 1.0
+```
+
+`BigDecimal` has methods `doubleValue` and `intValue` to get `Double` and `Int` values respectively.
+
+```tut:book:
+BigDecimal(10.0).doubleValue()
+BigDecimal(10.0).intValue()
 ```
 
 #### Exercises {-}
@@ -257,9 +285,9 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   import Point._
   import PathElement._
 
-  val step = (Angle.one / sides).toDegrees
+  val step = (Angle.one / sides).toDegrees.toInt
   val path = 
-    (0.0 to 360.0 by step).toList.map{ deg => 
+    (0 to 360 by step).toList.map{ deg => 
       lineTo(polar(size, initialRotation + deg.degrees))
     }
     

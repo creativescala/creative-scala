@@ -1,6 +1,6 @@
 import scala.sys.process._
 
-scalaVersion := "2.12.2"
+scalaVersion := "2.12.6"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -18,8 +18,8 @@ enablePlugins(TutPlugin)
 resolvers += Resolver.bintrayRepo("underscoreio", "training")
 
 libraryDependencies ++= Seq(
-  "underscoreio" %% "doodle" % "0.8.0",
-  "org.typelevel" %% "cats" % "0.9.0"
+  "underscoreio" %% "doodle" % "0.8.3",
+  "org.typelevel" %% "cats-core" % "1.1.0"
 )
 
 scalacOptions in Tut := (scalacOptions in Tut).value.filterNot(Set("-Ywarn-unused-import"))

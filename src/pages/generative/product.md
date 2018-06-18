@@ -74,13 +74,13 @@ randomConcentricCircles(n-1).map2(randomCircle(n*10, randomPastel)){
 Presumably we'd also need `map3`, `map4`, and so on. Instead of these special cases we have a more general operator, provided by a library called [Cats][cats]. If we add the following import
 
 ```tut:book
-import cats.syntax.cartesian._
+import cats.syntax.all._
 ```
 
 we can now write
 
 ```scala
-randomConcentricCircles(n-1) |@| (randomCircle(n*10, randomPastel)) map { 
+(randomConcentricCircles(n-1), (randomCircle(n*10, randomPastel))) mapN { 
   (circles, circle) => circles on circle
 }
 ```
@@ -88,7 +88,7 @@ randomConcentricCircles(n-1) |@| (randomCircle(n*10, randomPastel)) map {
 The complete code becomes
 
 ```tut:book
-import cats.syntax.cartesian._
+import cats.syntax.all._
 
 val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
 
@@ -96,7 +96,7 @@ def randomConcentricCircles(n: Int): Random[Image] =
   n match {
     case 0 => randomCircle(10, randomPastel)
     case n =>
-      randomConcentricCircles(n-1) |@| randomCircle(n * 10, randomPastel) map {
+      (randomConcentricCircles(n-1), randomCircle(n * 10, randomPastel)) mapN {
         (circles, circle) => circles on circle
       }
   }
@@ -106,33 +106,14 @@ Example output is shown in [@fig:generative:random-concentric-circles].
 
 ![The output of one run of `randomConcentricCircles(10).run().draw`](./src/pages/generative/random-concentric-circles.png){#fig:generative:random-concentric-circles}
 
-So what is this strange `|@|`, how does it work, and most importantly, what do we call it? We now turn to these issues.
+So what is this new `mapN` method? Let's look in more depth.
 
 
-### The Product Operator
+### Tuples and the `mapN` method
 
-I call `|@|` the *product operator*, or occasionally the *TIE fighter*. You might see other names used (but they are wrong, for estoric reasons[^esoteric]).
+The `mapN` method is something that Cats adds to *tuples*. We haven't encountered tuples yet, so let's learn about them first.
 
-Using the same box notation we saw in the previous chapter we can describe the action of the product operator with [@fig:generative:applicative]. This tells us that the product operator merges together boxes and elements. What exactly do we mean by merging? Let's see an example using `List` to help clear it up.
-
-![The product operator illustrated with boxes and shapes](./src/pages/generative/applicative.png){#fig:generative:applicative}
-
-We can use the product operator with `List` as shown below. Before doing so, think about what you'd expect if we merge two lists using `|@|`. According to our box diagram we should get a `List` where is each element is the result of merging elements from the two lists (and we haven't exactly defined what this merging is).
-
-```tut:book
-import cats.instances.list._
-val merged = List(1, 2, 3) |@| List(4, 5)
-```
-
-This isn't giving us much insight. What is the type `CartesianBuilder` doing here? For technical reasons these things exist in the implementation of product. We can get back a result that coincides with our model if we call the `tupled` method.
-
-```tut:book
-val merged = (List(1, 2, 3) |@| List(4, 5)).tupled
-```
-
-This makes more sense! The result is a `List` where the first element of the left-hand list has been paired with all the elements of the right-hand list, then the second element, and so on.
-
-How exactly have the elements been paired? They are stored in an object called a *tuple*. A tuple is just a container that lets us store a fixed number of elements of different types together. Here are some examples.
+A tuple is a container that lets us store a fixed number of elements of different types together. Here are some examples.
 
 ```tut:book
 ("freakout", 1)
@@ -147,6 +128,14 @@ We can construct tuples using the syntax above. What about deconstructing them? 
   case (x, y, z) => s"$x $y $z"
 }
 ```
+
+Now the `mapN` method allows us to transform tuples that contain ...
+
+*TODO: complete description.*
+
+
+This makes more sense! The result is a `List` where the first element of the left-hand list has been paired with all the elements of the right-hand list, then the second element, and so on.
+
 
 Now we can say more precisely what the product operator is doing to the values in the boxes: it tuples them together.
 
@@ -175,11 +164,7 @@ val tupleToF = (in: (Int, Int)) => {
 tupleToF(tuple)
 ```
 
-This explains why we saw the `CartesianBuilder` when we first used the product operator---it converts tuples into function calls like `tupleToF` above.
-
-That's quite a lengthy explanation. The good news is we don't ever run into this if we just immediately `map` over the result of using the product operator, which is the usual case.
-
-[^esoteric]: You really want to know the estorica? Ok! There are four operators associated with the "applicative functor", the abstraction we are using. They are `|@|`, `<*>`, `*>`, and `<*`. The first two are clearly a TIE figher and a TIE interceptor respectively, and the latter two are a TIE interceptor after tangling with the Millenium Falcon (as at the end of A New Hope.) These goofy symbols are mostly found in [the paper][idiom] that introduced the concept but failed to make the connection to Star Wars.
+That's quite a lengthy explanation. The good news is we don't ever run into this if we just immediately `mapN` over the result of using the product operator, which is the usual case.
 
 
 ### Exercises {-}
@@ -205,14 +190,14 @@ def randomConcentricCircles(n: Int): Random[Image] =
   n match {
     case 0 => randomCircle(10, randomPastel)
     case n =>
-      randomConcentricCircles(n-1) |@| randomCircle(n * 10, randomPastel) map {
+      (randomConcentricCircles(n-1), randomCircle(n * 10, randomPastel)) mapN {
         (circles, circle) => circles on circle
       }
   }
 
 val circles = randomConcentricCircles(5)
 val programOne = 
-  (circles |@| circles |@| circles) map { (c1, c2, c3) => c1 beside c2 beside c3 }
+  (circles, circles, circles) mapN { (c1, c2, c3) => c1 beside c2 beside c3 }
 val programTwo =
   circles map { c => c beside c beside c }
 ```
@@ -222,7 +207,7 @@ val programTwo =
 
 ```tut:book
 val programOne = 
-  (randomConcentricCircles(5) |@| randomConcentricCircles(5) |@| randomConcentricCircles(5)) map { 
+  (randomConcentricCircles(5), randomConcentricCircles(5), randomConcentricCircles(5)) mapN { 
     (c1, c2, c3) => c1 beside c2 beside c3 
   }
 ```
@@ -252,6 +237,8 @@ Let's alter this, like with did with concentric circles, to have each box filled
 This code uses exactly the same pattern as `randomConcentricCircles`.
 
 ```tut:book
+import cats.syntax.all._
+
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 
@@ -260,14 +247,16 @@ val randomColor: Random[Color] =
 
 def coloredRectangle(color: Color): Image =
   rectangle(20, 20) fillColor color
+  
+val randomColorBox: Random[Image] = randomColor.map(c => coloredRectangle(c))
 
 def randomColorBoxes(n: Int): Random[Image] =
   n match {
-    case 0 => randomColor map { c => coloredRectangle(c) }
+    case 0 => randomColorBox
     case n =>
-      val box = randomColor map { c => coloredRectangle(c) }
+      val box = randomColorBox
       val boxes = randomColorBoxes(n-1)
-      (box |@| boxes) map { (b, bs) => b beside bs }
+      (box, boxes) mapN { (b, bs) => b beside bs }
   }
 ```
 </div>
