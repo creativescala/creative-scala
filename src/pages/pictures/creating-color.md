@@ -127,9 +127,9 @@ We can also add a degree of transparency to our colors, by adding an *alpha* val
 
 ### Exercises {-}
 
-#### Complementary Triangles {-}
+#### Analogous Triangles {-}
 
-Create three triangles, arranged in a triangle, with complementary colors. Complementary colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:complementary-triangles].
+Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:complementary-triangles].
 
 ![Complementary triangles. The colors chosen are variations on `darkSlateBlue`](./src/pages/pictures/complementary-triangles.pdf+svg){#fig:pictures:complementary-triangles}
 
