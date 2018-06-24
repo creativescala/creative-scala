@@ -97,3 +97,8 @@ or by email:
 Creative Scala was written by [Dave Gurnell][twitter-dave] and [Noel Welsh][twitter-noel]. Many thanks to [Richard Dallaway][twitter-richard], [Jonathan Ferguson][twitter-jono], and the team at [Underscore][underscore] for their invaluable contributions and extensive proof reading.
 
 Thanks also to the many people who pointed out errors or made suggestions to improve the book: Neil Moore; Kelley Robinson, Julie Pitt, and the other ScalaBridge organizers; d43; Matt Kohl; Alexa Kovachevich and all the other students who worked through Creative Scala at ScalaBridge, at another event, or on their own; and the many awesome members of the Scala community who gave us comments and suggestions in person. Finally, we have large amount of gratitude for Bridgewater, and particularly Lauren Cipicchio, who perhaps unknowingly funded a good portion of the initial development of the second version of the Creative Scala, and provided the first few rounds of students.
+
+Finally, Creative Scala owes a large intellectual debt to the work of many researchers working in programming language theory and Computer Science education. In particular we'd like to highlight:
+
+- the work of the [PLT research group](http://racket-lang.org/plt.html), and in particular the book ["How to Design Programs"](http://htdp.org/), by Matthew Flatt, Matthias Felleisen, Robert Bruce Findler, and Shriram Krishnamurthi; and
+- the "creative coding" approach to introductory programming pioneered by [Mark Guzdial](https://www.cc.gatech.edu/faculty/mark.guzdial/), [Dianna Xu](https://cs.brynmawr.edu/~dxu/), and others.
