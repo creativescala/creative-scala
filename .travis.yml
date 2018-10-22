@@ -16,6 +16,6 @@ script:
 - docker-compose run book ./sbt.sh pdf html epub ; export SBT_RESULT=$?
 - test "$SBT_RESULT" == "0"
 after_success:
-- openssl aes-256-cbc -K $encrypted_6be077f829fc_key -iv $encrypted_6be077f829fc_iv
+- openssl aes-256-cbc -K $encrypted_93dc24459eae_key -iv $encrypted_93dc24459eae_iv
   -in book_deploy_rsa.enc -out book_deploy_rsa -d
 - "./book_deploy.sh"
