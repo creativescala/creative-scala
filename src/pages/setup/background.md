@@ -45,7 +45,7 @@ They have very different approaches (except when they don't) and developers tend
 I've been using Emacs for about twenty years, and thus I know in my bones that Emacs is the greatest of all possible text editors and Vim users are knuckle-draggers lumbered with poor taste and an inferior tool.
 Vim users no doubt think the same about me.
 
-If there is one thing that unites Vim and Emacs users it's the sure knowledge that new-fangled text editors like Sublime Text and Atom a bringing about the downfall of our civilization.
+If there is one thing that unites Vim and Emacs users it's the sure knowledge that new-fangled text editors like Sublime Text and Atom are bringing about the downfall of our civilization.
 Nonetheless we recommend using Atom if you're new to this text editing game.
 Both Vim and Emacs were created before the common interfaces in use today were created, and using them requires learning a very different way of working.
 
