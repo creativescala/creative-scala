@@ -18,7 +18,7 @@ The number "one" is never found in nature as a pure concept.
 It's always one object, such as one apple, or one copy of Creative Scala.
 When doing arithmetic the concept of numbers allows us to abstract away the unnecessary detail of the exact objects we're counting and manipulate the numbers on their own.
 
-Similarly a name stands in a for an expression.
+Similarly a name stands in for an expression.
 An expression tells us how to construct a value.
 If that value has a name then we don't need to know anything about how the value is constructed.
 The expression can have arbitrary complexity, but we don't have to care about this complexity if we just use the name.
