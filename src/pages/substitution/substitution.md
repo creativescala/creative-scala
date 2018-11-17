@@ -47,7 +47,7 @@ Let's again evaluate the right-hand first, remembering that literal expressions 
 
 The literal `"N"` evaluates to the value `"N"`.
 To avoid this confusion let's write the value as `|"N"|`.
-Now we can substitute the value for the expression, given in our first steps
+Now we can substitute the value for the expression given in our first steps
 
 ```scala
 1 + ("Moonage daydream".indexOf(|"N"|))
