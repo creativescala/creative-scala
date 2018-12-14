@@ -60,7 +60,7 @@ val mistyRose = {
 This is tedious.
 Each expression only differs in a minor way.
 It would be nice if we could capture the general pattern and allow the color to vary.
-We can do exactly this with by declaring a method.
+We can do exactly this by declaring a method.
 
 ```tut:silent:book
 def boxes(color: Color): Image = {
