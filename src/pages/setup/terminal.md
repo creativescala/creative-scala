@@ -13,7 +13,7 @@ We need to install:
 
 Open the terminal. (Click the magnifying icon on the top righthand side of the toolbar. Type in "terminal".)
 
-Install Java
+Install Java.
 Type into the terminal
 
 ```bash

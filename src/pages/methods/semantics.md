@@ -1,6 +1,6 @@
 ## Method Semantics
 
-Now that we know how to declare methods, let's to turn to the semantics.
+Now that we know how to declare methods, let's turn to the semantics.
 How do we understand a method call in terms of our substitution model?
 
 We already know we can substitute a method call with the value it evaluates to.

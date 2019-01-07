@@ -45,3 +45,4 @@ Within `sbt` you can issue the commands `pdf`, `html`, `epub`, or `all` to build
 
 [doodle]: https://github.com/underscoreio/doodle
 [ebook-template]: https://github.com/underscoreio/underscore-ebook-template
+
