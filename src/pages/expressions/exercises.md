@@ -7,7 +7,7 @@ Write an expression using integer literals, addition, and subtraction that evalu
 <div class="solution">
 This exercise is just about getting used to writing Scala code. Here is one possible solution.
 
-```tut:book
+```scala mdoc
 1 + 43 - 2
 ```
 </div>
@@ -20,7 +20,7 @@ Join together two strings (known as *appending* strings) using the `++` method. 
 <div class="solution">
 Something like the below should do.
 
-```tut:book
+```scala mdoc
 "It is a truth ".++("universally acknowledged")
 "It is a truth " ++ "universally acknowledged"
 ```
@@ -33,7 +33,7 @@ In mathematics we learned that some operators take *precedence* over others. For
 <div class="solution">
 A bit of exploration at the console should convince you that yes, Scala does maintain the standard precedence rules. The example below demonstrates this.
 
-```tut:book
+```scala mdoc
 1 + 2 * 3
 1 + (2 * 3)
 (1 + 2) * 3
@@ -45,83 +45,83 @@ A bit of exploration at the console should convince you that yes, Scala does mai
 
 Which of the following expressions will not compile? Of the expressions that will compile, what is their type? Which expressions fail at run-time?
 
-```tut:silent
+```scala mdoc:silent
 1 + 2
 ```
 
-```tut:silent
+```scala mdoc:silent
 "3".toInt
 ```
 
-```tut:fail:silent
+```scala mdoc:silent:crash
 "Electric blue".toInt
 ```
 
-```tut:silent
+```scala mdoc:silent
 "Electric blue".take(1)
 ```
 
-```tut:fail:silent
+```scala mdoc:silent:crash
 "Electric blue".take("blue")
 ```
 
-```tut:silent
+```scala mdoc:silent
 1 + ("Moonage daydream".indexOf("N"))
 ```
 
-```tut:silent
+```scala mdoc:silent
 1 / 1 + ("Moonage daydream".indexOf("N"))
 ```
 
-```tut:fail:silent
+```scala mdoc:silent:crash
 1 / (1 + ("Moonage daydream".indexOf("N")))
 ```
 
 <div class="solution">
-```tut:book
+```scala mdoc
 1 + 2
 ```
 
 This expression has type `Int` and evaluates to `3`.
 
 
-```tut:book
+```scala mdoc
 "3".toInt
 ```
 
 This expression has type `Int` and evaluates to `3`.
 
-```tut:fail:book
+```scala mdoc:crash
 "Electric blue".toInt
 ```
 
 This expression has type `Int` but fails at run-time.
 
-```tut:silent
+```scala mdoc
 "Electric blue".take(1)
 ```
 
 This expression has type `String` and evaluates to `"E"`.
 
-```tut:fail:book
+```scala mdoc:crash
 "Electric blue".take("blue")
 ```
 
 This expression fails at compile-time and hence has no type.
 
-```tut:book
+```scala mdoc
 1 + ("Moonage daydream".indexOf("N"))
 ```
 
 This expression has type `Int` and evaluates to `0`.
 
-```tut:book
+```scala mdoc
 1 / 1 + ("Moonage daydream".indexOf("N"))
 ```
 
 This expression has type `Int` and, due to precedence, evaluates to `(1 / 1) + -1`, which is `0`.
 
-```tut:fail:silent
+```scala mdoc:crash
 1 / (1 + ("Moonage daydream".indexOf("N")))
 ```
 

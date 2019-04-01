@@ -4,7 +4,7 @@ Scala programs have three fundamental building blocks: *expressions*, *values*, 
 
 Here's a very simple expression:
 
-```tut:silent:book
+```scala mdoc:silent
 1 + 2
 ```
 
@@ -14,7 +14,7 @@ Expressions are like writing. Just like writing must be read for it to have any 
 
 We can evaluate expressions immediately by writing them at the console and pressing "Enter" (or "Return"). Try it now.
 
-```tut:book
+```scala mdoc
 1 + 2
 ```
 
