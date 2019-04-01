@@ -1,6 +1,6 @@
 ## Images
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -10,7 +10,7 @@ import doodle.backend.StandardInterpreter._
 
 Let's start with some simple shapes, programming at the console as we've done before.
 
-```tut:book
+```scala mdoc
 Image.circle(10)
 ```
 
@@ -18,7 +18,7 @@ What is happening here? `Image` is an object and `circle` a method on that objec
 
 We can also write just `circle(10)`, as if you run the console within Doodle it automatically makes this and other methods to construct images available.
 
-```tut:book
+```scala mdoc
 circle(10)
 ```
 
@@ -62,7 +62,7 @@ In this exercise we're checking that our Doodle install is working correctly and
 
 We can create circles with the code below.
 
-```tut:silent:book
+```scala mdoc:silent
 circle(1)
 circle(10)
 circle(100)

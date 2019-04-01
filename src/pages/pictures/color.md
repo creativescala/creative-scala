@@ -1,6 +1,6 @@
 ## Color
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -60,7 +60,7 @@ Make the image in [@fig:pictures:evil-eye], designed to look like a traditional 
 <div class="solution">
 Here's my amulet:
 
-```tut:book
+```scala mdoc
 ((circle(10) fillColor Color.black) on
  (circle(20) fillColor Color.cornflowerBlue) on
  (circle(30) fillColor Color.white) on

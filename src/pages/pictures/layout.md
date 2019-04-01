@@ -1,6 +1,6 @@
 ## Layout
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -50,7 +50,7 @@ Create the picture [@fig:picture:width-of-a-circle] using the layout methods and
 <div class="solution">
 It's three small circles on top of a bigger circle, and we can just about state this as is in code.
 
-```tut:book
+```scala mdoc
 (circle(20) beside circle(20) beside circle(20)) on circle(60)
 ```
 </div>

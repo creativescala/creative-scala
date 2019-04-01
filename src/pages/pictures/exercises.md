@@ -1,6 +1,6 @@
 ## Exercises
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -21,13 +21,13 @@ For bonus credit add a stand so we can place the target on a range, as shown in 
 <div class="solution">
 The simplest solution is to create three concentric circles using the `on` operator:
 
-```tut:silent:book
+```scala mdoc:silent
 (circle(10) on circle(20) on circle(30))
 ```
 
 For the extra credit we can create a stand using two rectangles:
 
-```tut:silent:book
+```scala mdoc:silent
 (
   circle(10) on
   circle(20) on
@@ -52,7 +52,7 @@ The `fillColor()`, `lineColor()`, and `lineWidth()` methods
 apply to a single image---we need to make sure that image
 comprises the correct set of shapes:
 
-```tut:silent:book
+```scala mdoc:silent
 (
   ( circle(10) fillColor Color.red ) on
   ( circle(20) fillColor Color.white ) on
