@@ -74,6 +74,11 @@ cross(1)
 The point of this enormous expansion is to demonstrate that we're recreating `unit` every time we recurse within `cross`.
 We can prove this is true by printing something every time `unit` is created.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def cross(count: Int): Image = {
   val unit = {
@@ -89,10 +94,15 @@ def cross(count: Int): Image = {
 cross(1)
 ```
 
-This doesn't matter greatly for `unit` because it's very small, but we could be doing that takes up a lot of memory or time, and it's undesirable to repeat it when we don't have to.
+This doesn't matter greatly for `unit` because it's very small, but we could be doing something that takes up a lot of memory or time, and it's undesirable to repeat it when we don't have to.
 
 We could solve this by shifting `unit` outside of `cross`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 val unit = {
   println("Creating unit")
@@ -112,6 +122,11 @@ cross(1)
 This is undesirable because `unit` now has a larger scope than needed.
 A better solution it to use a nested or internal method.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def cross(count: Int): Image = {
   val unit = {
@@ -165,6 +180,11 @@ def chessboard(count: Int): Image = {
 
 Here's how we did it. It has exactly the same pattern we used with `boxes`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def chessboard(count: Int): Image = {
   val blackSquare = Image.rectangle(30, 30) fillColor Color.black
@@ -202,6 +222,11 @@ def boxes(count: Int): Image =
 
 We can do this in two stages, first moving `aBox` within `boxes`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def boxes(count: Int): Image = {
   val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
@@ -214,6 +239,11 @@ def boxes(count: Int): Image = {
 
 Then we can use an internal method to avoid recreating `aBox` on every recursion.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def boxes(count: Int): Image = {
   val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)

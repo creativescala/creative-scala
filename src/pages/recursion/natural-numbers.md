@@ -168,7 +168,7 @@ Now finish the implementation of `cross`.
 <div class="solution">
 Here's what we wrote.
 
-```scala
+```scala mdoc
 def cross(count: Int): Image = {
   val unit = Image.circle(20)
   count match {

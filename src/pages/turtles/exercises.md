@@ -14,7 +14,7 @@ import doodle.turtle.Instruction._
 
 Using the Turtle methods, `Range`, and `flatMap`, rewrite your method to create a polygon. The signature of `polygon` is
 
-```scala mdoc:silent
+```scala
 def polygon(sides: Int, sideLength: Double): Image = 
   ???
 ```
@@ -38,7 +38,7 @@ def polygon(sides: Int, sideLength: Double): Image = {
 
 Using the Turtle methods, `Range`, and `flatMap`, rewrite your method to create the square spiral. The signature of `squareSpiral` is
 
-```scala mdoc:silent
+```scala
 def squareSpiral(steps: Int, distance: Double, angle: Angle, increment: Double): Image =
   ???
 ```

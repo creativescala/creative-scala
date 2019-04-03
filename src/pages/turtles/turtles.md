@@ -74,7 +74,7 @@ Instruction                Description                         Example
 
 In the previous chapter we wrote a method to create a polygon. Reimplement this method using turtle graphics instead. The method header should be something like
 
-```scala mdoc:silent
+```scala
 def polygon(sides: Int, sideLength: Double): Image =
  ???
 ```

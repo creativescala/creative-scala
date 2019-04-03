@@ -41,6 +41,14 @@ And so on for as many boxes as we care to create.
 You might think this is an unusual way to create these images.
 Why not just write something like this, for example?
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val oneBox = aBox
+val twoBoxes = aBox beside oneBox
+```
 ```scala mdoc
 val threeBoxes = aBox beside aBox beside aBox
 ```
@@ -65,6 +73,12 @@ Now comes the new part, the *structural recursion*.
 We noticed that `threeBoxes` above is defined in terms of `twoBoxes`, and `twoBoxes` is itself defined in terms of `box`.
 We could even define `box` in terms of *no* boxes, like so:
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
 ```scala mdoc
 val oneBox = aBox beside Image.empty
 ```
@@ -91,6 +105,12 @@ In fact we can implement `boxes` by converting these properties into code.
 
 A full implementation of `boxes` is
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
 ```scala mdoc
 def boxes(count: Int): Image =
   count match {

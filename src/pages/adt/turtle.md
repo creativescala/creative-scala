@@ -51,6 +51,18 @@ First implement this without branching instructions. We'll return to branches in
 <div class="solution">
 The core pattern is a structural recursion but the details are a bit more intricate in this case than we've seen before. We need to both create the path elements and update the state.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+
+sealed abstract class Instruction extends Product with Serializable
+final case class Forward(distance: Double) extends Instruction
+final case class Turn(angle: Angle) extends Instruction
+final case class Branch(instructions: List[Instruction]) extends Instruction
+final case class NoOp() extends Instruction
+
+final case class TurtleState(at: Vec, heading: Angle)
+```
 ```scala mdoc
 def process(state: TurtleState, instruction: Instruction): (TurtleState, List[PathElement]) = {
   import PathElement._

@@ -44,7 +44,7 @@ val instructions: List[Instruction] =
        forward(10))
 
 // Ask the turtle to draw these instructions, creating an Image
-val path: Image = Turtle.draw(instructions)
+val image: Image = Turtle.draw(instructions)
 ```
 
 So where's the turtle in all this? 

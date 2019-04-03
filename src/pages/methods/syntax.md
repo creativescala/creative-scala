@@ -85,7 +85,7 @@ We can arrive at the solution by the following steps.
 We're given the name (`square`), the type of the parameter (`Int`), and the type of the result (`Int`).
 From this we can write the method skeleton
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 def square(x: Int): Int =
   ???
 ```

@@ -109,7 +109,7 @@ Here are three reasonable possibilities I can think of; perhaps you came up with
 
 Here's a match expression that doesn't match.
 
-```scala mdoc:fail
+```scala mdoc:crash
 2 match {
   case 0 => "zero"
   case 1 => "one"

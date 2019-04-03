@@ -119,6 +119,12 @@ A more practical way to reason about recursion is to assume that the recursion w
 
 For example, when reasoning about `boxes`
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
 ```scala mdoc:silent
 def boxes(count: Int): Image =
   count match {
@@ -177,7 +183,7 @@ Firstly, because we're multiplying in the recursive case we will eventualy end u
 
 We might try and fix this by adding a case for `1` (and perhaps wonder why the structural recursion skeleton let us down).
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 def double(n: Int): Int =
   n match {
     case 0 => 0
@@ -197,7 +203,7 @@ A bit of algebra:
 So if `double(n-1)` is `2(n-1)` then we should *add* 2, not multiply by 2.
 The correct method is
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 def double(n: Int): Int =
   n match {
     case 0 => 0

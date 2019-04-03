@@ -122,6 +122,13 @@ There are two points to this:
 - recognising how to use `flatMap`; and
 - remembering how to use type variables.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.turtle._
+import doodle.turtle.Instruction._
+```
 ```scala mdoc:silent
 def double[A](in: List[A]): List[A] =
   in.flatMap { x => List(x, x) }
@@ -146,14 +153,14 @@ nothing(List("do", "ray", "me"))
 <div class="solution">
 We could easily write this method as
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 def nothing[A](in: List[A]): List[A] =
   List() // or List.empty or Nil
 ```
 
 but the point of this exercise is to get more familiarity with using `flatMap`. With `flatMap` we can write the method as 
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 def nothing[A](in: List[A]): List[A] =
   in.flatMap { x => List.empty }
 ```
@@ -164,7 +171,14 @@ def nothing[A](in: List[A]): List[A] =
 
 Write a method `rewrite` with signature
 
-```scala mdoc:silent
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.turtle._
+import doodle.turtle.Instruction._
+```
+```scala
 def rewrite(instructions: List[Instruction], 
             rule: Instruction => List[Instruction]): List[Instruction] =
   ???
@@ -204,7 +218,7 @@ def rewrite(instructions: List[Instruction], rule: Instruction => List[Instructi
 
 We're now ready to create a complete L-system. Using `rewrite` from above, create a method `iterate` with signature
 
-```scala mdoc
+```scala
 def iterate(steps: Int,
             seed: List[Instruction], 
             rule: Instruction => List[Instruction]): List[Instruction] =
