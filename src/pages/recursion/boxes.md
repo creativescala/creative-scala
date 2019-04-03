@@ -1,6 +1,6 @@
 ## A Line of Boxes
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -14,25 +14,25 @@ Let's start with an example, drawing a line or row of boxes as in [@fig:recursio
 
 Let's define a box to begin with.
 
-```tut:book
+```scala mdoc
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 
 Then one box in a row is just
 
-```tut:book
+```scala mdoc
 val oneBox = aBox
 ```
 
 If we want to have two boxes side by side, that is easy enough.
 
-```tut:book
+```scala mdoc
 val twoBoxes = aBox beside oneBox
 ```
 
 Similarly for three.
 
-```tut:book
+```scala mdoc
 val threeBoxes = aBox beside twoBoxes
 ```
 
@@ -41,7 +41,7 @@ And so on for as many boxes as we care to create.
 You might think this is an unusual way to create these images.
 Why not just write something like this, for example?
 
-```tut:book
+```scala mdoc
 val threeBoxes = aBox beside aBox beside aBox
 ```
 
@@ -56,7 +56,7 @@ We learned in the previous chapter that methods abstract over expressions, so le
 We'll start by writing a method skeleton that defines, as usual, what goes into the method and what it evaluates to.
 In this case we supply an `Int` `count`, which is the number of boxes we want, and we get back an `Image`.
 
-```tut:book
+```scala mdoc
 def boxes(count: Int): Image =
   ???
 ```
@@ -65,7 +65,7 @@ Now comes the new part, the *structural recursion*.
 We noticed that `threeBoxes` above is defined in terms of `twoBoxes`, and `twoBoxes` is itself defined in terms of `box`.
 We could even define `box` in terms of *no* boxes, like so:
 
-```tut:book
+```scala mdoc
 val oneBox = aBox beside Image.empty
 ```
 
@@ -91,7 +91,7 @@ In fact we can implement `boxes` by converting these properties into code.
 
 A full implementation of `boxes` is
 
-```tut:book
+```scala mdoc
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -118,7 +118,7 @@ At this point we're trying to get used to the syntax of `match`, so rather than 
 <div class="solution">
 All you to do is change `beside` to `above` in `boxes`.
 
-```tut:book
+```scala mdoc
 def stackedBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty

@@ -1,6 +1,6 @@
 ## Auxiliary Parameters
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -45,7 +45,7 @@ There are two ways to do this.
 The tricky way is to switch the order in the recursive case and make the size of the box a function of `n`.
 Here's the code.
 
-```tut:book
+```scala mdoc
 def growingBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -59,7 +59,7 @@ Using an auxiliary parameter we simply add another parameter to `growingBoxes` t
 When we recurse we change this size.
 Here's the code.
 
-```tut:book
+```scala mdoc
 def growingBoxes(count: Int, size: Int): Image =
   count match {
     case 0 => Image.empty
@@ -85,7 +85,7 @@ Hint: you can `spin` the fill color at each recursion.
 There are two ways to implement a solution.
 The auxiliary parameter method is to add an extra parameter to `gradientBoxes` and pass the `Color` through the structural recursion.
 
-```tut:book
+```scala mdoc
 def gradientBoxes(n: Int, color: Color): Image =
   n match {
     case 0 => Image.empty
@@ -95,7 +95,7 @@ def gradientBoxes(n: Int, color: Color): Image =
 
 We could also make the fill color a function `n`, as we demonstrated with the box size in `growingBoxes` above.
 
-```tut:book
+```scala mdoc
 def gradientBoxes(n: Int): Image =
   n match {
     case 0 => Image.empty
@@ -113,7 +113,7 @@ Now let's try a variation on the theme, drawing concentric circles as shown in [
 <div class="solution">
 This is almost identical to `growingBoxes`.
 
-```tut:book
+```scala mdoc
 def concentricCircles(count: Int, size: Int): Image =
   count match {
     case 0 => Image.empty
@@ -134,7 +134,7 @@ Here's our solution, where we've tried to break the problem into reusable parts 
 We still have a lot of repetition as we don't yet have the tools to get rid of more.
 We'll come to that soon.
 
-```tut:book
+```scala mdoc
 def circle(size: Int, color: Color): Image =
   Image.circle(size).lineWidth(3.0).lineColor(color)
 
