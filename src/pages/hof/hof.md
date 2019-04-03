@@ -1,6 +1,6 @@
 ## Higher Order Methods and Functions
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -20,7 +20,7 @@ but we haven't used this ability yet. Let's do that now.
 
 Let's consider the pattern from the concentric circles exercise as an example:
 
-```tut:silent:book
+```scala mdoc:silent
 def concentricCircles(count: Int, size: Int): Image =
   count match {
     case 0 => Image.empty
@@ -38,7 +38,7 @@ the replacement for `Image.circle` as a parameter.
 Here we've renamed the method to `concentricShapes`, as we're no longer restricted to drawing circles,
 and made `singleShape` responsible for drawing an appropriately sized shape.
 
-```tut:silent:book
+```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
@@ -51,7 +51,7 @@ to produce plain circles, squares of different hue,
 circles with different opacity, and so on.
 All we have to do is pass in a suitable definition of `singleShape`:
 
-```tut:silent:book
+```scala mdoc:silent
 // Passing a function literal directly:
 val blackCircles: Image =
   concentricShapes(10, (n: Int) => Image.circle(50 + 5*n))
@@ -73,7 +73,7 @@ to produce the image shown in [@fig:hof:colors-and-shapes.png].
 
 ![Colors and Shapes](src/pages/hof/colors-and-shapes.pdf+svg){#fig:hof:colors-and-shapes.png}
 
-```tut:silent:book
+```scala mdoc:silent
   def concentricShapes(count: Int, singleShape: Int => Image): Image =
     count match {
       case 0 => Image.empty
@@ -101,7 +101,7 @@ The type of the parameter is `Int => Image`,
 which means a function that accepts an `Int` parameter and returns an `Image`.
 We can declare a method of this type as follows:
 
-```tut:silent:book
+```scala mdoc:silent
 def outlinedCircle(n: Int) =
   Image.circle(n * 10)
 ```
@@ -109,7 +109,7 @@ def outlinedCircle(n: Int) =
 We can convert this method to a function, and pass it to `concentricShapes` to create
 an image of concentric black outlined circles:
 
-```tut:silent:book
+```scala mdoc:silent
 concentricShapes(10, outlinedCircle _)
 ```
 
@@ -121,7 +121,7 @@ The rest of the exercise is just a matter of copying, renaming,
 and customising this function to produce
 the desired combinations of colours and shapes:
 
-```tut:silent:book
+```scala mdoc:silent
 def circleOrSquare(n: Int) =
   if(n % 2 == 0) Image.rectangle(n*20, n*20) else Image.circle(n*10)
 
@@ -138,7 +138,7 @@ of base functions---one to produce colours and one to produce shapes.
 Combine these functions using a *combinator* as follows,
 and use the result of the combinator as an argument to `concentricShapes`
 
-```tut:silent:book
+```scala mdoc:silent
 def colored(shape: Int => Image, color: Int => Color): Int => Image =
   (n: Int) => ???
 ```
@@ -146,7 +146,7 @@ def colored(shape: Int => Image, color: Int => Color): Int => Image =
 <div class="solution">
 The simplest solution is to define three `singleShapes` as follows:
 
-```tut:silent:book
+```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
@@ -185,7 +185,7 @@ There are also repeated calls to `lineWidth(10)` and
 The extra credit solution factors these out into their own functions
 and combines them with the `colored` combinator:
 
-```tut:book
+```scala mdoc
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty

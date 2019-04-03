@@ -1,6 +1,6 @@
 ## Functions
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -11,12 +11,12 @@ import doodle.backend.StandardInterpreter._
 As the error message we saw in the previous section above suggests, we can convert any method to a function using the `_` operator and call it with the same parameters.
 
 
-```tut:silent:book
+```scala mdoc:silent
 // Parametric equation for rose with k = 7
 def rose(angle: Angle) =
   Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)
 ```
-```tut:book
+```scala mdoc
 rose _
 
 (rose _)(0.degrees)
@@ -28,7 +28,7 @@ A function is basically a method, but we can use a function as a first-class val
 - we can return it from a method or function; and
 - we can give it a name using `val`.
 
-```tut:book
+```scala mdoc
 val roseFn = rose _
 roseFn(0.degrees)
 ```
@@ -70,13 +70,13 @@ A => B
 There is a literal syntax for functions. 
 For example, here is a function that adds `42` to its input.
 
-```tut:book
+```scala mdoc
 (x: Int) => x + 42
 ```
 
 We can apply the function to an argument in the usual way.
 
-```tut:book
+```scala mdoc
 val add42 = (x: Int) => x + 42
 add42(0)
 ```
@@ -102,7 +102,7 @@ where
 Because Scala is an object oriented language, all first class values are objects.
 This means functions can have methods, including some useful means for composition:
 
-```tut:book
+```scala mdoc
 val addTen = (a: Int) => a + 10
 val double = (a: Int) => a * 2
 val combined = addTen andThen double // this composes the two functions
@@ -124,7 +124,7 @@ The type is `Angle => Point`. This means `roseFn` is a function that takes of si
 Write `roseFn` as a function literal.
 
 <div class="solution">
-```tut:book
+```scala mdoc
 val roseFn = (angle: Angle) =>
   Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)
 ```
