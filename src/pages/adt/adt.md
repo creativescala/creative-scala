@@ -1,6 +1,6 @@
 ## Algebraic Data Types
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -83,7 +83,7 @@ The pattern is this:
 
 - If `A` is a `B` or `C` write
 
-```tut:book
+```scala mdoc
 sealed abstract class A extends Product with Serializable
 final case class B() extends A
 final case class C() extends A
@@ -97,7 +97,7 @@ Describe `sealed` etc. here.
 
 To define `PathElement` we might start with
 
-```tut:book
+```scala mdoc
 sealed abstract class PathElement extends Product with Serializable
 final case class MoveTo() extends PathElement
 final case class LineTo() extends PathElement
@@ -134,7 +134,7 @@ Define your own algebraic data type to represent `Instruction`.
 <div class="solution">
 We can directly turn the textual description into code using the patterns above.
 
-```tut:book
+```scala mdoc
 sealed abstract class Instruction extends Product with Serializable
 final case class Forward(distance: Double) extends Instruction
 final case class Turn(angle: Angle) extends Instruction

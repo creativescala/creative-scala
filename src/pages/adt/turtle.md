@@ -1,6 +1,6 @@
 ## Build Your Own Turtle
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -10,7 +10,7 @@ import doodle.backend.StandardInterpreter._
 
 Here's the `Instruction` type we defined in the previous section.
 
-```tut:book
+```scala mdoc
 sealed abstract class Instruction extends Product with Serializable
 final case class Forward(distance: Double) extends Instruction
 final case class Turn(angle: Angle) extends Instruction
@@ -20,7 +20,7 @@ final case class NoOp() extends Instruction
 
 Now we've defined our own `Instruction` type, let's go one further and create our own `Turtle`. To complete our turtle we need to implement `draw`. We can start with
 
-```tut:book
+```scala mdoc
 object Turtle {
   def draw(instructions: List[Instruction]): Image =
     ???
@@ -32,7 +32,7 @@ object Turtle {
 <div class="solution">
 This is a product type.
 
-```tut:book
+```scala mdoc
 final case class TurtleState(at: Vec, heading: Angle)
 ```
 </div>
@@ -41,7 +41,7 @@ When we process the instructions, we will turn them into a `List[PathElement]`, 
 
 Implement a method `process` to do this job with signature
 
-```tut:book
+```scala mdoc
 def process(state: TurtleState, instruction: Instruction): (TurtleState, List[PathElement]) =
   ???
 ```
@@ -51,7 +51,7 @@ First implement this without branching instructions. We'll return to branches in
 <div class="solution">
 The core pattern is a structural recursion but the details are a bit more intricate in this case than we've seen before. We need to both create the path elements and update the state.
 
-```tut:book
+```scala mdoc
 def process(state: TurtleState, instruction: Instruction): (TurtleState, List[PathElement]) = {
   import PathElement._
   
@@ -77,13 +77,13 @@ def process(state: TurtleState, instruction: Instruction): (TurtleState, List[Pa
 
 Now using `process` write a structural recursion over `List[Instruction]` that converts the instructions to a `List[PathElement]`. Call this method `iterate` with signature
 
-```tut:book
+```scala mdoc
 def iterate(state: TurtleState, instructions: List[Instruction]): List[PathElement] =
   ???
 ```
 
 <div class="solution">
-```tut:book
+```scala mdoc
 def iterate(state: TurtleState, instructions: List[Instruction]): List[PathElement] =
   instructions match {
     case Nil => 
@@ -98,7 +98,7 @@ def iterate(state: TurtleState, instructions: List[Instruction]): List[PathEleme
 Now add branching to `process`, using `iterate` as a utility.
 
 <div class="function">
-```tut:book
+```scala mdoc
 def process(state: TurtleState, instruction: Instruction): (TurtleState, List[PathElement]) = {
   import PathElement._
   
@@ -128,7 +128,7 @@ Now implement `draw` using `iterate`.
 <div class="solution">
 Here's the complete turtle.
 
-```tut:book
+```scala mdoc
 object Turtle {
   def draw(instructions: List[Instruction]): Image = {
     def iterate(state: TurtleState, instructions: List[Instruction]): List[PathElement] =
