@@ -1,6 +1,6 @@
 ## Abstraction
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -32,7 +32,7 @@ Let's take as an example creating a sequence of boxes like shown in [@fig:progra
 
 We can write out a single expression that creates the picture.
 
-```tut:silent:book
+```scala mdoc:silent
 (
   Image.rectangle(40, 40).
     lineWidth(5.0).
@@ -61,7 +61,7 @@ In this code it is difficult to see the simple pattern within.
 Can you really tell at a glance that all the rectangles are exactly the same?
 If we make the abstraction of naming the basic box the code becomes much easier to read.
 
-```tut:silent:book
+```scala mdoc:silent
 val box =
   Image.rectangle(40, 40).
     lineWidth(5.0).
@@ -91,7 +91,7 @@ We decided to name the target, stand, and ground, as shown below.
 This makes is clear how the final image is constructed.
 Naming more components seemed to us that it would not aid comprehension.
 
-```tut:silent:book
+```scala mdoc:silent
 val coloredTarget =
   (
     Image.circle(10).fillColor(Color.red) on
@@ -121,7 +121,7 @@ By naming the individual components of the image you should be able to avoid a g
 Here's our solution.
 As you can see, by breaking the scene down into smaller components we were able to write relatively little code.
 
-```tut:silent:book
+```scala mdoc:silent
 val roof = Image.triangle(50, 30) fillColor Color.brown
 
 val frontDoor =

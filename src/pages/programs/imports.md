@@ -93,7 +93,7 @@ It's common to organise packages in a hierarchy, which helps to avoid collisions
 For example, in Doodle the package `core` is defined within the package `doodle`.
 When we use the statement
 
-```tut:book:silent
+```scala mdoc:silent
 import doodle.core._
 ```
 

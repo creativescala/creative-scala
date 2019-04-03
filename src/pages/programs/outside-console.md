@@ -1,6 +1,6 @@
 ## Coding Outside the Console
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -10,7 +10,7 @@ import doodle.backend.StandardInterpreter._
 
 The code we've been writing inside the console will cause problems running outside the console. For example, put the following code into `Example.scala` in the `src/main/scala`.
 
-```tut:silent:book
+```scala mdoc:silent
 Image.circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
 ```
 
@@ -34,7 +34,7 @@ We need to know about these restrictions and change how we write code in files a
 
 The error message gives us some hint: `expected class or object definition`. We don't yet know what a class is, but we do know about objects---all values are objects. In Scala all code in a file must be written inside an object or class. We can easily define an object by wrapping an expression like the below.
 
-```tut:silent:book
+```scala mdoc:silent
 object Example {
   (circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed).draw
 }
@@ -55,7 +55,7 @@ Right now let's tell the compiler where it can find the values for these names b
 The name `Color` is found inside a *package* called `doodle.core`, and the name `circle` is within the object `Image` that is in `doodle.core`.
 We can tell the compiler to use all the name in `doodle.core`, and all the names in the object `Image` by writing
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.core._
 import doodle.core.Image._
 ```
@@ -63,7 +63,7 @@ import doodle.core.Image._
 There are a few other names that the compiler will need to find for the complete code to work.
 We can import these with the lines
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.syntax._
 import doodle.jvm.Java2DFrame._
 import doodle.backend.StandardInterpreter._

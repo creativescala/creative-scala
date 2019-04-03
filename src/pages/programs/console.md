@@ -1,6 +1,6 @@
 ## Working Within the Console
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -15,7 +15,7 @@ How do we use code that we saved to a file from the console?
 There is a special command, that only works from the console, that allows us to run code saved in a file. 
 This command is called `:paste`[^load]. We follow `:paste` with the name of the file we want to run. For example, if we save in the file `src/main/scala/Example.scala` the expression
 
-```tut:silent:book
+```scala mdoc:silent
 circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
 ```
 
