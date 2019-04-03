@@ -13,20 +13,20 @@ We can then apply substitution as usual.
 Let's see a simple example.
 Given the method
 
-```tut:silent:book
+```scala mdoc:silent
 def square(x: Int): Int =
   x * x
 ```
 
 we can expand the method call
 
-```tut:silent:book
+```scala mdoc:silent
 square(2)
 ```
 
 by introducing a block
 
-```tut:silent:book
+```scala mdoc:silent
 {
   square(2)
 }
@@ -34,7 +34,7 @@ by introducing a block
 
 binding the parameter `x` to the expression `2`
 
-```tut:silent:book
+```scala mdoc:silent
 {
   val x = 2
   square(2)
@@ -43,7 +43,7 @@ binding the parameter `x` to the expression `2`
 
 and substituting the method body
 
-```tut:silent:book
+```scala mdoc:silent
 {
   val x = 2
   x * x
@@ -52,7 +52,7 @@ and substituting the method body
 
 We can now perform substitution as usual giving
 
-```tut:silent:book
+```scala mdoc:silent
 {
   2 * 2
 }
@@ -60,7 +60,7 @@ We can now perform substitution as usual giving
 
 and finally
 
-```tut:silent:book
+```scala mdoc:silent
 {
   4
 }
@@ -81,7 +81,7 @@ By using our old friend `println`, determine when method parameters are evaluate
 <div class="solution">
 The following program demonstrates that parameters are evaluated before the method body.
 
-```tut:book
+```scala mdoc
 def example(a: Int, b: Int): Int = {
   println("In the method body!")
   a + b

@@ -1,6 +1,6 @@
 ## Method Syntax
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -10,7 +10,7 @@ import doodle.backend.StandardInterpreter._
 
 We've already seen an example of declaring a method.
 
-```tut:silent:book
+```scala mdoc:silent
 def boxes(color: Color): Image = {
   val box =
     Image.rectangle(40, 40).
@@ -75,7 +75,7 @@ Write a method `square` that accepts an `Int` argument and returns the `Int` squ
 <div class="solution">
 The solution is
 
-```tut:silent:book
+```scala mdoc:silent
 def square(x: Int): Int =
   x * x
 ```
@@ -85,7 +85,7 @@ We can arrive at the solution by the following steps.
 We're given the name (`square`), the type of the parameter (`Int`), and the type of the result (`Int`).
 From this we can write the method skeleton
 
-```tut:silent:book
+```scala mdoc:silent
 def square(x: Int): Int =
   ???
 ```
@@ -109,7 +109,7 @@ We don't need to wrap this in braces as there is only a single expression in the
 Write a method `halve` that accepts a `Double` argument and returns the `Double` that is half of it's argument.
 
 <div class="solution">
-```tut:silent:book
+```scala mdoc:silent
 def halve(x: Double): Double =
  x / 2.0
 ```

@@ -1,6 +1,6 @@
 ## Methods
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -12,7 +12,7 @@ In a previous chapter we created the image shown in [@fig:methods:sequential-box
 
 ![Five boxes filled with Royal Blue](./src/pages/programs/sequential-boxes.pdf+svg){#fig:methods:sequential-boxes}
 
-```tut:silent:book
+```scala mdoc:silent
 val box =
   Image.rectangle(40, 40).
     lineWidth(5.0).
@@ -25,7 +25,7 @@ box beside box beside box beside box beside box
 Imagine we wanted to change the color of the boxes.
 Right now we would have to write out the expression again for each different choice of color.
 
-```tut:silent:book
+```scala mdoc:silent
 val paleGoldenrod = {
   val box =
     Image.rectangle(40, 40).
@@ -62,7 +62,7 @@ Each expression only differs in a minor way.
 It would be nice if we could capture the general pattern and allow the color to vary.
 We can do exactly this by declaring a method.
 
-```tut:silent:book
+```scala mdoc:silent
 def boxes(color: Color): Image = {
   val box =
     Image.rectangle(40, 40).
