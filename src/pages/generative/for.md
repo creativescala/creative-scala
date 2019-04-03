@@ -1,6 +1,6 @@
 ## For Comprehensions
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -11,7 +11,7 @@ import doodle.backend.StandardInterpreter._
 <div class="callout callout-info">
 In addition to the standard imports given at the start of the chapter, in this section we're assuming the following:
 
-```tut:silent
+```scala mdoc:silent
 import doodle.random._
 ```
 </div>
@@ -20,7 +20,7 @@ Scala provides some special syntax, called a *for comprehension*, that makes it 
 
 For example, the code for `randomConcentricCircles` has a call to `flatMap` and `map`.
 
-```tut:silent:invisible
+```scala mdoc:silent:invisible
 def randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 
@@ -33,7 +33,7 @@ def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   color map (fill => Image.circle(r) fillColor fill)
 ```
 
-```tut:silent:book
+```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
@@ -48,7 +48,7 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 
 This can be replaced with a for comprehension.
 
-```tut:silent:book
+```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
@@ -64,14 +64,14 @@ The for comprehension is often easier to read than direct use of `flatMap` and `
 
 A general for comprehension
 
-```tut:book:invisible
+```scala mdoc:invisible
 val a: Seq[Int] = Seq.empty
 val b: Seq[Int] = Seq.empty
 val c: Seq[Int] = Seq.empty
 val e: Int = 0
 ```
 
-```tut:book:silent
+```scala mdoc:silent
 for {
   x <- a
   y <- b
@@ -81,7 +81,7 @@ for {
 
 translates to:
 
-```tut:book:silent
+```scala mdoc:silent
 a.flatMap(x => b.flatMap(y => c.map(z => e)))
 ```
 

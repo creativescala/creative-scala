@@ -11,7 +11,7 @@ In this chapter we'll explore techniques from generative art, which will in turn
 <div class="callout callout-info">
 If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
 
-```tut:silent
+```scala mdoc:silent
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._

@@ -1,6 +1,6 @@
 ## Combining Random Values
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -11,7 +11,7 @@ import doodle.backend.StandardInterpreter._
 <div class="callout callout-info">
 In addition to the standard imports given at the start of the chapter, in this section we're assuming the following:
 
-```tut:silent
+```scala mdoc:silent
 import doodle.random._
 ```
 </div>
@@ -23,7 +23,7 @@ To motivate the problem lets try writing `randomConcentricCircles`, which will g
 
 We start with the code to create concentric circles with deterministic colors and the utilities we developed previously.
 
-```tut:silent:book
+```scala mdoc:silent
 def concentricCircles(count: Int, size: Int, color: Color): Image =
   count match {
     case 0 => Image.empty
@@ -43,7 +43,7 @@ def randomCircle(r: Double, color: Random[Color]): Random[Image] =
 
 Let's create a method skeleton for `randomConcentricCircles`.
 
-```tut:silent:book
+```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   ???
 ```
@@ -51,7 +51,7 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 The important change here is we return a `Random[Image]` not an `Image`.
 We know this is a structural recursion over the natural numbers so we can fill out the body a bit.
 
-```tut:silent:book
+```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => ???
@@ -62,7 +62,7 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 The base case will be `Random.always(Image.empty)`, the direct of equivalent of `Image.empty` in the deterministic case.
 
 
-```tut:silent:book
+```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
@@ -73,7 +73,7 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 What about the recursive case?
 We could try using
 
-```tut:silent:book
+```scala mdoc:silent
 val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
 ```
 
@@ -112,7 +112,7 @@ randomCircle(size, randomPastel) flatMap { circle =>
 
 The complete code becomes
 
-```tut:silent:book
+```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
@@ -222,7 +222,7 @@ Don't forget to import `doodle.random._` when you attempt these exercises.
 What is the difference between the output of `programOne` and `programTwo` below? Why do
 they differ?
 
-```tut:silent:book
+```scala mdoc:silent
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   color map (fill => Image.circle(r) fillColor fill)
 
@@ -254,7 +254,7 @@ val programTwo =
 <div class="solution">
 `programOne` displays three different circles in a row, while `programTwo` repeats the same circle three times. The value `circles` represents a program that generates an image of randomly colored concentric circles. Remember `map` represents a deterministic transform, so the output of `programTwo` must be the same same circle repeated thrice as we're not introducing new random choices. In `programOne` we merge `circle` with itself three times. You might think that the output should be only one random image repeated three times, not three, but remember `Random` preserves substitution. We can write `programOne` equivalently as
 
-```tut:book
+```scala mdoc
 val programOne = 
   randomConcentricCircles(5, 10) flatMap { c1 => 
     randomConcentricCircles(5, 10) flatMap { c2 => 
@@ -274,7 +274,7 @@ Let's return to a problem from the beginning of the book: drawing colored boxes.
 
 Recall the basic structural recursion for making a row of boxes
 
-```tut:book
+```scala mdoc
 def rowOfBoxes(count: Int): Image =
   count match {
     case 0 => rectangle(20, 20)
@@ -289,7 +289,7 @@ Let's alter this, like with did with concentric circles, to have each box filled
 <div class="solution">
 This code uses exactly the same pattern as `randomConcentricCircles`.
 
-```tut:book
+```scala mdoc
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 

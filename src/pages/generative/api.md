@@ -1,6 +1,6 @@
 ## Exploring Random
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -13,7 +13,7 @@ So far we've seen only the very basics of using `Random`. In this section we'll 
 <div class="callout callout-info">
 In addition to the standard imports given at the start of the chapter, in this section we're assuming the following:
 
-```tut:silent
+```scala mdoc:silent
 import doodle.random._
 ```
 </div>
@@ -44,7 +44,7 @@ This creates a dependency between values---the prior random value has an influen
 
 For example, we can create a method that given a color randomly perturbs it.
 
-```tut:silent:book
+```scala mdoc:silent
 def nextColor(color: Color): Random[Color] = {
   val spin = Random.normal(15.0, 10.0)
   spin map { s => color.spin(s.degrees) }
@@ -53,7 +53,7 @@ def nextColor(color: Color): Random[Color] = {
 
 Using `nextColor` we can create a series of boxes with a gradient that is partly random and partly structured: the next color in the gradient is a random perturbation of the previous one.
 
-```tut:silent:book
+```scala mdoc:silent
 def coloredRectangle(color: Color, size: Int): Image =
   rectangle(size, size).
     lineWidth(5.0).
@@ -106,7 +106,7 @@ Create one now.
 This will do.
 You can create a more complicated (and interesting) distribution over starting position if you want.
 
-```tut:silent:book
+```scala mdoc:silent
 val start = Random.always(Point.zero)
 ```
 </div>
@@ -114,7 +114,7 @@ val start = Random.always(Point.zero)
 Let's implement a method `step` that will take a single step in particle system.
 It will have skeleton
 
-```tut:silent:book
+```scala mdoc:silent
 def step(current: Point): Random[Point] =
   ???
 ```
@@ -127,7 +127,7 @@ For example, we could increment the `x` coordinate by 10, which will cause a dri
 I've chosen to use normally distributed noise that is the same in both directions.
 Changing the noise will change the shape of the result---it's worth playing around with different settings.
 
-```tut:silent:book
+```scala mdoc:silent
 def step(current: Point): Random[Point] = {
   val drift = Point(current.x + 10, current.y)
   val noise =
@@ -150,7 +150,7 @@ There is one wrinkle here: we want to draw the intermediate stages so we're goin
 
 The skeletons are
 
-```tut:silent:book
+```scala mdoc:silent
 def render(point: Point): Image =
   ???
 
@@ -168,7 +168,7 @@ In my definition of `render` I've shown how we can use information from the poin
 
 The definition of `walk` is a structural recursion over the natural numbers with an internal accumulator and the recursion going through `flatMap`.
 
-```tut:silent:book
+```scala mdoc:silent
 def render(point: Point): Image = {
   val length = (point - Point.zero).length
   val sides = (length / 20).toInt + 3
@@ -203,7 +203,7 @@ Now you should be able to call `walk` and render the result.
 The final step is create a number of particles and render them all.
 Create a method `particleSystem` with skeleton
 
-```tut:silent:book
+```scala mdoc:silent
 def particleSystem(particles: Int, steps: Int): Random[Image] =
   ???
 ```
@@ -215,7 +215,7 @@ Once again we have a structural recursion over the natural numbers.
 Unlike `walk` the recursion goes through `map`, not `flatMap`.
 This is because `particleSystem` adds no new random choices.
 
-```tut:silent:book
+```scala mdoc:silent
 def particleSystem(particles: Int, steps: Int): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
@@ -250,7 +250,7 @@ Implement this.
 If we add parameters with the correct name and type the code changes required are minimal.
 This is like doing the opposite of substitution---lifting concrete representations out of our code and replacing them with method parameters.
 
-```tut:silent:book
+```scala mdoc:silent
 def walk(
   steps: Int,
   start: Random[Point],
@@ -294,7 +294,7 @@ Most of the parameters to `particleSystem` are only needed to pass on to `walk`.
 These parameters don't change is any way within the structural recursion that makes up the body of `particleSystem`.
 At this point we can apply our principle of substitution---we can replace a method call with the value it evaluates to---to remove `walk` and associated parameters from `particleSystem`.
 
-```tut:silent:book
+```scala mdoc:silent
 def particleSystem(particles: Int, walk: Random[Image]): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)

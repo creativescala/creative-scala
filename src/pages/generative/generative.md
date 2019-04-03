@@ -1,6 +1,6 @@
 ## Generative Art
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -12,7 +12,7 @@ Generative art means art where some part of the composition is determined by an 
 
 Let's take a really simple example. We've learned previously how to create concentric circles.
 
-```tut:silent:book
+```scala mdoc:silent
 def concentricCircles(n: Int): Image =
   n match {
     case 0 => circle(10)
@@ -24,7 +24,7 @@ def concentricCircles(n: Int): Image =
 
 We also learned how we could make coloured circles, using a second parameter.
 
-```tut:silent:book
+```scala mdoc:silent
 def concentricCircles(n: Int, color: Color): Image =
   n match {
     case 0 => circle(10) fillColor color
@@ -38,14 +38,14 @@ Scala provides some methods that produce *random numbers*. One such method is `m
 
 [^pseudo-random]: These numbers are not truly random. The output is determined by a value known as the *seed*. If we know the seed we can perfectly predict all the result we'll get from calling `math.random`. However, going the other way---that is, predicting the seed given a sequence of outputs---is very difficult. The numbers so generated are called *pseudo-random numbers*, because they are not truly random but nonetheless are very difficult to predict.
 
-```tut:book
+```scala mdoc
 math.random
 math.random
 ```
 
 Given `math.random` we could produce a method that returns a random `Angle` like so.
 
-```tut:book
+```scala mdoc
 def randomAngle: Angle = 
   math.random.turns
   
@@ -58,14 +58,14 @@ Why might we not want to do this? What principle does this break?
 <div class="solution">
 Generating random numbers in this way breaks substitution. Remember substitution says wherever we see an expression we should be able to substitute the value it evaluates to without changing the meaning of the program. Concretely, this means
 
-```tut:book
+```scala mdoc
 val result1 = randomAngle
 val result2 = randomAngle
 ```
 
 and 
 
-```tut:book
+```scala mdoc
 val result1 = randomAngle
 val result2 = result1
 ```
