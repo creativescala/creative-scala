@@ -2,20 +2,20 @@
 
 Substitution says that wherever we see an expression we can replace it with the value it evaluates to. For example, where we see
 
-```tut:silent:book
+```scala mdoc:silent
 1 + 1
 ```
 
 we can replace it with `2`.
 This in turn means when we see a compound expression such as
 
-```tut:silent:book
+```scala mdoc:silent
 (1 + 1) + (1 + 1)
 ```
 
 we can substitute `2` for `1 + 1` giving
 
-```tut:silent:book
+```scala mdoc:silent
 2 + 2
 ```
 
@@ -30,7 +30,7 @@ way of saying "working out what they do".
 We can apply substitution to just about any expression we've seen so far.
 It's easier to use examples that work with numbers and strings, rather than images, here so we'll return to an example we saw in an earlier chapter:
 
-```tut:silent:book
+```scala mdoc:silent
 1 + ("Moonage daydream".indexOf("N"))
 ```
 
@@ -82,7 +82,7 @@ Now we can evaluate the entire expression, giving
 
 We can ask Scala to evaluate the whole expression to check our work.
 
-```tut:book
+```scala mdoc
 1 + ("Moonage daydream".indexOf("N"))
 ```
 
@@ -107,51 +107,51 @@ Now we're just formalising it.
 
 For example, given the code
 
-```tut:silent:book
+```scala mdoc:silent
 val name = "Ada"
 name ++ " " ++ "Lovelace"
 ```
 
 we can apply substitution to get
 
-```tut:silent:book
+```scala mdoc:silent
 "Ada" ++ " " ++ "Lovelace"
 ```
 
 which evaluates to
 
-```tut:silent:book
+```scala mdoc:silent
 "Ada Lovelace"
 ```
 
 We can use names to be a bit more formal with our substitution process.
 Returning to our first example
 
-```tut:silent:book
+```scala mdoc:silent
 1 + 1
 ```
 
 we can give this expression a name:
 
-```tut:silent:book
+```scala mdoc:silent
 val two = 1 + 1
 ```
 
 When we see a compound expression such as
 
-```tut:silent:book
+```scala mdoc:silent
 (1 + 1) + (1 + 1)
 ```
 
 substitution tells us we can substitute `two` for `1 + 1` giving
 
-```tut:silent:book
+```scala mdoc:silent
 two + two
 ```
 
 Remember when we worked through the expression
 
-```tut:silent:book
+```scala mdoc:silent
 1 + ("Moonage daydream".indexOf("N"))
 ```
 
@@ -160,7 +160,7 @@ Using words, this was quite convoluted.
 With a few `val` declarations we can make this both more compact and easier to see.
 Here's the same expression broken into it's components.
 
-```tut:silent:book
+```scala mdoc:silent
 val a = 1
 val b = "Moonage daydream"
 val c = "N"
@@ -172,7 +172,7 @@ If we (at this point, arbitrarily) define that evaluation occurs from top-to-bot
 
 For example,
 
-```tut:silent:book
+```scala mdoc:silent
 val c = "N"
 val b = "Moonage daydream"
 val a = 1
