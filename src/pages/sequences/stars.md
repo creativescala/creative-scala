@@ -1,6 +1,6 @@
 ## My God, It's Full of Stars!
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -22,7 +22,7 @@ values of `n` from `2` upwards produce stars with increasingly sharp points:
 Write code to draw the diagram above.
 Start by writing a method to draw a `star` given `p` and `n`:
 
-```tut:silent:book
+```scala mdoc:silent
 def star(p: Int, n: Int, radius: Double): Image =
   ???
 ```
@@ -32,7 +32,7 @@ def star(p: Int, n: Int, radius: Double): Image =
 <div class="solution">
 Here's the `star` method. We've renamed `p` and `n` to `points` and `skip` for clarity:
 
-```tut:silent:book
+```scala mdoc:silent
 def star(sides: Int, skip: Int, radius: Double): Image = {
   import Point._
   import PathElement._
@@ -52,7 +52,7 @@ def star(sides: Int, skip: Int, radius: Double): Image = {
 
 Using structural recursion and `beside` write a method `allBeside` with the signature
 
-```tut:book
+```scala mdoc
 def allBeside(images: List[Image]): Image =
   ???
 ```
@@ -61,7 +61,7 @@ We'll use `allBeside` to create the row of stars.
 To create the picture we only need to use values of `skip`
 from `1` to `sides/2` rounded down. For example:
 
-```tut:invisible
+```scala mdoc:invisible
 def allBeside(imgs: List[Image]): Image =
   imgs match {
     case Nil => Image.empty
@@ -69,7 +69,7 @@ def allBeside(imgs: List[Image]): Image =
   }
 ```
 
-```tut:silent:book
+```scala mdoc:silent
 allBeside(
   (1 to 5).toList map { skip =>
     star(11, skip, 100)
@@ -87,7 +87,7 @@ There is an example in [@fig:sequences:all-star]. *Hint:* You will need to creat
 <div class="solution">
 To create the image in [@fig:sequences:stars2] we started by creating a method to style a star.
 
-```tut:silent:book
+```scala mdoc:silent
 def style(img: Image, hue: Angle): Image = {
   img.
     lineColor(Color.hsl(hue, 1.normalized, .25.normalized)).
@@ -97,7 +97,7 @@ def style(img: Image, hue: Angle): Image = {
 
 We then created `allAbove`, which you will notice is very similar to `allBeside` (wouldn't it be nice if we could abstract this pattern?)
 
-```tut:silent:book
+```scala mdoc:silent
 def allAbove(imgs: List[Image]): Image =
   imgs match {
     case Nil => Image.empty
@@ -107,7 +107,7 @@ def allAbove(imgs: List[Image]): Image =
 
 The updated scene then becomes:
 
-```tut:silent:book
+```scala mdoc:silent
 allAbove((3 to 33 by 2).toList map { sides =>
   allBeside((1 to sides/2).toList map { skip =>
     style(star(sides, skip, 20), 360.degrees * skip / sides)

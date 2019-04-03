@@ -1,6 +1,6 @@
 ## Paths
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -34,7 +34,7 @@ The picture in [@fig:sequences:open-closed-paths] illustrates the components tha
 
 Now we know about paths, how do we create them in Doodle? Here's the code that created [@fig:pictures:open-closed-paths].
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.core.Point._
 import doodle.core.PathElement._
 
@@ -88,7 +88,7 @@ Method                               Description                 Example
 
 Constructing a `List` is straight-forward: we just call `List` with the elements we want the list to contain. Here are some examples.
 
-```tut:book
+```scala mdoc
 // List of Int
 List(1, 2, 3)
 
@@ -121,7 +121,7 @@ We don't have to draw a line between the final vertex and the start---by using a
 Here's our code to draw [@fig:sequences:polygons], which uses this idea. 
 In some cases we haven't started the vertices at 0 degrees so we can rotate the shape we draw.
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.core.Image._
 import doodle.core.PathElement._
 import doodle.core.Point._
@@ -176,7 +176,7 @@ We can generalise curve creation into a method that takes the starting angle and
 This is what we did in the method `curve` below, and it gives us consistent looking curves without having to manually repeat the calculations each time. 
 Making this generalisation also makes it easier to play around with different control points to create different outcomes.
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.core.Image._
 import doodle.core.Point._
 import doodle.core.PathElement._
