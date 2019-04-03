@@ -1,6 +1,6 @@
 ## Controlling the Turtle
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -18,11 +18,11 @@ These instructions are defined as methods on the object `doodle.turtle.Instructi
 
 We can import the methods and then create instructions.
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.turtle._
 import doodle.turtle.Instruction._
 ```
-```tut:book
+```scala mdoc
 forward(10)
 turn(5.degrees)
 ```
@@ -30,7 +30,7 @@ turn(5.degrees)
 This doesn't do anything useful unless we assemble these commands into an image. 
 To do so, we create a list of instructions and then ask the turtle (`doodle.turtle.Turtle` to be exact) to draw them to an `Image`.
 
-```tut:silent:book
+```scala mdoc:silent
 val instructions = 
   List(forward(10), turn(90.degrees), 
        forward(10), turn(90.degrees), 
@@ -74,7 +74,7 @@ Instruction                Description                         Example
 
 In the previous chapter we wrote a method to create a polygon. Reimplement this method using turtle graphics instead. The method header should be something like
 
-```tut:silent:book
+```scala mdoc:silent
 def polygon(sides: Int, sideLength: Double): Image =
  ???
 ```
@@ -84,7 +84,7 @@ You'll have to do a bit of geometry to work out the correct turn angle, but as t
 <div class="solution">
 Here's our solution. It's a structural recursion over the natural numbers. The turn angle is exactly the same as the rotation angle used to create polygons in polar coordinates in the previous chapter, though the derivation is quite different.
 
-```tut:silent:book
+```scala mdoc:silent
 def polygon(sides: Int, sideLength: Double): Image = {
   val rotation = Angle.one / sides
   def iter(n: Int): List[Instruction] =
@@ -115,7 +115,7 @@ The key insights to draw the square spiral are realising:
 
 Once we have this understood this, the structure is basically the same as drawing a polyon. Here's our solution.
 
-```tut:book
+```scala mdoc
 def squareSpiral(steps: Int, distance: Double, angle: Angle, increment: Double): Image = {
   def iter(n: Int, distance: Double): List[Instruction] = {
     n match {
@@ -133,7 +133,7 @@ def squareSpiral(steps: Int, distance: Double, angle: Angle, increment: Double):
 
 We can create polygons in polar coordinates using a `Range` and `map` as shown below.
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.core.Point._
 
 def polygon(sides: Int, size: Int): Image = {

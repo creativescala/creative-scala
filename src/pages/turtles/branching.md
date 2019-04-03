@@ -1,6 +1,6 @@
 ## Branching Structures
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
@@ -11,7 +11,7 @@ import doodle.backend.StandardInterpreter._
 <div class="callout callout-info">
 In addition to the standard imports given at the start of the chapter, in this section we're assuming the following:
 
-```tut:silent
+```scala mdoc:silent
 import doodle.turtle._
 import doodle.turtle.Instruction._
 ```
@@ -21,7 +21,7 @@ Using the `branch` turtle instruction we can explore some shapes that are diffic
 
 Consider the code below, which creates the image in [@fig:turtles:y]. This is easy to draw with a branching turtle, but quite involved to create with just a path.
 
-```tut:book
+```scala mdoc
 val y = Turtle.draw(List(
           forward(100),
           branch(turn(45.degrees), forward(100)),
@@ -45,7 +45,7 @@ A specific example of this process is shown in [@fig:turtles:branches]. The figu
 
 Concretely, we can write these rules as a transformation on `Instruction` assuming that we use `NoOp` to represent a bud.
 
-```tut:book
+```scala mdoc
 val stepSize = 10
 
 def rule(i: Instruction): List[Instruction] =
@@ -106,12 +106,12 @@ When discussing `map` we said that it doesn't allow us to change the number of e
 
 Using `flatMap`, write a method `double` that transforms a `List` to a `List` where every element appears twice. For example
 
-```tut:invisible
+```scala mdoc:invisible
 def double[A](in: List[A]): List[A] =
   in.flatMap { x => List(x, x) }
 ```
 
-```tut:book
+```scala mdoc
 double(List(1, 2, 3))
 double(List("do", "ray", "me"))
 ```
@@ -122,7 +122,7 @@ There are two points to this:
 - recognising how to use `flatMap`; and
 - remembering how to use type variables.
 
-```tut:silent:book
+```scala mdoc:silent
 def double[A](in: List[A]): List[A] =
   in.flatMap { x => List(x, x) }
 ```
@@ -133,12 +133,12 @@ def double[A](in: List[A]): List[A] =
 
 Using `flatMap`, write a method `nothing` that transforms a `List` to the empty `List`. For example
 
-```tut:invisible
+```scala mdoc:invisible
 def nothing[A](in: List[A]): List[A] =
   in.flatMap { x => List() }
 ```
 
-```tut:book
+```scala mdoc
 nothing(List(1, 2, 3))
 nothing(List("do", "ray", "me"))
 ```
@@ -146,14 +146,14 @@ nothing(List("do", "ray", "me"))
 <div class="solution">
 We could easily write this method as
 
-```tut:silent:book
+```scala mdoc:silent
 def nothing[A](in: List[A]): List[A] =
   List() // or List.empty or Nil
 ```
 
 but the point of this exercise is to get more familiarity with using `flatMap`. With `flatMap` we can write the method as 
 
-```tut:silent:book
+```scala mdoc:silent
 def nothing[A](in: List[A]): List[A] =
   in.flatMap { x => List.empty }
 ```
@@ -164,7 +164,7 @@ def nothing[A](in: List[A]): List[A] =
 
 Write a method `rewrite` with signature
 
-```tut:silent:book
+```scala mdoc:silent
 def rewrite(instructions: List[Instruction], 
             rule: Instruction => List[Instruction]): List[Instruction] =
   ???
@@ -174,7 +174,7 @@ This method should apply `rule` to rewrite every instruction in `instructions`, 
 
 *Note*: You'll need to pass a `List[Instruction]` to `branch`, while `branch` itself accepts zero or more instructions (so-called *varargs*). To convert the `List[Instruction]` into a form that `branch` will accept, follow the parameter with `:_*` like so
 
-```tut:book
+```scala mdoc
 val instructions = List(turn(45.degrees), forward(10))
 branch(instructions:_*)
 ```
@@ -187,7 +187,7 @@ There are two parts to this:
 
 The latter is an example of structural recursion, though a slighlty more complex pattern than we've seen before.
 
-```tut:silent:book
+```scala mdoc:silent
 def rewrite(instructions: List[Instruction], rule: Instruction => List[Instruction]): List[Instruction] =
   instructions.flatMap { i =>
     i match {
@@ -204,7 +204,7 @@ def rewrite(instructions: List[Instruction], rule: Instruction => List[Instructi
 
 We're now ready to create a complete L-system. Using `rewrite` from above, create a method `iterate` with signature
 
-```tut:book
+```scala mdoc
 def iterate(steps: Int,
             seed: List[Instruction], 
             rule: Instruction => List[Instruction]): List[Instruction] =
@@ -216,7 +216,7 @@ This should recursively apply `rule` to `seed` for `steps` iterations.
 <div class="solution">
 This is just a simple structural recursion of the natural numbers, with all the hard work done by `rewrite`.
 
-```tut:silent:book
+```scala mdoc:silent
 def iterate(steps: Int, 
             seed: List[Instruction], 
             rule: Instruction => List[Instruction]): List[Instruction] =
