@@ -36,6 +36,12 @@ Use a for comprehension in your implementation.
 <div class="solution">
 This is a nice example of composition of `Randoms`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc
 def makePoint(x: Random[Double], y: Random[Double]): Random[Point] =
   for {
@@ -127,6 +133,12 @@ Choose whatever noise function you like.
 Here's our solution. 
 We've already seen very similar code in the scatter plot.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc:silent
 def perturb(point: Point): Random[Point] =
   for {

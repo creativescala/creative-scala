@@ -121,12 +121,16 @@ We don't have to draw a line between the final vertex and the start---by using a
 Here's our code to draw [@fig:sequences:polygons], which uses this idea. 
 In some cases we haven't started the vertices at 0 degrees so we can rotate the shape we draw.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 import doodle.core.Image._
 import doodle.core.PathElement._
 import doodle.core.Point._
 import doodle.core.Color._
-
 val triangle =
   closedPath(List(
                moveTo(polar(50, 0.degrees)),
@@ -176,6 +180,10 @@ We can generalise curve creation into a method that takes the starting angle and
 This is what we did in the method `curve` below, and it gives us consistent looking curves without having to manually repeat the calculations each time. 
 Making this generalisation also makes it easier to play around with different control points to create different outcomes.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 import doodle.core.Image._
 import doodle.core.Point._

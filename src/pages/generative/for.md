@@ -4,8 +4,6 @@
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
 ```
 
 <div class="callout callout-info">
@@ -20,7 +18,7 @@ Scala provides some special syntax, called a *for comprehension*, that makes it 
 
 For example, the code for `randomConcentricCircles` has a call to `flatMap` and `map`.
 
-```scala mdoc:silent:invisible
+```scala mdoc:invisible
 def randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 
@@ -48,6 +46,19 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 
 This can be replaced with a for comprehension.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+def randomAngle: Random[Angle] =
+  Random.double.map(x => x.turns)
+def randomColor(s: Normalized, l: Normalized): Random[Color] =
+  randomAngle map (hue => Color.hsl(hue, s, l))
+val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+def randomCircle(r: Double, color: Random[Color]): Random[Image] =
+  color map (fill => Image.circle(r) fillColor fill)
+```
 ```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {

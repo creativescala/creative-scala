@@ -172,7 +172,7 @@ If we (at this point, arbitrarily) define that evaluation occurs from top-to-bot
 
 For example,
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 val c = "N"
 val b = "Moonage daydream"
 val a = 1
@@ -183,7 +183,7 @@ val e = a + d
 achieves the same result as before.
 However we can't use
 
-```scala
+```scala mdoc:reset:fail:silent
 val e = a + d
 val a = 1
 val b = "Moonage daydream"

@@ -103,6 +103,11 @@ A type variable is written in square brackets like `[A]` and comes after the met
 A type variable can stand in for any specific type, and we can use it in the parameter list or result type to indicate some type that we don't know up front.
 For example, here's how we can write `length` so it works with lists of any type.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def length[A](list: List[A]): Int =
   list match {
@@ -157,7 +162,7 @@ ones(3)
 <div class="solution">
 It's structural recursion over the natural numbers!
 
-```scala mdoc
+```scala mdoc:reset
 def ones(n: Int): List[Int] =
   n match {
     case 0 => Nil
@@ -187,7 +192,7 @@ descending(3)
 <div class="solution">
 Once more, we can employ structural recursion over the natural numbers.
 
-```scala mdoc
+```scala mdoc:reset
 def descending(n: Int): List[Int] =
   n match {
     case 0 => Nil
@@ -223,6 +228,11 @@ ascending(3)
 <div class="solution">
 It's structural recursion over the natural numbers, but this time with an internal accumulator.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def ascending(n: Int): List[Int] = {
   def iter(n: Int, counter: Int): List[Int] =
@@ -257,6 +267,11 @@ fill(3, Color.blue)
 <div class="solution">
 In this exercise we're asking you to use a type variable. Otherwise it is the same pattern as before.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def fill[A](n: Int, a: A): List[A] =
   n match {
@@ -291,7 +306,7 @@ double(List(4, 9, 16))
 <div class="solution">
 This is a structural recursion over a list, building a list at each step. The destructuring of the input is mirrored by the construction of the output.
 
-```scala mdoc
+```scala mdoc:reset
 def double(list: List[Int]): List[Int] =
   list match {
     case Nil => Nil
@@ -322,7 +337,7 @@ product(List(1,2,3))
 <div class="solution">
 This is a structural recursion over a list using the same pattern as `sum` in the examples above.
 
-```scala mdoc
+```scala mdoc:reset
 def product(list: List[Int]): Int =
   list match {
     case Nil => 1
@@ -353,7 +368,7 @@ contains(List("one", "two", "three"), "four")
 <div class="solution">
 Same pattern as before, but using a type variable to allow type of the elements to vary.
 
-```scala mdoc
+```scala mdoc:reset
 def contains[A](list: List[A], elt: A): Boolean =
   list match {
     case Nil => false
@@ -383,7 +398,7 @@ first(List(1,2,3), 4)
 <div class="solution">
 This method is similar to `contains` above, except we now use the type variable in the return type as well as in the parameter types.
 
-```scala mdoc
+```scala mdoc:reset
 def first[A](list: List[A], elt: A): A =
   list match {
     case Nil => elt
@@ -421,6 +436,12 @@ reverse(List("a", "b", "c"))
 The trick here is to use an accumulator to hold the partially reversed list.
 If you managed to work this one out, congratulations---you really understand structural recursion well!
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc
 def reverse[A](list: List[A]): List[A] = {
   def iter(list: List[A], reversed: List[A]): List[A] =

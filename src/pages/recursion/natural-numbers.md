@@ -70,6 +70,12 @@ When we match the base case 0, our result is the base case `Image.empty`. When w
 The definition states that `n` is `1 + m`.
 On the right-hand side we replace 1 with `aBox`, we replace + with `beside`, and we recursively call `boxes` with `m` (which is `n-1`) where the definition recurses.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
 ```scala mdoc
 def boxes(count: Int): Image =
   count match {
@@ -168,6 +174,11 @@ Now finish the implementation of `cross`.
 <div class="solution">
 Here's what we wrote.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def cross(count: Int): Image = {
   val unit = Image.circle(20)
@@ -230,6 +241,11 @@ The addition operation is `(unit beside unit) above (unit beside unit)`.
 
 Putting it all together we get
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def chessboard(count: Int): Image = {
   val blackSquare = Image.rectangle(30, 30) fillColor Color.black
@@ -274,8 +290,13 @@ The key step is to recognise that the basic unit of the Sierpinski triangle is `
 Once we've worked this out, the code has exactly the same structure as `chessboard`.
 Here's our implementation.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
 ```scala mdoc
-
 def sierpinski(count: Int): Image = {
   val triangle = Image.triangle(10, 10) lineColor Color.magenta
   count match {
@@ -286,5 +307,4 @@ def sierpinski(count: Int): Image = {
   }
 }
 ```
-
 </div>

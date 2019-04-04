@@ -103,7 +103,7 @@ Both `object` and `val` are declarations.
 
 One consequence of declarations being separate from expressions is we can't write program like
 
-```scala mdoc:fail
+```scala
 val one = ( val aNumber = 1 )
 ```
 
@@ -111,7 +111,7 @@ because `val aNumber = 1` is not an expression and thus does not evaluate to a v
 
 We can however write
 
-```scala mdoc
+```scala mdoc:reset
 val aNumber = 1
 val one = aNumber
 ```
@@ -127,7 +127,7 @@ Can you declare an object literal without a name?
 No, Scala doesn't allow us to do this.
 For example, we can't write
 
-```scala mdoc:fail
+```scala
 object {}
 ```
 
@@ -156,7 +156,7 @@ We sure can!
 
 We can put a `val` inside an object literal like so:
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 object Example {
   val hi = "Hi!"
 }
@@ -183,7 +183,7 @@ We have to tell Scala we want to refer to the name `hi` defined inside the objec
 If you did the last exercise (and you did, didn't you?) you'll have seen that a name declared inside an object can't be used outside the object without also referring to the object that contains the name.
 Concretely, if we declare
 
-```scala mdoc
+```scala mdoc:reset:silent
 object Example {
   val hi = "Hi!"
 }
@@ -229,7 +229,7 @@ What happens if we declare a name within a scope where it is already declared?
 This is known as *shadowing*.
 In the code below the definition of `hi` within `Example2` shadows the definition of `hi` in `Example1`
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 object Example1 {
   val hi = "Hi!"
 
@@ -245,7 +245,7 @@ We don't have to use object literals to create new scopes.
 Scala allows us to create a new scope just about anywhere by inserting braces.
 So we can write
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 object Example {
   val good = "Good"
 
@@ -301,7 +301,7 @@ object One {
 Another simple example. `answer` is `1 + 2`, which is `3`. `Two.a` is not in scope where `answer` is defined.
 </div>
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 object One {
   val a = 5
   val b = 2
@@ -317,7 +317,7 @@ object One {
 Here `Answer.a` shadows `One.a` so `answer` is `1 + 2`, which is `3`.
 </div>
 
-```scala mdoc:silent
+```scala mdoc:reset:silent
 object One {
   val a = 1
   val b = a + 1
@@ -329,7 +329,7 @@ object One {
 This is perfectly fine. The expression `a + 1` on the right hand side of the declaration of `b` is an expression like any other so `answer` is `3` again.
 </div>
 
-```scala mdoc:silent
+```scala mdoc:reset:fail:silent
 object One {
   val a = 1
 

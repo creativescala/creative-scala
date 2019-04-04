@@ -4,8 +4,6 @@
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
 ```
 
 We've learned a lot about names in the previous section.
@@ -121,6 +119,11 @@ By naming the individual components of the image you should be able to avoid a g
 Here's our solution.
 As you can see, by breaking the scene down into smaller components we were able to write relatively little code.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 val roof = Image.triangle(50, 30) fillColor Color.brown
 

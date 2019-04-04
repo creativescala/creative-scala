@@ -4,8 +4,6 @@
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
 ```
 
 So far we've seen only the very basics of using `Random`. In this section we'll see more of its features, and use these features to create more interesting pictures.
@@ -127,6 +125,12 @@ For example, we could increment the `x` coordinate by 10, which will cause a dri
 I've chosen to use normally distributed noise that is the same in both directions.
 Changing the noise will change the shape of the result---it's worth playing around with different settings.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc:silent
 def step(current: Point): Random[Point] = {
   val drift = Point(current.x + 10, current.y)
@@ -168,6 +172,24 @@ In my definition of `render` I've shown how we can use information from the poin
 
 The definition of `walk` is a structural recursion over the natural numbers with an internal accumulator and the recursion going through `flatMap`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+val start = Random.always(Point.zero)
+def step(current: Point): Random[Point] = {
+  val drift = Point(current.x + 10, current.y)
+  val noise =
+    Random.normal(0.0, 5.0) flatMap { x =>
+      Random.normal(0.0, 5.0) map { y =>
+        Vec(x, y)
+      }
+    }
+
+  noise.map(vec => drift + vec)
+}
+```
 ```scala mdoc:silent
 def render(point: Point): Image = {
   val length = (point - Point.zero).length
@@ -215,6 +237,51 @@ Once again we have a structural recursion over the natural numbers.
 Unlike `walk` the recursion goes through `map`, not `flatMap`.
 This is because `particleSystem` adds no new random choices.
 
+
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+val start = Random.always(Point.zero)
+def step(current: Point): Random[Point] = {
+  val drift = Point(current.x + 10, current.y)
+  val noise =
+    Random.normal(0.0, 5.0) flatMap { x =>
+      Random.normal(0.0, 5.0) map { y =>
+        Vec(x, y)
+      }
+    }
+
+  noise.map(vec => drift + vec)
+}
+def render(point: Point): Image = {
+  val length = (point - Point.zero).length
+  val sides = (length / 20).toInt + 3
+  val hue = (length / 200).turns
+  val color = Color.hsl(hue, 0.7.normalized, 0.5.normalized)
+  Image.
+    star(sides, 5, 3, 0.degrees).
+    noFill.
+    lineColor(color).
+    at(point.toVec)
+}
+
+def walk(steps: Int): Random[Image] = {
+  def loop(count: Int, current: Point, image: Image): Random[Image] = {
+    count match {
+      case 0 => Random.always(image on render(current))
+      case n =>
+        val next = step(current)
+        next flatMap { pt =>
+          loop(count - 1, pt, image on render(current))
+        }
+    }
+  }
+
+  start flatMap { pt => loop(steps, pt, Image.empty) }
+}
+```
 ```scala mdoc:silent
 def particleSystem(particles: Int, steps: Int): Random[Image] = {
   particles match {
@@ -250,6 +317,23 @@ Implement this.
 If we add parameters with the correct name and type the code changes required are minimal.
 This is like doing the opposite of substitution---lifting concrete representations out of our code and replacing them with method parameters.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+def step(current: Point): Random[Point] = {
+  val drift = Point(current.x + 10, current.y)
+  val noise =
+    Random.normal(0.0, 5.0) flatMap { x =>
+      Random.normal(0.0, 5.0) map { y =>
+        Vec(x, y)
+      }
+    }
+
+  noise.map(vec => drift + vec)
+}
+```
 ```scala mdoc:silent
 def walk(
   steps: Int,
@@ -294,6 +378,12 @@ Most of the parameters to `particleSystem` are only needed to pass on to `walk`.
 These parameters don't change is any way within the structural recursion that makes up the body of `particleSystem`.
 At this point we can apply our principle of substitution---we can replace a method call with the value it evaluates to---to remove `walk` and associated parameters from `particleSystem`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.random._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def particleSystem(particles: Int, walk: Random[Image]): Random[Image] = {
   particles match {

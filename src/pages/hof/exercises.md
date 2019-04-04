@@ -47,7 +47,7 @@ def scale(factor: Double): Point => Point =
 In our previous discussion we've said we'd like to abstract the parametric equation out from `sample`. 
 This we can easily do with
 
-```tut:invisible
+```scala mdoc:invisible
 def parametricCircle(angle: Angle): Point =
   Point.cartesian(angle.cos, angle.sin)
 ```
@@ -73,6 +73,11 @@ def sample(start: Angle, samples: Int, location: Angle => Point): Image = {
 We might like to abstract out the choice of image primitive (`dot` or `Image.triangle` above). 
 We could change `location` to be a function `Angle => Image` to accomplish this. 
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def sample(start: Angle, samples: Int, location: Angle => Image): Image = {
   // Angle.one is one complete turn. I.e. 360 degrees
@@ -104,6 +109,11 @@ def loop(count: Int): Image = {
 
 we could abstract out the base case (`Image.empty`) and the problem specific part on the recursion (`location(angle) on loop(n - 1)`). The former would be just an `Image` but the latter is a function with type `(Angle, Image) => Image`. The final result is
 
+```scala mdoc:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def sample(start: Angle, samples: Int, empty: Image, combine: (Angle, Image) => Image): Image = {
   // Angle.one is one complete turn. I.e. 360 degrees
@@ -131,6 +141,11 @@ Now we've broken out the components we can combine them to create interesting re
 <div class="solution">
 You might end up with something like.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
   Point.cartesian(angle.cos, angle.sin)

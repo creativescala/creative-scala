@@ -135,6 +135,11 @@ cartesian.toPolar == polar
 We can put this all together to create a parametric circle.
 In cartesian coordinates the code for a parametric circle with radius 200 is
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
   Point.cartesian(angle.cos * 200, angle.sin * 200)
@@ -142,6 +147,11 @@ def parametricCircle(angle: Angle): Point =
 
 In polar form it is simply
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
   Point.polar(200, angle)

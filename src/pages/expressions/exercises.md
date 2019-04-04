@@ -61,7 +61,7 @@ Which of the following expressions will not compile? Of the expressions that wil
 "Electric blue".take(1)
 ```
 
-```scala mdoc:silent:crash
+```scala mdoc:silent:fail
 "Electric blue".take("blue")
 ```
 
@@ -103,7 +103,7 @@ This expression has type `Int` but fails at run-time.
 
 This expression has type `String` and evaluates to `"E"`.
 
-```scala mdoc:crash
+```scala mdoc:fail
 "Electric blue".take("blue")
 ```
 

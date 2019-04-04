@@ -95,10 +95,10 @@ println("Happy birthday to you!")
 ```
 
 ```scala mdoc
-val a = println("Happy birthday to you!")
-a
-a
-a
+val happy = println("Happy birthday to you!")
+happy
+happy
+happy
 ```
 
 Therefore we cannot freely use substitution in the presence of side effects, and we must be aware of the order of evaluation.

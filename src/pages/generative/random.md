@@ -103,6 +103,14 @@ def randomColor(s: Normalized, l: Normalized): Random[Color] =
 <div class="example">
 This is a deterministic transformation of the output of `randomAngle`, so we can implement it using `map`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+val randomAngle: Random[Angle] =
+  Random.double.map(x => x.turns)
+```
 ```scala mdoc:silent
 def randomColor(s: Normalized, l: Normalized): Random[Color] =
   randomAngle map (hue => Color.hsl(hue, s, l))
@@ -121,6 +129,12 @@ def randomCircle(r: Double, color: Random[Color]): Random[Image] =
 <div class="example">
 Once again this is a deterministic transformation of the random color, so we can use `map`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc:silent
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   color map (fill => Image.circle(r) fillColor fill)

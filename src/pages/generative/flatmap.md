@@ -31,7 +31,7 @@ def concentricCircles(count: Int, size: Int, color: Color): Image =
       Image.circle(size).fillColor(color) on concentricCircles(n-1, size + 5, color.spin(15.degrees))
   }
   
-def randomAngle: Random[Angle] =
+val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 
 def randomColor(s: Normalized, l: Normalized): Random[Color] =
@@ -51,6 +51,12 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 The important change here is we return a `Random[Image]` not an `Image`.
 We know this is a structural recursion over the natural numbers so we can fill out the body a bit.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
@@ -62,6 +68,12 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 The base case will be `Random.always(Image.empty)`, the direct of equivalent of `Image.empty` in the deterministic case.
 
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
@@ -73,11 +85,23 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
 What about the recursive case?
 We could try using
 
+
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+val randomAngle: Random[Angle] =
+  Random.double.map(x => x.turns)
+def randomColor(s: Normalized, l: Normalized): Random[Color] =
+  randomAngle map (hue => Color.hsl(hue, s, l))
+def randomCircle(r: Double, color: Random[Color]): Random[Image] =
+  color map (fill => Image.circle(r) fillColor fill)
+```
 ```scala mdoc:silent
 val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
 ```
-
-```tut:fail:book
+```scala mdoc:fail
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Image.empty
@@ -112,6 +136,19 @@ randomCircle(size, randomPastel) flatMap { circle =>
 
 The complete code becomes
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+val randomAngle: Random[Angle] =
+  Random.double.map(x => x.turns)
+def randomColor(s: Normalized, l: Normalized): Random[Color] =
+  randomAngle map (hue => Color.hsl(hue, s, l))
+def randomCircle(r: Double, color: Random[Color]): Random[Image] =
+  color map (fill => Image.circle(r) fillColor fill)
+val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+```
 ```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
@@ -222,6 +259,17 @@ Don't forget to import `doodle.random._` when you attempt these exercises.
 What is the difference between the output of `programOne` and `programTwo` below? Why do
 they differ?
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+val randomAngle: Random[Angle] =
+  Random.double.map(x => x.turns)
+def randomColor(s: Normalized, l: Normalized): Random[Color] =
+  randomAngle map (hue => Color.hsl(hue, s, l))
+val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+```
 ```scala mdoc:silent
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   color map (fill => Image.circle(r) fillColor fill)
@@ -255,7 +303,7 @@ val programTwo =
 `programOne` displays three different circles in a row, while `programTwo` repeats the same circle three times. The value `circles` represents a program that generates an image of randomly colored concentric circles. Remember `map` represents a deterministic transform, so the output of `programTwo` must be the same same circle repeated thrice as we're not introducing new random choices. In `programOne` we merge `circle` with itself three times. You might think that the output should be only one random image repeated three times, not three, but remember `Random` preserves substitution. We can write `programOne` equivalently as
 
 ```scala mdoc
-val programOne = 
+val programOneRewritten = 
   randomConcentricCircles(5, 10) flatMap { c1 => 
     randomConcentricCircles(5, 10) flatMap { c2 => 
       randomConcentricCircles(5, 10) map { c3 => 
@@ -289,6 +337,12 @@ Let's alter this, like with did with concentric circles, to have each box filled
 <div class="solution">
 This code uses exactly the same pattern as `randomConcentricCircles`.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+import doodle.random._
+```
 ```scala mdoc
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)

@@ -65,6 +65,13 @@ val result2 = randomAngle
 
 and 
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+def randomAngle: Angle = 
+  math.random.turns
+```
 ```scala mdoc
 val result1 = randomAngle
 val result2 = result1

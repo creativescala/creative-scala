@@ -35,7 +35,7 @@ We can abstract this pattern in a method called `map`.
 If we have a list with elements of type `A`, we pass `map` a function of type `A => B` and we get back a list with elements of type `B`. 
 For example, we can implement `increment` using `map` with the function `x => x + 1`.
 
-```scala mdoc
+```scala mdoc:reset
 def increment(list: List[Int]): List[Int] =
   list.map(x => x + 1)
   
@@ -90,7 +90,7 @@ fill(3, "Hi")
 
 we could write
 
-```scala mdoc
+```scala mdoc:reset
 def fill[A](n: List[Int], a: A): List[A] =
   n.map(x => a)
   
@@ -130,7 +130,7 @@ We can treat an `IndexedSeq` much like a `List`, but for simplicity we can conve
 
 With `Ranges` in our toolbox we can write `fill` as
 
-```scala mdoc
+```scala mdoc:reset
 def fill[A](n: Int, a: A): List[A] =
   (0 until n).toList.map(x => a)
   
@@ -187,7 +187,7 @@ ones(3)
 <div class="solution">
 We can just `map` over a `Range` to achieve this.
 
-```scala mdoc
+```scala mdoc:reset
 def ones(n: Int): List[Int] =
   (0 until n).toList.map(x => 1)
   
@@ -211,7 +211,7 @@ descending(3)
 <div class="solution">
 We can use a `Range` but we have to set the step size or the range will be empty.
 
-```scala mdoc
+```scala mdoc:reset
 def descending(n: Int): List[Int] =
   (n until 0 by -1).toList
 
@@ -237,7 +237,7 @@ ascending(3)
 <div class="solution">
 Again we can use a `Range` but we need to take care to start at `0` and increment the elements by `1` so we have the correct number of elements.
 
-```scala mdoc
+```scala mdoc:reset
 def ascending(n: Int): List[Int] = 
   (0 until n).toList.map(x => x + 1)
   
@@ -262,7 +262,7 @@ double(List(4, 9, 16))
 <div class="solution">
 This is a straightforward application of `map`.
 
-```scala mdoc
+```scala mdoc:reset
 def double(list: List[Int]): List[Int] =
   list map (x => x * 2)
 
@@ -280,6 +280,11 @@ Using our new tools, rewrite the `polygon` method from the previous section.
 <div class="solution">
 Here's one possible implementation. Much easier to read than the previous implementation!
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   import Point._
@@ -353,7 +358,7 @@ ascending(3)
 <div class="solution">
 Now that we now about `to` this is trivial to implement.
 
-```scala mdoc
+```scala mdoc:reset
 def ascending(n: Int): List[Int] = 
   (1 to n).toList
   

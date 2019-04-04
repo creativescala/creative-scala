@@ -4,8 +4,6 @@
 import doodle.core._
 import doodle.core.Image._
 import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
 ```
 
 Why are functions useful?
@@ -38,6 +36,11 @@ the replacement for `Image.circle` as a parameter.
 Here we've renamed the method to `concentricShapes`, as we're no longer restricted to drawing circles,
 and made `singleShape` responsible for drawing an appropriately sized shape.
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
@@ -51,6 +54,16 @@ to produce plain circles, squares of different hue,
 circles with different opacity, and so on.
 All we have to do is pass in a suitable definition of `singleShape`:
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+def concentricShapes(count: Int, singleShape: Int => Image): Image =
+  count match {
+    case 0 => Image.empty
+    case n => singleShape(n) on concentricShapes(n-1, singleShape)
+  }
+```
 ```scala mdoc:silent
 // Passing a function literal directly:
 val blackCircles: Image =
@@ -73,12 +86,17 @@ to produce the image shown in [@fig:hof:colors-and-shapes.png].
 
 ![Colors and Shapes](src/pages/hof/colors-and-shapes.pdf+svg){#fig:hof:colors-and-shapes.png}
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
-  def concentricShapes(count: Int, singleShape: Int => Image): Image =
-    count match {
-      case 0 => Image.empty
-      case n => singleShape(n) on concentricShapes(n-1, singleShape)
-    }
+def concentricShapes(count: Int, singleShape: Int => Image): Image =
+  count match {
+    case 0 => Image.empty
+    case n => singleShape(n) on concentricShapes(n-1, singleShape)
+  }
 ```
 
 The `concentricShapes` method is equivalent to the
@@ -146,6 +164,11 @@ def colored(shape: Int => Image, color: Int => Color): Int => Image =
 <div class="solution">
 The simplest solution is to define three `singleShapes` as follows:
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
@@ -185,6 +208,11 @@ There are also repeated calls to `lineWidth(10)` and
 The extra credit solution factors these out into their own functions
 and combines them with the `colored` combinator:
 
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.core.Image._
+import doodle.syntax._
+```
 ```scala mdoc
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
