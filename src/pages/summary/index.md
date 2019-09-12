@@ -154,7 +154,7 @@ to produce different coloured dots:
 
 ```scala
 def dot(color: Color): Image =
-  Circle(10) lineWidth 0 fillColor color
+  Circle(10) strokeWidth 0 fillColor color
 // dot: Color => Image = // ...
 ````
 

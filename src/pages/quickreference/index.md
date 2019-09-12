@@ -162,13 +162,13 @@ val i: Image = imageA.beside(imageB)
 ```scala
 // Styling images written using operator syntax:
 val i: Image = image fillColor color   // new fill color (doesn't change line)
-val i: Image = image lineColor color   // new line color (doesn't change fill)
-val i: Image = image lineWidth integer // new line width (doesn't change fill)
-val i: Image = image fillColor color lineColor otherColor // new fill and line
+val i: Image = image strokeColor color   // new line color (doesn't change fill)
+val i: Image = image strokeWidth integer // new line width (doesn't change fill)
+val i: Image = image fillColor color strokeColor otherColor // new fill and line
 
 // Styling images using method call syntax:
 val i: Image = imageA.fillColor(color)
-val i: Image = imageA.fillColor(color).lineColor(otherColor)
+val i: Image = imageA.fillColor(color).strokeColor(otherColor)
 // etc...
 ```
 

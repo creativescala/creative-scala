@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We're now experienced users of structural recursion over the natural numbers.
@@ -121,8 +121,10 @@ For example, when reasoning about `boxes`
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent

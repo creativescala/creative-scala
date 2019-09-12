@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Here's the `Instruction` type we defined in the previous section.
@@ -53,7 +53,7 @@ The core pattern is a structural recursion but the details are a bit more intric
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
+import doodle.image._
 
 sealed abstract class Instruction extends Product with Serializable
 final case class Forward(distance: Double) extends Instruction

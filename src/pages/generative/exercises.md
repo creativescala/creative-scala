@@ -2,12 +2,12 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
-import cats.syntax.cartesian._
+import cats.syntax.all._
 ```
 
 ### Scatter Plots
@@ -38,8 +38,10 @@ This is a nice example of composition of `Randoms`.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 ```
 ```scala mdoc
@@ -74,7 +76,7 @@ Note I've made each point on the scatterplot quite transparent---this makes it e
 
 ```scala mdoc:silent
 def point(loc: Point): Image =
-  circle(2).fillColor(Color.cadetBlue.alpha(0.3.normalized)).noLine.at(loc.toVec)
+  Image.circle(2).fillColor(Color.cadetBlue.alpha(0.3.normalized)).noStroke.at(loc.toVec)
 ```
 
 Converting between the lists is just a matter of calling `map` a few times.
@@ -135,8 +137,10 @@ We've already seen very similar code in the scatter plot.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 ```
 ```scala mdoc:silent
@@ -202,10 +206,10 @@ object ParametricNoise {
     } yield Point.cartesian(point.x + x, point.y + y) 
 
   def smoke(r: Normalized): Random[Image] = {
-    val alpha = Random.normal(0.5, 0.1) map (a => a.normalized)
+    val alpha = Random.normal(0.5, 0.1)
     val hue = Random.double.map(h => (h * 0.1).turns)
-    val saturation = Random.double.map(s => (s * 0.8).normalized)
-    val lightness = Random.normal(0.4, 0.1) map (a => a.normalized)
+    val saturation = Random.double.map(s => s * 0.8)
+    val lightness = Random.normal(0.4, 0.1)
     val color =
       for {
         h <- hue
@@ -213,12 +217,12 @@ object ParametricNoise {
         l <- lightness
         a <- alpha
       } yield Color.hsla(h, s, l, a)
-    val c = Random.normal(5, 5) map (r => circle(r))
+    val c = Random.normal(5, 5) map (r => Image.circle(r))
     
     for {
       circle <- c
       line   <- color
-    } yield circle.lineColor(line).noFill
+    } yield circle.strokeColor(line).noFill
   }
 
   def point(
@@ -278,7 +282,7 @@ object ParametricNoise {
         i <- img
       } yield (a on i)
     }
-    val background = (rectangle(650, 650) fillColor Color.black)
+    val background = (Image.rectangle(650, 650).fillColor(Color.black))
 
     picture map { _ on background }
   }

@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Let's start with an example, drawing a line or row of boxes as in [@fig:recursion:sequential-boxes].
@@ -43,8 +43,10 @@ Why not just write something like this, for example?
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 val oneBox = aBox
 val twoBoxes = aBox beside oneBox
@@ -75,8 +77,10 @@ We could even define `box` in terms of *no* boxes, like so:
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc
@@ -107,8 +111,10 @@ A full implementation of `boxes` is
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc

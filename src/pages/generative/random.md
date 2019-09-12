@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 The solution to our problem is to separate describing how we'll use random numbers from the process of actually generating them. This sounds complicated, but it's exactly what we've be doing with `Image` throughout this book. We
@@ -105,15 +105,17 @@ This is a deterministic transformation of the output of `randomAngle`, so we can
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 ```
 ```scala mdoc:silent
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, s, l))
+def randomColor(s: Double, l: Double): Random[Color] =
+  randomAngle.map(hue => Color.hsl(hue, s, l))
 ```
 </div>
 
@@ -131,12 +133,14 @@ Once again this is a deterministic transformation of the random color, so we can
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 ```
 ```scala mdoc:silent
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
-  color map (fill => Image.circle(r) fillColor fill)
+  color.map(fill => Image.circle(r).fillColor(fill))
 ```
 </div>

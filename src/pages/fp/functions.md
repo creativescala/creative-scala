@@ -108,7 +108,7 @@ val blackCircles: Image =
 // Converting a method to a function:
 
 def redCircle(n: Int): Image =
-  Circle(50 + 5*n) lineColor Color.red
+  Circle(50 + 5*n) strokeColor Color.red
 
 val redCircles: Image =
   manyShapes(10, redCircle _)
@@ -210,19 +210,19 @@ def manyShapes(n: Int, singleShape: Int => Image): Image =
 def rainbowCircle(n: Int) = {
   val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
   val shape = Circle(50 + n*12)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 def fadingTriangle(n: Int) = {
   val color = Color.blue fadeOut (1 - n / 20.0).normalized
   val shape = Triangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 def rainbowSquare(n: Int) = {
   val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
   val shape = Rectangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 val answer =
@@ -234,8 +234,8 @@ val answer =
 However, there is some redundancy here:
 `rainbowCircle` and `rainbowTriangle`, in particular,
 use the same definition of `color`.
-There are also repeated calls to `lineWidth(10)` and
-`lineColor(color)` that can be eliminated.
+There are also repeated calls to `strokeWidth(10)` and
+`strokeColor(color)` that can be eliminated.
 The extra credit solution factors these out into their own functions
 and combines them with the `colored` combinator:
 
@@ -249,7 +249,7 @@ def manyShapes(n: Int, singleShape: Int => Image): Image =
 
 def colored(shape: Int => Image, color: Int => Color): Int => Image =
   (n: Int) =>
-    shape(n) lineWidth 10 lineColor color(n)
+    shape(n) strokeWidth 10 strokeColor color(n)
 
 def fading(n: Int): Color =
   Color.blue fadeOut (1 - n / 20.0).normalized

@@ -43,6 +43,6 @@ This will open a `bash` shell running inside the Docker container which contains
 
 Within `sbt` you can issue the commands `pdf`, `html`, `epub`, or `all` to build the desired version(s) of the book. Targets are placed in the `dist` directory:
 
-[doodle]: https://github.com/underscoreio/doodle
+[doodle]: https://github.com/creativescala/doodle
 [ebook-template]: https://github.com/underscoreio/underscore-ebook-template
 

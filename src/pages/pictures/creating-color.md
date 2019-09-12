@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We've seen how to use predefined colors in our images. What about creating our own colors? In this section we will see how to create colors of our own, and transform existing colors into new ones.
@@ -56,19 +56,12 @@ We can construct a color in the HSL representation using the `Color.hsl` method.
 3.14.radians
 ```
 
-Saturation and lightness are both normalized to between 0.0 and 1.0. We can convert a `Double` to a normalized value with the `.normalized` method.
-
-```scala mdoc
-0.0.normalized
-1.0.normalized
-1.2.normalized // Too big, is clipped to 1.0
--1.0.normalized // Too small, is clipped to 0.0
-```
+Saturation and lightness are both `Doubles` that should be between 0.0 and 1.0. Values outside this range will be converted to the closest number within the range. 
 
 We can now create colors using the HSL representation.
 
 ```scala mdoc:silent
-Color.hsl(0.degrees, 0.8.normalized, 0.6.normalized) // A pastel red
+Color.hsl(0.degrees, 0.8, 0.6) // A pastel red
 ```
 
 To view this color we can render it in a picture. See [@fig:pictures:triangle-pastel-red] for an example.
@@ -87,9 +80,13 @@ The effectiveness of a composition often depends as much on the relationships be
 For example,
 
 ```scala mdoc:silent
-((circle(100) fillColor Color.red) beside
-  (circle(100) fillColor Color.red.spin(15.degrees)) beside
-    (circle(100) fillColor Color.red.spin(30.degrees))).lineWidth(5.0)
+Image.circle(100)
+     .fillColor(Color.red)
+     .beside(Image.circle(100)
+                  .fillColor(Color.red.spin(15.degrees)))
+     .beside(Image.circle(100)
+                  .fillColor(Color.red.spin(30.degrees)))
+     .strokeWidth(5.0)
 ```
 
 produces [@fig:pictures:three-circles-spin].
@@ -99,12 +96,13 @@ produces [@fig:pictures:three-circles-spin].
 Here's a similar example, this time manipulating saturation and lightness, shown in [@fig:pictures:saturate-and-lighten].
 
 ```scala mdoc:silent
-(((circle(20) fillColor (Color.red darken 0.2.normalized))
-  beside (circle(20) fillColor Color.red)
-  beside (circle(20) fillColor (Color.red lighten 0.2.normalized))) above
-((rectangle(40,40) fillColor (Color.red desaturate 0.6.normalized))
-  beside (rectangle(40,40) fillColor (Color.red desaturate 0.3.normalized))
-  beside (rectangle(40,40) fillColor Color.red)))
+Image.circle(20)
+     .fillColor(Color.red.darken(0.2.normalized))
+     .beside(Image.circle(20).fillColor(Color.red))
+     .beside(Image.circle(20).fillColor((Color.red.lighten(0.2.normalized))))
+     .above(Image.rectangle(40, 40).fillColor(Color.red.desaturate(0.6.normalized))
+                 .beside(Image.rectangle(40,40).fillColor(Color.red.desaturate(0.3.normalized)))
+                 .beside(Image.rectangle(40,40).fillColor(Color.red)))
 ```
 
 ![The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation.](./src/pages/pictures/saturate-and-lighten.pdf+svg){#fig:pictures:saturate-and-lighten}
@@ -117,9 +115,10 @@ Here's a similar example, this time manipulating saturation and lightness, shown
 We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value. We can also create a new color with a different transparency by using the `alpha` method on a color. Here's an example, shown in [@fig:pictures:rgb-alpha].
 
 ```scala mdoc:silent
-((circle(40) fillColor (Color.red.alpha(0.5.normalized))) beside
- (circle(40) fillColor (Color.blue.alpha(0.5.normalized))) on
- (circle(40) fillColor (Color.green.alpha(0.5.normalized))))
+Image.circle(40)
+     .fillColor(Color.red.alpha(0.5.normalized))
+     .beside(Image.circle(40).fillColor(Color.blue.alpha(0.5.normalized)))
+     .on(Image.circle(40).fillColor(Color.green.alpha(0.5.normalized)))
 ```
 
 ![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.pdf+svg){#fig:pictures:rgb-alpha}
@@ -137,17 +136,17 @@ Create three triangles, arranged in a triangle, with analogous colors. Analogous
 These sort of examples are getting a bit too long to write out at the console. We'll look at a way around this next.
 
 ```scala mdoc
-((triangle(40, 40)
-       lineWidth 6.0
-       lineColor Color.darkSlateBlue
+((Image.triangle(40, 40)
+       strokeWidth 6.0
+       strokeColor Color.darkSlateBlue
        fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin 10.degrees)) above
-  ((triangle(40, 40)
-      lineWidth 6.0
-      lineColor (Color.darkSlateBlue spin (-30.degrees))
+  ((Image.triangle(40, 40)
+      strokeWidth 6.0
+      strokeColor (Color.darkSlateBlue spin (-30.degrees))
       fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (-20.degrees))) beside
-     (triangle(40, 40)
-        lineWidth 6.0
-        lineColor (Color.darkSlateBlue spin (30.degrees))
+     (Image.triangle(40, 40)
+        strokeWidth 6.0
+        strokeColor (Color.darkSlateBlue spin (30.degrees))
         fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (40.degrees)))))
 ```
 </div>

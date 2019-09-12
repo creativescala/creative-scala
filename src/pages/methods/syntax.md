@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We've already seen an example of declaring a method.
@@ -14,8 +14,8 @@ We've already seen an example of declaring a method.
 def boxes(color: Color): Image = {
   val box =
     Image.rectangle(40, 40).
-      lineWidth(5.0).
-      lineColor(color.spin(30.degrees)).
+      strokeWidth(5.0).
+      strokeColor(color.spin(30.degrees)).
       fillColor(color)
 
   box beside box beside box beside box beside box

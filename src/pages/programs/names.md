@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 In the previous section we introduced a lot of new concepts.
@@ -29,7 +29,7 @@ We have already seen an example of declaring an object literal.
 
 ```scala mdoc:silent
 object Example {
-  (circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed).draw
+  Image.circle(100).fillColor(Color.paleGoldenrod).strokeColor(Color.indianRed).draw()
 }
 ```
 

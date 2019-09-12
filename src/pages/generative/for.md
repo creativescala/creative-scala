@@ -2,8 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 <div class="callout callout-info">
@@ -22,13 +24,13 @@ For example, the code for `randomConcentricCircles` has a call to `flatMap` and 
 def randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
+def randomColor(s: Double, l: Double): Random[Color] =
   randomAngle map (hue => Color.hsl(hue, s, l))
 
-val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+val randomPastel = randomColor(0.7, 0.7)
 
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
-  color map (fill => Image.circle(r) fillColor fill)
+  color.map(fill => Image.circle(r).fillColor(fill))
 ```
 
 ```scala mdoc:silent
@@ -36,9 +38,9 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
     case n => 
-      randomCircle(size, randomPastel) flatMap { circle =>
-        randomConcentricCircles(n-1, size + 5) map { circles =>
-          circle on circles
+      randomCircle(size, randomPastel).flatMap{ circle =>
+        randomConcentricCircles(n-1, size + 5).map{ circles =>
+          circle.on(circles)
         }
       }
   }
@@ -48,14 +50,16 @@ This can be replaced with a for comprehension.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 def randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, s, l))
-val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+def randomColor(s: Double, l: Double): Random[Color] =
+  randomAngle.map(hue => Color.hsl(hue, s, l))
+val randomPastel = randomColor(0.7, 0.7)
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   color map (fill => Image.circle(r) fillColor fill)
 ```
@@ -67,7 +71,7 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
       for {
         circle  <- randomCircle(size, randomPastel) 
         circles <- randomConcentricCircles(n-1, size + 5)
-      } yield circle on circles 
+      } yield circle.on(circles) 
   }
 ```
 

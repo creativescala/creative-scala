@@ -2,16 +2,16 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle displayed beside one another, as in [@fig:picture:circle-rect].
 
 ~~~ scala
-(circle(10) beside rectangle(10, 20)).draw
+(Image.circle(10).beside(rectangle(10, 20))).draw()
 ~~~
 
 ![A circle beside a rectangle](src/pages/pictures/circle-beside-rectangle.pdf+svg){#fig:picture:circle-rect}
@@ -21,19 +21,19 @@ Doodle contains several layout methods for combining images, described in [@tbl:
 ----------------------------------------------------------------------------------------
 Operator              Type    Description                Example
 --------------------- ------- -------------------------- -------------------------------
-`Image beside Image`  `Image` Places images horizontally `circle(10) beside circle(20)`
+`Image.beside(Image)`  `Image` Places images horizontally `Image.circle(10).beside(circle(20))`
                               next to one another.
 
-`Image above Image`   `Image` Places images vertically   `circle(10) above circle(20)`
+`Image.above(Image)`   `Image` Places images vertically   `Image.circle(10).above(circle(20))`
                               next to one another.
 
-`Image below Image`   `Image` Places images vertically   `circle(10) below circle(20)`
+`Image.below(Image)`   `Image` Places images vertically   `Image.circle(10).below(circle(20))`
                               next to one another.
 
-`Image on Image`      `Image` Places images centered     `circle(10) on circle(20)`
+`Image.on(Image)`      `Image` Places images centered     `Image.circle(10).on(circle(20))`
                               on top of one another.
 
-`Image under Image`   `Image` Places images centered     `circle(10) under circle(20)`
+`Image.under(Image)`   `Image` Places images centered     `Image.circle(10).under(circle(20))`
                               on top of one another.
 ----------------------------------------------------------------------------------------
 
@@ -51,6 +51,7 @@ Create the picture [@fig:picture:width-of-a-circle] using the layout methods and
 It's three small circles on top of a bigger circle, and we can just about state this as is in code.
 
 ```scala mdoc
-(circle(20) beside circle(20) beside circle(20)) on circle(60)
+(Image.circle(20).beside(Image.circle(20)).beside(Image.circle(20)))
+  .on(Image.circle(60))
 ```
 </div>

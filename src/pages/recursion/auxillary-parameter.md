@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 
@@ -136,7 +136,7 @@ We'll come to that soon.
 
 ```scala mdoc
 def circle(size: Int, color: Color): Image =
-  Image.circle(size).lineWidth(3.0).lineColor(color)
+  Image.circle(size).strokeWidth(3.0).strokeColor(color)
 
 def fadeCircles(n: Int, size: Int, color: Color): Image =
   n match {

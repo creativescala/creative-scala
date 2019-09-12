@@ -2,8 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Why are functions useful?
@@ -38,8 +40,10 @@ and made `singleShape` responsible for drawing an appropriately sized shape.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
@@ -56,8 +60,10 @@ All we have to do is pass in a suitable definition of `singleShape`:
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
@@ -71,7 +77,7 @@ val blackCircles: Image =
 
 // Converting a method to a function:
 def redCircle(n: Int): Image =
-  Image.circle(50 + 5*n) lineColor Color.red
+  Image.circle(50 + 5*n) strokeColor Color.red
 
 val redCircles: Image =
   concentricShapes(10, redCircle _)
@@ -88,8 +94,10 @@ to produce the image shown in [@fig:hof:colors-and-shapes.png].
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
@@ -166,8 +174,10 @@ The simplest solution is to define three `singleShapes` as follows:
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
@@ -179,19 +189,19 @@ def concentricShapes(count: Int, singleShape: Int => Image): Image =
 def rainbowCircle(n: Int) = {
   val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
   val shape = Image.circle(50 + n*12)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 def fadingTriangle(n: Int) = {
   val color = Color.blue fadeOut (1 - n / 20.0).normalized
   val shape = Image.triangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 def rainbowSquare(n: Int) = {
   val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
   val shape = Image.rectangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 val answer =
@@ -203,15 +213,17 @@ val answer =
 However, there is some redundancy here:
 `rainbowCircle` and `rainbowTriangle`, in particular,
 use the same definition of `color`.
-There are also repeated calls to `lineWidth(10)` and
-`lineColor(color)` that can be eliminated.
+There are also repeated calls to `strokeWidth(10)` and
+`strokeColor(color)` that can be eliminated.
 The extra credit solution factors these out into their own functions
 and combines them with the `colored` combinator:
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
@@ -222,19 +234,19 @@ def concentricShapes(count: Int, singleShape: Int => Image): Image =
 
 def colored(shape: Int => Image, color: Int => Color): Int => Image =
   (n: Int) =>
-    shape(n) lineWidth 10 lineColor color(n)
+    shape(n).strokeWidth(10).strokeColor(color(n))
 
 def fading(n: Int): Color =
-  Color.blue fadeOut (1 - n / 20.0).normalized
+  Color.blue.fadeOut((1 - n / 20.0).normalized)
 
 def spinning(n: Int): Color =
-  Color.blue desaturate 0.5.normalized spin (n * 30).degrees
+  Color.blue.desaturate(0.5.normalized).spin((n * 30).degrees)
 
 def size(n: Int): Double =
   50 + 12 * n
 
 def circle(n: Int): Image =
-  Circle(size(n))
+  Image.circle(size(n))
 
 def square(n: Int): Image =
   Image.rectangle(2*size(n), 2*size(n))

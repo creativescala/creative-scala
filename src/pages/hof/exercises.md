@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Now we are chock full of knowledge about functions, we're going to return to the problem of drawing flowers. 
@@ -56,13 +56,13 @@ def parametricCircle(angle: Angle): Point =
 def sample(start: Angle, samples: Int, location: Angle => Point): Image = {
   // Angle.one is one complete turn. I.e. 360 degrees
   val step = Angle.one / samples
-  val dot = triangle(10, 10)
+  val dot = Image.triangle(10, 10)
   def loop(count: Int): Image = {
     val angle = step * count
     count match {
       case 0 => Image.empty
       case n =>
-        dot.at(location(angle).toVec) on loop(n - 1)
+        dot.at(location(angle).toVec).on(loop(n - 1))
     }
   }
   
@@ -75,8 +75,10 @@ We could change `location` to be a function `Angle => Image` to accomplish this.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def sample(start: Angle, samples: Int, location: Angle => Image): Image = {
@@ -86,7 +88,7 @@ def sample(start: Angle, samples: Int, location: Angle => Image): Image = {
     val angle = step * count
     count match {
       case 0 => Image.empty
-      case n => location(angle) on loop(n - 1)
+      case n => location(angle).on(loop(n - 1))
     }
   }
   
@@ -102,17 +104,19 @@ def loop(count: Int): Image = {
   val angle = step * count
   count match {
     case 0 => Image.empty
-    case n => location(angle) on loop(n - 1)
+    case n => location(angle).on(loop(n - 1))
   }
 }
 ```
 
 we could abstract out the base case (`Image.empty`) and the problem specific part on the recursion (`location(angle) on loop(n - 1)`). The former would be just an `Image` but the latter is a function with type `(Angle, Image) => Image`. The final result is
 
-```scala mdoc:invisible
+```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def sample(start: Angle, samples: Int, empty: Image, combine: (Angle, Image) => Image): Image = {
@@ -143,8 +147,10 @@ You might end up with something like.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
@@ -161,7 +167,7 @@ def scale(factor: Double): Point => Point =
 def sample(start: Angle, samples: Int, location: Angle => Point): Image = {
   // Angle.one is one complete turn. I.e. 360 degrees
   val step = Angle.one / samples
-  val dot = triangle(10, 10)
+  val dot = Image.triangle(10, 10)
   def loop(count: Int): Image = {
     val angle = step * count
     count match {

@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Right now we only know how to create basic shapes like circles and rectangles.
@@ -77,7 +77,7 @@ We need an additional tool, the `at` method, to achieve more flexible layout.
 Here's an example that draws a circle at the corners of a square.
 
 ```scala mdoc:silent
-val dot = Image.circle(5).lineWidth(3).lineColor(Color.crimson)
+val dot = Image.circle(5).strokeWidth(3).strokeColor(Color.crimson)
 val squareDots =
   dot.at(0, 0).
     on(dot.at(0, 100)).
@@ -137,8 +137,10 @@ In cartesian coordinates the code for a parametric circle with radius 200 is
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
@@ -149,8 +151,10 @@ In polar form it is simply
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
@@ -163,7 +167,7 @@ Now we could sample a number of points evenly spaced around the circle. To creat
 def sample(start: Angle, samples: Int): Image = {
   // Angle.one is one complete turn. I.e. 360 degrees
   val step = Angle.one / samples
-  val dot = triangle(10, 10)
+  val dot = Image.triangle(10, 10)
   def loop(count: Int): Image = {
     val angle = step * count
     count match {

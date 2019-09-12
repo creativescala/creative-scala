@@ -2,8 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Let's use our new tools to draw some stars.
@@ -32,8 +34,10 @@ Here's the `star` method. We've renamed `p` and `n` to `points` and `skip` for c
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def star(sides: Int, skip: Int, radius: Double): Image = {
@@ -48,7 +52,7 @@ def star(sides: Int, skip: Int, radius: Double): Image = {
     lineTo(point)
   }
 
-  closedPath(start :: elements) lineWidth 2
+  Image.closedPath(start :: elements) strokeWidth 2
 }
 ```
 </div>
@@ -66,8 +70,10 @@ from `1` to `sides/2` rounded down. For example:
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 def star(sides: Int, skip: Int, radius: Double): Image = {
   import Point._
   import PathElement._
@@ -80,7 +86,7 @@ def star(sides: Int, skip: Int, radius: Double): Image = {
     lineTo(point)
   }
 
-  closedPath(start :: elements) lineWidth 2
+  Image.closedPath(start :: elements) strokeWidth 2
 }
 ```
 ```scala mdoc:invisible
@@ -106,8 +112,10 @@ We start with
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def allBeside(images: List[Image]): Image =
@@ -121,8 +129,10 @@ Remembering the recursion gives us
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def allBeside(images: List[Image]): Image =
@@ -136,8 +146,10 @@ Finally we can fill in the base and recursive cases.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 def star(sides: Int, skip: Int, radius: Double): Image = {
   import Point._
   import PathElement._
@@ -150,7 +162,7 @@ def star(sides: Int, skip: Int, radius: Double): Image = {
     lineTo(point)
   }
 
-  closedPath(start :: elements) lineWidth 2
+  Image.closedPath(start :: elements) strokeWidth 2
 }
 ```
 ```scala mdoc:silent
@@ -174,8 +186,8 @@ To create the image in [@fig:sequences:stars2] we started by creating a method t
 ```scala mdoc:silent
 def style(img: Image, hue: Angle): Image = {
   img.
-    lineColor(Color.hsl(hue, 1.normalized, .25.normalized)).
-    fillColor(Color.hsl(hue, 1.normalized, .75.normalized))
+    strokeColor(Color.hsl(hue, 1.0, 0.25)).
+    fillColor(Color.hsl(hue, 1.0, 0.75))
 }
 ```
 

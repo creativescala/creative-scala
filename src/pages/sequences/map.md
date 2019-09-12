@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We've seen that using structural recursion we can create and transform lists. 
@@ -282,8 +282,10 @@ Here's one possible implementation. Much easier to read than the previous implem
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
@@ -296,7 +298,7 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
       lineTo(polar(size, initialRotation + deg.degrees))
     }
     
-  closedPath(moveTo(polar(size, initialRotation)) :: path)
+  Image.closedPath(moveTo(polar(size, initialRotation)) :: path)
 }
 ```
 </div>

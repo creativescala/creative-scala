@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Generative art means art where some part of the composition is determined by an autonomous process. Concretely, for us this will mean adding an element of randomness.
@@ -15,8 +15,8 @@ Let's take a really simple example. We've learned previously how to create conce
 ```scala mdoc:silent
 def concentricCircles(n: Int): Image =
   n match {
-    case 0 => circle(10)
-    case n => concentricCircles(n-1) on circle(n * 10) 
+    case 0 => Image.circle(10)
+    case n => concentricCircles(n-1).on(Image.circle(n * 10)) 
   }
 ```
 
@@ -27,8 +27,8 @@ We also learned how we could make coloured circles, using a second parameter.
 ```scala mdoc:silent
 def concentricCircles(n: Int, color: Color): Image =
   n match {
-    case 0 => circle(10) fillColor color
-    case n => concentricCircles(n-1, color.spin(15.degrees)) on (circle(n * 10) fillColor color) 
+    case 0 => Image.circle(10).fillColor(color)
+    case n => concentricCircles(n-1, color.spin(15.degrees)).on(Image.circle(n * 10).fillColor(color)) 
   }
 ```
 
@@ -67,8 +67,10 @@ and
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 def randomAngle: Angle = 
   math.random.turns
 ```

@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 All shapes in Doodle are ultimately represented as paths. 
@@ -50,17 +50,17 @@ val curve =
 
 def style(image: Image): Image =
   image.
-    lineWidth(6.0).
-    lineColor(Color.royalBlue).
+    strokeWidth(6.0).
+    strokeColor(Color.royalBlue).
     fillColor(Color.skyBlue)
 
 val openPaths =
-  style(openPath(triangle) beside openPath(curve))
+  style(Image.openPath(triangle).beside(Image.openPath(curve)))
 
 val closedPaths =
-  style(closedPath(triangle) beside closedPath(curve))
+  style(Image.closedPath(triangle).beside(Image.closedPath(curve)))
 
-val paths = openPaths above closedPaths
+val paths = openPaths.above(closedPaths)
 ```
 
 From this code we can see we create paths using the `openPath` and `closePath` methods on `Image`, just as we create other shapes. 
@@ -123,46 +123,47 @@ In some cases we haven't started the vertices at 0 degrees so we can rotate the 
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
-import doodle.core.Image._
 import doodle.core.PathElement._
 import doodle.core.Point._
 import doodle.core.Color._
 val triangle =
-  closedPath(List(
-               moveTo(polar(50, 0.degrees)),
-               lineTo(polar(50, 120.degrees)),
-               lineTo(polar(50, 240.degrees))
-             ))
+  Image.closedPath(List(
+                     moveTo(polar(50, 0.degrees)),
+                     lineTo(polar(50, 120.degrees)),
+                     lineTo(polar(50, 240.degrees))
+                   ))
 
 val square =
-  closedPath(List(
-               moveTo(polar(50, 45.degrees)),
-               lineTo(polar(50, 135.degrees)),
-               lineTo(polar(50, 225.degrees)),
-               lineTo(polar(50, 315.degrees))
-             ))
+  Image.closedPath(List(
+                     moveTo(polar(50, 45.degrees)),
+                     lineTo(polar(50, 135.degrees)),
+                     lineTo(polar(50, 225.degrees)),
+                     lineTo(polar(50, 315.degrees))
+                   ))
 
 val pentagon =
-  closedPath((List(
-                moveTo(polar(50, 72.degrees)),
-                lineTo(polar(50, 144.degrees)),
-                lineTo(polar(50, 216.degrees)),
-                lineTo(polar(50, 288.degrees)),
-                lineTo(polar(50, 360.degrees))
-              )))
+  Image.closedPath(List(
+                     moveTo(polar(50, 72.degrees)),
+                     lineTo(polar(50, 144.degrees)),
+                     lineTo(polar(50, 216.degrees)),
+                     lineTo(polar(50, 288.degrees)),
+                     lineTo(polar(50, 360.degrees))
+                   ))
 
 val spacer =
-  rectangle(10, 100).noLine.noFill
+  Image.rectangle(10, 100).noStroke.noFill
 
 def style(image: Image): Image =
-  image.lineWidth(6.0).lineColor(paleTurquoise).fillColor(turquoise)
+  image.strokeWidth(6.0).strokeColor(paleTurquoise).fillColor(turquoise)
 
 val image = 
-  style(triangle) beside spacer beside style(square) beside spacer beside style(pentagon)
+  style(triangle).beside(spacer).beside(style(square)).beside(spacer).beside(style(pentagon))
 ```
 </div>
 
@@ -182,10 +183,12 @@ Making this generalisation also makes it easier to play around with different co
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
-import doodle.core.Image._
 import doodle.core.Point._
 import doodle.core.PathElement._
 import doodle.core.Color._
@@ -199,38 +202,38 @@ def curve(radius: Int, start: Angle, increment: Angle): PathElement = {
 }
 
 val triangle =
-  closedPath(List(
-               moveTo(polar(50, 0.degrees)),
-               curve(50, 0.degrees, 120.degrees),
-               curve(50, 120.degrees, 120.degrees),
-               curve(50, 240.degrees, 120.degrees)
-             ))
+  Image.closedPath(List(
+                     moveTo(polar(50, 0.degrees)),
+                     curve(50, 0.degrees, 120.degrees),
+                     curve(50, 120.degrees, 120.degrees),
+                     curve(50, 240.degrees, 120.degrees)
+                   ))
 
 val square =
-  closedPath(List(
-               moveTo(polar(50, 45.degrees)),
-               curve(50, 45.degrees, 90.degrees),
-               curve(50, 135.degrees, 90.degrees),
-               curve(50, 225.degrees, 90.degrees),
-               curve(50, 315.degrees, 90.degrees)
-             ))
+  Image.closedPath(List(
+                     moveTo(polar(50, 45.degrees)),
+                     curve(50, 45.degrees, 90.degrees),
+                     curve(50, 135.degrees, 90.degrees),
+                     curve(50, 225.degrees, 90.degrees),
+                     curve(50, 315.degrees, 90.degrees)
+                   ))
 
 val pentagon =
-  closedPath((List(
-                moveTo(polar(50, 72.degrees)),
-                curve(50, 72.degrees, 72.degrees),
-                curve(50, 144.degrees, 72.degrees),
-                curve(50, 216.degrees, 72.degrees),
-                curve(50, 288.degrees, 72.degrees),
-                curve(50, 360.degrees, 72.degrees)
-              )))
+  Image.closedPath((List(
+                      moveTo(polar(50, 72.degrees)),
+                      curve(50, 72.degrees, 72.degrees),
+                      curve(50, 144.degrees, 72.degrees),
+                      curve(50, 216.degrees, 72.degrees),
+                      curve(50, 288.degrees, 72.degrees),
+                      curve(50, 360.degrees, 72.degrees)
+                    )))
 
 val spacer =
-  rectangle(10, 100).noLine.noFill
+  Image.rectangle(10, 100).noStroke.noFill
 
 def style(image: Image): Image =
-  image.lineWidth(6.0).lineColor(paleTurquoise).fillColor(turquoise)
+  image.strokeWidth(6.0).strokeColor(paleTurquoise).fillColor(turquoise)
 
-val image = style(triangle) beside spacer beside style(square) beside spacer beside style(pentagon)
+val image = style(triangle).beside(spacer).beside(style(square)).beside(spacer).beside(style(pentagon))
 ```
 </div>

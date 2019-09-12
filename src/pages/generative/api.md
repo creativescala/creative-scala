@@ -2,8 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 So far we've seen only the very basics of using `Random`. In this section we'll see more of its features, and use these features to create more interesting pictures.
@@ -45,7 +47,7 @@ For example, we can create a method that given a color randomly perturbs it.
 ```scala mdoc:silent
 def nextColor(color: Color): Random[Color] = {
   val spin = Random.normal(15.0, 10.0)
-  spin map { s => color.spin(s.degrees) }
+  spin.map{ s => color.spin(s.degrees) }
 }
 ```
 
@@ -53,18 +55,18 @@ Using `nextColor` we can create a series of boxes with a gradient that is partly
 
 ```scala mdoc:silent
 def coloredRectangle(color: Color, size: Int): Image =
-  rectangle(size, size).
-    lineWidth(5.0).
-    lineColor(color.spin(30.degrees)).
-    fillColor(color)
+  Image.rectangle(size, size)
+       .strokeWidth(5.0)
+       .strokeColor(color.spin(30.degrees))
+       .fillColor(color)
 
 def randomGradientBoxes(count: Int, color: Color): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
     case n =>
       val box = coloredRectangle(color, 20)
-      val boxes = nextColor(color) flatMap { c => randomGradientBoxes(n-1, c) }
-      boxes map { b => box beside b }
+      val boxes = nextColor(color).flatMap{ c => randomGradientBoxes(n-1, c) }
+      boxes.map{ b => box beside b }
   }
 ```
 
@@ -127,8 +129,10 @@ Changing the noise will change the shape of the result---it's worth playing arou
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 ```
 ```scala mdoc:silent
@@ -174,15 +178,17 @@ The definition of `walk` is a structural recursion over the natural numbers with
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 val start = Random.always(Point.zero)
 def step(current: Point): Random[Point] = {
   val drift = Point(current.x + 10, current.y)
   val noise =
-    Random.normal(0.0, 5.0) flatMap { x =>
-      Random.normal(0.0, 5.0) map { y =>
+    Random.normal(0.0, 5.0).flatMap{ x =>
+      Random.normal(0.0, 5.0).map{ y =>
         Vec(x, y)
       }
     }
@@ -195,12 +201,12 @@ def render(point: Point): Image = {
   val length = (point - Point.zero).length
   val sides = (length / 20).toInt + 3
   val hue = (length / 200).turns
-  val color = Color.hsl(hue, 0.7.normalized, 0.5.normalized)
-  Image.
-    star(sides, 5, 3, 0.degrees).
-    noFill.
-    lineColor(color).
-    at(point.toVec)
+  val color = Color.hsl(hue, 0.7, 0.5)
+  Image
+    .star(sides, 5, 3, 0.degrees)
+    .noFill
+    .strokeColor(color)
+    .at(point.toVec)
 }
 
 def walk(steps: Int): Random[Image] = {
@@ -209,13 +215,13 @@ def walk(steps: Int): Random[Image] = {
       case 0 => Random.always(image on render(current))
       case n =>
         val next = step(current)
-        next flatMap { pt =>
+        next.flatMap{ pt =>
           loop(count - 1, pt, image on render(current))
         }
     }
   }
 
-  start flatMap { pt => loop(steps, pt, Image.empty) }
+  start.flatMap{ pt => loop(steps, pt, Image.empty) }
 }
 ```
 </div>
@@ -240,15 +246,17 @@ This is because `particleSystem` adds no new random choices.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 val start = Random.always(Point.zero)
 def step(current: Point): Random[Point] = {
   val drift = Point(current.x + 10, current.y)
   val noise =
-    Random.normal(0.0, 5.0) flatMap { x =>
-      Random.normal(0.0, 5.0) map { y =>
+    Random.normal(0.0, 5.0).flatMap{ x =>
+      Random.normal(0.0, 5.0).map{ y =>
         Vec(x, y)
       }
     }
@@ -259,11 +267,11 @@ def render(point: Point): Image = {
   val length = (point - Point.zero).length
   val sides = (length / 20).toInt + 3
   val hue = (length / 200).turns
-  val color = Color.hsl(hue, 0.7.normalized, 0.5.normalized)
+  val color = Color.hsl(hue, 0.7, 0.5)
   Image.
     star(sides, 5, 3, 0.degrees).
     noFill.
-    lineColor(color).
+    strokeColor(color).
     at(point.toVec)
 }
 
@@ -273,20 +281,20 @@ def walk(steps: Int): Random[Image] = {
       case 0 => Random.always(image on render(current))
       case n =>
         val next = step(current)
-        next flatMap { pt =>
+        next.flatMap{ pt =>
           loop(count - 1, pt, image on render(current))
         }
     }
   }
 
-  start flatMap { pt => loop(steps, pt, Image.empty) }
+  start.flatMap{ pt => loop(steps, pt, Image.empty) }
 }
 ```
 ```scala mdoc:silent
 def particleSystem(particles: Int, steps: Int): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
-    case n => walk(steps) flatMap { img1 =>
+    case n => walk(steps).flatMap{ img1 =>
       particleSystem(n-1, steps) map { img2 =>
         img1 on img2
       }
@@ -319,14 +327,16 @@ This is like doing the opposite of substitution---lifting concrete representatio
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 def step(current: Point): Random[Point] = {
   val drift = Point(current.x + 10, current.y)
   val noise =
-    Random.normal(0.0, 5.0) flatMap { x =>
-      Random.normal(0.0, 5.0) map { y =>
+    Random.normal(0.0, 5.0).flatMap{ x =>
+      Random.normal(0.0, 5.0).map{ y =>
         Vec(x, y)
       }
     }
@@ -345,13 +355,13 @@ def walk(
       case 0 => Random.always(image on render(current))
       case n =>
         val next = step(current)
-        next flatMap { pt =>
+        next.flatMap{ pt =>
           loop(count - 1, pt, image on render(current))
         }
     }
   }
 
-  start flatMap { pt => loop(steps, pt, Image.empty) }
+  start.flatMap{ pt => loop(steps, pt, Image.empty) }
 }
 
 def particleSystem(
@@ -363,9 +373,9 @@ def particleSystem(
 ): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
-    case n => walk(steps, start, render) flatMap { img1 =>
-      particleSystem(n-1, steps, start, render, walk) map { img2 =>
-        img1 on img2
+    case n => walk(steps, start, render).flatMap{ img1 =>
+      particleSystem(n-1, steps, start, render, walk).map{ img2 =>
+        img1.on(img2)
       }
     }
   }
@@ -380,17 +390,19 @@ At this point we can apply our principle of substitution---we can replace a meth
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
-import doodle.syntax._
 ```
 ```scala mdoc:silent
 def particleSystem(particles: Int, walk: Random[Image]): Random[Image] = {
   particles match {
     case 0 => Random.always(Image.empty)
-    case n => walk flatMap { img1 =>
+    case n => walk.flatMap{ img1 =>
       particleSystem(n-1, walk) map { img2 =>
-        img1 on img2
+        img1.on(img2)
       }
     }
   }

@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Let's look over the turtle graphics API, and use it to draw a few different images.
@@ -142,7 +142,7 @@ def polygon(sides: Int, size: Int): Image = {
     (1 to sides).toList.map { i =>
       PathElement.lineTo(polar(size, rotation * i))
     }
-  closedPath(PathElement.moveTo(polar(size, Angle.zero)) :: elts)
+  Image.closedPath(PathElement.moveTo(polar(size, Angle.zero)) :: elts)
 }
 ```
 

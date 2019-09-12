@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 
@@ -72,8 +72,10 @@ On the right-hand side we replace 1 with `aBox`, we replace + with `beside`, and
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc
@@ -176,8 +178,10 @@ Here's what we wrote.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc
 def cross(count: Int): Image = {
@@ -243,8 +247,10 @@ Putting it all together we get
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 def chessboard(count: Int): Image = {
@@ -292,13 +298,15 @@ Here's our implementation.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc
 def sierpinski(count: Int): Image = {
-  val triangle = Image.triangle(10, 10) lineColor Color.magenta
+  val triangle = Image.triangle(10, 10) strokeColor Color.magenta
   count match {
     case 0 => triangle above (triangle beside triangle)
     case n =>

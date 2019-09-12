@@ -2,23 +2,23 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 The code we've been writing inside the console will cause problems running outside the console. For example, put the following code into `Example.scala` in the `src/main/scala`.
 
 ```scala mdoc:silent
-Image.circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
+Image.circle(100).fillColor(Color.paleGoldenrod).strokeColor(Color.indianRed)
 ```
 
 Now restart SBT and try to enter the console. You should see an error similar to
 
 ```bash
 [error] src/main/scala/Example.scala:1: expected class or object definition
-[error] circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
+[error] circle(100) fillColor Color.paleGoldenrod strokeColor Color.indianRed
 [error] ^
 [error] one error found
 ```
@@ -36,50 +36,50 @@ The error message gives us some hint: `expected class or object definition`. We 
 
 ```scala mdoc:silent
 object Example {
-  (circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed).draw
+  Image.circle(100).fillColor(Color.paleGoldenrod).strokeColor(Color.indianRed).draw()
 }
 ```
 
 Now the code won't compile for a different reason. You should see a lot of errors similar to
 
 ```bash
-[error] doodle/shared/src/main/scala/doodle/examples/Example.scala:2: not found: value circle
-[error]   (circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed).draw
-[error]    ^
+[error] doodle/shared/src/main/scala/doodle/examples/Example.scala:1: not found: value Image
+[error]   Image.circle(100).fillColor(Color.paleGoldenrod).strokeColor(Color.indianRed).draw()
+[error]   ^
 ```
 
 The compiler is saying that we've used a name, `circle`, but the compiler doesn't know what value this name refers to.
 It will have a similiar issue with `Color` in the code above.
 We'll talk in more details about names in just a moment.
 Right now let's tell the compiler where it can find the values for these names by adding some `import` statements.
-The name `Color` is found inside a *package* called `doodle.core`, and the name `circle` is within the object `Image` that is in `doodle.core`.
-We can tell the compiler to use all the name in `doodle.core`, and all the names in the object `Image` by writing
+The name `Color` is found inside a *package* called `doodle.core`, and the name `circle` is within the object `Image` that is in `doodle.image`.
+We can tell the compiler to use all the name in `doodle.core`, and all the names in `doodle.image` by writing
 
 ```scala mdoc:silent
 import doodle.core._
-import doodle.core.Image._
+import doodle.image._
 ```
 
 There are a few other names that the compiler will need to find for the complete code to work.
 We can import these with the lines
 
 ```scala mdoc:silent
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We should place all these imports at the top of the file, so the complete code looks like
 
 ```scala
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 
 object Example {
-  (circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed).draw
+  Image.circle(100).fillColor(Color.paleGoldenrod).strokeColor(Color.indianRed).draw()
 }
 ```
 

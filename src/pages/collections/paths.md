@@ -125,7 +125,7 @@ def star(sides: Int, skip: Int, radius: Double) = {
       LineTo(point)
   }
 
-  Path(elements) lineWidth 2
+  Path(elements) strokeWidth 2
 }
 ~~~
 
@@ -163,8 +163,8 @@ def star(sides: Int, skip: Int, radius: Double) = {
   }
 
   OpenPath(elements).
-    lineWidth(2).
-    lineColor(Color.hsl(centerAngle, 1.normalized, .25.normalized)).
+    strokeWidth(2).
+    strokeColor(Color.hsl(centerAngle, 1.normalized, .25.normalized)).
     fillColor(Color.hsl(centerAngle, 1.normalized, .75.normalized))
 }
 ~~~

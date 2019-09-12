@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We're now ready to tackle the question of order-of-evaluation.
@@ -143,11 +143,11 @@ Color.hsl(
   },
   {
     println("b")
-    1.normalized
+    1.0
   },
   {
     println("c")
-    1.normalized
+    1.0
   }
 )
 ```
@@ -155,8 +155,8 @@ Color.hsl(
 We can write this more compactly as
 ```scala mdoc
 Color.hsl({ println("a"); 0.degrees },
-          { println("b"); 1.normalized },
-          { println("c"); 1.normalized })
+          { println("b"); 1.0 },
+          { println("c"); 1.0 })
 ```
 </div>
 

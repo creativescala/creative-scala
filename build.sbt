@@ -1,6 +1,6 @@
 import scala.sys.process._
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.9"
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -15,10 +15,8 @@ scalacOptions ++= Seq(
 
 enablePlugins(MdocPlugin)
 
-resolvers += Resolver.bintrayRepo("underscoreio", "training")
-
 libraryDependencies ++= Seq(
-  "underscoreio" %% "doodle" % "0.8.3",
+  "org.creativescala" %% "doodle" % "0.9.7",
   "org.typelevel" %% "cats-core" % "1.1.0"
 )
 

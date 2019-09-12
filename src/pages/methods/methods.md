@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 In a previous chapter we created the image shown in [@fig:methods:sequential-boxes] using the program
@@ -15,8 +15,8 @@ In a previous chapter we created the image shown in [@fig:methods:sequential-box
 ```scala mdoc:silent
 val box =
   Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(Color.royalBlue.spin(30.degrees)).
+    strokeWidth(5.0).
+    strokeColor(Color.royalBlue.spin(30.degrees)).
     fillColor(Color.royalBlue)
 
 box beside box beside box beside box beside box
@@ -29,8 +29,8 @@ Right now we would have to write out the expression again for each different cho
 val paleGoldenrod = {
   val box =
     Image.rectangle(40, 40).
-      lineWidth(5.0).
-      lineColor(Color.paleGoldenrod.spin(30.degrees)).
+      strokeWidth(5.0).
+      strokeColor(Color.paleGoldenrod.spin(30.degrees)).
       fillColor(Color.paleGoldenrod)
 
   box beside box beside box beside box beside box
@@ -39,8 +39,8 @@ val paleGoldenrod = {
 val lightSteelBlue = {
   val box =
     Image.rectangle(40, 40).
-      lineWidth(5.0).
-      lineColor(Color.lightSteelBlue.spin(30.degrees)).
+      strokeWidth(5.0).
+      strokeColor(Color.lightSteelBlue.spin(30.degrees)).
       fillColor(Color.lightSteelBlue)
 
   box beside box beside box beside box beside box
@@ -49,8 +49,8 @@ val lightSteelBlue = {
 val mistyRose = {
   val box =
     Image.rectangle(40, 40).
-      lineWidth(5.0).
-      lineColor(Color.mistyRose.spin(30.degrees)).
+      strokeWidth(5.0).
+      strokeColor(Color.mistyRose.spin(30.degrees)).
       fillColor(Color.mistyRose)
 
   box beside box beside box beside box beside box
@@ -66,8 +66,8 @@ We can do exactly this by declaring a method.
 def boxes(color: Color): Image = {
   val box =
     Image.rectangle(40, 40).
-      lineWidth(5.0).
-      lineColor(color.spin(30.degrees)).
+      strokeWidth(5.0).
+      strokeColor(color.spin(30.degrees)).
       fillColor(color)
 
   box beside box beside box beside box beside box

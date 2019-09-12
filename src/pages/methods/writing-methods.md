@@ -71,8 +71,8 @@ Now fill in the body of the methods.
 ```tut:silent:book
 def box(color: Color, spin: Angle): Image =
   Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(color.spin(spin + 30.degrees)).
+    strokeWidth(5.0).
+    strokeColor(color.spin(spin + 30.degrees)).
     fillColor(color.spin(spin)) 
 
 def gradientBoxes(color: Color): Image = {
@@ -103,8 +103,8 @@ Here's our implementation.
 ```tut:silent:book
 def circle(color: Color, n: Int): Image = 
   Image.circle(50 + (n * 10)).
-    lineColor(color.spin((15 * n).degrees)).
-    lineWidth(3)
+    strokeColor(color.spin((15 * n).degrees)).
+    strokeWidth(3)
     
 def concentricCircles(color: Color): Image = {
   circle(color, 0) on

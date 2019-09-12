@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 At this point you might be thinking it would be nice to create a method to draw polygons rather than constructing each one by hand.
@@ -105,8 +105,10 @@ For example, here's how we can write `length` so it works with lists of any type
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc
 def length[A](list: List[A]): Int =
@@ -230,8 +232,10 @@ It's structural recursion over the natural numbers, but this time with an intern
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc
 def ascending(n: Int): List[Int] = {
@@ -269,8 +273,10 @@ In this exercise we're asking you to use a type variable. Otherwise it is the sa
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc
 def fill[A](n: Int, a: A): List[A] =
@@ -438,9 +444,10 @@ If you managed to work this one out, congratulations---you really understand str
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.random._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc
 def reverse[A](list: List[A]): List[A] = {
@@ -487,13 +494,13 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
       case n =>
         LineTo(polar(size, rotation * n + initialRotation)) :: iter(n - 1, rotation)
     }
-  closedPath(moveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides))
+  Image.closedPath(moveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides))
 }
 
 def style(img: Image): Image = {
   img.
-    lineWidth(3.0).
-    lineColor(Color.mediumVioletRed).
+    strokeWidth(3.0).
+    strokeColor(Color.mediumVioletRed).
     fillColor(Color.paleVioletRed.fadeOut(0.5.normalized))
 }
 
@@ -503,7 +510,7 @@ def makeShape(n: Int, increment: Int): Image =
 def makeColor(n: Int, spin: Angle, start: Color): Color =
   start spin (spin * n)
 
-val baseColor = Color.hsl(0.degrees, 0.7.normalized, 0.7.normalized)
+val baseColor = Color.hsl(0.degrees, 0.7, 0.7)
 
 def makeImage(n: Int): Image = {
   n match {

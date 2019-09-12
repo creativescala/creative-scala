@@ -2,8 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We've learned a lot about names in the previous section.
@@ -31,28 +33,31 @@ Let's take as an example creating a sequence of boxes like shown in [@fig:progra
 We can write out a single expression that creates the picture.
 
 ```scala mdoc:silent
-(
-  Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue) beside
-  Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue) beside
-  Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue) beside
-  Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue) beside
-  Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue)
-)
+Image.rectangle(40, 40)
+     .strokeWidth(5.0)
+     .strokeColor(Color.royalBlue.spin(30.degrees))
+     .fillColor(Color.royalBlue)
+     .beside(
+       Image.rectangle(40, 40)
+         .strokeWidth(5.0)
+         .strokeColor(Color.royalBlue.spin(30.degrees))
+         .fillColor(Color.royalBlue)
+     ).beside(
+        Image.rectangle(40, 40)
+          .strokeWidth(5.0)
+          .strokeColor(Color.royalBlue.spin(30.degrees))
+          .fillColor(Color.royalBlue)
+     ).beside(
+        Image.rectangle(40, 40)
+             .strokeWidth(5.0)
+             .strokeColor(Color.royalBlue.spin(30.degrees))
+            .fillColor(Color.royalBlue)
+     ).beside(
+        Image.rectangle(40, 40)
+             .strokeWidth(5.0)
+             .strokeColor(Color.royalBlue.spin(30.degrees))
+             .fillColor(Color.royalBlue)
+     )
 ```
 
 In this code it is difficult to see the simple pattern within.
@@ -61,12 +66,12 @@ If we make the abstraction of naming the basic box the code becomes much easier 
 
 ```scala mdoc:silent
 val box =
-  Image.rectangle(40, 40).
-    lineWidth(5.0).
-    lineColor(Color.royalBlue.spin(30.degrees)).
-    fillColor(Color.royalBlue)
+  Image.rectangle(40, 40)
+       .strokeWidth(5.0)
+       .strokeColor(Color.royalBlue.spin(30.degrees))
+       .fillColor(Color.royalBlue)
 
-box beside box beside box beside box beside box
+box.beside(box).beside(box).beside(box).beside(box)
 ```
 
 Now we can easily see how the box is made, and easily see that the final picture is that box repeated five times.
@@ -101,7 +106,7 @@ val stand =
   Image.rectangle(6, 20) above Image.rectangle(20, 6).fillColor(Color.brown)
 
 val ground =
-  Image.rectangle(80, 25).lineWidth(0).fillColor(Color.green)
+  Image.rectangle(80, 25).strokeWidth(0).fillColor(Color.green)
 
 val image = coloredTarget above stand above ground
 ```
@@ -121,8 +126,10 @@ As you can see, by breaking the scene down into smaller components we were able 
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 ```scala mdoc:silent
 val roof = Image.triangle(50, 30) fillColor Color.brown
@@ -157,6 +164,6 @@ val image = (
   houseAndGarden beside
   houseAndGarden beside
   houseAndGarden
-) lineWidth 0
+) strokeWidth 0
 ```
 </div>

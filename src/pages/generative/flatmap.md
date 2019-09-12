@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 <div class="callout callout-info">
@@ -28,17 +28,17 @@ def concentricCircles(count: Int, size: Int, color: Color): Image =
   count match {
     case 0 => Image.empty
     case n => 
-      Image.circle(size).fillColor(color) on concentricCircles(n-1, size + 5, color.spin(15.degrees))
+      Image.circle(size).fillColor(color).on(concentricCircles(n-1, size + 5, color.spin(15.degrees)))
   }
   
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
+def randomColor(s: Double, l: Double): Random[Color] =
   randomAngle map (hue => Color.hsl(hue, s, l))
   
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
-  color map (fill => Image.circle(r) fillColor fill)
+  color.map(fill => Image.circle(r).fillColor(fill))
 ```
 
 Let's create a method skeleton for `randomConcentricCircles`.
@@ -53,8 +53,10 @@ We know this is a structural recursion over the natural numbers so we can fill o
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 ```
 ```scala mdoc:silent
@@ -70,8 +72,11 @@ The base case will be `Random.always(Image.empty)`, the direct of equivalent of 
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 ```
 ```scala mdoc:silent
@@ -88,25 +93,27 @@ We could try using
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, s, l))
+def randomColor(s: Double, l: Double): Random[Color] =
+  randomAngle.map(hue => Color.hsl(hue, s, l))
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
-  color map (fill => Image.circle(r) fillColor fill)
+  color.map(fill => Image.circle(r).fillColor(fill))
 ```
 ```scala mdoc:silent
-val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+val randomPastel = randomColor(0.7, 0.7)
 ```
 ```scala mdoc:fail
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Image.empty
     case n => 
-      randomCircle(size, randomPastel) on randomConcentricCircles(n-1, size + 5)
+      randomCircle(size, randomPastel).on(randomConcentricCircles(n-1, size + 5))
   }
 ```
 
@@ -138,25 +145,27 @@ The complete code becomes
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, s, l))
+def randomColor(s: Double, l: Double): Random[Color] =
+  randomAngle.map(hue => Color.hsl(hue, s, l))
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
-  color map (fill => Image.circle(r) fillColor fill)
-val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+  color.map(fill => Image.circle(r).fillColor(fill))
+val randomPastel = randomColor(0.7, 0.7)
 ```
 ```scala mdoc:silent
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
     case n => 
-      randomCircle(size, randomPastel) flatMap { circle =>
-        randomConcentricCircles(n-1, size + 5) map { circles =>
-          circle on circles
+      randomCircle(size, randomPastel).flatMap{ circle =>
+        randomConcentricCircles(n-1, size + 5).map{ circles =>
+          circle.on(circles)
         }
       }
   }
@@ -261,36 +270,38 @@ they differ?
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, s, l))
-val randomPastel = randomColor(0.7.normalized, 0.7.normalized)
+def randomColor(s: Double, l: Double): Random[Color] =
+  randomAngle.map(hue => Color.hsl(hue, s, l))
+val randomPastel = randomColor(0.7, 0.7)
 ```
 ```scala mdoc:silent
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
-  color map (fill => Image.circle(r) fillColor fill)
+  color.map(fill => Image.circle(r).fillColor(fill))
 
 def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   count match {
     case 0 => Random.always(Image.empty)
     case n => 
-      randomCircle(size, randomPastel) flatMap { circle =>
-        randomConcentricCircles(n-1, size + 5) map { circles =>
-          circle on circles
+      randomCircle(size, randomPastel).flatMap{ circle =>
+        randomConcentricCircles(n-1, size + 5).map{ circles =>
+          circle.on(circles)
         }
       }
   }
 
 val circles = randomConcentricCircles(5, 10)
 val programOne = 
-  circles flatMap { c1 => 
-    circles flatMap { c2 => 
-      circles map { c3 => 
-        c1 beside c2 beside c3
+  circles.flatMap{ c1 => 
+    circles.flatMap{ c2 => 
+      circles.map{ c3 => 
+        c1.beside(c2).beside(c3)
       } 
     }
   }
@@ -325,8 +336,8 @@ Recall the basic structural recursion for making a row of boxes
 ```scala mdoc
 def rowOfBoxes(count: Int): Image =
   count match {
-    case 0 => rectangle(20, 20)
-    case n => rectangle(20, 20) beside rowOfBoxes(n-1)
+    case 0 => Image.rectangle(20, 20)
+    case n => Image.rectangle(20, 20).beside(rowOfBoxes(n-1))
   }
 ```
 
@@ -339,8 +350,10 @@ This code uses exactly the same pattern as `randomConcentricCircles`.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 import doodle.random._
 ```
 ```scala mdoc
@@ -348,19 +361,19 @@ val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 
 val randomColor: Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, 0.7.normalized, 0.7.normalized))
+  randomAngle.map(hue => Color.hsl(hue, 0.7, 0.7))
 
 def coloredRectangle(color: Color): Image =
-  rectangle(20, 20) fillColor color
+  Image.rectangle(20, 20).fillColor(color)
 
 def randomColorBoxes(count: Int): Random[Image] =
   count match {
-    case 0 => randomColor map { c => coloredRectangle(c) }
+    case 0 => randomColor.map{ c => coloredRectangle(c) }
     case n =>
-      val box = randomColor map { c => coloredRectangle(c) }
+      val box = randomColor.map{ c => coloredRectangle(c) }
       val boxes = randomColorBoxes(n-1)
-      box flatMap { b =>
-        boxes map { bs => b beside bs }
+      box.flatMap{ b =>
+        boxes.map{ bs => b.beside(bs) }
       }
   }
 ```

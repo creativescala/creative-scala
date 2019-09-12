@@ -2,10 +2,10 @@
 
 ```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Your text editor or IDE will allow you to save code to a file, but we need to save them in the right place so the Scala compiler can find them.
@@ -16,7 +16,7 @@ There is a special command, that only works from the console, that allows us to 
 This command is called `:paste`[^load]. We follow `:paste` with the name of the file we want to run. For example, if we save in the file `src/main/scala/Example.scala` the expression
 
 ```scala mdoc:silent
-circle(100) fillColor Color.paleGoldenrod lineColor Color.indianRed
+Image.circle(100).fillColor(Color.paleGoldenrod).strokeColor(Color.indianRed)
 ```
 
 we can then run this code by writing at the console
