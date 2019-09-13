@@ -5,12 +5,12 @@ In this chapter we explore a new way of creating paths---turtle graphics---and l
 <div class="callout callout-info">
 If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
 
-```tut:silent
+```scala mdoc:silent
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 </div>
 
@@ -19,7 +19,7 @@ import doodle.backend.StandardInterpreter._
 So far our paths have used an absolute coordinate system. 
 For example, if we wanted to draw a square we'd use code like
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.core.PathElement._
 
 val path = 
@@ -32,7 +32,7 @@ It's often easier to define paths in terms of relative coordinates, specifying h
 This is how a turtle graphics system works. 
 Here's an example.
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.turtle._
 import doodle.turtle.Instruction._
 
@@ -44,7 +44,7 @@ val instructions: List[Instruction] =
        forward(10))
 
 // Ask the turtle to draw these instructions, creating an Image
-val path: Image = Turtle.draw(instructions)
+val image: Image = Turtle.draw(instructions)
 ```
 
 So where's the turtle in all this? 

@@ -1,11 +1,11 @@
 ## Reasoning about Recursion
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We're now experienced users of structural recursion over the natural numbers.
@@ -16,7 +16,7 @@ In the case of a method call, we can substitute the body of the method with appr
 
 Our very first example of recursion was `boxes`, written like so:
 
-```tut:silent
+```scala mdoc:silent
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 
 def boxes(count: Int): Image =
@@ -30,7 +30,7 @@ Let's try using substitution on `boxes(3)` to see what we get.
 
 Our first substitution is
 
-```tut:silent
+```scala mdoc:silent
 boxes(3)
 // Substitute body of `boxes`
 3 match {
@@ -41,7 +41,7 @@ boxes(3)
 
 Knowing how to evaluate a `match` expression and using substitution again gives us
 
-```tut:silent
+```scala mdoc:silent
 3 match {
   case 0 => Image.empty
   case n => aBox beside boxes(n-1)
@@ -52,7 +52,7 @@ aBox beside boxes(2)
 
 We can substitute again on `boxes(2)` to obtain
 
-```tut:silent
+```scala mdoc:silent
 aBox beside boxes(2)
 // Substitute body of boxes
 aBox beside {
@@ -69,7 +69,7 @@ aBox beside {
 
 Repeating the process a few more times we get
 
-```tut:silent
+```scala mdoc:silent
 aBox beside {
   aBox beside {
     1 match {
@@ -107,7 +107,7 @@ aBox beside {
 
 Our final result, which simplifies to
 
-```tut:silent
+```scala mdoc:silent
 aBox beside aBox beside aBox beside Image.empty
 ```
 
@@ -119,7 +119,15 @@ A more practical way to reason about recursion is to assume that the recursion w
 
 For example, when reasoning about `boxes`
 
-```tut:silent
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
+```scala mdoc:silent
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -139,7 +147,7 @@ This way of reasoning is much more compact that using substitution *and* guarant
 Below are some rather silly examples of structural recursion.
 Work out if the methods do what they claim to do *without* running them.
 
-```tut:silent
+```scala mdoc:silent
 // Given a natural number, returns that number
 // Examples:
 //   identity(0) == 0
@@ -158,7 +166,7 @@ Looking at the recursive case, we assume that `identity(n-1)` returns the identi
 The identity for `n` is then `1 + identity(n-1)`.
 </div>
 
-```tut:silent
+```scala mdoc:silent
 // Given a natural number, double that number
 // Examples:
 //   double(0) == 0
@@ -177,7 +185,7 @@ Firstly, because we're multiplying in the recursive case we will eventualy end u
 
 We might try and fix this by adding a case for `1` (and perhaps wonder why the structural recursion skeleton let us down).
 
-```tut:silent
+```scala mdoc:reset:silent
 def double(n: Int): Int =
   n match {
     case 0 => 0
@@ -197,7 +205,7 @@ A bit of algebra:
 So if `double(n-1)` is `2(n-1)` then we should *add* 2, not multiply by 2.
 The correct method is
 
-```tut:silent
+```scala mdoc:reset:silent
 def double(n: Int): Int =
   n match {
     case 0 => 0

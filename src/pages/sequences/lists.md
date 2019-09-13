@@ -1,11 +1,11 @@
 ## Working with Lists
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 At this point you might be thinking it would be nice to create a method to draw polygons rather than constructing each one by hand.
@@ -25,7 +25,7 @@ Lists have a recursive structure, and one that is very similar to the structure 
 
 For example, we can write out the list `List(1, 2, 3, 4)` in its "long" form as
 
-```tut:book
+```scala mdoc
 1 :: 2 :: 3 :: 4 :: Nil
 ```
 
@@ -37,7 +37,7 @@ What does this mean?
 It means we can easily transform a natural number into a `List` using our familiar tool of structural recursion[^free-monoid].
 Here's a very simple example, which given a number builds a list of that length containing the `String` "Hi".
 
-```tut:book
+```scala mdoc
 def sayHi(length: Int): List[String] =
   length match {
     case 0 => Nil
@@ -57,7 +57,7 @@ The code here is transforming:
 This recursive structure also means we can transform lists into other recursive structures, such a natural number, different lists, chessboards, and so on.
 Here we increment every element in a list---that is, transform a list to a list---using structural recursion.
 
-```tut:book
+```scala mdoc
 def increment(list: List[Int]): List[Int] =
   list match {
     case Nil => Nil
@@ -69,7 +69,7 @@ increment(List(1, 2, 3))
 
 Here we sum the elements of a list of integers---that is, transform a list to a natural number---using structural recursion.
 
-```tut:book
+```scala mdoc
 def sum(list: List[Int]): Int =
   list match {
     case Nil => 0
@@ -87,7 +87,7 @@ This is an intentional symmetry.
 
 What about finding the length of a list? We know we can use our standard tool of structural recursion to write the method. Here's the code to calculate the length of a `List[Int]`.
 
-```tut:book
+```scala mdoc
 def length(list: List[Int]): Int =
   list match {
     case Nil => 0
@@ -103,7 +103,14 @@ A type variable is written in square brackets like `[A]` and comes after the met
 A type variable can stand in for any specific type, and we can use it in the parameter list or result type to indicate some type that we don't know up front.
 For example, here's how we can write `length` so it works with lists of any type.
 
-```tut:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc
 def length[A](list: List[A]): Int =
   list match {
     case Nil => 0
@@ -142,7 +149,7 @@ In these exercises we get some experience constructing lists using structural re
 
 Write a method called `ones` that accepts an `Int` `n` and returns a `List[Int]` with length `n` and every element `1`. For example
 
-```tut:invisible
+```scala mdoc:invisible
 def ones(n: Int): List[Int] =
   n match {
     case 0 => Nil
@@ -150,14 +157,14 @@ def ones(n: Int): List[Int] =
   }
 ```
 
-```tut:book
+```scala mdoc
 ones(3)
 ```
 
 <div class="solution">
 It's structural recursion over the natural numbers!
 
-```tut:book
+```scala mdoc:reset
 def ones(n: Int): List[Int] =
   n match {
     case 0 => Nil
@@ -171,7 +178,7 @@ ones(3)
 
 Write a method `descending` that accepts an natural number `n` and returns a `List[Int]` containing the natural numbers from `n` to `1` or the empty list if `n` is zero. For example
 
-```tut:invisible
+```scala mdoc:invisible
 def descending(n: Int): List[Int] =
   n match {
     case 0 => Nil
@@ -179,7 +186,7 @@ def descending(n: Int): List[Int] =
   }
 ```
 
-```tut:book
+```scala mdoc
 descending(0)
 descending(3)
 ```
@@ -187,7 +194,7 @@ descending(3)
 <div class="solution">
 Once more, we can employ structural recursion over the natural numbers.
 
-```tut:book
+```scala mdoc:reset
 def descending(n: Int): List[Int] =
   n match {
     case 0 => Nil
@@ -203,7 +210,7 @@ descending(3)
 
 Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero.
 
-```tut:invisible
+```scala mdoc:invisible
 def ascending(n: Int): List[Int] = {
   def iter(n: Int, counter: Int): List[Int] =
     n match {
@@ -215,7 +222,7 @@ def ascending(n: Int): List[Int] = {
 }
 ```
 
-```tut:book
+```scala mdoc
 ascending(0)
 ascending(3)
 ```
@@ -223,7 +230,14 @@ ascending(3)
 <div class="solution">
 It's structural recursion over the natural numbers, but this time with an internal accumulator.
 
-```tut:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc
 def ascending(n: Int): List[Int] = {
   def iter(n: Int, counter: Int): List[Int] =
     n match {
@@ -241,7 +255,7 @@ ascending(3)
 
 Create a method `fill` that accepts a natural number `n` and an element `a` of type `A` and constructs a list of length `n` where all elements are `a`.
 
-```tut:invisible
+```scala mdoc:invisible
 def fill[A](n: Int, a: A): List[A] =
   n match {
     case 0 => Nil
@@ -249,7 +263,7 @@ def fill[A](n: Int, a: A): List[A] =
   }
 ```
 
-```tut:book
+```scala mdoc
 fill(3, "Hi")
 fill(3, Color.blue)
 ```
@@ -257,7 +271,14 @@ fill(3, Color.blue)
 <div class="solution">
 In this exercise we're asking you to use a type variable. Otherwise it is the same pattern as before.
 
-```tut:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc
 def fill[A](n: Int, a: A): List[A] =
   n match {
     case 0 => Nil
@@ -275,7 +296,7 @@ In these exercises we practice the other side of list manipulation---transformin
 
 Write a method `double` that accepts a `List[Int]` and returns a list with each element doubled.
 
-```tut:invisible
+```scala mdoc:invisible
 def double(list: List[Int]): List[Int] =
   list match {
     case Nil => Nil
@@ -283,7 +304,7 @@ def double(list: List[Int]): List[Int] =
   }
 ```
 
-```tut:book
+```scala mdoc
 double(List(1, 2, 3))
 double(List(4, 9, 16))
 ```
@@ -291,7 +312,7 @@ double(List(4, 9, 16))
 <div class="solution">
 This is a structural recursion over a list, building a list at each step. The destructuring of the input is mirrored by the construction of the output.
 
-```tut:book
+```scala mdoc:reset
 def double(list: List[Int]): List[Int] =
   list match {
     case Nil => Nil
@@ -306,7 +327,7 @@ double(List(4, 9, 16))
 
 Write a method `product` that accepts a `List[Int]` and calculates the product of all the elements.
 
-```tut:invisible
+```scala mdoc:invisible
 def product(list: List[Int]): Int =
   list match {
     case Nil => 1
@@ -314,7 +335,7 @@ def product(list: List[Int]): Int =
   }
 ```
 
-```tut:book
+```scala mdoc
 product(Nil)
 product(List(1,2,3))
 ```
@@ -322,7 +343,7 @@ product(List(1,2,3))
 <div class="solution">
 This is a structural recursion over a list using the same pattern as `sum` in the examples above.
 
-```tut:book
+```scala mdoc:reset
 def product(list: List[Int]): Int =
   list match {
     case Nil => 1
@@ -337,7 +358,7 @@ product(List(1,2,3))
 
 Write a method `contains` that accepts a `List[A]` and an element of type `A` and returns true if the list contains the element and false otherwise.
 
-```tut:invisible
+```scala mdoc:invisible
 def contains[A](list: List[A], elt: A): Boolean =
   list match {
     case Nil => false
@@ -345,7 +366,7 @@ def contains[A](list: List[A], elt: A): Boolean =
   }
 ```
 
-```tut:book
+```scala mdoc
 contains(List(1,2,3), 3)
 contains(List("one", "two", "three"), "four")
 ```
@@ -353,7 +374,7 @@ contains(List("one", "two", "three"), "four")
 <div class="solution">
 Same pattern as before, but using a type variable to allow type of the elements to vary.
 
-```tut:book
+```scala mdoc:reset
 def contains[A](list: List[A], elt: A): Boolean =
   list match {
     case Nil => false
@@ -367,7 +388,7 @@ contains(List("one", "two", "three"), "four")
 
 Write a method `first` that accepts a `List[A]` and an element of type `A` and returns the first element of the list if it is not empty and otherwise returns the element of type `A` passed as a aprameter.
 
-```tut:invisible
+```scala mdoc:invisible
 def first[A](list: List[A], elt: A): A =
   list match {
     case Nil => elt
@@ -375,7 +396,7 @@ def first[A](list: List[A], elt: A): A =
   }
 ```
 
-```tut:book
+```scala mdoc
 first(Nil, 4)
 first(List(1,2,3), 4)
 ```
@@ -383,7 +404,7 @@ first(List(1,2,3), 4)
 <div class="solution">
 This method is similar to `contains` above, except we now use the type variable in the return type as well as in the parameter types.
 
-```tut:book
+```scala mdoc:reset
 def first[A](list: List[A], elt: A): A =
   list match {
     case Nil => elt
@@ -400,7 +421,7 @@ first(List(1,2,3), 4)
 
 Write a method `reverse` that accepts a `List[A]` and reverses the list.
 
-```tut:invisible
+```scala mdoc:invisible
 def reverse[A](list: List[A]): List[A] = {
   def iter(list: List[A], reversed: List[A]): List[A] =
     list match {
@@ -412,7 +433,7 @@ def reverse[A](list: List[A]): List[A] = {
 }
 ```
 
-```tut:book
+```scala mdoc
 reverse(List(1, 2, 3))
 reverse(List("a", "b", "c"))
 ```
@@ -421,7 +442,14 @@ reverse(List("a", "b", "c"))
 The trick here is to use an accumulator to hold the partially reversed list.
 If you managed to work this one out, congratulations---you really understand structural recursion well!
 
-```tut:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc
 def reverse[A](list: List[A]): List[A] = {
   def iter(list: List[A], reversed: List[A]): List[A] =
     list match {
@@ -454,7 +482,7 @@ Here's our code.
 Note how we factored the code into small components---though we could have taken the factoring further is we wanted to.
 (Can you see how? Hint: do we need to pass, say, `start` to every call of `makeColor` when it's not changing?)
 
-```tut:silent:book
+```scala mdoc:silent
 import Point._
 import PathElement._
 
@@ -466,13 +494,13 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
       case n =>
         LineTo(polar(size, rotation * n + initialRotation)) :: iter(n - 1, rotation)
     }
-  closedPath(moveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides))
+  Image.closedPath(moveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides))
 }
 
 def style(img: Image): Image = {
   img.
-    lineWidth(3.0).
-    lineColor(Color.mediumVioletRed).
+    strokeWidth(3.0).
+    strokeColor(Color.mediumVioletRed).
     fillColor(Color.paleVioletRed.fadeOut(0.5.normalized))
 }
 
@@ -482,7 +510,7 @@ def makeShape(n: Int, increment: Int): Image =
 def makeColor(n: Int, spin: Angle, start: Color): Color =
   start spin (spin * n)
 
-val baseColor = Color.hsl(0.degrees, 0.7.normalized, 0.7.normalized)
+val baseColor = Color.hsl(0.degrees, 0.7, 0.7)
 
 def makeImage(n: Int): Image = {
   n match {

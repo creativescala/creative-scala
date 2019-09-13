@@ -4,7 +4,7 @@
 
 ## Literals and Expressions
 
-~~~ scala
+```scala
 // Literals:
 123      // Int
 123.0    // Double
@@ -39,11 +39,11 @@ if(booleanExpression) expressionA else expressionB
   sideEffectExpression2
   resultExpression
 }
-~~~
+```
 
 ## Value and Method Declarations
 
-~~~ scala
+```scala
 // Value declaration syntax:
 val valueName: SomeType = resultExpression // declaration with explicit type
 val valueName = resultExpression           // declaration with inferred type
@@ -72,23 +72,23 @@ methodName(arg, arg)
 
 // Calling a method that has no parameter list:
 methodName
-~~~
+```
 
 ## Functions as Values
 
 Function values are written `(argName: ArgType, ...) => resultExpression`:
 
-~~~ scala
+```scala
 val double = (num: Int) => num * 2
 // double: Int => Int = <function1>
 
 val sum = (a: Int, b: Int) => a + b
 sum: (Int, Int) => Int = <function2>
-~~~
+```
 
 Multi-line functions are written using block expressions:
 
-~~~ scala
+```scala
 val printAndDouble = (num: Int) => {
   println("The number was " + num)
   num * 2
@@ -98,48 +98,48 @@ val printAndDouble = (num: Int) => {
 scala> printAndDouble(10)
 // The number was 10
 // res0: Int = 20
-~~~
+```
 
 We have to write function types when declaring parameters and return types.
 The syntax is `ArgType => ResultType` or `(ArgType, ...) => ResultType`:
 
-~~~ scala
+```scala
 def doTwice(value: Int, func: Int => Int): Int =
   func(func(value))
 // doTwice: (value: Int, func: Int => Int)Int
 
 doTwice(1, double)
 // res0: Int = 4
-~~~
+```
 
 Function values can be written inline as normal expressions:
 
-~~~ scala
+```scala
 doTwice(1, (num: Int) => num * 10)
 // res1: Int = 100
-~~~
+```
 
 We can sometimes omit the argument types,
 assuming the compiler can figure things out for us:
 
-~~~ scala
+```scala
 doTwice(1, num => num * 10)
 // res2: Int = 100
-~~~
+```
 
 ## Doodle Reference Guide
 
 ### Imports
 
-~~~ scala
+```scala
 // These imports get you everything you need:
 import doodle.core._
 import doodle.syntax._
-~~~
+```
 
 ### Creating Images
 
-~~~ scala
+```scala
 // Primitive images (black outline, no fill):
 val i: Image = Circle(radius)
 val i: Image = Rectangle(width, height)
@@ -155,26 +155,26 @@ val i: Image = imageA under  imageB // superimposed
 // Compound images written using method call syntax:
 val i: Image = imageA.beside(imageB)
 // etc...
-~~~
+```
 
 ### Styling Images
 
-~~~ scala
+```scala
 // Styling images written using operator syntax:
 val i: Image = image fillColor color   // new fill color (doesn't change line)
-val i: Image = image lineColor color   // new line color (doesn't change fill)
-val i: Image = image lineWidth integer // new line width (doesn't change fill)
-val i: Image = image fillColor color lineColor otherColor // new fill and line
+val i: Image = image strokeColor color   // new line color (doesn't change fill)
+val i: Image = image strokeWidth integer // new line width (doesn't change fill)
+val i: Image = image fillColor color strokeColor otherColor // new fill and line
 
 // Styling images using method call syntax:
 val i: Image = imageA.fillColor(color)
-val i: Image = imageA.fillColor(color).lineColor(otherColor)
+val i: Image = imageA.fillColor(color).strokeColor(otherColor)
 // etc...
-~~~
+```
 
 ### Colours
 
-~~~ scala
+```scala
 // Basic colors:
 val c: Color = Color.red                       // predefined colors
 val c: Color = Color.rgb(255.uByte, 127.uByte, 0.uByte)          // RGB color
@@ -195,11 +195,11 @@ val c: Color = someColor fadeOut    0.1.normalized // change opacity
 val c: Color = someColor.spin(10.degrees)
 val c: Color = someColor.lighten(0.1.normalized)
 // etc...
-~~~
+```
 
 ### Paths
 
-~~~ scala
+```scala
 // Create path from list of PathElements:
 val i: Image = OpenPath(List(
   MoveTo(Vec(0, 0).toPoint),
@@ -220,11 +220,11 @@ val e3: PathElement = BezierCurveTo(cp1Vec.toPoint, cp2Vec.toPoint, toVec.toPoin
 
 // NOTE: If the first element isn't a MoveTo,
 //       it is converted to one
-~~~
+```
 
 ### Angles and Vecs
 
-~~~ scala
+```scala
 val a: Angle = 30.degrees                // angle in degrees
 val a: Angle = 1.5.radians               // angle in radians
 val a: Angle = math.Pi.radians           // π radians
@@ -246,4 +246,4 @@ val x: Double = Vec(3, 4).x              // x coordinate
 val y: Double = Vec(3, 4).y              // y coordinate
 val a: Angle  = Vec(3, 4).angle          // counterclockwise from (1, 0)
 val l: Double = Vec(3, 4).length         // length
-~~~
+```

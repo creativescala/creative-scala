@@ -1,11 +1,11 @@
 ## Order of Evaluation
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We're now ready to tackle the question of order-of-evaluation.
@@ -45,14 +45,14 @@ Our tool for doing so will be the `println` method.
 The `println` method displays text on the console (a side effect) and evaluates to unit.
 Here's an example:
 
-```tut:book
+```scala mdoc
 println("Hello!")
 ```
 
 The side-effect of `println`---printing to the console---gives us a convenient way to investigate the order of evaluation.
 For example, the result of running
 
-```tut:book
+```scala mdoc
 println("A")
 println("B")
 println("C")
@@ -69,13 +69,13 @@ Let's use `println` to investigate further.
 In a pure program we can give a name to any expression and substitute any other occurrences of that expression with the name.
 Concretely, we can rewrite
 
-```tut:silent:book
+```scala mdoc:silent
 (2 + 2) + (2 + 2)
 ```
 
 to
 
-```tut:silent:book
+```scala mdoc:silent
 val a = (2 + 2)
 a + a
 ```
@@ -88,17 +88,17 @@ Using `println` as an example of an impure expression, demonstrates that this is
 Here is a simple example that illustrates this.
 The following two programs are observably different.
 
-```tut:book
+```scala mdoc
 println("Happy birthday to you!")
 println("Happy birthday to you!")
 println("Happy birthday to you!")
 ```
 
-```tut:book
-val a = println("Happy birthday to you!")
-a
-a
-a
+```scala mdoc
+val happy = println("Happy birthday to you!")
+happy
+happy
+happy
 ```
 
 Therefore we cannot freely use substitution in the presence of side effects, and we must be aware of the order of evaluation.
@@ -110,7 +110,7 @@ Therefore we cannot freely use substitution in the presence of side effects, and
 When we introduced scopes we also introduced block expressions, though we didn't call them that at the time.
 A block is created by curly braces (`{}`). It evaluates all the expressions inside the braces. The final result is the result of the last expression in the block.
 
-```tut:book
+```scala mdoc
 // Evaluates to three
 {
   val one = 1
@@ -127,7 +127,7 @@ Note that you can write a block compactly, on one line, by separating expression
 This is generally not good style but might be useful for these experiments.
 Here's an example.
 
-```tut:book
+```scala mdoc
 // Evaluates to three
 { val one = 1; val two = 2; one + two }
 ```
@@ -135,7 +135,7 @@ Here's an example.
 <div class="solution">
 The following code demonstrates that method parameters are evaluated from left to right.
 
-```tut:book
+```scala mdoc
 Color.hsl(
   {
     println("a")
@@ -143,20 +143,20 @@ Color.hsl(
   },
   {
     println("b")
-    1.normalized
+    1.0
   },
   {
     println("c")
-    1.normalized
+    1.0
   }
 )
 ```
 
 We can write this more compactly as
-```tut:book
+```scala mdoc
 Color.hsl({ println("a"); 0.degrees },
-          { println("b"); 1.normalized },
-          { println("c"); 1.normalized })
+          { println("b"); 1.0 },
+          { println("c"); 1.0 })
 ```
 </div>
 
@@ -173,7 +173,7 @@ We've already seen that expressions are evaluated from top-to-bottom, and method
 We might want to check that expressions are in general evaluated left-to-right.
 We can show this fairly easily.
 
-```tut:book
+```scala mdoc
 { println("a"); 1 } + { println("b"); 2 } + { println("c"); 3}
 ```
 

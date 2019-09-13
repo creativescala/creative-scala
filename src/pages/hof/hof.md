@@ -1,11 +1,11 @@
 ## Higher Order Methods and Functions
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Why are functions useful?
@@ -20,7 +20,7 @@ but we haven't used this ability yet. Let's do that now.
 
 Let's consider the pattern from the concentric circles exercise as an example:
 
-```tut:silent:book
+```scala mdoc:silent
 def concentricCircles(count: Int, size: Int): Image =
   count match {
     case 0 => Image.empty
@@ -38,7 +38,14 @@ the replacement for `Image.circle` as a parameter.
 Here we've renamed the method to `concentricShapes`, as we're no longer restricted to drawing circles,
 and made `singleShape` responsible for drawing an appropriately sized shape.
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
@@ -51,14 +58,26 @@ to produce plain circles, squares of different hue,
 circles with different opacity, and so on.
 All we have to do is pass in a suitable definition of `singleShape`:
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+def concentricShapes(count: Int, singleShape: Int => Image): Image =
+  count match {
+    case 0 => Image.empty
+    case n => singleShape(n) on concentricShapes(n-1, singleShape)
+  }
+```
+```scala mdoc:silent
 // Passing a function literal directly:
 val blackCircles: Image =
   concentricShapes(10, (n: Int) => Image.circle(50 + 5*n))
 
 // Converting a method to a function:
 def redCircle(n: Int): Image =
-  Image.circle(50 + 5*n) lineColor Color.red
+  Image.circle(50 + 5*n) strokeColor Color.red
 
 val redCircles: Image =
   concentricShapes(10, redCircle _)
@@ -73,12 +92,19 @@ to produce the image shown in [@fig:hof:colors-and-shapes.png].
 
 ![Colors and Shapes](src/pages/hof/colors-and-shapes.pdf+svg){#fig:hof:colors-and-shapes.png}
 
-```tut:silent:book
-  def concentricShapes(count: Int, singleShape: Int => Image): Image =
-    count match {
-      case 0 => Image.empty
-      case n => singleShape(n) on concentricShapes(n-1, singleShape)
-    }
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
+def concentricShapes(count: Int, singleShape: Int => Image): Image =
+  count match {
+    case 0 => Image.empty
+    case n => singleShape(n) on concentricShapes(n-1, singleShape)
+  }
 ```
 
 The `concentricShapes` method is equivalent to the
@@ -101,7 +127,7 @@ The type of the parameter is `Int => Image`,
 which means a function that accepts an `Int` parameter and returns an `Image`.
 We can declare a method of this type as follows:
 
-```tut:silent:book
+```scala mdoc:silent
 def outlinedCircle(n: Int) =
   Image.circle(n * 10)
 ```
@@ -109,7 +135,7 @@ def outlinedCircle(n: Int) =
 We can convert this method to a function, and pass it to `concentricShapes` to create
 an image of concentric black outlined circles:
 
-```tut:silent:book
+```scala mdoc:silent
 concentricShapes(10, outlinedCircle _)
 ```
 
@@ -121,7 +147,7 @@ The rest of the exercise is just a matter of copying, renaming,
 and customising this function to produce
 the desired combinations of colours and shapes:
 
-```tut:silent:book
+```scala mdoc:silent
 def circleOrSquare(n: Int) =
   if(n % 2 == 0) Image.rectangle(n*20, n*20) else Image.circle(n*10)
 
@@ -138,7 +164,7 @@ of base functions---one to produce colours and one to produce shapes.
 Combine these functions using a *combinator* as follows,
 and use the result of the combinator as an argument to `concentricShapes`
 
-```tut:silent:book
+```scala mdoc:silent
 def colored(shape: Int => Image, color: Int => Color): Int => Image =
   (n: Int) => ???
 ```
@@ -146,7 +172,14 @@ def colored(shape: Int => Image, color: Int => Color): Int => Image =
 <div class="solution">
 The simplest solution is to define three `singleShapes` as follows:
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
@@ -156,19 +189,19 @@ def concentricShapes(count: Int, singleShape: Int => Image): Image =
 def rainbowCircle(n: Int) = {
   val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
   val shape = Image.circle(50 + n*12)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 def fadingTriangle(n: Int) = {
   val color = Color.blue fadeOut (1 - n / 20.0).normalized
   val shape = Image.triangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 def rainbowSquare(n: Int) = {
   val color = Color.blue desaturate 0.5.normalized spin (n * 30).degrees
   val shape = Image.rectangle(100 + n*24, 100 + n*24)
-  shape lineWidth 10 lineColor color
+  shape strokeWidth 10 strokeColor color
 }
 
 val answer =
@@ -180,12 +213,19 @@ val answer =
 However, there is some redundancy here:
 `rainbowCircle` and `rainbowTriangle`, in particular,
 use the same definition of `color`.
-There are also repeated calls to `lineWidth(10)` and
-`lineColor(color)` that can be eliminated.
+There are also repeated calls to `strokeWidth(10)` and
+`strokeColor(color)` that can be eliminated.
 The extra credit solution factors these out into their own functions
 and combines them with the `colored` combinator:
 
-```tut:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
@@ -194,19 +234,19 @@ def concentricShapes(count: Int, singleShape: Int => Image): Image =
 
 def colored(shape: Int => Image, color: Int => Color): Int => Image =
   (n: Int) =>
-    shape(n) lineWidth 10 lineColor color(n)
+    shape(n).strokeWidth(10).strokeColor(color(n))
 
 def fading(n: Int): Color =
-  Color.blue fadeOut (1 - n / 20.0).normalized
+  Color.blue.fadeOut((1 - n / 20.0).normalized)
 
 def spinning(n: Int): Color =
-  Color.blue desaturate 0.5.normalized spin (n * 30).degrees
+  Color.blue.desaturate(0.5.normalized).spin((n * 30).degrees)
 
 def size(n: Int): Double =
   50 + 12 * n
 
 def circle(n: Int): Image =
-  Circle(size(n))
+  Image.circle(size(n))
 
 def square(n: Int): Image =
   Image.rectangle(2*size(n), 2*size(n))

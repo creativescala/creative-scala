@@ -1,2 +1,2 @@
-addSbtPlugin("org.tpolecat" % "tut-plugin" % "0.6.4")
+addSbtPlugin("org.scalameta" % "sbt-mdoc" % "1.2.10")
 addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.1")

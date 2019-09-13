@@ -1,11 +1,11 @@
 ## Transforming Sequences
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We've seen that using structural recursion we can create and transform lists. 
@@ -19,7 +19,7 @@ We'll also see that other useful datatypes provide this method and we can use it
 In the previous section we say several examples where we transformed one list to another. 
 For example, we incremented the elements of a list with the following code.
 
-```tut:book
+```scala mdoc
 def increment(list: List[Int]): List[Int] =
   list match {
     case Nil => Nil
@@ -35,7 +35,7 @@ We can abstract this pattern in a method called `map`.
 If we have a list with elements of type `A`, we pass `map` a function of type `A => B` and we get back a list with elements of type `B`. 
 For example, we can implement `increment` using `map` with the function `x => x + 1`.
 
-```tut:book
+```scala mdoc:reset
 def increment(list: List[Int]): List[Int] =
   list.map(x => x + 1)
   
@@ -78,7 +78,7 @@ Well, it means we could write a lot of the methods that accepts natural numbers 
 
 For example, instead of
 
-```tut:book
+```scala mdoc
 def fill[A](n: Int, a: A): List[A] =
   n match {
     case 0 => Nil
@@ -90,7 +90,7 @@ fill(3, "Hi")
 
 we could write
 
-```tut:book
+```scala mdoc:reset
 def fill[A](n: List[Int], a: A): List[A] =
   n.map(x => a)
   
@@ -103,34 +103,34 @@ The implementation of this version of `fill` is more convenient to write, but it
 If we want to work with sequences of numbers we are better off using `Ranges`.
 We can create these using the `until` method of `Int`.
 
-```tut:book
+```scala mdoc
 0 until 10
 ```
 
 `Ranges` have a `by` method that allows us to change the step
 between consecutive elements of the range:
 
-```tut:book
+```scala mdoc
 0 until 10 by 2
 ```
 
 `Ranges` also have a `map` method just like `List`
 
-```tut:book
+```scala mdoc
 (0 until 3) map (x => x + 1) 
 ```
 
 You'll notice the result has type `IndexedSeq` and is implemented as a `Vector`---two types we haven't seen yet. 
 We can treat an `IndexedSeq` much like a `List`, but for simplicity we can convert a `Range` or an `IndexedSeq` to a `List` using the `toList` method.
 
-```tut:book
+```scala mdoc
 (0 until 7).toList
 (0 until 3).map(x => x + 1).toList
 ```
 
 With `Ranges` in our toolbox we can write `fill` as
 
-```tut:book
+```scala mdoc:reset
 def fill[A](n: Int, a: A): List[A] =
   (0 until n).toList.map(x => a)
   
@@ -141,13 +141,13 @@ fill(3, "Hi")
 
 If we try to create a `Range` over `Double` we get an error.
 
-```tut:book:fail
+```scala mdoc:fail
 0.0 to 10.0 by 1.0
 ```
 
 There are two ways around this. We can use an equivalent `Range` over `Int`. In this case we could just write
 
-```tut:book:silent
+```scala mdoc:silent
 0 to 10 by 1
 ```
 
@@ -155,14 +155,14 @@ We can use the `.toInt` method to convert a `Double` to an `Int` if needed.
 
 Alternatively we can write a `Range` using `BigDecimal`.
 
-```tut:book:silent
+```scala mdoc:silent
 import scala.math.BigDecimal
 BigDecimal(0.0) to 10.0 by 1.0
 ```
 
 `BigDecimal` has methods `doubleValue` and `intValue` to get `Double` and `Int` values respectively.
 
-```tut:book:
+```scala mdoc
 BigDecimal(10.0).doubleValue()
 BigDecimal(10.0).intValue()
 ```
@@ -175,19 +175,19 @@ Using our new tools, reimplement the following methods.
 
 Write a method called `ones` that accepts an `Int` `n` and returns a `List[Int]` with length `n` and every element is `1`. For example
 
-```tut:invisible
+```scala mdoc:invisible
 def ones(n: Int): List[Int] =
   (0 until n).toList.map(x => 1)
 ```
 
-```tut:book
+```scala mdoc
 ones(3)
 ```
 
 <div class="solution">
 We can just `map` over a `Range` to achieve this.
 
-```tut:book
+```scala mdoc:reset
 def ones(n: Int): List[Int] =
   (0 until n).toList.map(x => 1)
   
@@ -198,12 +198,12 @@ ones(3)
 
 Write a method `descending` that accepts an natural number `n` and returns a `List[Int]` containing the natural numbers from `n` to `1` or the empty list if `n` is zero. For example
 
-```tut:invisible
+```scala mdoc:invisible
 def descending(n: Int): List[Int] =
   (n until 0 by -1).toList
 ```
 
-```tut:book
+```scala mdoc
 descending(0)
 descending(3)
 ```
@@ -211,7 +211,7 @@ descending(3)
 <div class="solution">
 We can use a `Range` but we have to set the step size or the range will be empty.
 
-```tut:book
+```scala mdoc:reset
 def descending(n: Int): List[Int] =
   (n until 0 by -1).toList
 
@@ -224,12 +224,12 @@ descending(3)
 
 Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero.
 
-```tut:invisible
+```scala mdoc:invisible
 def ascending(n: Int): List[Int] =
   (0 until n).toList.map(x => x + 1)
 ```
 
-```tut:book
+```scala mdoc
 ascending(0)
 ascending(3)
 ```
@@ -237,7 +237,7 @@ ascending(3)
 <div class="solution">
 Again we can use a `Range` but we need to take care to start at `0` and increment the elements by `1` so we have the correct number of elements.
 
-```tut:book
+```scala mdoc:reset
 def ascending(n: Int): List[Int] = 
   (0 until n).toList.map(x => x + 1)
   
@@ -249,12 +249,12 @@ ascending(3)
 
 Write a method `double` that accepts a `List[Int]` and returns a list with each element doubled.
 
-```tut:invisible
+```scala mdoc:invisible
 def double(list: List[Int]): List[Int] =
   list map (x => x * 2)
 ```
 
-```tut:book
+```scala mdoc
 double(List(1, 2, 3))
 double(List(4, 9, 16))
 ```
@@ -262,7 +262,7 @@ double(List(4, 9, 16))
 <div class="solution">
 This is a straightforward application of `map`.
 
-```tut:book
+```scala mdoc:reset
 def double(list: List[Int]): List[Int] =
   list map (x => x * 2)
 
@@ -280,7 +280,14 @@ Using our new tools, rewrite the `polygon` method from the previous section.
 <div class="solution">
 Here's one possible implementation. Much easier to read than the previous implementation!
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
 def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
   import Point._
   import PathElement._
@@ -291,7 +298,7 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
       lineTo(polar(size, initialRotation + deg.degrees))
     }
     
-  closedPath(moveTo(polar(size, initialRotation)) :: path)
+  Image.closedPath(moveTo(polar(size, initialRotation)) :: path)
 }
 ```
 </div>
@@ -326,7 +333,7 @@ There is one more method that will be useful to know about: `to`.
 This constructs a `Range` like `until` but the `Range` includes the endpoint. 
 Compare
 
-```tut:book
+```scala mdoc
 1 until 5
 1 to 5
 ```
@@ -340,12 +347,12 @@ In technical terms, the `Range` constructed with `until` is a *half-open interva
 Write a method `ascending` that accepts a natural number `n` and returns a `List[Int]` containing the natural numbers from `1` to `n` or the empty list if `n` is zero. 
 *Hint:* use `to`
 
-```tut:invisible
+```scala mdoc:invisible
 def ascending(n: Int): List[Int] =
   (1 to n).toList
 ```
 
-```tut:book
+```scala mdoc
 ascending(0)
 ascending(3)
 ```
@@ -353,7 +360,7 @@ ascending(3)
 <div class="solution">
 Now that we now about `to` this is trivial to implement.
 
-```tut:book
+```scala mdoc:reset
 def ascending(n: Int): List[Int] = 
   (1 to n).toList
   

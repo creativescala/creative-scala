@@ -1,11 +1,11 @@
 ## The Natural Numbers
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 
@@ -36,7 +36,7 @@ Now onto structural recursion. The structural recursion pattern for the natural 
 
 Remember we wrote `boxes` as
 
-```tut:book
+```scala mdoc
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -70,7 +70,15 @@ When we match the base case 0, our result is the base case `Image.empty`. When w
 The definition states that `n` is `1 + m`.
 On the right-hand side we replace 1 with `aBox`, we replace + with `beside`, and we recursively call `boxes` with `m` (which is `n-1`) where the definition recurses.
 
-```tut:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
+```scala mdoc
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -129,7 +137,7 @@ Our first exercise is to create a method `cross` that will generate cross images
 
 The method skeleton is
 
-```tut:book
+```scala mdoc
 def cross(count: Int): Image =
   ???
 ```
@@ -168,7 +176,14 @@ Now finish the implementation of `cross`.
 <div class="solution">
 Here's what we wrote.
 
-```scala
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc
 def cross(count: Int): Image = {
   val unit = Image.circle(20)
   count match {
@@ -188,7 +203,7 @@ In this exercise and the next, we're trying to sharpen your eye for recursive st
 Your mission in this exercise is to identify the recursive structure in a chessboard, and implement a method to draw chessboards.
 The method skeleton is
 
-```tut:silent:book
+```scala mdoc:silent
 def chessboard(count: Int): Image =
   ???
 ```
@@ -215,7 +230,7 @@ As before we must decide on the base, unit, and addition for the result.
 We've given you a hint by showing the progression of chessboards in [@fig:recursion:chessboards].
 From this we can see that the base is a two-by-two chessboard.
 
-```tut:silent:book
+```scala mdoc:silent
 val blackSquare = Image.rectangle(30, 30) fillColor Color.black
 val redSquare   = Image.rectangle(30, 30) fillColor Color.red
 
@@ -230,7 +245,14 @@ The addition operation is `(unit beside unit) above (unit beside unit)`.
 
 Putting it all together we get
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
 def chessboard(count: Int): Image = {
   val blackSquare = Image.rectangle(30, 30) fillColor Color.black
   val redSquare   = Image.rectangle(30, 30) fillColor Color.red
@@ -261,7 +283,7 @@ The Sierpinski triangle, show in [@fig:recursion:sierpinski], is a famous fracta
 Although it looks complicated we can break the structure down into a form that we can generate with structural recursion over the natural numbers.
 Implement a method with skeleton
 
-```tut:book
+```scala mdoc
 def sierpinski(count: Int): Image =
   ???
 ```
@@ -274,10 +296,17 @@ The key step is to recognise that the basic unit of the Sierpinski triangle is `
 Once we've worked this out, the code has exactly the same structure as `chessboard`.
 Here's our implementation.
 
-```tut:book
-
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+```
+```scala mdoc
 def sierpinski(count: Int): Image = {
-  val triangle = Image.triangle(10, 10) lineColor Color.magenta
+  val triangle = Image.triangle(10, 10) strokeColor Color.magenta
   count match {
     case 0 => triangle above (triangle beside triangle)
     case n =>
@@ -286,5 +315,4 @@ def sierpinski(count: Int): Image = {
   }
 }
 ```
-
 </div>

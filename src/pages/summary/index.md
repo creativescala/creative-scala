@@ -29,15 +29,15 @@ and limits the number of "magic numbers" we need to write.
 For example, it is a lot easier to determine
 that this Doodle program produces a house:
 
-~~~ scala
+```scala
 def myImage: Image =
   Triangle(50, 50) above Rectangle(50, 50)
 // myImage: Image = // ...
-~~~
+````
 
 than this implementation in Java2D:
 
-~~~ scala
+```scala
 def drawImage(g: Graphics2D): Unit = {
   g.setStroke(new BasicStroke(1.0f))
   g.setPaint(new Color(0, 0, 0))
@@ -50,7 +50,7 @@ def drawImage(g: Graphics2D): Unit = {
   g.draw(path)
   f.drawRect(50, 50, 50, 50)
 }
-~~~
+````
 
 It's important to realise that all of the imperative Java2D
 code is still present in Doodle.
@@ -74,13 +74,13 @@ the functional approach employed by Doodle
 allows us to *compose* images from other images.
 For example, we can re-use our house to draw a street:
 
-~~~ scala
+```scala
 val house = Triangle(50, 50) above Rectangle(50, 50)
 // house: Image = // ...
 
 val street = house beside house beside house
 // street: Image = // ...
-~~~
+````
 
 The `Image` and `Color` values we create are immutable
 so we can easily re-use a single `house` three times within the same image.
@@ -117,7 +117,7 @@ A simple example of this is Doodle's `Angle` type,
 which prevents us confusing numbers and angles,
 and degrees and radians:
 
-~~~ scala
+```scala
 90
 // res0: Int = 90
 
@@ -143,7 +143,7 @@ and degrees and radians:
 // cannot be applied to (doodle.core.Angle)
 //              90 + 90.degrees
 //                 ^
-~~~
+````
 
 ## Functions as Values
 
@@ -152,25 +152,25 @@ Methods let us abstract over parameters.
 For example, the method below abstracts over colours
 to produce different coloured dots:
 
-~~~ scala
+```scala
 def dot(color: Color): Image =
-  Circle(10) lineWidth 0 fillColor color
+  Circle(10) strokeWidth 0 fillColor color
 // dot: Color => Image = // ...
-~~~
+````
 
 Coming from object oriented languages,
 methods are nothing special.
 More interesting is Scala's ability to turn methods into *functions*
 that can be passed around as values:
 
-~~~ scala
+```scala
 def spectrum(shape: Color => Image): Image =
   shape(Color.red) beside shape(Color.blue) beside shape(Color.green)
 // spectrum: (Color => Image) => Image = // ...
 
 spectrum(dot)
 // res0: Image = // ...
-~~~
+````
 
 We wrote a number of programs that used functions as values,
 but the quintissential example was the `map` method of `List`.
@@ -178,10 +178,10 @@ In the [Collections chapter](#collections) we saw
 how `map` lets us transform sequences without allocating
 and pushing values onto intermediate buffers:
 
-~~~ scala
+```scala
 List(1, 2, 3).map(x => x * 2)
 // res0: List[Int] = List(2, 4, 6)
-~~~
+````
 
 Functions, and their first class status as values,
 are hugely important for writing simple, boilerplate-free code.

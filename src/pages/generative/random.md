@@ -1,11 +1,11 @@
 ## Randomness without Effect
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 The solution to our problem is to separate describing how we'll use random numbers from the process of actually generating them. This sounds complicated, but it's exactly what we've be doing with `Image` throughout this book. We
@@ -15,19 +15,19 @@ The solution to our problem is to separate describing how we'll use random numbe
 
 We do the same thing with Doodle's `Random` type. To access this code we first need to import the `doodle.random` package.
 
-```tut:silent:book
+```scala mdoc:silent
 import doodle.random._
 ```
 
 Now we can create values that describe creating a random number
 
-```tut:book
+```scala mdoc
 val randomDouble = Random.double
 ```
 
 No random numbers are actually created until we call the `run` method.
 
-```tut:book
+```scala mdoc
 randomDouble.run
 ```
 
@@ -77,14 +77,14 @@ We can create a random value and apply a *deterministic* transformation to it us
 
 Here's how we can create a random angle.
 
-```tut:silent:book
+```scala mdoc:silent
 val randomAngle: Random[Angle] =
   Random.double.map(x => x.turns)
 ```
 
 When we `run` `RandomAngle` we can generate randomly created `Angle`
 
-```tut:book
+```scala mdoc
 randomAngle.run
 randomAngle.run
 ```
@@ -95,7 +95,7 @@ randomAngle.run
 
 Given `randomAngle` above, create a method that accepts saturation and lightness and generates a random color. Your method should have the signature
 
-```tut:silent:book
+```scala mdoc:silent
 def randomColor(s: Normalized, l: Normalized): Random[Color] =
   ???
 ```
@@ -103,9 +103,19 @@ def randomColor(s: Normalized, l: Normalized): Random[Color] =
 <div class="example">
 This is a deterministic transformation of the output of `randomAngle`, so we can implement it using `map`.
 
-```tut:silent:book
-def randomColor(s: Normalized, l: Normalized): Random[Color] =
-  randomAngle map (hue => Color.hsl(hue, s, l))
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+import doodle.random._
+val randomAngle: Random[Angle] =
+  Random.double.map(x => x.turns)
+```
+```scala mdoc:silent
+def randomColor(s: Double, l: Double): Random[Color] =
+  randomAngle.map(hue => Color.hsl(hue, s, l))
 ```
 </div>
 
@@ -113,7 +123,7 @@ def randomColor(s: Normalized, l: Normalized): Random[Color] =
 
 Write a method that accepts a radius and a `Random[Color]`, and produces a circle of the given radius and filled with the given random color. It should have the signature
 
-```tut:silent:book
+```scala mdoc:silent
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
   ???
 ```
@@ -121,8 +131,16 @@ def randomCircle(r: Double, color: Random[Color]): Random[Image] =
 <div class="example">
 Once again this is a deterministic transformation of the random color, so we can use `map`.
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+import doodle.random._
+```
+```scala mdoc:silent
 def randomCircle(r: Double, color: Random[Color]): Random[Image] =
-  color map (fill => Image.circle(r) fillColor fill)
+  color.map(fill => Image.circle(r).fillColor(fill))
 ```
 </div>

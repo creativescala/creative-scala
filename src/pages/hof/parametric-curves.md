@@ -1,11 +1,11 @@
 ## Parametric Curves
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Right now we only know how to create basic shapes like circles and rectangles.
@@ -15,7 +15,7 @@ We're going to use a tool from mathematics known as a *parametric equation* or *
 A parametric equation is a function from some input (the parameter in "parametric") to a point, a location in space.
 For example, the parametric equation for a circle is a function from an `Angle` to a point.
 
-```scala
+```scala mdoc
 def parametricCircle(angle: Angle): Point =
   ???
 ```
@@ -76,8 +76,8 @@ So far we only know how to layout images with `on`, `beside`, and `above`.
 We need an additional tool, the `at` method, to achieve more flexible layout.
 Here's an example that draws a circle at the corners of a square.
 
-```tut:silent:book
-val dot = Image.circle(5).lineWidth(3).lineColor(Color.crimson)
+```scala mdoc:silent
+val dot = Image.circle(5).strokeWidth(3).strokeColor(Color.crimson)
 val squareDots =
   dot.at(0, 0).
     on(dot.at(0, 100)).
@@ -110,7 +110,7 @@ There are two ways we can call `at`:
  
 We can convert a `Point` to a `Vec` using the `toVec` method.
 
-```tut:book
+```scala mdoc
 Point.cartesian(1.0, 1.0).toVec
 ```
 
@@ -120,7 +120,7 @@ The final thing building block is the geometry to position points.
 If a point is positioned at a distance `r` from the origin at an angle `a`, the x- and y-coordinates are `(a.cos) * r` and `(a.sin) * r` respectively.
 Alternatively we can just use polar form!
 
-```tut:book
+```scala mdoc
 val polar = Point.polar(1.0, 45.degrees)
 val cartesian = Point.cartesian((45.degrees.cos) * 1.0, (45.degrees.sin) * 1.0)
 
@@ -135,25 +135,39 @@ cartesian.toPolar == polar
 We can put this all together to create a parametric circle.
 In cartesian coordinates the code for a parametric circle with radius 200 is
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
   Point.cartesian(angle.cos * 200, angle.sin * 200)
 ```
 
 In polar form it is simply
 
-```tut:silent:book
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =
   Point.polar(200, angle)
 ```
 
 Now we could sample a number of points evenly spaced around the circle. To create an image we can draw something at each point (say, a triangle). 
 
-```tut:silent:book
+```scala mdoc:silent
 def sample(start: Angle, samples: Int): Image = {
   // Angle.one is one complete turn. I.e. 360 degrees
   val step = Angle.one / samples
-  val dot = triangle(10, 10)
+  val dot = Image.triangle(10, 10)
   def loop(count: Int): Image = {
     val angle = step * count
     count match {
@@ -181,7 +195,7 @@ Perhaps `rose` below.
 This is a particular example of a rose curve, with a maximum radius of 200.
 We can change the value we multiply by the angle (`7` below) to get a different shape.
 
-```tut:silent:book
+```scala mdoc:silent
 // Parametric equation for rose with k = 7
 def rose(angle: Angle) =
   Point.polar((angle * 7).cos * 200, angle)
@@ -202,7 +216,7 @@ To do so we need to know how to:
 
 Let's look at the second problem. If we try referring to a method without calling it we get an error.
 
-```tut:fail:book
+```scala mdoc:fail
 rose
 ```
 

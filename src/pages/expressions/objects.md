@@ -6,20 +6,20 @@ In Scala all values are *objects*. An object is a grouping of data and operation
 
 We interact with objects by *calling* or *invoking* methods. For example, we can get the uppercase version of a `String` by calling its `toUpperCase` method.
 
-```tut:book
+```scala mdoc
 "Titan!".toUpperCase
 ```
 
 Some methods accept *parameters* or *arguments*, which control how the method works. The `take` method, for example, takes characters from a `String`. We must pass a parameter to `take` to specify how many characters we want.
 
-```tut:book
+```scala mdoc
 "Gilgamesh went abroad in the world".take(3)
 "Gilgamesh went abroad in the world".take(9)
 ```
 
 A method call is an expression, and thus evaluates to an object. This means we can chain method calls together to make more complex programs:
 
-```tut:book
+```scala mdoc
 "Titan!".toUpperCase.toLowerCase
 ```
 
@@ -52,7 +52,7 @@ We have said that all values are objects, and we call methods with the syntax `o
 
 In Scala, and expression written `a.b(c)` can be written `a b c`. So these are equivalent:
 
-```tut:book
+```scala mdoc
 1 + 2
 1.+(2)
 ```

@@ -78,7 +78,7 @@ Here is an implementation for the extra credit example above:
 
 ~~~ scala
 def singleCircle(n: Int): Image =
-  Circle(50 + 5 * n) lineColor (Color.red spin (n * 10).degrees)
+  Circle(50 + 5 * n) strokeColor (Color.red spin (n * 10).degrees)
 ~~~
 
 Here is another implementation that fades out the further we get from `n = 1`:
@@ -154,7 +154,7 @@ The simple solution looks like the following:
 
 ~~~ scala
 def triangle: Image =
-  Triangle(1, 1) lineColor Color.magenta
+  Triangle(1, 1) strokeColor Color.magenta
 
 def sierpinski(n: Int): Image =
   if(n == 1) {
@@ -177,7 +177,7 @@ and dividing it by two each time we recurse:
 
 ~~~ scala
 def triangle(size: Double): Image =
-  Triangle(size, size) lineColor Color.magenta
+  Triangle(size, size) strokeColor Color.magenta
 
 def sierpinski(n: Int, size: Double): Image =
   if(n == 1) {

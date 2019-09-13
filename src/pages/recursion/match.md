@@ -52,7 +52,7 @@ Once we're comfortable with `match` expressions we need to look at the structure
 
 Let's check our understanding of match by guessing what each of the following expressions evaluates to, and why.
 
-```tut:silent
+```scala mdoc:silent
 "abcd" match {
   case "bcde" => 0
   case "cdef" => 1
@@ -60,7 +60,7 @@ Let's check our understanding of match by guessing what each of the following ex
 }
 ```
 
-```tut:fail:silent
+```scala mdoc:fail:silent
 1 match {
   case 0 => "zero"
   case 1 => "one"
@@ -68,14 +68,14 @@ Let's check our understanding of match by guessing what each of the following ex
 }
 ```
 
-```tut:fail:silent
+```scala mdoc:fail:silent
 1 match {
   case n => n + 1
   case 1 => 1000
 }
 ```
 
-```tut:fail:silent
+```scala mdoc:fail:silent
 1 match {
   case a => a
   case b => b + 1
@@ -109,7 +109,7 @@ Here are three reasonable possibilities I can think of; perhaps you came up with
 
 Here's a match expression that doesn't match.
 
-```tut:fail:book
+```scala mdoc:crash
 2 match {
   case 0 => "zero"
   case 1 => "one"

@@ -1,11 +1,11 @@
 ## Creating Colors
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 We've seen how to use predefined colors in our images. What about creating our own colors? In this section we will see how to create colors of our own, and transform existing colors into new ones.
@@ -16,7 +16,7 @@ Computers work with colors defined by mixing together different amounts of red, 
 
 We can create our own RGB colors using the `rgb` method on the `Color` object. This method takes three parameters: the red, green, and blue components. These are numbers between 0 and 255, called an `UnsignedByte`[^byte]. There is no literal expression for `UnsignedByte` like there is for `Int`, so we must convert an `Int` to `UnsignedByte`. We can do this with the `uByte` method. An `Int` can take on more values that an `UnsignedByte`, so if the number is too small or too large to be represented as a `UnsignedByte` it will be converted to the closest values is the range 0 to 255. These examples illustrate the conversion.
 
-```tut:book
+```scala mdoc
 0.uByte
 255.uByte
 128.uByte
@@ -28,7 +28,7 @@ We can create our own RGB colors using the `rgb` method on the `Color` object. T
 
 Now we know how to construct `UnsignedBytes` we can make RGB colors.
 
-```tut:silent:book
+```scala mdoc:silent
 Color.rgb(255.uByte, 255.uByte, 255.uByte) // White
 Color.rgb(0.uByte, 0.uByte, 0.uByte) // Black
 Color.rgb(255.uByte, 0.uByte, 0.uByte) // Red
@@ -50,25 +50,18 @@ The RGB color representation is not very easy to use. The hue-saturation-lightne
 
 We can construct a color in the HSL representation using the `Color.hsl` method. This method takes as parameters the hue, saturation, and lightness. The hue is an `Angle`. We can convert a `Double` to an `Angle` using the `degrees` (or `radians`) methods.
 
-```tut:book
+```scala mdoc
 0.degrees
 180.degrees
 3.14.radians
 ```
 
-Saturation and lightness are both normalized to between 0.0 and 1.0. We can convert a `Double` to a normalized value with the `.normalized` method.
-
-```tut:book
-0.0.normalized
-1.0.normalized
-1.2.normalized // Too big, is clipped to 1.0
--1.0.normalized // Too small, is clipped to 0.0
-```
+Saturation and lightness are both `Doubles` that should be between 0.0 and 1.0. Values outside this range will be converted to the closest number within the range. 
 
 We can now create colors using the HSL representation.
 
-```tut:silent:book
-Color.hsl(0.degrees, 0.8.normalized, 0.6.normalized) // A pastel red
+```scala mdoc:silent
+Color.hsl(0.degrees, 0.8, 0.6) // A pastel red
 ```
 
 To view this color we can render it in a picture. See [@fig:pictures:triangle-pastel-red] for an example.
@@ -86,10 +79,14 @@ The effectiveness of a composition often depends as much on the relationships be
 
 For example,
 
-```tut:silent:book
-((circle(100) fillColor Color.red) beside
-  (circle(100) fillColor Color.red.spin(15.degrees)) beside
-    (circle(100) fillColor Color.red.spin(30.degrees))).lineWidth(5.0)
+```scala mdoc:silent
+Image.circle(100)
+     .fillColor(Color.red)
+     .beside(Image.circle(100)
+                  .fillColor(Color.red.spin(15.degrees)))
+     .beside(Image.circle(100)
+                  .fillColor(Color.red.spin(30.degrees)))
+     .strokeWidth(5.0)
 ```
 
 produces [@fig:pictures:three-circles-spin].
@@ -98,13 +95,14 @@ produces [@fig:pictures:three-circles-spin].
 
 Here's a similar example, this time manipulating saturation and lightness, shown in [@fig:pictures:saturate-and-lighten].
 
-```tut:silent:book
-(((circle(20) fillColor (Color.red darken 0.2.normalized))
-  beside (circle(20) fillColor Color.red)
-  beside (circle(20) fillColor (Color.red lighten 0.2.normalized))) above
-((rectangle(40,40) fillColor (Color.red desaturate 0.6.normalized))
-  beside (rectangle(40,40) fillColor (Color.red desaturate 0.3.normalized))
-  beside (rectangle(40,40) fillColor Color.red)))
+```scala mdoc:silent
+Image.circle(20)
+     .fillColor(Color.red.darken(0.2.normalized))
+     .beside(Image.circle(20).fillColor(Color.red))
+     .beside(Image.circle(20).fillColor((Color.red.lighten(0.2.normalized))))
+     .above(Image.rectangle(40, 40).fillColor(Color.red.desaturate(0.6.normalized))
+                 .beside(Image.rectangle(40,40).fillColor(Color.red.desaturate(0.3.normalized)))
+                 .beside(Image.rectangle(40,40).fillColor(Color.red)))
 ```
 
 ![The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation.](./src/pages/pictures/saturate-and-lighten.pdf+svg){#fig:pictures:saturate-and-lighten}
@@ -116,10 +114,11 @@ Here's a similar example, this time manipulating saturation and lightness, shown
 
 We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value. We can also create a new color with a different transparency by using the `alpha` method on a color. Here's an example, shown in [@fig:pictures:rgb-alpha].
 
-```tut:silent:book
-((circle(40) fillColor (Color.red.alpha(0.5.normalized))) beside
- (circle(40) fillColor (Color.blue.alpha(0.5.normalized))) on
- (circle(40) fillColor (Color.green.alpha(0.5.normalized))))
+```scala mdoc:silent
+Image.circle(40)
+     .fillColor(Color.red.alpha(0.5.normalized))
+     .beside(Image.circle(40).fillColor(Color.blue.alpha(0.5.normalized)))
+     .on(Image.circle(40).fillColor(Color.green.alpha(0.5.normalized)))
 ```
 
 ![Circles with alpha of 0.5 showing transparency](./src/pages/pictures/rgb-alpha.pdf+svg){#fig:pictures:rgb-alpha}
@@ -136,18 +135,18 @@ Create three triangles, arranged in a triangle, with analogous colors. Analogous
 <div class="solution">
 These sort of examples are getting a bit too long to write out at the console. We'll look at a way around this next.
 
-```tut:book
-((triangle(40, 40)
-       lineWidth 6.0
-       lineColor Color.darkSlateBlue
+```scala mdoc
+((Image.triangle(40, 40)
+       strokeWidth 6.0
+       strokeColor Color.darkSlateBlue
        fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin 10.degrees)) above
-  ((triangle(40, 40)
-      lineWidth 6.0
-      lineColor (Color.darkSlateBlue spin (-30.degrees))
+  ((Image.triangle(40, 40)
+      strokeWidth 6.0
+      strokeColor (Color.darkSlateBlue spin (-30.degrees))
       fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (-20.degrees))) beside
-     (triangle(40, 40)
-        lineWidth 6.0
-        lineColor (Color.darkSlateBlue spin (30.degrees))
+     (Image.triangle(40, 40)
+        strokeWidth 6.0
+        strokeColor (Color.darkSlateBlue spin (30.degrees))
         fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (40.degrees)))))
 ```
 </div>

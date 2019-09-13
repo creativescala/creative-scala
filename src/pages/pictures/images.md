@@ -1,31 +1,29 @@
 ## Images
 
-```tut:invisible
+```scala mdoc:invisible
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 
 Let's start with some simple shapes, programming at the console as we've done before.
 
-```tut:book
+```scala mdoc
 Image.circle(10)
 ```
 
 What is happening here? `Image` is an object and `circle` a method on that object. We pass to `circle` a parameter, `10` that gives the radius of the circle we're constructing. Note the type of the result---an `Image`.
 
-We can also write just `circle(10)`, as if you run the console within Doodle it automatically makes this and other methods to construct images available.
-
-```tut:book
-circle(10)
+```scala mdoc
+Image.circle(10)
 ```
 
 We draw the circle by calling the `draw` method.
 
 ```scala
-circle(10).draw
+Image.circle(10).draw()
 ```
 
 A window should appear as shown in [@fig:pictures:circle].
@@ -35,7 +33,7 @@ A window should appear as shown in [@fig:pictures:circle].
 Doodle supports a handful of "primitive" images: circles, rectangles, and triangles. Let's try drawing a rectangle.
 
 ```scala
-rectangle(100, 50).draw
+Image.rectangle(100, 50).draw()
 ```
 
 The output is shown in [@fig:pictures:rectangle].
@@ -46,7 +44,7 @@ Finally let's try a triangle, for which the output is shown in [@fig:pictures:tr
 
 
 ```scala
-triangle(60, 40).draw
+Image.triangle(60, 40).draw()
 ```
 
 ![A triangle](src/pages/pictures/triangle.pdf+svg){#fig:pictures:triangle}
@@ -62,18 +60,18 @@ In this exercise we're checking that our Doodle install is working correctly and
 
 We can create circles with the code below.
 
-```tut:silent:book
-circle(1)
-circle(10)
-circle(100)
+```scala mdoc:silent
+Image.circle(1)
+Image.circle(10)
+Image.circle(100)
 ```
 
 We can draw the circles by calling the `draw` method on each circle.
 
 ```scala
-circle(1).draw
-circle(10).draw
-circle(100).draw
+Image.circle(1).draw()
+Image.circle(10).draw()
+Image.circle(100).draw()
 ```
 </div>
 
@@ -86,11 +84,11 @@ What is the type of a circle? A rectangle? A triangle?
 They all have type `Image`, as we can tell from the console.
 
 ```scala
-:type circle(10)
+:type Image.circle(10)
 // doodle.core.Image
-:type rectangle(10, 10)
+:type Image.rectangle(10, 10)
 // doodle.core.Image
-:type triangle(10, 10)
+:type Image.triangle(10, 10)
 // doodle.core.Image
 ```
 </div>
@@ -103,7 +101,7 @@ What's the type of *drawing* an image? What does this mean?
 Once again, we can ask the console this quesstion.
 
 ```scala
-:type circle(10).draw
+:type Image.circle(10).draw()
 // Unit
 ```
 
