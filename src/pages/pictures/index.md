@@ -9,9 +9,9 @@ If you run the examples from the SBT console within Doodle they will just work. 
 
 ```mdoc scala
 import doodle.core._
-import doodle.core.Image._
-import doodle.syntax._
-import doodle.jvm.Java2DFrame._
-import doodle.backend.StandardInterpreter._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
 ```
 </div>
