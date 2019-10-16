@@ -15,7 +15,7 @@ This exercise is just about getting used to writing Scala code. Here is one poss
 
 #### Appending Strings
 
-Join together two strings (known as *appending* strings) using the `++` method. Write equivalent expressions using both the normal method call style and operator style.
+Join together two strings (known as *appending* strings) using the `++` method. Write equivalent expressions using both the normal method call style and the operator style.
 
 <div class="solution">
 Something like the below should do.

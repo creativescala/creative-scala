@@ -16,7 +16,7 @@ Scala has many different forms of literals. We've already seen `Int` literals. T
 
 As you can see, the type is called `Double`.
 
-Numbers are well and good, but what about text. Scala's `String` type represents a sequence of characters. We write literal strings by putting their contents in double quotes.
+Numbers are well and good, but what about text? Scala's `String` type represents a sequence of characters. We write literal strings by putting their contents in double quotes.
 
 ```scala mdoc
 "To be fond of dancing was a certain step towards falling in love."
@@ -41,11 +41,11 @@ A `String` is a sequence of characters. Characters themselves have a type, `Char
 'a'
 ```
 
-Finally we'll look at the literal representations of the `Boolean` type, named after English logician [George Boole](https://en.wikipedia.org/wiki/George_Boole). The fancy name just means a value that can be either `true` or `false`, and this indeed is how we write boolean literals.
+Finally we'll look at the literal representations of the `Boolean` type, named after English logician [George Boole](https://en.wikipedia.org/wiki/George_Boole). This fancy name just means a value that can be either `true` or `false`, and this indeed is how we write boolean literals.
 
 ```scala mdoc
 true
 false
 ```
 
-With literal expressions, we can create values, but we won't get very far if we can't somehow interact with the values we've created. We've seen a few examples of more complex expressions like `1 + 2`. In the next section, we'll learn about objects and methods, which will allow us to understand how this, and more interesting expressions, work.
+With literal expressions, we can create values, but we won't get very far if we can't somehow manipulate the values we've created. We've seen a few examples of more complex expressions like `1 + 2`. In the next section, we'll learn about objects and methods, which will allow us to understand how this, and more interesting expressions, work.
