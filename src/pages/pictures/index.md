@@ -7,7 +7,7 @@ We'll use a library called Doodle to help us with creating graphics. In this cha
 <div class="callout callout-info">
 If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
 
-```mdoc scala
+```scala mdoc
 import doodle.core._
 import doodle.image._
 import doodle.image.syntax._

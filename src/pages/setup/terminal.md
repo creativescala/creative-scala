@@ -11,7 +11,7 @@ We need to install:
 
 ### OS X
 
-Open the terminal. (Click the magnifying icon on the top righthand side of the toolbar. Type in "terminal".)
+Open the terminal. (Click the magnifying glass icon on the top righthand side of the toolbar. Type in "terminal".)
 
 Install Java.
 Type into the terminal
@@ -77,7 +77,7 @@ Within SBT type `console`.
 Finally type
 
 ```scala
-Example.image.draw
+Example.image.draw()
 ```
 
 and an image of three circles should appear!
@@ -144,7 +144,7 @@ Within SBT type `console`.
 Finally type
 
 ```scala
-Example.image.draw
+Example.image.draw()
 ```
 
 and an image of three circles should appear!
