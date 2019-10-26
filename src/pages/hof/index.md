@@ -2,7 +2,7 @@
 
 In this chapter we're going to learn how to draw flowers and to use functions as first-class values.
 
-We know that programs work with values, but not all values are *first-class*. A first-class value is something we can pass as a parameter to a method or return as a result from a method call.
+We know that programs work with values, but not all values are *first-class*. A first-class value is something we can pass as a parameter to a method, or return as a result from a method call, or give a name using `val`.
 
 If we pass a function as an argument to another function then:
 

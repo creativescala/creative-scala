@@ -24,7 +24,7 @@ Let's consider the pattern from the concentric circles exercise as an example:
 def concentricCircles(count: Int, size: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => Image.circle(size) on concentricCircles(n-1, size + 5)
+    case n => Image.circle(size).on(concentricCircles(n-1, size + 5))
   }
 ```
 
@@ -49,7 +49,7 @@ import doodle.java2d._
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
-    case n => singleShape(n) on concentricShapes(n-1, singleShape)
+    case n => singleShape(n).on(concentricShapes(n-1, singleShape))
   }
 ```
 
@@ -67,7 +67,7 @@ import doodle.java2d._
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
-    case n => singleShape(n) on concentricShapes(n-1, singleShape)
+    case n => singleShape(n).on(concentricShapes(n-1, singleShape))
   }
 ```
 ```scala mdoc:silent
@@ -77,7 +77,7 @@ val blackCircles: Image =
 
 // Converting a method to a function:
 def redCircle(n: Int): Image =
-  Image.circle(50 + 5*n) strokeColor Color.red
+  Image.circle(50 + 5*n).strokeColor(Color.red)
 
 val redCircles: Image =
   concentricShapes(10, redCircle _)
@@ -103,7 +103,7 @@ import doodle.java2d._
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
-    case n => singleShape(n) on concentricShapes(n-1, singleShape)
+    case n => singleShape(n).on(concentricShapes(n-1, singleShape))
   }
 ```
 
@@ -128,7 +128,7 @@ which means a function that accepts an `Int` parameter and returns an `Image`.
 We can declare a method of this type as follows:
 
 ```scala mdoc:silent
-def outlinedCircle(n: Int) =
+def outlinedCircle(n: Int): Image =
   Image.circle(n * 10)
 ```
 
@@ -151,7 +151,7 @@ the desired combinations of colours and shapes:
 def circleOrSquare(n: Int) =
   if(n % 2 == 0) Image.rectangle(n*20, n*20) else Image.circle(n*10)
 
-(concentricShapes(10, outlinedCircle) beside concentricShapes(10, circleOrSquare))
+concentricShapes(10, outlinedCircle).beside(concentricShapes(10, circleOrSquare))
 ```
 
 See [@fig:hof:colors-and-shapes-step2] for the output.

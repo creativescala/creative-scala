@@ -28,7 +28,7 @@ You can see how the outline of the shape, the large circle, becomes clearer as w
 
 ![Parametric circle with points drawn, from left to right, every 90, 45, and 22.5 degrees.](src/pages/hof/parametric-circles.pdf+svg){#fig:hof:parametric-circles}
 
-To create parametric curves we need to learn how to represent points in Doodle, how to layout an image at a particular point in space, and revise a bit of geometry you might not have touched since high school.
+To create parametric curves we need to learn 1) how to represent points in Doodle, 2) how to position an image at a particular point in space, and 3) revise a bit of geometry you might not have touched since high school. We now turn to each in turn.
 
 
 ## Points
@@ -40,17 +40,17 @@ In Doodle we have a `Point` type to represent a position in two dimensions. We h
 
 *Insert picture here*
 
-We can create points in the cartesian representation using `Point.cartesian`, and in the polar representation using `Point.polar`. The table below shows the main methods on `Point`.
+We can create points in the cartesian representation using `Point(Double, Double) where the two parameters are the x and y coordinates`, and in the polar representation using `Point(Double, Angle)` where we specify the radius and the angle. The table below shows the main methods on `Point`.
 
 ----------------------------------------------------------------------------------------------------------
 Operator                            Type    Description                  Example
 ----------------------------------- ------- ---------------------------- ---------------------------------
-`Point.cartesian(Double, Double)`   `Point` Constructs a `Point` using   `Point.cartesian(1.0, 1.0)`
+`Point(Double, Double)`             `Point` Constructs a `Point` using   `Point(1.0, 1.0)`
                                             the cartesian
                                             representation.
 
-`Point.polar(Double, Angle)`        `Point` Constructs a `Point` using   `Point.polar(1.0, 90.degrees)`
-`Point(Double, Angle)`                      the polar representation. 
+`Point(Double, Angle)`              `Point` Constructs a `Point` using   `Point(1.0, 90.degrees)`
+`                    `                      the polar representation. 
 
 `Point.zero`                        `Point` Constructs a `Point` at the  `Point.zero`
                                             origin (x and y are zero)
@@ -74,15 +74,15 @@ Operator                            Type    Description                  Example
 Can we position an `Image` at a point? 
 So far we only know how to layout images with `on`, `beside`, and `above`.
 We need an additional tool, the `at` method, to achieve more flexible layout.
-Here's an example that draws a circle at the corners of a square.
+Here's an example using `at` that draws a circle at the corners of a square.
 
 ```scala mdoc:silent
 val dot = Image.circle(5).strokeWidth(3).strokeColor(Color.crimson)
 val squareDots =
-  dot.at(0, 0).
-    on(dot.at(0, 100)).
-    on(dot.at(100, 100)).
-    on(dot.at(100, 0))
+  dot.at(0, 0)
+    .on(dot.at(0, 100))
+    .on(dot.at(100, 100))
+    .on(dot.at(100, 0))
 ```
 
 This produces the image shown in [@fig:hof:square-dots].
@@ -93,7 +93,7 @@ To understand how `at` layout works, and why we have to place the dots `on` each
 
 Every `Image` in Doodle has an *origin*.
 For most images this is in the center, but this isn't required.
-When Doodle layouts compound `Images` it does so by lining up origins.
+When Doodle lays out compound `Images` it does so by lining up origins.
 For example, if `Images` are laid out using `above` their origins are lined up vertically and the origin of the compound `Image` is midway along the line that connects origins.
 In [@fig:hof:horizontal-layout] there is an example of layout using `beside` that shows how the origins (the red circles) of the images are aligned.
 Finally, with `on` the origins are all placed on top of each other, so effectively the images share the same origin.
@@ -103,9 +103,10 @@ Finally, with `on` the origins are all placed on top of each other, so effective
 Using `at` we can move an `Image` relative to its origin.
 In the examples we're using here we want all the elements to share the same origin, so we use `on` to combine `Images` that we have moved using `at`.
 
-There are two ways we can call `at`:
+There are three ways we can call `at`:
 
- - by passing the x- and y-offset, as in `dot.at(100, 100)`; or
+ - by passing the x- and y-offset, as in `dot.at(100, 100)`;
+ - by passing the radius and angle, as in `dot.at(100, 90.degrees)`; or
  - by passing a `Vec` (a vector) giving the offset, as in `dot.at(Vec(100, 100))`.
  
 We can convert a `Point` to a `Vec` using the `toVec` method.
@@ -121,8 +122,8 @@ If a point is positioned at a distance `r` from the origin at an angle `a`, the 
 Alternatively we can just use polar form!
 
 ```scala mdoc
-val polar = Point.polar(1.0, 45.degrees)
-val cartesian = Point.cartesian((45.degrees.cos) * 1.0, (45.degrees.sin) * 1.0)
+val polar = Point(1.0, 45.degrees)
+val cartesian = Point((45.degrees.cos) * 1.0, (45.degrees.sin) * 1.0)
 
 // They are the same
 polar.toCartesian == cartesian
@@ -190,7 +191,7 @@ See [@fig:hof:triangle-circle], which shows the result of `sample(0.degrees, 72)
 
 ### Flowers
 
-The next step to creating a flower is to using a more interesting shape than a circle. That means changing `parametricCircle` for a more interesting equation. 
+The next step to creating a flower is to use a more interesting shape than a circle. That means changing `parametricCircle` for a more interesting equation. 
 Perhaps `rose` below.
 This is a particular example of a rose curve, with a maximum radius of 200.
 We can change the value we multiply by the angle (`7` below) to get a different shape.
@@ -207,7 +208,7 @@ A densely sampled example is shown in [@fig:hof:rose].
 
 We can change `sample` to call `rose` instead of `parametricCircle`, but this is a bit unsatisfactory. 
 What if we want to experiment with different parametric equations? 
-It would be nice if we could pass as a parameter to `sample` the method that creates points (i.e. the parametric equation). 
+It would be nice if we could pass as a parameter to `sample` the way of creating points (i.e. the parametric equation). 
 Can we do this? 
 To do so we need to know how to:
 

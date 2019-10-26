@@ -105,7 +105,7 @@ This means functions can have methods, including some useful means for compositi
 ```scala mdoc
 val addTen = (a: Int) => a + 10
 val double = (a: Int) => a * 2
-val combined = addTen andThen double // this composes the two functions
+val combined = addTen.andThen(double) // this composes the two functions
 combined(5)
 ```
 
