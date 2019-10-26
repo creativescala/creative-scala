@@ -12,16 +12,16 @@ We've seen how to use predefined colors in our images. What about creating our o
 
 ### RGB Colors
 
-Computers work with colors defined by mixing together different amounts of red, green, and blue. This "RGB" model is an [additive model][additive-model] of color. Each red, green, or blue component can have a value between zero and 255. If all three components are set to the maximum of 255 we get pure white. If all components are zero we get black.
+Computers work with colors defined by mixing together different amounts of red, green, and blue. This "RGB" model is an [additive model][additive-model] of color, which means adding more colors gets us closer to white. This is the oppositive of paint, which is a subtractive model where adding more paints gets us closer to black. Each red, green, or blue component can have a value between zero and 255. If all three components are set to the maximum of 255 we get pure white. If all components are zero we get black.
 
 We can create our own RGB colors using the `rgb` method on the `Color` object. This method takes three parameters: the red, green, and blue components. These are numbers between 0 and 255, called an `UnsignedByte`[^byte]. There is no literal expression for `UnsignedByte` like there is for `Int`, so we must convert an `Int` to `UnsignedByte`. We can do this with the `uByte` method. An `Int` can take on more values that an `UnsignedByte`, so if the number is too small or too large to be represented as a `UnsignedByte` it will be converted to the closest values is the range 0 to 255. These examples illustrate the conversion.
 
 ```scala mdoc
-0.uByte
-255.uByte
-128.uByte
--100.uByte // Too small, is transformed to 0
-1000.uByte // Too big, is transformed to 255
+0.uByte.toInt
+255.uByte.toInt
+128.uByte.toInt
+-100.uByte.toInt // Too small, is transformed to 0
+1000.uByte.toInt // Too big, is transformed to 255
 ```
 
 (Note that `UnsignedByte` is a feature of Doodle. It is not something provided by Scala.)
@@ -136,17 +136,26 @@ Create three triangles, arranged in a triangle, with analogous colors. Analogous
 These sort of examples are getting a bit too long to write out at the console. We'll look at a way around this next.
 
 ```scala mdoc
-((Image.triangle(40, 40)
-       strokeWidth 6.0
-       strokeColor Color.darkSlateBlue
-       fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin 10.degrees)) above
-  ((Image.triangle(40, 40)
-      strokeWidth 6.0
-      strokeColor (Color.darkSlateBlue spin (-30.degrees))
-      fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (-20.degrees))) beside
-     (Image.triangle(40, 40)
-        strokeWidth 6.0
-        strokeColor (Color.darkSlateBlue spin (30.degrees))
-        fillColor (Color.darkSlateBlue lighten 0.3.normalized saturate 0.2.normalized spin (40.degrees)))))
+Image.triangle(40, 40)
+  .strokeWidth(6.0)
+  .strokeColor(Color.darkSlateBlue)
+  .fillColor(Color.darkSlateBlue
+               .lighten(0.3.normalized)
+               .saturate(0.2.normalized)
+               .spin(10.degrees))
+  .above(Image.triangle(40, 40)
+           .strokeWidth(6.0)
+           .strokeColor(Color.darkSlateBlue.spin(-30.degrees))
+           .fillColor(Color.darkSlateBlue
+                        .lighten(0.3.normalized)
+                        .saturate(0.2.normalized)
+                        .spin(-20.degrees))
+           .beside(Image.triangle(40, 40)
+                     .strokeWidth(6.0)
+                     .strokeColor(Color.darkSlateBlue.spin(30.degrees))
+                     .fillColor(Color.darkSlateBlue
+                                  .lighten(0.3.normalized)
+                                  .saturate(0.2.normalized)
+                                  .spin(40.degrees))))
 ```
 </div>

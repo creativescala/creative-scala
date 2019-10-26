@@ -13,13 +13,13 @@ In addition to layout, Doodle has some simple operators to add a splash of colou
 ---------------------------------------------------------------------------------------------
 Operator                Type    Description                 Example
 ----------------------- ------- --------------------------- ---------------------------------
-`Image.fillColor.(Color)` `Image` Fills the image with        `circle(10) fillColor Color.red`
+`Image.fillColor(Color)` `Image` Fills the image with        `Image.circle(10).fillColor(Color.red)`
                                 the specified colour.
 
-`Image.strokeColor.(Color)` `Image` Outlines the image with     `circle(10) strokeColor Color.blue`
+`Image.strokeColor(Color)` `Image` Outlines the image with     `Image.circle(10).strokeColor(Color.blue)`
                                 the specified colour.
 
-`Image.strokeWidth(Int)`   `Image` Outlines the image with     `circle(10) strokeWidth 3`
+`Image.strokeWidth(Int)`   `Image` Outlines the image with     `Image.circle(10).strokeWidth(3)`
                                 the specified stroke width.
 ---------------------------------------------------------------------------------------------
 
@@ -61,10 +61,11 @@ Make the image in [@fig:pictures:evil-eye], designed to look like a traditional 
 Here's my amulet:
 
 ```scala mdoc
-Image.circle(10)
-     .fillColor(Color.black)
-     .on(Image.circle(20).fillColor(Color.cornflowerBlue))
-     .on(Image.circle(30).fillColor(Color.white))
-     .on(Image.circle(50).fillColor(Color.darkBlue))
+Image
+  .circle(10)
+  .fillColor(Color.black)
+  .on(Image.circle(20).fillColor(Color.cornflowerBlue))
+  .on(Image.circle(30).fillColor(Color.white))
+  .on(Image.circle(50).fillColor(Color.darkBlue))
 ```
 </div>
