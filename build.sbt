@@ -16,8 +16,8 @@ scalacOptions ++= Seq(
 enablePlugins(MdocPlugin)
 
 libraryDependencies ++= Seq(
-  "org.creativescala" %% "doodle" % "0.9.7",
-  "org.typelevel" %% "cats-core" % "1.1.0"
+  "org.creativescala" %% "doodle" % "0.9.8",
+  "org.typelevel" %% "cats-core" % "2.0.0"
 )
 
 // scalacOptions in Mdoc := (scalacOptions in Mdoc).value.filterNot(Set("-Ywarn-unused-import"))
