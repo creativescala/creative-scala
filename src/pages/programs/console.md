@@ -8,7 +8,7 @@ import doodle.image.syntax.core._
 import doodle.java2d._
 ```
 
-Your text editor or IDE will allow you to save code to a file, but we need to save them in the right place so the Scala compiler can find them.
+Your text editor or IDE will allow you to save code to a file, but we need to save files in the right place so the Scala compiler can find them.
 If you're working from the Doodle template you should save your code in the directory `src/main/scala/`.
 
 How do we use code that we saved to a file from the console? 
