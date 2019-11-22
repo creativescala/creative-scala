@@ -24,7 +24,7 @@ Given a natural number, say, 3, we can break it down using the definition above 
 
 3 = 1 + 2 = 1 + (1 + 1) = 1 + (1 + (1 + 0))
 
-We use the recursive rule to expand the equation, until we cannot use it any more. We then use the base case to stop the recursion.
+We use the recursive rule to expand the equation until we cannot use it any more. We then use the base case to stop the recursion.
 
 
 ## Structural Recursion
@@ -40,7 +40,7 @@ Remember we wrote `boxes` as
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 ```
 
@@ -82,7 +82,7 @@ val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 ```
 
@@ -188,7 +188,7 @@ def cross(count: Int): Image = {
   val unit = Image.circle(20)
   count match {
     case 0 => unit
-    case n => unit beside (unit above cross(n-1) above unit) beside unit
+    case n => unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)
   }
 }
 ```
@@ -231,11 +231,11 @@ We've given you a hint by showing the progression of chessboards in [@fig:recurs
 From this we can see that the base is a two-by-two chessboard.
 
 ```scala mdoc:silent
-val blackSquare = Image.rectangle(30, 30) fillColor Color.black
-val redSquare   = Image.rectangle(30, 30) fillColor Color.red
+val blackSquare = Image.rectangle(30, 30).fillColor(Color.black)
+val redSquare   = Image.rectangle(30, 30).fillColor(Color.red)
 
 val base =
-  (redSquare beside blackSquare) above (blackSquare beside redSquare)
+  (redSquare.beside(blackSquare)).above(blackSquare.beside(redSquare))
 ```
 
 Now to work out the unit and addition.
@@ -254,16 +254,16 @@ import doodle.java2d._
 ```
 ```scala mdoc:silent
 def chessboard(count: Int): Image = {
-  val blackSquare = Image.rectangle(30, 30) fillColor Color.black
-  val redSquare   = Image.rectangle(30, 30) fillColor Color.red
+  val blackSquare = Image.rectangle(30, 30).fillColor(Color.black)
+  val redSquare   = Image.rectangle(30, 30).fillColor(Color.red)
 
   val base =
-    (redSquare   beside blackSquare) above (blackSquare beside redSquare)
+    (redSquare.beside(blackSquare)).above(blackSquare.beside(redSquare))
   count match {
     case 0 => base
     case n =>
       val unit = chessboard(n-1)
-      (unit beside unit) above (unit beside unit)
+      (unit.beside(unit)).above(unit.beside(unit))
   }
 }
 ```
@@ -306,12 +306,12 @@ val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc
 def sierpinski(count: Int): Image = {
-  val triangle = Image.triangle(10, 10) strokeColor Color.magenta
+  val triangle = Image.triangle(10, 10).strokeColor(Color.magenta)
   count match {
-    case 0 => triangle above (triangle beside triangle)
+    case 0 => triangle.above(triangle.beside(triangle))
     case n =>
       val unit = sierpinski(n-1)
-      unit above (unit beside unit)
+      unit above (unit.beside(unit))
   }
 }
 ```
