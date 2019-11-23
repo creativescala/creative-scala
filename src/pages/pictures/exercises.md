@@ -19,22 +19,24 @@ For bonus credit add a stand so we can place the target on a range, as shown in 
 ![Archery target with a stand](src/pages/pictures/target2.pdf+svg){#fig:pictures:target2}
 
 <div class="solution">
-The simplest solution is to create three concentric circles using the `on` operator:
+The simplest solution is to create three concentric circles using the `on` method:
 
 ```scala mdoc:silent
-(Image.circle(10) on Image.circle(20) on Image.circle(30))
+Image
+  .circle(20)
+  .on(Image.circle(40))
+  .on(Image.circle(60))
 ```
 
 For the extra credit we can create a stand using two rectangles:
 
 ```scala mdoc:silent
-(
-  Image.circle(10)
-    .on(Image.circle(20))
-    .on(Image.circle(30))
-    .above(Image.rectangle(6, 20)
-      .above(Image.rectangle(20, 6)))
-)
+Image
+  .circle(20)
+  .on(Image.circle(40))
+  .on(Image.circle(60))
+  .above(Image.rectangle(6, 20))
+  .above(Image.rectangle(20, 6))
 ```
 </div>
 
@@ -53,12 +55,12 @@ apply to a single image---we need to make sure that image
 comprises the correct set of shapes:
 
 ```scala mdoc:silent
-(
-  ( Image.circle(10).fillColor(Color.red) ) on
-  ( Image.circle(20).fillColor(Color.white) ) on
-  ( Image.circle(30).fillColor(Color.red).strokeWidth(2) ) above
-  ( Image.rectangle(6, 20).above(Image.rectangle(20, 6)).fillColor(Color.brown) ) above
-  ( Image.rectangle(80, 25).strokeWidth(0).fillColor(Color.green) )
-)
+Image
+  .circle(20).fillColor(Color.red)
+  .on(Image.circle(40).fillColor(Color.white))
+  .on(Image.circle(60).fillColor(Color.red))
+  .above(Image.rectangle(6, 20).fillColor(Color.brown))
+  .above(Image.rectangle(20, 6).fillColor(Color.brown))
+  .above(Image.rectangle(80, 25).noStroke.fillColor(Color.green))
 ```
 </div>
