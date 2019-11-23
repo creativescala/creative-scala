@@ -10,18 +10,24 @@ import doodle.java2d._
 
 In addition to layout, Doodle has some simple operators to add a splash of colour to our images. Try these out the methods described in [@tbl:pictures:color] to see how they work.
 
----------------------------------------------------------------------------------------------
-Operator                Type    Description                 Example
------------------------ ------- --------------------------- ---------------------------------
-`Image.fillColor(Color)` `Image` Fills the image with        `Image.circle(10).fillColor(Color.red)`
-                                the specified colour.
-
-`Image.strokeColor(Color)` `Image` Outlines the image with     `Image.circle(10).strokeColor(Color.blue)`
-                                the specified colour.
-
-`Image.strokeWidth(Int)`   `Image` Outlines the image with     `Image.circle(10).strokeWidth(3)`
-                                the specified stroke width.
----------------------------------------------------------------------------------------------
++-----------------------------+-----------+-------------------------+------------------------------+
+| Method                      | Parameter | Description             | Example                      |
++=============================+===========+=========================+==============================+
+| `fillColor`                 | `Color`   | Fills the image with    | `Image.circle(10)            |
+|                             |           | the specified color.    |    .fillColor(Color.red)`    |
++-----------------------------+-----------+-------------------------+------------------------------+
+| `strokeColor`               | `Color`   | Outlines the image with | `Image.circle(10)            |
+|                             |           | the specified color.    |    .strokeColor(Color.blue)` |
++-----------------------------+-----------+-------------------------+------------------------------+
+| `strokeWdith`               | `Double`  | Sets the width of the   | `Image.circle(10)            |
+|                             |           | image outline.          |    .strokeWidth(3)`          |
++-----------------------------+-----------+-------------------------+------------------------------+
+| `noFill`                    | None      | Removes any fill from   | `Image.circle(10).noFill`    |
+|                             |           | the image.              |                              |
++-----------------------------+-----------+-------------------------+------------------------------+
+| `noStroke`                  | None      | Removes any stroke from | `Image.circle(10).noStroke`  |
+|                             |           | the image.              |                              | 
++-----------------------------+-----------+-------------------------+------------------------------+
 
 : Some of the methods to add color to images in Doodle. {#tbl:pictures:color}
 
@@ -29,23 +35,23 @@ Doodle has various ways of creating colours.
 The simplest are the predefined colours in [CommonColors.scala][common-colors].
 Some of the most commonly used are described in [@tbl:pictures:colors].
 
---------------------------------------------------------------------
-Color                   Type    Example
------------------------ ------- ------------------------------------
-`Color.red`             `Color` `Image.circle(10).fillColor(Color.red)`
-
-`Color.blue`            `Color` `Image.circle(10).fillColor(Color.blue)`
-
-`Color.green`           `Color` `Image.circle(10).fillColor(Color.green)`
-
-`Color.black`           `Color` `Image.circle(10).fillColor(Color.black)`
-
-`Color.white`           `Color` `Image.circle(10).fillColor(Color.white)`
-
-`Color.gray`            `Color` `Image.circle(10).fillColor(Color.gray)`
-
-`Color.brown`           `Color` `Image.circle(10).fillColor(Color.brown)`
-------------------------------------------------------------------
++--------------+-------+------------------------------------------+
+| Color        | Type  | Example                                  |
++==============+=======+==========================================+
+|`Color.red`   |`Color`| `Image.circle(10).fillColor(Color.red)`  |
++--------------+-------+------------------------------------------+
+|`Color.blue`  |`Color`| `Image.circle(10).fillColor(Color.blue)` |
++--------------+-------+------------------------------------------+
+|`Color.green` |`Color`| `Image.circle(10).fillColor(Color.green)`|
++--------------+-------+------------------------------------------+
+|`Color.black` |`Color`| `Image.circle(10).fillColor(Color.black)`|
++--------------+-------+------------------------------------------+
+|`Color.white` |`Color`| `Image.circle(10).fillColor(Color.white)`|
++--------------+-------+------------------------------------------+
+|`Color.gray`  |`Color`| `Image.circle(10).fillColor(Color.gray)` |
++--------------+-------+------------------------------------------+
+|`Color.brown` |`Color`| `Image.circle(10).fillColor(Color.brown)`|
++--------------+-------+------------------------------------------+
 
 : Some of the most common predefined colors. {#tbl:pictures:colors}
 

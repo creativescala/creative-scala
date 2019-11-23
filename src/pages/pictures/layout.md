@@ -10,32 +10,32 @@ import doodle.java2d._
 
 We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle displayed beside one another, as in [@fig:picture:circle-rect].
 
-~~~ scala
+```scala
 (Image.circle(10).beside(Image.rectangle(10, 20))).draw()
-~~~
+```
 
 ![A circle beside a rectangle](src/pages/pictures/circle-beside-rectangle.pdf+svg){#fig:picture:circle-rect}
 
-Doodle contains several layout methods for combining images, described in [@tbl:pictures:layout]. Try them out now to see what they do.
+`Image` contains several layout methods for combining images, described in [@tbl:pictures:layout]. Try them out now to see what they do.
 
-----------------------------------------------------------------------------------------
-Operator              Type    Description                Example
---------------------- ------- -------------------------- -------------------------------
-`Image.beside(Image)`  `Image` Places images horizontally `Image.circle(10).beside(Image.circle(20))`
-                              next to one another.
-
-`Image.above(Image)`   `Image` Places images vertically   `Image.circle(10).above(Image.circle(20))`
-                              next to one another.
-
-`Image.below(Image)`   `Image` Places images vertically   `Image.circle(10).below(Image.circle(20))`
-                              next to one another.
-
-`Image.on(Image)`      `Image` Places images centered     `Image.circle(10).on(Image.circle(20))`
-                              on top of one another.
-
-`Image.under(Image)`   `Image` Places images centered     `Image.circle(10).under(Image.circle(20))`
-                              on top of one another.
-----------------------------------------------------------------------------------------
++---------------+-----------+----------------------------+------------------------------+
+| Method        | Parameter | Description                | Example                      |
++===============+===========+============================+==============================+
+| `beside`      |`Image`    | Places images horizontally | `Image.circle(10)            |
+|               |           | next to one another        |    .beside(Image.circle(10))`|
++---------------+-----------+----------------------------+------------------------------+
+| `above`       |`Image`    | Places images vertically   | `Image.circle(10)            |
+|               |           | next to one another        |    .above(Image.circle(10))` |
++---------------+-----------+----------------------------+------------------------------+
+| `below`       |`Image`    | Places images vertically   | `Image.circle(10)            |
+|               |           | next to one another        |    .below(Image.circle(10))` |
++---------------+-----------+----------------------------+------------------------------+
+| `on`          |`Image`    | Places images centered     | `Image.circle(10)            |
+|               |           | on top of one another      |    .on(Image.circle(10))`    |
++---------------+-----------+----------------------------+------------------------------+
+| `under`       |`Image`    | Places images centered     | `Image.circle(10)            |
+|               |           | on top of one another      |    .under(Image.circle(10))` |
++---------------+-----------+----------------------------+------------------------------+
 
 : Layout methods available in Doodle {#tbl:pictures:layout}
 

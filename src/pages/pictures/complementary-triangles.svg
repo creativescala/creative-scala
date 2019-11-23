@@ -1,12 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" height="32.455555555555556mm" version="1.1" viewBox="0 0 92 92" width="32.455555555555556mm" x="0mm" y="0mm" xmlns="http://www.w3.org/2000/svg">
-  <g transform="matrix(1 0 0 -1 46 46)">
-    <path d="M-20.0,3.0 L0.0,43.0 L20.0,3.0 L-20.0,3.0 Z" style="fill:none;stroke:rgb(72,61,139);stroke-width:6;stroke-miterlimit:10;"/>
-    <path d="M-20.0,3.0 L0.0,43.0 L20.0,3.0 L-20.0,3.0 Z" style="fill:rgb(159,130,223);stroke:none;"/>
-    <path d="M-43.0,-43.0 L-23.0,-3.0 L-3.0,-43.0 L-43.0,-43.0 Z" style="fill:none;stroke:rgb(61,89,139);stroke-width:6;stroke-miterlimit:10;"/>
-    <path d="M-43.0,-43.0 L-23.0,-3.0 L-3.0,-43.0 L-43.0,-43.0 Z" style="fill:rgb(130,148,223);stroke:none;"/>
-    <path d="M3.0,-43.0 L23.0,-3.0 L43.0,-43.0 L3.0,-43.0 Z" style="fill:none;stroke:rgb(111,61,139);stroke-width:6;stroke-miterlimit:10;"/>
-    <path d="M3.0,-43.0 L23.0,-3.0 L43.0,-43.0 L3.0,-43.0 Z" style="fill:rgb(205,130,223);stroke:none;"/>
-  </g>
-</svg>
+<svg width="132.0" height="132.0" viewBox="-66.0 -66.0 132.0 132.0" style=""><g><defs></defs><g><path transform="matrix(1.0,0.0,0.0,-1.0,0.0,-23.0)" style="stroke-width: 6.0px; stroke: hsla(248.46153846153845, 38.99999999999999%, 39.21568627450981%, 1.0); stroke-linecap: butt; stroke-linejoin: miter;  fill: hsla(258.46153846153845, 58.999999999999986%, 69.2156862745098%, 1.0);" d="M -20,-20 L 0,20 L 20,-20 Z"></path><g><path transform="matrix(1.0,0.0,0.0,-1.0,-23.0,23.0)" style="stroke-width: 6.0px; stroke: hsla(218.46153846153848, 38.99999999999999%, 39.21568627450981%, 1.0); stroke-linecap: butt; stroke-linejoin: miter;  fill: hsla(228.46153846153848, 58.999999999999986%, 69.2156862745098%, 1.0);" d="M -20,-20 L 0,20 L 20,-20 Z"></path><path transform="matrix(1.0,0.0,0.0,-1.0,23.0,23.0)" style="stroke-width: 6.0px; stroke: hsla(278.46153846153845, 38.99999999999999%, 39.21568627450981%, 1.0); stroke-linecap: butt; stroke-linejoin: miter;  fill: hsla(288.46153846153845, 58.999999999999986%, 69.2156862745098%, 1.0);" d="M -20,-20 L 0,20 L 20,-20 Z"></path></g></g></g></svg>

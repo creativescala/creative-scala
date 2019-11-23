@@ -1,8 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg xmlns:xlink="http://www.w3.org/1999/xlink" height="7.408333333333332mm" version="1.1" viewBox="0 0 32 21" width="11.288888888888888mm" x="0mm" y="0mm" xmlns="http://www.w3.org/2000/svg">
-  <g transform="matrix(1 0 0 -1 16 10.5)">
-    <path d="M-5.5,10.0 C0.019150244939999617,10.0 4.5,5.51915024494 4.5,0.0 C4.5,-5.51915024494 0.019150244939999617,-10.0 -5.5,-10.0 C-11.01915024494,-10.0 -15.5,-5.51915024494 -15.5,0.0 C-15.5,5.51915024494 -11.01915024494,10.0 -5.5,10.0 Z" style="fill:none;stroke:rgb(0,0,0);stroke-miterlimit:10;"/>
-    <path d="M5.5,10.0 L15.5,10.0 L15.5,-10.0 L5.5,-10.0 L5.5,10.0 Z" style="fill:none;stroke:rgb(0,0,0);stroke-miterlimit:10;"/>
-  </g>
-</svg>
+<svg width="62.0" height="61.0" viewBox="-31.0 -30.5 62.0 61.0" style=""><g><defs></defs><g><circle transform="matrix(1.0,0.0,0.0,-1.0,-5.5,0.0)" style="stroke-width: 1.0px; stroke: hsla(0.0, 0.0%, 0.0%, 1.0); stroke-linecap: butt; stroke-linejoin: miter;  fill: none;" r="5.0"></circle><rect transform="matrix(1.0,0.0,0.0,-1.0,5.5,0.0)" style="stroke-width: 1.0px; stroke: hsla(0.0, 0.0%, 0.0%, 1.0); stroke-linecap: butt; stroke-linejoin: miter;  fill: none;" x="-5.0" y="-10.0" width="10.0" height="20.0"></rect></g></g></svg>

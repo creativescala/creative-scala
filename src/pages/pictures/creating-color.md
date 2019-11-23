@@ -17,11 +17,11 @@ Computers work with colors defined by mixing together different amounts of red, 
 We can create our own RGB colors using the `rgb` method on the `Color` object. This method takes three parameters: the red, green, and blue components. These are numbers between 0 and 255, called an `UnsignedByte`[^byte]. There is no literal expression for `UnsignedByte` like there is for `Int`, so we must convert an `Int` to `UnsignedByte`. We can do this with the `uByte` method. An `Int` can take on more values that an `UnsignedByte`, so if the number is too small or too large to be represented as a `UnsignedByte` it will be converted to the closest values is the range 0 to 255. These examples illustrate the conversion.
 
 ```scala mdoc
-0.uByte.toInt
-255.uByte.toInt
-128.uByte.toInt
--100.uByte.toInt // Too small, is transformed to 0
-1000.uByte.toInt // Too big, is transformed to 255
+0.uByte.get
+255.uByte.get
+128.uByte.get
+-100.uByte.get // Too small, is transformed to 0
+1000.uByte.get // Too big, is transformed to 255
 ```
 
 (Note that `UnsignedByte` is a feature of Doodle. It is not something provided by Scala.)
@@ -82,10 +82,8 @@ For example,
 ```scala mdoc:silent
 Image.circle(100)
      .fillColor(Color.red)
-     .beside(Image.circle(100)
-                  .fillColor(Color.red.spin(15.degrees)))
-     .beside(Image.circle(100)
-                  .fillColor(Color.red.spin(30.degrees)))
+     .beside(Image.circle(100).fillColor(Color.red.spin(15.degrees)))
+     .beside(Image.circle(100).fillColor(Color.red.spin(30.degrees)))
      .strokeWidth(5.0)
 ```
 
@@ -96,13 +94,13 @@ produces [@fig:pictures:three-circles-spin].
 Here's a similar example, this time manipulating saturation and lightness, shown in [@fig:pictures:saturate-and-lighten].
 
 ```scala mdoc:silent
-Image.circle(20)
-     .fillColor(Color.red.darken(0.2.normalized))
-     .beside(Image.circle(20).fillColor(Color.red))
-     .beside(Image.circle(20).fillColor((Color.red.lighten(0.2.normalized))))
-     .above(Image.rectangle(40, 40).fillColor(Color.red.desaturate(0.6.normalized))
-                 .beside(Image.rectangle(40,40).fillColor(Color.red.desaturate(0.3.normalized)))
-                 .beside(Image.rectangle(40,40).fillColor(Color.red)))
+Image.circle(40)
+   .fillColor(Color.red.darken(0.2.normalized))
+   .beside(Image.circle(40).fillColor(Color.red))
+   .beside(Image.circle(40).fillColor((Color.red.lighten(0.2.normalized))))
+   .above(Image.rectangle(40, 40).fillColor(Color.red.desaturate(0.6.normalized))
+               .beside(Image.rectangle(40,40).fillColor(Color.red.desaturate(0.3.normalized)))
+               .beside(Image.rectangle(40,40).fillColor(Color.red)))
 ```
 
 ![The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation.](./src/pages/pictures/saturate-and-lighten.pdf+svg){#fig:pictures:saturate-and-lighten}
@@ -128,9 +126,9 @@ Image.circle(40)
 
 #### Analogous Triangles {-}
 
-Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:complementary-triangles].
+Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example in [@fig:pictures:analogous-triangles].
 
-![Complementary triangles. The colors chosen are variations on `darkSlateBlue`](./src/pages/pictures/complementary-triangles.pdf+svg){#fig:pictures:complementary-triangles}
+![Analogous triangles. The colors chosen are variations on `darkSlateBlue`](./src/pages/pictures/complementary-triangles.pdf+svg){#fig:pictures:analogous-triangles}
 
 <div class="solution">
 These sort of examples are getting a bit too long to write out at the console. We'll look at a way around this next.
