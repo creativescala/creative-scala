@@ -15,3 +15,8 @@ Thumbs.db
 target/
 
 *.sublime-workspace
+
+.metals
+.bloop
+.sbt
+package-lock.json
