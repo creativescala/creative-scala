@@ -107,10 +107,11 @@ Finally, with `on` the origins are all placed on top of each other, so effective
 Using `at` we can move an `Image` relative to its origin.
 In the examples we're using here we want all the elements to share the same origin, so we use `on` to combine `Images` that we have moved using `at`.
 
-There are three ways we can call `at`:
+There are four ways we can call `at`:
 
  - by passing the x- and y-offset, as in `dot.at(100, 100)`;
- - by passing the radius and angle, as in `dot.at(100, 90.degrees)`; or
+ - by passing the radius and angle, as in `dot.at(100, 90.degrees)`;
+ - by passing a `Point`, as in `dot.at(Point(100, 100))`; or
  - by passing a `Vec` (a vector) giving the offset, as in `dot.at(Vec(100, 100))`.
  
 We can convert a `Point` to a `Vec` using the `toVec` method.
