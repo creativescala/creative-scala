@@ -36,7 +36,7 @@ Now onto structural recursion. The structural recursion pattern for the natural 
 
 Remember we wrote `boxes` as
 
-```scala mdoc
+```scala mdoc:silent
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -62,7 +62,7 @@ count match {
 
 means we're checking `count` for two cases, the case when `count` is 0, and the case when `count` is any other natural number `n` (which is `1 + m`).
 
-The right hand side of the `match` expression says what we do in each case. The case for zero is `Image.empty`. The case for `n` is `aBox beside boxes(n-1)`.
+The right hand side of the `match` expression says what we do in each case. The case for zero is `Image.empty`. The case for `n` is `aBox.beside(boxes(n-1))`.
 
 Now for the really important point.
 Notice that the structure of the right-hand side mirrors the structure of the natural number we match.
@@ -78,7 +78,7 @@ import doodle.image.syntax.core._
 import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
-```scala mdoc
+```scala mdoc:silent
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty

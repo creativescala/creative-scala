@@ -14,26 +14,26 @@ Let's start with an example, drawing a line or row of boxes as in [@fig:recursio
 
 Let's define a box to begin with.
 
-```scala mdoc
+```scala mdoc:silent
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 
 Then one box in a row is just
 
-```scala mdoc
+```scala mdoc:silent
 val oneBox = aBox
 ```
 
 If we want to have two boxes side by side, that is easy enough.
 
-```scala mdoc
-val twoBoxes = aBox beside oneBox
+```scala mdoc:silent
+val twoBoxes = aBox.beside(oneBox)
 ```
 
 Similarly for three.
 
-```scala mdoc
-val threeBoxes = aBox beside twoBoxes
+```scala mdoc:silent
+val threeBoxes = aBox.beside(twoBoxes)
 ```
 
 And so on for as many boxes as we care to create.
@@ -49,10 +49,10 @@ import doodle.image.syntax.core._
 import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 val oneBox = aBox
-val twoBoxes = aBox beside oneBox
+val twoBoxes = aBox.beside(oneBox)
 ```
-```scala mdoc
-val threeBoxes = aBox beside aBox beside aBox
+```scala mdoc:silent
+val threeBoxes = aBox.beside(aBox).beside(aBox)
 ```
 
 These two definitions are equivalent.
@@ -66,7 +66,7 @@ We learned in the previous chapter that methods abstract over expressions, so le
 We'll start by writing a method skeleton that defines, as usual, what goes into the method and what it evaluates to.
 In this case we supply an `Int` `count`, which is the number of boxes we want, and we get back an `Image`.
 
-```scala mdoc
+```scala mdoc:silent
 def boxes(count: Int): Image =
   ???
 ```
@@ -83,7 +83,7 @@ import doodle.image.syntax.core._
 import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
-```scala mdoc
+```scala mdoc:silent
 val oneBox = aBox.beside(Image.empty)
 ```
 
@@ -98,7 +98,7 @@ We can say the following properties of `boxes` always hold, if it is correctly i
 - `boxes(3) == aBox.beside(boxes(2))`
 
 The last three properties all have the same general shape.
-We can describe all of them, and any case for `n > 0`, with the single property `boxes(n) == aBox beside boxes(n - 1)`.
+We can describe all of them, and any case for `n > 0`, with the single property `boxes(n) == aBox.beside(boxes(n - 1))`.
 So we're left with two properties
 
 - `boxes(0) == Image.empty`
@@ -117,7 +117,7 @@ import doodle.image.syntax.core._
 import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
-```scala mdoc
+```scala mdoc:silent
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -144,7 +144,7 @@ At this point we're trying to get used to the syntax of `match`, so rather than 
 <div class="solution">
 All you to do is change `beside` to `above` in `boxes`.
 
-```scala mdoc
+```scala mdoc:silent
 def stackedBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty

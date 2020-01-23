@@ -5,7 +5,7 @@ In the previous section we saw the `match` expression
 ```scala
 count match {
   case 0 => Image.empty
-  case n => aBox beside boxes(n-1)
+  case n => aBox.beside(boxes(n-1))
 }
 ```
 
