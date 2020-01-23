@@ -9,27 +9,49 @@ import doodle.java2d._
 import doodle.reactor._
 ```
 
-We will create animations using a tool called a *reactor*. A reactor allows us to write an animation in terms of three things:
+We will create animations using a tool called a *reactor*. A reactor allows us to write an animation in terms of three (and one optional) things:
 
 - some initial value, such as a `Point`; 
-- an update function that transforms the value into its next value every clock tick, such as moving the `Point`; and
-- a rendering function that turns the value into an `Image`.
+- an update function that transforms the value into its next value every clock tick, such as moving the `Point`;
+- a rendering function that turns the value into an `Image`; and
+- an optional condition that determines when the animation stop.
 
-Here's an example.
+Here's an example that moves a circle from left to right, stopping when the the circle gets to the point (300, 0).
 
 ```scala mdoc:silent
-val animation =
-  Reactor.init(Point(0, 300))
-    .onTick(pt => pt.rotate(2.degrees))
-    .render(pt => Image.circle(10).at(pt.toVec))
+val travellingCircle =
+  Reactor.init(Point(-300, 0))
+    .onTick(pt => Point(pt.x + 1, pt.y))
+    .render(pt => Image.circle(10).at(pt))
+    .stop(pt => pt.x >= 300)
 ```
 
-As you can see we call three methods on `Reactor`, `init`, `onTick`, and `render` passing the initial value, the update function, and the rendering function respectively.
+(We could write the `onTick` function as `pt -> pt + Vec(1,0)` if we're comfortable with vector arithmetic.)
 
-This constructs a reactor but it does not draw it. To do this we must call the `run` method, passing a `Frame` that tells the reactor how big to make the canvas it draws on. Here's an example:
+This constructs a reactor but it does not draw it. To do this we must call the `run` method, passing a `Frame` that tells the reactor how big to make the window it draws on. Here's an example:
 
 ```scala
-animation.run(Frame.size(600, 600))
+travellingCircle.run(Frame.size(600, 600))
+```
+
+This generates the animation shown in [@fig:reactor:travelling].
+
+![A circle moving from left to right.](./src/pages/reactor/travelling.pdf+svg){#fig:reactor:travelling}
+
+
+Here's an another example that moves a circle in a circular orbit. This time  the animation has no stopping condition, so it continues forever.
+
+```scala mdoc:silent
+val orbitingCircle =
+  Reactor.init(Point(0, 300))
+    .onTick(pt => pt.rotate(2.degrees))
+    .render(pt => Image.circle(10).at(pt))
+```
+
+We run this reactor in the same way.
+
+```scala
+orbitingCircle.run(Frame.size(600, 600))
 ```
 
 This generates the animation shown in [@fig:reactor:orbit].

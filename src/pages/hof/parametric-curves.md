@@ -120,9 +120,10 @@ We can convert a `Point` to a `Vec` using the `toVec` method.
 Point.cartesian(1.0, 1.0).toVec
 ```
 
+
 ## Geometry
 
-The final thing building block is the geometry to position points.
+The final building block is the geometry to position points.
 If a point is positioned at a distance `r` from the origin at an angle `a`, the x- and y-coordinates are `(a.cos) * r` and `(a.sin) * r` respectively.
 Alternatively we can just use polar form!
 
@@ -170,16 +171,19 @@ def parametricCircle(angle: Angle): Point =
 Now we could sample a number of points evenly spaced around the circle. To create an image we can draw something at each point (say, a triangle). 
 
 ```scala mdoc:silent
-def sample(start: Angle, samples: Int): Image = {
+def sample(samples: Int): Image = {
   // Angle.one is one complete turn. I.e. 360 degrees
   val step = Angle.one / samples
-  val dot = Image.triangle(10, 10)
+  val dot = Image
+              .triangle(10, 10)
+              .fillColor(Color.limeGreen)
+              .strokeColor(Color.lawngreen)
   def loop(count: Int): Image = {
     val angle = step * count
     count match {
       case 0 => Image.empty
       case n =>
-        dot.at(parametricCircle(angle).toVec) on loop(n - 1)
+        dot.at(parametricCircle(angle).toVec).on(loop(n - 1))
     }
   }
   
@@ -190,9 +194,10 @@ def sample(start: Angle, samples: Int): Image = {
 This is a structural recursion, which is hopefully a familiar pattern by now.
 
 If we draw this we'll see the outline of a circle suggested by the triangles.
-See [@fig:hof:triangle-circle], which shows the result of `sample(0.degrees, 72)`.
+See [@fig:hof:triangle-circle], which shows the result of `sample(72)`.
 
 ![Triangles arranged in a circle, using the code from `sample` above.](src/pages/hof/triangle-circle.pdf+svg){#fig:hof:triangle-circle}
+
 
 ### Flowers
 
@@ -214,6 +219,14 @@ A densely sampled example is shown in [@fig:hof:rose].
 We can change `sample` to call `rose` instead of `parametricCircle`, but this is a bit unsatisfactory. 
 What if we want to experiment with different parametric equations? 
 It would be nice if we could pass as a parameter to `sample` the way of creating points (i.e. the parametric equation). 
+
+
+#### Exercises {-} 
+
+How can we change `sample` so we can pass it the parametric equation to sample from?
+
+
+Make this change!
 Can we do this? 
 To do so we need to know how to:
 

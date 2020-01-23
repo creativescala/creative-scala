@@ -35,24 +35,22 @@ The picture in [@fig:sequences:open-closed-paths] illustrates the components tha
 Now we know about paths, how do we create them in Doodle? Here's the code that created [@fig:pictures:open-closed-paths].
 
 ```scala mdoc:silent
-import doodle.core.Point._
 import doodle.core.PathElement._
 
 val triangle =
   List(
-    lineTo(cartesian(50, 100)),
-    lineTo(cartesian(100, 0)),
-    lineTo(cartesian(0, 0))
+    lineTo(Point(50, 100)),
+    lineTo(Point(100, 0)),
+    lineTo(Point(0, 0))
   )
 
 val curve =
-  List(curveTo(cartesian(50, 100), cartesian(100, 100), cartesian(150, 0)))
+  List(curveTo(Point(50, 100), Point(100, 100), Point(150, 0)))
 
 def style(image: Image): Image =
-  image.
-    strokeWidth(6.0).
-    strokeColor(Color.royalBlue).
-    fillColor(Color.skyBlue)
+  image.strokeWidth(6.0)
+    .strokeColor(Color.royalBlue)
+    .fillColor(Color.skyBlue)
 
 val openPaths =
   style(Image.openPath(triangle).beside(Image.openPath(curve)))
@@ -66,21 +64,22 @@ val paths = openPaths.above(closedPaths)
 From this code we can see we create paths using the `openPath` and `closePath` methods on `Image`, just as we create other shapes. 
 A path is created from a `List` of `PathElement`. 
 The different kinds of `PathElement` are created by calling methods on the `PathElement` object, as described in [@tbl:sequences:path-element].
+In the code above we used the declaration `import doodle.core.PathElement._` to make all the methods on `PathElement` available in the local scope.
 
 
----------------------------------------------------------------------------------------------
-Method                               Description                 Example
------------------------------------- --------------------------- ----------------------------
-`moveTo(Point)`                      Move the pen to `Point`     `moveTo(cartesian(1, 1))`
-                                     without drawing.
+---------------------------------------------------------------------------------------------------
+Method                                     Description                 Example
+------------------------------------------ --------------------------- ----------------------------
+`PathElement.moveTo(Point)`                Move the pen to `Point`     `PathElement.moveTo(Point(1, 1))`
+                                           without drawing.
 
-`lineTo(Point)`                      Draw a straight line to     `lineTo(cartesian(2, 2))`
-                                     `Point`
+`PathElement.lineTo(Point)`                Draw a straight line to     `PathElement.lineTo(Point(2, 2))`
+                                     `     Point`
 
-`curveTo(Point, Point, Point)`       Draw a curve. The first two `curveTo(cartesian(1,0), cartesian(0,1), cartesian(1,1))`
-                                     points specify control
-                                     points and the last point is
-                                     where the curve ends.
+`PathElement.curveTo(Point, Point, Point)` Draw a curve. The first two `PathElement.curveTo(Point(1,0), Point(0,1), Point(1,1))`
+                                           points specify control
+                                           points and the last point is
+                                           where the curve ends.
 
 ---------------------------------------------------------------------------------------------
 

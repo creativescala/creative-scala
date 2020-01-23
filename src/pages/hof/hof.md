@@ -16,9 +16,9 @@ We've said we can
  - pass functions as parameters to other functions and methods; and
  - create methods that return functions as their results
  
-but we haven't used this ability yet. Let's do that now.
+Let's see some examples of how this is useful.
 
-Let's consider the pattern from the concentric circles exercise as an example:
+Remember the concentric circles exercise we used as an example:
 
 ```scala mdoc:silent
 def concentricCircles(count: Int, size: Int): Image =
@@ -82,6 +82,7 @@ def redCircle(n: Int): Image =
 val redCircles: Image =
   concentricShapes(10, redCircle _)
 ```
+
 
 ### Exercises {-}
 

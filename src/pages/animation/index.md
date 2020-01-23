@@ -11,7 +11,8 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-import doodle.reactor._
+import doodle.interact.animation._
+import doodle.interact.syntax._
 ```
 </div>
 

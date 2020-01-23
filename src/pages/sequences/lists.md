@@ -137,7 +137,7 @@ def doSomething[A,B](list: List[A]): B =
   }  
 ```
 
-where `f` is a problem specific method combining `hd` and result of the recursive call to produce something of type `B`.
+where `f` is a problem specific method combining `hd` and the result of the recursive call to produce something of type `B`.
 </div>
 
 
@@ -508,7 +508,7 @@ def makeShape(n: Int, increment: Int): Image =
     polygon(n+2, n * increment, 0.degrees)
 
 def makeColor(n: Int, spin: Angle, start: Color): Color =
-  start spin (spin * n)
+  start.spin(spin * n)
 
 val baseColor = Color.hsl(0.degrees, 0.7, 0.7)
 
@@ -519,7 +519,7 @@ def makeImage(n: Int): Image = {
     case n =>
       val shape = makeShape(n, 10)
       val color = makeColor(n, 30.degrees, baseColor)
-      makeImage(n-1) on (shape fillColor color)
+      makeImage(n-1).on(shape.fillColor(color))
   }
 }
 

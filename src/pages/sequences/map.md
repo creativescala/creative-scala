@@ -16,7 +16,7 @@ We'll also see that other useful datatypes provide this method and we can use it
 
 ### Transforming the Elements of a List
 
-In the previous section we say several examples where we transformed one list to another. 
+In the previous section we saw several examples where we transformed one list to another. 
 For example, we incremented the elements of a list with the following code.
 
 ```scala mdoc
@@ -51,7 +51,7 @@ If we had some type `Circle` we can draw a `List[Circle]` as a box containing a 
 ![A `List[Circle]` representing by a circle within a box](./src/pages/sequences/circle-box.pdf+svg){#fig:sequences:circle-box}
 
 Now we can draw an equation for `map` as in [@fig:sequences:map]. 
-If you prefer symbols instead of pictures, the picture is showing that `List[Circle] map (Circle => Triangle) = List[Triangle]`. 
+If you prefer symbols instead of pictures, the picture is showing that `List[Circle].map(Circle => Triangle) = List[Triangle]`. 
 One feature of the graphical representation is it nicely illustrates that `map` cannot create a new "box", which represents the structure of the list---or more concretely the number of elements and their order.
 
 ![`map` shown graphically](./src/pages/sequences/map.pdf+svg){#fig:sequences:map}
@@ -60,7 +60,7 @@ The graphical drawing of `map` exactly illustrates what holds at the type level 
 If we prefer we can write it down symbolically:
 
 ```scala
-List[A] map (A => B) = List[B]
+List[A].map(A => B) = List[B]
 ```
 
 The left hand side of the equation has the type of the list we map and the function we use to do the mapping. 

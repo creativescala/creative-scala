@@ -84,7 +84,7 @@ import doodle.java2d._
 val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc
-val oneBox = aBox beside Image.empty
+val oneBox = aBox.beside(Image.empty)
 ```
 
 Here we used `Image.empty` to represent no boxes.
@@ -93,16 +93,16 @@ Imagine we had already implemented the `boxes` method.
 We can say the following properties of `boxes` always hold, if it is correctly implemented:
 
 - `boxes(0) == Image.empty`
-- `boxes(1) == aBox beside boxes(0)`
-- `boxes(2) == aBox beside boxes(1)`
-- `boxes(3) == aBox beside boxes(2)`
+- `boxes(1) == aBox.beside(boxes(0))`
+- `boxes(2) == aBox.beside(boxes(1))`
+- `boxes(3) == aBox.beside(boxes(2))`
 
 The last three properties all have the same general shape.
 We can describe all of them, and any case for `n > 0`, with the single property `boxes(n) == aBox beside boxes(n - 1)`.
 So we're left with two properties
 
 - `boxes(0) == Image.empty`
-- `boxes(n) == aBox beside boxes(n-1)`
+- `boxes(n) == aBox.beside(boxes(n-1))`
 
 These two properties completely define the behavior of `boxes`.
 In fact we can implement `boxes` by converting these properties into code.
@@ -121,7 +121,7 @@ val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 ```
 
@@ -148,7 +148,7 @@ All you to do is change `beside` to `above` in `boxes`.
 def stackedBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox beside stackedBoxes(n-1)
+    case n => aBox.beside(stackedBoxes(n-1))
   }
 ```
 </div>
