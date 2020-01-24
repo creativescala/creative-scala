@@ -83,7 +83,7 @@ The pattern is this:
 
 - If `A` is a `B` or `C` write
 
-```scala mdoc
+```scala mdoc:reset-object
 sealed abstract class A extends Product with Serializable
 final case class B() extends A
 final case class C() extends A
