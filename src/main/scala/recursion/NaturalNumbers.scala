@@ -37,11 +37,38 @@ object NaturalNumbers {
       case n =>
         Image
           .star(7, (10 * n), (7 * n), 45.degrees)
-          .strokeColor(Color.fireBrick.spin((5 * n).degrees))
+          .strokeColor(Color.orangeRed.spin((5 * n).degrees))
           .strokeWidth(7.0)
           .beside(funRow(n - 1))
     }
   }
 
   funRow(5).save("recursion/fun-row")
+
+  def cross(count: Int): Image = {
+    count match {
+      case 0 =>
+        Image.regularPolygon(6, 10, 0.degrees)
+          .strokeColor(Color.deepSkyBlue.spin(-180.degrees))
+          .strokeWidth(5.0)
+      case n =>
+        val circle = Image
+          .circle(20)
+          .strokeColor(Color.deepSkyBlue)
+          .on(Image.circle(15).strokeColor(Color.deepSkyBlue.spin(-15.degrees)))
+          .on(Image.circle(10).strokeColor(Color.deepSkyBlue.spin(-30.degrees)))
+          .strokeWidth(5.0)
+        circle.beside(circle.above(cross(n - 1)).above(circle)).beside(circle)
+    }
+  }
+  val spacer = Image.square(30).noFill.noStroke
+
+  cross(0)
+    .beside(spacer)
+    .beside(cross(1))
+    .beside(spacer)
+    .beside(cross(2))
+    .beside(spacer)
+    .beside(cross(3))
+    .save("recursion/cross")
 }
