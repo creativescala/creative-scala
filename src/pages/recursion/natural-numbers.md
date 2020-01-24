@@ -86,7 +86,7 @@ def boxes(count: Int): Image =
   }
 ```
 
-To reiterate, the left hand side of the `match` expression exactly matches the definition of natural numbers. The right-hand also matches the definition but we replace natural numbers with images. The image that is equivalent to zero is `Image.empty`. The image that is equivalent to `1 + m` is `aBox beside boxes(m)`.
+To reiterate, the left hand side of the `match` expression exactly matches the definition of natural numbers. The right-hand also matches the definition but we replace natural numbers with images. The image that is equivalent to zero is `Image.empty`. The image that is equivalent to `1 + m` is `aBox.beside(boxes(m))`.
 
 This general pattern holds for anything we care to write that transforms the natural numbers into some other type.
 We always have a `match` expression.
@@ -130,6 +130,139 @@ This general connection between proofs and programs is known as the *Curry-Howar
 </div>
 
 ### Exercises {-}
+
+#### Three (or More) Stacks {-}
+
+We've seen how to create a horizontal row of boxes. Now write a method `stacks` that takes a natural number as input and creates a vertical stack of boxes.
+
+<div class="solution">
+This is a modification of `boxes`, replacing `beside` with `above`.
+
+```scala mdoc:silent
+def stacks(count: Int): Image =
+  count match {
+    case 0 => Image.empty
+    case n => aBox.above(boxes(n-1))
+  }
+```
+</div>
+
+#### Alternating Images {-}
+
+We do more with the counter than simply using it in the recursive call. In this exercise we'll choose one `Image` when the counter is odd and a different `Image` when the counter is even. This will give us a row of alternating images as shown in [@fig:recursion:alternating-row].
+
+![A row constructed by alternating between two different images.](./src/pages/recursion/alternating-row.pdf+svg){#fig:recursion:alternating-row}
+
+To do this we need to learn about a new method on `Int`. The *modulo* method, written `%`, returns the remainder of dividing one `Int` by another. Here are some examples.
+
+```scala mdoc
+4 % 2
+3 % 2
+2 % 2
+1 % 2
+```
+
+We can see that when the first number is even the result is 0; otherwise it is 1. So we need to check is the result is 0 and act accordingly. There are a few ways to do this. Here's one example
+
+```scala mdoc
+(4 % 2 == 0) match {
+  case true  => "It's even!"
+  case false => "It's odd!"
+}
+```
+
+Here we match against the result of the comparison `(4 % 2 == 0)`. The type of this expression is `Boolean`, which has two possible values (`true` and `false`).
+
+For `Booleans` there is special syntax that is more compact than `match`: an `if` expression. Here's the same code rewritten using `if`.
+
+```scala mdoc
+if(4 % 2 == 0) "It's even!"
+else "It's odd!"
+```
+
+Use whichever you are more comfortable with!
+
+That's all the background we need. Now we can write the method we're interested in. Here's the skeleton:
+
+```scala mdoc:silent
+def alternatingRow(count: Int): Image =
+  ???
+```
+
+Implement the method. It's up to you what you choose for the two images used in the output.
+
+<div class="solution">
+Here's my solution. I used an `if` expression because it's a bit shorter than matching on the `Boolean`. Otherwise it's the same structural recursion pattern as before.
+
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
+val star = Image
+  .star(5, 30, 15, 45.degrees)
+  .strokeColor(Color.teal)
+  .on(Image.star(5, 12, 7, 45.degrees).strokeColor(Color.royalBlue))
+  .strokeWidth(5.0)
+
+val circle = Image
+  .circle(60)
+  .strokeColor(Color.midnightBlue)
+  .on(Image.circle(24).strokeColor(Color.plum))
+  .strokeWidth(5.0)
+
+def alternatingRow(count: Int): Image = {
+  count match {
+    case 0 => Image.empty
+    case n =>
+      if(n % 2 == 0) star.beside(alternatingRow(n-1))
+      else circle.beside(alternatingRow(n-1))
+  }
+}
+```
+</div>
+
+
+#### Getting Creative {-}
+
+We can use the counter to modify the image in other ways. For example we can make the color, size, or any othe property of an image depend on the counter. I have made an example in [@fig:recursion:fun-row], but come up with your own ideas. Implement a method
+
+```scala mdoc
+def funRow(count: Int): Image =
+  ???
+```
+
+that generates such an image.
+
+![A row constructed by making size and color depend on the counter.](./src/pages/recursion/fun-row.pdf+svg){#fig:recursion:fun-row}
+
+<div class="solution">
+Here's my solution. I made the size of the star and its color depend on the counter.
+
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc:silent
+def funRow(count: Int): Image = {
+  count match {
+    case 0 => Image.empty
+    case n =>
+      Image
+        .star(7, (10 * n), (7 * n), 45.degrees)
+        .strokeColor(Color.azure.spin((5 * n).degrees))
+        .strokeWidth(7.0)
+        .beside(funRow(n - 1))
+  }
+}
+```
+</div>
 
 #### Cross {-}
 
