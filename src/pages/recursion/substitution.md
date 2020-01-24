@@ -17,12 +17,12 @@ In the case of a method call, we can substitute the body of the method with appr
 Our very first example of recursion was `boxes`, written like so:
 
 ```scala mdoc:silent
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 ```
 
@@ -35,7 +35,7 @@ boxes(3)
 // Substitute body of `boxes`
 3 match {
   case 0 => Image.empty
-  case n => aBox beside boxes(n-1)
+  case n => aBox.beside(boxes(n-1))
 }
 ```
 
@@ -44,61 +44,61 @@ Knowing how to evaluate a `match` expression and using substitution again gives 
 ```scala mdoc:silent
 3 match {
   case 0 => Image.empty
-  case n => aBox beside boxes(n-1)
+  case n => aBox.beside(boxes(n-1))
 }
 // Substitute right-hand side expression of `case n`
-aBox beside boxes(2)
+aBox.beside(boxes(2))
 ```
 
 We can substitute again on `boxes(2)` to obtain
 
 ```scala mdoc:silent
-aBox beside boxes(2)
+aBox.beside(boxes(2))
 // Substitute body of boxes
-aBox beside {
+aBox.beside {
   2 match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 }
 // Substitute right-hand side expression of `case n`
-aBox beside {
-  aBox beside boxes(1)
+aBox.beside {
+  aBox.beside(boxes(1))
 }
 ```
 
 Repeating the process a few more times we get
 
 ```scala mdoc:silent
-aBox beside {
-  aBox beside {
+aBox.beside {
+  aBox.beside {
     1 match {
       case 0 => Image.empty
-      case n => aBox beside boxes(n-1)
+      case n => aBox.beside(boxes(n-1))
     }
   }
 }
 // Substitute right-hand side expression of `case n`
-aBox beside {
-  aBox beside {
-      aBox beside boxes(0)
+aBox.beside {
+  aBox.beside {
+      aBox.beside(boxes(0))
   }
 }
 // Substitute body of boxes
-aBox beside {
-  aBox beside {
-    aBox beside {
+aBox.beside {
+  aBox.beside {
+    aBox.beside {
       0 match {
         case 0 => Image.empty
-        case n => aBox beside boxes(n-1)
+        case n => aBox.beside(boxes(n-1))
       }
     }
   }
 }
 // Substitute right-hand side expression of `case 0`
-aBox beside {
-  aBox beside {
-    aBox beside {
+aBox.beside {
+  aBox.beside {
+    aBox.beside {
       Image.empty
     }
   }
@@ -108,16 +108,20 @@ aBox beside {
 Our final result, which simplifies to
 
 ```scala mdoc:silent
-aBox beside aBox beside aBox beside Image.empty
+aBox.beside(aBox).beside(aBox).beside(Image.empty)
 ```
 
 is exactly what we expect.
 Therefore we can say that substitution works to reason about recursion.
 This is great!
 However the substitutions are quite complex and difficult to keep track of without writing them down.
-A more practical way to reason about recursion is to assume that the recursion works and only worry about what new comes from each step.
 
-For example, when reasoning about `boxes`
+
+### Reasoning About Structural Recursion
+
+There is a more practical way to reason about structural recursion. Structural recursion guarantees the overall recursion is correct if we get the individual components correct. There are two parts to the structural recursion; the base case and the recursive case. The base case we can check just by looking at it. The recursive case has the recursive call (the method calling itself) but *we don't have to consider this*. It is given to us by structural recursion so it will be correct so long as the other parts are correct. We can simply assume the recursive call it correct and then check that we are doing the right thing with the result of this call.
+
+Let's apply this to reasoning about `boxes`.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
@@ -125,21 +129,23 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 ```
 
-we can tell the base case is correct by inspection.
+We can tell the base case is correct by inspection.
 Looking at the recursive case we *assume* that `boxes(n-1)` will do the right thing.
-We then ask ourselves "is what we do in the recursion case correct and is the recursion itself correct?"
+The question then becomes: is what we do with the result of the recursive call `boxes(n-1)`, correct?
 The answer is yes: if the recursion `boxes(n-1)` creates `n-1` boxes in a line, sticking a box in front of them is the right thing to do.
-This way of reasoning is much more compact that using substitution *and* guaranteed to work *if* we're using structural recursion.
+Since the individual cases are correct the whole thing is guaranted correct by structural recursion.
+
+This way of reasoning is much more compact than using substitution *and* guaranteed to work *if* we're using structural recursion.
 
 
 ### Exercises {-}

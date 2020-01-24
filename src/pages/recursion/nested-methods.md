@@ -167,8 +167,8 @@ Rewrite `chessboard` using a nested method so that `blackSquare`, `redSquare`, a
 
 ```scala mdoc
 def chessboard(count: Int): Image = {
-  val blackSquare = Image.rectangle(30, 30) fillColor Color.black
-  val redSquare   = Image.rectangle(30, 30) fillColor Color.red
+  val blackSquare = Image.square(30) fillColor Color.black
+  val redSquare   = Image.square(30) fillColor Color.red
 
   val base =
     (redSquare   beside blackSquare) above (blackSquare beside redSquare)
@@ -194,8 +194,8 @@ import doodle.java2d._
 ```
 ```scala mdoc
 def chessboard(count: Int): Image = {
-  val blackSquare = Image.rectangle(30, 30) fillColor Color.black
-  val redSquare   = Image.rectangle(30, 30) fillColor Color.red
+  val blackSquare = Image.square(30) fillColor Color.black
+  val redSquare   = Image.square(30) fillColor Color.red
   val base =
     (redSquare   beside blackSquare) above (blackSquare beside redSquare)
   def loop(count: Int): Image =
@@ -216,7 +216,7 @@ def chessboard(count: Int): Image = {
 Rewrite `boxes`, shown below, so that `aBox` is only in scope within `boxes` and only created once when `boxes` is called.
 
 ```scala mdoc:silent
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 
 def boxes(count: Int): Image =
   count match {
@@ -238,7 +238,7 @@ import doodle.java2d._
 ```
 ```scala mdoc:silent
 def boxes(count: Int): Image = {
-  val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+  val aBox = Image.square(20).fillColor(Color.royalBlue)
   count match {
     case 0 => Image.empty
     case n => aBox beside boxes(n-1)
@@ -257,7 +257,7 @@ import doodle.java2d._
 ```
 ```scala mdoc:silent
 def boxes(count: Int): Image = {
-  val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+  val aBox = Image.square(20).fillColor(Color.royalBlue)
   def loop(count: Int): Image =
     count match {
       case 0 => Image.empty

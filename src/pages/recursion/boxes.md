@@ -15,7 +15,7 @@ Let's start with an example, drawing a line or row of boxes as in [@fig:recursio
 Let's define a box to begin with.
 
 ```scala mdoc:silent
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 
 Then one box in a row is just
@@ -47,7 +47,7 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 val oneBox = aBox
 val twoBoxes = aBox.beside(oneBox)
 ```
@@ -81,7 +81,7 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent
 val oneBox = aBox.beside(Image.empty)
@@ -115,7 +115,7 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent
 def boxes(count: Int): Image =

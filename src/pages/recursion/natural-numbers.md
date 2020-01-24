@@ -6,7 +6,7 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 
 The natural numbers are the whole numbers, or integers, greater than or equal to zero. In other words the numbers 0, 1, 2, 3, ... (Some people define the natural numbers as starting at 1, not 0. It doesn't greatly matter for our purposes which definition you choose, but here we'll assume they start at 0.)
@@ -76,7 +76,7 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent
 def boxes(count: Int): Image =
@@ -137,15 +137,6 @@ We've seen how to create a horizontal row of boxes. Now write a method `stacks` 
 
 <div class="solution">
 This is a modification of `boxes`, replacing `beside` with `above`.
-
-```scala mdoc:silent
-def stacks(count: Int): Image =
-  count match {
-    case 0 => Image.empty
-    case n => aBox.above(boxes(n-1))
-  }
-```
-
 
 ```scala mdoc:silent
 def stacks(count: Int): Image =

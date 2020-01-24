@@ -6,7 +6,7 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
+val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 
 We've seen how to use structural recursion over the natural numbers to write a number of interesting programs.
@@ -35,7 +35,7 @@ Using what we learned working with `boxes` earlier we can go a bit further and w
 def growingBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => Image.rectangle(???,???) beside growingBoxes(n-1)
+    case n => Image.square(???).beside(growingBoxes(n-1))
   }
 ```
 
@@ -45,11 +45,11 @@ There are two ways to do this.
 The tricky way is to switch the order in the recursive case and make the size of the box a function of `n`.
 Here's the code.
 
-```scala mdoc
+```scala mdoc:silent
 def growingBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => growingBoxes(n-1) beside Image.rectangle(n*10, n*10)
+    case n => growingBoxes(n-1).beside(Image.square(n*10))
   }
 ```
 
@@ -59,11 +59,14 @@ Using an auxiliary parameter we simply add another parameter to `growingBoxes` t
 When we recurse we change this size.
 Here's the code.
 
-```scala mdoc
+```scala mdoc:silent
 def growingBoxes(count: Int, size: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => Image.rectangle(size, size) beside growingBoxes(n-1, size + 10)
+    case n => 
+      Image
+        .square(size)
+        .beside(growingBoxes(n-1, size + 10))
   }
 ```
 
@@ -85,21 +88,27 @@ Hint: you can `spin` the fill color at each recursion.
 There are two ways to implement a solution.
 The auxiliary parameter method is to add an extra parameter to `gradientBoxes` and pass the `Color` through the structural recursion.
 
-```scala mdoc
+```scala mdoc:silent
 def gradientBoxes(n: Int, color: Color): Image =
   n match {
     case 0 => Image.empty
-    case n => aBox.fillColor(color) beside gradientBoxes(n-1, color.spin(15.degrees))
+    case n =>
+      aBox
+        .fillColor(color)
+        .beside(gradientBoxes(n - 1, color.spin(15.degrees)))
   }
 ```
 
 We could also make the fill color a function `n`, as we demonstrated with the box size in `growingBoxes` above.
 
-```scala mdoc
+```scala mdoc:silent
 def gradientBoxes(n: Int): Image =
   n match {
     case 0 => Image.empty
-    case n => aBox.fillColor(Color.royalBlue.spin((15*n).degrees)) beside gradientBoxes(n-1)
+    case n =>
+      aBox
+        .fillColor(Color.royalBlue.spin((15 * n).degrees))
+        .beside(gradientBoxes(n - 1))
   }
 ```
 </div>
@@ -113,11 +122,14 @@ Now let's try a variation on the theme, drawing concentric circles as shown in [
 <div class="solution">
 This is almost identical to `growingBoxes`.
 
-```scala mdoc
+```scala mdoc:silent
 def concentricCircles(count: Int, size: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => Image.circle(size) on concentricCircles(n-1, size + 5)
+    case n => 
+      Image
+        .circle(size)
+        .on(concentricCircles(n-1, size + 5))
   }
 ```
 </div>
@@ -134,23 +146,28 @@ Here's our solution, where we've tried to break the problem into reusable parts 
 We still have a lot of repetition as we don't yet have the tools to get rid of more.
 We'll come to that soon.
 
-```scala mdoc
+```scala mdoc:silent
 def circle(size: Int, color: Color): Image =
   Image.circle(size).strokeWidth(3.0).strokeColor(color)
 
 def fadeCircles(n: Int, size: Int, color: Color): Image =
   n match {
     case 0 => Image.empty
-    case n => circle(size, color) on fadeCircles(n-1, size+7, color.fadeOutBy(0.05.normalized))
+    case n => 
+      circle(size, color)
+        .on(fadeCircles(n-1, size+7, color.fadeOutBy(0.05.normalized)))
   }
 
 def gradientCircles(n: Int, size: Int, color: Color): Image =
   n match {
     case 0 => Image.empty
-    case n => circle(size, color) on gradientCircles(n-1, size+7, color.spin(15.degrees))
+    case n => 
+      circle(size, color)
+        .on(gradientCircles(n-1, size+7, color.spin(15.degrees)))
   }
 
 def image: Image =
-  fadeCircles(20, 50, Color.red) beside gradientCircles(20, 50, Color.royalBlue)
+  fadeCircles(20, 50, Color.red)
+    .beside(gradientCircles(20, 50, Color.royalBlue))
 ```
 </div>
