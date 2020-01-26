@@ -53,16 +53,19 @@ pages:
   - methods/methods.md 
   - methods/syntax.md 
   - methods/semantics.md 
-  - methods/conclusions.md 
+  - methods/conclusions.md
 
-  - recursion/index.md 
+  - recursion/index.md
   - recursion/boxes.md 
   - recursion/match.md 
   - recursion/natural-numbers.md 
   - recursion/substitution.md 
-  - recursion/auxillary-parameter.md 
-  - recursion/nested-methods.md 
   - recursion/conclusions.md
+
+  - fractals/index.md
+  - fractals/fractals.md
+  - fractals/auxillary-parameter.md
+  - fractals/nested-methods.md
 
   - hof/index.md
   - hof/functions.md
