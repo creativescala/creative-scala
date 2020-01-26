@@ -83,7 +83,14 @@ The pattern is this:
 
 - If `A` is a `B` or `C` write
 
-```scala mdoc:reset-object
+```scala mdoc:invisible:reset-object
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
+```scala mdoc
 sealed abstract class A extends Product with Serializable
 final case class B() extends A
 final case class C() extends A

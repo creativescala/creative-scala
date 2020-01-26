@@ -1,6 +1,6 @@
 ## Build Your Own Turtle
 
-```scala mdoc:invisible
+```scala mdoc:invisible:reset-object
 import doodle.core._
 import doodle.image._
 import doodle.image.syntax._
@@ -51,7 +51,7 @@ First implement this without branching instructions. We'll return to branches in
 <div class="solution">
 The core pattern is a structural recursion but the details are a bit more intricate in this case than we've seen before. We need to both create the path elements and update the state.
 
-```scala mdoc:reset:invisible
+```scala mdoc:reset-object:invisible
 import doodle.core._
 import doodle.image._
 
@@ -95,6 +95,16 @@ def iterate(state: TurtleState, instructions: List[Instruction]): List[PathEleme
 ```
 
 <div class="solution">
+```scala mdoc:reset-object:invisible
+import doodle.core._
+import doodle.image._
+final case class TurtleState(at: Vec, heading: Angle)
+sealed abstract class Instruction extends Product with Serializable
+final case class Forward(distance: Double) extends Instruction
+final case class Turn(angle: Angle) extends Instruction
+final case class Branch(instructions: List[Instruction]) extends Instruction
+final case class NoOp() extends Instruction
+```
 ```scala mdoc
 def iterate(state: TurtleState, instructions: List[Instruction]): List[PathElement] =
   instructions match {
@@ -142,6 +152,8 @@ Here's the complete turtle.
 
 ```scala mdoc
 object Turtle {
+  import Image._
+
   def draw(instructions: List[Instruction]): Image = {
     def iterate(state: TurtleState, instructions: List[Instruction]): List[PathElement] =
       instructions match {
