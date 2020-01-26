@@ -14,12 +14,12 @@ Therefore, a method declaration can contain other method declarations.
 
 To see why this is useful, lets look at a method we wrote earlier:
 
-```scala mdoc
+```scala mdoc:silent
 def cross(count: Int): Image = {
   val unit = Image.circle(20)
   count match {
     case 0 => unit
-    case n => unit beside (unit above cross(n-1) above unit) beside unit
+    case n => unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)
   }
 }
 ```
@@ -38,36 +38,36 @@ cross(1)
   val unit = Image.circle(20)
   1 match {
     case 0 => unit
-    case n => unit beside (unit above cross(n-1) above unit) beside unit
+    case n => unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)
   }
 }
 // Expands to
 {
   val unit = Image.circle(20)
-  unit beside (unit above cross(0) above unit) beside unit
+  unit.beside(unit.above(cross(0)).above(unit)).beside(unit)
 }
 // Expands to
 {
   val unit = Image.circle(20)
-  unit beside (unit above
+  unit.beside(unit.above
   {
     val unit = Image.circle(20)
     0 match {
       case 0 => unit
-      case n => unit beside (unit above cross(n-1) above unit) beside unit
+      case n => unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)
     }
   }
-  above unit) beside unit
+  .above(unit)).beside(unit)
 }
 // Expands to
 {
   val unit = Image.circle(20)
-  unit beside (unit above
+  unit.beside(unit.above
   {
     val unit = Image.circle(20)
     unit
   }
-  above unit) beside unit
+  .above(unit)).beside(unit)
 }
 ```
 
@@ -89,7 +89,7 @@ def cross(count: Int): Image = {
   }
   count match {
     case 0 => unit
-    case n => unit beside (unit above cross(n-1) above unit) beside unit
+    case n => unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)
   }
 }
 
@@ -221,7 +221,7 @@ val aBox = Image.square(20).fillColor(Color.royalBlue)
 def boxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 ```
 
