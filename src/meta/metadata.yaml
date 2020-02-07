@@ -66,6 +66,7 @@ pages:
   - fractals/fractals.md
   - fractals/auxillary-parameter.md
   - fractals/nested-methods.md
+  - fractals/exercises.md
 
   - hof/index.md
   - hof/functions.md

@@ -10,7 +10,7 @@ val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 
 We've seen how to use structural recursion over the natural numbers to write a number of interesting programs.
-In this section we're going to see an extension that allows us to write more complex programs using *auxiliary parameters*.
+In this section we're going to learn how *auxillary parameters* allow us to write more complex programs.
 An auxiliary parameter is just an additional parameter to our method that allows us to pass extra information down the recursive call.
 
 For example, imagine creating the picture in [@fig:recursion:growing-boxes], which shows a line of boxes that grow in size as we move along the line.
@@ -55,7 +55,7 @@ def growingBoxes(count: Int): Image =
 
 Spend some time figuring out why this works before moving on to the solution using an auxiliary parameter.
 
-Using an auxiliary parameter we simply add another parameter to `growingBoxes` that tells us how big the current box should be.
+Alternatively we can simply add another parameter to `growingBoxes` that tells us how big the current box should be.
 When we recurse we change this size.
 Here's the code.
 
@@ -99,7 +99,7 @@ def gradientBoxes(n: Int, color: Color): Image =
   }
 ```
 
-We could also make the fill color a function `n`, as we demonstrated with the box size in `growingBoxes` above.
+We could also make the fill color a function of `n`, as we demonstrated with the box size in `growingBoxes` above.
 
 ```scala mdoc:silent
 def gradientBoxes(n: Int): Image =

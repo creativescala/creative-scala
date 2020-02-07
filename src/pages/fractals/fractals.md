@@ -111,7 +111,6 @@ import doodle.image._
 import doodle.image.syntax._
 import doodle.image.syntax.core._
 import doodle.java2d._
-val aBox = Image.rectangle(20, 20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc
 def sierpinski(count: Int): Image = {
@@ -120,7 +119,7 @@ def sierpinski(count: Int): Image = {
     case 0 => triangle.above(triangle.beside(triangle))
     case n =>
       val unit = sierpinski(n-1)
-      unit above (unit.beside(unit))
+      unit.above(unit.beside(unit))
   }
 }
 ```
