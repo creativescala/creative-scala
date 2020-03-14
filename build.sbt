@@ -16,7 +16,7 @@ scalacOptions ++= Seq(
 enablePlugins(MdocPlugin)
 
 libraryDependencies ++= Seq(
-  "org.creativescala" %% "doodle" % "0.9.15",
+  "org.creativescala" %% "doodle" % "0.9.17",
   "org.typelevel" %% "cats-core" % "2.0.0"
 )
 

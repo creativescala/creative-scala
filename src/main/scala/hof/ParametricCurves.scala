@@ -147,4 +147,17 @@ object ParametricCurves {
     ) { angle =>
       Point((angle * 7).cos * 300, angle)
     }.save("hof/rose")
+
+
+
+  // Debug
+  val debug = {
+    val c = Image.circle(40)
+    val c1 = c.beside(c.at(10, 10)).beside(c.at(10, -10)).debug
+    val c2 = c.debug.beside(c.at(10, 10).debug).beside(c.at(10, -10).debug)
+    val c3 = c.debug.beside(c.debug.at(10, 10)).beside(c.debug.at(10, -10))
+    c1.above(c2).above(c3)
+  }
+  debug.save("hof/debug")
+
 }

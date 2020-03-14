@@ -44,7 +44,7 @@ This difference is shown in [@fig:hof:representation].
 
 ![A point represented in cartesian (x and y) coordinates and polar (radius and angle) coordinates](./src/pages/hof/representation.pdf+svg){#fig:hof:representation}
 
-We can create points in the cartesian representation using `Point(Double, Double) where the two parameters are the x and y coordinates`, and in the polar representation using `Point(Double, Angle)` where we specify the radius and the angle. The table below shows the main methods on `Point`.
+We can create points in the cartesian representation using `Point(Double, Double)` where the two parameters are the x and y coordinates, and in the polar representation using `Point(Double, Angle)` where we specify the radius and the angle. The table below shows the main methods on `Point`.
 
 +----------------------------+---------+----------------------------+---------------------------+
 | Constructor                |Type     | Description                | Example                   |
@@ -78,7 +78,7 @@ We can create points in the cartesian representation using `Point(Double, Double
 Can we position an `Image` at a point? 
 So far we only know how to layout images with `on`, `beside`, and `above`.
 We need an additional tool, the `at` method, to achieve more flexible layout.
-Here's an example using `at` that draws a circle at the corners of a square.
+Here's an example using `at` that draws a dot at the corners of a square.
 
 ```scala mdoc:silent
 val dot = Image.circle(5).strokeWidth(3).strokeColor(Color.crimson)
@@ -95,14 +95,21 @@ This produces the image shown in [@fig:hof:square-dots].
 
 To understand how `at` layout works, and why we have to place the dots `on` each other, we need to know a bit more about how Doodle does layout.
 
-Every `Image` in Doodle has an *origin*.
-For most images this is in the center, but this isn't required.
-When Doodle lays out compound `Images` it does so by lining up origins.
-For example, if `Images` are laid out using `above` their origins are lined up vertically and the origin of the compound `Image` is midway along the line that connects origins.
-In [@fig:hof:horizontal-layout] there is an example of layout using `beside` that shows how the origins (the red circles) of the images are aligned.
-Finally, with `on` the origins are all placed on top of each other, so effectively the images share the same origin.
+Every `Image` in Doodle has a point called its *origin*, and a *bounding box* which determines the limits of the image. By convention the origin is in the center of the bounding box but this is not required. We can see the origin and bounding box of an `Image` by calling the `debug` method. In [@fig:hof:debug] we show the output of the code
 
-![An example of horizontal (`beside`) layout, showing how origins are aligned.](src/pages/hof/horizontal-layout.pdf+svg){#fig:hof:horizontal-layout}
+```scala mdoc:silent
+val c = Image.circle(40)
+val c1 = c.beside(c.at(10, 10)).beside(c.at(10, -10)).debug
+val c2 = c.debug.beside(c.at(10, 10).debug).beside(c.at(10, -10).debug)
+val c3 = c.debug.beside(c.debug.at(10, 10)).beside(c.debug.at(10, -10))
+c1.above(c2).above(c3)
+```
+
+This shows how the origin and bounding box change as we combines `Images`.
+
+![Using the `debug` method to inspect the origin and bounding box of an `Image`](src/pages/hof/debug.pdf+svg){#fig:hof:debug}
+
+When we layout `Images` using `above`, `beside`, or `on` it is the bounding boxes and origins that determine how the individual components are positioned relative to one another. For `on` the rule is that the origins are placed on top of one another. For `beside` the rule is that origins are horizontally aligned and placed so that the bounding boxes just touch. The origin of the compound image is placed equidistant from the left and right edges of the compound bounding box on the horizontal line that connects the origins of the component images. The rule for `above` is the same as `beside`, but we use vertical alignment instead of horizontal alignment.
 
 Using `at` we can move an `Image` relative to its origin.
 In the examples we're using here we want all the elements to share the same origin, so we use `on` to combine `Images` that we have moved using `at`.
@@ -125,7 +132,7 @@ Point.cartesian(1.0, 1.0).toVec
 
 The final building block is the geometry to position points.
 If a point is positioned at a distance `r` from the origin at an angle `a`, the x- and y-coordinates are `(a.cos) * r` and `(a.sin) * r` respectively.
-Alternatively we can just use polar form!
+Alternatively we can just use polar form! For example, here's how we would position a point at a distance of 1 and an angle of 45 degrees.
 
 ```scala mdoc
 val polar = Point(1.0, 45.degrees)
@@ -199,44 +206,54 @@ See [@fig:hof:triangle-circle], which shows the result of `sample(72)`.
 ![Triangles arranged in a circle, using the code from `sample` above.](src/pages/hof/triangle-circle.pdf+svg){#fig:hof:triangle-circle}
 
 
-### Flowers
-
-The next step to creating a flower is to use a more interesting shape than a circle. That means changing `parametricCircle` for a more interesting equation. 
-Perhaps `rose` below.
-This is a particular example of a rose curve, with a maximum radius of 200.
-We can change the value we multiply by the angle (`7` below) to get a different shape.
-
-```scala mdoc:silent
-// Parametric equation for rose with k = 7
-def rose(angle: Angle) =
-  Point((angle * 7).cos * 200, angle)
-```
-
-A densely sampled example is shown in [@fig:hof:rose].
-
-![An example of the rose curve.](src/pages/hof/rose.pdf+svg){#fig:hof:rose}
-
-We can change `sample` to call `rose` instead of `parametricCircle`, but this is a bit unsatisfactory. 
-What if we want to experiment with different parametric equations? 
-It would be nice if we could pass as a parameter to `sample` the way of creating points (i.e. the parametric equation). 
-
-
 #### Exercises {-} 
+
+We have some new tools in our toolbox. It's time to have some fun exploring what we can do with them.
+
+##### Sampling Functions
 
 How can we change `sample` so we can pass it the parametric equation to sample from?
 
-
 Make this change!
-Can we do this? 
-To do so we need to know how to:
 
-- write down the type of a method as a method parameter; and
-- differentiate between calling a method (e.g. `rose(0.degrees)`) and referring to the method itself. 
+<div class="solution">
+We need to add a parameter to `sample`, and that parameter must be a function.
 
-Let's look at the second problem. If we try referring to a method without calling it we get an error.
-
-```scala mdoc:fail
-rose
+```scala mdoc:silent
+def sample(samples: Int, f: Angle => Point): Image = {
+  // Angle.one is one complete turn. I.e. 360 degrees
+  val step = Angle.one / samples
+  val dot = Image
+              .triangle(10, 10)
+              .fillColor(Color.limeGreen)
+              .strokeColor(Color.lawngreen)
+  def loop(count: Int): Image = {
+    val angle = step * count
+    count match {
+      case 0 => Image.empty
+      case n =>
+        dot.at(f(angle).toVec).on(loop(n - 1))
+    }
+  }
+  
+  loop(samples)
+}
 ```
+</div>
 
-The error message handily tells us what we need to do, and this is a good point to finally introduce functions.
+
+##### Spirals
+
+For a circle we keep the radius constant as the angle increases. If, instead, the radius increases as the angle increases we'll get a spiral. (How quickly should the radius increase? It's up to you! Different choices will give you different spirals.)
+
+Implement a function `parametricSpiral` that creates a spiral.
+
+<div class="solution">
+Here's a type of spiral, known as a logarithmic spiral, that has a particularly pleasing shape. `sample` it and see for yourself!
+
+```scala mdoc:silent
+def parametricSpiral(angle: Angle): Point =
+  Point(Math.exp(angle.toTurns) * 200, angle)
+```
+</div>
+
