@@ -63,7 +63,7 @@ In [@fig:hof:epicycloid] we see three examples created by choosing the parameter
 
 #### Exercise {-}
 
-We now have a lot of tools to play with. Your task here is simply to use some of the ideas we've just seen to make an image that you like. For inspiration you could use the image that we started the chapter with, but let it constrain you if you think of something else to explore.
+We now have a lot of tools to play with. Your task here is simply to use some of the ideas we've just seen to make an image that you like. For inspiration you could use the image that we started the chapter with, but don't let it constrain you if you think of something else to explore.
 
 
 [lissajous]: https://en.wikipedia.org/wiki/Lissajous_curve
