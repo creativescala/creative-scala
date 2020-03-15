@@ -148,8 +148,6 @@ object ParametricCurves {
       Point((angle * 7).cos * 300, angle)
     }.save("hof/rose")
 
-
-
   // Debug
   val debug = {
     val c = Image.circle(40)
@@ -160,4 +158,37 @@ object ParametricCurves {
   }
   debug.save("hof/debug")
 
+  def parametricCircle(angle: Angle): Point =
+    Point.polar(200, angle)
+
+  def parametricSpiral(angle: Angle): Point =
+    Point((Math.exp(angle.toTurns) - 1) * 200, angle)
+
+  // Using color palette from https://www.color-hex.com/color-palette/1138
+  val psychedelicSpirals =
+    sample(100, Image.circle(5).fillColor(Color.rgb(232, 208, 25)))(
+      parametricSpiral
+    ).on(
+      sample(100, Image.circle(5).fillColor(Color.rgb(4, 102, 46)))(
+        parametricSpiral
+      ).rotate(90.degrees)
+        .on(
+          sample(100, Image.circle(5).fillColor(Color.rgb(44, 137, 179)))(
+            parametricSpiral
+          ).rotate(180.degrees)
+            .on(
+              sample(100, Image.circle(5).fillColor(Color.rgb(51, 29, 8)))(
+                parametricSpiral
+              ).rotate(270.degrees)
+                .on(
+                  sample(
+                    100,
+                    Image.circle(5).fillColor(Color.rgb(222, 40, 45))
+                  )(parametricCircle)
+                )
+            )
+        )
+    )
+
+  psychedelicSpirals.save("hof/psychedelic-spirals")
 }

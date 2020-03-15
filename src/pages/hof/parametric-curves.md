@@ -190,7 +190,7 @@ def sample(samples: Int): Image = {
     count match {
       case 0 => Image.empty
       case n =>
-        dot.at(parametricCircle(angle).toVec).on(loop(n - 1))
+        dot.at(parametricCircle(angle)).on(loop(n - 1))
     }
   }
   
@@ -206,54 +206,61 @@ See [@fig:hof:triangle-circle], which shows the result of `sample(72)`.
 ![Triangles arranged in a circle, using the code from `sample` above.](src/pages/hof/triangle-circle.pdf+svg){#fig:hof:triangle-circle}
 
 
-#### Exercises {-} 
+### Parametric Curves as First-class Functions
 
-We have some new tools in our toolbox. It's time to have some fun exploring what we can do with them.
+So far we haven't seen anything that requires we use our parametric curves as functions instead of methods (and, indeed, we have defined them as method though we know we can easily convert methods to functions.) It's time we got something useful from functions. Remember that functions are first-class values, which means: we can pass them to a method, we can return them from a method, and we can give them a name using `val`. We're going to see an example where the first property---the ability to pass them as parameters---is useful.
 
-##### Sampling Functions
+We've just defined a method called `sample` that samples from our parametric curve. Right now it is restricted to sampling from the method `parametricCircle`. It would make a lot of sense to reuse this method with different parametric curves, which means we need to be able to pass a parametric curve to sample from to the `sample` method. We can do this with a function parameter. Here is what the code might look like.
 
-How can we change `sample` so we can pass it the parametric equation to sample from?
-
-Make this change!
-
-<div class="solution">
-We need to add a parameter to `sample`, and that parameter must be a function.
-
+```scala mdoc:reset:invisible
+import doodle.core._
+import doodle.image._
+import doodle.image.syntax._
+import doodle.image.syntax.core._
+import doodle.java2d._
+```
 ```scala mdoc:silent
-def sample(samples: Int, f: Angle => Point): Image = {
-  // Angle.one is one complete turn. I.e. 360 degrees
+def sample(samples: Int, dot: Image, curve: Angle => Point): Image = {
   val step = Angle.one / samples
-  val dot = Image
-              .triangle(10, 10)
-              .fillColor(Color.limeGreen)
-              .strokeColor(Color.lawngreen)
   def loop(count: Int): Image = {
     val angle = step * count
     count match {
       case 0 => Image.empty
       case n =>
-        dot.at(f(angle).toVec).on(loop(n - 1))
+        dot.at(curve(angle)).on(loop(n - 1))
     }
   }
   
   loop(samples)
 }
 ```
-</div>
+
+In this implementation of sample I have added *two* new parameters, the parametric curve to sample from and the `Image` to use to draw the samples. This gives us more flexibility in the output. Now we just need to define some more parametric curves, which is what the next exercise involves.
+
+
+#### Exercises {-} 
+
+We have some new tools in our toolbox. It's time to have some fun exploring what we can do with them.
 
 
 ##### Spirals
 
-For a circle we keep the radius constant as the angle increases. If, instead, the radius increases as the angle increases we'll get a spiral. (How quickly should the radius increase? It's up to you! Different choices will give you different spirals.)
+To create a circle we keep the radius constant as the angle increases. If, instead, the radius increases as the angle increases we'll get a spiral. (How quickly should the radius increase? It's up to you! Different choices will give you different spirals.)
 
-Implement a function `parametricSpiral` that creates a spiral.
+Implement a function or method `parametricSpiral` that creates a spiral.
 
 <div class="solution">
 Here's a type of spiral, known as a logarithmic spiral, that has a particularly pleasing shape. `sample` it and see for yourself!
 
 ```scala mdoc:silent
 def parametricSpiral(angle: Angle): Point =
-  Point(Math.exp(angle.toTurns) * 200, angle)
+  Point((Math.exp(angle.toTurns) - 1) * 200, angle)
 ```
 </div>
 
+
+##### Samples 
+
+Use the parametric curves we have defined so far to create something interesting. There is an example in [@fig:hof:psychedelic-spirals]
+
+![A picture created using the parametric curves we have seen so far.](src/pages/hof/psychedelic-spirals.pdf+svg){#fig:hof:psychedelic-spirals}

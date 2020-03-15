@@ -8,6 +8,8 @@ import doodle.image.syntax.core._
 import doodle.java2d._
 ```
 
+In the previous section we saw that is was useful for methods to accept functions as parameters. In this section we'll see that it is useful for methods to return functions.
+
 We've seen all the basic steps we need to make our flowers. Now we just need to know the curve that makes the flower shape! The shape I used is known as the [rose curve][rose-curve]. One example is shown in [@fig:hof:rose7]. 
 
 ![An example of the rose curve.](src/pages/hof/rose7.pdf+svg){#fig:hof:rose7}
@@ -20,7 +22,7 @@ val rose7 = (angle: Angle) =>
   Point((angle * 7).cos * 200, angle)
 ```
 
-You may wonder why I called this function `rose7`. It's because we can vary the shape by changing the value `7` to something else. We could make a function to which we pass the value of this parameter and this function would return a particular rose curve. Here's that idea in code.
+You may wonder why I called this function `rose7`. It's because we can vary the shape by changing the value `7` to something else. We could make a method or function to which we pass the value of this parameter and this function would return a particular rose curve. Here's that idea in code.
 
 ```scala mdoc:silent
 def rose(k: Int): Angle => Point =
