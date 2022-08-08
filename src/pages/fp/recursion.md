@@ -19,14 +19,14 @@ Note the recursive pattern here:
 Given these two rules, we can generate a picture for any value of `n >= 1`.
 We can even model the rules directly in Scala:
 
-~~~ scala
+``` scala
 def concentricCircles(n: Int): Image =
   if(n == 1) {
     // Return a circle
   } else {
     // Return a circle superimposed on the image from n - 1
   }
-~~~
+```
 
 **Exercise: Concentric circles**
 
@@ -44,7 +44,7 @@ by gradually changing the colour at each level of recursion:
 The basic structure of our solution involves two methods:
 one for drawing a single circle and one for drawing `n` circles:
 
-~~~ scala
+``` scala
 def singleCircle(n: Int): Image =
   ???
 
@@ -56,7 +56,7 @@ def concentricCircles(n: Int): Image =
   }
 
 concentricCircles(20)
-~~~
+```
 
 There is a clean division of labour here:
 `concentricCircles` handles the recursion through values of `n`
@@ -68,38 +68,38 @@ We calculate an appropriate radius from the value of `n` provided.
 The `n = 1` circle has radius `55` and
 each successive circle is `5` pixels larger:
 
-~~~ scala
+``` scala
 def singleCircle(n: Int): Image =
   Circle(50 + 5 * n)
-~~~
+```
 
 To create multicolour circles, all we need to do is modify `singleCircle`.
 Here is an implementation for the extra credit example above:
 
-~~~ scala
+``` scala
 def singleCircle(n: Int): Image =
   Circle(50 + 5 * n) strokeColor (Color.red spin (n * 10).degrees)
-~~~
+```
 
 Here is another implementation that fades out the further we get from `n = 1`:
 
-~~~ scala
+``` scala
 def singleCircle(n: Int): Image =
   Circle(50 + 5 * n) fadeOut (n / 20).normalized
-~~~
+```
 
 We can make countless different images by tweaking `singleCircle`
 without changing the definition of `concentricCircles`.
 In fact, `concentricCircles` doesn't care about circles at all!
 A more general naming system would be more suitable:
 
-~~~
+```
 def singleShape(n: Int): Image =
   ???
 
 def manyShapes(n: Int): Image =
   if(n == 1) singleShape(n) else (singleShape(n) on manyShapes(n - 1))
-~~~
+```
 </div>
 
 **Exercise: Sierpinski triangle**
@@ -115,9 +115,9 @@ Here is an English description of the recursive pattern:
  -  The base case for `n = 1` is an equilateral triangle.
     We can draw this in Doodle as follows:
 
-    ~~~ scala
+    ``` scala
     Triangle(10, 10)
-    ~~~
+    ```
 
  -  Every other case involves three copies of the `n - 1` case
     arranged in a triangle.
@@ -133,9 +133,9 @@ You may notice that the final result is extremely large!
 For extra credit, rewrite your code so you can specify
 the size of the triangle up front:
 
-~~~ scala
+``` scala
 def sierpinski(n: Int, size: Double): Image = ???
-~~~
+```
 
 Finally, for double extra credit, answer the following questions:
 
@@ -152,7 +152,7 @@ Finally, for double extra credit, answer the following questions:
 <div class="solution">
 The simple solution looks like the following:
 
-~~~ scala
+``` scala
 def triangle: Image =
   Triangle(1, 1) strokeColor Color.magenta
 
@@ -165,7 +165,7 @@ def sierpinski(n: Int): Image =
   }
 
 sierpinski(10)
-~~~
+```
 
 As we hinted above, each successive triangle in the Sierpinski pattern
 is twice the size of its predecessor.
@@ -175,7 +175,7 @@ we end up with an `n = 10` triangle of side 1024!
 The extra credit solution involves specifying the desired size up front
 and dividing it by two each time we recurse:
 
-~~~ scala
+``` scala
 def triangle(size: Double): Image =
   Triangle(size, size) strokeColor Color.magenta
 
@@ -188,7 +188,7 @@ def sierpinski(n: Int, size: Double): Image =
   }
 
 sierpinski(10, 512)
-~~~
+```
 
 Finally let's look at the questions:
 

@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -123,8 +123,8 @@ In some cases we haven't started the vertices at 0 degrees so we can rotate the 
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -183,8 +183,8 @@ Making this generalisation also makes it easier to play around with different co
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent

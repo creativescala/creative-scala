@@ -3,7 +3,7 @@
 Doodle provides another type of `Image` that makes particular use of sequences.
 `Paths` represent arbitrary shapes created using sequences of pen movements:
 
-~~~ scala
+``` scala
 val image = OpenPath(List(
   MoveTo(Vec(0, 0).toPoint),
   LineTo(Vec(100, 0).toPoint),
@@ -13,7 +13,7 @@ val image = OpenPath(List(
 // image: Path = // ...
 
 image.draw
-~~~
+```
 
 ![An example Path](src/pages/collections/path.png)
 
@@ -63,7 +63,7 @@ Code                       Result    Description                     Example
 
 We can use these operations to create paths quickly by adding vectors. Notice how we start the shape with a `MoveTo` element (all paths implicitly start at the origin). This is a very common pattern.
 
-~~~ scala
+``` scala
 val elements = (0 to 360 by 36).map { angle =>
   val point = (Vec.unitX * 100) rotate angle.degrees toPoint
   val element =
@@ -79,7 +79,7 @@ val decagon = OpenPath(elements)
 // decagon: doodle.core.Path = // ...
 
 decagon.draw
-~~~
+```
 
 ![A Decagon](src/pages/collections/decagon.png)
 
@@ -99,10 +99,10 @@ values of `n` from `2` upwards produce stars with increasingly sharp points:
 Write code to draw the diagram above.
 Start by writing a method to draw a `star` given `p` and `n`:
 
-~~~ scala
+``` scala
 def star(p: Int, n: Int, radius: Double): Image =
   ???
-~~~
+```
 
 Create the points for your star using ranges and `Vec.polar`:
 
@@ -113,7 +113,7 @@ Use your choice of recursion and `beside` or iteration and `allBeside` to create
 <div class="solution">
 Here's the `star` method. We've renamed `p` and `n` to `points` and `skip` for clarity:
 
-~~~ scala
+``` scala
 def star(sides: Int, skip: Int, radius: Double) = {
   val centerAngle = 360.degrees * skip / sides
 
@@ -127,17 +127,17 @@ def star(sides: Int, skip: Int, radius: Double) = {
 
   Path(elements) strokeWidth 2
 }
-~~~
+```
 
 We'll use `allBeside` to create the row of stars.
 We only need to use values of `skip`
 from `1` to `sides/2` rounded down:
 
-~~~ scala
+``` scala
 (allBeside((1 to 5) map { skip =>
   star(sides, skip, 100)
 })).draw
-~~~
+```
 </div>
 
 When you've finished your row of stars,
@@ -150,7 +150,7 @@ Here's an example:
 To create the image above, we started by adding colours
 and a chunkier outline to the definition of `star`:
 
-~~~ scala
+``` scala
 def star(sides: Int, skip: Int, radius: Double) = {
   val centerAngle = 360.degrees * skip / sides
 
@@ -167,15 +167,15 @@ def star(sides: Int, skip: Int, radius: Double) = {
     strokeColor(Color.hsl(centerAngle, 1.normalized, .25.normalized)).
     fillColor(Color.hsl(centerAngle, 1.normalized, .75.normalized))
 }
-~~~
+```
 
 The updated scene then becomes:
 
-~~~ scala
+``` scala
 allAbove((3 to 33 by 2) map { sides =>
   allBeside((1 to sides/2) map { skip =>
     star(sides, skip, 20)
   })
 })
-~~~
+```
 </div>

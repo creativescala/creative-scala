@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -57,8 +57,8 @@ Putting it all together we get
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -108,8 +108,8 @@ Here's our implementation.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc

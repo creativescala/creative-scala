@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -77,8 +77,8 @@ We can prove this is true by printing something every time `unit` is created.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc
@@ -103,8 +103,8 @@ We could solve this by shifting `unit` outside of `cross`.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 ```
 ```scala mdoc
 val unit = {
@@ -128,8 +128,8 @@ A better solution it to use a nested or internal method.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc
@@ -188,8 +188,8 @@ Here's how we did it. It has exactly the same pattern we used with `boxes`.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc
@@ -232,8 +232,8 @@ We can do this in two stages, first moving `aBox` within `boxes`.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -251,8 +251,8 @@ Then we can use an internal method to avoid recreating `aBox` on every recursion
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent

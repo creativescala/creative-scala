@@ -24,7 +24,7 @@ Sealed traits and structural recursion
 
 Function composition / higher order functions
  - Animations:
-   ~~~ scala
+   ``` scala
    ( Long => (Double, Double) ) andThen ( (Double, Double) => Image )
 
    trait Drawable {
@@ -34,7 +34,7 @@ Function composition / higher order functions
    trait Animation[A <: Drawable] {
      def animate(input: A): A = ???
    }
-   ~~~
+   ```
 
 Collections
  - Caterpillar eating stuff?
@@ -49,7 +49,7 @@ Animations as parametric functions
 Classes
 - represent points
 
-~~~ scala
+``` scala
 trait Scene {
   def apply(time: Long): Image
 }
@@ -57,7 +57,7 @@ trait Scene {
 case class Star(size: Int, color: Color, ???) {
   def draw(time: Long): Image = ???
 }
-~~~
+```
 
 Comprehensions / flatMap / map:
  - ???

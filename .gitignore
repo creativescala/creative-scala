@@ -20,3 +20,5 @@ target/
 .bloop
 .sbt
 package-lock.json
+.bsp
+metals.sbt

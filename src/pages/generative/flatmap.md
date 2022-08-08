@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -54,8 +54,8 @@ We know this is a structural recursion over the natural numbers so we can fill o
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 ```
@@ -74,8 +74,8 @@ The base case will be `Random.always(Image.empty)`, the direct of equivalent of 
 import doodle.core._
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 ```
@@ -94,8 +94,8 @@ We could try using
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 val randomAngle: Random[Angle] =
@@ -146,8 +146,8 @@ The complete code becomes
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 val randomAngle: Random[Angle] =
@@ -271,8 +271,8 @@ they differ?
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 val randomAngle: Random[Angle] =
@@ -351,8 +351,8 @@ This code uses exactly the same pattern as `randomConcentricCircles`.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 ```

@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -30,7 +30,7 @@ Let's try using substitution on `boxes(3)` to see what we get.
 
 Our first substitution is
 
-```scala mdoc:silent
+```scala mdoc:fail:silent
 boxes(3)
 // Substitute body of `boxes`
 3 match {
@@ -41,7 +41,7 @@ boxes(3)
 
 Knowing how to evaluate a `match` expression and using substitution again gives us
 
-```scala mdoc:silent
+```scala mdoc:fail:silent
 3 match {
   case 0 => Image.empty
   case n => aBox.beside(boxes(n-1))
@@ -52,7 +52,7 @@ aBox.beside(boxes(2))
 
 We can substitute again on `boxes(2)` to obtain
 
-```scala mdoc:silent
+```scala mdoc:fail:silent
 aBox.beside(boxes(2))
 // Substitute body of boxes
 aBox.beside {
@@ -69,7 +69,7 @@ aBox.beside {
 
 Repeating the process a few more times we get
 
-```scala mdoc:silent
+```scala mdoc:fail:silent
 aBox.beside {
   aBox.beside {
     1 match {
@@ -126,8 +126,8 @@ Let's apply this to reasoning about `boxes`.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```

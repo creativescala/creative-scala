@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -26,7 +26,7 @@ In [@fig:hof:composed] we see the output of the program
 
 ```scala mdoc:silent
 val star = Image
-  .star(100, 50, 5, 0.degrees)
+  .star(100, 50, 5)
   .fillColor(Color.fireBrick)
   .strokeColor(Color.dodgerBlue)
   .strokeWidth(7.0)
@@ -51,8 +51,8 @@ What if we want to create circles of different radius? We could use a method tha
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -71,8 +71,8 @@ A quick example will make this more concrete. Let's redefine `parametricCircle` 
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -140,8 +140,8 @@ Implement `sample`.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -195,8 +195,8 @@ and made `singleShape` responsible for drawing an appropriately sized shape.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -237,8 +237,8 @@ Starting with the code below we are going to write color and shape functions to 
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -317,8 +317,8 @@ The simplest solution is to define three `singleShapes` as follows:
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -365,8 +365,8 @@ and combines them with the `colored` combinator:
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc
@@ -419,8 +419,8 @@ The code to create this is below.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 
 def concentricShapes(count: Int, singleShape: Int => Image): Image =

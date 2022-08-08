@@ -18,7 +18,7 @@ Like value declarations, method declarations define a name.
 Instead of giving a name to a value,
 a method declaration gives a name to a process for creating values:
 
-~~~ scala
+``` scala
 def twoByTwo(color1: Color, color2: Color): Image = {
   val square1 = Rectangle(30, 30) fillColor color1
   val square2 = Rectangle(30, 30) fillColor color2
@@ -26,7 +26,7 @@ def twoByTwo(color1: Color, color2: Color): Image = {
   (square1 beside square2) above
   (square2 beside square1)
 }
-~~~
+```
 
 This declares a method called `twoByTwo`.
 The method has two parameters, called `color1` and `color2`,
@@ -46,10 +46,10 @@ that it passes on to `twoByTwo`.
 
 You should be able to call `fourByFour` like so
 
-~~~ scala
+``` scala
 fourByFour(Color.cornflowerBlue, Color.seaGreen) beside
 fourByFour(Color.chocolate, Color.darkSalmon)
-~~~
+```
 
 to create this picture:
 
@@ -59,14 +59,14 @@ to create this picture:
 The structure of `fourByFour` is identical to `twoByTwo`
 except that we use `twoByTwo` to construct the squares we build the board.
 
-~~~ scala
+``` scala
 def fourByFour(color1: Color, color2: Color): Image = {
   val square = twoByTwo(color1, color2)
 
   (square beside square) above
   (square beside square)
 }
-~~~
+```
 </div>
 
 <div class="callout callout-info">

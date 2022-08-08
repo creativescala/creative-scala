@@ -5,7 +5,7 @@ and transform them to produce new values.
 For example, here is a Java 7 method
 to double the numbers in an `ArrayList`:
 
-~~~ java
+``` java
 List<Integer> doubleAll(List<Integer> numbers) {
   List<Integer> ans = new ArrayList<Integer>();
 
@@ -17,7 +17,7 @@ List<Integer> doubleAll(List<Integer> numbers) {
 }
 
 List<Integer> result = doubleAll(new ArrayList<Integer>(1, 2, 3, 4, 5));
-~~~
+```
 
 There are a lot of lines in this example, many of which
 aren't to do with the desired operation of doubling numbers.
@@ -29,43 +29,43 @@ because we have no direct way of abstracting the doubling operation.
 In Scala and Java 8 we can represent doubling succinctly
 using a function literal, aka a "closure":
 
-~~~ scala
+``` scala
 (x: Int) => x * 2
 // res2: Int => Int = <function1>
 
 res2(10)
 // res3: Int = 20
-~~~
+```
 
 Scala's `List` class has a method called `map` that allows us to
 exploit functions to remove all of the boilerplate from our Java 7 example.
 `map` accepts a function as a parameter and returns a new `List`
 created by applying the function to every item:
 
-~~~ scala
+``` scala
 List(1, 2, 3, 4, 5).map(i => i * 2)
 // res4: List[Int] = List(2, 4, 6, 8, 10)
-~~~
+```
 
 We can use the `map` method to convert `Lists` of values
 to `Lists` of `Images`:
 
-~~~ scala
+``` scala
 val radii = List(10, 20, 30, 40, 50)
 // radii: List[Int] = List(10, 20, 30, 40, 50)
 
 val circles = radii.map(i => Circle(i * 10))
 // circles: List[doodle.core.Circle] = // ...
-~~~
+```
 
 Doodle contains a handful of convenient methods to convert
 values of type `List[Image]` to single `Images`.
 One of these is `allBeside`,
 which lays a list of images out beside one another:
 
-~~~ scala
+``` scala
 allBeside(circles).draw
-~~~
+```
 
 ![A row of circles](src/pages/collections/circles.png)
 
@@ -94,7 +94,7 @@ We can recreate our concentric circles example trivially
 using `allOn` or `allUnder`.
 Much simpler than writing a recursive method!
 
-~~~ scala
+``` scala
 val radii = List(10, 20, 30, 40, 50)
 // radii: List[Int] = List(10, 20, 30, 40, 50)
 
@@ -102,7 +102,7 @@ val circles = radii.map(i => Circle(i))
 // circles: List[Circle] = // ...
 
 allOn(circles).draw
-~~~
+```
 
 **Exercise: Colour Palette**
 
@@ -123,13 +123,13 @@ Here are some tips:
 
  2. You can create an HSL colour as follows:
 
-    ~~~ scala
+    ``` scala
     val hue = 180.degrees
 
     val lightness = 0.5.normalized
 
     val color = Color.hsl(hue, 1.0.normalized, lightness)
-    ~~~
+    ```
 
 For extra credit, allow the user to specify parameters for
 the step size along each axis and the basic shape used in each cell:
@@ -141,17 +141,17 @@ First let's define a method to create a single square.
 We'll call the method `cell` to keep the naming shape-independent
 and specify `size`, `hue`, and `lightness` as parameters:
 
-~~~ scala
+``` scala
 def cell(size: Int, hue: Int, lightness: Double): Image =
   Rectangle(size, size) strokeWidth 0 fillColor Color.hsl(hue.degrees, 1.0.normalized, lightness.normalized)
-~~~
+```
 
 Next let's create a single column of varying lightness.
 We start with a list of lightness values,
 map over the list to produce the squares,
 and build the column using `allAbove` or `allBelow`:
 
-~~~ scala
+``` scala
 def column(cellSize: Int, hue: Int): Image = {
   val cells =
     (0.0 until 1.0 by 0.01).toList map { lightness =>
@@ -160,13 +160,13 @@ def column(cellSize: Int, hue: Int): Image = {
 
   allAbove(cells)
 }
-~~~
+```
 
 Finally let's assemble the columns into a palette.
 We start with a list of hues, map over it to create columns,
 and build the palette using `allBeside`:
 
-~~~ scala
+``` scala
 def palette(cellSize: Int): Image = {
   val columns =
     (0 until 360 by 2).toList map { hue =>
@@ -175,7 +175,7 @@ def palette(cellSize: Int): Image = {
 
   allBeside(columns)
 }
-~~~
+```
 
 For the extra credit solution
 we add `hStep`, `lStep`, and `cell` parameters.
@@ -186,7 +186,7 @@ to make the type of the `cell` parameter more explicit.
 Type aliases are simply a way of naming types---the compiler
 treats an aliased type exactly the same as an unaliased one:
 
-~~~ scala
+``` scala
 // Type alias for cell constructor functions:
 
 type CellFunc = (Int, Double) => Image
@@ -224,7 +224,7 @@ def palette(hStep: Int, lStep: Double, cell: CellFunc): Image = {
 // Example use of the palette() method:
 
 palette(2, 0.01, circleCell(10))
-~~~
+```
 </div>
 
 There are many other methods in the Scala standard library

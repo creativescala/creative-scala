@@ -3,9 +3,10 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
+import cats.effect.unsafe.implicits.global
 ```
 
 The code we've been writing inside the console will cause problems running outside the console. For example, put the following code into `Example.scala` in the `src/main/scala`.
@@ -64,8 +65,8 @@ There are a few other names that the compiler will need to find for the complete
 We can import these with the lines
 
 ```scala mdoc:silent
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -74,8 +75,8 @@ We should place all these imports at the top of the file, so the complete code l
 ```scala
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 
 object Example {

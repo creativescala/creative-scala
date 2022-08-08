@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -130,8 +130,8 @@ Changing the noise will change the shape of the result---it's worth playing arou
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 ```
@@ -179,8 +179,8 @@ The definition of `walk` is a structural recursion over the natural numbers with
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 val start = Random.always(Point.zero)
@@ -203,7 +203,7 @@ def render(point: Point): Image = {
   val hue = (length / 200).turns
   val color = Color.hsl(hue, 0.7, 0.5)
   Image
-    .star(sides, 5, 3, 0.degrees)
+    .star(sides, 5, 3)
     .noFill
     .strokeColor(color)
     .at(point.toVec)
@@ -247,8 +247,8 @@ This is because `particleSystem` adds no new random choices.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 val start = Random.always(Point.zero)
@@ -269,7 +269,7 @@ def render(point: Point): Image = {
   val hue = (length / 200).turns
   val color = Color.hsl(hue, 0.7, 0.5)
   Image.
-    star(sides, 5, 3, 0.degrees).
+    star(sides, 5, 3).
     noFill.
     strokeColor(color).
     at(point.toVec)
@@ -328,8 +328,8 @@ This is like doing the opposite of substitution---lifting concrete representatio
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 def step(current: Point): Random[Point] = {
@@ -391,8 +391,8 @@ At this point we can apply our principle of substitution---we can replace a meth
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.random._
 ```

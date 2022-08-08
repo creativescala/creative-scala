@@ -28,10 +28,10 @@ We looked at one kind of transform operation in this chapter: the `map` method.
 `map` applies a user-specified function to every item in a sequence,
 returning a new sequence of the results:
 
-~~~ scala
+``` scala
 List(1, 2, 3).map(x => x * 2)
 // res0: List[Int] = List(2, 4, 6)
-~~~
+```
 
 The key point about `map` is that it only makes sense in a world
 where we have functions that are also first class values.
@@ -45,7 +45,7 @@ Because many transformation methods return sequences,
 we can chain calls to perform complex transformations in a series of simple steps.
 Here is an example that demonstrates the power of thie approach:
 
-~~~ scala
+``` scala
 // Print all even numbers from 1 to 100 that are also divisible by 3:
 (1 to 50).toList.
   map(x => x * 2).
@@ -55,7 +55,7 @@ Here is an example that demonstrates the power of thie approach:
 // 12
 // 18
 // etc...
-~~~
+```
 
 The structure of this computation looks similar
 to the structure of our Doodle programs:

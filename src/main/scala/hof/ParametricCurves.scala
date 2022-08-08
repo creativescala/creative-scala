@@ -4,8 +4,8 @@ package hof
 import cats.implicits._
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 
 object ParametricCurves {
@@ -139,11 +139,11 @@ object ParametricCurves {
     sample(
       144,
       Image
-        .regularPolygon(6, 9, 0.degrees)
+        .regularPolygon(6, 9)
         .fillColor(Color.magenta)
         .strokeColor(Color.aqua)
         .strokeWidth(3.0)
-        .on(Image.regularPolygon(6, 14, 0.degrees).fillColor(Color.black))
+        .on(Image.regularPolygon(6, 14).fillColor(Color.black))
     ) { angle =>
       Point((angle * 7).cos * 300, angle)
     }.save("hof/rose")
