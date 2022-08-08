@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 import doodle.reactor._
 ```
@@ -21,9 +21,9 @@ Here's an example that moves a circle from left to right, stopping when the the 
 ```scala mdoc:silent
 val travellingCircle =
   Reactor.init(Point(-300, 0))
-    .onTick(pt => Point(pt.x + 1, pt.y))
-    .render(pt => Image.circle(10).at(pt))
-    .stop(pt => pt.x >= 300)
+    .withOnTick(pt => Point(pt.x + 1, pt.y))
+    .withRender(pt => Image.circle(10).at(pt))
+    .withStop(pt => pt.x >= 300)
 ```
 
 (We could write the `onTick` function as `pt -> pt + Vec(1,0)` if we're comfortable with vector arithmetic.)
@@ -44,8 +44,8 @@ Here's an another example that moves a circle in a circular orbit. This time  th
 ```scala mdoc:silent
 val orbitingCircle =
   Reactor.init(Point(0, 300))
-    .onTick(pt => pt.rotate(2.degrees))
-    .render(pt => Image.circle(10).at(pt))
+    .withOnTick(pt => pt.rotate(2.degrees))
+    .withRender(pt => Image.circle(10).at(pt))
 ```
 
 We run this reactor in the same way.

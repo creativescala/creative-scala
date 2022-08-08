@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
@@ -44,8 +44,8 @@ Why not just write something like this, for example?
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 val oneBox = aBox
@@ -78,8 +78,8 @@ We could even define `box` in terms of *no* boxes, like so:
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
@@ -112,8 +112,8 @@ A full implementation of `boxes` is
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```

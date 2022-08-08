@@ -3,8 +3,8 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
@@ -73,8 +73,8 @@ On the right-hand side we replace 1 with `aBox`, we replace + with `beside`, and
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
@@ -164,7 +164,7 @@ To do this we need to learn about a new method on `Int`. The *modulo* method, wr
 
 We can see that when the first number is even the result is 0; otherwise it is 1. So we need to check is the result is 0 and act accordingly. There are a few ways to do this. Here's one example
 
-```scala mdoc
+```scala mdoc:fail:silent
 (4 % 2 == 0) match {
   case true  => "It's even!"
   case false => "It's odd!"
@@ -197,15 +197,15 @@ Here's my solution. I used an `if` expression because it's a bit shorter than ma
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
 val star = Image
-  .star(5, 30, 15, 45.degrees)
+  .star(5, 30, 15)
   .strokeColor(Color.teal)
-  .on(Image.star(5, 12, 7, 45.degrees).strokeColor(Color.royalBlue))
+  .on(Image.star(5, 12, 7).strokeColor(Color.royalBlue))
   .strokeWidth(5.0)
 
 val circle = Image
@@ -245,8 +245,8 @@ Here's my solution. I made the size of the star and its color depend on the coun
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc:silent
@@ -255,7 +255,7 @@ def funRow(count: Int): Image = {
     case 0 => Image.empty
     case n =>
       Image
-        .star(7, (10 * n), (7 * n), 45.degrees)
+        .star(7, (10 * n), (7 * n))
         .strokeColor(Color.azure.spin((5 * n).degrees))
         .strokeWidth(7.0)
         .beside(funRow(n - 1))
@@ -315,15 +315,15 @@ Here's what we wrote.
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 ```scala mdoc
   def cross(count: Int): Image = {
     count match {
       case 0 =>
-        Image.regularPolygon(6, 10, 0.degrees)
+        Image.regularPolygon(6, 10)
           .strokeColor(Color.deepSkyBlue.spin(-180.degrees))
           .strokeWidth(5.0)
       case n =>

@@ -3,15 +3,15 @@ package recursion
 
 import doodle.core._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
 import doodle.java2d._
 
 object NaturalNumbers {
   val star = Image
-    .star(5, 30, 15, 45.degrees)
+    .star(5, 30, 15)
     .strokeColor(Color.teal)
-    .on(Image.star(5, 12, 7, 45.degrees).strokeColor(Color.royalBlue))
+    .on(Image.star(5, 12, 7).strokeColor(Color.royalBlue))
     .strokeWidth(5.0)
 
   val circle = Image
@@ -36,7 +36,7 @@ object NaturalNumbers {
       case 0 => Image.empty
       case n =>
         Image
-          .star(7, (10 * n), (7 * n), 45.degrees)
+          .star(7, (10 * n), (7 * n))
           .strokeColor(Color.orangeRed.spin((5 * n).degrees))
           .strokeWidth(7.0)
           .beside(funRow(n - 1))
@@ -48,7 +48,8 @@ object NaturalNumbers {
   def cross(count: Int): Image = {
     count match {
       case 0 =>
-        Image.regularPolygon(6, 10, 0.degrees)
+        Image
+          .regularPolygon(6, 10)
           .strokeColor(Color.deepSkyBlue.spin(-180.degrees))
           .strokeWidth(5.0)
       case n =>

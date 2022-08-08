@@ -39,10 +39,10 @@ we need to know how to create and manipulate colors.
 
 There are two main methods to create colours:
 
-~~~ scala
+``` scala
 Color.hsl(hue: Angle, saturation: Normalized, lightness: Normalized)
 Color.rgb(red: UnsignedByte, green: UnsignedByte, blue: UnsignedByte)
-~~~
+```
 
 These methods use types --- `Angle`, `Normalized`, and `UnsignedByte` --- that have not seen before.
 They all represent numbers with some special characteristics.
@@ -62,7 +62,7 @@ To use these conversions import `doodle.syntax.normalized._` or `doodle.syntax.u
 and then numbers are *enriched* with methods `normalized` and `uByte` respectively.
 Here's a quick example. Notice how values out of range are set to the closest valid value.
 
-~~~ scala
+``` scala
 import doodle.syntax.normalized._
 
 0.5.normalized
@@ -86,14 +86,14 @@ import doodle.syntax.uByte._
 //res: doodle.core.UnsignedByte = UnsignedByte(-128)
 512.uByte
 //res: doodle.core.UnsignedByte = UnsignedByte(127)
-~~~
+```
 
 For `Angle` we ask the programmer to specify if the raw number represents a value in degrees, radians, or turns (fractions of a circle, with a full circle being one turn).
 For `Angles` the import is `doodle.syntax.angle._`
 which enriches numbers with methods `degrees`, `radians`, and `turns`.
 Here's an example:
 
-~~~ scala
+``` scala
 import doodle.syntax.angle._
 
 0.degrees
@@ -112,14 +112,14 @@ math.Pi.radians
 //res: doodle.core.Angle = Angle(3.141592653589793)
 1.0.turns
 //res: doodle.core.Angle = Angle(6.283185307179586)
-~~~
+```
 
 We can now create some colors:
 
-~~~ scala
+``` scala
 Color.hsl(170.degrees, 1.0.normalized, 0.5.normalized)
 // res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
-~~~
+```
 
 Note that the color we created has four fields. The fourth field is the `alpha` value, which specifies the opacity of the color. There are four parameter methods `Color.hsla` and `Color.rgba` that can be used to specify the `alpha` when creating a color.
 
@@ -129,7 +129,7 @@ There are several methods to modify colors. These methods all create a new `Colo
 
 New `hue`, `saturation`, `lightness`, and `alpha` values can all be set with methods of the same name. Notice how the original color is unchanged.
 
-~~~ scala
+``` scala
 val c = Color.hsl(170.degrees, 1.0.normalized, 0.5.normalized)
 //c: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
 
@@ -147,11 +147,11 @@ c.alpha(0.5.normalized)
 
 c
 //res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
-~~~
+```
 
 There are also methods to adjust the existing `hue`, `saturation`, `lightness`, and `alpha`. These methods all create a new color by adding or subtracting from the existing value of the parameter of interest.
 
-~~~ scala
+``` scala
 val c = Color.hsl(170.degrees, 1.0.normalized, 0.5.normalized)
 //c: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
 
@@ -175,7 +175,7 @@ c.fadeIn(0.2.normalized)
 
 c.fadeOut(0.2.normalized)
 //res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(0.8))
-~~~
+```
 
 ### Complementary Colors
 
@@ -193,19 +193,19 @@ Create a method `complement` that takes a `Color` as input and returns its compl
 You can use the method `spin` on a `Color` to rotate its hue by a given `Angle`.
 
 <div class="solution">
-~~~ scala
+``` scala
 def complement(color: Color): Color =
   color.spin(180.degrees)
-~~~
+```
 </div>
 
 **Exercise: Complementary Chess Boards** 
 
 Using `complement` write a method `complementaryChessBoard` that creates a four-by-four chess board using a complementary color scheme. This method should take a `Color` input. Here's the method signature:
 
-~~~ scala
+``` scala
 def complementaryChessBoard(color: Color): Image = ???
-~~~
+```
 
 You should end up with a picture like the below.
 
@@ -214,10 +214,10 @@ You should end up with a picture like the below.
 <div class="solution">
 We can build the method using the methods we have already created.
 
-~~~ scala
+``` scala
 def complementaryChessBoard(color: Color) =
   fourByFour(color, complement(color))
-~~~
+```
 </div>
 
 ### Analogous Colors
@@ -235,10 +235,10 @@ We can generate an analogous color by spinning hue, say, fifteen degrees.
 Create a method `analogous` that takes a `Color` as input and returns an analogous color.
 
 <div class="solution">
-~~~ scala
+``` scala
 def analogous(color: Color): Color =
   color.spin(15.degrees)
-~~~
+```
 </div>
 
 **Exercise: Analogous Chess Boards**
@@ -250,10 +250,10 @@ Now create a method `analogousChessBoard` that creates a four-by-four chess boar
 <div class="solution">
 This follows the same pattern as `complementaryChessBoard`. Notice how we build big things (a colored chess board) out of smaller component parts. This idea of composing small pieces of code into larger pieces is one of the key ideas in functional programming.
 
-~~~ scala
+``` scala
 def analogousChessBoard(color: Color) =
   fourByFour(color, analogous(color))
-~~~
+```
 </div>
 
 ### Beyond Two-Color Palettes
@@ -264,16 +264,16 @@ We have seen how we can build very simple color palettes from complementary and 
 
 Define a method `tetradChessBoard` that creates a chess board colored with a tetradic color scheme as illustrated. Use the following skeleton
 
-~~~ scala
+``` scala
 def tetradChessBoard(color: Color) = ???
-~~~
+```
 
 Hint: You will have to call `twoByTwo`, not `fourByFour`, within the body of `tetradChessBoard`.
 
 <div class="solution">
 It would be nice to have a method for creating an entire tetradic color scheme from a single color, but we don't currently have a way of wrapping up a collection of data so that we could return all four values from the methods. We'll see ways of doing this later, when we introduce classes and collections.
 
-~~~ scala
+``` scala
 def tetradChessBoard(color: Color) = {
   val color1 = color
   val color2 = analogous(color)
@@ -286,5 +286,5 @@ def tetradChessBoard(color: Color) = {
   (square1 beside square2) above
   (square2 beside square1)
 }
-~~~
+```
 </div>

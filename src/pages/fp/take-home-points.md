@@ -9,10 +9,10 @@ This allows us to parameterize one method or function by another,
 which is an enormously powerful abstraction tool
 that we saw in action with our revisions to the `manyShapes` method:
 
-~~~ scala
+``` scala
 def manyShapes(n: Int, singleShape: Int => Image): Image =
   ???
-~~~
+```
 
 So far we have mainly written code using recursion.
 However, don't be fooled into think that Scala is all about recursion.

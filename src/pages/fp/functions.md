@@ -5,20 +5,20 @@ is the ability to define *functions that are first class values*.
 Scala has special syntax for functions and function types.
 Here's a function that calculates
 
-~~~ scala
+``` scala
 (a: Double, b: Double) => math.sqrt(a*a + b*b)
 // res0: (Double, Double) => Double = <function2>
 
 res0(3, 4)
 // res1: Double = 5.0
-~~~
+```
 
 Because Scala is an object oriented language,
 all first class values are objects.
 This means functions are objects, not methods!
 In fact, functions themselves have useful methods for composition:
 
-~~~ scala
+``` scala
 (a: Int) => a + 10
 // res0: Int => Int = <function1>
 
@@ -30,30 +30,30 @@ res0 andThen res1 // this composes the two functions
 
 res2(5)
 // res3: Int = 30
-~~~
+```
 
 It may seem surprising and restrictive that Scala methods are not values.
 We can prove this by attempting to refer to a method without invoking it:
 
-~~~ scala
+``` scala
 Color.rgb
 // <console>:20: error: missing arguments for method rgb in object Color;
 // follow this method with `_' if you want to treat it as a partially applied function
 //               Color.rgb
 //                     ^
-~~~
+```
 
 Fortunately, as the error message above suggests,
 we can convert any method to a function using the `_` operator
 and call it with the same parameters:
 
-~~~ scala
+``` scala
 Color.rgb _
 // res4: (Int, Int, Int) => doodle.core.Color = <function3>
 
 res4(255, 0, 0)
 // res5: doodle.core.Color = ...
-~~~
+```
 
 ## Higher Order Methods and Functions
 
@@ -66,7 +66,7 @@ What other advantages do we get from treating code as values?
 
 Let's consider the pattern from the concentric circles exercise as an example:
 
-~~~ scala
+``` scala
 def manyShapes(n: Int): Image =
   if(n == 1) {
     singleShape
@@ -75,7 +75,7 @@ def manyShapes(n: Int): Image =
   }
 
 def singleShape: Image = ???
-~~~
+```
 
 This pattern allows us to create many different images
 by changing the definition of `singleShape`.
@@ -85,21 +85,21 @@ we also need a new definition of `manyShapes` to go with it.
 We can make `manyShapes` completely general by supplying
 `singleShape` as a parameter:
 
-~~~ scala
+``` scala
 def manyShapes(n: Int, singleShape: Int => Image): Image =
   if(n == 1) {
     singleShape(n)
   } else {
     singleShape(n) on manyShapes(n - 1, singleShape)
   }
-~~~
+```
 
 Now we can re-use the same definition of `manyShapes`
 to produce plain circles, circles of different hue,
 circles with different opacity, and so on.
 All we have to do is pass in a suitable definition of `singleShape`:
 
-~~~ scala
+``` scala
 // Passing a function literal directly:
 
 val blackCircles: Image =
@@ -112,7 +112,7 @@ def redCircle(n: Int): Image =
 
 val redCircles: Image =
   manyShapes(10, redCircle _)
-~~~
+```
 
 <div class="callout callout-info">
 *Function Syntax*
@@ -129,14 +129,14 @@ to produce the following image:
 
 ![Colours and Shapes](src/pages/fp/colours-and-shapes.png)
 
-~~~ scala
+``` scala
 def manyShapes(n: Int, singleShape: Int => Image): Image =
   if(n == 1) {
     singleShape(n)
   } else {
     singleShape(n) on manyShapes(n - 1, singleShape)
   }
-~~~
+```
 
 The `manyShapes` method is equivalent to the
 `concentricCircles` method from previous exercises.
@@ -158,17 +158,17 @@ The type of the parameter is `Int => Image`,
 which means a function that accepts an `Int` parameter and returns an `Image`.
 We can declare a method of this type as follows:
 
-~~~ scala
+``` scala
 def outlinedCircle(n: Int) =
   Circle(n * 10)
-~~~
+```
 
 We can pass a reference to this method to `manyShapes` to create
 an image of concentric black outlined circles:
 
-~~~ scala
+``` scala
 manyShapes(10, outlinedCircle).draw
-~~~
+```
 
 ![Many outlined circles](src/pages/fp/colors-and-shapes-step1.png)
 
@@ -176,12 +176,12 @@ The rest of the exercise is just a matter of copying, renaming,
 and customising this function to produce
 the desired combinations of colours and shapes:
 
-~~~ scala
+``` scala
 def circleOrSquare(n: Int) =
   if(n % 2 == 0) Rectangle(n*20, n*20) else Circle(n*10)
 
 (manyShapes(10, outlinedCircle) beside manyShapes(10, circleOrSquare)).draw
-~~~
+```
 
 ![Many outlined circles beside many circles and squares](src/pages/fp/colors-and-shapes-step2.png)
 
@@ -191,15 +191,15 @@ of base functions---one to produce colours and one to produce shapes.
 Combine these functions using a *combinator* as follows,
 and use the result of the combinator as an argument to `manyShapes`
 
-~~~ scala
+``` scala
   def colored(shape: Int => Image, color: Int => Color): Int => Image =
     (n: Int) => ???
-~~~
+```
 
 <div class="solution">
 The simplest solution is to define three `singleShapes` as follows:
 
-~~~ scala
+``` scala
 def manyShapes(n: Int, singleShape: Int => Image): Image =
   if(n == 1) {
     singleShape(n)
@@ -229,7 +229,7 @@ val answer =
   manyShapes(10, rainbowCircle) beside
   manyShapes(10, fadingTriangle) beside
   manyShapes(10, rainbowSquare)
-~~~
+```
 
 However, there is some redundancy here:
 `rainbowCircle` and `rainbowTriangle`, in particular,
@@ -239,7 +239,7 @@ There are also repeated calls to `strokeWidth(10)` and
 The extra credit solution factors these out into their own functions
 and combines them with the `colored` combinator:
 
-~~~ scala
+``` scala
 def manyShapes(n: Int, singleShape: Int => Image): Image =
   if(n == 1) {
     singleShape(n)
@@ -273,5 +273,5 @@ val answer =
   manyShapes(10, colored(circle, spinning)) beside
   manyShapes(10, colored(triangle, fading)) beside
   manyShapes(10, colored(square, spinning))
-~~~
+```
 </div>

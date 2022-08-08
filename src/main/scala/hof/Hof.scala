@@ -3,9 +3,9 @@ package hof
 
 import cats.implicits._
 import doodle.core._
+import doodle.syntax.all._
 import doodle.image._
-import doodle.image.syntax._
-import doodle.image.syntax.core._
+import doodle.image.syntax.all._
 import doodle.java2d._
 
 object Hof {
@@ -18,7 +18,7 @@ object Hof {
   val composed = mirrored.andThen(dropShadow)
 
   val star = Image
-    .star(5, 150, 50, 0.degrees)
+    .star(5, 150, 50)
     .fillColor(Color.fireBrick)
     .strokeColor(Color.dodgerBlue)
     .strokeWidth(7.0)

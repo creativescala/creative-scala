@@ -52,7 +52,7 @@ Once we're comfortable with `match` expressions we need to look at the structure
 
 Let's check our understanding of match by guessing what each of the following expressions evaluates to, and why.
 
-```scala mdoc:silent
+```scala mdoc:fail:silent
 "abcd" match {
   case "bcde" => 0
   case "cdef" => 1
