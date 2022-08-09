@@ -23,7 +23,7 @@ We can break this down into three components:
 - the flags `-hs` mean to print a human readable summary; and
 - the pattern `data*` means all the files whose names begin with `data`.
 
-Doing this with a direct manipulation interface would be much more time consuming.
+Doing this with a direct manipulation interface would involve clicking on every file we were interested in and be much more time consuming.
 
 The command line has a steep learning curve, but the reward is an extremely powerful tool.
 Our usage of the terminal will be very limited, so don't worry if you find the example above intimidating!
@@ -45,8 +45,8 @@ They have very different approaches (except when they don't) and developers tend
 I've been using Emacs for about twenty years, and thus I know in my bones that Emacs is the greatest of all possible text editors and Vim users are knuckle-draggers lumbered with poor taste and an inferior tool.
 Vim users no doubt think the same about me.
 
-If there is one thing that unites Vim and Emacs users it's the sure knowledge that new-fangled text editors like Sublime Text and Atom are bringing about the downfall of our civilization.
-Nonetheless we recommend using Atom if you're new to this text editing game.
+If there is one thing that unites Vim and Emacs users it's the sure knowledge that new-fangled text editors like Visual Studio Code are bringing about the downfall of our civilization.
+Nonetheless we recommend using Visual Studio Code if you're new to this text editing game.
 Both Vim and Emacs were created before the common interfaces in use today were created, and using them requires learning a very different way of working.
 
 
