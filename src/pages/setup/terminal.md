@@ -1,4 +1,4 @@
-## Installing Terminal Software and a Text Editors
+## Installing Terminal Software and a Text Editor
 
 This section is our recommended setup for people new to programming, and describes how to setup Creative Scala with the terminal and a text editor.
 We need to install:
@@ -37,20 +37,23 @@ At the terminal, type
 brew install git
 ```
 
-Now install the text editor Atom.
+Now install the text editor Visual Studio Code.
 Again type at the terminal
 
 ```bash
-brew install Caskroom/cask/atom
+brew install --cask visual-studio-code
 ```
 
-Install Scala support inside Atom: Settings > Install > language-scala
+Install Scala support inside Visual Studio Code: Code > Preferences > Extensions and install:
+
+- Scala (Metals)
+- Scala Syntax (official)
 
 Now we will use Git to get an SBT project that will work with Creative Scala.
 Type
 
 ```bash
-git clone https://github.com/underscoreio/creative-scala-template.git
+git clone https://github.com/creative-scala/creative-scala-template.git
 ```
 
 <div class="callout callout-info">
@@ -84,7 +87,7 @@ and an image of three circles should appear!
 
 If you've made it this far you've successfully installed all the software you need for work through Creative Scala.
 
-The final step is to load Atom and use it to open `Example.scala`, which you can find in `src/main/scala`.
+The final step is to load Visual Studio Code and use it to open `Example.scala`, which you can find in `src/main/scala`.
 
 
 ### Windows
