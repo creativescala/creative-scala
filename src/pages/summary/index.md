@@ -174,7 +174,7 @@ spectrum(dot)
 
 We wrote a number of programs that used functions as values,
 but the quintissential example was the `map` method of `List`.
-In the [Collections chapter](#collections) we saw
+In the Collections chapter we saw
 how `map` lets us transform sequences without allocating
 and pushing values onto intermediate buffers:
 

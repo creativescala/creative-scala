@@ -74,6 +74,6 @@ def fourByFour(color1: Color, color2: Color): Image = {
 
 We've seen quite a lot of Scala syntax so far.
 If you can't remember everything we've covered, don't panic!
-There's a [syntax quick reference](#syntax-quick-reference)
+There's a syntax quick reference
 in the appendices at the end of the book.
 </div>

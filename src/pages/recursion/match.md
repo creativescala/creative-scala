@@ -29,8 +29,9 @@ A `match` expression in general has the shape
 }
 ```
 
-`<anExpression>`, concretely `count` in the case above, is the expression that evaluates to the value we're matching against.
-The patterns `<pattern1>` and so on are matched against this value.
+`<anExpression>`, concretely `count` in the case above, is the expression that evaluates to the value we're trying to match against the patterns.
+The patterns `<pattern1>` and so on are tried in order from top to bottom.
+The right-hand side expression, `<expression1>` and so on, of the first matching pattern is evaluated, and the overall result is the result of the right-hand side expression that is evaluated.
 So far we've seen two kinds of patterns:
 
  - a literal (as in `case 0`) which matches exactly the value that literal evaluates to; and
