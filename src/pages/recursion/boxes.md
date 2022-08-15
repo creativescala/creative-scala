@@ -55,7 +55,7 @@ val twoBoxes = aBox.beside(oneBox)
 val threeBoxes = aBox.beside(aBox).beside(aBox)
 ```
 
-These two definitions are equivalent.
+These two definitions are equivalent, as we can see from substitution.
 We've chosen to write later images in terms of earlier ones to emphasise the structure we're dealing with, which is building up to structural recursion.
 
 Writing images in this way could get very tedious.

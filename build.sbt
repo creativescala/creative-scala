@@ -1,4 +1,5 @@
 import scala.sys.process._
+import laika.config.LaikaKeys
 
 val scala213 = "2.13.8"
 val scala3 = "3.1.2"
@@ -45,7 +46,9 @@ console / initialCommands := """
 
 mdocIn := sourceDirectory.value / "pages"
 mdocOut := target.value / "pages"
-Laika / sourceDirectories := Seq(mdocOut.value)
+Laika / sourceDirectories := Seq(
+  mdocOut.value / "expressions"
+)
 laikaExtensions ++= Seq(
   laika.markdown.github.GitHubFlavor,
   laika.parse.code.SyntaxHighlighting

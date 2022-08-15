@@ -119,7 +119,7 @@ val redCircles: Image =
 
 We're introducing a lot of syntax here!
 There's a dedicated section on function syntax in the
-[quick reference](#quick-reference) if you get lost!
+quick reference if you get lost!
 </div>
 
 **Exercise: The Colour and the Shape**
