@@ -1,5 +1,7 @@
 import scala.sys.process._
 import laika.config.LaikaKeys
+import laika.helium.Helium
+import laika.helium.config._
 
 val scala213 = "2.13.8"
 val scala3 = "3.1.2"
@@ -56,6 +58,24 @@ laikaExtensions ++= Seq(
 laikaSite / target := target.value / "creative-scala"
 laikaIncludeEPUB := true
 laikaIncludePDF := true
+laikaTheme := Helium.defaults.all
+  .metadata(
+    title = Some("Creative Scala: Forms and Functions"),
+    language = Some("en")
+  )
+  .site
+  .topNavigationBar(
+    homeLink = IconLink
+      .external(
+        "https://creativescala.org",
+        HeliumIcon.home
+      )
+  )
+  .epub
+  .navigationDepth(4)
+  .pdf
+  .navigationDepth(4)
+  .build
 
 lazy val build = taskKey[Unit]("Build the book")
 
