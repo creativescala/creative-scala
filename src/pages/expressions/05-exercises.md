@@ -1,11 +1,16 @@
 ## Exercises
 
+Let's check our understanding of the core concepts in this chapter with some exercises.
+
 #### Arithmetic
 
-Write an expression using integer literals, addition, and subtraction that evaluates to 42.
+Write an expression using integers, addition, and subtraction that evaluates to 42.
+
+This exercise is just about getting used to writing Scala code. There are many possible solutions.
 
 <div class="solution">
-This exercise is just about getting used to writing Scala code. Here is one possible solution.
+
+Here's how I chose to do it.
 
 ```scala mdoc
 1 + 43 - 2
@@ -13,25 +18,12 @@ This exercise is just about getting used to writing Scala code. Here is one poss
 </div>
 
 
-#### Appending Strings
-
-Join together two strings (known as *appending* strings) using the `++` method. Write equivalent expressions using both the normal method call style and the operator style.
-
-<div class="solution">
-Something like the below should do.
-
-```scala mdoc
-"It is a truth ".++("universally acknowledged")
-"It is a truth " ++ "universally acknowledged"
-```
-</div>
-
 #### Precedence
 
-In mathematics we learned that some operators take *precedence* over others. For example, in the expression `1 + 2 * 3` we should do the multiplication before the addition. Do the same rules hold in Scala?
+In mathematics we learned that some operators take *precedence* over others. For example, in the expression `1 + 2 * 3` we should do the multiplication before the addition. Do the same rules hold in Scala? Use the worksheet to find out.
 
 <div class="solution">
-A bit of exploration at the console should convince you that yes, Scala does maintain the standard precedence rules. The example below demonstrates this.
+A bit of exploration should convince you that yes, Scala does maintain the standard precedence rules. The example below demonstrates this.
 
 ```scala mdoc
 1 + 2 * 3
@@ -40,41 +32,34 @@ A bit of exploration at the console should convince you that yes, Scala does mai
 ```
 </div>
 
-
 #### Types and Values
 
-Which of the following expressions will not compile? Of the expressions that will compile, what is their type? Which expressions fail at run-time?
+Below we've written a number of expressions. For each expression, try to answer the questions:
+
+1. It will compile?
+2. If it compiles, what is it's type?
+3. If it compiles can it be evaluated, or will it fail at run-time?
+
+Then try to check your guesses using the worksheet. If you guessed wrong, try to think about what part of your understanding is incorrect. 
 
 ```scala mdoc:silent
 1 + 2
 ```
 
+```scala mdoc:silent:crash
+1 # 2
+```
+
 ```scala mdoc:silent
-"3".toInt
+4 / 2
+```
+
+```scala mdoc:silent
+1 / 2
 ```
 
 ```scala mdoc:silent:crash
-"Electric blue".toInt
-```
-
-```scala mdoc:silent
-"Electric blue".take(1)
-```
-
-```scala mdoc:silent:fail
-"Electric blue".take("blue")
-```
-
-```scala mdoc:silent
-1 + ("Moonage daydream".indexOf("N"))
-```
-
-```scala mdoc:silent
-1 / 1 + ("Moonage daydream".indexOf("N"))
-```
-
-```scala mdoc:silent:crash
-1 / (1 + ("Moonage daydream".indexOf("N")))
+1 / 0
 ```
 
 <div class="solution">
@@ -127,6 +112,20 @@ This expression has type `Int` and, due to precedence, evaluates to `(1 / 1) + -
 
 This expression has type `Int` but fails at run-time with a division by zero.
 </div>
+#### Appending Strings
+
+Join together two strings (known as *appending* strings) using the `++` method. Write equivalent expressions using both the normal method call style and the operator style.
+
+<div class="solution">
+Something like the below should do.
+
+```scala mdoc
+"It is a truth ".++("universally acknowledged")
+"It is a truth " ++ "universally acknowledged"
+```
+</div>
+
+
 
 #### Floating Point Failings
 

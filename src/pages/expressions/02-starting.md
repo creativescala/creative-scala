@@ -1,8 +1,6 @@
 # Starting to Program
 
-It's time to write our first program.
-
-We're going to use a Scala *worksheet* to start with. Worksheets make is very easy to run short programs, so are useful for the kinds of programs we're going to write here. For longer programs we usually write code a different way, but we'll worry about that when we get to it.
+It's time to write our first program. For this we're going to use a  Scala *worksheet*. Worksheets make is very easy to run short programs, so are ideal for our first adventures in programming. For longer programs we usually write code a different way, but we'll worry about that when we get to it.
 
 To create a worksheet:
 

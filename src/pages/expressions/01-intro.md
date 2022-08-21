@@ -1,6 +1,6 @@
 # Introduction
 
-Let's get started learning to program! We have two goals in this chapter:
+With the setup complete we're ready to start learning to program. Let's get going! We have two goals in this chapter:
 
 1. to write and run our first Scala code; and
 2. to start building our model of how code works.
