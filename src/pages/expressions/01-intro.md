@@ -9,4 +9,4 @@ The first is clearly important: we won't get very far learning Scala if we canno
 
 To get more specific, we start to build our model of how code works by looking at *expressions* and *values*, and the process of *evaluation* that connects expressions to values. We'll then talk about *types*, and the process of *compilation* that constructs them.
 
-We are also, of course, going to write some code along the way. This is important in its own right but will also help ground our more theoretical discussion. One of the great things about programming is that we can easily test our models by seeing what the computer actually does. We'll see how this can be very useful and where it can lead us astray.
+We are also, of course, going to write some code along the way. This is important in its own right but will also help ground our more theoretical discussion. One of the great things about programming is that we can easily test our mental models by seeing what the computer actually does.
