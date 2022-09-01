@@ -46,7 +46,7 @@ Then try to check your guesses using the worksheet. If you guessed wrong, try to
 1 + 2
 ```
 
-```scala mdoc:silent:crash
+```scala mdoc:silent:fail
 1 # 2
 ```
 
@@ -67,51 +67,34 @@ Then try to check your guesses using the worksheet. If you guessed wrong, try to
 1 + 2
 ```
 
-This expression has type `Int` and evaluates to `3`.
+Easy example as we've seen this one before. This expression has type `Int` and evaluates to `3`.
 
-
-```scala mdoc
-"3".toInt
-```
-
-This expression has type `Int` and evaluates to `3`.
-
-```scala mdoc:crash
-"Electric blue".toInt
-```
-
-This expression has type `Int` but fails at run-time.
-
-```scala mdoc
-"Electric blue".take(1)
-```
-
-This expression has type `String` and evaluates to `"E"`.
 
 ```scala mdoc:fail
-"Electric blue".take("blue")
+1 # 2
 ```
 
-This expression fails at compile-time and hence has no type.
+This is not a valid expression and does not compile. As such it doesn't have a type.
 
 ```scala mdoc
-1 + ("Moonage daydream".indexOf("N"))
+4 / 2
 ```
 
-This expression has type `Int` and evaluates to `0`.
+This expression has type `Int` and evaluates to `2`.
 
 ```scala mdoc
-1 / 1 + ("Moonage daydream".indexOf("N"))
+1 / 2
 ```
 
-This expression has type `Int` and, due to precedence, evaluates to `(1 / 1) + -1`, which is `0`.
+This expression has type `Int` and evaluates to `0`. People coming from dynamically typed languages will sometimes guess that this evaluates to `0.5` and hence the type would be a floating point number. This would require we pass information back from the run-time to compile-time, which is not possible.
 
-```scala mdoc:crash
-1 / (1 + ("Moonage daydream".indexOf("N")))
+```scala mdoc:fail
+1 / 0
 ```
 
-This expression has type `Int` but fails at run-time with a division by zero.
+This expression has type `Int` but fails at run-time. This exercise is emphasizing that the type is a property of the expression, not the value, and types are not determined by run time behaviour.
 </div>
+
 #### Appending Strings
 
 Join together two strings (known as *appending* strings) using the `++` method. Write equivalent expressions using both the normal method call style and the operator style.
