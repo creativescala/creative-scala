@@ -238,8 +238,8 @@ sharing it with us via [Gitter][underscore-gitter].
 There are lots of things you can try---check the `examples` directory
 in the Doodle codebase for some suggestions:
 
-![Koch Triangle (Koch.scala)](src/pages/summary/koch.png)
+@:figure{ img = "src/pages/summary/koch.png", caption = "Koch Triangle (Koch.scala)" }
 
-![Suburban Scene (Street.scala)](src/pages/summary/street.png)
+@:figure{ img = "src/pages/summary/street.png", caption = "Suburban Scene (Street.scala)" }
 
-![Mandelbrot Fractal by Mat Moore (Mandelbrot.scala)](src/pages/summary/mandelbrot.png)
+@:figure{ img = "src/pages/summary/mandelbrot.png", caption = "Mandelbrot Fractal by Mat Moore (Mandelbrot.scala)" }

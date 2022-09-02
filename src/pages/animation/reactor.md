@@ -34,9 +34,9 @@ This constructs a reactor but it does not draw it. To do this we must call the `
 travellingCircle.run(Frame.size(600, 600))
 ```
 
-This generates the animation shown in [@fig:reactor:travelling].
+This generates the animation shown in @:fref(reactor:travelling).
 
-![A circle moving from left to right.](./src/pages/reactor/travelling.pdf+svg){#fig:reactor:travelling}
+@:figure{ img = "./src/pages/reactor/travelling.pdf+svg", key = "#fig:reactor:travelling", caption = "A circle moving from left to right." }
 
 
 Here's an another example that moves a circle in a circular orbit. This time  the animation has no stopping condition, so it continues forever.
@@ -54,9 +54,9 @@ We run this reactor in the same way.
 orbitingCircle.run(Frame.size(600, 600))
 ```
 
-This generates the animation shown in [@fig:reactor:orbit].
+This generates the animation shown in @:fref(reactor:orbit).
 
-![A circle moving in a circular orbit.](./src/pages/reactor/orbit.pdf+svg){#fig:reactor:orbit}
+@:figure{ img = "./src/pages/reactor/orbit.pdf+svg", key = "#fig:reactor:orbit", caption = "A circle moving in a circular orbit." }
 
 
 #### Exercise: Rose Curve

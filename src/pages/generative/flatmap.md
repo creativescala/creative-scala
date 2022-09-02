@@ -171,9 +171,9 @@ def randomConcentricCircles(count: Int, size: Int): Random[Image] =
   }
 ```
 
-Example output is shown in [@fig:generative:random-concentric-circles].
+Example output is shown in @:fref(generative:random-concentric-circles).
 
-![The output of one run of `randomConcentricCircles(10, 10).run.draw`](./src/pages/generative/random-concentric-circles.pdf+svg){#fig:generative:random-concentric-circles}
+@:figure{ img = "./src/pages/generative/random-concentric-circles.pdf+svg", key = "#fig:generative:random-concentric-circles", caption = "The output of one run of `randomConcentricCircles(10, 10).run.draw`" }
 
 Let's now look closer at this use of `flatMap` and `map` to understand how this works.
 
@@ -341,9 +341,9 @@ def rowOfBoxes(count: Int): Image =
   }
 ```
 
-Let's alter this, like with did with concentric circles, to have each box filled with a random color. *Hint:* you might find it useful to reuse some of the utilities we created for `randomConcentricCircles`. Example output is shown in [@fig:generative:random-color-boxes].
+Let's alter this, like with did with concentric circles, to have each box filled with a random color. *Hint:* you might find it useful to reuse some of the utilities we created for `randomConcentricCircles`. Example output is shown in @:fref(generative:random-color-boxes).
 
-![Boxes filled with random colors.](./src/pages/generative/random-color-boxes.pdf+svg){#fig:generative:random-color-boxes}
+@:figure{ img = "./src/pages/generative/random-color-boxes.pdf+svg", key = "#fig:generative:random-color-boxes", caption = "Boxes filled with random colors." }
 
 <div class="solution">
 This code uses exactly the same pattern as `randomConcentricCircles`.

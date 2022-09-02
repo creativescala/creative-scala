@@ -8,9 +8,9 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-In a previous chapter we created the image shown in [@fig:methods:sequential-boxes] using the program
+In a previous chapter we created the image shown in @:fref(methods:sequential-boxes) using the program
 
-![Five boxes filled with Royal Blue](./src/pages/programs/sequential-boxes.pdf+svg){#fig:methods:sequential-boxes}
+@:figure{ img = "./src/pages/programs/sequential-boxes.pdf+svg", key = "#fig:methods:sequential-boxes", caption = "Five boxes filled with Royal Blue" }
 
 ```scala mdoc:silent
 val box =

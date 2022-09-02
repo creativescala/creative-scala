@@ -8,15 +8,15 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle displayed beside one another, as in [@fig:picture:circle-rect].
+We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle displayed beside one another, as in @:fref(picture:circle-rect).
 
 ```scala
 (Image.circle(10).beside(Image.rectangle(10, 20))).draw()
 ```
 
-![A circle beside a rectangle](src/pages/pictures/circle-beside-rectangle.pdf+svg){#fig:picture:circle-rect}
+@:figure{ img = "src/pages/pictures/circle-beside-rectangle.pdf+svg", key = "#fig:picture:circle-rect", caption = "A circle beside a rectangle" }
 
-`Image` contains several layout methods for combining images, described in [@tbl:pictures:layout]. Try them out now to see what they do.
+`Image` contains several layout methods for combining images, described in @:tref(pictures:layout). Try them out now to see what they do.
 
 +---------------+-----------+----------------------------+------------------------------+
 | Method        | Parameter | Description                | Example                      |
@@ -37,15 +37,15 @@ We can seen how to create primitive images. We can combine together images using
 |               |           | on top of one another      |    .under(Image.circle(10))` |
 +---------------+-----------+----------------------------+------------------------------+
 
-: Layout methods available in Doodle {#tbl:pictures:layout}
+: Layout methods available in Doodle @:tref(pictures:layout)
 
 ### Exercises {-}
 
 #### The Width of a Circle {-}
 
-Create the picture [@fig:picture:width-of-a-circle] using the layout methods and basic images we've covered so far.
+Create the picture @:fref(picture:width-of-a-circle) using the layout methods and basic images we've covered so far.
 
-![The width of a circle](src/pages/pictures/width-of-a-circle.pdf+svg){#fig:picture:width-of-a-circle}
+@:figure{ img = "src/pages/pictures/width-of-a-circle.pdf+svg", key = "#fig:picture:width-of-a-circle", caption = "The width of a circle" }
 
 <div class="solution">
 It's three small circles on top of a bigger circle, and we can just about state this as is in code.

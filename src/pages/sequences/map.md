@@ -46,15 +46,19 @@ Each element is transformed by the function we pass to `map`, in this case `x =>
 With `map` we can transform the elements, but we cannot change the number of elements in the list.
 
 We find a graphical notation helps with understanding `map`. 
-If we had some type `Circle` we can draw a `List[Circle]` as a box containing a circle, as shown in [@fig:sequences:circle-box].
+If we had some type `Circle` we can draw a `List[Circle]` as a box containing a circle, as shown in @:fref(sequences:circle-box).
 
-![A `List[Circle]` representing by a circle within a box](./src/pages/sequences/circle-box.pdf+svg){#fig:sequences:circle-box}
+@:figure{
+  caption = "A `List[Circle]` representing by a circle within a box"
+  img = "./src/pages/sequences/circle-box.pdf+svg"
+  key = "fig:sequences:circle-box"
+}
 
-Now we can draw an equation for `map` as in [@fig:sequences:map]. 
+Now we can draw an equation for `map` as in @:fref(sequences:map). 
 If you prefer symbols instead of pictures, the picture is showing that `List[Circle].map(Circle => Triangle) = List[Triangle]`. 
 One feature of the graphical representation is it nicely illustrates that `map` cannot create a new "box", which represents the structure of the list---or more concretely the number of elements and their order.
 
-![`map` shown graphically](./src/pages/sequences/map.pdf+svg){#fig:sequences:map}
+@:figure{ img = "./src/pages/sequences/map.pdf+svg", key = "#fig:sequences:map", caption = "`map` shown graphically" }
 
 The graphical drawing of `map` exactly illustrates what holds at the type level for `map`. 
 If we prefer we can write it down symbolically:

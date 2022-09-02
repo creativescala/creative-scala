@@ -46,14 +46,14 @@ Now we know all about methods let's implement some more complex examples.
 
 #### Gradient Boxes {-}
 
-Let's turn `boxes` up to eleven by making the color of the boxes change in a smooth gradient, like that shown in [@fig:methods:gradient-boxes].
+Let's turn `boxes` up to eleven by making the color of the boxes change in a smooth gradient, like that shown in @:fref(methods:gradient-boxes).
 
 To minimise the amount of code we have to write, implement this by writing *two* methods.
 The first method, `box`, should accept a `Color` and an `Angle` and create a box with the color spun by the angle.
 The second method, `graidentBoxes`, should accept a `Color` and return an `Image` of five boxes fill with a gradient starting from the given color and changing by `15.degrees` at each successive box. `gradientBoxes` should make use of `box`.
 Remember to write out the method skeletons first.
 
-![Five boxes filled with a gradient starting from Royal Blue](./src/pages/recursion/gradient-boxes.pdf+svg){#fig:methods:gradient-boxes}
+@:figure{ img = "./src/pages/recursion/gradient-boxes.pdf+svg", key = "#fig:methods:gradient-boxes", caption = "Five boxes filled with a gradient starting from Royal Blue" }
 
 <div class="solution">
 The first step is to write out the skeletons.
@@ -88,10 +88,10 @@ def gradientBoxes(color: Color): Image = {
 
 #### Gradient Concentric Circles {-}
 
-Now implement methods to draw a picture similar to [@fig:methods:gradient-concentric-circles].
+Now implement methods to draw a picture similar to @:fref(methods:gradient-concentric-circles).
 You should follow a design similar to `gradientBoxes` to reduce the amount of code you write, but we're not going to give the method skeletons this time---you have to work it out yourself.
 
-![Five concentric circles filled with a gradient starting from Royal Blue](./src/pages/recursion/gradient-concentric-circles.pdf+svg){#fig:methods:gradient-concentric-circles}
+@:figure{ img = "./src/pages/recursion/gradient-concentric-circles.pdf+svg", key = "#fig:methods:gradient-concentric-circles", caption = "Five concentric circles filled with a gradient starting from Royal Blue" }
 
 <div class="solution">
 There are a number of different ways to write this. 

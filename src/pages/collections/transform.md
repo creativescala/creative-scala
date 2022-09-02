@@ -67,7 +67,11 @@ which lays a list of images out beside one another:
 allBeside(circles).draw
 ```
 
-![A row of circles](src/pages/collections/circles.png)
+@:figure{ 
+  img = "src/pages/collections/circles.png"
+  key = "collections:circles"
+  caption = "A row of circles" 
+}
 
 Other combinators are listed below:
 
@@ -111,7 +115,11 @@ Create a two-dimensional grid of rectangles,
 with hue varying from 0 to 360 degrees on the x-axis and
 lightness varying from 0.0 to 1.0 on the y-axis.
 
-![HSL Colour Palette](src/pages/collections/colour-palette-squares.png)
+@:figure{ 
+  img = "src/pages/collections/colour-palette-squares.png", 
+  key = "collections:hsl",
+  caption = "HSL Colour Palette"
+}
 
 Here are some tips:
 
@@ -134,7 +142,11 @@ Here are some tips:
 For extra credit, allow the user to specify parameters for
 the step size along each axis and the basic shape used in each cell:
 
-![HSL Colour Palette](src/pages/collections/colour-palette-circles.png)
+@:figure{ 
+  img = "src/pages/collections/colour-palette-circles.png"
+  key = "collections:palette"
+  caption = "HSL Colour Palette" 
+}
 
 <div class="solution">
 First let's define a method to create a single square.

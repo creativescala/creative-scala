@@ -33,7 +33,7 @@ randomDouble.run
 
 The type `Random[Double]` indicates we have something that will produce a random `Double` when we `run` it. Just like with `Image` and `draw`, substitution holds with `Random` up until the point we call `run`.
 
-Table [@tbl:generative:random] shows some of the ways to construct `Random` values.
+Table @:tref(generative:random) shows some of the ways to construct `Random` values.
 
 ----------------------------------------------------------------------------------------
 Method                     Description                    Example
@@ -64,7 +64,7 @@ Method                     Description                    Example
                            values with equal chance.
 ----------------------------------------------------------------------------------------
 
-: Some of the methods to create `Random` values. {#tbl:generative:random}
+: Some of the methods to create `Random` values. @:tref(generative:random)
 
 
 ### Composing Random

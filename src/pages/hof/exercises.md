@@ -196,5 +196,5 @@ val flower = {
 Now experiment with the creative possibilities open to you!
 
 <div class="solution">
-Our implementation used to create [@fig:hof:flower-power] is at [Flowers.scala](https://github.com/underscoreio/doodle/blob/develop/shared/src/main/scala/doodle/examples/Flowers.scala). What did you come up with? Let us know! Our email addresses are `noel@underscore.io` and `dave@underscore.io`.
+Our implementation used to create @:fref(hof:flower-power) is at [Flowers.scala](https://github.com/underscoreio/doodle/blob/develop/shared/src/main/scala/doodle/examples/Flowers.scala). What did you come up with? Let us know! Our email addresses are `noel@underscore.io` and `dave@underscore.io`.
 </div>

@@ -13,11 +13,11 @@ For the purpose of this exercise let's assume that a star is a polygon with `p` 
 However, instead of connecting each point to its neighbours,
 we'll connect them to the `nth` point around the circumference.
 
-For example, [@fig:sequences:stars] shows stars with `p=11` and `n=1 to 5`.
+For example, @:fref(sequences:stars) shows stars with `p=11` and `n=1 to 5`.
 `n=1` produces a regular polygon while
 values of `n` from `2` upwards produce stars with increasingly sharp points:
 
-![Stars with `p=11` and `n=1 to 5`](./src/pages/sequences/stars.pdf+svg){#fig:sequences:stars}
+@:figure{ img = "./src/pages/sequences/stars.pdf+svg", key = "#fig:sequences:stars", caption = "Stars with `p=11` and `n=1 to 5`" }
 
 Write code to draw the diagram above.
 Start by writing a method to draw a `star` given `p` and `n`:
@@ -176,12 +176,12 @@ def allBeside(images: List[Image]): Image =
 
 When you've finished your row of stars,
 try constructing a larger image from different values of `p` and `n`.
-There is an example in [@fig:sequences:all-star]. *Hint:* You will need to create a method `allAbove` similar to `allBeside`.
+There is an example in @:fref(sequences:all-star). *Hint:* You will need to create a method `allAbove` similar to `allBeside`.
 
-![Stars with `p=3 to 33 by 2` and `n=1 to p/2`](src/pages/sequences/all-star.pdf+svg){#fig:sequences:all-star}
+@:figure{ img = "src/pages/sequences/all-star.pdf+svg", key = "#fig:sequences:all-star", caption = "Stars with `p=3 to 33 by 2` and `n=1 to p/2`" }
 
 <div class="solution">
-To create the image in [@fig:sequences:stars2] we started by creating a method to style a star.
+To create the image in @:fref(sequences:stars2) we started by creating a method to style a star.
 
 ```scala mdoc:silent
 def style(img: Image, hue: Angle): Image = {

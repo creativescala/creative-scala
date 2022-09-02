@@ -10,13 +10,13 @@ import doodle.java2d._
 
 ### Compilation Target
 
-Create a line drawing of an archery target with three concentric scoring bands, as shown in [@fig:pictures:target1].
+Create a line drawing of an archery target with three concentric scoring bands, as shown in @:fref(pictures:target1).
 
-![Simple archery target](src/pages/pictures/target1.pdf+svg){#fig:pictures:target1}
+@:figure{ img = "src/pages/pictures/target1.pdf+svg", key = "#fig:pictures:target1", caption = "Simple archery target" }
 
-For bonus credit add a stand so we can place the target on a range, as shown in [@fig:pictures:target2].
+For bonus credit add a stand so we can place the target on a range, as shown in @:fref(pictures:target2).
 
-![Archery target with a stand](src/pages/pictures/target2.pdf+svg){#fig:pictures:target2}
+@:figure{ img = "src/pages/pictures/target2.pdf+svg", key = "#fig:pictures:target2", caption = "Archery target with a stand" }
 
 <div class="solution">
 The simplest solution is to create three concentric circles using the `on` method:
@@ -44,9 +44,9 @@ Image
 ### Stay on Target
 
 Colour your target red and white, the stand in brown (if applicable),
-and some ground in green. See [@fig:pictures:target3] for an example.
+and some ground in green. See @:fref(pictures:target3) for an example.
 
-![Colour archery target](src/pages/pictures/target3.pdf+svg){#fig:pictures:target3}
+@:figure{ img = "src/pages/pictures/target3.pdf+svg", key = "#fig:pictures:target3", caption = "Colour archery target" }
 
 <div class="solution">
 The trick here is using parentheses to control the order of composition.

@@ -8,7 +8,7 @@ Let's start with a simple example---a set of concentric circles.
 We can create this image by recursing over the natural numbers.
 Each number corresponds to the next layer of the image:
 
-![Concentric circles (n = 1 to 3)](src/pages/fp/concentric-circles-steps.pdf+svg)
+@:figure{ img = "src/pages/fp/concentric-circles-steps.pdf+svg", caption = "Concentric circles (n = 1 to 3)" }
 
 Note the recursive pattern here:
 
@@ -33,12 +33,12 @@ def concentricCircles(n: Int): Image =
 Create an image containing 20 concentric circles
 using the approach described above:
 
-![Concentric circles (n = 20)](src/pages/fp/concentric-circles.png)
+@:figure{ img = "src/pages/fp/concentric-circles.png", caption = "Concentric circles (n = 20)" }
 
 For extra credit, give each circle its own hue or opacity
 by gradually changing the colour at each level of recursion:
 
-![Concentric circles IN COLOUR! (n = 20)](src/pages/fp/concentric-circles2.png)
+@:figure{ img = "src/pages/fp/concentric-circles2.png", caption = "Concentric circles IN COLOUR! (n = 20)" }
 
 <div class="solution">
 The basic structure of our solution involves two methods:
@@ -108,7 +108,7 @@ Sierpinski triangles are a more interesting example of a recursive drawing
 algorithm. The pattern is illustrated below:
 
 
-![Sierpinski triangles (n = 1 to 4)](src/pages/fp/sierpinski-steps.pdf+svg)
+@:figure{ img = "src/pages/fp/sierpinski-steps.pdf+svg", caption = "Sierpinski triangles (n = 1 to 4)" }
 
 Here is an English description of the recursive pattern:
 
@@ -127,7 +127,7 @@ Start by dealing with the `n = 1` case, then solve the `n = 2` case,
 then generalise your code for any value of `n`. Finish by drawing the
 `n = 10` *Sier**pink**ski* triangle below:
 
-![Sierpinski triangle (n = 10)](src/pages/fp/sierpinski.png)
+@:figure{ img = "src/pages/fp/sierpinski.png", caption = "Sierpinski triangle (n = 10)" }
 
 You may notice that the final result is extremely large!
 For extra credit, rewrite your code so you can specify

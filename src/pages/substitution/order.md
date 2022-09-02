@@ -14,7 +14,7 @@ In the examples we've looked at so far the order doesn't seem to matter, except 
 
 To investigate these issues further we need to introduce a new concept.
 So far we have almost always dealt with *pure* expressions.
-These are expressions that we can freely substitute in any order without issue[^corner-cases].
+These are expressions that we can freely substitute in any order without issue@:fnref(corner-cases).
 
 *Impure* expressions are those where the order of evaluation matters.
 We have already used one impure expression, the method `draw`.
@@ -180,4 +180,6 @@ We can show this fairly easily.
 So in conclusion we can say that Scala expressions are evaluated from top-to-bottom and left-to-right.
 </div>
 
-[^corner-cases]: This is not entirely true. There are some corner cases where the order of evaluation does make a difference even with pure expressions. We're not going to worry about these cases here. If you're interested in learning more, and this is interesting and useful stuff, you can read up on "eager evaluation" and "lazy evaluation".
+@:footnote(corner-cases)
+This is not entirely true. There are some corner cases where the order of evaluation does make a difference even with pure expressions. We're not going to worry about these cases here. If you're interested in learning more, and this is interesting and useful stuff, you can read up on "eager evaluation" and "lazy evaluation".
+@:@

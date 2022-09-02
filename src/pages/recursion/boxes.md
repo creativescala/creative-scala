@@ -8,9 +8,9 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-Let's start with an example, drawing a line or row of boxes as in [@fig:recursion:sequential-boxes].
+Let's start with an example, drawing a line or row of boxes as in @:fref(recursion:sequential-boxes).
 
-![Five boxes filled with Royal Blue](./src/pages/recursion/sequential-boxes.pdf+svg){#fig:recursion:sequential-boxes}
+@:figure{ img = "./src/pages/recursion/sequential-boxes.pdf+svg", key = "#fig:recursion:sequential-boxes", caption = "Five boxes filled with Royal Blue" }
 
 Let's define a box to begin with.
 
@@ -135,11 +135,11 @@ Let's take each question in turn.
 
 ### Exercise: Stacking Boxes {-}
 
-Even before we get into the details of `match` expressions you should be able to modify `boxes` to produce an image like [@fig:recursion:stacked-boxes].
+Even before we get into the details of `match` expressions you should be able to modify `boxes` to produce an image like @:fref(recursion:stacked-boxes).
 
 At this point we're trying to get used to the syntax of `match`, so rather than copying and pasting `boxes` write it all out by hand again to get some practice.
 
-![Three stacked boxes filled with Royal Blue](./src/pages/recursion/sequential-boxes.pdf+svg){#fig:recursion:stacked-boxes}
+@:figure{ img = "./src/pages/recursion/sequential-boxes.pdf+svg", key = "#fig:recursion:stacked-boxes", caption = "Three stacked boxes filled with Royal Blue" }
 
 <div class="solution">
 All you to do is change `beside` to `above` in `boxes`.
