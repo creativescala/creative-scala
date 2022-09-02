@@ -19,7 +19,7 @@ If we arrange colors in the familiar color wheel,
 distance from the center corresponds to lightness
 and steps around the outside correspond to changes in hue:
 
-![A color wheel. A full turn around the wheel represents a 360 degree change in hue.](src/pages/declarations/color-wheel.png)
+@:figure{ img = "src/pages/declarations/color-wheel.png", caption = "A color wheel. A full turn around the wheel represents a 360 degree change in hue." }
 
 Saturation, the third dimension,
 corresponds to intensity of color.
@@ -28,7 +28,7 @@ for fixed hue (170 degrees) and lightness (0.5).
 As you can see,
 changing saturation goes from a dull gray to a bright and vibrant color.
 
-![The effect of changing saturation while keeping hue and lightness fixed. Saturation increases from left to right, starting at zero and finishing at one.](src/pages/declarations/saturation.png)
+@:figure{ img = "src/pages/declarations/saturation.png", caption = "The effect of changing saturation while keeping hue and lightness fixed. Saturation increases from left to right, starting at zero and finishing at one." }
 
 ### The Color API
 
@@ -185,7 +185,11 @@ Given a color, it's complement is the one opposite it on the color wheel.
 In other words, it has hue rotated by 180 degrees.
 Complementary pairs have high contrast and make for striking compositions:
 
-![Aubergines by <a href="https://www.flickr.com/photos/36179943@N00/219265991">Estaban Cavrico</a> <a href="https://creativecommons.org/licenses/by-nc-nd/2.0/">CC BY-NC-ND 2.0</a>. The green and purple of the aubergins are near complements.](src/pages/declarations/aubergines.jpg)
+@:figure{ 
+  img = "src/pages/declarations/aubergines.jpg", 
+  key = "declarations:aubergines"
+  caption = "Aubergines by https://www.flickr.com/photos/36179943@N00/219265991 Estaban Cavrico licensed under CC BY-NC-ND 2.0. The green and purple of the aubergins are near complements."
+}
 
 **Exercise: Complementary Colors**
 
@@ -209,7 +213,7 @@ def complementaryChessBoard(color: Color): Image = ???
 
 You should end up with a picture like the below.
 
-![A chess board colored using complementary colors](src/pages/declarations/complementary-chess-board.png)
+@:figure{ img = "src/pages/declarations/complementary-chess-board.png", caption = "A chess board colored using complementary colors" }
 
 <div class="solution">
 We can build the method using the methods we have already created.
@@ -245,7 +249,7 @@ def analogous(color: Color): Color =
 
 Now create a method `analogousChessBoard` that creates a four-by-four chess board with an analogous color scheme. You should get a result like the below.
 
-![A chess board colored using analogous colors](src/pages/declarations/analogous-chess-board.png)
+@:figure{ img = "src/pages/declarations/analogous-chess-board.png", caption = "A chess board colored using analogous colors" }
 
 <div class="solution">
 This follows the same pattern as `complementaryChessBoard`. Notice how we build big things (a colored chess board) out of smaller component parts. This idea of composing small pieces of code into larger pieces is one of the key ideas in functional programming.
@@ -260,7 +264,7 @@ def analogousChessBoard(color: Color) =
 
 We have seen how we can build very simple color palettes from complementary and analogous colors. Now let's combine these ideas to build more complex palettes. A *tetrad color scheme* consists of two analogous colors and their complements.
 
-![A chess board colored using a tetradic color scheme](src/pages/declarations/tetrad-chess-board.png)
+@:figure{ img = "src/pages/declarations/tetrad-chess-board.png", caption = "A chess board colored using a tetradic color scheme" }
 
 Define a method `tetradChessBoard` that creates a chess board colored with a tetradic color scheme as illustrated. Use the following skeleton
 

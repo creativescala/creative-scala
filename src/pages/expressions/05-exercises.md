@@ -47,7 +47,7 @@ Then try to check your guesses using the worksheet. If you guessed wrong, try to
 ```
 
 ```scala mdoc:silent:fail
-1 # 2
+1 ? 2
 ```
 
 ```scala mdoc:silent
@@ -71,7 +71,7 @@ Easy example as we've seen this one before. This expression has type `Int` and e
 
 
 ```scala mdoc:fail
-1 # 2
+1 ? 2
 ```
 
 This is not a valid expression and does not compile. As such it doesn't have a type.

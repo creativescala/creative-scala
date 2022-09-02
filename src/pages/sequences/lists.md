@@ -34,7 +34,7 @@ Earlier we noted we can expand the structure of a natural number so we could wri
 If we replace `+` with `::` and `0` with `Nil` we get the `List` `1 :: 1 :: 1 :: Nil`.
 
 What does this mean?
-It means we can easily transform a natural number into a `List` using our familiar tool of structural recursion[^free-monoid].
+It means we can easily transform a natural number into a `List` using our familiar tool of structural recursion@:fnref(free-monoid).
 Here's a very simple example, which given a number builds a list of that length containing the `String` "Hi".
 
 ```scala mdoc
@@ -52,7 +52,9 @@ The code here is transforming:
  - `0` to `Nil`, for the base case; and
  - `n` (which, remember, we think of as `1 + m`) to `"Hi" :: sayHi(n - 1)`, transforming `1` to `"Hi"`, `+` to `::`, and recursing as usual on `m` (which is `n - 1`).
 
-[^free-monoid]: This connection goes deeper. We can abstract the idea of things that can be "added" into a concept called a monoid, and a list represents a particular type of monoid called the free monoid. We aren't going to work with this abstraction in Creative Scala but you're encouraged to explore on your own!
+@:footnote(free-monoid)
+This connection goes deeper. We can abstract the idea of things that can be "added" into a concept called a monoid, and a list represents a particular type of monoid called the free monoid. We aren't going to work with this abstraction in Creative Scala but you're encouraged to explore on your own!
+@:@
 
 This recursive structure also means we can transform lists into other recursive structures, such a natural number, different lists, chessboards, and so on.
 Here we increment every element in a list---that is, transform a list to a list---using structural recursion.
@@ -473,9 +475,9 @@ Write a method `polygon` that accepts the number of sides of the polygon and the
 *Hint:* use an internal accumulator.
 
 Use this utility to create an interesting picture combining polygons.
-Our rather unimaginative example is in [@fig:sequences:concentric-polygons]. We're sure you can do better.
+Our rather unimaginative example is in @:fref(sequences:concentric-polygons). We're sure you can do better.
 
-![Concentric polygons with pastel gradient fill.](./src/pages/sequences/concentric-polygons.pdf+svg){#fig:sequences:concentric-polygons}
+@:figure{ img = "./src/pages/sequences/concentric-polygons.pdf+svg", key = "#fig:sequences:concentric-polygons", caption = "Concentric polygons with pastel gradient fill." }
 
 <div class="solution">
 Here's our code.

@@ -26,9 +26,9 @@ We draw the circle by calling the `draw` method.
 Image.circle(10).draw()
 ```
 
-A window should appear as shown in [@fig:pictures:circle].
+A window should appear as shown in @:fref(pictures:circle).
 
-![A circle](src/pages/pictures/circle.pdf+svg){#fig:pictures:circle}
+@:figure{ img = "src/pages/pictures/circle.pdf+svg", key = "#fig:pictures:circle", caption = "A circle" }
 
 Doodle supports a handful of "primitive" images: circles, rectangles, and triangles. Let's try drawing a rectangle.
 
@@ -36,18 +36,18 @@ Doodle supports a handful of "primitive" images: circles, rectangles, and triang
 Image.rectangle(100, 50).draw()
 ```
 
-The output is shown in [@fig:pictures:rectangle].
+The output is shown in @:fref(pictures:rectangle).
 
-![A rectangle](src/pages/pictures/rectangle.pdf+svg){#fig:pictures:rectangle}
+@:figure{ img = "src/pages/pictures/rectangle.pdf+svg", key = "#fig:pictures:rectangle", caption = "A rectangle" }
 
-Finally let's try a triangle, for which the output is shown in [@fig:pictures:triangle].
+Finally let's try a triangle, for which the output is shown in @:fref(pictures:triangle).
 
 
 ```scala
 Image.triangle(60, 40).draw()
 ```
 
-![A triangle](src/pages/pictures/triangle.pdf+svg){#fig:pictures:triangle}
+@:figure{ img = "src/pages/pictures/triangle.pdf+svg", key = "#fig:pictures:triangle", caption = "A triangle" }
 
 ### Exercises {-}
 

@@ -59,7 +59,7 @@ If these checks don't pass the code won't be compiled and the compiler will prin
 We'll learn more about what the compiler can check and what it can't in the rest of this book.
 
 When we said the compiler translates the code is something the computer can run, this is not the complete truth in the case of Scala.
-The output of the compiler is something called bytecode, and another program, called the Java Virtual Machine (JVM), runs this code[^complications].
+The output of the compiler is something called bytecode, and another program, called the Java Virtual Machine (JVM), runs this code@:fnref(complications).
 
 
 ### Integrated Development Environments
@@ -89,4 +89,6 @@ We use GitHub to share the software used in Creative Scala.
 Now that we've got some background, let's move on to installing the software we need to write Scala code.
 
 
-[^complications]: This is not itself the entire truth! We usually run Scala code on the JVM, but we can actually compile Scala to three different formats. The first and most common is JVM bytecode. We can also compiled to Javascript, another programming language, which allows us to run Scala code in a web browser. Finally, Scala Native will compile Scala to something a computer *can* run directly without requiring the JVM.
+@:footnote(complications)
+This is not itself the entire truth! We usually run Scala code on the JVM, but we can actually compile Scala to three different formats. The first and most common is JVM bytecode. We can also compiled to Javascript, another programming language, which allows us to run Scala code in a web browser. Finally, Scala Native will compile Scala to something a computer *can* run directly without requiring the JVM.
+@:@

@@ -21,9 +21,9 @@ import doodle.random._
 ### Normal Distributions
 
 Often when using random numbers in generative art we will choose specific distributions for the shape they provide.
-For example, [@fig:generative:distributions] shows a thousand random points generated using a uniform, normal (or Gaussian) distribution, and a squared normal distribution respectively.
+For example, @:fref(generative:distributions) shows a thousand random points generated using a uniform, normal (or Gaussian) distribution, and a squared normal distribution respectively.
 
-![Points distributed according to uniform, normal, and squared normal distributions](./src/pages/generative/distributions.pdf+svg){#fig:generative:distributions}
+@:figure{ img = "./src/pages/generative/distributions.pdf+svg", key = "#fig:generative:distributions", caption = "Points distributed according to uniform, normal, and squared normal distributions" }
 
 As you can see, the normal distribution tends to generate more points nearer the center than the uniform distribution.
 
@@ -70,19 +70,19 @@ def randomGradientBoxes(count: Int, color: Color): Random[Image] =
   }
 ```
 
-Example output is shown in [@fig:generative:structured-gradient-boxes].
+Example output is shown in @:fref(generative:structured-gradient-boxes).
 
-![Boxes filled with gradient that is partly random.](./src/pages/generative/structured-gradient-boxes.pdf+svg){#fig:generative:structured-gradient-boxes}
+@:figure{ img = "./src/pages/generative/structured-gradient-boxes.pdf+svg", key = "#fig:generative:structured-gradient-boxes", caption = "Boxes filled with gradient that is partly random." }
 
 ### Exercises {-}
 
 #### Particle Systems {-}
 
 A *particle system* is a technique used in computer graphics to create large numbers of "particles" that move according to simple rules.
-In [@fig:generative:smoke] there is an example of a particle system simulating a fire and smoke.
+In @:fref(generative:smoke) there is an example of a particle system simulating a fire and smoke.
 For the mathematically inclined, a particle system is basically a *stochastic process* or *random walk*.
 
-![A simulation of a smoky fire, generating using a particle system.](src/pages/generative/smoke.pdf+svg){#fig:generative:smoke}
+@:figure{ img = "src/pages/generative/smoke.pdf+svg", key = "#fig:generative:smoke", caption = "A simulation of a smoky fire, generating using a particle system." }
 
 In this exercise we'll build a particle system, which will give you a flexible system to experiment with these ideas.
 We'll start with a fixed system and then abstract it to create reusable components.
@@ -94,7 +94,7 @@ To draw a single particle we
 - decide how many time steps we want to move the particle system for; and
 - at each timestep the new position of the particle is equal to the position at the previous timestep plus some random noise (and potentially some non-random (deterministic) movement such as velocity or acceleration).
 
-A particle system is just a collection of a number of particles---20 particles over 20 steps in [@fig:generative:smoke].
+A particle system is just a collection of a number of particles---20 particles over 20 steps in @:fref(generative:smoke).
 
 In the above description we've broken down the components of a partcile system.
 Now we just need to implement them.

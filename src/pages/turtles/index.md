@@ -52,6 +52,6 @@ This model was developed in the 60s by Seymour Papert in the programming languag
 The original Logo could control a robot that drew on paper with a pen. 
 This robot was called a turtle, due to its rounded shape, and way of programming this robot became known as turtle graphics.
 
-Using turtle graphics and another concept, known as an L-system, we can create images that mimic nature such as the plant in [@fig:turtles:plant].
+Using turtle graphics and another concept, known as an L-system, we can create images that mimic nature such as the plant in @:fref(turtles:plant).
 
-![A plant generated using turtle graphics and an L-system.](src/pages/turtles/plant.pdf+svg){#fig:turtles:plant}
+@:figure{ img = "src/pages/turtles/plant.pdf+svg", key = "#fig:turtles:plant", caption = "A plant generated using turtle graphics and an L-system." }

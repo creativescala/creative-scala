@@ -23,16 +23,16 @@ Paths themselves come in two varieties:
 - open paths, where the end of the path is not necessarily the starting point; and
 - closed paths, that end where they begin---and if the path doesn't end where it started a line will be inserted to make it so.
 
-The picture in [@fig:sequences:open-closed-paths] illustrates the components that can make up a path, and shows the difference between open and closed paths.
+The picture in @:fref(sequences:open-closed-paths) illustrates the components that can make up a path, and shows the difference between open and closed paths.
 
-![The same paths draw as open (top) and closed (bottom) paths. Notice how the open triangle is not properly joined at the bottom left, and the closed curve inserts a straight line to close the shape.](./src/pages/sequences/open-closed-paths.pdf+svg){#fig:sequences:open-closed-paths}
+@:figure{ img = "./src/pages/sequences/open-closed-paths.pdf+svg", key = "#fig:sequences:open-closed-paths", caption = "The same paths draw as open (top) and closed (bottom) paths. Notice how the open triangle is not properly joined at the bottom left, and the closed curve inserts a straight line to close the shape." }
 
 [bezier-curve]: https://en.wikipedia.org/wiki/Bézier_curve
 
 
 ### Creating Paths
 
-Now we know about paths, how do we create them in Doodle? Here's the code that created [@fig:pictures:open-closed-paths].
+Now we know about paths, how do we create them in Doodle? Here's the code that created @:fref(pictures:open-closed-paths).
 
 ```scala mdoc:silent
 import doodle.core.PathElement._
@@ -63,7 +63,7 @@ val paths = openPaths.above(closedPaths)
 
 From this code we can see we create paths using the `openPath` and `closePath` methods on `Image`, just as we create other shapes. 
 A path is created from a `List` of `PathElement`. 
-The different kinds of `PathElement` are created by calling methods on the `PathElement` object, as described in [@tbl:sequences:path-element].
+The different kinds of `PathElement` are created by calling methods on the `PathElement` object, as described in @:tref(sequences:path-element).
 In the code above we used the declaration `import doodle.core.PathElement._` to make all the methods on `PathElement` available in the local scope.
 
 
@@ -83,7 +83,7 @@ Method                                     Description                 Example
 
 ---------------------------------------------------------------------------------------------
 
-: How to create the three different types of `PathElement`. {#tbl:sequences:path-element}
+: How to create the three different types of `PathElement`. @:tref(sequences:path-element)
 
 Constructing a `List` is straight-forward: we just call `List` with the elements we want the list to contain. Here are some examples.
 
@@ -104,10 +104,10 @@ Notice the type of a `List` includes the type of the elements, written in square
 
 #### Polygons {-}
 
-Create paths to define a triangle, square, and pentagon. Your image might look like [@fig:sequences:polygons]. 
+Create paths to define a triangle, square, and pentagon. Your image might look like @:fref(sequences:polygons). 
 *Hint:* you might find it easier to use polar coordinates to define the polygons.
 
-![A triangle, square, and pentagon, defined using paths.](./src/pages/sequences/polygons.pdf+svg){#fig:sequences:polygons}
+@:figure{ img = "./src/pages/sequences/polygons.pdf+svg", key = "#fig:sequences:polygons", caption = "A triangle, square, and pentagon, defined using paths." }
 
 <div class="solution">
 Using polar coordinates makes it much simpler to define the location of the "corners" (vertices) of the polygons. 
@@ -117,7 +117,7 @@ If we start at 0 degrees, vertices are located at 0, 72, 144, 216, and 288 degre
 The distance from the origin is fixed in each case. 
 We don't have to draw a line between the final vertex and the start---by using a closed path this will be done for us.
 
-Here's our code to draw [@fig:sequences:polygons], which uses this idea. 
+Here's our code to draw @:fref(sequences:polygons), which uses this idea. 
 In some cases we haven't started the vertices at 0 degrees so we can rotate the shape we draw.
 
 ```scala mdoc:reset:invisible
@@ -169,10 +169,10 @@ val image =
 #### Curves {-}
 
 Repeat the exercise above, but this time use curves instead of straight lines to create some interesting shapes. 
-Our curvy polygons are shown in [@fig:sequences:curved-polygons]. 
+Our curvy polygons are shown in @:fref(sequences:curved-polygons). 
 *Hint:* you'll have an easier time if you generalise into a method your code for creating a curve.
 
-![A curvy triangle, square, and polygon, defined using paths.](./src/pages/sequences/curved-polygons.pdf+svg){#fig:sequences:curved-polygons}
+@:figure{ img = "./src/pages/sequences/curved-polygons.pdf+svg", key = "#fig:sequences:curved-polygons", caption = "A curvy triangle, square, and polygon, defined using paths." }
 
 <div class="solution">
 The core of the exercise is to replace the `lineTo` expressions with `curveTo`. 

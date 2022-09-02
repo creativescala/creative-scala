@@ -13,9 +13,9 @@ We've seen how to use structural recursion over the natural numbers to write a n
 In this section we're going to learn how *auxillary parameters* allow us to write more complex programs.
 An auxiliary parameter is just an additional parameter to our method that allows us to pass extra information down the recursive call.
 
-For example, imagine creating the picture in [@fig:recursion:growing-boxes], which shows a line of boxes that grow in size as we move along the line.
+For example, imagine creating the picture in @:fref(recursion:growing-boxes), which shows a line of boxes that grow in size as we move along the line.
 
-![Boxes that grow in size with each recursion.](./src/pages/recursion/growing-boxes.pdf+svg){#fig:recursion:growing-boxes}
+@:figure{ img = "./src/pages/recursion/growing-boxes.pdf+svg", key = "#fig:recursion:growing-boxes", caption = "Boxes that grow in size with each recursion." }
 
 How can we create this image?
 
@@ -76,13 +76,13 @@ Now we've seen the auxiliary parameter method let's practice using it.
 
 #### Gradient Boxes {-}
 
-In this exercise we're going to draw a picture like that in [@fig:recursion:gradient-boxes].
+In this exercise we're going to draw a picture like that in @:fref(recursion:gradient-boxes).
 We already know how to draw a line of boxes.
 The challenge in this exercise is to make the color change at each step.
 
 Hint: you can `spin` the fill color at each recursion.
 
-![Five boxes filled with changing colors starting from Royal Blue](./src/pages/recursion/gradient-boxes.pdf+svg){#fig:recursion:gradient-boxes}
+@:figure{ img = "./src/pages/recursion/gradient-boxes.pdf+svg", key = "#fig:recursion:gradient-boxes", caption = "Five boxes filled with changing colors starting from Royal Blue" }
 
 <div class="solution">
 There are two ways to implement a solution.
@@ -115,9 +115,9 @@ def gradientBoxes(n: Int): Image =
 
 #### Concentric Circles {-}
 
-Now let's try a variation on the theme, drawing concentric circles as shown in [@fig:recursion:concentric-circles]. Here we are changing the size rather than the color of the image at each step. Otherwise the pattern stays the same. Have a go at implementing it.
+Now let's try a variation on the theme, drawing concentric circles as shown in @:fref(recursion:concentric-circles). Here we are changing the size rather than the color of the image at each step. Otherwise the pattern stays the same. Have a go at implementing it.
 
-![Concentric circles, colored Royal Blue](./src/pages/recursion/concentric-circles.pdf+svg){#fig:recursion:concentric-circles}
+@:figure{ img = "./src/pages/recursion/concentric-circles.pdf+svg", key = "#fig:recursion:concentric-circles", caption = "Concentric circles, colored Royal Blue" }
 
 <div class="solution">
 This is almost identical to `growingBoxes`.
@@ -136,10 +136,10 @@ def concentricCircles(count: Int, size: Int): Image =
 
 #### Once More, With Feeling {-}
 
-Now let's combine both techniques to change size and color on each step, giving results like those shown in [@fig:recursion:colorful-circles].
+Now let's combine both techniques to change size and color on each step, giving results like those shown in @:fref(recursion:colorful-circles).
 Experiment until you find something you like.
 
-![Concentric circles with interesting color variations](./src/pages/recursion/colorful-circles.pdf+svg){#fig:recursion:colorful-circles}
+@:figure{ img = "./src/pages/recursion/colorful-circles.pdf+svg", key = "#fig:recursion:colorful-circles", caption = "Concentric circles with interesting color variations" }
 
 <div class="solution">
 Here's our solution, where we've tried to break the problem into reusable parts and reduce the amount of repeated code.

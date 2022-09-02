@@ -127,7 +127,7 @@ quick reference if you get lost!
 Starting with the code below, write color and shape functions
 to produce the following image:
 
-![Colours and Shapes](src/pages/fp/colours-and-shapes.png)
+@:figure{ img = "src/pages/fp/colours-and-shapes.png", caption = "Colours and Shapes" }
 
 ``` scala
 def manyShapes(n: Int, singleShape: Int => Image): Image =
@@ -170,7 +170,7 @@ an image of concentric black outlined circles:
 manyShapes(10, outlinedCircle).draw
 ```
 
-![Many outlined circles](src/pages/fp/colors-and-shapes-step1.png)
+@:figure{ img = "src/pages/fp/colors-and-shapes-step1.png", caption = "Many outlined circles" }
 
 The rest of the exercise is just a matter of copying, renaming,
 and customising this function to produce
@@ -183,7 +183,7 @@ def circleOrSquare(n: Int) =
 (manyShapes(10, outlinedCircle) beside manyShapes(10, circleOrSquare)).draw
 ```
 
-![Many outlined circles beside many circles and squares](src/pages/fp/colors-and-shapes-step2.png)
+@:figure{ img = "src/pages/fp/colors-and-shapes-step2.png", caption = "Many outlined circles beside many circles and squares" }
 
 For extra credit, when you've written your code to
 create the sample shapes above, refactor it so you have two sets

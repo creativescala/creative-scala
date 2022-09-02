@@ -15,7 +15,7 @@ val image = OpenPath(List(
 image.draw
 ```
 
-![An example Path](src/pages/collections/path.png)
+@:figure{ img = "src/pages/collections/path.png", caption = "An example Path" }
 
 Pen movements come in three varieties:
 
@@ -81,7 +81,7 @@ val decagon = OpenPath(elements)
 decagon.draw
 ```
 
-![A Decagon](src/pages/collections/decagon.png)
+@:figure{ img = "src/pages/collections/decagon.png", caption = "A Decagon" }
 
 ### Exercise: My God, It's Full of Stars!
 
@@ -94,7 +94,7 @@ For example, the diagram below shows stars with `p=11` and `n=1 to 5`.
 `n=1` produces a regular polygon while
 values of `n` from `2` upwards produce stars with increasingly sharp points:
 
-![Stars with `p=11` and `n=1 to 5`](src/pages/collections/stars.png)
+@:figure{ img = "src/pages/collections/stars.png", caption = "Stars with `p=11` and `n=1 to 5`" }
 
 Write code to draw the diagram above.
 Start by writing a method to draw a `star` given `p` and `n`:
@@ -106,7 +106,7 @@ def star(p: Int, n: Int, radius: Double): Image =
 
 Create the points for your star using ranges and `Vec.polar`:
 
-![Polar coordinates on a 5 pointed polygon](src/pages/collections/polar.pdf+svg)
+@:figure{ img = "src/pages/collections/polar.pdf+svg", caption = "Polar coordinates on a 5 pointed polygon" }
 
 Use your choice of recursion and `beside` or iteration and `allBeside` to create the row of stars.
 
@@ -144,7 +144,7 @@ When you've finished your row of stars,
 try constructing a larger image from different values of `p` and `n`.
 Here's an example:
 
-![Stars with `p=3 to 33 by 2` and `n=1 to p/2`](src/pages/collections/stars2.png)
+@:figure{ img = "src/pages/collections/stars2.png", caption = "Stars with `p=3 to 33 by 2` and `n=1 to p/2`" }
 
 <div class="solution">
 To create the image above, we started by adding colours

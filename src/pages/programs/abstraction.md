@@ -26,9 +26,9 @@ This is what it means when we say that names abstract over expressions.
 Whenever we have an expression we can substitute a name that refers to the same value.
 
 Abstraction makes code easier to read and write.
-Let's take as an example creating a sequence of boxes like shown in [@fig:programs:sequential-boxes].
+Let's take as an example creating a sequence of boxes like shown in @:fref(programs:sequential-boxes).
 
-![Five boxes filled with Royal Blue](./src/pages/programs/sequential-boxes.pdf+svg){#fig:programs:sequential-boxes}
+@:figure{ img = "./src/pages/programs/sequential-boxes.pdf+svg", key = "#fig:programs:sequential-boxes", caption = "Five boxes filled with Royal Blue" }
 
 We can write out a single expression that creates the picture.
 
@@ -81,9 +81,9 @@ Now we can easily see how the box is made, and easily see that the final picture
 
 #### Archery Again {-}
 
-Let's return to the archery target we created in an earlier chapter, shown in [@fig:programs:target3].
+Let's return to the archery target we created in an earlier chapter, shown in @:fref(programs:target3).
 
-![The Archery Target](./src/pages/programs/target3.pdf+svg){#fig:programs:target3}
+@:figure{ img = "./src/pages/programs/target3.pdf+svg", key = "#fig:programs:target3", caption = "The Archery Target" }
 
 Last time we created the image we didn't know how to name values, so we can to write one large expression.
 This time around, give the components of the image names so that it is easier for someone else to understand how the image is constructed.
@@ -115,10 +115,10 @@ val image = coloredTarget above stand above ground
 
 #### Streets Ahead {-}
 
-For a more compelling use of names, create a street scene like that shown in [@fig:programs:street].
+For a more compelling use of names, create a street scene like that shown in @:fref(programs:street).
 By naming the individual components of the image you should be able to avoid a great deal of repetition.
 
-![A Street Scene](./src/pages/programs/street.pdf+svg){#fig:programs:street}
+@:figure{ img = "./src/pages/programs/street.pdf+svg", key = "#fig:programs:street", caption = "A Street Scene" }
 
 <div class="solution">
 Here's our solution.

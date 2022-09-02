@@ -8,7 +8,7 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-In addition to layout, Doodle has some simple operators to add a splash of colour to our images. Try these out the methods described in [@tbl:pictures:color] to see how they work.
+In addition to layout, Doodle has some simple operators to add a splash of colour to our images. Try these out the methods described in @:tref(pictures:color) to see how they work.
 
 +-----------------------------+-----------+-------------------------+------------------------------+
 | Method                      | Parameter | Description             | Example                      |
@@ -29,11 +29,11 @@ In addition to layout, Doodle has some simple operators to add a splash of colou
 |                             |           | the image.              |                              | 
 +-----------------------------+-----------+-------------------------+------------------------------+
 
-: Some of the methods to add color to images in Doodle. {#tbl:pictures:color}
+: Some of the methods to add color to images in Doodle. @:tref(pictures:color)
 
 Doodle has various ways of creating colours.
 The simplest are the predefined colours in [CommonColors.scala][common-colors].
-Some of the most commonly used are described in [@tbl:pictures:colors].
+Some of the most commonly used are described in @:tref(pictures:colors).
 
 +--------------+-------+------------------------------------------+
 | Color        | Type  | Example                                  |
@@ -53,15 +53,15 @@ Some of the most commonly used are described in [@tbl:pictures:colors].
 |`Color.brown` |`Color`| `Image.circle(10).fillColor(Color.brown)`|
 +--------------+-------+------------------------------------------+
 
-: Some of the most common predefined colors. {#tbl:pictures:colors}
+: Some of the most common predefined colors. @:tref(pictures:colors)
 
 ### Exercises {-}
 
 #### Evil Eye {-}
 
-Make the image in [@fig:pictures:evil-eye], designed to look like a traditional amulet protecting against the evil eye. I used `cornflowerBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
+Make the image in @:fref(pictures:evil-eye), designed to look like a traditional amulet protecting against the evil eye. I used `cornflowerBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
 
-![No evil eyes here!](src/pages/pictures/evil-eye.pdf+svg){#fig:pictures:evil-eye}
+@:figure{ img = "src/pages/pictures/evil-eye.pdf+svg", key = "#fig:pictures:evil-eye", caption = "No evil eyes here!" }
 
 <div class="solution">
 Here's my amulet:

@@ -19,7 +19,7 @@ Create an 8x8 square chess board without loops or comprehensions,
 using the definitions of `redSquare` and `blackSquare` above.
 Use intermediate value declarations to make your code as compact as possible:
 
-![Chess board](src/pages/declarations/chessboard.png)
+@:figure{ img = "src/pages/declarations/chessboard.png", caption = "Chess board" }
 
 <div class="solution">
 An 8x8 chess board can be decomposed into four 4x4 boards,

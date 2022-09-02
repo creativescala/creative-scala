@@ -34,9 +34,11 @@ def concentricCircles(n: Int, color: Color): Image =
 
 Pictures constructed in this way are nice, but they are a bit boring in their regularity. What if we wanted to make a random alteration to the hue of the color at each step?
 
-Scala provides some methods that produce *random numbers*. One such method is `math.random`. Each time we call it we get a different `Double` between 0.0 and 1.0[^pseudo-random]. 
+Scala provides some methods that produce *random numbers*. One such method is `math.random`. Each time we call it we get a different `Double` between 0.0 and 1.0@:fnref(pseudo-random). 
 
-[^pseudo-random]: These numbers are not truly random. The output is determined by a value known as the *seed*. If we know the seed we can perfectly predict all the result we'll get from calling `math.random`. However, going the other way---that is, predicting the seed given a sequence of outputs---is very difficult. The numbers so generated are called *pseudo-random numbers*, because they are not truly random but nonetheless are very difficult to predict.
+@:footnote(pseudo-random)
+These numbers are not truly random. The output is determined by a value known as the *seed*. If we know the seed we can perfectly predict all the result we'll get from calling `math.random`. However, going the other way---that is, predicting the seed given a sequence of outputs---is very difficult. The numbers so generated are called *pseudo-random numbers*, because they are not truly random but nonetheless are very difficult to predict.
+@:@
 
 ```scala mdoc
 math.random

@@ -53,7 +53,7 @@ fourByFour(Color.chocolate, Color.darkSalmon)
 
 to create this picture:
 
-![Two Chessboards](src/pages/declarations/two-chessboards.png)
+@:figure{ img = "src/pages/declarations/two-chessboards.png", caption = "Two Chessboards" }
 
 <div class="solution">
 The structure of `fourByFour` is identical to `twoByTwo`

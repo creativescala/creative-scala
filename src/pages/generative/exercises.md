@@ -12,7 +12,7 @@ import cats.syntax.all._
 
 ### Scatter Plots
 
-In this exercise we'll implement scatter plots as in [@fig:generative:distributions]. 
+In this exercise we'll implement scatter plots as in @:fref(generative:distributions). 
 Experiment with different distributions (trying creating your own distributions by transforming ones defined on `Random`).
 
 There are three main components of a scatter plot:
@@ -184,7 +184,7 @@ Now using `allOn` create a picture that combines randomnes and structure.
 Be as creative as you like, perhaps adding color, transparency, and other features to your image.
 
 <div class="solution">
-Here's the code we used to create [#fig:generative:volcano]. 
+Here's the code we used to create @:fref(generative:volcano). 
 It's quite a bit larger than code we've seen up to this point, but you should understand all the components this code is built from.
 
 ```scala mdoc:silent

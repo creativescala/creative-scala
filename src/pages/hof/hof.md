@@ -22,7 +22,7 @@ val mirrored = (image: Image) =>
 val composed = mirrored.andThen(dropShadow)
 ```
 
-In [@fig:hof:composed] we see the output of the program
+In @:fref(hof:composed) we see the output of the program
 
 ```scala mdoc:silent
 val star = Image
@@ -37,7 +37,7 @@ dropShadow(star)
 
 This shows how the composed function applies the output of the first function to the second function: we first mirror the function then add a drop shadow.
 
-![Illustrating function composition by showing the output of the individual components and the composition.](src/pages/hof/composed.pdf+svg){#fig:hof:composed}
+@:figure{ img = "src/pages/hof/composed.pdf+svg", key = "#fig:hof:composed", caption = "Illustrating function composition by showing the output of the individual components and the composition." }
 
 Let's see how we can apply function composition to our examples of parametric curves. One limitation of the parametric cures we've created so far is that their size is fixed. For example when we defined `parametricCircle` we fixed the radius at 200.
 
@@ -165,9 +165,9 @@ def sample(samples: Int, curve: Angle => Image): Image = {
 </div>
 
 
-Once we've implemented `sample` we can start drawing pictures. For example, in [@fig:hof:growing-circle] we have the output of `growingCircle` above.
+Once we've implemented `sample` we can start drawing pictures. For example, in @:fref(hof:growing-circle) we have the output of `growingCircle` above.
 
-![A circle created by composing smaller components.](src/pages/hof/growing-circle.pdf+svg){#fig:hof:growing-circle}
+@:figure{ img = "src/pages/hof/growing-circle.pdf+svg", key = "#fig:hof:growing-circle", caption = "A circle created by composing smaller components." }
 
 
 ### More Uses of Composition
@@ -230,9 +230,9 @@ val redCircles: Image =
 
 #### The Colour and the Shape {-}
 
-Starting with the code below we are going to write color and shape functions to produce the image shown in [@fig:hof:colors-and-shapes].
+Starting with the code below we are going to write color and shape functions to produce the image shown in @:fref(hof:colors-and-shapes).
 
-![Colors and Shapes](src/pages/hof/colors-and-shapes.pdf+svg){#fig:hof:colors-and-shapes}
+@:figure{ img = "src/pages/hof/colors-and-shapes.pdf+svg", key = "#fig:hof:colors-and-shapes", caption = "Colors and Shapes" }
 
 ```scala mdoc:reset:invisible
 import doodle.core._
@@ -281,9 +281,9 @@ an image of concentric black outlined circles:
 concentricShapes(10, outlinedCircle _)
 ```
 
-This produces the output shown in [@fig:hof:colors-and-shapes-step1].
+This produces the output shown in @:fref(hof:colors-and-shapes-step1).
 
-![Many outlined circles](src/pages/hof/colors-and-shapes-step1.pdf+svg){#fig:hof:colors-and-shapes-step1}
+@:figure{ img = "src/pages/hof/colors-and-shapes-step1.pdf+svg", key = "#fig:hof:colors-and-shapes-step1", caption = "Many outlined circles" }
 
 The rest of the exercise is just a matter of copying, renaming,
 and customising this function to produce
@@ -296,9 +296,9 @@ def circleOrSquare(n: Int) =
 concentricShapes(10, outlinedCircle).beside(concentricShapes(10, circleOrSquare))
 ```
 
-See [@fig:hof:colors-and-shapes-step2] for the output.
+See @:fref(hof:colors-and-shapes-step2) for the output.
 
-![Many outlined circles beside many circles and squares](src/pages/hof/colors-and-shapes-step2.pdf+svg){#fig:hof:colors-and-shapes-step2}
+@:figure{ img = "src/pages/hof/colors-and-shapes-step2.pdf+svg", key = "#fig:hof:colors-and-shapes-step2", caption = "Many outlined circles beside many circles and squares" }
 
 For extra credit, when you've written your code to
 create the sample shapes above, refactor it so you have two sets
@@ -410,9 +410,9 @@ val answer =
 
 #### More Shapes {-}
 
-The `concentricShapes` methods takes an `Int => Image` function, and we can construct such as function using `sample`, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example is [@fig:hof:concentric-dotty-circle].
+The `concentricShapes` methods takes an `Int => Image` function, and we can construct such as function using `sample`, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example is @:fref(hof:concentric-dotty-circle).
 
-![Concentric dotty circles](src/pages/hof/concentric-dotty-circle.pdf+svg){#fig:hof:concentric-dotty-circle}
+@:figure{ img = "src/pages/hof/concentric-dotty-circle.pdf+svg", key = "#fig:hof:concentric-dotty-circle", caption = "Concentric dotty circles" }
 
 The code to create this is below.
 

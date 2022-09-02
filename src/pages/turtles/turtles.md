@@ -41,12 +41,12 @@ val path = Turtle.draw(instructions)
 ```
 
 This creates a path---an `Image`---which we can then `draw` in the usual way.
-This gives the output shown in [@fig:turtles:square]. 
+This gives the output shown in @:fref(turtles:square). 
 This is not a very exciting image, but we can change color, line width, and so on to create more interesting results.
 
-![A square created via the turtle graphics system.](src/pages/turtles/square.pdf+svg){#fig:turtles:square}
+@:figure{ img = "src/pages/turtles/square.pdf+svg", key = "#fig:turtles:square", caption = "A square created via the turtle graphics system." }
 
-The complete list of turtle instructions in given in [@tbl:turtles:instructions]
+The complete list of turtle instructions in given in @:tref(turtles:instructions)
 
 ---------------------------------------------------------------------------------------------
 Instruction                Description                         Example
@@ -66,7 +66,7 @@ Instruction                Description                         Example
 `noop`                     Do nothing!                         `noop`
 ---------------------------------------------------------------------------------------------
 
-: The instructions understood by the turtle. {#tbl:turtles:instructions}
+: The instructions understood by the turtle. @:tref(turtles:instructions)
 
 ### Exercises {-}
 
@@ -101,11 +101,11 @@ def polygon(sides: Int, sideLength: Double): Image = {
 
 #### The Square Spiral
 
-The square spiral is shown in [@fig:turtles:square-spiral]. Write a method to create square spirals using turtle graphics.
+The square spiral is shown in @:fref(turtles:square-spiral). Write a method to create square spirals using turtle graphics.
 
 This task requires a bit more design work than we usually ask of you. You'll have to work out how the square spiral is constructed (hint: it starts at the center) and then create a method to draw one.
 
-![The square spiral!](src/pages/turtles/square-spiral.pdf+svg){#fig:turtles:square-spiral}
+@:figure{ img = "src/pages/turtles/square-spiral.pdf+svg", key = "#fig:turtles:square-spiral", caption = "The square spiral!" }
 
 <div class="solution">
 The key insights to draw the square spiral are realising:

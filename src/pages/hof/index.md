@@ -20,9 +20,9 @@ Enough background. Let's dive in to see:
 - how we create functions in Scala; and
 - how we use first-class functions to structure programs.
 
-Our motivating example for this will be drawing flowers as in [@fig:hof:flower-power].
+Our motivating example for this will be drawing flowers as in @:fref(hof:flower-power).
 
-![A flower created using the techniques in this chapter](src/pages/hof/flower-power.pdf+svg){#fig:hof:flower-power}
+@:figure{ img = "src/pages/hof/flower-power.pdf+svg", key = "#fig:hof:flower-power", caption = "A flower created using the techniques in this chapter" }
 
 <div class="callout callout-info">
 If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.

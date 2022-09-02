@@ -49,11 +49,12 @@ console / initialCommands := """
 mdocIn := sourceDirectory.value / "pages"
 mdocOut := target.value / "pages"
 Laika / sourceDirectories := Seq(
-  mdocOut.value / "expressions"
+  mdocOut.value
 )
 laikaExtensions ++= Seq(
   laika.markdown.github.GitHubFlavor,
-  laika.parse.code.SyntaxHighlighting
+  laika.parse.code.SyntaxHighlighting,
+  CreativeScalaDirectives
 )
 laikaSite / target := target.value / "creative-scala"
 laikaIncludeEPUB := true
@@ -79,4 +80,4 @@ laikaTheme := Helium.defaults.all
 
 lazy val build = taskKey[Unit]("Build the book")
 
-build := { mdoc.toTask("").value; laikaSite.value }
+build := Def.sequential(mdoc.toTask(""), laikaSite).value
