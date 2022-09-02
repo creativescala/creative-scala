@@ -12,7 +12,7 @@ Then you can save your changes back to your fork on GitHub.
 
 To start this process you need to create a GitHub account, if you do not have one already.
 
-Once you have an account, visit the [template project](https://github.com/creativescala/creative-scala-template) in your browser.
+Once you have an account, visit the [template project][template] in your browser.
 At the top right is button called "Fork".
 Press this button to create your own copy of the template.
 You will be taken to a web page displaying your own fork of the template.
@@ -44,4 +44,4 @@ GitHub makes a nice free graphical tool for using Git, called [GitHub Desktop](h
 It's probably the easiest way to use Git when you're getting started.
 
 [github]: https://github.com/
-[template]: https://github.com/underscoreio/creative-scala-template
+[template]: https://github.com/creativescala/creative-scala-template
