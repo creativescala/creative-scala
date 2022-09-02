@@ -61,7 +61,7 @@ Some of the most commonly used are described in @:tref(pictures:colors).
 
 Make the image in @:fref(pictures:evil-eye), designed to look like a traditional amulet protecting against the evil eye. I used `cornflowerBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
 
-@:figure{ img = "src/pages/pictures/evil-eye.pdf+svg", key = "#fig:pictures:evil-eye", caption = "No evil eyes here!" }
+@:figure{ img = "evil-eye.svg", key = "pictures:evil-eye", caption = "No evil eyes here!" }
 
 <div class="solution">
 Here's my amulet:
