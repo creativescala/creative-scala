@@ -111,6 +111,15 @@ object CreativeScalaDirectives extends DirectiveRegistry {
       }
     }
 
+  val solution: Blocks.Directive =
+    Blocks.create("solution") {
+      import Blocks.dsl._
+
+      parsedBody.map { body =>
+        Section(Header(5, Text("Solution")), body)
+      }
+    }
+
   // Insert a reference to a table
   //
   // Parameters:
@@ -123,7 +132,8 @@ object CreativeScalaDirectives extends DirectiveRegistry {
     }
 
   val spanDirectives = Seq(fref, fnref, tref)
-  val blockDirectives = Seq(divWithId, doodle, figure, footnote, script)
+  val blockDirectives =
+    Seq(divWithId, doodle, figure, footnote, script, solution)
   val templateDirectives = Seq()
   val linkDirectives = Seq()
 }

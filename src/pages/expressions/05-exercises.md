@@ -8,21 +8,20 @@ Write an expression using integers, addition, and subtraction that evaluates to 
 
 This exercise is just about getting used to writing Scala code. There are many possible solutions.
 
-<div class="solution">
-
+@:solution
 Here's how I chose to do it.
 
 ```scala mdoc
 1 + 43 - 2
 ```
-</div>
+@:@
 
 
 #### Precedence
 
 In mathematics we learned that some operators take *precedence* over others. For example, in the expression `1 + 2 * 3` we should do the multiplication before the addition. Do the same rules hold in Scala? Use the worksheet to find out.
 
-<div class="solution">
+@:solution
 A bit of exploration should convince you that yes, Scala does maintain the standard precedence rules. The example below demonstrates this.
 
 ```scala mdoc
@@ -30,7 +29,7 @@ A bit of exploration should convince you that yes, Scala does maintain the stand
 1 + (2 * 3)
 (1 + 2) * 3
 ```
-</div>
+@:@
 
 #### Types and Values
 
@@ -62,7 +61,7 @@ Then try to check your guesses using the worksheet. If you guessed wrong, try to
 1 / 0
 ```
 
-<div class="solution">
+@:solution
 ```scala mdoc
 1 + 2
 ```
@@ -93,34 +92,34 @@ This expression has type `Int` and evaluates to `0`. People coming from dynamica
 ```
 
 This expression has type `Int` but fails at run-time. This exercise is emphasizing that the type is a property of the expression, not the value, and types are not determined by run time behaviour.
-</div>
+@:@
 
 #### Appending Strings
 
 Join together two strings (known as *appending* strings) using the `++` method. Write equivalent expressions using both the normal method call style and the operator style.
 
-<div class="solution">
+@:solution
 Something like the below should do.
 
 ```scala mdoc
 "It is a truth ".++("universally acknowledged")
 "It is a truth " ++ "universally acknowledged"
 ```
-</div>
-
+@:@
 
 
 #### Floating Point Failings
 
 When we introduced Doubles, I said they are an approximation to the real numbers. Why do you think this is? Think about representing numbers like ⅓ and π. How much space would it take to represent these numbers in decimal?
 
-<div class="solution">
+@:solution
 `Double` is an approximation because it has the fit within the computer's finite memory. A `Double` takes up precisely 64-bits, which is enough space to store a lot of digits but not enough to store a number that, like π, has an infinite expansion.
 
 The number ⅓ also has an infinite expansion in decimal. Because Doubles are stored in binary there are some numbers that can be represented in a finite number of decimal digits but have no finite representation in binary. 0.1 turns out to be one such number.
 
 In general, floating point numbers can lead to nasty surprises if you expect them to act like the reals. They are fine for our purposes in Creative Scala, but don't go using them to write accounting software!
-</div>
+@:@
+
 
 #### Beyond Expressions
 
