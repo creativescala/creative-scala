@@ -23,8 +23,8 @@ A method call is an expression, and thus evaluates to an object. This means we c
 "Titan!".toUpperCase.toLowerCase
 ```
 
-<div class="callout callout-info">
-#### Method Call Syntax {-}
+@:callout(info)
+#### Method Call Syntax
 
 The syntax for a method call is
 
@@ -43,7 +43,7 @@ where
 - `anExpression` is any expression (which evaluates to an object)
 - `methodName` is the name of the method
 - the optional `param1, ...` are one or more expressions evaluating to the parameters to the method.
-</div>
+@:@
 
 
 ## Operators
@@ -59,10 +59,10 @@ In Scala, and expression written `a.b(c)` can be written `a b c`. So these are e
 
 This first way of calling a method is known as *operator* style.
 
-<div class="callout callout-info">
+@:callout(info)
 #### Infix Operator Notation {-}
 
 Any Scala expression written `a.b(c)` can also be written `a b c`.
 
 Note that `a b c d e` is equivalent to `a.b(c).d(e)`, not `a.b(c, d, e)`.
-</div>
+@:@
