@@ -19,67 +19,21 @@
     @:for(helium.webFonts)
     <link rel="stylesheet" href="${_}">
     @:@
-    @:linkCSS { paths = ${helium.site.includeCSS} }
-    @:linkJS { paths = ${helium.site.includeJS} }
-    @:linkJS { paths = ["/"] }
+    <!-- @:linkCSS { paths = ${helium.site.includeCSS} }
+         @:linkJS { paths = ${helium.site.includeJS} }
+         @:linkJS { paths = ["/"] } -->
     @:heliumInitVersions
     @:heliumInitPreview(container)
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                fontFamily: {
-                    serif: ['Crimson Pro', 'Georgia', 'serif'],
-                    sans: ['Source Sans Pro', 'sans-serif']
-                }
-            }
-        }
-    </script>
-    <script type="text/tailwindcss">
-        @layer components {
-          h1 .title {
-            @apply text-4xl text-zinc-900 font-serif;
-          }
-        }
-    </script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    @:linkCSS { paths = ["/creative-scala.css"] }
     <script> /* for avoiding page load transitions */</script>
 </head>
 
-<body>
+<body class="container mx-auto px-8 py-16 text-zinc-900 text-lg font-serif bg-white flex">
 
-    <header id="top-bar">
-
-        <div class="row">
-            <a id="nav-icon">
-                @:icon(navigationMenu)
-            </a>
-            @:for(laika.versions)
-            <div id="version-menu-container">
-                <a id="version-menu-toggle" class="text-link drop-down-toggle" href="#">
-                    @:if(laika.versioned)
-                    ${helium.topBar.versionPrefix} ${laika.versions.currentVersion.displayValue}
-                    @:else
-                    Documentation
-                    @:@
-                </a>
-                <nav id="version-menu">
-                    <ul id="version-list" class="nav-list">
-                    </ul>
-                </nav>
-            </div>
-            @:@
-        </div>
-
-        ${?helium.topBar.home}
-
-        ${?helium.topBar.links}
-
-    </header>
-
-    <nav id="sidebar">
+    <nav id="sidebar" class="flex-none w-64 mr-4">
 
         ${?helium.topBar.phoneLinks}
 
@@ -88,14 +42,9 @@
         { target = "/", excludeRoot = true, excludeSections = true, depth = 2 }
         ]
         }
-
-        <ul class="nav-list">
-            <li class="level1 nav-header">Related Projects</li>
-        </ul>
-
     </nav>
 
-    <div id="container">
+    <div id="content" class="flex-initial ml-4">
 
         <nav id="page-nav">
             <p class="header"><a href="#">${cursor.currentDocument.title}</a></p>
@@ -110,7 +59,7 @@
                     href="${_.baseURL}${cursor.currentDocument.path}">${_.icon}${_.text}</a>@:@</p>
         </nav>
 
-        <main class="content">
+        <main class="content w-full md:w-128">
 
             ${cursor.currentDocument.content}
 
@@ -124,6 +73,7 @@
 
     </div>
 
+  </div>
 </body>
 
 </html>

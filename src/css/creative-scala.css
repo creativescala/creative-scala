@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+    @apply text-6xl font-bold text-zinc-900 mb-16;
+}
+
+p {
+    @apply mb-4;
+}
+
+ol.arabic {
+    @apply list-decimal list-inside pl-2 mb-4;
+}
