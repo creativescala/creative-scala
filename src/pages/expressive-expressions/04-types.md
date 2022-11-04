@@ -1,4 +1,4 @@
-## Types
+# Types
 
 Now that we can write more complex expressions, we can talk a little more about types.
 

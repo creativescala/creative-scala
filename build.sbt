@@ -79,6 +79,19 @@ laikaTheme := Helium.defaults.all
   .navigationDepth(4)
   .build
 
-lazy val build = taskKey[Unit]("Build the book")
+lazy val css = taskKey[Unit]("Build the CSS")
+css := {
+  val src = sourceDirectory.value / "css"
+  val dest1 = mdocOut.value / "pages"
+  val dest2 = (laikaSite / target).value
+  val cmd1 =
+    s"npx tailwindcss -i ${src.toString}/creative-scala.css -o ${dest1.toString}/creative-scala.css"
+  val cmd2 =
+    s"npx tailwindcss -i ${src.toString}/creative-scala.css -o ${dest2.toString}/creative-scala.css"
+  cmd1 !
 
-build := Def.sequential(mdoc.toTask(""), laikaSite).value
+  cmd2 !
+}
+
+lazy val build = taskKey[Unit]("Build the book")
+build := Def.sequential(mdoc.toTask(""), css, laikaSite).value

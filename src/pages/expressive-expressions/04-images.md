@@ -3,6 +3,7 @@
 We're now going to look at creating images. The code library we use to create images is not built-in to Scala. You will need to add the following to the worksheet to be able to use it.
 
 ```scala mdoc:silent
+import cats.effect.unsafe.implicits.global
 import doodle.core._
 import doodle.image._
 import doodle.syntax.all._

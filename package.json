@@ -3,15 +3,10 @@
     "version": "1.0.0",
     "repository": {
         "type": "git",
-        "url": "https://github.com/underscoreio/creative-scala.git"
+        "url": "https://github.com/creativescala/creative-scala.git"
     },
     "devDependencies": {
-        "bootstrap": "3.3.1",
-        "coffeeify": "1.0.0",
-        "jquery": "3.5.0",
-        "uglifyify": "2.6.0",
-        "underscore": "1.7.0",
-        "underscore-ebook-template": "git+https://github.com/underscoreio/underscore-ebook-template.git#0.6.2"
+        "tailwindcss": "^3.2.1"
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
