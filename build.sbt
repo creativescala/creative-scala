@@ -49,7 +49,8 @@ console / initialCommands := """
 mdocIn := sourceDirectory.value / "pages"
 mdocOut := target.value / "pages"
 Laika / sourceDirectories := Seq(
-  mdocOut.value
+  mdocOut.value,
+  sourceDirectory.value / "templates"
 )
 laikaExtensions ++= Seq(
   laika.markdown.github.GitHubFlavor,
