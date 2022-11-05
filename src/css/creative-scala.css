@@ -26,7 +26,7 @@ ol.arabic {
 ul {
     @apply list-disc list-inside pl-2 mb-4;
 }
-p code {
+code {
     @apply text-base;
     font-family: "Source Code Pro", ui-monospace, monospace;
 }
@@ -35,8 +35,7 @@ pre {
     @apply mb-4;
 }
 pre code {
-    @apply my-4 p-2 text-base bg-slate-100;
-    font-family: "Source Code Pro", ui-monospace, monospace;
+    @apply my-4 p-2 bg-slate-100;
 }
 
 pre code .number-literal {
