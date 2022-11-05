@@ -94,4 +94,4 @@ css := {
 }
 
 lazy val build = taskKey[Unit]("Build the book")
-build := Def.sequential(mdoc.toTask(""), css, laikaSite).value
+build := Def.sequential(mdoc.toTask(""), laikaSite, css).value
