@@ -6,10 +6,10 @@ nav#sidebar {
     @apply bg-slate-800;
 }
 li.level1.nav-header {
-    @apply text-pink-300;
+    @apply list-none text-pink-300;
 }
 li.level2 {
-    @apply text-slate-300 pl-4;
+    @apply list-none text-slate-300 pl-4;
 }
 
 h1 {
