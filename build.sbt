@@ -1,7 +1,6 @@
 import scala.sys.process._
 import laika.config.LaikaKeys
-import laika.helium.Helium
-import laika.helium.config._
+import laika.theme.Theme
 
 val scala213 = "2.13.8"
 val scala3 = "3.1.2"
@@ -58,31 +57,14 @@ laikaExtensions ++= Seq(
   CreativeScalaDirectives
 )
 laikaSite / target := target.value / "creative-scala"
-laikaIncludeEPUB := true
-laikaIncludePDF := true
-laikaTheme := Helium.defaults.all
-  .metadata(
-    title = Some("Creative Scala: Forms and Functions"),
-    language = Some("en")
-  )
-  .site
-  .topNavigationBar(
-    homeLink = IconLink
-      .external(
-        "https://creativescala.org",
-        HeliumIcon.home
-      )
-  )
-  .epub
-  .navigationDepth(4)
-  .pdf
-  .navigationDepth(4)
-  .build
+laikaIncludeEPUB := false
+laikaIncludePDF := false
+laikaTheme := Theme.empty
 
 lazy val css = taskKey[Unit]("Build the CSS")
 css := {
   val src = sourceDirectory.value / "css"
-  val dest1 = mdocOut.value / "pages"
+  val dest1 = mdocOut.value
   val dest2 = (laikaSite / target).value
   val cmd1 =
     s"npx tailwindcss -i ${src.toString}/creative-scala.css -o ${dest1.toString}/creative-scala.css"
