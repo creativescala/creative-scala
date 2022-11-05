@@ -131,9 +131,30 @@ object CreativeScalaDirectives extends DirectiveRegistry {
       (attribute(0).as[String]).map { (key) => Text(s"Table $key") }
     }
 
+  val compactNavBar: Templates.Directive =
+    Templates.create("compactNavBar") {
+      import Templates.dsl._
+
+      val leftArrow = "←"
+      val rightArrow = "→"
+
+      cursor.map { cursor =>
+        val previous =
+          cursor.flattenedSiblings.previousDocument
+            .map(c => SpanLink(Seq(Text(leftArrow)), InternalTarget(c.path)))
+            .getOrElse(Text(""))
+        val next = cursor.flattenedSiblings.nextDocument
+          .map(c => SpanLink(Seq(Text(rightArrow)), InternalTarget(c.path)))
+          .getOrElse(Text(""))
+        val here = cursor.target.title.getOrElse(Text(""))
+
+        TemplateElement(Paragraph(Seq(previous, here, next)))
+      }
+    }
+
   val spanDirectives = Seq(fref, fnref, tref)
   val blockDirectives =
     Seq(divWithId, doodle, figure, footnote, script, solution)
-  val templateDirectives = Seq()
+  val templateDirectives = Seq(compactNavBar)
   val linkDirectives = Seq()
 }
