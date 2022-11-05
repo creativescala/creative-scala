@@ -27,15 +27,12 @@ ul {
     @apply list-disc list-inside pl-2 mb-4;
 }
 code {
-    @apply text-base;
+    @apply text-sm;
     font-family: "Source Code Pro", ui-monospace, monospace;
 }
 
 pre {
-    @apply mb-4;
-}
-pre code {
-    @apply my-4 p-2 bg-slate-100;
+    @apply mb-4 p-2 bg-slate-100;
 }
 
 pre code .number-literal {
