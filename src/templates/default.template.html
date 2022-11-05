@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Laika 0.18.1 + Helium Theme" />
+    <meta name="generator" content="Laika 0.19.0"/>
     <title>${cursor.currentDocument.title}</title>
     @:for(laika.site.metadata.authors)
     <meta name="author" content="${_}" />
@@ -13,17 +13,6 @@
     @:for(laika.site.metadata.description)
     <meta name="description" content="${_}" />
     @:@
-    @:for(helium.favIcons)
-    <link rel="icon" @:attribute(sizes, _.sizes) @:attribute(type, _.type) @:attribute(href, _.target) />
-    @:@
-    @:for(helium.webFonts)
-    <link rel="stylesheet" href="${_}">
-    @:@
-    <!-- @:linkCSS { paths = ${helium.site.includeCSS} }
-         @:linkJS { paths = ${helium.site.includeJS} }
-         @:linkJS { paths = ["/"] } -->
-    @:heliumInitVersions
-    @:heliumInitPreview(container)
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
@@ -31,32 +20,18 @@
     <script> /* for avoiding page load transitions */</script>
 </head>
 
-<body class="container text-slate-900 text-lg font-serif bg-white flex">
-    <nav id="topbar" class="lg:hidden">@:compactNavBar</nav>
-    <nav id="sidebar" class="flex-none max-w-sm p-12 hidden lg:block">
+<body class="container">
+    <nav id="topbar">@:compactNavBar</nav>
+    <nav id="sidebar">
         @:navigationTree {
         entries = [
-        { target = "/", excludeRoot = true, excludeSections = true, depth = 2 }
+        { target = "/", excludeRoot = true, excludeSections = true, excludeSelf = true, depth = 2 }
         ]
         }
     </nav>
 
-    <div id="content" class="flex-initial p-12">
-
-        <nav id="page-nav">
-            <p class="header"><a href="#">${cursor.currentDocument.title}</a></p>
-
-            @:navigationTree {
-            entries = [
-            { target = "#", excludeRoot = true, depth = 2 }
-            ]
-            }
-
-            <p class="footer">@:for(helium.markupEditLinks)<a
-                    href="${_.baseURL}${cursor.currentDocument.path}">${_.icon}${_.text}</a>@:@</p>
-        </nav>
-
-        <main class="content w-full md:max-w-prose">
+    <div id="content">
+        <main class="content">
 
             ${cursor.currentDocument.content}
 

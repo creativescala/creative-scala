@@ -2,14 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
+.container {
+    @apply text-slate-900 text-lg font-serif bg-white lg:flex;
+}
+nav#topbar {
+    @apply w-full flex justify-around content-center text-white bg-slate-800 p-2 text-xl lg:hidden;
+}
+nav#topbar p {
+    @apply p-0 m-0;
+}
 nav#sidebar {
-    @apply bg-slate-800;
+    @apply bg-slate-800 hidden max-w-sm p-12 lg:flex-none lg:block;
+}
+li.level1.nav-leaf {
+    @apply hidden;
+}
+li.level1.nav-header:first-child {
+    @apply mt-0;
 }
 li.level1.nav-header {
-    @apply list-none text-pink-300;
+    @apply list-none uppercase text-pink-300 mt-4;
 }
 li.level2 {
     @apply list-none text-slate-300 pl-4;
+}
+
+#content {
+    @apply flex-initial p-12;
+}
+.content {
+    @apply max-w-prose;
 }
 
 h1 {
