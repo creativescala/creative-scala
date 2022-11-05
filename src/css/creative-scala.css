@@ -2,8 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+nav#sidebar {
+    @apply bg-slate-800;
+}
+li.level1.nav-header {
+    @apply text-pink-300;
+}
+li.level2 {
+    @apply text-slate-300 pl-4;
+}
+
 h1 {
-    @apply text-6xl font-bold text-zinc-900 mb-16;
+    @apply text-6xl text-pink-800 mb-16;
 }
 
 p {
@@ -12,4 +22,23 @@ p {
 
 ol.arabic {
     @apply list-decimal list-inside pl-2 mb-4;
+}
+ul {
+    @apply list-disc list-inside pl-2 mb-4;
+}
+p code {
+    @apply text-base;
+    font-family: "Source Code Pro", ui-monospace, monospace;
+}
+
+pre {
+    @apply mb-4;
+}
+pre code {
+    @apply my-4 p-2 text-base bg-slate-100;
+    font-family: "Source Code Pro", ui-monospace, monospace;
+}
+
+pre code .number-literal {
+    @apply text-slate-600;
 }
