@@ -31,12 +31,8 @@
     <script> /* for avoiding page load transitions */</script>
 </head>
 
-<body class="container mx-auto text-slate-900 text-lg font-serif bg-white flex">
-
-    <nav id="sidebar" class="flex-none w-96 p-16 mr-6">
-
-        ${?helium.topBar.phoneLinks}
-
+<body class="container text-slate-900 text-lg font-serif bg-white flex">
+    <nav id="sidebar" class="flex-none max-w-sm p-12 hidden lg:block">
         @:navigationTree {
         entries = [
         { target = "/", excludeRoot = true, excludeSections = true, depth = 2 }
@@ -44,7 +40,7 @@
         }
     </nav>
 
-    <div id="content" class="flex-initial py-16 ml-6">
+    <div id="content" class="flex-initial p-12">
 
         <nav id="page-nav">
             <p class="header"><a href="#">${cursor.currentDocument.title}</a></p>
@@ -59,7 +55,7 @@
                     href="${_.baseURL}${cursor.currentDocument.path}">${_.icon}${_.text}</a>@:@</p>
         </nav>
 
-        <main class="content w-full md:w-132">
+        <main class="content w-full md:max-w-prose">
 
             ${cursor.currentDocument.content}
 
