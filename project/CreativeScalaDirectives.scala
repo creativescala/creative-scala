@@ -158,9 +158,32 @@ object CreativeScalaDirectives extends DirectiveRegistry {
       }
     }
 
+  val nextPage: Templates.Directive =
+    Templates.create("nextPage") {
+      import Templates.dsl._
+
+      val rightArrow = "→"
+
+      cursor.map { cursor =>
+        val next = cursor.flattenedSiblings.nextDocument
+
+        val title = next.flatMap(c => c.target.title)
+        val path = next.map(c => c.path)
+
+        val link =
+          (title, path).mapN { (t, p) =>
+            Paragraph(
+              SpanLink(Seq(t, Text(rightArrow)), InternalTarget(p))
+            ).withStyle("nextPage")
+          }
+
+        TemplateElement(link.getOrElse(Text("")))
+      }
+    }
+
   val spanDirectives = Seq(fref, fnref, tref)
   val blockDirectives =
     Seq(divWithId, doodle, figure, footnote, script, solution)
-  val templateDirectives = Seq(compactNavBar)
+  val templateDirectives = Seq(compactNavBar, nextPage)
   val linkDirectives = Seq()
 }
