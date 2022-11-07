@@ -1,4 +1,4 @@
-# Foreword
+# Foreword to the First Edition
 
 Creative Scala is aimed at developers who have no prior experience in Scala.
 It is designed to give you a fun introduction to functional programming.

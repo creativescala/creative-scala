@@ -1,4 +1,4 @@
-# Setup
+# Getting Started
 
 Our first step is to install the software we need to work with Creative Scala. We describe two pathways here:
 
