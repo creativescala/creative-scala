@@ -15,10 +15,13 @@ nav#sidebar {
     @apply bg-slate-800 hidden max-w-sm p-12 lg:flex-none lg:block;
 }
 li.level1.nav-leaf {
-    @apply hidden;
+    @apply list-none text-pink-300 mt-4;
 }
-li.level1.nav-header:first-child {
+ul.nav-list:first-child {
     @apply mt-0;
+}
+li.level1.nav-node {
+    @apply list-none uppercase text-pink-300 mt-4;
 }
 li.level1.nav-header {
     @apply list-none uppercase text-pink-300 mt-4;
@@ -34,9 +37,22 @@ li.level2 {
     @apply max-w-prose;
 }
 
-h1 {
-    @apply text-6xl text-pink-800 mb-16;
+h1, h2, h3, h4 {
+    @apply text-pink-800;
 }
+h1 {
+    @apply text-6xl mb-16;
+}
+h2 {
+    @apply text-4xl;
+}
+h3 {
+    @apply text-2xl;
+}
+h4 {
+    @apply text-xl;
+}
+
 
 p {
     @apply mb-4;
@@ -61,7 +77,7 @@ pre code .number-literal {
     @apply text-sky-600;
 }
 pre code .keyword {
-    @apply text-red-600;
+    @apply text-rose-600;
 }
 pre code .identifier {
     @apply text-slate-600;
