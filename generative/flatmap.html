@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
-    
+    <link rel="stylesheet" type="text/css" href="../creative-scala.css" />
     <script> /* for avoiding page load transitions */</script>
 </head>
 
@@ -347,15 +347,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$12157/0x00000001035eb040@7918d092
+//           f = cats.free.Free$$Lambda$13690/0x000000010398d040@2488ce42
 //         ),
-//         f = cats.free.Free$$Lambda$12157/0x00000001035eb040@1c9ca2dd
+//         f = cats.free.Free$$Lambda$13690/0x000000010398d040@6e03b8e8
 //       ),
-//       f = cats.free.Free$$Lambda$12157/0x00000001035eb040@618a29e8
+//       f = cats.free.Free$$Lambda$13690/0x000000010398d040@5b5cf305
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$12175/0x00000001035fd040@5361de11
+//     f = repl.MdocSession$MdocApp5$$Lambda$13708/0x000000010399d040@3805dbc5
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$12178/0x00000001035fa840@6c4218af
+//   f = repl.MdocSession$MdocApp5$$Lambda$13711/0x00000001039a9040@5a9df859
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -376,7 +376,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$12157/0x00000001035eb040@1531d5b0
+//   f = cats.free.Free$$Lambda$13690/0x000000010398d040@292acf1a
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -384,9 +384,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$12157/0x00000001035eb040@1531d5b0
+//     f = cats.free.Free$$Lambda$13690/0x000000010398d040@292acf1a
 //   ),
-//   f = cats.free.Free$$Lambda$12157/0x00000001035eb040@25c46b97
+//   f = cats.free.Free$$Lambda$13690/0x000000010398d040@15d2d5e1
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
