@@ -7,7 +7,7 @@ Case classes are the first way of constructing data that we'll look at. From the
 
 We'll get started with an example of a case class in an animation.
 
-```scala mdoc:silent
+```scala mdoc:reset-object:silent
 import doodle.core._
 import doodle.image._
 import doodle.reactor._
