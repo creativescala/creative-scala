@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Background</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="index.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="terminal.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="index.html">Getting Started</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Background</a></li>
+          <li class="level2 nav-leaf"><a href="terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="index.html">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="background" class="title">Background</h1>
+            <p>This section gives some background information on some of the tools we&#39;ll be using.
+            If you&#39;re an experienced developer a lot of this will be old hat, and you can skip it.
+            If you&#39;re not, this will hopefully give some useful context to the software we&#39;ll be working with.</p>
+            
+            <h3 id="the-terminal" class="section">The Terminal</h3>
+            <p>Back when the world was young and computing was in its infancy, the common user interface of graphical windows, a cursor controlled by a mouse, and interaction by <em>direct manipulation</em> didn&#39;t exist.
+            Instead users typed in commands at a device called a <em>terminal</em>.
+            The direct manipulation interface is superior for most uses, but there are some cases for which the terminal or <em>command line</em> is preferable.
+            For example, if we wanted to work out how much space was used by all the files which names starting with <code>data</code> in Linux or OS X we can execute the command</p>
+            <pre><code class="bash">du -hs data*</code></pre>
+            <p>We can break this down into three components:</p>
+            <ul>
+              <li>the command <code>du</code> means disk usage;</li>
+              <li>the flags <code>-hs</code> mean to print a human readable summary; and</li>
+              <li>the pattern <code>data*</code> means all the files whose names begin with <code>data</code>.</li>
+            </ul>
+            <p>Doing this with a direct manipulation interface would involve clicking on every file we were interested in and be much more time consuming.</p>
+            <p>The command line has a steep learning curve, but the reward is an extremely powerful tool.
+            Our usage of the terminal will be very limited, so don&#39;t worry if you find the example above intimidating!</p>
+            
+            <h3 id="text-editors" class="section">Text Editors</h3>
+            <p>You&#39;re probably used to writing documents in a word processor.
+            A word processor allows us to write text and control the formatting of how it appears on the (increasingly rare) printed page.
+            A word processor includes powerful commands, such as a spell checker and automatic table of contents generation, to make editing prose easier.</p>
+            <p>A <em>text editor</em> is like a word processor for code.
+            Whereas a word processor is concerned about visual presentation of text, a text editor has many programming specific functions.
+            Typical examples include powerful tools to search and replace text, and the ability to quickly jump between the many different files that make up a project.</p>
+            <p>Text editors date back to the days of terminals and perhaps surprisingly some of these tools are still in use.
+            The two main ancient and glorious text editors that survive are called Emacs and Vim.
+            They have very different approaches (except when they don&#39;t) and developers tend to use one or the other.
+            I&#39;ve been using Emacs for about twenty years, and thus I know in my bones that Emacs is the greatest of all possible text editors and Vim users are knuckle-draggers lumbered with poor taste and an inferior tool.
+            Vim users no doubt think the same about me.</p>
+            <p>If there is one thing that unites Vim and Emacs users it&#39;s the sure knowledge that new-fangled text editors like Visual Studio Code are bringing about the downfall of our civilization.
+            Nonetheless we recommend using Visual Studio Code if you&#39;re new to this text editing game.
+            Both Vim and Emacs were created before the common interfaces in use today were created, and using them requires learning a very different way of working.</p>
+            
+            <h3 id="the-compiler" class="section">The Compiler</h3>
+            <p>The code we write in a text editor is not in a form that a computer can run.
+            A <em>compiler</em> translates it into something the computer can run.
+            As it does this it performs certain checks on the code.
+            If these checks don&#39;t pass the code won&#39;t be compiled and the compiler will print an error message instead.
+            We&#39;ll learn more about what the compiler can check and what it can&#39;t in the rest of this book.</p>
+            <p>When we said the compiler translates the code is something the computer can run, this is not the complete truth in the case of Scala.
+            The output of the compiler is something called bytecode, and another program, called the Java Virtual Machine (JVM), runs this codeFootnote complications.</p>
+            
+            <h3 id="integrated-development-environments" class="section">Integrated Development Environments</h3>
+            <p>Integrated development environments (IDEs) are an alternative approach that combine a text editor, a compiler, and several other programmer tools into a single program.
+            Some people swear by IDEs, while some people prefer to use the terminal and a text editor.
+            Our recommendation if you&#39;re new to programming is to take the terminal-and-text-editor approach.
+            If you&#39;re already used to an IDE then IntelliJ IDEA is currently the best IDE for Scala development.</p>
+            
+            <h3 id="version-control" class="section">Version Control</h3>
+            <p>Version control is the final tool we&#39;ll use.
+            A version control system is a program that allows us to keep a record of all the changes that have been made to a group of files.
+            It&#39;s very useful for allowing multiple people to work on a project at the same time, and it ensures people don&#39;t accidentally overwrite each others changes.
+            This is not a huge concern in Creative Scala, but it is good to get some exposure to version control now.</p>
+            <p>The version control software we&#39;ll use is called Git.
+            It&#39;s powerful but complex.
+            The good news is we don&#39;t need to learn much about Git.
+            Most of our use of Git will be via a website called GitHub, which allows people to share software that is stored in Git.
+            We use GitHub to share the software used in Creative Scala.</p>
+            
+            <h3 id="onward" class="section">Onward!</h3>
+            <p>Now that we&#39;ve got some background, let&#39;s move on to installing the software we need to write Scala code.</p>
+            <table class="footnote">
+              <colgroup>
+                <col class="label"></col>
+                <col></col>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>[complications]</td>
+                  <td>This is not itself the entire truth! We usually run Scala code on the JVM, but we can actually compile Scala to three different formats. The first and most common is JVM bytecode. We can also compiled to Javascript, another programming language, which allows us to run Scala code in a web browser. Finally, Scala Native will compile Scala to something a computer <em>can</em> run directly without requiring the JVM.</td>
+                </tr>
+              </tbody>
+            </table>
+
+        </main>
+        <p class="nextPage"><a href="terminal.html">Installing Terminal Software and a Text Editor→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

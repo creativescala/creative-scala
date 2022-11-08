@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Controlling the Turtle</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="index.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="exercises.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="index.html">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="controlling-the-turtle" class="title">Controlling the Turtle</h1>
+            <p>Let&#39;s look over the turtle graphics API, and use it to draw a few different images.</p>
+            
+            <h3 id="instructions" class="section">Instructions</h3>
+            <p>We control the turtle by giving it instructions. 
+            These instructions are defined as methods on the object <code>doodle.turtle.Instruction</code> (similarly to the methods on <code>doodle.core.Image</code> that create images).</p>
+            <p>We can import the methods and then create instructions.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">turtle</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">turtle</span><span>.</span><span class="type-name">Instruction</span><span>.</span><span class="identifier">_</span></code></pre>
+            <pre><code class="nohighlight"><span class="identifier">forward</span><span>(</span><span class="number-literal">10</span><span>)
+</span><span class="comment">// res0: Instruction = Forward(distance = 10.0)
+</span><span class="identifier">turn</span><span>(</span><span class="number-literal">5</span><span>.</span><span class="identifier">degrees</span><span>)
+</span><span class="comment">// res1: Instruction = Turn(angle = Angle(0.08726646259971647))</span></code></pre>
+            <p>This doesn&#39;t do anything useful unless we assemble these commands into an image. 
+            To do so, we create a list of instructions and then ask the turtle (<code>doodle.turtle.Turtle</code> to be exact) to draw them to an <code>Image</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">instructions</span><span> = 
+  </span><span class="type-name">List</span><span>(</span><span class="identifier">forward</span><span>(</span><span class="number-literal">10</span><span>), </span><span class="identifier">turn</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>), 
+       </span><span class="identifier">forward</span><span>(</span><span class="number-literal">10</span><span>), </span><span class="identifier">turn</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>), 
+       </span><span class="identifier">forward</span><span>(</span><span class="number-literal">10</span><span>), </span><span class="identifier">turn</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>), 
+       </span><span class="identifier">forward</span><span>(</span><span class="number-literal">10</span><span>))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">path</span><span> = </span><span class="type-name">Turtle</span><span>.</span><span class="identifier">draw</span><span>(</span><span class="identifier">instructions</span><span>)</span></code></pre>
+            <p>This creates a path---an <code>Image</code>---which we can then <code>draw</code> in the usual way.
+            This gives the output shown in Figure turtles:square. 
+            This is not a very exciting image, but we can change color, line width, and so on to create more interesting results.</p>
+            <p><img src="src/pages/turtles/square.pdf+svg" alt="A square created via the turtle graphics system." title="Figure Some(#fig:turtles:square): caption"></p>
+            <p>The complete list of turtle instructions in given in Table turtles:instructions</p>
+            <hr>
+            <p>Instruction                Description                         Example
+            -------------------------- ----------------------------------- --------------------------------
+            <code>forward(distance)</code>        Move forward the given <code>distance</code>,  <code>forward(100.0)</code>
+                                       specified as a <code>Double</code>.</p>
+            <p><code>turn(angle)</code>              Turn the given <code>angle</code> (an <code>Angle</code>) <code>turn(10.degrees)</code>
+                                       from the current heading.</p>
+            <p><code>branch(instruction, ...)</code> Save the current position and       <code>branch(turn(10.degrees), forward(10))</code>
+                                       heading, draw the given
+                                       <code>instructions</code> , and then return to
+                                       the saved position to draw the rest
+                                       of the instructions.</p>
+            
+            <h2 id="noop-do-nothing-noop" class="section"><code>noop</code>                     Do nothing!                         <code>noop</code></h2>
+            <p>: The instructions understood by the turtle. Table turtles:instructions</p>
+            
+            <h3 id="exercises" class="section">Exercises {-}</h3>
+            
+            <h4 id="polygons" class="section">Polygons {-}</h4>
+            <p>In the previous chapter we wrote a method to create a polygon. Reimplement this method using turtle graphics instead. The method header should be something like</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">polygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">sideLength</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> =
+ ???</span></code></pre>
+            <p>You&#39;ll have to do a bit of geometry to work out the correct turn angle, but as that&#39;s half the fun we won&#39;t spoil it for you.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s our solution. It&#39;s a structural recursion over the natural numbers. The turn angle is exactly the same as the rotation angle used to create polygons in polar coordinates in the previous chapter, though the derivation is quite different.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">polygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">sideLength</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">rotation</span><span> = </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">sides</span><span>
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">iter</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>] =
+    </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">turn</span><span>(</span><span class="identifier">rotation</span><span>) :: </span><span class="identifier">forward</span><span>(</span><span class="identifier">sideLength</span><span>) :: </span><span class="identifier">iter</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+    }
+
+  </span><span class="type-name">Turtle</span><span>.</span><span class="identifier">draw</span><span>(</span><span class="identifier">iter</span><span>(</span><span class="identifier">sides</span><span>))
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="the-square-spiral" class="section">The Square Spiral</h4>
+            <p>The square spiral is shown in Figure turtles:square-spiral. Write a method to create square spirals using turtle graphics.</p>
+            <p>This task requires a bit more design work than we usually ask of you. You&#39;ll have to work out how the square spiral is constructed (hint: it starts at the center) and then create a method to draw one.</p>
+            <p><img src="src/pages/turtles/square-spiral.pdf+svg" alt="The square spiral!" title="Figure Some(#fig:turtles:square-spiral): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            The key insights to draw the square spiral are realising:</p>
+            <ul>
+              <li>each turn is a little bit less than 90 degrees</li>
+              <li>each step forward is a little bit longer than the last one</li>
+            </ul>
+            <p>Once we have this understood this, the structure is basically the same as drawing a polyon. Here&#39;s our solution.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">squareSpiral</span><span>(</span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">distance</span><span>: </span><span class="type-name">Double</span><span>, </span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>, </span><span class="identifier">increment</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">iter</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">distance</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>] = {
+    </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">forward</span><span>(</span><span class="identifier">distance</span><span>) :: </span><span class="identifier">turn</span><span>(</span><span class="identifier">angle</span><span>) :: </span><span class="identifier">iter</span><span>(</span><span class="identifier">steps</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">distance</span><span> + </span><span class="identifier">increment</span><span>)
+    }
+  }
+
+  </span><span class="type-name">Turtle</span><span>.</span><span class="identifier">draw</span><span>(</span><span class="identifier">iter</span><span>(</span><span class="identifier">steps</span><span>, </span><span class="identifier">distance</span><span>))
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="turtles-vs-polar-coordinates" class="section">Turtles vs Polar Coordinates {-}</h4>
+            <p>We can create polygons in polar coordinates using a <code>Range</code> and <code>map</code> as shown below.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">Point</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">polygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">rotation</span><span> = </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">sides</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">elts</span><span> =
+    (</span><span class="number-literal">1</span><span> </span><span class="identifier">to</span><span> </span><span class="identifier">sides</span><span>).</span><span class="identifier">toList</span><span>.</span><span class="identifier">map</span><span> { </span><span class="identifier">i</span><span> =&gt;
+      </span><span class="type-name">PathElement</span><span>.</span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">rotation</span><span> * </span><span class="identifier">i</span><span>))
+    }
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="type-name">PathElement</span><span>.</span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="identifier">size</span><span>, </span><span class="type-name">Angle</span><span>.</span><span class="identifier">zero</span><span>)) :: </span><span class="identifier">elts</span><span>)
+}</span></code></pre>
+            <p>We cannot so easily write the same method to generate turtle instructions using a <code>Range</code> and <code>map</code>. Why is this? What abstraction are we missing?</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Each side of the polygon requires two turtle instructions: a <code>forward</code> and a <code>turn</code>. Thus drawing a pentagon requires ten instructions, and in general n sides requires 2n instructions.
+            Using <code>map</code> we cannot change the number of elements in a list. Therefore mapping <code>1 to n</code>, as we did int the code above, won&#39;t work. We could map over <code>1 to (n*2)</code>, and on, say, odd numbers move forward and on even numbers turn, but this is rather inelegant. It seems it would be simpler if we had an abstraction like <code>map</code> that allowed us to change the number of elements in the list as well as transform the individual elements.
+            &lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="exercises.html">Exercises→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

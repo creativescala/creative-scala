@@ -1,0 +1,98 @@
+%PDF-1.4
+1 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Kids [3 0 R]
+/Count 1
+>>
+endobj
+3 0 obj
+<<
+/Type /Page
+/Parent 2 0 R
+/MediaBox [0 0 340.15748031496065 56.69291338582678]
+/Contents 4 0 R
+/Resources 6 0 R
+>>
+endobj
+4 0 obj
+<<
+/Length 5 0 R
+>>
+stream
+q
+1 1 1 rg 1 1 1 RG
+2.834645669291339 0 0 -2.834645669291339 0 56.69291338582678 cm
+/Fnt0 12.0 Tf
+q
+1 0.2196078431372549 0 rg 1 0.2196078431372549 0 RG
+0 J
+0 0 m 20 0 l 20 20 l 0 20 l 0 0 l h f
+Q
+q
+1 0.5098039215686274 0 rg 1 0.5098039215686274 0 RG
+0 J
+20 0 m 40 0 l 40 20 l 20 20 l 20 0 l h f
+Q
+q
+1 0.5529411764705883 0 rg 1 0.5529411764705883 0 RG
+0 J
+40 0 m 60 0 l 60 20 l 40 20 l 40 0 l h f
+Q
+q
+0.803921568627451 1 0 rg 0.803921568627451 1 0 RG
+0 J
+60 0 m 80 0 l 80 20 l 60 20 l 60 0 l h f
+Q
+q
+0.6980392156862745 1 0 rg 0.6980392156862745 1 0 RG
+0 J
+80 0 m 100 0 l 100 20 l 80 20 l 80 0 l h f
+Q
+q
+0.4627450980392157 1 0 rg 0.4627450980392157 1 0 RG
+0 J
+100 0 m 120 0 l 120 20 l 100 20 l 100 0 l h f
+Q
+Q
+endstream
+endobj
+5 0 obj
+708
+endobj
+6 0 obj
+<<
+/ProcSet [/PDF /Text /ImageB /ImageC /ImageI]
+/Font <<
+/Fnt0 <<
+/Type /Font
+/Subtype /TrueType
+/Encoding /WinAnsiEncoding
+/BaseFont /LucidaGrande
+>>
+>>
+>>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000248 00000 n 
+0000001008 00000 n 
+0000001027 00000 n 
+trailer
+<<
+/Size 7
+/Root 1 0 R
+>>
+startxref
+1200
+%%EOF

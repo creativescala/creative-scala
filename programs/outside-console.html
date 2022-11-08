@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Coding Outside the Console</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="console.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="imports.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="index.html">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="console.html">Working Within the Console</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="coding-outside-the-console" class="title">Coding Outside the Console</h1>
+            <p>The code we&#39;ve been writing inside the console will cause problems running outside the console. For example, put the following code into <code>Example.scala</code> in the <code>src/main/scala</code>.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGoldenrod</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">indianRed</span><span>)</span></code></pre>
+            <p>Now restart SBT and try to enter the console. You should see an error similar to</p>
+            <pre><code class="bash">[error] src/main/scala/Example.scala:1: expected class or object definition
+[error] circle(100) fillColor Color.paleGoldenrod strokeColor Color.indianRed
+[error] ^
+[error] one error found</code></pre>
+            <p>You&#39;ll see something similar if you&#39;re using an IDE.</p>
+            <p>The problem is this:</p>
+            <ul>
+              <li>Scala is attempting to compile all our code before the console starts; and</li>
+              <li>there are restrictions on code written in files that don&#39;t apply to code written directly in the console.</li>
+            </ul>
+            <p>We need to know about these restrictions and change how we write code in files accordingly.</p>
+            <p>The error message gives us some hint: <code>expected class or object definition</code>. We don&#39;t yet know what a class is, but we do know about objects---all values are objects. In Scala all code in a file must be written inside an object or class. We can easily define an object by wrapping an expression like the below.</p>
+            <pre><code class="nohighlight"><span class="keyword">object</span><span> </span><span class="type-name">Example</span><span> {
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGoldenrod</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">indianRed</span><span>).</span><span class="identifier">draw</span><span>()
+}</span></code></pre>
+            <p>Now the code won&#39;t compile for a different reason. You should see a lot of errors similar to</p>
+            <pre><code class="bash">[error] doodle/shared/src/main/scala/doodle/examples/Example.scala:1: not found: value Image
+[error]   Image.circle(100).fillColor(Color.paleGoldenrod).strokeColor(Color.indianRed).draw()
+[error]   ^</code></pre>
+            <p>The compiler is saying that we&#39;ve used a name, <code>circle</code>, but the compiler doesn&#39;t know what value this name refers to.
+            It will have a similiar issue with <code>Color</code> in the code above.
+            We&#39;ll talk in more details about names in just a moment.
+            Right now let&#39;s tell the compiler where it can find the values for these names by adding some <code>import</code> statements.
+            The name <code>Color</code> is found inside a <em>package</em> called <code>doodle.core</code>, and the name <code>circle</code> is within the object <code>Image</code> that is in <code>doodle.image</code>.
+            We can tell the compiler to use all the name in <code>doodle.core</code>, and all the names in <code>doodle.image</code> by writing</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">_</span></code></pre>
+            <p>There are a few other names that the compiler will need to find for the complete code to work.
+            We can import these with the lines</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.</span><span class="identifier">_</span></code></pre>
+            <p>We should place all these imports at the top of the file, so the complete code looks like</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="keyword">object</span><span> </span><span class="type-name">Example</span><span> {
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGoldenrod</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">indianRed</span><span>).</span><span class="identifier">draw</span><span>()
+}</span></code></pre>
+            <p>With this in place the code should compile without issue.</p>
+            <p>Now when we go to the console within SBT we can refer to our code using the name, <code>Example</code>, that we&#39;ve given it.</p>
+            <pre><code class="nohighlight"><span class="type-name">Example</span><span> </span><span class="comment">// draws the image</span></code></pre>
+            
+            <h3 id="exercise" class="section">Exercise {-}</h3>
+            <p>If you haven&#39;t done so already, save the code above in the file <code>src/main/scala/Example.scala</code> and check that the code compiles and you can access it from the console.</p>
+
+        </main>
+        <p class="nextPage"><a href="imports.html">Packages and Imports→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

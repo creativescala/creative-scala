@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Exercises</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="04-types.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="06-summary.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="index.html">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="04-types.html">Types</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="exercises" class="title">Exercises</h1>
+            <p>Let&#39;s check our understanding of the core concepts in this chapter with some exercises.</p>
+            
+            <h4 id="arithmetic" class="section">Arithmetic</h4>
+            <p>Write an expression using integers, addition, and subtraction that evaluates to 42.</p>
+            <p>This exercise is just about getting used to writing Scala code. There are many possible solutions.</p>
+            
+            <h5 id="solution-1">Solution</h5>
+            <p>Here&#39;s how I chose to do it.</p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">43</span><span> - </span><span class="number-literal">2</span><span>
+</span><span class="comment">// res0: Int = 42</span></code></pre>
+            
+            <h4 id="precedence" class="section">Precedence</h4>
+            <p>In mathematics we learned that some operators take <em>precedence</em> over others. For example, in the expression <code>1 + 2 * 3</code> we should do the multiplication before the addition. Do the same rules hold in Scala? Use the worksheet to find out.</p>
+            
+            <h5 id="solution-2">Solution</h5>
+            <p>A bit of exploration should convince you that yes, Scala does maintain the standard precedence rules. The example below demonstrates this.</p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span><span> * </span><span class="number-literal">3</span><span>
+</span><span class="comment">// res1: Int = 7
+</span><span class="number-literal">1</span><span> + (</span><span class="number-literal">2</span><span> * </span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res2: Int = 7
+</span><span>(</span><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span><span>) * </span><span class="number-literal">3</span><span>
+</span><span class="comment">// res3: Int = 9</span></code></pre>
+            
+            <h4 id="types-and-values" class="section">Types and Values</h4>
+            <p>Below we&#39;ve written a number of expressions. For each expression, try to answer the questions:</p>
+            <ol class="arabic">
+              <li>It will compile?</li>
+              <li>If it compiles, what is it&#39;s type?</li>
+              <li>If it compiles can it be evaluated, or will it fail at run-time?</li>
+            </ol>
+            <p>Then try to check your guesses using the worksheet. If you guessed wrong, try to think about what part of your understanding is incorrect. </p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span></code></pre>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> ? </span><span class="number-literal">2</span></code></pre>
+            <pre><code class="nohighlight"><span class="number-literal">4</span><span> / </span><span class="number-literal">2</span></code></pre>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">2</span></code></pre>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">0</span><span>
+</span><span class="comment">// java.lang.ArithmeticException: / by zero
+// 	at repl.MdocSession$MdocApp.$init$$$anonfun$1(05-exercises.md:59)</span></code></pre>
+            
+            <h5 id="solution-3">Solution</h5>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span><span>
+</span><span class="comment">// res8: Int = 3</span></code></pre>
+            <p>Easy example as we&#39;ve seen this one before. This expression has type <code>Int</code> and evaluates to <code>3</code>.</p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> ? </span><span class="number-literal">2</span><span>
+</span><span class="comment">// error:
+// value ? is not a member of Int
+// 1 / 2
+//  ^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 43 - 2
+// ^^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 2 * 3
+// ^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + (2 * 3)
+// ^^^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// (1 + 2) * 3
+// ^^^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 4 / 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 / 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 2
+// ^^^^^</span></code></pre>
+            <p>This is not a valid expression and does not compile. As such it doesn&#39;t have a type.</p>
+            <pre><code class="nohighlight"><span class="number-literal">4</span><span> / </span><span class="number-literal">2</span><span>
+</span><span class="comment">// res10: Int = 2</span></code></pre>
+            <p>This expression has type <code>Int</code> and evaluates to <code>2</code>.</p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">2</span><span>
+</span><span class="comment">// res11: Int = 0</span></code></pre>
+            <p>This expression has type <code>Int</code> and evaluates to <code>0</code>. People coming from dynamically typed languages will sometimes guess that this evaluates to <code>0.5</code> and hence the type would be a floating point number. This would require we pass information back from the run-time to compile-time, which is not possible.</p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">0</span><span>
+</span><span class="comment">// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 43 - 2
+// ^^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 2 * 3
+// ^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + (2 * 3)
+// ^^^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// (1 + 2) * 3
+// ^^^^^^^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 4 / 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 / 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 + 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 4 / 2
+// ^^^^^
+// error:
+// A pure expression does nothing in statement position; you may be omitting necessary parentheses
+// 1 / 2
+// ^^^^^</span></code></pre>
+            <p>This expression has type <code>Int</code> but fails at run-time. This exercise is emphasizing that the type is a property of the expression, not the value, and types are not determined by run time behaviour.</p>
+            
+            <h4 id="appending-strings" class="section">Appending Strings</h4>
+            <p>Join together two strings (known as <em>appending</em> strings) using the <code>++</code> method. Write equivalent expressions using both the normal method call style and the operator style.</p>
+            
+            <h5 id="solution-4">Solution</h5>
+            <p>Something like the below should do.</p>
+            <pre><code class="nohighlight"><span class="string-literal">&quot;It is a truth &quot;</span><span>.++(</span><span class="string-literal">&quot;universally acknowledged&quot;</span><span>)
+</span><span class="comment">// res13: String = &quot;It is a truth universally acknowledged&quot;
+</span><span class="string-literal">&quot;It is a truth &quot;</span><span> ++ </span><span class="string-literal">&quot;universally acknowledged&quot;</span><span>
+</span><span class="comment">// res14: String = &quot;It is a truth universally acknowledged&quot;</span></code></pre>
+            
+            <h4 id="floating-point-failings" class="section">Floating Point Failings</h4>
+            <p>When we introduced Doubles, I said they are an approximation to the real numbers. Why do you think this is? Think about representing numbers like ⅓ and π. How much space would it take to represent these numbers in decimal?</p>
+            
+            <h5 id="solution-5">Solution</h5>
+            <p><code>Double</code> is an approximation because it has the fit within the computer&#39;s finite memory. A <code>Double</code> takes up precisely 64-bits, which is enough space to store a lot of digits but not enough to store a number that, like π, has an infinite expansion.</p>
+            <p>The number ⅓ also has an infinite expansion in decimal. Because Doubles are stored in binary there are some numbers that can be represented in a finite number of decimal digits but have no finite representation in binary. 0.1 turns out to be one such number.</p>
+            <p>In general, floating point numbers can lead to nasty surprises if you expect them to act like the reals. They are fine for our purposes in Creative Scala, but don&#39;t go using them to write accounting software!</p>
+            
+            <h4 id="beyond-expressions" class="section">Beyond Expressions</h4>
+            <p>In our current model of computation there are only three components: expressions (program text) with types, that evaluate to values (something within the computer&#39;s memory). Is this sufficient? Could we write a stock market or a computer game with just this model? Can you think of ways to extend this model?</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is very open ended question. There are several ways to go beyond the model we have so far.</p>
+            <p>To be useful our programs must be capable of creating effects---changes in the world that go beyond the computer&#39;s memory. For example, displaying things on the screen, making sound, sending messages to other computers, and the like. The console implicitly does some of this for us, by printing values on the screen. We&#39;ll need to go a bit beyond that for more useful programs.</p>
+            <p>We also don&#39;t have any way to define our own objects and methods, or reuse values in our programs. If we want to, say, use someone&#39;s name across a program we have to repeat that name everywhere. We need more methods of <em>abstraction</em> and that&#39;s what we&#39;ll turn to soon.
+            &lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="06-summary.html">Summary→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="320px" height="232px" viewBox="0 0 320 232" enable-background="new 0 0 320 232" xml:space="preserve">
+<text transform="matrix(1 0 0 1 54.0161 80.001)" font-family="'MyriadPro-Regular'" font-size="12">n=1</text>
+<text transform="matrix(1 0 0 1 150.0161 80.001)" font-family="'MyriadPro-Regular'" font-size="12">n=2</text>
+<text transform="matrix(1 0 0 1 246.0156 80.0005)" font-family="'MyriadPro-Regular'" font-size="12">n=3</text>
+<polygon points="56,45.857 64,32 72,45.857 "/>
+<g>
+	<polygon points="160,51.714 168,37.857 176,51.714 	"/>
+	<polygon points="144,51.714 152,37.857 160,51.714 	"/>
+	<polygon points="152,37.857 160,24 168,37.857 	"/>
+</g>
+<g>
+	<g>
+		<polygon points="256,36.429 264,22.572 272,36.429 		"/>
+		<polygon points="240,36.429 248,22.572 256,36.429 		"/>
+		<polygon points="248,22.572 256,8.715 264,22.572 		"/>
+	</g>
+	<g>
+		<polygon points="240,64 248,50.144 256,64 		"/>
+		<polygon points="224,64 232,50.144 240,64 		"/>
+		<polygon points="232,50.144 240,36.287 248,50.144 		"/>
+	</g>
+	<g>
+		<polygon points="272,64 280,50.144 288,64 		"/>
+		<polygon points="256,64 264,50.144 272,64 		"/>
+		<polygon points="264,50.144 272,36.287 280,50.144 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon points="160,123.714 168,109.857 176,123.714 		"/>
+		<polygon points="144,123.714 152,109.857 160,123.714 		"/>
+		<polygon points="152,109.857 160,96 168,109.857 		"/>
+	</g>
+	<g>
+		<polygon points="144,151.286 152,137.429 160,151.286 		"/>
+		<polygon points="128,151.286 136,137.429 144,151.286 		"/>
+		<polygon points="136,137.429 144,123.572 152,137.429 		"/>
+	</g>
+	<g>
+		<polygon points="176,151.286 184,137.429 192,151.286 		"/>
+		<polygon points="160,151.286 168,137.429 176,151.286 		"/>
+		<polygon points="168,137.429 176,123.572 184,137.429 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon points="128,179 136,165.143 144,179 		"/>
+		<polygon points="112,179 120,165.143 128,179 		"/>
+		<polygon points="120,165.143 128,151.286 136,165.143 		"/>
+	</g>
+	<g>
+		<polygon points="112,206.571 120,192.715 128,206.571 		"/>
+		<polygon points="96,206.571 104,192.715 112,206.571 		"/>
+		<polygon points="104,192.715 112,178.858 120,192.715 		"/>
+	</g>
+	<g>
+		<polygon points="144,206.571 152,192.715 160,206.571 		"/>
+		<polygon points="128,206.571 136,192.715 144,206.571 		"/>
+		<polygon points="136,192.715 144,178.858 152,192.715 		"/>
+	</g>
+</g>
+<g>
+	<g>
+		<polygon points="192,179.071 200,165.215 208,179.071 		"/>
+		<polygon points="176,179.071 184,165.215 192,179.071 		"/>
+		<polygon points="184,165.215 192,151.358 200,165.215 		"/>
+	</g>
+	<g>
+		<polygon points="176,206.643 184,192.786 192,206.643 		"/>
+		<polygon points="160,206.643 168,192.786 176,206.643 		"/>
+		<polygon points="168,192.786 176,178.93 184,192.786 		"/>
+	</g>
+	<g>
+		<polygon points="208,206.643 216,192.786 224,206.643 		"/>
+		<polygon points="192,206.643 200,192.786 208,206.643 		"/>
+		<polygon points="200,192.786 208,178.93 216,192.786 		"/>
+	</g>
+</g>
+<text transform="matrix(1 0 0 1 150.0161 224.0005)" font-family="'MyriadPro-Regular'" font-size="12">n=4</text>
+</svg>

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Functions</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="conclusions.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="flowers.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="index.html">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="functions" class="title">Functions</h1>
+            <p>A function is basically a method, but we can use a function as a first-class value:</p>
+            <ul>
+              <li>we can pass it as an argument or parameter to a method or function; </li>
+              <li>we can return it from a method or function; and</li>
+              <li>we can give it a name using <code>val</code>.</li>
+            </ul>
+            <p>Here&#39;s an example where we give the name <code>add42</code> to a function that adds 42 to its input.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">add42</span><span> = (</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">42</span><span>
+</span><span class="comment">// add42: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12230/0x0000000103517840@c416fff</span></code></pre>
+            <p>We can call it just like we&#39;d call a method.</p>
+            <pre><code class="nohighlight"><span class="identifier">add42</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res0: Int = 42</span></code></pre>
+            <p>This is an example of a function literal. Let&#39;s learn about them now.</p>
+            
+            <h3 id="function-literals-1" class="section">Function Literals</h3>
+            <p>We&#39;ve just seen an example of a function literal, which was</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">42</span><span>
+</span><span class="comment">// res1: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12231/0x0000000103510840@296f65b7</span></code></pre>
+            <p>The general syntax is an extension of this.</p>
+            <p>&lt;div class=&quot;callout callout-info&quot;&gt;</p>
+            
+            <h4 id="function-literal-syntax">Function Literal Syntax {-}</h4>
+            <p>The syntax for declaring a function literal is</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">parameter</span><span>: </span><span class="keyword">type</span><span>, ...) =&gt; </span><span class="identifier">expression</span></code></pre>
+            <p>where
+            - the optional <code>parameter</code>s are the names given to the function parameters;
+            - the <code>type</code>s are the types of the function parameters; and
+            - the <code>expression</code> determines the result of the function.</p>
+            <p>The parentheses around the parameters are optional if the function has just a single parameter.
+            &lt;/div&gt;</p>
+            
+            <h3 id="function-types-1" class="section">Function Types</h3>
+            <p>To pass functions to methods we need to know how to write down their types (because when we declare a parameter we have to declare its type).</p>
+            <p>We write a function type like <code>(A, B) =&gt; C</code> where <code>A</code> and <code>B</code> are the types of the parameters and <code>C</code> is the result type. 
+            The same pattern generalises from functions of no arguments to an arbitrary number of arguments.</p>
+            <p>Here&#39;s an example. We create a method that accepts a function, and that function is from <code>Int</code> to <code>Int</code>. We write this type as <code>Int =&gt; Int</code> or <code>(Int) =&gt; Int</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">squareF</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">f</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">f</span><span>(</span><span class="identifier">x</span><span>) * </span><span class="identifier">f</span><span>(</span><span class="identifier">x</span><span>)</span></code></pre>
+            <p>We can pass <code>add42</code> to this method</p>
+            <pre><code class="nohighlight"><span class="identifier">squareF</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="identifier">add42</span><span>)
+</span><span class="comment">// res2: Int = 1764</span></code></pre>
+            <p>We could also pass a function literal</p>
+            <pre><code class="nohighlight"><span class="identifier">squareF</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">42</span><span>)
+</span><span class="comment">// res3: Int = 1764</span></code></pre>
+            <p>Note that we didn&#39;t have to put the parameter type on the function literal in this case because Scala has enough information to infer the type.</p>
+            <p>&lt;div class=&quot;callout callout-info&quot;&gt;</p>
+            
+            <h4 id="function-type-declaration-syntax">Function Type Declaration Syntax {-}</h4>
+            <p>To declare a function type, write</p>
+            <pre><code class="nohighlight"><span>(</span><span class="type-name">A</span><span>, </span><span class="type-name">B</span><span>, ...) =&gt; </span><span class="type-name">C</span></code></pre>
+            <p>where</p>
+            <ul>
+              <li><code>A, B, ...</code> are the types of the input parameters; and</li>
+              <li><code>C</code> is the type of the result.</li>
+            </ul>
+            <p>If a function only has one parameter the parentheses may be dropped:</p>
+            <pre><code class="nohighlight"><span class="type-name">A</span><span> =&gt; </span><span class="type-name">B</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h3 id="functions-as-objects" class="section">Functions as Objects</h3>
+            <p>All first class values are objects in Scala, including functions.
+            This means functions can have methods, including some useful means for composition.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">addTen</span><span> = (</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">a</span><span> + </span><span class="number-literal">10</span><span>
+</span><span class="comment">// addTen: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12233/0x000000010350b040@426f6ac
+</span><span class="keyword">val</span><span> </span><span class="identifier">double</span><span> = (</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">a</span><span> * </span><span class="number-literal">2</span><span>
+</span><span class="comment">// double: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12234/0x0000000103508840@3eecee27
+</span><span class="keyword">val</span><span> </span><span class="identifier">combined</span><span> = </span><span class="identifier">addTen</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">double</span><span>) </span><span class="comment">// this composes the two functions
+// combined: Function1[Int, Int] = scala.Function1$$Lambda$12164/0x00000001035f2040@39d54092 // this composes the two functions
+</span><span class="identifier">combined</span><span>(</span><span class="number-literal">5</span><span>)
+</span><span class="comment">// res4: Int = 30</span></code></pre>
+            <p>Calling a function is actually calling the method called <code>apply</code> on the function. Scala allows a shortcut for any object that has a method called <code>apply</code>, where can drop the method name <code>apply</code> and write the call like a function call. This means the following are equivalent.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">halve</span><span> = (</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">a</span><span> / </span><span class="number-literal">2</span><span>
+</span><span class="comment">// halve: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12235/0x00000001034fc040@6bc5d8c2
+</span><span class="identifier">halve</span><span>(</span><span class="number-literal">4</span><span>)
+</span><span class="comment">// res5: Int = 2
+</span><span class="identifier">halve</span><span>.</span><span class="identifier">apply</span><span>(</span><span class="number-literal">4</span><span>)
+</span><span class="comment">// res6: Int = 2</span></code></pre>
+            
+            <h3 id="converting-methods-to-functions" class="section">Converting Methods to Functions</h3>
+            <p>Methods are very similar to functions, so Scala provides a way to convert functions to methods. If we follow a method name with a <code>_</code> it will be converted to a function.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">times42</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">x</span><span> * </span><span class="number-literal">42</span><span>
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">times42Function</span><span> = </span><span class="identifier">times42</span><span> </span><span class="identifier">_</span><span>
+</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12236/0x0000000103509040@5865d080</span></code></pre>
+            <p>We can also write a method call but replace all parameters with <code>_</code> and Scala will convert the method to a function.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function2</span><span> = </span><span class="identifier">times42</span><span>(</span><span class="identifier">_</span><span>)
+</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12237/0x00000001034a4840@1a1907d</span></code></pre>
+            
+            <h4 id="exercises" class="section">Exercises {-}</h4>
+            
+            <h5 id="function-literals-2" class="section">Function Literals</h5>
+            <p>Let&#39;s get some practice writing function literals. Write a function literal that:</p>
+            <ul>
+              <li>squares it&#39;s <code>Int</code> input;</li>
+              <li>has a <code>Color</code> parameter and spins the hue of that <code>Color</code> by 15 degrees; and</li>
+              <li>takes an <code>Image</code> input and creates four copies in a row, where each copy is rotated by 90 degrees relative to the previous image (use the <code>rotate</code> method on <code>Image</code> to achieve this.)</li>
+            </ul>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            The first function is</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
+</span><span class="comment">// res7: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$12238/0x000000010349d040@12e3910b</span></code></pre>
+            <p>The second is</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
+</span><span class="comment">// res8: Function1[Color, HSLA] = repl.MdocSession$MdocApp$$Lambda$12239/0x000000010339a040@57a5485d</span></code></pre>
+            <p>The third is</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
+  </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
+    .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
+    .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
+    .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
+</span><span class="comment">// res9: Function1[Image, Image] = repl.MdocSession$MdocApp$$Lambda$12240/0x00000001032b6040@213263f9</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h5 id="function-types-2" class="section">Function Types {-}</h5>
+            <p>Here&#39;s an interesting function we&#39;ll do more with in later sections. We don&#39;t need to understand what it does right now, though you might want to experiment with it.</p>
+            <pre><code>val roseFn = (angle: Angle) =&gt;
+  Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)</code></pre>
+            <p>What is the type of the function <code>roseFn</code> defined above? What does this type mean?</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            The type is <code>Angle =&gt; Point</code>. This means <code>roseFn</code> is a function that takes a single argument of type <code>Angle</code> and returns a value of type <code>Point</code>. In other words, <code>roseFn</code> transforms an <code>Angle</code> to a <code>Point</code>.
+            &lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="flowers.html">Flowers and Other Curves→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

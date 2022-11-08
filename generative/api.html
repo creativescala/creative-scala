@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Exploring Random</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="for.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="random.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="index.html">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="for.html">For Comprehensions</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="exploring-random" class="title">Exploring Random</h1>
+            <p>So far we&#39;ve seen only the very basics of using <code>Random</code>. In this section we&#39;ll see more of its features, and use these features to create more interesting pictures.</p>
+            <p>&lt;div class=&quot;callout callout-info&quot;&gt;
+            In addition to the standard imports given at the start of the chapter, in this section we&#39;re assuming the following:</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">random</span><span>.</span><span class="identifier">_</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h3 id="normal-distributions" class="section">Normal Distributions</h3>
+            <p>Often when using random numbers in generative art we will choose specific distributions for the shape they provide.
+            For example, Figure generative:distributions shows a thousand random points generated using a uniform, normal (or Gaussian) distribution, and a squared normal distribution respectively.</p>
+            <p><img src="./src/pages/generative/distributions.pdf+svg" alt="Points distributed according to uniform, normal, and squared normal distributions" title="Figure Some(#fig:generative:distributions): caption"></p>
+            <p>As you can see, the normal distribution tends to generate more points nearer the center than the uniform distribution.</p>
+            <p>Doodle provides two methods to create normally distributed numbers, from which we can create many other distributions.
+            A normal distribution is defined by two parameters, it&#39;s <em>mean</em>, which specifies the center of the distribution, and it&#39;s <em>standard deviation</em>, which determines the spread of the distribution.
+            The corresponding methods in Doodle are</p>
+            <ul>
+              <li><code>Random.normal</code>, which generates a <code>Double</code> from a normal distribution with mean 0 and standard deviation 1.0; and</li>
+              <li><code>Random.normal(mean, stdDev)</code>, which generates a <code>Double</code> from a normal distribution with the specified mean and standard deviation.</li>
+            </ul>
+            
+            <h3 id="structured-randomness" class="section">Structured Randomness</h3>
+            <p>We&#39;ve gone from very structured to very random pictures.
+            It would be nice to find a middle ground that incorporates elements of randomness and structure.
+            We can use <code>flatMap</code> to do this---with <code>flatMap</code> we can use one randomly generated value to create another <code>Random</code> value.
+            This creates a dependency between values---the prior random value has an influence on the next one we generate.</p>
+            <p>For example, we can create a method that given a color randomly perturbs it.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">nextColor</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">spin</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">15.0</span><span>, </span><span class="number-literal">10.0</span><span>)
+  </span><span class="identifier">spin</span><span>.</span><span class="identifier">map</span><span>{ </span><span class="identifier">s</span><span> =&gt; </span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="identifier">s</span><span>.</span><span class="identifier">degrees</span><span>) }
+}</span></code></pre>
+            <p>Using <code>nextColor</code> we can create a series of boxes with a gradient that is partly random and partly structured: the next color in the gradient is a random perturbation of the previous one.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">size</span><span>)
+       .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)
+       .</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>))
+       .</span><span class="identifier">fillColor</span><span>(</span><span class="identifier">color</span><span>)
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">randomGradientBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+      </span><span class="keyword">val</span><span> </span><span class="identifier">box</span><span> = </span><span class="identifier">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">20</span><span>)
+      </span><span class="keyword">val</span><span> </span><span class="identifier">boxes</span><span> = </span><span class="identifier">nextColor</span><span>(</span><span class="identifier">color</span><span>).</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">c</span><span> =&gt; </span><span class="identifier">randomGradientBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">c</span><span>) }
+      </span><span class="identifier">boxes</span><span>.</span><span class="identifier">map</span><span>{ </span><span class="identifier">b</span><span> =&gt; </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">b</span><span> }
+  }</span></code></pre>
+            <p>Example output is shown in Figure generative:structured-gradient-boxes.</p>
+            <p><img src="./src/pages/generative/structured-gradient-boxes.pdf+svg" alt="Boxes filled with gradient that is partly random." title="Figure Some(#fig:generative:structured-gradient-boxes): caption"></p>
+            
+            <h3 id="exercises" class="section">Exercises {-}</h3>
+            
+            <h4 id="particle-systems" class="section">Particle Systems {-}</h4>
+            <p>A <em>particle system</em> is a technique used in computer graphics to create large numbers of &quot;particles&quot; that move according to simple rules.
+            In Figure generative:smoke there is an example of a particle system simulating a fire and smoke.
+            For the mathematically inclined, a particle system is basically a <em>stochastic process</em> or <em>random walk</em>.</p>
+            <p><img src="src/pages/generative/smoke.pdf+svg" alt="A simulation of a smoky fire, generating using a particle system." title="Figure Some(#fig:generative:smoke): caption"></p>
+            <p>In this exercise we&#39;ll build a particle system, which will give you a flexible system to experiment with these ideas.
+            We&#39;ll start with a fixed system and then abstract it to create reusable components.</p>
+            <p>Here&#39;s a sketch of how a particle system works.
+            To draw a single particle we</p>
+            <ul>
+              <li>choose a starting position;</li>
+              <li>decide how many time steps we want to move the particle system for; and</li>
+              <li>at each timestep the new position of the particle is equal to the position at the previous timestep plus some random noise (and potentially some non-random (deterministic) movement such as velocity or acceleration).</li>
+            </ul>
+            <p>A particle system is just a collection of a number of particles---20 particles over 20 steps in Figure generative:smoke.</p>
+            <p>In the above description we&#39;ve broken down the components of a partcile system.
+            Now we just need to implement them.</p>
+            <p>The starting position can be any <code>Random[Point]</code>.
+            Create one now.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This will do.
+            You can create a more complicated (and interesting) distribution over starting position if you want.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">start</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Point</span><span>.</span><span class="identifier">zero</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Let&#39;s implement a method <code>step</code> that will take a single step in particle system.
+            It will have skeleton</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">step</span><span>(</span><span class="identifier">current</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] =
+  ???</span></code></pre>
+            <p>We need to decide how we will modify the <code>current</code> point to create the next point.
+            I suggest adding some random noise, and a constant &quot;drift&quot; that will ensure the points tend to move in a particular direction.
+            For example, we could increment the <code>x</code> coordinate by 10, which will cause a drift towards the right of the screen, plus some normally distributed noise to the <code>x</code> and <code>y</code> coordinates.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            I&#39;ve chosen to use normally distributed noise that is the same in both directions.
+            Changing the noise will change the shape of the result---it&#39;s worth playing around with different settings.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">step</span><span>(</span><span class="identifier">current</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">drift</span><span> = </span><span class="type-name">Point</span><span>(</span><span class="identifier">current</span><span>.</span><span class="identifier">x</span><span> + </span><span class="number-literal">10</span><span>, </span><span class="identifier">current</span><span>.</span><span class="identifier">y</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">noise</span><span> =
+    </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0.0</span><span>, </span><span class="number-literal">5.0</span><span>) </span><span class="identifier">flatMap</span><span> { </span><span class="identifier">x</span><span> =&gt;
+      </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0.0</span><span>, </span><span class="number-literal">5.0</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">y</span><span> =&gt;
+        </span><span class="type-name">Vec</span><span>(</span><span class="identifier">x</span><span>, </span><span class="identifier">y</span><span>)
+      }
+    }
+
+  </span><span class="identifier">noise</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">vec</span><span> =&gt; </span><span class="identifier">drift</span><span> + </span><span class="identifier">vec</span><span>)
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now that we can <code>step</code> a particle we need to connect a sequence of steps to get a <code>walk</code>.
+            There is one wrinkle here: we want to draw the intermediate stages so we&#39;re going to define two methods:</p>
+            <ul>
+              <li>a method that transforms a <code>Point</code> to an <code>Image</code>; and</li>
+              <li>a method <code>walk</code> that produces a <code>Random[Image]</code></li>
+            </ul>
+            <p>The skeletons are</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">render</span><span>(</span><span class="identifier">point</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Image</span><span> =
+  ???
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">walk</span><span>(</span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] =
+  ???</span></code></pre>
+            <p>The implementation of <code>render</code> can be whatever you fancy.
+            In the implementation of <code>walk</code>, you will have to call <code>step</code> to get the next <code>Point</code>, and then call <code>render</code> to convert the point to something that can be draw.
+            You will also want to have an accumulator of the <code>Image</code> so far.
+            Hint: you might find it useful to define an auxiliary parameter for <code>walk</code>.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            In my definition of <code>render</code> I&#39;ve shown how we can use information from the point to modify the shape in an interesting way.</p>
+            <p>The definition of <code>walk</code> is a structural recursion over the natural numbers with an internal accumulator and the recursion going through <code>flatMap</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">render</span><span>(</span><span class="identifier">point</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">length</span><span> = (</span><span class="identifier">point</span><span> - </span><span class="type-name">Point</span><span>.</span><span class="identifier">zero</span><span>).</span><span class="identifier">length</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">sides</span><span> = (</span><span class="identifier">length</span><span> / </span><span class="number-literal">20</span><span>).</span><span class="identifier">toInt</span><span> + </span><span class="number-literal">3</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">hue</span><span> = (</span><span class="identifier">length</span><span> / </span><span class="number-literal">200</span><span>).</span><span class="identifier">turns</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="identifier">hue</span><span>, </span><span class="number-literal">0.7</span><span>, </span><span class="number-literal">0.5</span><span>)
+  </span><span class="type-name">Image</span><span>
+    .</span><span class="identifier">star</span><span>(</span><span class="identifier">sides</span><span>, </span><span class="number-literal">5</span><span>, </span><span class="number-literal">3</span><span>)
+    .</span><span class="identifier">noFill</span><span>
+    .</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
+    .</span><span class="identifier">at</span><span>(</span><span class="identifier">point</span><span>.</span><span class="identifier">toVec</span><span>)
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">walk</span><span>(</span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">current</span><span>: </span><span class="type-name">Point</span><span>, </span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="identifier">image</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">render</span><span>(</span><span class="identifier">current</span><span>))
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="keyword">val</span><span> </span><span class="identifier">next</span><span> = </span><span class="identifier">step</span><span>(</span><span class="identifier">current</span><span>)
+        </span><span class="identifier">next</span><span>.</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">pt</span><span> =&gt;
+          </span><span class="identifier">loop</span><span>(</span><span class="identifier">count</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">pt</span><span>, </span><span class="identifier">image</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">render</span><span>(</span><span class="identifier">current</span><span>))
+        }
+    }
+  }
+
+  </span><span class="identifier">start</span><span>.</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">pt</span><span> =&gt; </span><span class="identifier">loop</span><span>(</span><span class="identifier">steps</span><span>, </span><span class="identifier">pt</span><span>, </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>) }
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now you should be able to call <code>walk</code> and render the result.</p>
+            <p>The final step is create a number of particles and render them all.
+            Create a method <code>particleSystem</code> with skeleton</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">particleSystem</span><span>(</span><span class="identifier">particles</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] =
+  ???</span></code></pre>
+            <p>that does just this.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Once again we have a structural recursion over the natural numbers.
+            Unlike <code>walk</code> the recursion goes through <code>map</code>, not <code>flatMap</code>.
+            This is because <code>particleSystem</code> adds no new random choices.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">particleSystem</span><span>(</span><span class="identifier">particles</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+  </span><span class="identifier">particles</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">walk</span><span>(</span><span class="identifier">steps</span><span>).</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">img1</span><span> =&gt;
+      </span><span class="identifier">particleSystem</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">steps</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">img2</span><span> =&gt;
+        </span><span class="identifier">img1</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">img2</span><span>
+      }
+    }
+  }
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now render the result, and tweak it till you have something you&#39;re happy with.
+            I&#39;m not particulary happy with the result of my code.
+            I think the stars are too bunched up, and the colors are not very interesting.
+            To make a more interesting result I&#39;d consider adding more noise and changing the start color and perhaps compressing the range of colors.</p>
+            
+            <h4 id="random-abstractions" class="section">Random Abstractions {-}</h4>
+            <p>The implementation of <code>particleSystem</code> above hard-codes in a particular choice of particle system.
+            To make it easier to experiment with we might like to abstract over the particular choice of <code>walk</code> and <code>start</code>.
+            How do you think we could do this?</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            We could make <code>walk</code> <code>start</code>, and <code>render</code> parameters to <code>particleSystem</code>, and make <code>start</code> and <code>render</code> parameters to <code>walk</code>.
+            &lt;/div&gt;</p>
+            <p>Implement this.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            If we add parameters with the correct name and type the code changes required are minimal.
+            This is like doing the opposite of substitution---lifting concrete representations out of our code and replacing them with method parameters.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">walk</span><span>(
+  </span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>,
+  </span><span class="identifier">start</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>],
+  </span><span class="identifier">render</span><span>: </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Image</span><span>
+): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">current</span><span>: </span><span class="type-name">Point</span><span>, </span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="identifier">image</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">render</span><span>(</span><span class="identifier">current</span><span>))
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="keyword">val</span><span> </span><span class="identifier">next</span><span> = </span><span class="identifier">step</span><span>(</span><span class="identifier">current</span><span>)
+        </span><span class="identifier">next</span><span>.</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">pt</span><span> =&gt;
+          </span><span class="identifier">loop</span><span>(</span><span class="identifier">count</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">pt</span><span>, </span><span class="identifier">image</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">render</span><span>(</span><span class="identifier">current</span><span>))
+        }
+    }
+  }
+
+  </span><span class="identifier">start</span><span>.</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">pt</span><span> =&gt; </span><span class="identifier">loop</span><span>(</span><span class="identifier">steps</span><span>, </span><span class="identifier">pt</span><span>, </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>) }
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">particleSystem</span><span>(
+  </span><span class="identifier">particles</span><span>: </span><span class="type-name">Int</span><span>,
+  </span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>,
+  </span><span class="identifier">start</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>],
+  </span><span class="identifier">render</span><span>: </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Image</span><span>,
+  </span><span class="identifier">walk</span><span>: (</span><span class="type-name">Int</span><span>, </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>], </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Image</span><span>) =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>]
+): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+  </span><span class="identifier">particles</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">walk</span><span>(</span><span class="identifier">steps</span><span>, </span><span class="identifier">start</span><span>, </span><span class="identifier">render</span><span>).</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">img1</span><span> =&gt;
+      </span><span class="identifier">particleSystem</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">steps</span><span>, </span><span class="identifier">start</span><span>, </span><span class="identifier">render</span><span>, </span><span class="identifier">walk</span><span>).</span><span class="identifier">map</span><span>{ </span><span class="identifier">img2</span><span> =&gt;
+        </span><span class="identifier">img1</span><span>.</span><span class="identifier">on</span><span>(</span><span class="identifier">img2</span><span>)
+      }
+    }
+  }
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>This code doesn&#39;t make me happy.
+            Most of the parameters to <code>particleSystem</code> are only needed to pass on to <code>walk</code>.
+            These parameters don&#39;t change is any way within the structural recursion that makes up the body of <code>particleSystem</code>.
+            At this point we can apply our principle of substitution---we can replace a method call with the value it evaluates to---to remove <code>walk</code> and associated parameters from <code>particleSystem</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">particleSystem</span><span>(</span><span class="identifier">particles</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">walk</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>]): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+  </span><span class="identifier">particles</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">walk</span><span>.</span><span class="identifier">flatMap</span><span>{ </span><span class="identifier">img1</span><span> =&gt;
+      </span><span class="identifier">particleSystem</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">walk</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">img2</span><span> =&gt;
+        </span><span class="identifier">img1</span><span>.</span><span class="identifier">on</span><span>(</span><span class="identifier">img2</span><span>)
+      }
+    }
+  }
+}</span></code></pre>
+            <p>If you&#39;re used to programming in imperative languages this may seem mind-bending.
+            Remember that we&#39;ve gone to some lengths to ensure that working with random numbers obeys substitution, up to the point that <code>run</code> is called.
+            The <code>walk</code> method doesn&#39;t actually create a random walk.
+            It instead describes how to create a random walk when that code is actually run.
+            This separation between description and action means that substitution can be used.
+            The description of how to perform a random walk can be used to create many different random walks.</p>
+
+        </main>
+        <p class="nextPage"><a href="random.html">Randomness without Effect→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

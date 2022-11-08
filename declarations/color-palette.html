@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Extended Exercise: Color Palettes</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="index.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="method-declarations.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="index.html">Declarations</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="extended-exercise-color-palettes" class="title">Extended Exercise: Color Palettes</h1>
+            <p>In this exercise we will explore the creation of color palettes.
+            An attractive picture must make good choices for color.
+            Color theory has developed to explain combinations of color that go together.
+            We will use color theory
+            to create programs that can automatically construct attractive color palettes.</p>
+            
+            <h3 id="color-representation" class="section">Color Representation</h3>
+            <p>In Doodle we can represent a color in one of two ways:</p>
+            <ol class="arabic">
+              <li>as triples containing red, green, and blue values (RGB); or</li>
+              <li>as hue, saturation, and lightness (HSL).</li>
+            </ol>
+            <p>We will use the HSL representation as it
+            better corresponds to our perception of color.
+            If we arrange colors in the familiar color wheel,
+            distance from the center corresponds to lightness
+            and steps around the outside correspond to changes in hue:</p>
+            <p><img src="src/pages/declarations/color-wheel.png" alt="A color wheel. A full turn around the wheel represents a 360 degree change in hue." title="Figure None: caption"></p>
+            <p>Saturation, the third dimension,
+            corresponds to intensity of color.
+            The strip of colors below shows the effect of varying saturation from 0.0 to 1.0,
+            for fixed hue (170 degrees) and lightness (0.5).
+            As you can see,
+            changing saturation goes from a dull gray to a bright and vibrant color.</p>
+            <p><img src="src/pages/declarations/saturation.png" alt="The effect of changing saturation while keeping hue and lightness fixed. Saturation increases from left to right, starting at zero and finishing at one." title="Figure None: caption"></p>
+            
+            <h3 id="the-color-api" class="section">The Color API</h3>
+            <p>Before we can create color schemes
+            we need to know how to create and manipulate colors.</p>
+            
+            <h4 id="creating-colors" class="section">Creating Colors</h4>
+            <p>There are two main methods to create colours:</p>
+            <pre><code class="nohighlight"><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="identifier">hue</span><span>: </span><span class="type-name">Angle</span><span>, </span><span class="identifier">saturation</span><span>: </span><span class="type-name">Normalized</span><span>, </span><span class="identifier">lightness</span><span>: </span><span class="type-name">Normalized</span><span>)
+</span><span class="type-name">Color</span><span>.</span><span class="identifier">rgb</span><span>(</span><span class="identifier">red</span><span>: </span><span class="type-name">UnsignedByte</span><span>, </span><span class="identifier">green</span><span>: </span><span class="type-name">UnsignedByte</span><span>, </span><span class="identifier">blue</span><span>: </span><span class="type-name">UnsignedByte</span><span>)</span></code></pre>
+            <p>These methods use types --- <code>Angle</code>, <code>Normalized</code>, and <code>UnsignedByte</code> --- that have not seen before.
+            They all represent numbers with some special characteristics.
+            A <code>Normalized</code> is a number between 0 and 1.
+            An <code>UnsignedByte</code> is an integer between 0 and 255.
+            An <code>Angle</code> is unrestricted in value but there are several operations that only make sense on angles (sine, cosine, and so on) and several representations (angles, radians) in common use.</p>
+            <p>The <code>Normalized</code> and <code>UnsignedByte</code> types make it explicit that some conversion is necessary from raw number types like <code>Int</code> and <code>Double</code>.
+            There are many different ways to handle inputs that are out of range,
+            such as clipping them or raising an error,
+            and we require the programmer to be explicit about the approach they want.</p>
+            <p>For <code>Normalized</code> and <code>UnsignedByte</code> Doodle provides a default conversion of clipping.
+            For example, if we are creating a <code>Normalized</code> (value between 0.0 and 1.0),
+            any input less than 0.0 is set to 0.0 and greater than 1.0 becomes 1.0.
+            To use these conversions import <code>doodle.syntax.normalized._</code> or <code>doodle.syntax.uByte._</code>
+            and then numbers are <em>enriched</em> with methods <code>normalized</code> and <code>uByte</code> respectively.
+            Here&#39;s a quick example. Notice how values out of range are set to the closest valid value.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">normalized</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>
+</span><span class="comment">//res: doodle.core.Normalized = Normalized(0.5)
+</span><span class="number-literal">0.0</span><span>.</span><span class="identifier">normalized</span><span>
+</span><span class="comment">//res: doodle.core.Normalized = Normalized(0.0)
+</span><span>-</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>
+</span><span class="comment">//res: doodle.core.Normalized = Normalized(0.0)
+</span><span class="number-literal">1.5</span><span>.</span><span class="identifier">normalized</span><span>
+</span><span class="comment">//res: doodle.core.Normalized = Normalized(1.0)
+</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">uByte</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="number-literal">128</span><span>.</span><span class="identifier">uByte</span><span>
+</span><span class="comment">//res: doodle.core.UnsignedByte = UnsignedByte(0)
+</span><span class="number-literal">0</span><span>.</span><span class="identifier">uByte</span><span>
+</span><span class="comment">//res: doodle.core.UnsignedByte = UnsignedByte(-128)
+</span><span class="number-literal">255</span><span>.</span><span class="identifier">uByte</span><span>
+</span><span class="comment">//res: doodle.core.UnsignedByte = UnsignedByte(127)
+</span><span>-</span><span class="number-literal">127</span><span>.</span><span class="identifier">uByte</span><span>
+</span><span class="comment">//res: doodle.core.UnsignedByte = UnsignedByte(-128)
+</span><span class="number-literal">512</span><span>.</span><span class="identifier">uByte</span><span>
+</span><span class="comment">//res: doodle.core.UnsignedByte = UnsignedByte(127)</span></code></pre>
+            <p>For <code>Angle</code> we ask the programmer to specify if the raw number represents a value in degrees, radians, or turns (fractions of a circle, with a full circle being one turn).
+            For <code>Angles</code> the import is <code>doodle.syntax.angle._</code>
+            which enriches numbers with methods <code>degrees</code>, <code>radians</code>, and <code>turns</code>.
+            Here&#39;s an example:</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">angle</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>
+</span><span class="comment">//res: doodle.core.Angle = Angle(0.0)
+</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>
+</span><span class="comment">//res: doodle.core.Angle = Angle(3.141592653589793)
+</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>
+</span><span class="comment">//res: doodle.core.Angle = Angle(6.283185307179586)
+</span><span>
+</span><span class="identifier">math</span><span>.</span><span class="type-name">Pi</span><span>
+</span><span class="comment">//res: Double = 3.141592653589793
+</span><span class="identifier">math</span><span>.</span><span class="type-name">Pi</span><span>.</span><span class="identifier">radians</span><span>
+</span><span class="comment">//res: doodle.core.Angle = Angle(3.141592653589793)
+</span><span>
+</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">turns</span><span>
+</span><span class="comment">//res: doodle.core.Angle = Angle(3.141592653589793)
+</span><span class="number-literal">1.0</span><span>.</span><span class="identifier">turns</span><span>
+</span><span class="comment">//res: doodle.core.Angle = Angle(6.283185307179586)</span></code></pre>
+            <p>We can now create some colors:</p>
+            <pre><code class="nohighlight"><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="number-literal">170</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">1.0</span><span>.</span><span class="identifier">normalized</span><span>, </span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">// res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))</span></code></pre>
+            <p>Note that the color we created has four fields. The fourth field is the <code>alpha</code> value, which specifies the opacity of the color. There are four parameter methods <code>Color.hsla</code> and <code>Color.rgba</code> that can be used to specify the <code>alpha</code> when creating a color.</p>
+            
+            <h4 id="modifying-colors" class="section">Modifying Colors</h4>
+            <p>There are several methods to modify colors. These methods all create a new <code>Color</code>. No <code>Color</code> is ever actually changed after it is created, as doing so breaks substitution.</p>
+            <p>New <code>hue</code>, <code>saturation</code>, <code>lightness</code>, and <code>alpha</code> values can all be set with methods of the same name. Notice how the original color is unchanged.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">c</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="number-literal">170</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">1.0</span><span>.</span><span class="identifier">normalized</span><span>, </span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//c: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">hue</span><span>(</span><span class="number-literal">220</span><span>.</span><span class="identifier">degrees</span><span>)
+</span><span class="comment">//res: doodle.core.Color = HSLA(Angle(3.839724354387525),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">saturation</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.Color = HSLA(Angle(2.9670597283903604),Normalized(0.5),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">lightness</span><span>(</span><span class="number-literal">0.25</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.Color = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.25),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.Color = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(0.5))
+</span><span>
+</span><span class="identifier">c</span><span>
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))</span></code></pre>
+            <p>There are also methods to adjust the existing <code>hue</code>, <code>saturation</code>, <code>lightness</code>, and <code>alpha</code>. These methods all create a new color by adding or subtracting from the existing value of the parameter of interest.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">c</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="number-literal">170</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">1.0</span><span>.</span><span class="identifier">normalized</span><span>, </span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//c: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">220</span><span>.</span><span class="identifier">degrees</span><span>)
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(6.806784082777885),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.7),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">darken</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.3),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">saturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(0.8),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">fadeIn</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(1.0))
+</span><span>
+</span><span class="identifier">c</span><span>.</span><span class="identifier">fadeOut</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+</span><span class="comment">//res: doodle.core.HSLA = HSLA(Angle(2.9670597283903604),Normalized(1.0),Normalized(0.5),Normalized(0.8))</span></code></pre>
+            
+            <h3 id="complementary-colors" class="section">Complementary Colors</h3>
+            <p>A simple way to generate colors that look good together
+            is to use <em>complementary colors</em>.
+            Given a color, it&#39;s complement is the one opposite it on the color wheel.
+            In other words, it has hue rotated by 180 degrees.
+            Complementary pairs have high contrast and make for striking compositions:</p>
+            <p><img src="src/pages/declarations/aubergines.jpg" alt="Aubergines by https://www.flickr.com/photos/36179943@N00/219265991 Estaban Cavrico licensed under CC BY-NC-ND 2.0. The green and purple of the aubergins are near complements." title="Figure Some(declarations:aubergines): caption"></p>
+            <p><strong>Exercise: Complementary Colors</strong></p>
+            <p>Create a method <code>complement</code> that takes a <code>Color</code> as input and returns its complement.
+            You can use the method <code>spin</code> on a <code>Color</code> to rotate its hue by a given <code>Angle</code>.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">complement</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Color</span><span> =
+  </span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p><strong>Exercise: Complementary Chess Boards</strong> </p>
+            <p>Using <code>complement</code> write a method <code>complementaryChessBoard</code> that creates a four-by-four chess board using a complementary color scheme. This method should take a <code>Color</code> input. Here&#39;s the method signature:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">complementaryChessBoard</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> = ???</span></code></pre>
+            <p>You should end up with a picture like the below.</p>
+            <p><img src="src/pages/declarations/complementary-chess-board.png" alt="A chess board colored using complementary colors" title="Figure None: caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            We can build the method using the methods we have already created.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">complementaryChessBoard</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>) =
+  </span><span class="identifier">fourByFour</span><span>(</span><span class="identifier">color</span><span>, </span><span class="identifier">complement</span><span>(</span><span class="identifier">color</span><span>))</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h3 id="analogous-colors" class="section">Analogous Colors</h3>
+            <p>Complementary colors can be quite harsh on the eyes.
+            We can play around with saturation and lightness to decrease the contrast
+            but ultimately this color scheme is quite limited.
+            Let&#39;s explore another color scheme, <em>analogous colors</em>, that gives us more flexibility.</p>
+            <p>In analogous color is simply one that is close on the color wheel to a given color.
+            We can generate an analogous color by spinning hue, say, fifteen degrees.</p>
+            <p><strong>Exercise: Analogous Colors</strong></p>
+            <p>Create a method <code>analogous</code> that takes a <code>Color</code> as input and returns an analogous color.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">analogous</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Color</span><span> =
+  </span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p><strong>Exercise: Analogous Chess Boards</strong></p>
+            <p>Now create a method <code>analogousChessBoard</code> that creates a four-by-four chess board with an analogous color scheme. You should get a result like the below.</p>
+            <p><img src="src/pages/declarations/analogous-chess-board.png" alt="A chess board colored using analogous colors" title="Figure None: caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This follows the same pattern as <code>complementaryChessBoard</code>. Notice how we build big things (a colored chess board) out of smaller component parts. This idea of composing small pieces of code into larger pieces is one of the key ideas in functional programming.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">analogousChessBoard</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>) =
+  </span><span class="identifier">fourByFour</span><span>(</span><span class="identifier">color</span><span>, </span><span class="identifier">analogous</span><span>(</span><span class="identifier">color</span><span>))</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h3 id="beyond-two-color-palettes" class="section">Beyond Two-Color Palettes</h3>
+            <p>We have seen how we can build very simple color palettes from complementary and analogous colors. Now let&#39;s combine these ideas to build more complex palettes. A <em>tetrad color scheme</em> consists of two analogous colors and their complements.</p>
+            <p><img src="src/pages/declarations/tetrad-chess-board.png" alt="A chess board colored using a tetradic color scheme" title="Figure None: caption"></p>
+            <p>Define a method <code>tetradChessBoard</code> that creates a chess board colored with a tetradic color scheme as illustrated. Use the following skeleton</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">tetradChessBoard</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>) = ???</span></code></pre>
+            <p>Hint: You will have to call <code>twoByTwo</code>, not <code>fourByFour</code>, within the body of <code>tetradChessBoard</code>.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            It would be nice to have a method for creating an entire tetradic color scheme from a single color, but we don&#39;t currently have a way of wrapping up a collection of data so that we could return all four values from the methods. We&#39;ll see ways of doing this later, when we introduce classes and collections.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">tetradChessBoard</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>) = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color1</span><span> = </span><span class="identifier">color</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color2</span><span> = </span><span class="identifier">analogous</span><span>(</span><span class="identifier">color</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color3</span><span> = </span><span class="identifier">complement</span><span>(</span><span class="identifier">color</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color4</span><span> = </span><span class="identifier">complement</span><span>(</span><span class="identifier">color2</span><span>)
+
+  </span><span class="keyword">val</span><span> </span><span class="identifier">square1</span><span> = </span><span class="identifier">twoByTwo</span><span>(</span><span class="identifier">color1</span><span>, </span><span class="identifier">color3</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">square2</span><span> = </span><span class="identifier">twoByTwo</span><span>(</span><span class="identifier">color2</span><span>, </span><span class="identifier">color4</span><span>)
+
+  (</span><span class="identifier">square1</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">square2</span><span>) </span><span class="identifier">above</span><span>
+  (</span><span class="identifier">square2</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">square1</span><span>)
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="method-declarations.html">Method Declarations→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

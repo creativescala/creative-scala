@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Auxiliary Parameters</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="nested-methods.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="fractals.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="index.html">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="nested-methods.html">Nested Methods</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="auxiliary-parameters" class="title">Auxiliary Parameters</h1>
+            <p>We&#39;ve seen how to use structural recursion over the natural numbers to write a number of interesting programs.
+            In this section we&#39;re going to learn how <em>auxillary parameters</em> allow us to write more complex programs.
+            An auxiliary parameter is just an additional parameter to our method that allows us to pass extra information down the recursive call.</p>
+            <p>For example, imagine creating the picture in Figure recursion:growing-boxes, which shows a line of boxes that grow in size as we move along the line.</p>
+            <p><img src="./src/pages/recursion/growing-boxes.pdf+svg" alt="Boxes that grow in size with each recursion." title="Figure Some(#fig:recursion:growing-boxes): caption"></p>
+            <p>How can we create this image?</p>
+            <p>We know it has to be a structural recursion over the natural numbers, so we can immediately write down the skeleton</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">growingBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="identifier">base</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">unit</span><span> </span><span class="identifier">add</span><span> </span><span class="identifier">growingBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+  }</span></code></pre>
+            <p>Using what we learned working with <code>boxes</code> earlier we can go a bit further and write down</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">growingBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(???).</span><span class="identifier">beside</span><span>(</span><span class="identifier">growingBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+  }</span></code></pre>
+            <p>The challenge becomes how to make the box grow in size as we move to the right.</p>
+            <p>There are two ways to do this.
+            The tricky way is to switch the order in the recursive case and make the size of the box a function of <code>n</code>.
+            Here&#39;s the code.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">growingBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">growingBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="identifier">n</span><span>*</span><span class="number-literal">10</span><span>))
+  }</span></code></pre>
+            <p>Spend some time figuring out why this works before moving on to the solution using an auxiliary parameter.</p>
+            <p>Alternatively we can simply add another parameter to <code>growingBoxes</code> that tells us how big the current box should be.
+            When we recurse we change this size.
+            Here&#39;s the code.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">growingBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; 
+      </span><span class="type-name">Image</span><span>
+        .</span><span class="identifier">square</span><span>(</span><span class="identifier">size</span><span>)
+        .</span><span class="identifier">beside</span><span>(</span><span class="identifier">growingBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span> + </span><span class="number-literal">10</span><span>))
+  }</span></code></pre>
+            <p>The auxiliary parameter method has two advantages: we only have to think about what changes from one recursion to the next (in this case, the box gets larger), and it allows the caller to change this parameter (for example, making the starting box larger or smaller).</p>
+            <p>Now we&#39;ve seen the auxiliary parameter method let&#39;s practice using it.</p>
+            
+            <h4 id="gradient-boxes" class="section">Gradient Boxes {-}</h4>
+            <p>In this exercise we&#39;re going to draw a picture like that in Figure recursion:gradient-boxes.
+            We already know how to draw a line of boxes.
+            The challenge in this exercise is to make the color change at each step.</p>
+            <p>Hint: you can <code>spin</code> the fill color at each recursion.</p>
+            <p><img src="./src/pages/recursion/gradient-boxes.pdf+svg" alt="Five boxes filled with changing colors starting from Royal Blue" title="Figure Some(#fig:recursion:gradient-boxes): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            There are two ways to implement a solution.
+            The auxiliary parameter method is to add an extra parameter to <code>gradientBoxes</code> and pass the <code>Color</code> through the structural recursion.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+      </span><span class="identifier">aBox</span><span>
+        .</span><span class="identifier">fillColor</span><span>(</span><span class="identifier">color</span><span>)
+        .</span><span class="identifier">beside</span><span>(</span><span class="identifier">gradientBoxes</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)))
+  }</span></code></pre>
+            <p>We could also make the fill color a function of <code>n</code>, as we demonstrated with the box size in <code>growingBoxes</code> above.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+      </span><span class="identifier">aBox</span><span>
+        .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>.</span><span class="identifier">spin</span><span>((</span><span class="number-literal">15</span><span> * </span><span class="identifier">n</span><span>).</span><span class="identifier">degrees</span><span>))
+        .</span><span class="identifier">beside</span><span>(</span><span class="identifier">gradientBoxes</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
+  }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="concentric-circles" class="section">Concentric Circles {-}</h4>
+            <p>Now let&#39;s try a variation on the theme, drawing concentric circles as shown in Figure recursion:concentric-circles. Here we are changing the size rather than the color of the image at each step. Otherwise the pattern stays the same. Have a go at implementing it.</p>
+            <p><img src="./src/pages/recursion/concentric-circles.pdf+svg" alt="Concentric circles, colored Royal Blue" title="Figure Some(#fig:recursion:concentric-circles): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is almost identical to <code>growingBoxes</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricCircles</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; 
+      </span><span class="type-name">Image</span><span>
+        .</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>)
+        .</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricCircles</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span> + </span><span class="number-literal">5</span><span>))
+  }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="once-more-with-feeling" class="section">Once More, With Feeling {-}</h4>
+            <p>Now let&#39;s combine both techniques to change size and color on each step, giving results like those shown in Figure recursion:colorful-circles.
+            Experiment until you find something you like.</p>
+            <p><img src="./src/pages/recursion/colorful-circles.pdf+svg" alt="Concentric circles with interesting color variations" title="Figure Some(#fig:recursion:colorful-circles): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s our solution, where we&#39;ve tried to break the problem into reusable parts and reduce the amount of repeated code.
+            We still have a lot of repetition as we don&#39;t yet have the tools to get rid of more.
+            We&#39;ll come to that soon.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">circle</span><span>(</span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>).</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">3.0</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">fadeCircles</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; 
+      </span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">color</span><span>)
+        .</span><span class="identifier">on</span><span>(</span><span class="identifier">fadeCircles</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span>+</span><span class="number-literal">7</span><span>, </span><span class="identifier">color</span><span>.</span><span class="identifier">fadeOutBy</span><span>(</span><span class="number-literal">0.05</span><span>.</span><span class="identifier">normalized</span><span>)))
+  }
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">gradientCircles</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; 
+      </span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">color</span><span>)
+        .</span><span class="identifier">on</span><span>(</span><span class="identifier">gradientCircles</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span>+</span><span class="number-literal">7</span><span>, </span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)))
+  }
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">image</span><span>: </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">fadeCircles</span><span>(</span><span class="number-literal">20</span><span>, </span><span class="number-literal">50</span><span>, </span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
+    .</span><span class="identifier">beside</span><span>(</span><span class="identifier">gradientCircles</span><span>(</span><span class="number-literal">20</span><span>, </span><span class="number-literal">50</span><span>, </span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>))</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="fractals.html">The Chessboard→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

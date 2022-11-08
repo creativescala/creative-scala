@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Reasoning about Recursion</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="natural-numbers.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="conclusions.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="index.html">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="reasoning-about-recursion" class="title">Reasoning about Recursion</h1>
+            <p>We&#39;re now experienced users of structural recursion over the natural numbers.
+            Let&#39;s now return to our substitution model and see if it works with our new tool of recursion.</p>
+            <p>Recall that substitution says we can substitute the value of an expression wherever we see a value.
+            In the case of a method call, we can substitute the body of the method with appropriate renaming of the parameters.</p>
+            <p>Our very first example of recursion was <code>boxes</code>, written like so:</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">aBox</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+  }</span></code></pre>
+            <p>Let&#39;s try using substitution on <code>boxes(3)</code> to see what we get.</p>
+            <p>Our first substitution is</p>
+            <pre><code class="nohighlight"><span class="identifier">boxes</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// Substitute body of `boxes`
+</span><span class="number-literal">3</span><span> </span><span class="keyword">match</span><span> {
+  </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+  </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+}</span></code></pre>
+            <p>Knowing how to evaluate a <code>match</code> expression and using substitution again gives us</p>
+            <pre><code class="nohighlight"><span class="number-literal">3</span><span> </span><span class="keyword">match</span><span> {
+  </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+  </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+}
+</span><span class="comment">// Substitute right-hand side expression of `case n`
+</span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="number-literal">2</span><span>))</span></code></pre>
+            <p>We can substitute again on <code>boxes(2)</code> to obtain</p>
+            <pre><code class="nohighlight"><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="number-literal">2</span><span>))
+</span><span class="comment">// Substitute body of boxes
+</span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+  </span><span class="number-literal">2</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+  }
+}
+</span><span class="comment">// Substitute right-hand side expression of `case n`
+</span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+  </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="number-literal">1</span><span>))
+}</span></code></pre>
+            <p>Repeating the process a few more times we get</p>
+            <pre><code class="nohighlight"><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+  </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+    </span><span class="number-literal">1</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+    }
+  }
+}
+</span><span class="comment">// Substitute right-hand side expression of `case n`
+</span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+  </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+      </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="number-literal">0</span><span>))
+  }
+}
+</span><span class="comment">// Substitute body of boxes
+</span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+  </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+    </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+      </span><span class="number-literal">0</span><span> </span><span class="keyword">match</span><span> {
+        </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+        </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+      }
+    }
+  }
+}
+</span><span class="comment">// Substitute right-hand side expression of `case 0`
+</span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+  </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+    </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span> {
+      </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    }
+  }
+}</span></code></pre>
+            <p>Our final result, which simplifies to</p>
+            <pre><code class="nohighlight"><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">aBox</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">aBox</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)</span></code></pre>
+            <p>is exactly what we expect.
+            Therefore we can say that substitution works to reason about recursion.
+            This is great!
+            However the substitutions are quite complex and difficult to keep track of without writing them down.</p>
+            
+            <h3 id="reasoning-about-structural-recursion" class="section">Reasoning About Structural Recursion</h3>
+            <p>There is a more practical way to reason about structural recursion. Structural recursion guarantees the overall recursion is correct if we get the individual components correct. There are two parts to the structural recursion; the base case and the recursive case. The base case we can check just by looking at it. The recursive case has the recursive call (the method calling itself) but <em>we don&#39;t have to consider this</em>. It is given to us by structural recursion so it will be correct so long as the other parts are correct. We can simply assume the recursive call it correct and then check that we are doing the right thing with the result of this call.</p>
+            <p>Let&#39;s apply this to reasoning about <code>boxes</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+  }</span></code></pre>
+            <p>We can tell the base case is correct by inspection.
+            Looking at the recursive case we <em>assume</em> that <code>boxes(n-1)</code> will do the right thing.
+            The question then becomes: is what we do with the result of the recursive call <code>boxes(n-1)</code>, correct?
+            The answer is yes: if the recursion <code>boxes(n-1)</code> creates <code>n-1</code> boxes in a line, sticking a box in front of them is the right thing to do.
+            Since the individual cases are correct the whole thing is guaranted correct by structural recursion.</p>
+            <p>This way of reasoning is much more compact than using substitution <em>and</em> guaranteed to work <em>if</em> we&#39;re using structural recursion.</p>
+            
+            <h3 id="exercises" class="section">Exercises {-}</h3>
+            <p>Below are some rather silly examples of structural recursion.
+            Work out if the methods do what they claim to do <em>without</em> running them.</p>
+            <pre><code class="nohighlight"><span class="comment">// Given a natural number, returns that number
+// Examples:
+//   identity(0) == 0
+//   identity(3) == 3
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">identity</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">1</span><span> + </span><span class="identifier">identity</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+  }</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            It sure does!
+            The base case is straightforward.
+            Looking at the recursive case, we assume that <code>identity(n-1)</code> returns the identity for <code>n-1</code> (which is exactly <code>n-1</code>).
+            The identity for <code>n</code> is then <code>1 + identity(n-1)</code>.
+            &lt;/div&gt;</p>
+            <pre><code class="nohighlight"><span class="comment">// Given a natural number, double that number
+// Examples:
+//   double(0) == 0
+//   double(3) == 6
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">2</span><span> * </span><span class="identifier">double</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+  }</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            No way!
+            This method is broken in two different ways.
+            Firstly, because we&#39;re multiplying in the recursive case we will eventualy end up multiplying by base case of zero, and therefore the entire result will be zero.</p>
+            <p>We might try and fix this by adding a case for <code>1</code> (and perhaps wonder why the structural recursion skeleton let us down).</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">1</span><span> =&gt; </span><span class="number-literal">1</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">2</span><span> * </span><span class="identifier">double</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+  }</span></code></pre>
+            <p>This doesn&#39;t give us the correct result, however! We&#39;re doing the wrong thing at the recursive case: we should be adding, not multiplying.</p>
+            <p>A bit of algebra:</p>
+            <pre><code class="nohighlight"><span class="number-literal">2</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span> + </span><span class="number-literal">1</span><span>) == </span><span class="number-literal">2</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>) + </span><span class="number-literal">2</span></code></pre>
+            <p>So if <code>double(n-1)</code> is <code>2(n-1)</code> then we should <em>add</em> 2, not multiply by 2.
+            The correct method is</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">2</span><span> + </span><span class="identifier">double</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+  }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="conclusions.html">Conclusions→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

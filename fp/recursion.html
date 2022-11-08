@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Recursive Algorithms</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="take-home-points.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="../programs/">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="index.html">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="take-home-points.html">Take Home Points</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="recursive-algorithms" class="title">Recursive Algorithms</h1>
+            <p>Recursion is a natural part of functional programming.
+            The classic functional data structure---the single linked list---is recursive in nature.
+            We can similarly create interesting drawings using recursion.</p>
+            <p>Let&#39;s start with a simple example---a set of concentric circles.
+            We can create this image by recursing over the natural numbers.
+            Each number corresponds to the next layer of the image:</p>
+            <p><img src="src/pages/fp/concentric-circles-steps.pdf+svg" alt="Concentric circles (n = 1 to 3)" title="Figure None: caption"></p>
+            <p>Note the recursive pattern here:</p>
+            <ul>
+              <li>the <code>n = 1</code> case is the <em>base case</em>;</li>
+            </ul>
+            <ul>
+              <li>every other case is the <code>n - 1</code> case (shown in black)
+              surrounded by an extra circle (shown in red).</li>
+            </ul>
+            <p>Given these two rules, we can generate a picture for any value of <code>n &gt;= 1</code>.
+            We can even model the rules directly in Scala:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricCircles</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="keyword">if</span><span>(</span><span class="identifier">n</span><span> == </span><span class="number-literal">1</span><span>) {
+    </span><span class="comment">// Return a circle
+</span><span>  } </span><span class="keyword">else</span><span> {
+    </span><span class="comment">// Return a circle superimposed on the image from n - 1
+</span><span>  }</span></code></pre>
+            <p><strong>Exercise: Concentric circles</strong></p>
+            <p>Create an image containing 20 concentric circles
+            using the approach described above:</p>
+            <p><img src="src/pages/fp/concentric-circles.png" alt="Concentric circles (n = 20)" title="Figure None: caption"></p>
+            <p>For extra credit, give each circle its own hue or opacity
+            by gradually changing the colour at each level of recursion:</p>
+            <p><img src="src/pages/fp/concentric-circles2.png" alt="Concentric circles IN COLOUR! (n = 20)" title="Figure None: caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            The basic structure of our solution involves two methods:
+            one for drawing a single circle and one for drawing <code>n</code> circles:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">singleCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  ???
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">concentricCircles</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="keyword">if</span><span>(</span><span class="identifier">n</span><span> == </span><span class="number-literal">1</span><span>) {
+    </span><span class="identifier">singleCircle</span><span>(</span><span class="identifier">n</span><span>)
+  } </span><span class="keyword">else</span><span> {
+    </span><span class="identifier">singleCircle</span><span>(</span><span class="identifier">n</span><span>) </span><span class="identifier">on</span><span> </span><span class="identifier">concentricCircles</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>)
+  }
+
+</span><span class="identifier">concentricCircles</span><span>(</span><span class="number-literal">20</span><span>)</span></code></pre>
+            <p>There is a clean division of labour here:
+            <code>concentricCircles</code> handles the recursion through values of <code>n</code>
+            and the composition of the shapes at each level,
+            while <code>singleCircle</code> decides which actual shapes we draw at each level.</p>
+            <p>Here is the implementation of <code>singleCircle</code> we need to draw monochrome circles.
+            We calculate an appropriate radius from the value of <code>n</code> provided.
+            The <code>n = 1</code> circle has radius <code>55</code> and
+            each successive circle is <code>5</code> pixels larger:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">singleCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span> * </span><span class="identifier">n</span><span>)</span></code></pre>
+            <p>To create multicolour circles, all we need to do is modify <code>singleCircle</code>.
+            Here is an implementation for the extra credit example above:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">singleCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span> * </span><span class="identifier">n</span><span>) </span><span class="identifier">strokeColor</span><span> (</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span> </span><span class="identifier">spin</span><span> (</span><span class="identifier">n</span><span> * </span><span class="number-literal">10</span><span>).</span><span class="identifier">degrees</span><span>)</span></code></pre>
+            <p>Here is another implementation that fades out the further we get from <code>n = 1</code>:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">singleCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span> * </span><span class="identifier">n</span><span>) </span><span class="identifier">fadeOut</span><span> (</span><span class="identifier">n</span><span> / </span><span class="number-literal">20</span><span>).</span><span class="identifier">normalized</span></code></pre>
+            <p>We can make countless different images by tweaking <code>singleCircle</code>
+            without changing the definition of <code>concentricCircles</code>.
+            In fact, <code>concentricCircles</code> doesn&#39;t care about circles at all!
+            A more general naming system would be more suitable:</p>
+            <pre><code>def singleShape(n: Int): Image =
+  ???
+
+def manyShapes(n: Int): Image =
+  if(n == 1) singleShape(n) else (singleShape(n) on manyShapes(n - 1))</code></pre>
+            <p>&lt;/div&gt;</p>
+            <p><strong>Exercise: Sierpinski triangle</strong></p>
+            <p>Sierpinski triangles are a more interesting example of a recursive drawing
+            algorithm. The pattern is illustrated below:</p>
+            <p><img src="src/pages/fp/sierpinski-steps.pdf+svg" alt="Sierpinski triangles (n = 1 to 4)" title="Figure None: caption"></p>
+            <p>Here is an English description of the recursive pattern:</p>
+            <ul>
+              <li>
+                <p>The base case for <code>n = 1</code> is an equilateral triangle.
+                We can draw this in Doodle as follows:</p>
+                <pre><code class="nohighlight"><span class="type-name">Triangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>)</span></code></pre>
+              </li>
+            </ul>
+            <ul>
+              <li>Every other case involves three copies of the <code>n - 1</code> case
+              arranged in a triangle.</li>
+            </ul>
+            <p>Use this description to write Scala code to draw a Sierpinski triangle.
+            Start by dealing with the <code>n = 1</code> case, then solve the <code>n = 2</code> case,
+            then generalise your code for any value of <code>n</code>. Finish by drawing the
+            <code>n = 10</code> <em>Sier</em><em>pink</em><em>ski</em> triangle below:</p>
+            <p><img src="src/pages/fp/sierpinski.png" alt="Sierpinski triangle (n = 10)" title="Figure None: caption"></p>
+            <p>You may notice that the final result is extremely large!
+            For extra credit, rewrite your code so you can specify
+            the size of the triangle up front:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">sierpinski</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> = ???</span></code></pre>
+            <p>Finally, for double extra credit, answer the following questions:</p>
+            <ol class="arabic">
+              <li>How many pink triangles are there in your drawing?</li>
+            </ol>
+            <ol class="arabic">
+              <li>How many <code>Triangle</code> objects is your code creating?</li>
+            </ol>
+            <ol class="arabic">
+              <li>Is this the answer to question 2 necessarily the same
+              as the answer to question 1?</li>
+            </ol>
+            <ol class="arabic">
+              <li>If not, what is the minimum number of <code>Triangles</code>
+              needed to draw the <code>n = 10</code> Sierpinski?</li>
+            </ol>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            The simple solution looks like the following:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">triangle</span><span>: </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Triangle</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">1</span><span>) </span><span class="identifier">strokeColor</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">magenta</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">sierpinski</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="keyword">if</span><span>(</span><span class="identifier">n</span><span> == </span><span class="number-literal">1</span><span>) {
+    </span><span class="identifier">triangle</span><span>
+  } </span><span class="keyword">else</span><span> {
+    </span><span class="keyword">val</span><span> </span><span class="identifier">smaller</span><span> = </span><span class="identifier">sierpinski</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>)
+    </span><span class="identifier">smaller</span><span> </span><span class="identifier">above</span><span> (</span><span class="identifier">smaller</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">smaller</span><span>)
+  }
+
+</span><span class="identifier">sierpinski</span><span>(</span><span class="number-literal">10</span><span>)</span></code></pre>
+            <p>As we hinted above, each successive triangle in the Sierpinski pattern
+            is twice the size of its predecessor.
+            Even if we start with an <code>n = 1</code> triangle of side 1,
+            we end up with an <code>n = 10</code> triangle of side 1024!</p>
+            <p>The extra credit solution involves specifying the desired size up front
+            and dividing it by two each time we recurse:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">triangle</span><span>(</span><span class="identifier">size</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Triangle</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">size</span><span>) </span><span class="identifier">strokeColor</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">magenta</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">sierpinski</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="keyword">if</span><span>(</span><span class="identifier">n</span><span> == </span><span class="number-literal">1</span><span>) {
+    </span><span class="identifier">triangle</span><span>(</span><span class="identifier">size</span><span>)
+  } </span><span class="keyword">else</span><span> {
+    </span><span class="keyword">val</span><span> </span><span class="identifier">smaller</span><span> = </span><span class="identifier">sierpinski</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span> / </span><span class="number-literal">2</span><span>)
+    </span><span class="identifier">smaller</span><span> </span><span class="identifier">above</span><span> (</span><span class="identifier">smaller</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">smaller</span><span>)
+  }
+
+</span><span class="identifier">sierpinski</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">512</span><span>)</span></code></pre>
+            <p>Finally let&#39;s look at the questions:</p>
+            <p>First, let&#39;s consider the number of pink triangles.
+            There is one triangle in the <code>n = 1</code> base Sierpinski,
+            and we multiply this by 3 for each successive level of recursion.
+            There are <code>3^9 = 19,683</code> triangles in the <code>n = 10</code> Sierpinski!</p>
+            <p>That&#39;s a lot of triangles!
+            Now let&#39;s consider the number of <code>Triangle</code> objects.
+            This question is designed to highlight a nice property
+            of immutable data structures called <em>structural sharing</em>.
+            Each Sierpinski from <code>n = 2</code> upwards is created from three smaller
+            Sierpinskis, but they <em>don&#39;t have to be different objects in memory</em>.
+            We can re-use a single smaller Sierpinski three times
+            to save on computation time and memory use.</p>
+            <p>The code above actually shows the optimal case.
+            We use a temporary variable, <code>smaller</code>, to ensure
+            we only call <code>sierpinski(n - 1)</code> once at each level of recursion.
+            This means we only call <code>triangle()</code> once,
+            no matter what value of <code>n</code> we start with.</p>
+            <p>We only need to create one <code>Triangle</code> object for the whole picture!
+            Of course, the <code>draw</code> method has to process this single triangle 19,683 times
+            to draw the picture, but the representation we build to begin with
+            is extremely efficient.
+            &lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="../programs/">Writing Larger Programs→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

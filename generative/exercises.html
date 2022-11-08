@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Exercises</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="product.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="for.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="index.html">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="product.html">Combining Random Values</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="exercises" class="title">Exercises</h1>
+            
+            <h3 id="scatter-plots" class="section">Scatter Plots</h3>
+            <p>In this exercise we&#39;ll implement scatter plots as in Figure generative:distributions. 
+            Experiment with different distributions (trying creating your own distributions by transforming ones defined on <code>Random</code>).</p>
+            <p>There are three main components of a scatter plot:</p>
+            <ul>
+              <li>we need to generate the points we&#39;ll plot;</li>
+              <li>we need to overlay the images on top of each other in the same coordinate system to create the plot; and</li>
+              <li>we need to convert a point to an image we can render.</li>
+            </ul>
+            <p>We tackle each task in turn.</p>
+            <p>Start by writing a method <code>makePoint</code> that will accept a <code>Random[Double]</code> for the x and y coordinates of a point and return a <code>Random[Point]</code>. 
+            It should have the following skeleton:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">makePoint</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Double</span><span>], </span><span class="identifier">y</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Double</span><span>]): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] =
+  ???</span></code></pre>
+            <p>Use a for comprehension in your implementation.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is a nice example of composition of <code>Randoms</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">makePoint</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Double</span><span>], </span><span class="identifier">y</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Double</span><span>]): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] =
+  </span><span class="keyword">for</span><span> {
+    </span><span class="identifier">theX</span><span> &lt;- </span><span class="identifier">x</span><span>
+    </span><span class="identifier">theY</span><span> &lt;- </span><span class="identifier">y</span><span>
+  } </span><span class="keyword">yield</span><span> </span><span class="type-name">Point</span><span>.</span><span class="identifier">cartesian</span><span>(</span><span class="identifier">theX</span><span>, </span><span class="identifier">theY</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now create, say, a thousand random points using the techniques we learned in the previous chapter on lists and a random distribution of your choice. 
+            You should end up with a <code>List[Random[Point]]</code>.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Something like the following should work.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">normal</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">15</span><span>)
+</span><span class="keyword">val</span><span> </span><span class="identifier">normal2D</span><span> = </span><span class="identifier">makePoint</span><span>(</span><span class="identifier">normal</span><span>, </span><span class="identifier">normal</span><span>)
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">data</span><span> = (</span><span class="number-literal">1</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">1000</span><span>).</span><span class="identifier">toList</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">_</span><span> =&gt; </span><span class="identifier">normal2D</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Let&#39;s now transform our <code>List[Random[Point]]</code> into <code>List[Random[Image]]</code>. 
+            Do this in two steps: first write a method to convert a <code>Point</code> to an <code>Image</code>, then write code to convert <code>List[Random[Point]]</code> to <code>List[Random[Image]]</code>.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            We can convert a <code>Point</code> to an <code>Image</code> using a method <code>point</code> below. 
+            Note I&#39;ve made each point on the scatterplot quite transparent---this makes it easier to see where a lot of points are grouped together.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">point</span><span>(</span><span class="identifier">loc</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">2</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">cadetBlue</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)).</span><span class="identifier">noStroke</span><span>.</span><span class="identifier">at</span><span>(</span><span class="identifier">loc</span><span>.</span><span class="identifier">toVec</span><span>)</span></code></pre>
+            <p>Converting between the lists is just a matter of calling <code>map</code> a few times.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">points</span><span> = </span><span class="identifier">data</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">r</span><span> =&gt; </span><span class="identifier">r</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">point</span><span> </span><span class="identifier">_</span><span>))</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now create a method that transforms a <code>List[Random[Image]]</code> to a <code>Random[Image]</code> by placing all the points <code>on</code> each other. 
+            This is the equivalent of the <code>allOn</code> method we&#39;ve developed previously, but it now works with data wrapped in <code>Random</code>. </p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            You might recognise this pattern. 
+            It&#39;s what we used in <code>allOn</code> with the addition of <code>flatMap</code>, which is exactly what <code>randomConcentricCircles</code> (and many other examples) use. </p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">allOn</span><span>(</span><span class="identifier">points</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>]]): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] =
+  </span><span class="identifier">points</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)
+    </span><span class="keyword">case</span><span> </span><span class="identifier">img</span><span> :: </span><span class="identifier">imgs</span><span> =&gt; 
+      </span><span class="keyword">for</span><span> {
+        </span><span class="identifier">i</span><span>  &lt;- </span><span class="identifier">img</span><span>
+        </span><span class="identifier">is</span><span> &lt;- </span><span class="identifier">allOn</span><span>(</span><span class="identifier">imgs</span><span>)
+      } </span><span class="keyword">yield</span><span> (</span><span class="identifier">i</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">is</span><span>)
+  }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now put it all together to make a scatter plot.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is just calling methods and using values we&#39;ve already defined.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">plot</span><span> = </span><span class="identifier">allOn</span><span>(</span><span class="identifier">points</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h3 id="parametric-noise" class="section">Parametric Noise</h3>
+            <p>In this exercise we will combine parametric equations, from a previous chapter, with randomness.</p>
+            <p>Let&#39;s start by making a method <code>perturb</code> that adds random noise to a <code>Point</code>. 
+            The method should have skeleton</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">perturb</span><span>(</span><span class="identifier">point</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] =
+  ???</span></code></pre>
+            <p>Choose whatever noise function you like.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s our solution. 
+            We&#39;ve already seen very similar code in the scatter plot.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">perturb</span><span>(</span><span class="identifier">point</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] =
+  </span><span class="keyword">for</span><span> {
+    </span><span class="identifier">x</span><span> &lt;- </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">10</span><span>)
+    </span><span class="identifier">y</span><span> &lt;- </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">10</span><span>)
+  } </span><span class="keyword">yield</span><span> </span><span class="type-name">Point</span><span>.</span><span class="identifier">cartesian</span><span>(</span><span class="identifier">point</span><span>.</span><span class="identifier">x</span><span> + </span><span class="identifier">x</span><span>, </span><span class="identifier">point</span><span>.</span><span class="identifier">y</span><span> + </span><span class="identifier">y</span><span>) </span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now create a parametric function, like we did in a previous chapter. 
+            You could use the rose function (the function we explored previously) or you could create one of your own devising. Here&#39;s the definition of rose.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">rose</span><span>(</span><span class="identifier">k</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; {
+    </span><span class="type-name">Point</span><span>.</span><span class="identifier">cartesian</span><span>((</span><span class="identifier">angle</span><span> * </span><span class="identifier">k</span><span>).</span><span class="identifier">cos</span><span> * </span><span class="identifier">angle</span><span>.</span><span class="identifier">cos</span><span>, (</span><span class="identifier">angle</span><span> * </span><span class="identifier">k</span><span>).</span><span class="identifier">cos</span><span> * </span><span class="identifier">angle</span><span>.</span><span class="identifier">sin</span><span>)
+  }</span></code></pre>
+            <p>We can combine our parametric function and <code>perturb</code> to create a method with type <code>Angle =&gt; Random[Point]</code>. 
+            You can write this easily using the <code>andThen</code> method on functions, or you can write this out the long way. 
+            Here&#39;s a quick example of <code>andThen</code> showing how we write the fourth power in terms of the square.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">square</span><span> = (</span><span class="identifier">x</span><span>: </span><span class="type-name">Double</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
+</span><span class="keyword">val</span><span> </span><span class="identifier">quartic</span><span> = </span><span class="identifier">square</span><span> </span><span class="identifier">andThen</span><span> </span><span class="identifier">square</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Writing this with <code>andThen</code> is nice and neat.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">perturbedRose</span><span>(</span><span class="identifier">k</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] =
+  </span><span class="identifier">rose</span><span>(</span><span class="identifier">k</span><span>) </span><span class="identifier">andThen</span><span> </span><span class="identifier">perturb</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Now using <code>allOn</code> create a picture that combines randomnes and structure. 
+            Be as creative as you like, perhaps adding color, transparency, and other features to your image.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s the code we used to create Figure generative:volcano. 
+            It&#39;s quite a bit larger than code we&#39;ve seen up to this point, but you should understand all the components this code is built from.</p>
+            <pre><code class="nohighlight"><span class="keyword">object</span><span> </span><span class="type-name">ParametricNoise</span><span> {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">rose</span><span>(</span><span class="identifier">k</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+    (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; {
+      </span><span class="type-name">Point</span><span>.</span><span class="identifier">cartesian</span><span>((</span><span class="identifier">angle</span><span> * </span><span class="identifier">k</span><span>).</span><span class="identifier">cos</span><span> * </span><span class="identifier">angle</span><span>.</span><span class="identifier">cos</span><span>, (</span><span class="identifier">angle</span><span> * </span><span class="identifier">k</span><span>).</span><span class="identifier">cos</span><span> * </span><span class="identifier">angle</span><span>.</span><span class="identifier">sin</span><span>)
+    }
+
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">scale</span><span>(</span><span class="identifier">factor</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+    (</span><span class="identifier">pt</span><span>: </span><span class="type-name">Point</span><span>) =&gt; {
+      </span><span class="type-name">Point</span><span>.</span><span class="identifier">polar</span><span>(</span><span class="identifier">pt</span><span>.</span><span class="identifier">r</span><span> * </span><span class="identifier">factor</span><span>, </span><span class="identifier">pt</span><span>.</span><span class="identifier">angle</span><span>)
+    }
+
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">perturb</span><span>(</span><span class="identifier">point</span><span>: </span><span class="type-name">Point</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>] =
+    </span><span class="keyword">for</span><span> {
+      </span><span class="identifier">x</span><span> &lt;- </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">10</span><span>)
+      </span><span class="identifier">y</span><span> &lt;- </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">10</span><span>)
+    } </span><span class="keyword">yield</span><span> </span><span class="type-name">Point</span><span>.</span><span class="identifier">cartesian</span><span>(</span><span class="identifier">point</span><span>.</span><span class="identifier">x</span><span> + </span><span class="identifier">x</span><span>, </span><span class="identifier">point</span><span>.</span><span class="identifier">y</span><span> + </span><span class="identifier">y</span><span>) 
+
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">smoke</span><span>(</span><span class="identifier">r</span><span>: </span><span class="type-name">Normalized</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+    </span><span class="keyword">val</span><span> </span><span class="identifier">alpha</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0.5</span><span>, </span><span class="number-literal">0.1</span><span>)
+    </span><span class="keyword">val</span><span> </span><span class="identifier">hue</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">h</span><span> =&gt; (</span><span class="identifier">h</span><span> * </span><span class="number-literal">0.1</span><span>).</span><span class="identifier">turns</span><span>)
+    </span><span class="keyword">val</span><span> </span><span class="identifier">saturation</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">s</span><span> =&gt; </span><span class="identifier">s</span><span> * </span><span class="number-literal">0.8</span><span>)
+    </span><span class="keyword">val</span><span> </span><span class="identifier">lightness</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">0.4</span><span>, </span><span class="number-literal">0.1</span><span>)
+    </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> =
+      </span><span class="keyword">for</span><span> {
+        </span><span class="identifier">h</span><span> &lt;- </span><span class="identifier">hue</span><span>
+        </span><span class="identifier">s</span><span> &lt;- </span><span class="identifier">saturation</span><span>
+        </span><span class="identifier">l</span><span> &lt;- </span><span class="identifier">lightness</span><span>
+        </span><span class="identifier">a</span><span> &lt;- </span><span class="identifier">alpha</span><span>
+      } </span><span class="keyword">yield</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">hsla</span><span>(</span><span class="identifier">h</span><span>, </span><span class="identifier">s</span><span>, </span><span class="identifier">l</span><span>, </span><span class="identifier">a</span><span>)
+    </span><span class="keyword">val</span><span> </span><span class="identifier">c</span><span> = </span><span class="type-name">Random</span><span>.</span><span class="identifier">normal</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="number-literal">5</span><span>) </span><span class="identifier">map</span><span> (</span><span class="identifier">r</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">r</span><span>))
+    
+    </span><span class="keyword">for</span><span> {
+      </span><span class="identifier">circle</span><span> &lt;- </span><span class="identifier">c</span><span>
+      </span><span class="identifier">line</span><span>   &lt;- </span><span class="identifier">color</span><span>
+    } </span><span class="keyword">yield</span><span> </span><span class="identifier">circle</span><span>.</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">line</span><span>).</span><span class="identifier">noFill</span><span>
+  }
+
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">point</span><span>(
+    </span><span class="identifier">position</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span>,
+    </span><span class="identifier">scale</span><span>: </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Point</span><span>,
+    </span><span class="identifier">perturb</span><span>: </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Point</span><span>],
+    </span><span class="identifier">image</span><span>: </span><span class="type-name">Normalized</span><span> =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>],
+    </span><span class="identifier">rotation</span><span>: </span><span class="type-name">Angle</span><span>
+  ): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+    (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; {
+      </span><span class="keyword">val</span><span> </span><span class="identifier">pt</span><span> = </span><span class="identifier">position</span><span>(</span><span class="identifier">angle</span><span>)
+      </span><span class="keyword">val</span><span> </span><span class="identifier">scaledPt</span><span> = </span><span class="identifier">scale</span><span>(</span><span class="identifier">pt</span><span>)
+      </span><span class="keyword">val</span><span> </span><span class="identifier">perturbed</span><span> = </span><span class="identifier">perturb</span><span>(</span><span class="identifier">scaledPt</span><span>)
+
+      </span><span class="keyword">val</span><span> </span><span class="identifier">r</span><span> = </span><span class="identifier">pt</span><span>.</span><span class="identifier">r</span><span>.</span><span class="identifier">normalized</span><span>
+      </span><span class="keyword">val</span><span> </span><span class="identifier">img</span><span> = </span><span class="identifier">image</span><span>(</span><span class="identifier">r</span><span>)
+
+      </span><span class="keyword">for</span><span> {
+        </span><span class="identifier">i</span><span>  &lt;- </span><span class="identifier">img</span><span>
+        </span><span class="identifier">pt</span><span> &lt;- </span><span class="identifier">perturbed</span><span>
+      } </span><span class="keyword">yield</span><span> (</span><span class="identifier">i</span><span> </span><span class="identifier">at</span><span> </span><span class="identifier">pt</span><span>.</span><span class="identifier">toVec</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="identifier">rotation</span><span>))
+    }
+  }
+
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">iterate</span><span>(</span><span class="identifier">step</span><span>: </span><span class="type-name">Angle</span><span>): (</span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>]) =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+    (</span><span class="identifier">point</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>]) =&gt; {
+      </span><span class="keyword">def</span><span> </span><span class="declaration-name">iter</span><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+        </span><span class="keyword">if</span><span>(</span><span class="identifier">angle</span><span> &gt; </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span>)
+          </span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)
+        </span><span class="keyword">else</span><span>
+          </span><span class="keyword">for</span><span> {
+            </span><span class="identifier">p</span><span>  &lt;- </span><span class="identifier">point</span><span>(</span><span class="identifier">angle</span><span>)
+            </span><span class="identifier">ps</span><span> &lt;- </span><span class="identifier">iter</span><span>(</span><span class="identifier">angle</span><span> + </span><span class="identifier">step</span><span>)
+          } </span><span class="keyword">yield</span><span> (</span><span class="identifier">p</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">ps</span><span>)
+      }
+
+      </span><span class="identifier">iter</span><span>(</span><span class="type-name">Angle</span><span>.</span><span class="identifier">zero</span><span>)
+    }
+  }
+
+  </span><span class="keyword">val</span><span> </span><span class="identifier">image</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] = {
+    </span><span class="keyword">val</span><span> </span><span class="identifier">pts</span><span> =
+      </span><span class="keyword">for</span><span>(</span><span class="identifier">i</span><span> &lt;- </span><span class="number-literal">28</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">360</span><span> </span><span class="identifier">by</span><span> </span><span class="number-literal">39</span><span>) </span><span class="keyword">yield</span><span> {
+        </span><span class="identifier">iterate</span><span>(</span><span class="number-literal">1</span><span>.</span><span class="identifier">degrees</span><span>){
+          </span><span class="identifier">point</span><span>(
+            </span><span class="identifier">rose</span><span>(</span><span class="number-literal">5</span><span>),
+            </span><span class="identifier">scale</span><span>(</span><span class="identifier">i</span><span>),
+            </span><span class="identifier">perturb</span><span> </span><span class="identifier">_</span><span>,
+            </span><span class="identifier">smoke</span><span> </span><span class="identifier">_</span><span>,
+            </span><span class="identifier">i</span><span>.</span><span class="identifier">degrees</span><span>
+          )
+        }
+      }
+    </span><span class="keyword">val</span><span> </span><span class="identifier">picture</span><span> = </span><span class="identifier">pts</span><span>.</span><span class="identifier">foldLeft</span><span>(</span><span class="type-name">Random</span><span>.</span><span class="identifier">always</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>)){ (</span><span class="identifier">accum</span><span>, </span><span class="identifier">img</span><span>) =&gt;
+      </span><span class="keyword">for</span><span> {
+        </span><span class="identifier">a</span><span> &lt;- </span><span class="identifier">accum</span><span>
+        </span><span class="identifier">i</span><span> &lt;- </span><span class="identifier">img</span><span>
+      } </span><span class="keyword">yield</span><span> (</span><span class="identifier">a</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">i</span><span>)
+    }
+    </span><span class="keyword">val</span><span> </span><span class="identifier">background</span><span> = (</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">650</span><span>, </span><span class="number-literal">650</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>))
+
+    </span><span class="identifier">picture</span><span> </span><span class="identifier">map</span><span> { </span><span class="identifier">_</span><span> </span><span class="identifier">on</span><span> </span><span class="identifier">background</span><span> }
+  }
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="for.html">For Comprehensions→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

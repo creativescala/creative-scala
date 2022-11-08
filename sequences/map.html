@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Transforming Sequences</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="paths.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="stars.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="index.html">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="paths.html">Paths</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="transforming-sequences" class="title">Transforming Sequences</h1>
+            <p>We&#39;ve seen that using structural recursion we can create and transform lists. 
+            This pattern is simple to use and to understand, but it requires we write the same skeleton time and again. 
+            In this section we&#39;ll learn that we can replace structural recursion in some cases by using a method on <code>List</code> called <code>map</code>. 
+            We&#39;ll also see that other useful datatypes provide this method and we can use it as a common interface for manipulating sequences.</p>
+            
+            <h3 id="transforming-the-elements-of-a-list" class="section">Transforming the Elements of a List</h3>
+            <p>In the previous section we saw several examples where we transformed one list to another. 
+            For example, we incremented the elements of a list with the following code.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">increment</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; (</span><span class="identifier">hd</span><span> + </span><span class="number-literal">1</span><span>) :: </span><span class="identifier">tl</span><span>
+  }
+  
+</span><span class="identifier">increment</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res0: List[Int] = List(2, 2, 3)</span></code></pre>
+            <p>In this example the <em>structure</em> of the list doesn&#39;t change. 
+            If we start with three elements we end with three elements. 
+            We can abstract this pattern in a method called <code>map</code>. 
+            If we have a list with elements of type <code>A</code>, we pass <code>map</code> a function of type <code>A =&gt; B</code> and we get back a list with elements of type <code>B</code>. 
+            For example, we can implement <code>increment</code> using <code>map</code> with the function <code>x =&gt; x + 1</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">increment</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  </span><span class="identifier">list</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">1</span><span>)
+  
+</span><span class="identifier">increment</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res2: List[Int] = List(2, 3, 4)</span></code></pre>
+            <p>Each element is transformed by the function we pass to <code>map</code>, in this case <code>x =&gt; x + 1</code>. 
+            With <code>map</code> we can transform the elements, but we cannot change the number of elements in the list.</p>
+            <p>We find a graphical notation helps with understanding <code>map</code>. 
+            If we had some type <code>Circle</code> we can draw a <code>List[Circle]</code> as a box containing a circle, as shown in Figure sequences:circle-box.</p>
+            <p><img src="./src/pages/sequences/circle-box.pdf+svg" alt="A `List[Circle]` representing by a circle within a box" title="Figure Some(fig:sequences:circle-box): caption"></p>
+            <p>Now we can draw an equation for <code>map</code> as in Figure sequences:map. 
+            If you prefer symbols instead of pictures, the picture is showing that <code>List[Circle].map(Circle =&gt; Triangle) = List[Triangle]</code>. 
+            One feature of the graphical representation is it nicely illustrates that <code>map</code> cannot create a new &quot;box&quot;, which represents the structure of the list---or more concretely the number of elements and their order.</p>
+            <p><img src="./src/pages/sequences/map.pdf+svg" alt="`map` shown graphically" title="Figure Some(#fig:sequences:map): caption"></p>
+            <p>The graphical drawing of <code>map</code> exactly illustrates what holds at the type level for <code>map</code>. 
+            If we prefer we can write it down symbolically:</p>
+            <pre><code class="nohighlight"><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>].</span><span class="identifier">map</span><span>(</span><span class="type-name">A</span><span> =&gt; </span><span class="type-name">B</span><span>) = </span><span class="type-name">List</span><span>[</span><span class="type-name">B</span><span>]</span></code></pre>
+            <p>The left hand side of the equation has the type of the list we map and the function we use to do the mapping. 
+            The right hand is the type of the result. 
+            We can perform algebra with this representation, substituting in concrete types from our program.</p>
+            
+            <h3 id="transforming-sequences-of-numbers" class="section">Transforming Sequences of Numbers</h3>
+            <p>We have also written a lot of methods that transform a natural number to a list. 
+            We briefly discussed how we can represent a natural number as a list. 
+            <code>3</code> is equivalent to <code>1 + 1 + 1 + 0</code>, which in turn we could represent as <code>List(1, 1, 1)</code>. 
+            So what? 
+            Well, it means we could write a lot of the methods that accepts natural numbers as methods that worked on lists.</p>
+            <p>For example, instead of</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">fill</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">a</span><span>: </span><span class="type-name">A</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">a</span><span> :: </span><span class="identifier">fill</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">a</span><span>)
+  }
+  
+</span><span class="identifier">fill</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="string-literal">&quot;Hi&quot;</span><span>)
+</span><span class="comment">// res3: List[String] = List(&quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;)</span></code></pre>
+            <p>we could write</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">fill</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">n</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>], </span><span class="identifier">a</span><span>: </span><span class="type-name">A</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+  </span><span class="identifier">n</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">a</span><span>)
+  
+</span><span class="identifier">fill</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">1</span><span>, </span><span class="number-literal">1</span><span>), </span><span class="string-literal">&quot;Hi&quot;</span><span>)
+</span><span class="comment">// res5: List[String] = List(&quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;)</span></code></pre>
+            <p>The implementation of this version of <code>fill</code> is more convenient to write, but it is much less convenient for the user to call it with <code>List(1, 1, ,1)</code> than just writing <code>3</code>.</p>
+            <p>If we want to work with sequences of numbers we are better off using <code>Ranges</code>.
+            We can create these using the <code>until</code> method of <code>Int</code>.</p>
+            <pre><code class="nohighlight"><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="number-literal">10</span><span>
+</span><span class="comment">// res6: Range = Range(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)</span></code></pre>
+            <p><code>Ranges</code> have a <code>by</code> method that allows us to change the step
+            between consecutive elements of the range:</p>
+            <pre><code class="nohighlight"><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="number-literal">10</span><span> </span><span class="identifier">by</span><span> </span><span class="number-literal">2</span><span>
+</span><span class="comment">// res7: Range = Range(0, 2, 4, 6, 8)</span></code></pre>
+            <p><code>Ranges</code> also have a <code>map</code> method just like <code>List</code></p>
+            <pre><code class="nohighlight"><span>(</span><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="number-literal">3</span><span>) </span><span class="identifier">map</span><span> (</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">1</span><span>) 
+</span><span class="comment">// res8: IndexedSeq[Int] = Vector(1, 2, 3)</span></code></pre>
+            <p>You&#39;ll notice the result has type <code>IndexedSeq</code> and is implemented as a <code>Vector</code>---two types we haven&#39;t seen yet. 
+            We can treat an <code>IndexedSeq</code> much like a <code>List</code>, but for simplicity we can convert a <code>Range</code> or an <code>IndexedSeq</code> to a <code>List</code> using the <code>toList</code> method.</p>
+            <pre><code class="nohighlight"><span>(</span><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="number-literal">7</span><span>).</span><span class="identifier">toList</span><span>
+</span><span class="comment">// res9: List[Int] = List(0, 1, 2, 3, 4, 5, 6)
+</span><span>(</span><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="number-literal">3</span><span>).</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">1</span><span>).</span><span class="identifier">toList</span><span>
+</span><span class="comment">// res10: List[Int] = List(1, 2, 3)</span></code></pre>
+            <p>With <code>Ranges</code> in our toolbox we can write <code>fill</code> as</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">fill</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">a</span><span>: </span><span class="type-name">A</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+  (</span><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="identifier">n</span><span>).</span><span class="identifier">toList</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">a</span><span>)
+  
+</span><span class="identifier">fill</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="string-literal">&quot;Hi&quot;</span><span>)
+</span><span class="comment">// res12: List[String] = List(&quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;)</span></code></pre>
+            
+            <h3 id="ranges-over-doubles" class="section">Ranges over Doubles</h3>
+            <p>If we try to create a <code>Range</code> over <code>Double</code> we get an error.</p>
+            <pre><code class="nohighlight"><span class="number-literal">0.0</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">10.0</span><span> </span><span class="identifier">by</span><span> </span><span class="number-literal">1.0</span><span>
+</span><span class="comment">// error:
+// value to is not a member of Double
+// def ascending(n: Int): List[Int] =
+//    ^
+// error: 
+// Line is indented too far to the left, or a `}` is missing
+// error: 
+// Line is indented too far to the left, or a `}` is missing
+// error: 
+// Line is indented too far to the left, or a `}` is missing
+// error: 
+// Line is indented too far to the left, or a `}` is missing
+// error:
+// Line is indented too far to the left, or a `}` is missing
+// def double(list: List[Int]): List[Int] =
+//                                         ^
+// error:
+// Line is indented too far to the left, or a `}` is missing
+// 
+// ^</span></code></pre>
+            <p>There are two ways around this. We can use an equivalent <code>Range</code> over <code>Int</code>. In this case we could just write</p>
+            <pre><code class="nohighlight"><span class="number-literal">0</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">10</span><span> </span><span class="identifier">by</span><span> </span><span class="number-literal">1</span></code></pre>
+            <p>We can use the <code>.toInt</code> method to convert a <code>Double</code> to an <code>Int</code> if needed.</p>
+            <p>Alternatively we can write a <code>Range</code> using <code>BigDecimal</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">scala</span><span>.</span><span class="identifier">math</span><span>.</span><span class="type-name">BigDecimal</span><span>
+</span><span class="type-name">BigDecimal</span><span>(</span><span class="number-literal">0.0</span><span>) </span><span class="identifier">to</span><span> </span><span class="number-literal">10.0</span><span> </span><span class="identifier">by</span><span> </span><span class="number-literal">1.0</span></code></pre>
+            <p><code>BigDecimal</code> has methods <code>doubleValue</code> and <code>intValue</code> to get <code>Double</code> and <code>Int</code> values respectively.</p>
+            <pre><code class="nohighlight"><span class="type-name">BigDecimal</span><span>(</span><span class="number-literal">10.0</span><span>).</span><span class="identifier">doubleValue</span><span>()
+</span><span class="comment">// res16: Double = 10.0
+</span><span class="type-name">BigDecimal</span><span>(</span><span class="number-literal">10.0</span><span>).</span><span class="identifier">intValue</span><span>()
+</span><span class="comment">// res17: Int = 10</span></code></pre>
+            
+            <h4 id="exercises-1" class="section">Exercises {-}</h4>
+            
+            <h5 id="ranges-lists-and-map" class="section">Ranges, Lists, and map {-}</h5>
+            <p>Using our new tools, reimplement the following methods.</p>
+            <p>Write a method called <code>ones</code> that accepts an <code>Int</code> <code>n</code> and returns a <code>List[Int]</code> with length <code>n</code> and every element is <code>1</code>. For example</p>
+            <pre><code class="nohighlight"><span class="identifier">ones</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res18: List[Int] = List(1, 1, 1)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            We can just <code>map</code> over a <code>Range</code> to achieve this.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">ones</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  (</span><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="identifier">n</span><span>).</span><span class="identifier">toList</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="number-literal">1</span><span>)
+  
+</span><span class="identifier">ones</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res20: List[Int] = List(1, 1, 1)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>descending</code> that accepts an natural number <code>n</code> and returns a <code>List[Int]</code> containing the natural numbers from <code>n</code> to <code>1</code> or the empty list if <code>n</code> is zero. For example</p>
+            <pre><code class="nohighlight"><span class="identifier">descending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res21: List[Int] = List()
+</span><span class="identifier">descending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res22: List[Int] = List(3, 2, 1)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            We can use a <code>Range</code> but we have to set the step size or the range will be empty.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">descending</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  (</span><span class="identifier">n</span><span> </span><span class="identifier">until</span><span> </span><span class="number-literal">0</span><span> </span><span class="identifier">by</span><span> -</span><span class="number-literal">1</span><span>).</span><span class="identifier">toList</span><span>
+
+</span><span class="identifier">descending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res24: List[Int] = List()
+</span><span class="identifier">descending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res25: List[Int] = List(3, 2, 1)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>ascending</code> that accepts a natural number <code>n</code> and returns a <code>List[Int]</code> containing the natural numbers from <code>1</code> to <code>n</code> or the empty list if <code>n</code> is zero.</p>
+            <pre><code class="nohighlight"><span class="identifier">ascending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res26: List[Int] = List()
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res27: List[Int] = List(1, 2, 3)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Again we can use a <code>Range</code> but we need to take care to start at <code>0</code> and increment the elements by <code>1</code> so we have the correct number of elements.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">ascending</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] = 
+  (</span><span class="number-literal">0</span><span> </span><span class="identifier">until</span><span> </span><span class="identifier">n</span><span>).</span><span class="identifier">toList</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">1</span><span>)
+  
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res29: List[Int] = List()
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res30: List[Int] = List(1, 2, 3)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>double</code> that accepts a <code>List[Int]</code> and returns a list with each element doubled.</p>
+            <pre><code class="nohighlight"><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res31: List[Int] = List(2, 4, 6)
+</span><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">4</span><span>, </span><span class="number-literal">9</span><span>, </span><span class="number-literal">16</span><span>))
+</span><span class="comment">// res32: List[Int] = List(8, 18, 32)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is a straightforward application of <code>map</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  </span><span class="identifier">list</span><span> </span><span class="identifier">map</span><span> (</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span> * </span><span class="number-literal">2</span><span>)
+
+</span><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res34: List[Int] = List(2, 4, 6)
+</span><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">4</span><span>, </span><span class="number-literal">9</span><span>, </span><span class="number-literal">16</span><span>))
+</span><span class="comment">// res35: List[Int] = List(8, 18, 32)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h5 id="polygons-again" class="section">Polygons, Again! {-}</h5>
+            <p>Using our new tools, rewrite the <code>polygon</code> method from the previous section.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s one possible implementation. Much easier to read than the previous implementation!</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">polygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">initialRotation</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">import</span><span> </span><span class="type-name">Point</span><span>.</span><span class="identifier">_</span><span>
+  </span><span class="keyword">import</span><span> </span><span class="type-name">PathElement</span><span>.</span><span class="identifier">_</span><span>
+
+  </span><span class="keyword">val</span><span> </span><span class="identifier">step</span><span> = (</span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">sides</span><span>).</span><span class="identifier">toDegrees</span><span>.</span><span class="identifier">toInt</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">path</span><span> = 
+    (</span><span class="number-literal">0</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">360</span><span> </span><span class="identifier">by</span><span> </span><span class="identifier">step</span><span>).</span><span class="identifier">toList</span><span>.</span><span class="identifier">map</span><span>{ </span><span class="identifier">deg</span><span> =&gt; 
+      </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">initialRotation</span><span> + </span><span class="identifier">deg</span><span>.</span><span class="identifier">degrees</span><span>))
+    }
+    
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">initialRotation</span><span>)) :: </span><span class="identifier">path</span><span>)
+}</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h5 id="challenge-exercise-beyond-map" class="section">Challenge Exercise: Beyond Map {-}</h5>
+            <p>Can we use <code>map</code> to replace all uses of structural recursion? 
+            If not, can you characterise the problems that we can&#39;t implement with <code>map</code> but can implement with general structural recursion over lists?</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            We&#39;ve seen many examples that we cannot implement with <code>map</code>: the methods <code>product</code>, <code>sum</code>, <code>find</code>, and more in the previous section cannot be implemented with <code>map</code>.</p>
+            <p>In abstract, methods implemented with map obey the following equation:</p>
+            <pre><code class="bash">List[A] map A =&gt; B = List[B]</code></pre>
+            <p>If the result is not of type <code>List[B]</code> we cannot implement it with <code>map</code>. 
+            For example, methods like <code>product</code> and <code>sum</code> transform <code>List[Int]</code> to <code>Int</code> and so cannot be implemented with <code>map</code>.</p>
+            <p><code>Map</code> transforms the elements of a list, but cannot change the number of elements in the result. 
+            Even if a method fits the equation for <code>map</code> above it cannot be implemented with <code>map</code> if it requires changing the number of elements in the list.
+            &lt;/div&gt;</p>
+            
+            <h3 id="tools-with-ranges" class="section">Tools with Ranges</h3>
+            <p>We&#39;ve seen the <code>until</code> method to construct <code>Ranges</code>, and the <code>by</code> method to change the increment in a <code>Range</code>. 
+            There is one more method that will be useful to know about: <code>to</code>. 
+            This constructs a <code>Range</code> like <code>until</code> but the <code>Range</code> includes the endpoint. 
+            Compare</p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> </span><span class="identifier">until</span><span> </span><span class="number-literal">5</span><span>
+</span><span class="comment">// res37: Range = Range(1, 2, 3, 4)
+</span><span class="number-literal">1</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">5</span><span>
+</span><span class="comment">// res38: Inclusive = Range(1, 2, 3, 4, 5)</span></code></pre>
+            <p>In technical terms, the <code>Range</code> constructed with <code>until</code> is a <em>half-open interval</em>, while the range constructed with <code>to</code> is an <em>open interval</em>.</p>
+            
+            <h4 id="exercises-2" class="section">Exercises {-}</h4>
+            
+            <h5 id="using-open-intervals" class="section">Using Open Intervals {-}</h5>
+            <p>Write a method <code>ascending</code> that accepts a natural number <code>n</code> and returns a <code>List[Int]</code> containing the natural numbers from <code>1</code> to <code>n</code> or the empty list if <code>n</code> is zero. 
+            <em>Hint:</em> use <code>to</code></p>
+            <pre><code class="nohighlight"><span class="identifier">ascending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res39: List[Int] = List()
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res40: List[Int] = List(1, 2, 3)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Now that we now about <code>to</code> this is trivial to implement.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">ascending</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] = 
+  (</span><span class="number-literal">1</span><span> </span><span class="identifier">to</span><span> </span><span class="identifier">n</span><span>).</span><span class="identifier">toList</span><span>
+  
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res42: List[Int] = List()
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res43: List[Int] = List(1, 2, 3)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="stars.html">My God, It&#39;s Full of Stars!→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

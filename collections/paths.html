@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Drawing Paths</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="transform.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="take-home-points.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="index.html">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="transform.html">Transforming Sequences</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="drawing-paths" class="title">Drawing Paths</h1>
+            <p>Doodle provides another type of <code>Image</code> that makes particular use of sequences.
+            <code>Paths</code> represent arbitrary shapes created using sequences of pen movements:</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">image</span><span> = </span><span class="type-name">OpenPath</span><span>(</span><span class="type-name">List</span><span>(
+  </span><span class="type-name">MoveTo</span><span>(</span><span class="type-name">Vec</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">0</span><span>).</span><span class="identifier">toPoint</span><span>),
+  </span><span class="type-name">LineTo</span><span>(</span><span class="type-name">Vec</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">0</span><span>).</span><span class="identifier">toPoint</span><span>),
+  </span><span class="type-name">LineTo</span><span>(</span><span class="type-name">Vec</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">100</span><span>).</span><span class="identifier">toPoint</span><span>),
+  </span><span class="type-name">BezierCurveTo</span><span>(</span><span class="type-name">Vec</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">0</span><span>).</span><span class="identifier">toPoint</span><span>, </span><span class="type-name">Vec</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">100</span><span>).</span><span class="identifier">toPoint</span><span>, </span><span class="type-name">Vec</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">0</span><span>).</span><span class="identifier">toPoint</span><span>)
+))
+</span><span class="comment">// image: Path = // ...
+</span><span>
+</span><span class="identifier">image</span><span>.</span><span class="identifier">draw</span></code></pre>
+            <p><img src="src/pages/collections/path.png" alt="An example Path" title="Figure None: caption"></p>
+            <p>Pen movements come in three varieties:</p>
+            <ul>
+              <li><code>MoveTo(point)</code>---move the pen to <code>point</code> without drawing a line;</li>
+            </ul>
+            <ul>
+              <li><code>LineTo(point)</code>---move the pen to <code>point</code> drawing a straight line;</li>
+            </ul>
+            <ul>
+              <li><code>BezierCurveTo(cp1, cp2, point)</code>---move the pen to <code>point</code> drawing a bezier
+              curve---<code>cp1</code> and <code>cp2</code> are &quot;control points&quot; determining the shape of the curve.</li>
+            </ul>
+            <p>The arguments in each case are objects of type <code>Vec</code>, which are 2D vectors representing <code>x,y</code> points (the name <code>Vector</code> is already taken by the <code>scala.collection.Vector</code> class). There are various ways we can create and transform <code>Vecs</code>:</p>
+            <hr>
+            <p>Code                       Result    Description                     Example
+            -------------------------- --------- ------------------------------- -----------------------------------
+            <code>Vec(num, num)</code>            <code>Vec</code>     Create a vector using           <code>Vec(3, 4)</code>
+                                                 <code>x,y</code> coordinates</p>
+            <p><code>Vec.polar(angle, length)</code> <code>Vec</code>     Create a vector using           <code>Vec.polar(30.degrees, 100)</code>
+                                                 polar coordinates</p>
+            <p><code>Vec.zero</code>                 <code>Vec</code>     A zero vector (<code>0,0</code>)           <code>Vec.zero</code></p>
+            <p><code>Vec.unitX</code>                <code>Vec</code>     A unit X vector (<code>1,0</code>)         <code>Vec.unitX</code></p>
+            <p><code>Vec.unitY</code>                <code>Vec</code>     A unit Y vector (<code>0,1</code>)         <code>Vec.unitY</code></p>
+            <p><code>vec * num</code>                <code>Vec</code>     Multiply <code>vec</code> by <code>num</code>         <code>Vec(2, 1) * 10</code></p>
+            <p><code>vec / num</code>                <code>Vec</code>     Divide <code>vec</code> by <code>num</code>           <code>Vec(20, 10) / 10</code></p>
+            <p><code>vec + vec</code>                <code>Vec</code>     Add vectors                     <code>Vec(2, 1) + Vec(1, 3)</code></p>
+            <p><code>vec - vec</code>                <code>Vec</code>     Subtract vectors                <code>Vec(5, 5) - Vec(2, 1)</code></p>
+            <p><code>vec rotate angle</code>         <code>Vec</code>     Rotate anticlockwise by <code>angle</code> <code>Vec(5, 5) rotate 45.degrees</code></p>
+            <p><code>vec.x</code>                    <code>Double</code>  Get the X component of <code>vec</code>    <code>Vec(3, 4).x</code></p>
+            <p><code>vec.x</code>                    <code>Double</code>  Get the Y component of <code>vec</code>    <code>Vec(3, 4).y</code></p>
+            <p><code>vec.length</code>               <code>Double</code>  Get the length of <code>vec</code>Vec(3, 4).length`</p>
+            <hr>
+            <p>We can use these operations to create paths quickly by adding vectors. Notice how we start the shape with a <code>MoveTo</code> element (all paths implicitly start at the origin). This is a very common pattern.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">elements</span><span> = (</span><span class="number-literal">0</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">360</span><span> </span><span class="identifier">by</span><span> </span><span class="number-literal">36</span><span>).</span><span class="identifier">map</span><span> { </span><span class="identifier">angle</span><span> =&gt;
+  </span><span class="keyword">val</span><span> </span><span class="identifier">point</span><span> = (</span><span class="type-name">Vec</span><span>.</span><span class="identifier">unitX</span><span> * </span><span class="number-literal">100</span><span>) </span><span class="identifier">rotate</span><span> </span><span class="identifier">angle</span><span>.</span><span class="identifier">degrees</span><span> </span><span class="identifier">toPoint</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">element</span><span> =
+    </span><span class="keyword">if</span><span>(</span><span class="identifier">angle</span><span> == </span><span class="number-literal">0</span><span>)
+      </span><span class="type-name">MoveTo</span><span>(</span><span class="identifier">point</span><span>)
+    </span><span class="keyword">else</span><span>
+      </span><span class="type-name">LineTo</span><span>(</span><span class="identifier">point</span><span>)
+  </span><span class="identifier">element</span><span>
+}
+</span><span class="comment">// elements: scala.collection.immutable.IndexedSeq[doodle.core.PathElement] = // ...
+</span><span>
+</span><span class="keyword">val</span><span> </span><span class="identifier">decagon</span><span> = </span><span class="type-name">OpenPath</span><span>(</span><span class="identifier">elements</span><span>)
+</span><span class="comment">// decagon: doodle.core.Path = // ...
+</span><span>
+</span><span class="identifier">decagon</span><span>.</span><span class="identifier">draw</span></code></pre>
+            <p><img src="src/pages/collections/decagon.png" alt="A Decagon" title="Figure None: caption"></p>
+            
+            <h3 id="exercise-my-god-it-s-full-of-stars" class="section">Exercise: My God, It&#39;s Full of Stars!</h3>
+            <p>Let&#39;s use this pattern to draw some stars.
+            For the purpose of this exercise let&#39;s assume that a star is a polygon with <code>p</code> points.
+            However, instead of connecting each point to its neighbours,
+            we&#39;ll connect them to the <code>nth</code> point around the circumference.</p>
+            <p>For example, the diagram below shows stars with <code>p=11</code> and <code>n=1 to 5</code>.
+            <code>n=1</code> produces a regular polygon while
+            values of <code>n</code> from <code>2</code> upwards produce stars with increasingly sharp points:</p>
+            <p><img src="src/pages/collections/stars.png" alt="Stars with `p=11` and `n=1 to 5`" title="Figure None: caption"></p>
+            <p>Write code to draw the diagram above.
+            Start by writing a method to draw a <code>star</code> given <code>p</code> and <code>n</code>:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">star</span><span>(</span><span class="identifier">p</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> =
+  ???</span></code></pre>
+            <p>Create the points for your star using ranges and <code>Vec.polar</code>:</p>
+            <p><img src="src/pages/collections/polar.pdf+svg" alt="Polar coordinates on a 5 pointed polygon" title="Figure None: caption"></p>
+            <p>Use your choice of recursion and <code>beside</code> or iteration and <code>allBeside</code> to create the row of stars.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s the <code>star</code> method. We&#39;ve renamed <code>p</code> and <code>n</code> to <code>points</code> and <code>skip</code> for clarity:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">star</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">skip</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>) = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">centerAngle</span><span> = </span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span> * </span><span class="identifier">skip</span><span> / </span><span class="identifier">sides</span><span>
+
+  </span><span class="keyword">val</span><span> </span><span class="identifier">elements</span><span> = (</span><span class="number-literal">0</span><span> </span><span class="identifier">to</span><span> </span><span class="identifier">sides</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">index</span><span> =&gt;
+    </span><span class="keyword">val</span><span> </span><span class="identifier">point</span><span> = </span><span class="type-name">Vec</span><span>.</span><span class="identifier">polar</span><span>(</span><span class="identifier">centerAngle</span><span> * </span><span class="identifier">index</span><span>, </span><span class="identifier">radius</span><span>)
+    </span><span class="keyword">if</span><span>(</span><span class="identifier">index</span><span> == </span><span class="number-literal">0</span><span>)
+      </span><span class="type-name">MoveTo</span><span>(</span><span class="identifier">point</span><span>)
+    </span><span class="keyword">else</span><span> 
+      </span><span class="type-name">LineTo</span><span>(</span><span class="identifier">point</span><span>)
+  }
+
+  </span><span class="type-name">Path</span><span>(</span><span class="identifier">elements</span><span>) </span><span class="identifier">strokeWidth</span><span> </span><span class="number-literal">2</span><span>
+}</span></code></pre>
+            <p>We&#39;ll use <code>allBeside</code> to create the row of stars.
+            We only need to use values of <code>skip</code>
+            from <code>1</code> to <code>sides/2</code> rounded down:</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">allBeside</span><span>((</span><span class="number-literal">1</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">5</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">skip</span><span> =&gt;
+  </span><span class="identifier">star</span><span>(</span><span class="identifier">sides</span><span>, </span><span class="identifier">skip</span><span>, </span><span class="number-literal">100</span><span>)
+})).</span><span class="identifier">draw</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>When you&#39;ve finished your row of stars,
+            try constructing a larger image from different values of <code>p</code> and <code>n</code>.
+            Here&#39;s an example:</p>
+            <p><img src="src/pages/collections/stars2.png" alt="Stars with `p=3 to 33 by 2` and `n=1 to p/2`" title="Figure None: caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            To create the image above, we started by adding colours
+            and a chunkier outline to the definition of <code>star</code>:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">star</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">skip</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>) = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">centerAngle</span><span> = </span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span> * </span><span class="identifier">skip</span><span> / </span><span class="identifier">sides</span><span>
+
+  </span><span class="keyword">val</span><span> </span><span class="identifier">elements</span><span> = (</span><span class="number-literal">0</span><span> </span><span class="identifier">to</span><span> </span><span class="identifier">sides</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">index</span><span> =&gt;
+    </span><span class="keyword">val</span><span> </span><span class="identifier">point</span><span> = </span><span class="type-name">Vec</span><span>.</span><span class="identifier">polar</span><span>(</span><span class="identifier">centerAngle</span><span> * </span><span class="identifier">index</span><span>, </span><span class="identifier">radius</span><span>).</span><span class="identifier">toPoint</span><span>
+    </span><span class="keyword">if</span><span>(</span><span class="identifier">index</span><span> == </span><span class="number-literal">0</span><span>)
+      </span><span class="type-name">MoveTo</span><span>(</span><span class="identifier">point</span><span>)
+    </span><span class="keyword">else</span><span>
+      </span><span class="type-name">LineTo</span><span>(</span><span class="identifier">point</span><span>)
+  }
+
+  </span><span class="type-name">OpenPath</span><span>(</span><span class="identifier">elements</span><span>).
+    </span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">2</span><span>).
+    </span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="identifier">centerAngle</span><span>, </span><span class="number-literal">1</span><span>.</span><span class="identifier">normalized</span><span>, </span><span class="number-literal">.25</span><span>.</span><span class="identifier">normalized</span><span>)).
+    </span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="identifier">centerAngle</span><span>, </span><span class="number-literal">1</span><span>.</span><span class="identifier">normalized</span><span>, </span><span class="number-literal">.75</span><span>.</span><span class="identifier">normalized</span><span>))
+}</span></code></pre>
+            <p>The updated scene then becomes:</p>
+            <pre><code class="nohighlight"><span class="identifier">allAbove</span><span>((</span><span class="number-literal">3</span><span> </span><span class="identifier">to</span><span> </span><span class="number-literal">33</span><span> </span><span class="identifier">by</span><span> </span><span class="number-literal">2</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">sides</span><span> =&gt;
+  </span><span class="identifier">allBeside</span><span>((</span><span class="number-literal">1</span><span> </span><span class="identifier">to</span><span> </span><span class="identifier">sides</span><span>/</span><span class="number-literal">2</span><span>) </span><span class="identifier">map</span><span> { </span><span class="identifier">skip</span><span> =&gt;
+    </span><span class="identifier">star</span><span>(</span><span class="identifier">sides</span><span>, </span><span class="identifier">skip</span><span>, </span><span class="number-literal">20</span><span>)
+  })
+})</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="take-home-points.html">Take Home Points→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

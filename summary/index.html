@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Summary</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="../data/data.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="../fp/">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 active nav-leaf"><a href="#">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="summary" class="title">Summary</h1>
+            <p>In this text we have covered a handful of the essential
+            functional programming tools available in Scala.</p>
+            
+            <h2 id="representations-and-interpreters" class="section">Representations and Interpreters</h2>
+            <p>We started by writing expressions to create and compose images.
+            Each program we wrote went through two distinct phases:</p>
+            <ol class="arabic">
+              <li>Build an <code>Image</code></li>
+            </ol>
+            <ol class="arabic">
+              <li>Call the <code>draw</code> method to display the image</li>
+            </ol>
+            <p>This process demonstrates two important functional programming patterns:
+            <em>building intermediate representations</em> of the result we want,
+            and <em>interpreting the representations</em> to produce output.</p>
+            
+            <h2 id="abstraction" class="section">Abstraction</h2>
+            <p>Building an intermediate representation allows
+            us to only model the aspects of the result that we consider important
+            and <em>abstract</em> irrelevant details.</p>
+            <p>For example, Doodle directly represents the primitive shapes
+            and geometric relationships in our drawings,
+            without worrying about implementation details such as screen coordinates.
+            This keeps our code clear and maintainable,
+            and limits the number of &quot;magic numbers&quot; we need to write.
+            For example, it is a lot easier to determine
+            that this Doodle program produces a house:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">myImage</span><span>: </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Triangle</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>) </span><span class="identifier">above</span><span> </span><span class="type-name">Rectangle</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>)
+</span><span class="comment">// myImage: Image = // ...</span></code></pre>
+            <p>than this implementation in Java2D:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">drawImage</span><span>(</span><span class="identifier">g</span><span>: </span><span class="type-name">Graphics2D</span><span>): </span><span class="type-name">Unit</span><span> = {
+  </span><span class="identifier">g</span><span>.</span><span class="identifier">setStroke</span><span>(</span><span class="keyword">new</span><span> </span><span class="type-name">BasicStroke</span><span>(</span><span class="number-literal">1.0f</span><span>))
+  </span><span class="identifier">g</span><span>.</span><span class="identifier">setPaint</span><span>(</span><span class="keyword">new</span><span> </span><span class="type-name">Color</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">0</span><span>, </span><span class="number-literal">0</span><span>))
+  </span><span class="keyword">val</span><span> </span><span class="identifier">path</span><span> = </span><span class="keyword">new</span><span> </span><span class="type-name">Path2D</span><span>.</span><span class="type-name">Double</span><span>()
+  </span><span class="identifier">path</span><span>.</span><span class="identifier">moveTo</span><span>(</span><span class="number-literal">25</span><span>, </span><span class="number-literal">0</span><span>)
+  </span><span class="identifier">path</span><span>.</span><span class="identifier">lineTo</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>)
+  </span><span class="identifier">path</span><span>.</span><span class="identifier">lineTo</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">50</span><span>)
+  </span><span class="identifier">path</span><span>.</span><span class="identifier">lineTo</span><span>(</span><span class="number-literal">25</span><span>, </span><span class="number-literal">0</span><span>)
+  </span><span class="identifier">path</span><span>.</span><span class="identifier">closePath</span><span>()
+  </span><span class="identifier">g</span><span>.</span><span class="identifier">draw</span><span>(</span><span class="identifier">path</span><span>)
+  </span><span class="identifier">f</span><span>.</span><span class="identifier">drawRect</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>)
+}</span></code></pre>
+            <p>It&#39;s important to realise that all of the imperative Java2D
+            code is still present in Doodle.
+            The difference is we have hidden it away into the <code>draw</code> method.
+            <code>draw</code> acts as <em>interpreter</em> for our <code>Images</code>,
+            filling in all of the details about coordinates, paths,
+            and graphics contexts that we don&#39;t want to think about in our code.</p>
+            <p>Separating the immediate value and the interpreter
+            also allows us to change how interpretation is performed.
+            Doodle already comes with two interpreters,
+            one of which draws in the Java2D framework
+            while the other draws in the HTML canvas.
+            You can image yet more interpreters to, for example,
+            achieve artistic effects such as drawing images in a hand-drawn style.</p>
+            
+            <h2 id="composition" class="section">Composition</h2>
+            <p>In addition to making our programs clearer,
+            the functional approach employed by Doodle
+            allows us to <em>compose</em> images from other images.
+            For example, we can re-use our house to draw a street:</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">house</span><span> = </span><span class="type-name">Triangle</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>) </span><span class="identifier">above</span><span> </span><span class="type-name">Rectangle</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">50</span><span>)
+</span><span class="comment">// house: Image = // ...
+</span><span>
+</span><span class="keyword">val</span><span> </span><span class="identifier">street</span><span> = </span><span class="identifier">house</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">house</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">house</span><span>
+</span><span class="comment">// street: Image = // ...</span></code></pre>
+            <p>The <code>Image</code> and <code>Color</code> values we create are immutable
+            so we can easily re-use a single <code>house</code> three times within the same image.</p>
+            <p>This approach allows us to break down a complex image into simpler parts
+            that we then combine together to create the desired result.</p>
+            <p>Reusing immutable data, a technique called <em>structure sharing</em>,
+            is the basis of many fast, memory efficient immutable data structures.
+            The quintissential example in Doodle is the Sierpinski triangle
+            where we re-used a single <code>Triangle</code> object to represent an image
+            containing nearly 20,000 distinct coloured triangles.</p>
+            
+            <h2 id="expression-oriented-programming" class="section">Expression-Oriented Programming</h2>
+            <p>Scala provides convenient syntax to simplify
+            creating data structures in a functional manner.
+            Constructs such as conditionals, loops, and blocks are <em>expressions</em>,
+            allowing us to write short method bodies without
+            declaring lots of intermediate variables.
+            We quickly adopt a pattern of writing short methods
+            whose main purpose is to return a value,
+            so omitting the <code>return</code> keyword is also a useful shorthand.</p>
+            
+            <h2 id="types-are-a-safety-net" class="section">Types are a Safety Net</h2>
+            <p>Scala&#39;s type system helps us by checking our code.
+            Every expression has a type that is checked at compile time
+            to see if it matches up with its surroundings.
+            We can even define our own types with the explicit purpose
+            of stopping ourselves from making mistakes.</p>
+            <p>A simple example of this is Doodle&#39;s <code>Angle</code> type,
+            which prevents us confusing numbers and angles,
+            and degrees and radians:</p>
+            <pre><code class="nohighlight"><span class="number-literal">90</span><span>
+</span><span class="comment">// res0: Int = 90
+</span><span>
+</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>
+</span><span class="comment">// res1: doodle.core.Angle = Angle(1.5707963267948966)
+</span><span>
+</span><span class="number-literal">90</span><span>.</span><span class="identifier">radians</span><span>
+</span><span class="comment">// res2: doodle.core.Angle = Angle(2.0354056994857643)
+</span><span>
+</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span> + </span><span class="number-literal">90</span><span>.</span><span class="identifier">radians</span><span>
+</span><span class="comment">// res3: doodle.core.Angle = Angle(3.606202026280661)
+</span><span>
+</span><span class="number-literal">90</span><span> + </span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>
+</span><span class="comment">// &lt;console&gt;:20: error: overloaded method value + with alternatives:
+//   (x: Double)Double &lt;and&gt;
+//   (x: Float)Float &lt;and&gt;
+//   (x: Long)Long &lt;and&gt;
+//   (x: Int)Int &lt;and&gt;
+//   (x: Char)Int &lt;and&gt;
+//   (x: Short)Int &lt;and&gt;
+//   (x: Byte)Int &lt;and&gt;
+//   (x: String)String
+// cannot be applied to (doodle.core.Angle)
+//              90 + 90.degrees
+//                 ^</span></code></pre>
+            
+            <h2 id="functions-as-values" class="section">Functions as Values</h2>
+            <p>We spent a lot of time writing methods to produce values.
+            Methods let us abstract over parameters.
+            For example, the method below abstracts over colours
+            to produce different coloured dots:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">dot</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Circle</span><span>(</span><span class="number-literal">10</span><span>) </span><span class="identifier">strokeWidth</span><span> </span><span class="number-literal">0</span><span> </span><span class="identifier">fillColor</span><span> </span><span class="identifier">color</span><span>
+</span><span class="comment">// dot: Color =&gt; Image = // ...</span></code></pre>
+            <p>Coming from object oriented languages,
+            methods are nothing special.
+            More interesting is Scala&#39;s ability to turn methods into <em>functions</em>
+            that can be passed around as values:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">spectrum</span><span>(</span><span class="identifier">shape</span><span>: </span><span class="type-name">Color</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">shape</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>) </span><span class="identifier">beside</span><span> </span><span class="identifier">shape</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>) </span><span class="identifier">beside</span><span> </span><span class="identifier">shape</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">green</span><span>)
+</span><span class="comment">// spectrum: (Color =&gt; Image) =&gt; Image = // ...
+</span><span>
+</span><span class="identifier">spectrum</span><span>(</span><span class="identifier">dot</span><span>)
+</span><span class="comment">// res0: Image = // ...</span></code></pre>
+            <p>We wrote a number of programs that used functions as values,
+            but the quintissential example was the <code>map</code> method of <code>List</code>.
+            In the Collections chapter we saw
+            how <code>map</code> lets us transform sequences without allocating
+            and pushing values onto intermediate buffers:</p>
+            <pre><code class="nohighlight"><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>).</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span> * </span><span class="number-literal">2</span><span>)
+</span><span class="comment">// res0: List[Int] = List(2, 4, 6)</span></code></pre>
+            <p>Functions, and their first class status as values,
+            are hugely important for writing simple, boilerplate-free code.</p>
+            
+            <h2 id="final-words" class="section">Final Words</h2>
+            <p>The intention of this book has been to introduce you
+            to the functional parts of Scala.
+            These are what differentiate Scala from
+            older commercial languages such as Java and C.
+            However, this is only part of Scala&#39;s story.
+            Many modern languages support functional programming,
+            including Ruby, Python, Javascript, and Clojure.
+            How does Scala relate to these languages,
+            and why would you want to choose it over
+            the other available options?</p>
+            <p>Perhaps the most significant draw to Scala is its type system.
+            This distinguishes Scala from popular languages
+            such as Ruby, Python, Javascript, and Clojure, which are dynamically typed.
+            Having static types in a language is undeniably a trade-off---writing
+            code is slower because we have to satisfy the compiler at every stage.
+            However, once our code compiles we gain
+            confidence about its quality.</p>
+            <p>Another major draw is Scala&#39;s blending of
+            object-oriented and functional programming paradigms.
+            We saw a little of this in the first chapter---every value is an object
+            with methods, fields, and a class (its type).
+            However, we haven&#39;t created any of our own data types in this book.
+            Creating types is synonymous with declaring classes,
+            and Scala supports a full gamut of features
+            such as classes, traits, interitance, and generics.</p>
+            <p>Finally, a major benefit of Scala is its compatibility with Java.
+            In many ways Scala can be seen as a superset of Java,
+            and interoperation between the two languages is quite straightforward.
+            This opens up a world of Java libraries to our Scala applications,
+            and allows flexibility when translating Java applications to Scala.</p>
+            
+            <h2 id="next-steps" class="section">Next Steps</h2>
+            <p>We hope you enjoyed Creative Scala and drawing diagrams with Doodle.
+            If you would like to learn more about Scala,
+            we recommend that you pick one of the many great books available on the language.</p>
+            <p>Our own book, <a href="http://underscore.io/training/courses/essential-scala">Essential Scala</a>, is available from our web site
+            and continues Creative Scala&#39;s approach of teaching Scala by
+            discussing and demonstrating core design patterns and the benefits they offer.</p>
+            <p>If you want to challenge yourself,
+            try drawing something more complex with Doodle and
+            sharing it with us via <a href="https://gitter.im/underscoreio/scala">Gitter</a>.
+            There are lots of things you can try---check the <code>examples</code> directory
+            in the Doodle codebase for some suggestions:</p>
+            <p><img src="src/pages/summary/koch.png" alt="Koch Triangle (Koch.scala)" title="Figure None: caption"></p>
+            <p><img src="src/pages/summary/street.png" alt="Suburban Scene (Street.scala)" title="Figure None: caption"></p>
+            <p><img src="src/pages/summary/mandelbrot.png" alt="Mandelbrot Fractal by Mat Moore (Mandelbrot.scala)" title="Figure None: caption"></p>
+
+        </main>
+        <p class="nextPage"><a href="../fp/">(Functional) Programming→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

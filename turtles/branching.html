@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Branching Structures</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="exercises.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="../solutions.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="index.html">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="branching-structures" class="title">Branching Structures</h1>
+            <p>&lt;div class=&quot;callout callout-info&quot;&gt;
+            In addition to the standard imports given at the start of the chapter, in this section we&#39;re assuming the following:</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">turtle</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">turtle</span><span>.</span><span class="type-name">Instruction</span><span>.</span><span class="identifier">_</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Using the <code>branch</code> turtle instruction we can explore some shapes that are difficult to create without it. The <code>branch</code> instruction takes a <code>List[Instruction]</code>. It saves the current state of the turtle (it&#39;s location and heading), draws the given instructions, and returns the turtle to the saved state.</p>
+            <p>Consider the code below, which creates the image in Figure turtles:y. This is easy to draw with a branching turtle, but quite involved to create with just a path.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">y</span><span> = </span><span class="type-name">Turtle</span><span>.</span><span class="identifier">draw</span><span>(</span><span class="type-name">List</span><span>(
+          </span><span class="identifier">forward</span><span>(</span><span class="number-literal">100</span><span>),
+          </span><span class="identifier">branch</span><span>(</span><span class="identifier">turn</span><span>(</span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>), </span><span class="identifier">forward</span><span>(</span><span class="number-literal">100</span><span>)),
+          </span><span class="identifier">branch</span><span>(</span><span class="identifier">turn</span><span>(-</span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>), </span><span class="identifier">forward</span><span>(</span><span class="number-literal">100</span><span>)))
+        )
+</span><span class="comment">// y: Image = OpenPath(
+//   elements = List(
+//     MoveTo(to = Cartesian(x = 0.0, y = 0.0)),
+//     MoveTo(to = Cartesian(x = 0.0, y = 0.0)),
+//     LineTo(to = Cartesian(x = 100.0, y = 0.0)),
+//     LineTo(to = Cartesian(x = 170.71067811865476, y = 70.71067811865474)),
+//     MoveTo(to = Cartesian(x = 100.0, y = 0.0)),
+//     LineTo(to = Cartesian(x = 170.71067811865476, y = -70.71067811865474)),
+//     MoveTo(to = Cartesian(x = 100.0, y = 0.0))
+//   )
+// )</span></code></pre>
+            <p><img src="src/pages/turtles/y.pdf+svg" alt="An image that is easy to create with a branching turtle, and comparatively difficult to create without." title="Figure Some(#fig:turtles:y): caption"></p>
+            <p>Using branching we can model some forms of biological growth, producing, for example, images of plants as in Figure turtles:plant. One particular model is known as an <em>L-system</em>. An L-system has consists of two parts:</p>
+            <ul>
+              <li>an initial <em>seed</em> to start the growth; and</li>
+              <li><em>rewrite rules</em>, which specify how the growth occurs.</li>
+            </ul>
+            <p>A specific example of this process is shown in Figure turtles:branches. The figure on the left hand side is the seed. The rewrite rules are:</p>
+            <ul>
+              <li>each straight line doubles in size; and</li>
+              <li>a bud (the diamond at the end of a line) grows into two branches that end with buds.</li>
+            </ul>
+            <p><img src="src/pages/turtles/branches.pdf+svg" alt="Modelling the growth of a plant using rewrite rules." title="Figure Some(#fig:turtles:branches): caption"></p>
+            <p>Concretely, we can write these rules as a transformation on <code>Instruction</code> assuming that we use <code>NoOp</code> to represent a bud.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">stepSize</span><span> = </span><span class="number-literal">10</span><span>
+</span><span class="comment">// stepSize: Int = 10
+</span><span>
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">rule</span><span>(</span><span class="identifier">i</span><span>: </span><span class="type-name">Instruction</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>] =
+  </span><span class="identifier">i</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Forward</span><span>(</span><span class="identifier">_</span><span>) =&gt; </span><span class="type-name">List</span><span>(</span><span class="identifier">forward</span><span>(</span><span class="identifier">stepSize</span><span>), </span><span class="identifier">forward</span><span>(</span><span class="identifier">stepSize</span><span>))
+    </span><span class="keyword">case</span><span> </span><span class="type-name">NoOp</span><span> =&gt; 
+      </span><span class="type-name">List</span><span>(</span><span class="identifier">branch</span><span>(</span><span class="identifier">turn</span><span>(</span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>), </span><span class="identifier">forward</span><span>(</span><span class="identifier">stepSize</span><span>), </span><span class="identifier">noop</span><span>), 
+           </span><span class="identifier">branch</span><span>(</span><span class="identifier">turn</span><span>(-</span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>), </span><span class="identifier">forward</span><span>(</span><span class="identifier">stepSize</span><span>), </span><span class="identifier">noop</span><span>))
+    </span><span class="keyword">case</span><span> </span><span class="identifier">other</span><span> =&gt; </span><span class="type-name">List</span><span>(</span><span class="identifier">other</span><span>)
+  }</span></code></pre>
+            <p>Note how we used pattern matching on <code>Instruction</code>, like we have on the other algebraic data types---natural numbers and <code>List</code>---we&#39;ve seen so far. By importing <code>doodle.turtle.Instruction._</code> we can access all the patterns for <code>Instruction</code>, which are</p>
+            <ul>
+              <li><code>Forward(distance)</code>, where <code>distance</code> is a <code>Double</code>;</li>
+              <li><code>Turn(angle)</code>, where <code>angle</code> is an <code>Angle</code>;</li>
+              <li><code>NoOp</code>; and</li>
+              <li><code>Branch(instructions)</code>, where <code>instructions</code> is a <code>List[Instruction]</code>.</li>
+            </ul>
+            <p>As a function, <code>rule</code> has type <code>Instruction =&gt; List[Instruction]</code>, as we&#39;re potentially transforming each instruction into several instructions (as we do in the case of <code>Forward</code>). Now how can we actually apply this rule to a <code>List[Instruction]</code> to create a <code>List[Instruction]</code> (for example, applying it to <code>List[noop]</code>)? Can we use <code>map</code>?</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            In this case <code>map</code> is not the right solution, as the types tell us. Remember the type equation for <code>map</code> is</p>
+            <pre><code class="nohighlight"><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] </span><span class="identifier">map</span><span> (</span><span class="type-name">A</span><span> =&gt; </span><span class="type-name">B</span><span>) = </span><span class="type-name">List</span><span>[</span><span class="type-name">B</span><span>]</span></code></pre>
+            <p>If
+            - we have <code>List[Instruction]</code>; and
+            - we <code>map</code> a function <code>Instruction =&gt; List[Instruction]</code>; then
+            - we&#39;ll get a <code>List[List[Instruction]]</code></p>
+            <p>as we can see from the type equation.</p>
+            <p>Our turtle doesn&#39;t know how to draw <code>List[List[Instruction]]</code> so this won&#39;t work.
+            &lt;/div&gt;</p>
+            <p>There is a method <code>flatten</code> on <code>List</code>, which will convert a <code>List[List[A]]</code> to <code>List[A]</code>. We <em>could</em> use a combination of <code>map</code> and <code>flatten</code> but we have a better solution. This pattern comes up enough---and in different contexts which we&#39;ll see later---that there is a method just to handle it. The method is called <code>flatMap</code>.</p>
+            <p>The type equation for <code>flatMap</code> is</p>
+            <pre><code class="nohighlight"><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] </span><span class="identifier">flatMap</span><span> (</span><span class="type-name">A</span><span> =&gt; </span><span class="type-name">List</span><span>[</span><span class="type-name">B</span><span>]) = </span><span class="type-name">List</span><span>[</span><span class="type-name">B</span><span>]</span></code></pre>
+            <p>and this is illustrated graphically in Figure turtles:flatMap. We can see that <code>flatMap</code> has the right type to combine <code>rule</code> with <code>List[Instruction]</code> to create a rewritten <code>List[Instruction]</code>.</p>
+            <p><img src="flatMap.svg" alt="The type equation for flatMap illustrated graphically." title="Figure Some(fig:turtles:flatMap): caption"></p>
+            <p>When discussing <code>map</code> we said that it doesn&#39;t allow us to change the number of elements in the <code>List</code>. Graphically, we can&#39;t create a new &quot;box&quot; using <code>map</code>. With <code>flatMap</code> we can change the box, in the case lists meaning we can change the number of elements in the list.</p>
+            
+            <h3 id="exercises" class="section">Exercises {-}</h3>
+            
+            <h4 id="double" class="section">Double {-}</h4>
+            <p>Using <code>flatMap</code>, write a method <code>double</code> that transforms a <code>List</code> to a <code>List</code> where every element appears twice. For example</p>
+            <pre><code class="nohighlight"><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res0: List[Int] = List(1, 1, 2, 2, 3, 3)
+</span><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="string-literal">&quot;do&quot;</span><span>, </span><span class="string-literal">&quot;ray&quot;</span><span>, </span><span class="string-literal">&quot;me&quot;</span><span>))
+</span><span class="comment">// res1: List[String] = List(&quot;do&quot;, &quot;do&quot;, &quot;ray&quot;, &quot;ray&quot;, &quot;me&quot;, &quot;me&quot;)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            There are two points to this:</p>
+            <ul>
+              <li>recognising how to use <code>flatMap</code>; and</li>
+              <li>remembering how to use type variables.</li>
+            </ul>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">in</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+  </span><span class="identifier">in</span><span>.</span><span class="identifier">flatMap</span><span> { </span><span class="identifier">x</span><span> =&gt; </span><span class="type-name">List</span><span>(</span><span class="identifier">x</span><span>, </span><span class="identifier">x</span><span>) }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="or-nothing" class="section">Or Nothing {-}</h4>
+            <p>Using <code>flatMap</code>, write a method <code>nothing</code> that transforms a <code>List</code> to the empty <code>List</code>. For example</p>
+            <pre><code class="nohighlight"><span class="identifier">nothing</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res3: List[Int] = List()
+</span><span class="identifier">nothing</span><span>(</span><span class="type-name">List</span><span>(</span><span class="string-literal">&quot;do&quot;</span><span>, </span><span class="string-literal">&quot;ray&quot;</span><span>, </span><span class="string-literal">&quot;me&quot;</span><span>))
+</span><span class="comment">// res4: List[String] = List()</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            We could easily write this method as</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">nothing</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">in</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+  </span><span class="type-name">List</span><span>() </span><span class="comment">// or List.empty or Nil</span></code></pre>
+            <p>but the point of this exercise is to get more familiarity with using <code>flatMap</code>. With <code>flatMap</code> we can write the method as </p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">nothing</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">in</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+  </span><span class="identifier">in</span><span>.</span><span class="identifier">flatMap</span><span> { </span><span class="identifier">x</span><span> =&gt; </span><span class="type-name">List</span><span>.</span><span class="identifier">empty</span><span> }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="rewriting-the-rules" class="section">Rewriting the Rules {-}</h4>
+            <p>Write a method <code>rewrite</code> with signature</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">rewrite</span><span>(</span><span class="identifier">instructions</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>], 
+            </span><span class="identifier">rule</span><span>: </span><span class="type-name">Instruction</span><span> =&gt; </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>] =
+  ???</span></code></pre>
+            <p>This method should apply <code>rule</code> to rewrite every instruction in <code>instructions</code>, except for branches which you&#39;ll need to handle specially. If you encounter a branch you should rewrite all the instructions inside the branch but leave the branch alone.</p>
+            <p><em>Note</em>: You&#39;ll need to pass a <code>List[Instruction]</code> to <code>branch</code>, while <code>branch</code> itself accepts zero or more instructions (so-called <em>varargs</em>). To convert the <code>List[Instruction]</code> into a form that <code>branch</code> will accept, follow the parameter with <code>:_*</code> like so</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">instructions</span><span> = </span><span class="type-name">List</span><span>(</span><span class="identifier">turn</span><span>(</span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>), </span><span class="identifier">forward</span><span>(</span><span class="number-literal">10</span><span>))
+</span><span class="comment">// instructions: List[Instruction] = List(
+//   Turn(angle = Angle(0.7853981633974483)),
+//   Forward(distance = 10.0)
+// )
+</span><span class="identifier">branch</span><span>(</span><span class="identifier">instructions</span><span>:</span><span class="identifier">_</span><span>*)
+</span><span class="comment">// res8: Branch = Branch(
+//   instructions = List(
+//     Turn(angle = Angle(0.7853981633974483)),
+//     Forward(distance = 10.0)
+//   )
+// )</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            There are two parts to this:</p>
+            <ul>
+              <li>recognising that we need to use <code>flatMap</code>, for reasons discussed above; and</li>
+              <li>realising that we need to recursively call <code>rewrite</code> to process the contents of a branch.</li>
+            </ul>
+            <p>The latter is an example of structural recursion, though a slighlty more complex pattern than we&#39;ve seen before.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">rewrite</span><span>(</span><span class="identifier">instructions</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>], </span><span class="identifier">rule</span><span>: </span><span class="type-name">Instruction</span><span> =&gt; </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>] =
+  </span><span class="identifier">instructions</span><span>.</span><span class="identifier">flatMap</span><span> { </span><span class="identifier">i</span><span> =&gt;
+    </span><span class="identifier">i</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="type-name">Branch</span><span>(</span><span class="identifier">i</span><span>) =&gt;
+        </span><span class="type-name">List</span><span>(</span><span class="identifier">branch</span><span>(</span><span class="identifier">rewrite</span><span>(</span><span class="identifier">i</span><span>, </span><span class="identifier">rule</span><span>):</span><span class="identifier">_</span><span>*))
+      </span><span class="keyword">case</span><span> </span><span class="identifier">other</span><span> =&gt;
+        </span><span class="identifier">rule</span><span>(</span><span class="identifier">other</span><span>)
+    }
+  }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="your-own-l-system" class="section">Your Own L-System {-}</h4>
+            <p>We&#39;re now ready to create a complete L-system. Using <code>rewrite</code> from above, create a method <code>iterate</code> with signature</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">iterate</span><span>(</span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>,
+            </span><span class="identifier">seed</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>], 
+            </span><span class="identifier">rule</span><span>: </span><span class="type-name">Instruction</span><span> =&gt; </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>] =
+  ???</span></code></pre>
+            <p>This should recursively apply <code>rule</code> to <code>seed</code> for <code>steps</code> iterations. </p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is just a simple structural recursion of the natural numbers, with all the hard work done by <code>rewrite</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">iterate</span><span>(</span><span class="identifier">steps</span><span>: </span><span class="type-name">Int</span><span>, 
+            </span><span class="identifier">seed</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>], 
+            </span><span class="identifier">rule</span><span>: </span><span class="type-name">Instruction</span><span> =&gt; </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Instruction</span><span>] =
+  </span><span class="identifier">steps</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="identifier">seed</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">iterate</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">rewrite</span><span>(</span><span class="identifier">seed</span><span>, </span><span class="identifier">rule</span><span>), </span><span class="identifier">rule</span><span>)
+  }</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="plants-and-other-creations" class="section">Plants and Other Creations {-}</h4>
+            <p>Create the pictures shown in Figure turtles:branching and Figure turtles-koch-curve using your L-system implementation.</p>
+            <p><img src="src/pages/turtles/branching.pdf+svg" alt="Five iterations of the simple branching L-system." title="Figure Some(turtles:branching): caption"></p>
+            <p><img src="src/pages/turtles/koch-curve.pdf+svg" alt="Five iterations of the Koch curve, a fractal that is simple to create with an L-System." title="Figure Some(#fig:turtles:koch-curve): caption"></p>
+
+        </main>
+        <p class="nextPage"><a href="../solutions.html">Solutions to Exercises {#solutions}→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

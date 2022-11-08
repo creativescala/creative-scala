@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Working with Lists</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="index.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="paths.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="index.html">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="working-with-lists" class="title">Working with Lists</h1>
+            <p>At this point you might be thinking it would be nice to create a method to draw polygons rather than constructing each one by hand.
+            There is clearly a repeating pattern to their construction and we would be able to generalise this pattern if we knew how to create a list of arbitrary size.
+            It&#39;s time we learned more about building and manipulating lists.</p>
+            
+            <h3 id="the-recursive-structure-of-lists" class="section">The Recursive Structure of Lists</h3>
+            <p>You&#39;ll recall when we introduced structural recursion over the natural numbers we said we could transform their recursive structure into any other recursive structure.
+            We demonstrated this for concentric circles and a variety of other patterns.</p>
+            <p>Lists have a recursive structure, and one that is very similar to the structure of the natural numbers. A <code>List</code> is</p>
+            <ul>
+              <li>the empty list <code>Nil</code>; or</li>
+              <li>a pair of an element <code>a</code> and a <code>List</code>, written <code>a :: tail</code>, where <code>tail</code> is the rest of the list.</li>
+            </ul>
+            <p>For example, we can write out the list <code>List(1, 2, 3, 4)</code> in its &quot;long&quot; form as</p>
+            <pre><code class="nohighlight"><span class="number-literal">1</span><span> :: </span><span class="number-literal">2</span><span> :: </span><span class="number-literal">3</span><span> :: </span><span class="number-literal">4</span><span> :: </span><span class="type-name">Nil</span><span>
+</span><span class="comment">// res0: List[Int] = List(1, 2, 3, 4)</span></code></pre>
+            <p>Notice the similarity to the natural numbers.
+            Earlier we noted we can expand the structure of a natural number so we could write, say, <code>3</code> as <code>1 + 1 + 1 + 0</code>.
+            If we replace <code>+</code> with <code>::</code> and <code>0</code> with <code>Nil</code> we get the <code>List</code> <code>1 :: 1 :: 1 :: Nil</code>.</p>
+            <p>What does this mean?
+            It means we can easily transform a natural number into a <code>List</code> using our familiar tool of structural recursionFootnote free-monoid.
+            Here&#39;s a very simple example, which given a number builds a list of that length containing the <code>String</code> &quot;Hi&quot;.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">sayHi</span><span>(</span><span class="identifier">length</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">String</span><span>] =
+  </span><span class="identifier">length</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="string-literal">&quot;Hi&quot;</span><span> :: </span><span class="identifier">sayHi</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>)
+  }
+
+</span><span class="identifier">sayHi</span><span>(</span><span class="number-literal">5</span><span>)
+</span><span class="comment">// res1: List[String] = List(&quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;)</span></code></pre>
+            <p>The code here is transforming:</p>
+            <ul>
+              <li><code>0</code> to <code>Nil</code>, for the base case; and</li>
+            </ul>
+            <ul>
+              <li><code>n</code> (which, remember, we think of as <code>1 + m</code>) to <code>&quot;Hi&quot; :: sayHi(n - 1)</code>, transforming <code>1</code> to <code>&quot;Hi&quot;</code>, <code>+</code> to <code>::</code>, and recursing as usual on <code>m</code> (which is <code>n - 1</code>).</li>
+            </ul>
+            <table class="footnote">
+              <colgroup>
+                <col class="label"></col>
+                <col></col>
+              </colgroup>
+              <tbody>
+                <tr>
+                  <td>[free-monoid]</td>
+                  <td>This connection goes deeper. We can abstract the idea of things that can be &quot;added&quot; into a concept called a monoid, and a list represents a particular type of monoid called the free monoid. We aren&#39;t going to work with this abstraction in Creative Scala but you&#39;re encouraged to explore on your own!</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>This recursive structure also means we can transform lists into other recursive structures, such a natural number, different lists, chessboards, and so on.
+            Here we increment every element in a list---that is, transform a list to a list---using structural recursion.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">increment</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; (</span><span class="identifier">hd</span><span> + </span><span class="number-literal">1</span><span>) :: </span><span class="identifier">increment</span><span>(</span><span class="identifier">tl</span><span>)
+  }
+
+</span><span class="identifier">increment</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res2: List[Int] = List(2, 3, 4)</span></code></pre>
+            <p>Here we sum the elements of a list of integers---that is, transform a list to a natural number---using structural recursion.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">sum</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="number-literal">0</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; </span><span class="identifier">hd</span><span> + </span><span class="identifier">sum</span><span>(</span><span class="identifier">tl</span><span>)
+  }
+
+</span><span class="identifier">sum</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res3: Int = 6</span></code></pre>
+            <p>Notice when we take a <code>List</code> apart with pattern matching we use the same <code>hd :: tl</code> syntax we use when we construct it.
+            This is an intentional symmetry.</p>
+            
+            <h3 id="type-variables" class="section">Type Variables</h3>
+            <p>What about finding the length of a list? We know we can use our standard tool of structural recursion to write the method. Here&#39;s the code to calculate the length of a <code>List[Int]</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">length</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="number-literal">0</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; </span><span class="number-literal">1</span><span> + </span><span class="identifier">length</span><span>(</span><span class="identifier">tl</span><span>)
+  }</span></code></pre>
+            <p>Note that we don&#39;t do anything with the elements of the list---we don&#39;t really care about their type.
+            Using the same code skeleton can just as easily calculate the length of a <code>List[Int]</code> as a <code>List[HairyYak]</code> but we don&#39;t currently know how to write down the type of a list where we don&#39;t care about the type of the elements.</p>
+            <p>Scala lets us write methods that can work with any type, by using what is called a <em>type variable</em>.
+            A type variable is written in square brackets like <code>[A]</code> and comes after the method name and before the parameter list.
+            A type variable can stand in for any specific type, and we can use it in the parameter list or result type to indicate some type that we don&#39;t know up front.
+            For example, here&#39;s how we can write <code>length</code> so it works with lists of any type.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">length</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>]): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="number-literal">0</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; </span><span class="number-literal">1</span><span> + </span><span class="identifier">length</span><span>(</span><span class="identifier">tl</span><span>)
+  }</span></code></pre>
+            <p>&lt;div class=&quot;callout callout-info&quot;&gt;</p>
+            
+            <h4 id="structural-recursion-over-a-list">Structural Recursion over a List {-}</h4>
+            <p>A <code>List</code> of elements of type <code>A</code> is:</p>
+            <ul>
+              <li>the empty list <code>Nil</code>; or</li>
+              <li>an element <code>a</code> of type <code>A</code> and a <code>tail</code> of type <code>List[A]</code>: <code>a :: tail</code></li>
+            </ul>
+            <p>The structural recursion skeleton for transforming <code>list</code> of type <code>List[A]</code> to some type <code>B</code> has shape</p>
+            <pre><code>def doSomething[A,B](list: List[A]): B =
+  list match {
+    case Nil =&gt; ??? // Base case of type B here
+    case hd :: tl =&gt; f(hd, doSomething(tl))
+  }  </code></pre>
+            <p>where <code>f</code> is a problem specific method combining <code>hd</code> and the result of the recursive call to produce something of type <code>B</code>.
+            &lt;/div&gt;</p>
+            
+            <h3 id="exercises" class="section">Exercises {-}</h3>
+            
+            <h4 id="building-lists" class="section">Building Lists {-}</h4>
+            <p>In these exercises we get some experience constructing lists using structural recursion on the natural numbers.</p>
+            <p>Write a method called <code>ones</code> that accepts an <code>Int</code> <code>n</code> and returns a <code>List[Int]</code> with length <code>n</code> and every element <code>1</code>. For example</p>
+            <pre><code class="nohighlight"><span class="identifier">ones</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res5: List[Int] = List(1, 1, 1)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            It&#39;s structural recursion over the natural numbers!</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">ones</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">1</span><span> :: </span><span class="identifier">ones</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>)
+  }
+
+</span><span class="identifier">ones</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res7: List[Int] = List(1, 1, 1)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>descending</code> that accepts an natural number <code>n</code> and returns a <code>List[Int]</code> containing the natural numbers from <code>n</code> to <code>1</code> or the empty list if <code>n</code> is zero. For example</p>
+            <pre><code class="nohighlight"><span class="identifier">descending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res8: List[Int] = List()
+</span><span class="identifier">descending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res9: List[Int] = List(3, 2, 1)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Once more, we can employ structural recursion over the natural numbers.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">descending</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">n</span><span> :: </span><span class="identifier">descending</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>)
+  }
+
+</span><span class="identifier">descending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res11: List[Int] = List()
+</span><span class="identifier">descending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res12: List[Int] = List(3, 2, 1)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>ascending</code> that accepts a natural number <code>n</code> and returns a <code>List[Int]</code> containing the natural numbers from <code>1</code> to <code>n</code> or the empty list if <code>n</code> is zero.</p>
+            <pre><code class="nohighlight"><span class="identifier">ascending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res13: List[Int] = List()
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res14: List[Int] = List(1, 2, 3)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            It&#39;s structural recursion over the natural numbers, but this time with an internal accumulator.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">ascending</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">iter</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">counter</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+    </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">counter</span><span> :: </span><span class="identifier">iter</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">counter</span><span> + </span><span class="number-literal">1</span><span>)
+    }
+
+  </span><span class="identifier">iter</span><span>(</span><span class="identifier">n</span><span>, </span><span class="number-literal">1</span><span>)
+}
+
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">0</span><span>)
+</span><span class="comment">// res16: List[Int] = List()
+</span><span class="identifier">ascending</span><span>(</span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res17: List[Int] = List(1, 2, 3)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Create a method <code>fill</code> that accepts a natural number <code>n</code> and an element <code>a</code> of type <code>A</code> and constructs a list of length <code>n</code> where all elements are <code>a</code>.</p>
+            <pre><code class="nohighlight"><span class="identifier">fill</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="string-literal">&quot;Hi&quot;</span><span>)
+</span><span class="comment">// res18: List[String] = List(&quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;)
+</span><span class="identifier">fill</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>)
+</span><span class="comment">// res19: List[Color] = List(
+//   RGBA(
+//     r = UnsignedByte(value = -128),
+//     g = UnsignedByte(value = -128),
+//     b = UnsignedByte(value = 127),
+//     a = Normalized(get = 1.0)
+//   ),
+//   RGBA(
+//     r = UnsignedByte(value = -128),
+//     g = UnsignedByte(value = -128),
+//     b = UnsignedByte(value = 127),
+//     a = Normalized(get = 1.0)
+//   ),
+//   RGBA(
+//     r = UnsignedByte(value = -128),
+//     g = UnsignedByte(value = -128),
+//     b = UnsignedByte(value = 127),
+//     a = Normalized(get = 1.0)
+//   )
+// )</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            In this exercise we&#39;re asking you to use a type variable. Otherwise it is the same pattern as before.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">fill</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">a</span><span>: </span><span class="type-name">A</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">a</span><span> :: </span><span class="identifier">fill</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">a</span><span>)
+  }
+
+</span><span class="identifier">fill</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="string-literal">&quot;Hi&quot;</span><span>)
+</span><span class="comment">// res21: List[String] = List(&quot;Hi&quot;, &quot;Hi&quot;, &quot;Hi&quot;)
+</span><span class="identifier">fill</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>)
+</span><span class="comment">// res22: List[Color] = List(
+//   RGBA(
+//     r = UnsignedByte(value = -128),
+//     g = UnsignedByte(value = -128),
+//     b = UnsignedByte(value = 127),
+//     a = Normalized(get = 1.0)
+//   ),
+//   RGBA(
+//     r = UnsignedByte(value = -128),
+//     g = UnsignedByte(value = -128),
+//     b = UnsignedByte(value = 127),
+//     a = Normalized(get = 1.0)
+//   ),
+//   RGBA(
+//     r = UnsignedByte(value = -128),
+//     g = UnsignedByte(value = -128),
+//     b = UnsignedByte(value = 127),
+//     a = Normalized(get = 1.0)
+//   )
+// )</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="transforming-lists" class="section">Transforming Lists {-}</h4>
+            <p>In these exercises we practice the other side of list manipulation---transforming lists into elements of other types (and sometimes, into different lists).</p>
+            <p>Write a method <code>double</code> that accepts a <code>List[Int]</code> and returns a list with each element doubled.</p>
+            <pre><code class="nohighlight"><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res23: List[Int] = List(2, 4, 6)
+</span><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">4</span><span>, </span><span class="number-literal">9</span><span>, </span><span class="number-literal">16</span><span>))
+</span><span class="comment">// res24: List[Int] = List(8, 18, 32)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is a structural recursion over a list, building a list at each step. The destructuring of the input is mirrored by the construction of the output.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>] =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="type-name">Nil</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; (</span><span class="identifier">hd</span><span> * </span><span class="number-literal">2</span><span>) :: </span><span class="identifier">double</span><span>(</span><span class="identifier">tl</span><span>)
+  }
+
+</span><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res26: List[Int] = List(2, 4, 6)
+</span><span class="identifier">double</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">4</span><span>, </span><span class="number-literal">9</span><span>, </span><span class="number-literal">16</span><span>))
+</span><span class="comment">// res27: List[Int] = List(8, 18, 32)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>product</code> that accepts a <code>List[Int]</code> and calculates the product of all the elements.</p>
+            <pre><code class="nohighlight"><span class="identifier">product</span><span>(</span><span class="type-name">Nil</span><span>)
+</span><span class="comment">// res28: Int = 1
+</span><span class="identifier">product</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>,</span><span class="number-literal">2</span><span>,</span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res29: Int = 6</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This is a structural recursion over a list using the same pattern as <code>sum</code> in the examples above.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">product</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">Int</span><span>]): </span><span class="type-name">Int</span><span> =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="number-literal">1</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; </span><span class="identifier">hd</span><span> * </span><span class="identifier">product</span><span>(</span><span class="identifier">tl</span><span>)
+  }
+
+</span><span class="identifier">product</span><span>(</span><span class="type-name">Nil</span><span>)
+</span><span class="comment">// res31: Int = 1
+</span><span class="identifier">product</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>,</span><span class="number-literal">2</span><span>,</span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res32: Int = 6</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>contains</code> that accepts a <code>List[A]</code> and an element of type <code>A</code> and returns true if the list contains the element and false otherwise.</p>
+            <pre><code class="nohighlight"><span class="identifier">contains</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>,</span><span class="number-literal">2</span><span>,</span><span class="number-literal">3</span><span>), </span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res33: Boolean = true
+</span><span class="identifier">contains</span><span>(</span><span class="type-name">List</span><span>(</span><span class="string-literal">&quot;one&quot;</span><span>, </span><span class="string-literal">&quot;two&quot;</span><span>, </span><span class="string-literal">&quot;three&quot;</span><span>), </span><span class="string-literal">&quot;four&quot;</span><span>)
+</span><span class="comment">// res34: Boolean = false</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Same pattern as before, but using a type variable to allow type of the elements to vary.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">contains</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>], </span><span class="identifier">elt</span><span>: </span><span class="type-name">A</span><span>): </span><span class="type-name">Boolean</span><span> =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="boolean-literal">false</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; (</span><span class="identifier">hd</span><span> == </span><span class="identifier">elt</span><span>) || </span><span class="identifier">contains</span><span>(</span><span class="identifier">tl</span><span>, </span><span class="identifier">elt</span><span>)
+  }
+
+</span><span class="identifier">contains</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>,</span><span class="number-literal">2</span><span>,</span><span class="number-literal">3</span><span>), </span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res36: Boolean = true
+</span><span class="identifier">contains</span><span>(</span><span class="type-name">List</span><span>(</span><span class="string-literal">&quot;one&quot;</span><span>, </span><span class="string-literal">&quot;two&quot;</span><span>, </span><span class="string-literal">&quot;three&quot;</span><span>), </span><span class="string-literal">&quot;four&quot;</span><span>)
+</span><span class="comment">// res37: Boolean = false</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p>Write a method <code>first</code> that accepts a <code>List[A]</code> and an element of type <code>A</code> and returns the first element of the list if it is not empty and otherwise returns the element of type <code>A</code> passed as a aprameter.</p>
+            <pre><code class="nohighlight"><span class="identifier">first</span><span>(</span><span class="type-name">Nil</span><span>, </span><span class="number-literal">4</span><span>)
+</span><span class="comment">// res38: Int = 4
+</span><span class="identifier">first</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>,</span><span class="number-literal">2</span><span>,</span><span class="number-literal">3</span><span>), </span><span class="number-literal">4</span><span>)
+</span><span class="comment">// res39: Int = 1</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            This method is similar to <code>contains</code> above, except we now use the type variable in the return type as well as in the parameter types.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">first</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>], </span><span class="identifier">elt</span><span>: </span><span class="type-name">A</span><span>): </span><span class="type-name">A</span><span> =
+  </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="identifier">elt</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; </span><span class="identifier">hd</span><span>
+  }
+
+</span><span class="identifier">first</span><span>(</span><span class="type-name">Nil</span><span>, </span><span class="number-literal">4</span><span>)
+</span><span class="comment">// res41: Int = 4
+</span><span class="identifier">first</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>,</span><span class="number-literal">2</span><span>,</span><span class="number-literal">3</span><span>), </span><span class="number-literal">4</span><span>)
+</span><span class="comment">// res42: Int = 1</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="challenge-exercise-reverse" class="section">Challenge Exercise: Reverse {-}</h4>
+            <p>Write a method <code>reverse</code> that accepts a <code>List[A]</code> and reverses the list.</p>
+            <pre><code class="nohighlight"><span class="identifier">reverse</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res43: List[Int] = List(3, 2, 1)
+</span><span class="identifier">reverse</span><span>(</span><span class="type-name">List</span><span>(</span><span class="string-literal">&quot;a&quot;</span><span>, </span><span class="string-literal">&quot;b&quot;</span><span>, </span><span class="string-literal">&quot;c&quot;</span><span>))
+</span><span class="comment">// res44: List[String] = List(&quot;c&quot;, &quot;b&quot;, &quot;a&quot;)</span></code></pre>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            The trick here is to use an accumulator to hold the partially reversed list.
+            If you managed to work this one out, congratulations---you really understand structural recursion well!</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">reverse</span><span>[</span><span class="type-name">A</span><span>](</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">iter</span><span>(</span><span class="identifier">list</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>], </span><span class="identifier">reversed</span><span>: </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>]): </span><span class="type-name">List</span><span>[</span><span class="type-name">A</span><span>] =
+    </span><span class="identifier">list</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="type-name">Nil</span><span> =&gt; </span><span class="identifier">reversed</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">hd</span><span> :: </span><span class="identifier">tl</span><span> =&gt; </span><span class="identifier">iter</span><span>(</span><span class="identifier">tl</span><span>, </span><span class="identifier">hd</span><span> :: </span><span class="identifier">reversed</span><span>)
+    }
+
+  </span><span class="identifier">iter</span><span>(</span><span class="identifier">list</span><span>, </span><span class="type-name">Nil</span><span>)
+}
+
+</span><span class="identifier">reverse</span><span>(</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>))
+</span><span class="comment">// res46: List[Int] = List(3, 2, 1)
+</span><span class="identifier">reverse</span><span>(</span><span class="type-name">List</span><span>(</span><span class="string-literal">&quot;a&quot;</span><span>, </span><span class="string-literal">&quot;b&quot;</span><span>, </span><span class="string-literal">&quot;c&quot;</span><span>))
+</span><span class="comment">// res47: List[String] = List(&quot;c&quot;, &quot;b&quot;, &quot;a&quot;)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="polygons" class="section">Polygons! {-}</h4>
+            <p>At last, let&#39;s return to our example of drawing polygons.
+            Write a method <code>polygon</code> that accepts the number of sides of the polygon and the starting rotation and produces a <code>Image</code> representing the specified regular polygon.
+            <em>Hint:</em> use an internal accumulator.</p>
+            <p>Use this utility to create an interesting picture combining polygons.
+            Our rather unimaginative example is in Figure sequences:concentric-polygons. We&#39;re sure you can do better.</p>
+            <p><img src="./src/pages/sequences/concentric-polygons.pdf+svg" alt="Concentric polygons with pastel gradient fill." title="Figure Some(#fig:sequences:concentric-polygons): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s our code.
+            Note how we factored the code into small components---though we could have taken the factoring further is we wanted to.
+            (Can you see how? Hint: do we need to pass, say, <code>start</code> to every call of <code>makeColor</code> when it&#39;s not changing?)</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="type-name">Point</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="type-name">PathElement</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">polygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">initialRotation</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">iter</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">rotation</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">List</span><span>[</span><span class="type-name">PathElement</span><span>] =
+    </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt;
+        </span><span class="type-name">Nil</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="type-name">LineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">rotation</span><span> * </span><span class="identifier">n</span><span> + </span><span class="identifier">initialRotation</span><span>)) :: </span><span class="identifier">iter</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">rotation</span><span>)
+    }
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="identifier">size</span><span>, </span><span class="identifier">initialRotation</span><span>)) :: </span><span class="identifier">iter</span><span>(</span><span class="identifier">sides</span><span>, </span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span> / </span><span class="identifier">sides</span><span>))
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">style</span><span>(</span><span class="identifier">img</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="identifier">img</span><span>.
+    </span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">3.0</span><span>).
+    </span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">mediumVioletRed</span><span>).
+    </span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleVioletRed</span><span>.</span><span class="identifier">fadeOut</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>))
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">makeShape</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">increment</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+    </span><span class="identifier">polygon</span><span>(</span><span class="identifier">n</span><span>+</span><span class="number-literal">2</span><span>, </span><span class="identifier">n</span><span> * </span><span class="identifier">increment</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>)
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">makeColor</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">spin</span><span>: </span><span class="type-name">Angle</span><span>, </span><span class="identifier">start</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Color</span><span> =
+  </span><span class="identifier">start</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="identifier">spin</span><span> * </span><span class="identifier">n</span><span>)
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">baseColor</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">0.7</span><span>, </span><span class="number-literal">0.7</span><span>)
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">makeImage</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt;
+      </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+      </span><span class="keyword">val</span><span> </span><span class="identifier">shape</span><span> = </span><span class="identifier">makeShape</span><span>(</span><span class="identifier">n</span><span>, </span><span class="number-literal">10</span><span>)
+      </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="identifier">makeColor</span><span>(</span><span class="identifier">n</span><span>, </span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="identifier">baseColor</span><span>)
+      </span><span class="identifier">makeImage</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">shape</span><span>.</span><span class="identifier">fillColor</span><span>(</span><span class="identifier">color</span><span>))
+  }
+}
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">image</span><span> = </span><span class="identifier">makeImage</span><span>(</span><span class="number-literal">15</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="paths.html">Paths→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

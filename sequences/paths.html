@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Paths</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="lists.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="map.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="index.html">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="lists.html">Working with Lists</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="paths" class="title">Paths</h1>
+            <p>All shapes in Doodle are ultimately represented as paths. 
+            You can think of a path as giving a sequence of movements for an imaginary pen, starting from the local origin. 
+            Pen movements come in three varieties:</p>
+            <ul>
+              <li>
+                <p>moving the pen to a point without drawing a line;</p>
+              </li>
+              <li>
+                <p>drawing a straight line from the current position to a point; and</p>
+              </li>
+              <li>
+                <p>drawing a <a href="https://en.wikipedia.org/wiki/Bézier_curve">Bezier curve</a> from the current position to a point, with the shape of the curve determined by two <em>control points</em>.</p>
+              </li>
+            </ul>
+            <p>Paths themselves come in two varieties:</p>
+            <ul>
+              <li>open paths, where the end of the path is not necessarily the starting point; and</li>
+              <li>closed paths, that end where they begin---and if the path doesn&#39;t end where it started a line will be inserted to make it so.</li>
+            </ul>
+            <p>The picture in Figure sequences:open-closed-paths illustrates the components that can make up a path, and shows the difference between open and closed paths.</p>
+            <p><img src="./src/pages/sequences/open-closed-paths.pdf+svg" alt="The same paths draw as open (top) and closed (bottom) paths. Notice how the open triangle is not properly joined at the bottom left, and the closed curve inserts a straight line to close the shape." title="Figure Some(#fig:sequences:open-closed-paths): caption"></p>
+            
+            <h3 id="creating-paths" class="section">Creating Paths</h3>
+            <p>Now we know about paths, how do we create them in Doodle? Here&#39;s the code that created Figure pictures:open-closed-paths.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">PathElement</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">triangle</span><span> =
+  </span><span class="type-name">List</span><span>(
+    </span><span class="identifier">lineTo</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">100</span><span>)),
+    </span><span class="identifier">lineTo</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">0</span><span>)),
+    </span><span class="identifier">lineTo</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">0</span><span>))
+  )
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">curve</span><span> =
+  </span><span class="type-name">List</span><span>(</span><span class="identifier">curveTo</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">100</span><span>), </span><span class="type-name">Point</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">100</span><span>), </span><span class="type-name">Point</span><span>(</span><span class="number-literal">150</span><span>, </span><span class="number-literal">0</span><span>)))
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">style</span><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">image</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>)
+    .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
+    .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">skyBlue</span><span>)
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">openPaths</span><span> =
+  </span><span class="identifier">style</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">openPath</span><span>(</span><span class="identifier">triangle</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">openPath</span><span>(</span><span class="identifier">curve</span><span>)))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">closedPaths</span><span> =
+  </span><span class="identifier">style</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="identifier">triangle</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="identifier">curve</span><span>)))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">paths</span><span> = </span><span class="identifier">openPaths</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">closedPaths</span><span>)</span></code></pre>
+            <p>From this code we can see we create paths using the <code>openPath</code> and <code>closePath</code> methods on <code>Image</code>, just as we create other shapes. 
+            A path is created from a <code>List</code> of <code>PathElement</code>. 
+            The different kinds of <code>PathElement</code> are created by calling methods on the <code>PathElement</code> object, as described in Table sequences:path-element.
+            In the code above we used the declaration <code>import doodle.core.PathElement._</code> to make all the methods on <code>PathElement</code> available in the local scope.</p>
+            <hr>
+            <p>Method                                     Description                 Example
+            ------------------------------------------ --------------------------- ----------------------------
+            <code>PathElement.moveTo(Point)</code>                Move the pen to <code>Point</code>     <code>PathElement.moveTo(Point(1, 1))</code>
+                                                       without drawing.</p>
+            <p><code>PathElement.lineTo(Point)</code>                Draw a straight line to     <code>PathElement.lineTo(Point(2, 2))</code>
+                                                 <code>Point</code></p>
+            <p><code>PathElement.curveTo(Point, Point, Point)</code> Draw a curve. The first two <code>PathElement.curveTo(Point(1,0), Point(0,1), Point(1,1))</code>
+                                                       points specify control
+                                                       points and the last point is
+                                                       where the curve ends.</p>
+            <hr>
+            <p>: How to create the three different types of <code>PathElement</code>. Table sequences:path-element</p>
+            <p>Constructing a <code>List</code> is straight-forward: we just call <code>List</code> with the elements we want the list to contain. Here are some examples.</p>
+            <pre><code class="nohighlight"><span class="comment">// List of Int
+</span><span class="type-name">List</span><span>(</span><span class="number-literal">1</span><span>, </span><span class="number-literal">2</span><span>, </span><span class="number-literal">3</span><span>)
+</span><span class="comment">// res0: List[Int] = List(1, 2, 3)
+</span><span>
+</span><span class="comment">// List of Image
+</span><span class="type-name">List</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>), </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>), </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">30</span><span>))
+</span><span class="comment">// res1: List[Image] = List(
+//   Circle(d = 10.0),
+//   Circle(d = 20.0),
+//   Circle(d = 30.0)
+// )
+</span><span>
+</span><span class="comment">// List of Color
+</span><span class="type-name">List</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGoldenrod</span><span>, </span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGreen</span><span>, </span><span class="type-name">Color</span><span>.</span><span class="identifier">paleTurquoise</span><span>)
+</span><span class="comment">// res2: List[Color] = List(
+//   RGBA(
+//     r = UnsignedByte(value = 110),
+//     g = UnsignedByte(value = 104),
+//     b = UnsignedByte(value = 42),
+//     a = Normalized(get = 1.0)
+//   ),
+//   RGBA(
+//     r = UnsignedByte(value = 24),
+//     g = UnsignedByte(value = 123),
+//     b = UnsignedByte(value = 24),
+//     a = Normalized(get = 1.0)
+//   ),
+//   RGBA(
+//     r = UnsignedByte(value = 47),
+//     g = UnsignedByte(value = 110),
+//     b = UnsignedByte(value = 110),
+//     a = Normalized(get = 1.0)
+//   )
+// )</span></code></pre>
+            <p>Notice the type of a <code>List</code> includes the type of the elements, written in square brackets. So the type of a list of integers is written <code>List[Int]</code> and a list of <code>PathElement</code> is written <code>List[PathElement]</code>.</p>
+            
+            <h3 id="exercises" class="section">Exercises {-}</h3>
+            
+            <h4 id="polygons" class="section">Polygons {-}</h4>
+            <p>Create paths to define a triangle, square, and pentagon. Your image might look like Figure sequences:polygons. 
+            <em>Hint:</em> you might find it easier to use polar coordinates to define the polygons.</p>
+            <p><img src="./src/pages/sequences/polygons.pdf+svg" alt="A triangle, square, and pentagon, defined using paths." title="Figure Some(#fig:sequences:polygons): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Using polar coordinates makes it much simpler to define the location of the &quot;corners&quot; (vertices) of the polygons. 
+            Each vertex is located a fixed rotation from the previous vertex, and after we&#39;ve marked all vertices we must have done a full rotation of the circle. 
+            This means, for example, that for a pentagon each vertex is (360 / 5) = 72 degrees from the previous one. 
+            If we start at 0 degrees, vertices are located at 0, 72, 144, 216, and 288 degrees. 
+            The distance from the origin is fixed in each case. 
+            We don&#39;t have to draw a line between the final vertex and the start---by using a closed path this will be done for us.</p>
+            <p>Here&#39;s our code to draw Figure sequences:polygons, which uses this idea. 
+            In some cases we haven&#39;t started the vertices at 0 degrees so we can rotate the shape we draw.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">PathElement</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">Point</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">Color</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">val</span><span> </span><span class="identifier">triangle</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="type-name">List</span><span>(
+                     </span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">120</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">240</span><span>.</span><span class="identifier">degrees</span><span>))
+                   ))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">square</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="type-name">List</span><span>(
+                     </span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">135</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">225</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">315</span><span>.</span><span class="identifier">degrees</span><span>))
+                   ))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">pentagon</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="type-name">List</span><span>(
+                     </span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">144</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">216</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">288</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">lineTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
+                   ))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">spacer</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">100</span><span>).</span><span class="identifier">noStroke</span><span>.</span><span class="identifier">noFill</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">style</span><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">image</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">paleTurquoise</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="identifier">turquoise</span><span>)
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">image</span><span> = 
+  </span><span class="identifier">style</span><span>(</span><span class="identifier">triangle</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">spacer</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">style</span><span>(</span><span class="identifier">square</span><span>)).</span><span class="identifier">beside</span><span>(</span><span class="identifier">spacer</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">style</span><span>(</span><span class="identifier">pentagon</span><span>))</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h4 id="curves" class="section">Curves {-}</h4>
+            <p>Repeat the exercise above, but this time use curves instead of straight lines to create some interesting shapes. 
+            Our curvy polygons are shown in Figure sequences:curved-polygons. 
+            <em>Hint:</em> you&#39;ll have an easier time if you generalise into a method your code for creating a curve.</p>
+            <p><img src="./src/pages/sequences/curved-polygons.pdf+svg" alt="A curvy triangle, square, and polygon, defined using paths." title="Figure Some(#fig:sequences:curved-polygons): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            The core of the exercise is to replace the <code>lineTo</code> expressions with <code>curveTo</code>. 
+            We can generalise curve creation into a method that takes the starting angle and the angle increment, and constructs control points at predetermined points along the rotation. 
+            This is what we did in the method <code>curve</code> below, and it gives us consistent looking curves without having to manually repeat the calculations each time. 
+            Making this generalisation also makes it easier to play around with different control points to create different outcomes.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">Point</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">PathElement</span><span>.</span><span class="identifier">_</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="type-name">Color</span><span>.</span><span class="identifier">_</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">curve</span><span>(</span><span class="identifier">radius</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">start</span><span>: </span><span class="type-name">Angle</span><span>, </span><span class="identifier">increment</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">PathElement</span><span> = {
+  </span><span class="identifier">curveTo</span><span>(
+    </span><span class="identifier">polar</span><span>(</span><span class="identifier">radius</span><span> *  </span><span class="number-literal">.8</span><span>, </span><span class="identifier">start</span><span> + (</span><span class="identifier">increment</span><span> * </span><span class="number-literal">.3</span><span>)),
+    </span><span class="identifier">polar</span><span>(</span><span class="identifier">radius</span><span> * </span><span class="number-literal">1.2</span><span>, </span><span class="identifier">start</span><span> + (</span><span class="identifier">increment</span><span> * </span><span class="number-literal">.6</span><span>)),
+    </span><span class="identifier">polar</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">start</span><span> + </span><span class="identifier">increment</span><span>)
+  )
+}
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">triangle</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="type-name">List</span><span>(
+                     </span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">120</span><span>.</span><span class="identifier">degrees</span><span>),
+                     </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">120</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">120</span><span>.</span><span class="identifier">degrees</span><span>),
+                     </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">240</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">120</span><span>.</span><span class="identifier">degrees</span><span>)
+                   ))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">square</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>(</span><span class="type-name">List</span><span>(
+                     </span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>)),
+                     </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>),
+                     </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">135</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>),
+                     </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">225</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>),
+                     </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">315</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>)
+                   ))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">pentagon</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">closedPath</span><span>((</span><span class="type-name">List</span><span>(
+                      </span><span class="identifier">moveTo</span><span>(</span><span class="identifier">polar</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>)),
+                      </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>),
+                      </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">144</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>),
+                      </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">216</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>),
+                      </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">288</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>),
+                      </span><span class="identifier">curve</span><span>(</span><span class="number-literal">50</span><span>, </span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">72</span><span>.</span><span class="identifier">degrees</span><span>)
+                    )))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">spacer</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">100</span><span>).</span><span class="identifier">noStroke</span><span>.</span><span class="identifier">noFill</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">style</span><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">image</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">paleTurquoise</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="identifier">turquoise</span><span>)
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">image</span><span> = </span><span class="identifier">style</span><span>(</span><span class="identifier">triangle</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">spacer</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">style</span><span>(</span><span class="identifier">square</span><span>)).</span><span class="identifier">beside</span><span>(</span><span class="identifier">spacer</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">style</span><span>(</span><span class="identifier">pentagon</span><span>))</span></code></pre>
+            <p>&lt;/div&gt;</p>
+
+        </main>
+        <p class="nextPage"><a href="map.html">Transforming Sequences→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0"/>
+    <title>Parametric Curves</title>
+    
+    
+    <meta name="description" content="creative-scala" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body class="container">
+    <nav id="topbar"><p><a href="exercises.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="conclusions.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/objects.html">Values are Objects</a></li>
+          <li class="level1 nav-header">Reasoning and Substitution</li>
+          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-header">Methods without Madness</li>
+          <li class="level2 nav-leaf"><a href="../methods/">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-header">recursion</li>
+          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">fractals</li>
+          <li class="level2 nav-leaf"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level1 nav-header">hof</li>
+          <li class="level2 nav-leaf"><a href="index.html">Horticulture and Higher-order Functions</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="hof.html">Higher Order Methods and Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/">index.md</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+
+            <h1 id="parametric-curves" class="title">Parametric Curves</h1>
+            <p>Right now we only know how to create basic shapes like circles and rectangles.
+            We&#39;ll need more control to create the flower shapes that are our goal.
+            We&#39;re going to use a tool from mathematics known as a <em>parametric equation</em> or <em>parametric curve</em> to do so.</p>
+            <p>A parametric equation is a function from some input (the parameter in &quot;parametric&quot;) to a point, a location in space.
+            The input tells us how far along the curve we are. 
+            For example, a parametric equation for a circle might have as its input an angle and it would give us the point on the circle at that angle.
+            In Scala we could write</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">parametricCircle</span><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Point</span><span> =
+  ???</span></code></pre>
+            <p>If we choose lots of different values for the input, and then draw a shape at each point we get back from the parametric equation, we can suggest the shape of the curve.</p>
+            <p>In Figure hof:parametric-circles we give an example of drawing small circles at the points generated by the parametric equation for a circle. 
+            Going from left to right we draw points every 90, 45, and 22.5 degrees.
+            You can see how the outline of the shape, the large circle, becomes clearer as we draw more points.</p>
+            <p><img src="src/pages/hof/parametric-circles.pdf+svg" alt="Parametric circle with points drawn, from left to right, every 90, 45, and 22.5 degrees." title="Figure Some(#fig:hof:parametric-circles): caption"></p>
+            <p>To create parametric curves we need to learn 1) how to represent points in Doodle, 2) how to position an image at a particular point in space, and 3) revise a bit of geometry you might not have touched since high school. Let&#39;s look at each item in turn.</p>
+            
+            <h2 id="points" class="section">Points</h2>
+            <p>In Doodle we have a <code>Point</code> type to represent a position in two dimensions. We have two equivalent representations in terms of:</p>
+            <ul>
+              <li>x and y coordinates, called a cartesian representation; and</li>
+              <li>in terms of an angle and distance (the radius) at that angle from the origin, called a polar representation.</li>
+            </ul>
+            <p>This difference is shown in Figure hof:representation.</p>
+            <p><img src="./src/pages/hof/representation.pdf+svg" alt="A point represented in cartesian (x and y) coordinates and polar (radius and angle) coordinates" title="Figure Some(#fig:hof:representation): caption"></p>
+            <p>We can create points in the cartesian representation using <code>Point(Double, Double)</code> where the two parameters are the x and y coordinates, and in the polar representation using <code>Point(Double, Angle)</code> where we specify the radius and the angle. The table below shows the main methods on <code>Point</code>.</p>
+            <p>+----------------------------+---------+----------------------------+---------------------------+
+            | Constructor                |Type     | Description                | Example                   |
+            +============================+=========+============================+===========================+
+            |<code>Point(Double, Double)</code>     | <code>Point</code> | Constructs a <code>Point</code> using |  <code>Point(1.0, 1.0)</code>        |
+            |                            |         | the cartesian              |                           |
+            |                            |         | representation.            |                           |
+            +----------------------------+---------+----------------------------+---------------------------+
+            |<code>Point(Double, Angle)</code>      | <code>Point</code> | Constructs a <code>Point</code> using |  <code>Point(1.0, 90.degrees)</code> |
+            |<code></code>      |         | the polar representation.  |                           |
+            +----------------------------+---------+----------------------------+---------------------------+
+            |<code>Point.zero</code>                | <code>Point</code> | Constructs a <code>Point</code> at the|  <code>Point.zero</code>             |
+            |                            |         | origin (x and y are zero)  |                           |
+            +----------------------------+---------+----------------------------+---------------------------+
+            |<code>Point.x</code>                   | <code>Double</code>| Gets the x coordinate of   | <code>Point.zero.x</code>            |
+            |                            |         | the <code>Point</code>.               |                           |
+            +----------------------------+---------+----------------------------+---------------------------+
+            |<code>Point.y</code>                   | <code>Double</code>| Gets the y coordinate of   | <code>Point.zero.y</code>            |
+            |                            |         | the <code>Point</code>.               |                           |
+            +----------------------------+---------+----------------------------+---------------------------+
+            |<code>Point.r</code>                   | <code>Double</code>| Gets the radius of the     | <code>Point.zero.r</code>            |
+            |                            |         | <code>Point</code>.                   |                           |
+            +----------------------------+---------+----------------------------+---------------------------+
+            |<code>Point.angle</code>               | <code>Angle</code> | Gets the angle of the      | <code>Point.zero.angle</code>        |
+            |                            |         |  <code>Point</code>.                  |                           |
+            +----------------------------+---------+----------------------------+---------------------------+</p>
+            
+            <h2 id="flexible-layout" class="section">Flexible Layout</h2>
+            <p>Can we position an <code>Image</code> at a point? 
+            So far we only know how to layout images with <code>on</code>, <code>beside</code>, and <code>above</code>.
+            We need an additional tool, the <code>at</code> method, to achieve more flexible layout.
+            Here&#39;s an example using <code>at</code> that draws a dot at the corners of a square.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">dot</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">5</span><span>).</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">3</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">crimson</span><span>)
+</span><span class="keyword">val</span><span> </span><span class="identifier">squareDots</span><span> =
+  </span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">0</span><span>)
+    .</span><span class="identifier">on</span><span>(</span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="number-literal">100</span><span>))
+    .</span><span class="identifier">on</span><span>(</span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">100</span><span>))
+    .</span><span class="identifier">on</span><span>(</span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">0</span><span>))</span></code></pre>
+            <p>This produces the image shown in Figure hof:square-dots.</p>
+            <p><img src="src/pages/hof/square-dots.pdf+svg" alt="Using `at` layout to position four dots at the corners of a square." title="Figure Some(#fig:hof:square-dots): caption"></p>
+            <p>To understand how <code>at</code> layout works, and why we have to place the dots <code>on</code> each other, we need to know a bit more about how Doodle does layout.</p>
+            <p>Every <code>Image</code> in Doodle has a point called its <em>origin</em>, and a <em>bounding box</em> which determines the limits of the image. By convention the origin is in the center of the bounding box but this is not required. We can see the origin and bounding box of an <code>Image</code> by calling the <code>debug</code> method. In Figure hof:debug we show the output of the code</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">c</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
+</span><span class="keyword">val</span><span> </span><span class="identifier">c1</span><span> = </span><span class="identifier">c</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">c</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>)).</span><span class="identifier">beside</span><span>(</span><span class="identifier">c</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">10</span><span>, -</span><span class="number-literal">10</span><span>)).</span><span class="identifier">debug</span><span>
+</span><span class="keyword">val</span><span> </span><span class="identifier">c2</span><span> = </span><span class="identifier">c</span><span>.</span><span class="identifier">debug</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">c</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>).</span><span class="identifier">debug</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">c</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">10</span><span>, -</span><span class="number-literal">10</span><span>).</span><span class="identifier">debug</span><span>)
+</span><span class="keyword">val</span><span> </span><span class="identifier">c3</span><span> = </span><span class="identifier">c</span><span>.</span><span class="identifier">debug</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">c</span><span>.</span><span class="identifier">debug</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>)).</span><span class="identifier">beside</span><span>(</span><span class="identifier">c</span><span>.</span><span class="identifier">debug</span><span>.</span><span class="identifier">at</span><span>(</span><span class="number-literal">10</span><span>, -</span><span class="number-literal">10</span><span>))
+</span><span class="identifier">c1</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">c2</span><span>).</span><span class="identifier">above</span><span>(</span><span class="identifier">c3</span><span>)</span></code></pre>
+            <p>This shows how the origin and bounding box change as we combines <code>Images</code>.</p>
+            <p><img src="src/pages/hof/debug.pdf+svg" alt="Using the `debug` method to inspect the origin and bounding box of an `Image`" title="Figure Some(#fig:hof:debug): caption"></p>
+            <p>When we layout <code>Images</code> using <code>above</code>, <code>beside</code>, or <code>on</code> it is the bounding boxes and origins that determine how the individual components are positioned relative to one another. For <code>on</code> the rule is that the origins are placed on top of one another. For <code>beside</code> the rule is that origins are horizontally aligned and placed so that the bounding boxes just touch. The origin of the compound image is placed equidistant from the left and right edges of the compound bounding box on the horizontal line that connects the origins of the component images. The rule for <code>above</code> is the same as <code>beside</code>, but we use vertical alignment instead of horizontal alignment.</p>
+            <p>Using <code>at</code> we can move an <code>Image</code> relative to its origin.
+            In the examples we&#39;re using here we want all the elements to share the same origin, so we use <code>on</code> to combine <code>Images</code> that we have moved using <code>at</code>.</p>
+            <p>There are four ways we can call <code>at</code>:</p>
+            <ul>
+              <li>by passing the x- and y-offset, as in <code>dot.at(100, 100)</code>;</li>
+            </ul>
+            <ul>
+              <li>by passing the radius and angle, as in <code>dot.at(100, 90.degrees)</code>;</li>
+            </ul>
+            <ul>
+              <li>by passing a <code>Point</code>, as in <code>dot.at(Point(100, 100))</code>; or</li>
+            </ul>
+            <ul>
+              <li>by passing a <code>Vec</code> (a vector) giving the offset, as in <code>dot.at(Vec(100, 100))</code>.</li>
+            </ul>
+            <p>We can convert a <code>Point</code> to a <code>Vec</code> using the <code>toVec</code> method.</p>
+            <pre><code class="nohighlight"><span class="type-name">Point</span><span>.</span><span class="identifier">cartesian</span><span>(</span><span class="number-literal">1.0</span><span>, </span><span class="number-literal">1.0</span><span>).</span><span class="identifier">toVec</span><span>
+</span><span class="comment">// res1: Vec = Vec(x = 1.0, y = 1.0)</span></code></pre>
+            
+            <h2 id="geometry" class="section">Geometry</h2>
+            <p>The final building block is the geometry to position points.
+            If a point is positioned at a distance <code>r</code> from the origin at an angle <code>a</code>, the x- and y-coordinates are <code>(a.cos) * r</code> and <code>(a.sin) * r</code> respectively.
+            Alternatively we can just use polar form! For example, here&#39;s how we would position a point at a distance of 1 and an angle of 45 degrees.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">polar</span><span> = </span><span class="type-name">Point</span><span>(</span><span class="number-literal">1.0</span><span>, </span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>)
+</span><span class="comment">// polar: Point = Polar(r = 1.0, angle = Angle(0.7853981633974483))
+</span><span class="keyword">val</span><span> </span><span class="identifier">cartesian</span><span> = </span><span class="type-name">Point</span><span>((</span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>.</span><span class="identifier">cos</span><span>) * </span><span class="number-literal">1.0</span><span>, (</span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>.</span><span class="identifier">sin</span><span>) * </span><span class="number-literal">1.0</span><span>)
+</span><span class="comment">// cartesian: Point = Cartesian(x = 0.7071067811865476, y = 0.7071067811865475)
+</span><span>
+</span><span class="comment">// They are the same
+</span><span class="identifier">polar</span><span>.</span><span class="identifier">toCartesian</span><span> == </span><span class="identifier">cartesian</span><span>
+</span><span class="comment">// res2: Boolean = true
+</span><span class="identifier">cartesian</span><span>.</span><span class="identifier">toPolar</span><span> == </span><span class="identifier">polar</span><span>
+</span><span class="comment">// res3: Boolean = true</span></code></pre>
+            
+            <h2 id="putting-it-all-together" class="section">Putting It All Together</h2>
+            <p>We can put this all together to create a parametric circle.
+            In cartesian coordinates the code for a parametric circle with radius 200 is</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">parametricCircle</span><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Point</span><span> =
+  </span><span class="type-name">Point</span><span>.</span><span class="identifier">cartesian</span><span>(</span><span class="identifier">angle</span><span>.</span><span class="identifier">cos</span><span> * </span><span class="number-literal">200</span><span>, </span><span class="identifier">angle</span><span>.</span><span class="identifier">sin</span><span> * </span><span class="number-literal">200</span><span>)</span></code></pre>
+            <p>In polar form it is simply</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">parametricCircle</span><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Point</span><span> =
+  </span><span class="type-name">Point</span><span>.</span><span class="identifier">polar</span><span>(</span><span class="number-literal">200</span><span>, </span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>Now we could sample a number of points evenly spaced around the circle. To create an image we can draw something at each point (say, a triangle). </p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">sample</span><span>(</span><span class="identifier">samples</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="comment">// Angle.one is one complete turn. I.e. 360 degrees
+</span><span>  </span><span class="keyword">val</span><span> </span><span class="identifier">step</span><span> = </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">samples</span><span>
+  </span><span class="keyword">val</span><span> </span><span class="identifier">dot</span><span> = </span><span class="type-name">Image</span><span>
+              .</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>)
+              .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">limeGreen</span><span>)
+              .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">lawngreen</span><span>)
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+    </span><span class="keyword">val</span><span> </span><span class="identifier">angle</span><span> = </span><span class="identifier">step</span><span> * </span><span class="identifier">count</span><span>
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="identifier">parametricCircle</span><span>(</span><span class="identifier">angle</span><span>)).</span><span class="identifier">on</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
+    }
+  }
+  
+  </span><span class="identifier">loop</span><span>(</span><span class="identifier">samples</span><span>)
+}</span></code></pre>
+            <p>This is a structural recursion, which is hopefully a familiar pattern by now.</p>
+            <p>If we draw this we&#39;ll see the outline of a circle suggested by the triangles.
+            See Figure hof:triangle-circle, which shows the result of <code>sample(72)</code>.</p>
+            <p><img src="src/pages/hof/triangle-circle.pdf+svg" alt="Triangles arranged in a circle, using the code from `sample` above." title="Figure Some(#fig:hof:triangle-circle): caption"></p>
+            
+            <h3 id="parametric-curves-as-first-class-functions" class="section">Parametric Curves as First-class Functions</h3>
+            <p>So far we haven&#39;t seen anything that requires we use our parametric curves as functions instead of methods (and, indeed, we have defined them as method though we know we can easily convert methods to functions.) It&#39;s time we got something useful from functions. Remember that functions are first-class values, which means: we can pass them to a method, we can return them from a method, and we can give them a name using <code>val</code>. We&#39;re going to see an example where the first property---the ability to pass them as parameters---is useful.</p>
+            <p>We&#39;ve just defined a method called <code>sample</code> that samples from our parametric curve. Right now it is restricted to sampling from the method <code>parametricCircle</code>. It would make a lot of sense to reuse this method with different parametric curves, which means we need to be able to pass a parametric curve to sample from to the <code>sample</code> method. We can do this with a function parameter. Here is what the code might look like.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">sample</span><span>(</span><span class="identifier">samples</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">dot</span><span>: </span><span class="type-name">Image</span><span>, </span><span class="identifier">curve</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">step</span><span> = </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">samples</span><span>
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+    </span><span class="keyword">val</span><span> </span><span class="identifier">angle</span><span> = </span><span class="identifier">step</span><span> * </span><span class="identifier">count</span><span>
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="identifier">curve</span><span>(</span><span class="identifier">angle</span><span>)).</span><span class="identifier">on</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
+    }
+  }
+  
+  </span><span class="identifier">loop</span><span>(</span><span class="identifier">samples</span><span>)
+}</span></code></pre>
+            <p>In this implementation of sample I have added <em>two</em> new parameters, the parametric curve to sample from and the <code>Image</code> to use to draw the samples. This gives us more flexibility in the output. Now we just need to define some more parametric curves, which is what the next exercise involves.</p>
+            
+            <h4 id="exercises" class="section">Exercises {-}</h4>
+            <p>We have some new tools in our toolbox. It&#39;s time to have some fun exploring what we can do with them.</p>
+            
+            <h5 id="spirals" class="section">Spirals</h5>
+            <p>To create a circle we keep the radius constant as the angle increases. If, instead, the radius increases as the angle increases we&#39;ll get a spiral. (How quickly should the radius increase? It&#39;s up to you! Different choices will give you different spirals.)</p>
+            <p>Implement a function or method <code>parametricSpiral</code> that creates a spiral.</p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            Here&#39;s a type of spiral, known as a logarithmic spiral, that has a particularly pleasing shape. <code>sample</code> it and see for yourself!</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">parametricSpiral</span><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Point</span><span> =
+  </span><span class="type-name">Point</span><span>((</span><span class="type-name">Math</span><span>.</span><span class="identifier">exp</span><span>(</span><span class="identifier">angle</span><span>.</span><span class="identifier">toTurns</span><span>) - </span><span class="number-literal">1</span><span>) * </span><span class="number-literal">200</span><span>, </span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            
+            <h5 id="samples" class="section">Samples</h5>
+            <p>Use the parametric curves we have defined so far to create something interesting. There is an example in Figure hof:psychedelic-spirals</p>
+            <p><img src="src/pages/hof/psychedelic-spirals.pdf+svg" alt="A picture created using the parametric curves we have seen so far." title="Figure Some(hof:psychedelic-spirals): caption"></p>
+
+        </main>
+        <p class="nextPage"><a href="conclusions.html">Conclusions→</a></p>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>
