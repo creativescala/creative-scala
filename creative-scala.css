@@ -678,14 +678,14 @@ p {
 
 ol.arabic {
   margin-bottom: 1rem;
-  list-style-position: inside;
+  list-style-position: outside;
   list-style-type: decimal;
   padding-left: 0.5rem;
 }
 
 ul {
   margin-bottom: 1rem;
-  list-style-position: inside;
+  list-style-position: outside;
   list-style-type: disc;
   padding-left: 0.5rem;
 }
