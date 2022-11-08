@@ -1,4 +1,4 @@
-# Introduction
+# Expressions, Values, and Types
 
 With the setup complete we're ready to start learning to program. Let's get going! We have two goals in this chapter:
 

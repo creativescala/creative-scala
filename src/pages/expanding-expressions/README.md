@@ -1,4 +1,4 @@
-# Introduction
+# Expanding Expressions
 
 So far we have seen expressions using the `Int` type. We will need quite a few more types, and a lot more expressions, to create the kind of expressive programs we're aiming for. 
 
