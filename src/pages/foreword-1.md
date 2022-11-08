@@ -78,7 +78,7 @@ Thanks for downloading and happy creative programming!
 
 ---Dave and Noel
 
-## Notes on the Early Access Edition {-}
+## Notes on the Early Access Edition
 
 <div class="callout callout-danger">
 This is an *early access* release of Creative Scala.
@@ -92,7 +92,7 @@ or by email:
  - Noel Welsh ([noel@underscore.io](mailto:noel@underscore.io))
 </div>
 
-## Acknowledgements {-}
+## Acknowledgements
 
 Creative Scala was written by [Dave Gurnell][twitter-dave] and [Noel Welsh][twitter-noel]. Many thanks to [Richard Dallaway][twitter-richard], [Jonathan Ferguson][twitter-jono], and the team at [Underscore][underscore] for their invaluable contributions and extensive proof reading.
 
