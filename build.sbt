@@ -24,8 +24,7 @@ scalacOptions ++= Seq(
   "-unchecked",
   "-feature",
   "-language:implicitConversions",
-  "-language:postfixOps",
-  "-Xfatal-warnings"
+  "-language:postfixOps"
 )
 
 enablePlugins(MdocPlugin, LaikaPlugin)
