@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Laika 0.19.0"/>
+    <meta name="generator" content="Laika 0.19.0" />
     <title>Generative Art</title>
     
     
@@ -18,7 +18,7 @@
     <script> /* for avoiding page load transitions */</script>
 </head>
 
-<body class="container">
+<body>
     <nav id="topbar"><p><a href="index.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
 <p><a href="product.html">→</a></p></nav>
@@ -148,7 +148,6 @@
 
     <div id="content">
         <main class="content">
-
             <h1 id="generative-art" class="title">Generative Art</h1>
             <p>Generative art means art where some part of the composition is determined by an autonomous process. Concretely, for us this will mean adding an element of randomness.</p>
             <p>Let&#39;s take a really simple example. We&#39;ve learned previously how to create concentric circles.</p>
@@ -179,35 +178,34 @@
               </tbody>
             </table>
             <pre><code class="nohighlight"><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>
-</span><span class="comment">// res0: Double = 0.09967000922450564
+</span><span class="comment">// res0: Double = 0.506073941638163
 </span><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>
-</span><span class="comment">// res1: Double = 0.9599138027411978</span></code></pre>
+</span><span class="comment">// res1: Double = 0.3899306094494973</span></code></pre>
             <p>Given <code>math.random</code> we could produce a method that returns a random <code>Angle</code> like so.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">randomAngle</span><span>: </span><span class="type-name">Angle</span><span> = 
   </span><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>.</span><span class="identifier">turns</span><span>
   
 </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// res2: Angle = Angle(6.205426054276096)
+</span><span class="comment">// res2: Angle = Angle(5.728060566008919)
 </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// res3: Angle = Angle(2.098604364725494)</span></code></pre>
+</span><span class="comment">// res3: Angle = Angle(4.997954540471405)</span></code></pre>
             <p>Why might we not want to do this? What principle does this break?</p>
             <p>&lt;div class=&quot;solution&quot;&gt;
             Generating random numbers in this way breaks substitution. Remember substitution says wherever we see an expression we should be able to substitute the value it evaluates to without changing the meaning of the program. Concretely, this means</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">result1</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result1: Angle = Angle(3.5463244262957927)
+</span><span class="comment">// result1: Angle = Angle(2.242321048778832)
 </span><span class="keyword">val</span><span> </span><span class="identifier">result2</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result2: Angle = Angle(5.58798335100784)</span></code></pre>
+</span><span class="comment">// result2: Angle = Angle(5.6405794654247305)</span></code></pre>
             <p>and </p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">result1</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result1: Angle = Angle(4.139193321470997)
+</span><span class="comment">// result1: Angle = Angle(2.82443858142159)
 </span><span class="keyword">val</span><span> </span><span class="identifier">result2</span><span> = </span><span class="identifier">result1</span><span>
-</span><span class="comment">// result2: Angle = Angle(4.139193321470997)</span></code></pre>
+</span><span class="comment">// result2: Angle = Angle(2.82443858142159)</span></code></pre>
             <p>should be the same program and clearly they are not.
             &lt;/div&gt;</p>
             <p>What should we do? Suffer the slings and arrows of outrageous computational models, or take arms against a sea of side-effects, and by opposing end them! There&#39;s really only one choice.</p>
-
+            <p class="nextPage"><a href="product.html">Combining Random Values→</a></p>
         </main>
-        <p class="nextPage"><a href="product.html">Combining Random Values→</a></p>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
 

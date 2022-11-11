@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Laika 0.19.0"/>
+    <meta name="generator" content="Laika 0.19.0" />
     <title>Combining Random Values</title>
     
     
@@ -18,7 +18,7 @@
     <script> /* for avoiding page load transitions */</script>
 </head>
 
-<body class="container">
+<body>
     <nav id="topbar"><p><a href="random.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
 <p><a href="../adt/">→</a></p></nav>
@@ -148,7 +148,6 @@
 
     <div id="content">
         <main class="content">
-
             <h1 id="combining-random-values" class="title">Combining Random Values</h1>
             <p>&lt;div class=&quot;callout callout-info&quot;&gt;
             In addition to the standard imports given at the start of the chapter, in this section we&#39;re assuming the following:</p>
@@ -343,15 +342,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$12173/0x000000010359d840@13d6469a
+//           f = cats.free.Free$$Lambda$12175/0x0000000101b8f040@25c1983
 //         ),
-//         f = cats.free.Free$$Lambda$12173/0x000000010359d840@46008246
+//         f = cats.free.Free$$Lambda$12175/0x0000000101b8f040@22caf1a3
 //       ),
-//       f = cats.free.Free$$Lambda$12173/0x000000010359d840@6f4325ee
+//       f = cats.free.Free$$Lambda$12175/0x0000000101b8f040@55b6de66
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$12191/0x00000001035ad040@102655c2
+//     f = repl.MdocSession$MdocApp5$$Lambda$12193/0x00000001035a4840@7ad74d07
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$12194/0x00000001035b9840@31e533ca
+//   f = repl.MdocSession$MdocApp5$$Lambda$12196/0x00000001035a2840@1825c3df
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -372,7 +371,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$12173/0x000000010359d840@73b58502
+//   f = cats.free.Free$$Lambda$12175/0x0000000101b8f040@6d977e91
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -380,9 +379,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$12173/0x000000010359d840@73b58502
+//     f = cats.free.Free$$Lambda$12175/0x0000000101b8f040@6d977e91
 //   ),
-//   f = cats.free.Free$$Lambda$12173/0x000000010359d840@5afa2cf
+//   f = cats.free.Free$$Lambda$12175/0x0000000101b8f040@e31d8ab
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
@@ -399,9 +398,8 @@
       }
   }</span></code></pre>
             <p>&lt;/div&gt;</p>
-
+            <p class="nextPage"><a href="../adt/">Algebraic Data Types To Call Our Own→</a></p>
         </main>
-        <p class="nextPage"><a href="../adt/">Algebraic Data Types To Call Our Own→</a></p>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
 

@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Laika 0.19.0"/>
+    <meta name="generator" content="Laika 0.19.0" />
     <title>Types</title>
     
     
@@ -18,7 +18,7 @@
     <script> /* for avoiding page load transitions */</script>
 </head>
 
-<body class="container">
+<body>
     <nav id="topbar"><p><a href="03-expressions.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
 <p><a href="05-exercises.html">→</a></p></nav>
@@ -148,16 +148,14 @@
 
     <div id="content">
         <main class="content">
-
             <h1 id="types" class="title">Types</h1>
             <p><em>Types</em> describe a set of values. The expression <code>1 + 2</code> has the type <code>Int</code>. This means if the expression is successfully evaluated, then the value will be one of the approximately 4.2 billion values the computer understands to be integers. (Integers are also known as &quot;whole numbers&quot;.) </p>
             <p>We determine the type of an expression without running it. This means that <em>types are a property of expressions</em>. We can give a type to an expression even if, when we evaluate it, the computation fails. This is also why the type doesn&#39;t tell us the specific value the expression evaluates to: we&#39;d have to evalute the expression to know that.</p>
             <p>Types are worked out in a process known as a <em>type-checking</em>, which is part of <em>compilation</em>. Before a Scala program is run, it must be <em>compiled</em>. Compilation checks that a program makes sense. It must be syntactically correct, meaning it must be written according to the rules of Scala. For example <code>(1 + 2)</code> is syntactically correct, but <code>(1 + 2</code> is not because there is no <code>)</code> to match the <code>(</code>. It must also <em>type check</em>, meaning the types must be correct for the operations we&#39;re trying to do. <code>1 + 2</code> type checks (we are adding integers), but <code>1.toUpperCase</code> does not (there is no concept of upper and lower case for integers.)</p>
             <p>Only programs that successfully compile can be run. We can think of compilation as being analogous to the rules of grammar in writing. The sentence &quot;FaRf  fjrmn;l df.fd&quot; is syntactically incorrect in English. The arrangement of letters doesn&#39;t form any words. The sentence &quot;dog fly a here no&quot; is made out of valid words but their arrangement breaks the rules of grammar, which is analogous to the type checks that Scala performs.</p>
             <p>It is important to remember that type checking is done before a program runs. If you have used a language like Python or Javascript, which are sometimes called &quot;dynamically typed&quot;, there is no type checking done before a program runs. In a &quot;statically typed&quot; language like Scala the type checking catches some potential errors for us before we run the code. What is sometimes called a type in a dynamically typed language is <em>not</em> a type as we understand it here. Types, for us, exist at the time when a program is compiled, which we will call <em>compile time</em>. At time when a program runs, which we call <em>run time</em>, we have only values. Values may record some information about the type of the expression that created them. If they do we call these <em>tags</em>, or sometimes <em>boxes</em>. Not all values are tagged or boxed. Avoiding tagging, which is also called <em>type erasure</em>, allows for more efficient programs.</p>
-
+            <p class="nextPage"><a href="05-exercises.html">Exercises→</a></p>
         </main>
-        <p class="nextPage"><a href="05-exercises.html">Exercises→</a></p>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
 

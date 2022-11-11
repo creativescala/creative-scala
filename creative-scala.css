@@ -513,41 +513,7 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
-.container {
-  width: 100%;
-}
-
-@media (min-width: 640px) {
-  .container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .container {
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1536px) {
-  .container {
-    max-width: 1536px;
-  }
-}
-
-.container {
+body {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
   font-family: Crimson Pro, serif;
@@ -557,8 +523,8 @@ video {
   color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
-@media (min-width: 1024px) {
-  .container {
+@media (min-width: 1280px) {
+  body {
     display: flex;
   }
 }
@@ -577,7 +543,7 @@ nav#topbar {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   nav#topbar {
     display: none;
   }
@@ -596,7 +562,7 @@ nav#sidebar {
   padding: 3rem;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   nav#sidebar {
     display: block;
     flex: none;
@@ -638,17 +604,23 @@ li.level2 {
 }
 
 #content {
-  flex: 0 1 auto;
+  flex: 1 1 auto;
   padding: 3rem;
 }
 
-.content {
-  max-width: 65ch;
+main {
+  display: grid;
+  grid-template-columns: [main-start] minmax(20ch, 60ch) [main-end] minmax(0ch,20ch) [overflow-end];
 }
 
 h1, h2, h3, h4 {
   --tw-text-opacity: 1;
   color: rgb(157 23 77 / var(--tw-text-opacity));
+}
+
+.content h1, h2, h3, h4 {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
 }
 
 h1 {
@@ -676,24 +648,32 @@ p {
   margin-bottom: 1rem;
 }
 
-ol.arabic {
+.content p {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
+}
+
+.content ol.arabic {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
   margin-bottom: 1rem;
   list-style-position: outside;
   list-style-type: decimal;
   padding-left: 1rem;
 }
 
-ul {
+.content ul {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
   margin-bottom: 1rem;
   list-style-position: outside;
   list-style-type: disc;
   padding-left: 1rem;
 }
 
-code {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-  font-family: "Source Code Pro", ui-monospace, monospace;
+.content pre {
+  grid-column-start: main-start;
+  grid-column-end: overflow-end;
 }
 
 pre {
@@ -703,12 +683,13 @@ pre {
   padding: 0.5rem;
 }
 
-pre code .number-literal {
-  --tw-text-opacity: 1;
-  color: rgb(2 132 199 / var(--tw-text-opacity));
+code {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-family: "Source Code Pro", ui-monospace, monospace;
 }
 
-pre code .string-literal {
+pre code .number-literal, .char-literal, .boolean-literal, .string-literal {
   --tw-text-opacity: 1;
   color: rgb(2 132 199 / var(--tw-text-opacity));
 }

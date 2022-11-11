@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Laika 0.19.0"/>
+    <meta name="generator" content="Laika 0.19.0" />
     <title>Substitution</title>
     
     
@@ -18,7 +18,7 @@
     <script> /* for avoiding page load transitions */</script>
 </head>
 
-<body class="container">
+<body>
     <nav id="topbar"><p><a href="index.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
 <p><a href="order.html">→</a></p></nav>
@@ -148,7 +148,6 @@
 
     <div id="content">
         <main class="content">
-
             <h1 id="substitution" class="title">Substitution</h1>
             <p>Substitution says that wherever we see an expression we can replace it with the value it evaluates to. For example, where we see</p>
             <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">1</span></code></pre>
@@ -254,9 +253,8 @@
 </span><span class="keyword">val</span><span> </span><span class="identifier">d</span><span> = </span><span class="identifier">b</span><span>.</span><span class="identifier">indexOf</span><span>(</span><span class="identifier">c</span><span>)</span></code></pre>
             <p>because <code>e</code> depends on <code>a</code> and <code>d</code>, and in our top-to-bottom ordering <code>a</code> and <code>d</code> have yet to be evaluated.
             We might rightly claim that this is a bit silly to even attempt. The complete expression we&#39;re trying to evaluate is  <code>e</code> but <code>a</code> to <code>d</code> are sub-expressions of <code>e</code>, so of course we have to evaluate the sub-expressions before we evaluate the expression.</p>
-
+            <p class="nextPage"><a href="order.html">Order of Evaluation→</a></p>
         </main>
-        <p class="nextPage"><a href="order.html">Order of Evaluation→</a></p>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
 
