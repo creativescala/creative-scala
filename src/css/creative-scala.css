@@ -59,10 +59,10 @@ p {
 }
 
 ol.arabic {
-    @apply list-decimal list-outside pl-2 mb-4;
+    @apply list-decimal list-outside pl-4 mb-4;
 }
 ul {
-    @apply list-disc list-outside pl-2 mb-4;
+    @apply list-disc list-outside pl-4 mb-4;
 }
 code {
     @apply text-sm;
