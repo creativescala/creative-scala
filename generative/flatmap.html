@@ -59,13 +59,12 @@
           <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
           <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
           <li class="level2 nav-leaf"><a href="../methods/">Methods without Madness</a></li>
-          <li class="level1 nav-header">recursion</li>
-          <li class="level2 nav-leaf"><a href="../recursion/">Structural Recursion</a></li>
+          <li class="level1 nav-node"><a href="../recursion/">Structural Recursion over the Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
-          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
-          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
           <li class="level1 nav-header">turtles</li>
           <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
           <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
@@ -342,15 +341,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$12185/0x000000010359e840@2208b2a5
+//           f = cats.free.Free$$Lambda$12168/0x0000000103583840@247d59d6
 //         ),
-//         f = cats.free.Free$$Lambda$12185/0x000000010359e840@5dcf8492
+//         f = cats.free.Free$$Lambda$12168/0x0000000103583840@2f8b8f58
 //       ),
-//       f = cats.free.Free$$Lambda$12185/0x000000010359e840@72840a03
+//       f = cats.free.Free$$Lambda$12168/0x0000000103583840@35e26b6a
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$12203/0x00000001035b8840@4eb9cd99
+//     f = repl.MdocSession$MdocApp5$$Lambda$12186/0x000000010353d040@2503ac3b
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$12206/0x00000001035ba840@2943c371
+//   f = repl.MdocSession$MdocApp5$$Lambda$12189/0x0000000103547840@6bfee2a4
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -371,7 +370,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$12185/0x000000010359e840@88939df
+//   f = cats.free.Free$$Lambda$12168/0x0000000103583840@18fc41cc
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -379,9 +378,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$12185/0x000000010359e840@88939df
+//     f = cats.free.Free$$Lambda$12168/0x0000000103583840@18fc41cc
 //   ),
-//   f = cats.free.Free$$Lambda$12185/0x000000010359e840@5a0ffedf
+//   f = cats.free.Free$$Lambda$12168/0x0000000103583840@3e63c082
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
