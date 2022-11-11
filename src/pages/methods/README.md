@@ -1,4 +1,4 @@
-# Methods without Madness
+# Methods
 
 We've already used methods---methods are the way we interact with objects.
 In this chapter we'll learn how to write our own methods.
