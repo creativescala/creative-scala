@@ -25,7 +25,7 @@ and then save the worksheet. The worksheet will run your program and you should 
 1 + 2 // : Int = 3
 ```
 
-This may take a little while the first time you save it. It will be much faster after on subsequent saves.
+This may take a little while the first time you save it. It will be much faster on subsequent saves.
 
 This very simple program provides an example of all the concepts we'll discuss in the remainder of the chapter:
 
