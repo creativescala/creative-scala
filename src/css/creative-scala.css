@@ -76,6 +76,9 @@ pre {
 pre code .number-literal {
     @apply text-sky-600;
 }
+pre code .string-literal {
+    @apply text-sky-600;
+}
 pre code .keyword {
     @apply text-rose-600;
 }
