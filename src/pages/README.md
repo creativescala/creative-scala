@@ -1,8 +1,4 @@
 # Creative Scala: Form and Function
 
 
-@:navigationTree {
-  entries = [
-    { target = "/", excludeSections = true, excludeSelf = true, depth = 2 }
-  ]
-}
+A book for having fun while learning to program, using Scala.
