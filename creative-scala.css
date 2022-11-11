@@ -708,6 +708,11 @@ pre code .number-literal {
   color: rgb(2 132 199 / var(--tw-text-opacity));
 }
 
+pre code .string-literal {
+  --tw-text-opacity: 1;
+  color: rgb(2 132 199 / var(--tw-text-opacity));
+}
+
 pre code .keyword {
   --tw-text-opacity: 1;
   color: rgb(225 29 72 / var(--tw-text-opacity));
