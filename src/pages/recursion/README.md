@@ -1,4 +1,4 @@
-# Structural Recursion
+# Structural Recursion over the Natural Numbers
 
 In this chapter we see our first major programming strategy for structuring computations: *structural recursion over the natural numbers*. That's quite a mouthful, so let's break it down:
 
