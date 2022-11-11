@@ -53,13 +53,12 @@
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
-          <li class="level1 nav-node"><a href="../methods/">Methods</a></li>
+          <li class="level1 nav-node"><a href="../methods/">Methods without Madness</a></li>
           <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
           <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
           <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
           <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
           <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
-          <li class="level2 nav-leaf"><a href="../methods/">Methods without Madness</a></li>
           <li class="level1 nav-node"><a href="../recursion/">Structural Recursion over the Natural Numbers</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
@@ -341,15 +340,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$12166/0x00000001035a6840@2f94b22f
+//           f = cats.free.Free$$Lambda$12171/0x00000001035a2840@f918a96
 //         ),
-//         f = cats.free.Free$$Lambda$12166/0x00000001035a6840@290a7519
+//         f = cats.free.Free$$Lambda$12171/0x00000001035a2840@36bbcf99
 //       ),
-//       f = cats.free.Free$$Lambda$12166/0x00000001035a6840@257b1e8f
+//       f = cats.free.Free$$Lambda$12171/0x00000001035a2840@51391f7d
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$12184/0x00000001035c0840@52fe47
+//     f = repl.MdocSession$MdocApp5$$Lambda$12189/0x000000010354f840@dc12f2a
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$12187/0x00000001035c2840@a5d21a8
+//   f = repl.MdocSession$MdocApp5$$Lambda$12192/0x0000000103548040@e87d13e
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -370,7 +369,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$12166/0x00000001035a6840@70852f47
+//   f = cats.free.Free$$Lambda$12171/0x00000001035a2840@66a80070
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -378,9 +377,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$12166/0x00000001035a6840@70852f47
+//     f = cats.free.Free$$Lambda$12171/0x00000001035a2840@66a80070
 //   ),
-//   f = cats.free.Free$$Lambda$12166/0x00000001035a6840@df7d8be
+//   f = cats.free.Free$$Lambda$12171/0x00000001035a2840@7ff3392f
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
