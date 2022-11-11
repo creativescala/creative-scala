@@ -2,17 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {
-    @apply text-slate-900 text-lg font-serif bg-white lg:flex;
+body {
+    @apply text-slate-900 text-lg font-serif bg-white xl:flex;
 }
 nav#topbar {
-    @apply w-full flex justify-around content-center text-white bg-slate-800 p-2 text-xl lg:hidden;
+    @apply w-full flex justify-around content-center text-white bg-slate-800 p-2 text-xl xl:hidden;
 }
 nav#topbar p {
     @apply p-0 m-0;
 }
 nav#sidebar {
-    @apply bg-slate-800 hidden max-w-sm p-12 lg:flex-none lg:block;
+    @apply bg-slate-800 hidden max-w-sm p-12 xl:flex-none xl:block;
 }
 li.level1.nav-leaf {
     @apply list-none text-pink-300 mt-4;
@@ -31,14 +31,19 @@ li.level2 {
 }
 
 #content {
-    @apply flex-initial p-12;
-}
-.content {
-    @apply max-w-prose;
+    @apply flex-auto p-12;
 }
 
+main {
+    display: grid;
+    grid-template-columns: [main-start] minmax(20ch, 60ch) [main-end] minmax(0ch,20ch) [overflow-end];
+}
 h1, h2, h3, h4 {
     @apply text-pink-800;
+}
+.content h1, h2, h3, h4 {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
 }
 h1 {
     @apply text-6xl mb-16;
@@ -57,26 +62,32 @@ h4 {
 p {
     @apply mb-4;
 }
-
-ol.arabic {
+.content p {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
+}
+.content ol.arabic {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
     @apply list-decimal list-outside pl-4 mb-4;
 }
-ul {
+.content ul {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
     @apply list-disc list-outside pl-4 mb-4;
+}
+.content pre {
+    grid-column-start: main-start;
+    grid-column-end: overflow-end;
+}
+pre {
+    @apply mb-4 p-2 bg-slate-100;
 }
 code {
     @apply text-sm;
     font-family: "Source Code Pro", ui-monospace, monospace;
 }
-
-pre {
-    @apply mb-4 p-2 bg-slate-100;
-}
-
-pre code .number-literal {
-    @apply text-sky-600;
-}
-pre code .string-literal {
+pre code .number-literal, .char-literal, .boolean-literal, .string-literal {
     @apply text-sky-600;
 }
 pre code .keyword {
