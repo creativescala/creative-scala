@@ -20,6 +20,9 @@ li.level1.nav-leaf {
 ul.nav-list:first-child {
     @apply mt-0;
 }
+ul.nav-list li:first-child {
+    @apply uppercase;
+}
 li.level1.nav-node {
     @apply list-none uppercase text-pink-300 mt-4;
 }
