@@ -1,6 +1,6 @@
 # Foreword to the Second Edition
 
-The real foreword will be written when the book is almost finished and I'll have a better idea of how I've been able to realize my goals for the book. Nonetheless it's useful to have something ehre so people reading the darfts (which I intend to post soon) have some idea of the goals.
+The real foreword will be written when the book is almost finished and I'll have a better idea of how I've been able to realize my goals for the book. Nonetheless it's useful to have something here so people reading the drafts (which I intend to post soon) have some idea of the goals.
 
 Compared to the first edition, the intention for the second edition of Creative Scala is:
 
