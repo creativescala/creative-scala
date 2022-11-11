@@ -580,6 +580,10 @@ ul.nav-list:first-child {
   margin-top: 0px;
 }
 
+ul.nav-list li:first-child {
+  text-transform: uppercase;
+}
+
 li.level1.nav-node {
   margin-top: 1rem;
   list-style-type: none;
