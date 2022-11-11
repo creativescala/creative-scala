@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.19.0" />
-    <title>Expressions, Values, and Types</title>
+    <title>Layout</title>
     
     
     <meta name="description" content="creative-scala" />
@@ -19,9 +19,9 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="../setup/">←</a></p>
+    <nav id="topbar"><p><a href="index.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="02-starting.html">→</a></p></nav>
+<p><a href="03-color.html">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
@@ -32,22 +32,22 @@
           <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
           <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
           <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
-          <li class="level1 active nav-node"><a href="#">Expressions, Values, and Types</a></li>
-          <li class="level2 nav-leaf"><a href="02-starting.html">Starting to Program</a></li>
-          <li class="level2 nav-leaf"><a href="03-expressions.html">Expressions and Values</a></li>
-          <li class="level2 nav-leaf"><a href="04-types.html">Types</a></li>
-          <li class="level2 nav-leaf"><a href="05-exercises.html">Exercises</a></li>
-          <li class="level2 nav-leaf"><a href="06-summary.html">Summary</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
           <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
-          <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
+          <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Layout</a></li>
+          <li class="level2 nav-leaf"><a href="03-color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="04-creating-color.html">Creating Colors</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
@@ -148,16 +148,51 @@
 
     <div id="content">
         <main class="content">
-            <h1 id="expressions-values-and-types" class="title">Expressions, Values, and Types</h1>
-            <p>With the setup complete we&#39;re ready to start learning to program. Let&#39;s get going! We have two goals in this chapter:</p>
-            <ol class="arabic">
-              <li>to write and run our first Scala code; and</li>
-              <li>to start building our model of how code works.</li>
-            </ol>
-            <p>The first is clearly important: we won&#39;t get very far learning Scala if we cannot write and run Scala code. The second perhaps needs a bit more explanation. To learn how to program we need to learn to think about code in a number of different ways. The first way, which we&#39;re starting here, is to build a model of what happens when code runs. We say it&#39;s a model because it&#39;s not exactly what happens, but rather a very useful approximation. It will tell us some things, but not everything. (Trying to understand <em>everything</em> would take us to at least the quantum mechanics of semiconductors, and I don&#39;t have the time or knowledge to go there.)</p>
-            <p>To get more specific, we start to build our model of how code works by looking at <em>expressions</em> and <em>values</em>, and the process of <em>evaluation</em> that connects expressions to values. We&#39;ll then talk about <em>types</em>, and the process of <em>compilation</em> that constructs them.</p>
-            <p>We are also, of course, going to write some code along the way. This is important in its own right but will also help ground our more theoretical discussion. One of the great things about programming is that we can easily test our mental models by seeing what the computer actually does.</p>
-            <p class="nextPage"><a href="02-starting.html">Starting to Program→</a></p>
+            <h1 id="layout" class="title">Layout</h1>
+            <p>We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle displayed beside one another, as in Figure picture:circle-rect.</p>
+            <pre><code class="nohighlight"><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">20</span><span>))).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p><img src="src/pages/pictures/circle-beside-rectangle.pdf+svg" alt="A circle beside a rectangle" title="Figure Some(#fig:picture:circle-rect): caption"></p>
+            <p><code>Image</code> contains several layout methods for combining images, described in Table pictures:layout. Try them out now to see what they do.</p>
+            <p>+---------------+-----------+----------------------------+------------------------------+
+            | Method        | Parameter | Description                | Example                      |
+            +===============+===========+============================+==============================+
+            | <code>beside</code>      |<code>Image</code>    | Places images horizontally | <code>Image.circle(10)            |
+|               |           | next to one another        |    .beside(Image.circle(10))</code>|
+            +---------------+-----------+----------------------------+------------------------------+
+            | <code>above</code>       |<code>Image</code>    | Places images vertically   | <code>Image.circle(10)            |
+|               |           | next to one another        |    .above(Image.circle(10))</code> |
+            +---------------+-----------+----------------------------+------------------------------+
+            | <code>below</code>       |<code>Image</code>    | Places images vertically   | <code>Image.circle(10)            |
+|               |           | next to one another        |    .below(Image.circle(10))</code> |
+            +---------------+-----------+----------------------------+------------------------------+
+            | <code>on</code>          |<code>Image</code>    | Places images centered     | <code>Image.circle(10)            |
+|               |           | on top of one another      |    .on(Image.circle(10))</code>    |
+            +---------------+-----------+----------------------------+------------------------------+
+            | <code>under</code>       |<code>Image</code>    | Places images centered     | <code>Image.circle(10)            |
+|               |           | on top of one another      |    .under(Image.circle(10))</code> |
+            +---------------+-----------+----------------------------+------------------------------+</p>
+            <p>: Layout methods available in Doodle Table pictures:layout</p>
+            
+            <h3 id="exercises" class="section">Exercises {-}</h3>
+            
+            <h4 id="the-width-of-a-circle" class="section">The Width of a Circle {-}</h4>
+            <p>Create the picture Figure picture:width-of-a-circle using the layout methods and basic images we&#39;ve covered so far.</p>
+            <p><img src="src/pages/pictures/width-of-a-circle.pdf+svg" alt="The width of a circle" title="Figure Some(#fig:picture:width-of-a-circle): caption"></p>
+            <p>&lt;div class=&quot;solution&quot;&gt;
+            It&#39;s three small circles on top of a bigger circle, and we can just about state this as is in code.</p>
+            <pre><code class="nohighlight"><span>(</span><span class="type-name">Image</span><span>
+   .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>)
+   .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>))
+   .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>))).</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>))
+</span><span class="comment">// res0: Image = On(
+//   t = Beside(
+//     l = Beside(l = Circle(d = 20.0), r = Circle(d = 20.0)),
+//     r = Circle(d = 20.0)
+//   ),
+//   b = Circle(d = 60.0)
+// )</span></code></pre>
+            <p>&lt;/div&gt;</p>
+            <p class="nextPage"><a href="03-color.html">Color→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
