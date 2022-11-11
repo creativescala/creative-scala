@@ -51,8 +51,7 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/creating-color.html">Creating Colors</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/color.html">Color</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/layout.html">Layout</a></li>
-          <li class="level1 nav-header">Reasoning and Substitution</li>
-          <li class="level2 nav-leaf"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
@@ -168,7 +167,7 @@
 // )</span></code></pre>
             <p>No random numbers are actually created until we call the <code>run</code> method.</p>
             <pre><code class="nohighlight"><span class="identifier">randomDouble</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res0: Double = 0.24140473632976722</span></code></pre>
+</span><span class="comment">// res0: Double = 0.6412776859391328</span></code></pre>
             <p>The type <code>Random[Double]</code> indicates we have something that will produce a random <code>Double</code> when we <code>run</code> it. Just like with <code>Image</code> and <code>draw</code>, substitution holds with <code>Random</code> up until the point we call <code>run</code>.</p>
             <p>Table Table generative:random shows some of the ways to construct <code>Random</code> values.</p>
             <hr>
@@ -206,9 +205,9 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)</span></code></pre>
             <p>When we <code>run</code> <code>RandomAngle</code> we can generate randomly created <code>Angle</code></p>
             <pre><code class="nohighlight"><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res1: Angle = Angle(5.6797411470649575)
+</span><span class="comment">// res1: Angle = Angle(4.89233798134479)
 </span><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res2: Angle = Angle(2.3865025551711514)</span></code></pre>
+</span><span class="comment">// res2: Angle = Angle(3.888733353115865)</span></code></pre>
             
             <h3 id="exercises" class="section">Exercises {-}</h3>
             
