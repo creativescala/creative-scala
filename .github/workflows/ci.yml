@@ -62,7 +62,7 @@ jobs:
         run: sbt '++${{ matrix.scala }}' build
 
       - name: Publish site
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/laika'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/develop'
         uses: peaceiris/actions-gh-pages@v3.8.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
