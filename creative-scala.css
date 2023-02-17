@@ -698,6 +698,19 @@ pre {
   padding: 0.5rem;
 }
 
+.content div.callout {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.content div.info {
+  --tw-bg-opacity: 1;
+  background-color: rgb(191 219 254 / var(--tw-bg-opacity));
+}
+
 code {
   font-size: 0.875rem;
   line-height: 1.25rem;
