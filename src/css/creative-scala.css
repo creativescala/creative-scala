@@ -39,7 +39,7 @@ li.level2 {
 
 main {
     display: grid;
-    grid-template-columns: [main-start] minmax(20ch, 60ch) [main-end] minmax(0ch,20ch) [overflow-end];
+    grid-template-columns: [main-start] minmax(20ch, 70ch) [main-end] minmax(0ch,20ch) [overflow-end];
 }
 h1, h2, h3, h4 {
     @apply text-pink-800;
@@ -82,6 +82,13 @@ p {
 .content pre {
     grid-column-start: main-start;
     grid-column-end: overflow-end;
+}
+.content table {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
+}
+.content table.footnote tbody tr td {
+    @apply pr-4 text-sm;
 }
 pre {
     @apply mb-4 p-2 bg-slate-100;
