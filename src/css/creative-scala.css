@@ -93,6 +93,14 @@ p {
 pre {
     @apply mb-4 p-2 bg-slate-100;
 }
+.content div.callout {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
+    @apply my-4 p-4;
+}
+.content div.info {
+    @apply bg-blue-200;
+}
 code {
     @apply text-sm;
     font-family: "Source Code Pro", ui-monospace, monospace;
