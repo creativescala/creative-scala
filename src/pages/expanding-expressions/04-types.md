@@ -6,6 +6,9 @@ One use of types is stopping us from calling methods that don't exist. The type 
 
 ```scala mdoc:fail
 "Brontë" / "Austen"
+```
+
+```scala mdoc:fail
 1.take(2)
 ```
 
@@ -27,11 +30,10 @@ Types are a property of expressions and thus exist at compile time (as we have d
 1 / 0
 ```
 
-The expression `1 / 0` still has a type, and we can get that type from the console as shown below.
+The expression `1 / 0` still has a type. One way we can find out that type is by putting an incorrect type declaration on the expression. A type declaration tells the compiler what we believe the type of an expression is. If the compiler cannot show this is the case, it will print an error message telling us the type it believes is correct. In the example below we use a type declaration of `String` and the compiler responds that the correct type is `Int`.
 
-```scala
-:type 1 / 0
-// Int
+```scala mdoc:fail
+(1 / 0): String
 ```
 
 We can also write a compound expression including a sub-expression that will fail at run-time.
@@ -42,7 +44,6 @@ We can also write a compound expression including a sub-expression that will fai
 
 This expression also has a type.
 
-```scala
-:type (2 + (1 / 0) + 3)
-// Int
+```scala mdoc:fail
+(2 + (1 / 0) + 3): String
 ```

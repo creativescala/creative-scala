@@ -1,11 +1,11 @@
 # Expressions, Values, and Types
 
-With the setup complete we're ready to start learning to program. Let's get going! We have two goals in this chapter:
+With the setup complete we're ready to start learning to program! We have two goals in this chapter:
 
 1. to write and run our first Scala code; and
 2. to start building our model of how code works.
 
-The first is clearly important: we won't get very far learning Scala if we cannot write and run Scala code. The second perhaps needs a bit more explanation. To learn how to program we need to learn to think about code in a number of different ways. The first way, which we're starting here, is to build a model of what happens when code runs. We say it's a model because it's not exactly what happens, but rather a very useful approximation. It will tell us some things, but not everything. (Trying to understand *everything* would take us to at least the quantum mechanics of semiconductors, and I don't have the time or knowledge to go there.)
+The first is clearly important: we won't get very far learning Scala if we cannot write and run Scala code. The second perhaps needs a bit more explanation. To learn how to program we need to learn to think about code in a number of different ways. The first way, which we're starting here, is to build a model of what happens when code runs. We say it's a model because it's not exactly what happens, but rather a very useful approximation. It will tell us some things, but not everything. 
 
 To get more specific, we start to build our model of how code works by looking at *expressions* and *values*, and the process of *evaluation* that connects expressions to values. We'll then talk about *types*, and the process of *compilation* that constructs them.
 

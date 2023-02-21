@@ -31,7 +31,7 @@ in which to wield its truths so that these may become of more speedy and accurat
 practical application for the purposes of mankind than the means hitherto in our
 possession have rendered possible.
 
-  -- Ada Lovelace, the world's first programmer
+  -- Ada Lovelace
 """
 ```
 

@@ -93,6 +93,10 @@ p {
 pre {
     @apply mb-4 p-2 bg-slate-100;
 }
+.content div.solution {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
+}
 .content div.callout {
     grid-column-start: main-start;
     grid-column-end: main-end;
