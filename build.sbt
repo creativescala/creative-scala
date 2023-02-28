@@ -60,6 +60,7 @@ laikaSite / target := target.value / "creative-scala"
 laikaIncludeEPUB := false
 laikaIncludePDF := false
 laikaTheme := Theme.empty
+Laika / sourceDirectories += file("src/js")
 
 lazy val css = taskKey[Unit]("Build the CSS")
 css := {

@@ -41,7 +41,7 @@ main {
     display: grid;
     grid-template-columns: [main-start] minmax(20ch, 70ch) [main-end] minmax(0ch,20ch) [overflow-end];
 }
-h1, h2, h3, h4 {
+h1, h2, h3, h4, h5 {
     @apply text-pink-800;
 }
 .content h1, h2, h3, h4 {
@@ -59,6 +59,9 @@ h3 {
 }
 h4 {
     @apply text-xl;
+}
+h5 {
+    @apply text-lg;
 }
 
 
@@ -104,6 +107,16 @@ pre {
 }
 .content div.info {
     @apply bg-blue-200;
+}
+details summary {
+    cursor: pointer;
+    @apply text-pink-800;
+}
+details summary > * {
+    display: inline;
+}
+.solution {
+    @apply pb-4;
 }
 code {
     @apply text-sm;

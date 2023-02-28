@@ -2,6 +2,7 @@ import cats.data._
 import cats.implicits._
 import laika.ast._
 import laika.directive._
+import laika.format.HTML
 
 object CreativeScalaDirectives extends DirectiveRegistry {
 
@@ -116,7 +117,7 @@ object CreativeScalaDirectives extends DirectiveRegistry {
       import Blocks.dsl._
 
       parsedBody.map { body =>
-        Section(Header(5, Text("Solution")), body)
+        BlockSequence(body, Options(id = None, styles = Set("solution")))
       }
     }
 
