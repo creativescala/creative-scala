@@ -1,7 +1,0 @@
-version: '2'
-services:
-  book:
-    image: underscoreio/book:latest
-    volumes:
-     - .:/source
-     - ~/.ivy2:/root/.ivy2

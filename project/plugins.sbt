@@ -1,5 +1,6 @@
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.4")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.4")
 addSbtPlugin("org.planet42" % "laika-sbt" % "0.19.0")
 addSbtPlugin("org.scalameta" % "sbt-mdoc" % "2.3.3")
 addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.10.0")
 addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.3")
+addSbtPlugin("org.scala-js" % "sbt-scalajs" % "1.13.0")

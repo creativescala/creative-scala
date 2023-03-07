@@ -64,7 +64,8 @@ This generates the animation shown in @:fref(reactor:orbit).
 Make an animation where an image moves in a rose curve (we saw the rose curve in an earlier chapter). Be as creative as you wish. You might find it fun to change the background of the `Frame` on which you draw the animation; a dark background is often more effective than a light one. You can do this by calling the `background` method on `Frame`. For example, here is how you'd create a 600 by 600 frame with a dark blue background.
 
 ```scala mdoc:silent
-Frame.size(600, 600).background(Color.midnightBlue)
+
+Frame.default.withSize(600, 600).withBackground(Color.midnightBlue)
 ```
 
 Remember you will need to import `doodle.reactor._` to make the reactor library available.
