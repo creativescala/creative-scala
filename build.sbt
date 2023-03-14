@@ -16,11 +16,6 @@ ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
 
 Global / onChangedBuildSource := ReloadOnSourceChanges
 
-ThisBuild / libraryDependencies ++= Seq(
-  "org.creativescala" %% "doodle" % "0.17.0",
-  "org.creativescala" %% "doodle-svg" % "0.13.0"
-)
-
 ThisBuild / console / initialCommands := """
       |import doodle.core._
       |import doodle.image._
@@ -32,9 +27,17 @@ ThisBuild / console / initialCommands := """
 lazy val css = taskKey[Unit]("Build the CSS")
 lazy val build = taskKey[Unit]("Build the book")
 
-val book = project
+val commonSettings = Seq(
+  libraryDependencies ++= Seq(
+    "org.creativescala" %%% "doodle" % "0.17.0",
+    "org.creativescala" %%% "doodle-svg" % "0.14.0"
+  )
+)
+
+lazy val book = project
   .in(file("book"))
   .settings(
+    commonSettings,
     scalacOptions ++= Seq(
       "-deprecation",
       "-encoding",
@@ -49,7 +52,10 @@ val book = project
     mdocOut := target.value / "pages",
     Laika / sourceDirectories := Seq(
       mdocOut.value,
-      sourceDirectory.value / "templates"
+      sourceDirectory.value / "templates",
+      sourceDirectory.value / "js",
+      (examples / Compile / fastOptJS / artifactPath).value
+        .getParentFile() / s"${(examples / moduleName).value}-fastopt"
     ),
     laikaExtensions ++= Seq(
       laika.markdown.github.GitHubFlavor,
@@ -60,7 +66,6 @@ val book = project
     laikaIncludeEPUB := false,
     laikaIncludePDF := false,
     laikaTheme := Theme.empty,
-    Laika / sourceDirectories += sourceDirectory.value / "js",
     css := {
       val src = sourceDirectory.value / "css"
       val dest1 = mdocOut.value
@@ -76,10 +81,14 @@ val book = project
   )
   .enablePlugins(MdocPlugin, LaikaPlugin)
 
-// scalacOptions in Mdoc := (scalacOptions in Mdoc).value.filterNot(Set("-Ywarn-unused-import"))
+lazy val examples = project
+  .in(file("examples"))
+  .settings(commonSettings)
+  .enablePlugins(ScalaJSPlugin)
 
 build := Def
   .sequential(
+    (examples / Compile / fastLinkJS),
     (book / mdoc).toTask(""),
     book / css,
     book / laikaSite,

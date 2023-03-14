@@ -34,7 +34,7 @@ object CreativeScalaDirectives extends DirectiveRegistry {
             Seq(
               RawContent(
                 NonEmptySet.one("html"),
-                s"""<div id="${id}"></div>"""
+                s"""<div class="doodle" id="${id}"></div>"""
               ),
               RawContent(
                 NonEmptySet.one("html"),
