@@ -703,6 +703,11 @@ pre {
   padding: 0.5rem;
 }
 
+.content div.doodle {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
+}
+
 .content div.solution {
   grid-column-start: main-start;
   grid-column-end: main-end;
