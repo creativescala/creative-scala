@@ -152,8 +152,12 @@
         <main class="content">
             <h1 id="polar-coordinates" class="title">Polar Coordinates</h1>
             <p>You are probably used to specifying a point in two dimensions using x and y coordinates. These are known as <em>Cartesian coordinates</em> after their inventor, René Descartes.</p>
+            <p>In cartesian coordinates, we determine a point using an x and a y coordinate. We can think of this as moving to a spot on the x-axis, and tracing up or down till we reach the spot on the y-axis. The animation below shows this.</p>
             <div class="doodle" id="cartesian"></div>
-            <script>Cartesian.draw("cartesian")</script>
+            <script>Coordinates.cartesian("cartesian")</script>
+            <p>In polar coordinates, a point is determined by a length followed by a rotation. The animation below illustrates this.</p>
+            <div class="doodle" id="polar"></div>
+            <script>Coordinates.polar("polar")</script>
             <p class="nextPage"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>

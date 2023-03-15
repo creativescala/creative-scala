@@ -1,4 +1,4 @@
-let Cartesian;
+let Coordinates;
 (function(){
 'use strict';
 var $linkingInfo = Object.freeze({
@@ -3589,9 +3589,10 @@ $c_Ldoodle_core_Angle.prototype.$classData = $d_Ldoodle_core_Angle;
 /** @constructor */
 function $c_Ldoodle_core_Angle$() {
   this.Ldoodle_core_Angle$__f_TwoPi = 0.0;
+  this.Ldoodle_core_Angle$__f_zero = null;
   $n_Ldoodle_core_Angle$ = this;
   this.Ldoodle_core_Angle$__f_TwoPi = 6.283185307179586;
-  $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(0.0);
+  this.Ldoodle_core_Angle$__f_zero = $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(0.0);
   $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(this.Ldoodle_core_Angle$__f_TwoPi)
 }
 $c_Ldoodle_core_Angle$.prototype = new $h_O();
@@ -4225,6 +4226,7 @@ function $asArrayOf_Ldoodle_interact_animation_Interpolator(obj, depth) {
 /** @constructor */
 function $c_Ldoodle_interact_animation_Interpolator$() {
   this.Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator = null;
+  this.Ldoodle_interact_animation_Interpolator$__f_angleInterpolator = null;
   $n_Ldoodle_interact_animation_Interpolator$ = this;
   this.Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator = new $c_Ldoodle_interact_animation_Interpolator$$anon$1();
   var target = this.Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator;
@@ -4238,7 +4240,7 @@ function $c_Ldoodle_interact_animation_Interpolator$() {
     var angle$1 = $as_Ldoodle_core_Angle(angle);
     return $n(angle$1).toTurns__D()
   }));
-  $as_Ldoodle_interact_animation_Interpolator($n(this$3.Lcats_Invariant$ToInvariantOps$$anon$19__f_typeClassInstance).imap__O__F1__F1__O(this$3.Lcats_Invariant$ToInvariantOps$$anon$19__f_self, f, g))
+  this.Ldoodle_interact_animation_Interpolator$__f_angleInterpolator = $as_Ldoodle_interact_animation_Interpolator($n(this$3.Lcats_Invariant$ToInvariantOps$$anon$19__f_typeClassInstance).imap__O__F1__F1__O(this$3.Lcats_Invariant$ToInvariantOps$$anon$19__f_self, f, g))
 }
 $c_Ldoodle_interact_animation_Interpolator$.prototype = new $h_O();
 $c_Ldoodle_interact_animation_Interpolator$.prototype.constructor = $c_Ldoodle_interact_animation_Interpolator$;
@@ -4709,10 +4711,10 @@ $c_Ldoodle_svg_algebra_SvgModule$Svg$.prototype.toSvgGradient__Ldoodle_core_Grad
   throw new $c_s_MatchError(gradient)
 });
 $c_Ldoodle_svg_algebra_SvgModule$Svg$.prototype.toSvgLinearGradient__Ldoodle_core_Gradient$Linear__T2 = (function(gradient) {
-  var _1 = $n($n(gradient).start__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_x;
-  var _2 = $n($n(gradient).start__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_y;
-  var _3 = $n($n(gradient).end__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_x;
-  var _4 = $n($n(gradient).end__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_y;
+  var _1 = $n($n(gradient).start__Ldoodle_core_Point()).x__D();
+  var _2 = $n($n(gradient).start__Ldoodle_core_Point()).y__D();
+  var _3 = $n($n(gradient).end__Ldoodle_core_Point()).x__D();
+  var _4 = $n($n(gradient).end__Ldoodle_core_Point()).y__D();
   var id = this.toGradientId__Ldoodle_core_Gradient__T(gradient);
   var spreadMethod = this.toSvgSpreadMethod__Ldoodle_core_Gradient$CycleMethod__T($n(gradient).cycleMethod__Ldoodle_core_Gradient$CycleMethod());
   var stops = $as_sci_Seq($n($n(gradient).stops__sci_Seq()).map__F1__O(new $c_sjsr_AnonFunction1(((tuple) => {
@@ -4726,10 +4728,10 @@ $c_Ldoodle_svg_algebra_SvgModule$Svg$.prototype.toSvgLinearGradient__Ldoodle_cor
   return new $c_T2(id, domGradient)
 });
 $c_Ldoodle_svg_algebra_SvgModule$Svg$.prototype.toSvgRadialGradient__Ldoodle_core_Gradient$Radial__T2 = (function(gradient) {
-  var _1 = $n($n(gradient).outer__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_x;
-  var _2 = $n($n(gradient).outer__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_y;
-  var _3 = $n($n(gradient).inner__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_x;
-  var _4 = $n($n(gradient).inner__Ldoodle_core_Point()).Ldoodle_core_Point$Cartesian__f_y;
+  var _1 = $n($n(gradient).outer__Ldoodle_core_Point()).x__D();
+  var _2 = $n($n(gradient).outer__Ldoodle_core_Point()).y__D();
+  var _3 = $n($n(gradient).inner__Ldoodle_core_Point()).x__D();
+  var _4 = $n($n(gradient).inner__Ldoodle_core_Point()).y__D();
   var _5 = $n(gradient).radius__D();
   var id = this.toGradientId__Ldoodle_core_Gradient__T(gradient);
   var spreadMethod = this.toSvgSpreadMethod__Ldoodle_core_Gradient$CycleMethod__T($n(gradient).cycleMethod__Ldoodle_core_Gradient$CycleMethod());
@@ -4956,9 +4958,9 @@ $c_Ldoodle_svg_algebra_SvgModule$Svg$.prototype.toSvgPath__sci_List__Ldoodle_svg
         var x$1$1 = $as_Ldoodle_core_PathElement$MoveTo(x$1);
         var this$3 = $n(x$1$1);
         var x96 = this$3.Ldoodle_core_PathElement$MoveTo__f_to;
-        var d = $n(x96).Ldoodle_core_Point$Cartesian__f_x;
+        var d = $n(x96).x__D();
         var $$x1 = $f_T__replaceFirst__T__T__T(("" + d), "\\.0+$", "");
-        var d$1 = $n(x96).Ldoodle_core_Point$Cartesian__f_y;
+        var d$1 = $n(x96).y__D();
         var s = (((("M " + $$x1) + ",") + $f_T__replaceFirst__T__T__T(("" + d$1), "\\.0+$", "")) + " ");
         builder.addAll__T__scm_StringBuilder(s);
         break matchResult24
@@ -4967,9 +4969,9 @@ $c_Ldoodle_svg_algebra_SvgModule$Svg$.prototype.toSvgPath__sci_List__Ldoodle_svg
         var x$1$2 = $as_Ldoodle_core_PathElement$LineTo(x$1);
         var this$7 = $n(x$1$2);
         var x93 = this$7.Ldoodle_core_PathElement$LineTo__f_to;
-        var d$2 = $n(x93).Ldoodle_core_Point$Cartesian__f_x;
+        var d$2 = $n(x93).x__D();
         var $$x2 = $f_T__replaceFirst__T__T__T(("" + d$2), "\\.0+$", "");
-        var d$3 = $n(x93).Ldoodle_core_Point$Cartesian__f_y;
+        var d$3 = $n(x93).y__D();
         var s$1 = (((("L " + $$x2) + ",") + $f_T__replaceFirst__T__T__T(("" + d$3), "\\.0+$", "")) + " ");
         builder.addAll__T__scm_StringBuilder(s$1);
         break matchResult24
@@ -4979,17 +4981,17 @@ $c_Ldoodle_svg_algebra_SvgModule$Svg$.prototype.toSvgPath__sci_List__Ldoodle_svg
         var x88 = $n(x$1$3)._1__Ldoodle_core_Point();
         var x89 = $n(x$1$3)._2__Ldoodle_core_Point();
         var x90 = $n(x$1$3)._3__Ldoodle_core_Point();
-        var d$4 = $n(x88).Ldoodle_core_Point$Cartesian__f_x;
+        var d$4 = $n(x88).x__D();
         var $$x7 = $f_T__replaceFirst__T__T__T(("" + d$4), "\\.0+$", "");
-        var d$5 = $n(x88).Ldoodle_core_Point$Cartesian__f_y;
+        var d$5 = $n(x88).y__D();
         var $$x6 = $f_T__replaceFirst__T__T__T(("" + d$5), "\\.0+$", "");
-        var d$6 = $n(x89).Ldoodle_core_Point$Cartesian__f_x;
+        var d$6 = $n(x89).x__D();
         var $$x5 = $f_T__replaceFirst__T__T__T(("" + d$6), "\\.0+$", "");
-        var d$7 = $n(x89).Ldoodle_core_Point$Cartesian__f_y;
+        var d$7 = $n(x89).y__D();
         var $$x4 = $f_T__replaceFirst__T__T__T(("" + d$7), "\\.0+$", "");
-        var d$8 = $n(x90).Ldoodle_core_Point$Cartesian__f_x;
+        var d$8 = $n(x90).x__D();
         var $$x3 = $f_T__replaceFirst__T__T__T(("" + d$8), "\\.0+$", "");
-        var d$9 = $n(x90).Ldoodle_core_Point$Cartesian__f_y;
+        var d$9 = $n(x90).y__D();
         var s$2 = (((((((((((("C " + $$x7) + ",") + $$x6) + " ") + $$x5) + ",") + $$x4) + " ") + $$x3) + ",") + $f_T__replaceFirst__T__T__T(("" + d$9), "\\.0+$", "")) + " ");
         builder.addAll__T__scm_StringBuilder(s$2);
         break matchResult24
@@ -12237,62 +12239,130 @@ function $m_RTLong$() {
   return $n_RTLong$
 }
 /** @constructor */
-function $c_Lpolygons_Cartesian$() {
-  this.Lpolygons_Cartesian$__f_axes = null;
-  this.Lpolygons_Cartesian$__f_animation = null;
-  $n_Lpolygons_Cartesian$ = this;
+function $c_Lpolygons_Coordinates$() {
+  this.Lpolygons_Coordinates$__f_maxWidth = 0;
+  this.Lpolygons_Coordinates$__f_maxHeight = 0;
+  this.Lpolygons_Coordinates$__f_maxX = 0.0;
+  this.Lpolygons_Coordinates$__f_maxY = 0.0;
+  this.Lpolygons_Coordinates$__f_length = 0.0;
+  this.Lpolygons_Coordinates$__f_axes = null;
+  this.Lpolygons_Coordinates$__f_cartesianAnimation = null;
+  this.Lpolygons_Coordinates$__f_polarAnimation = null;
+  $n_Lpolygons_Coordinates$ = this;
+  this.Lpolygons_Coordinates$__f_maxWidth = 256;
+  this.Lpolygons_Coordinates$__f_maxHeight = 144;
+  this.Lpolygons_Coordinates$__f_maxX = 208.0;
+  this.Lpolygons_Coordinates$__f_maxY = 117.0;
+  var a = ((this.Lpolygons_Coordinates$__f_maxX * this.Lpolygons_Coordinates$__f_maxX) + (this.Lpolygons_Coordinates$__f_maxY * this.Lpolygons_Coordinates$__f_maxY));
+  this.Lpolygons_Coordinates$__f_length = $uD(Math.sqrt(a));
+  var this$5 = $m_Ldoodle_syntax_package$all$();
   var this$3 = $m_Ldoodle_syntax_package$all$();
-  var this$1 = $m_Ldoodle_syntax_package$all$();
-  var openPath = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath((-10.0), 0.0)).lineTo__D__D__Ldoodle_core_OpenPath(250.0, 0.0);
-  var this$2 = new $c_Ldoodle_syntax_PathSyntax$OpenPathOps(this$1, openPath);
-  var picture = new $c_Ldoodle_syntax_PathSyntax$$anon$2(this$2);
-  var this$6 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$3, picture);
-  var this$4 = $m_Ldoodle_syntax_package$all$();
-  var openPath$1 = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath(0.0, (-10.0))).lineTo__D__D__Ldoodle_core_OpenPath(0.0, 150.0);
-  var this$5 = new $c_Ldoodle_syntax_PathSyntax$OpenPathOps(this$4, openPath$1);
-  var that = new $c_Ldoodle_syntax_PathSyntax$$anon$2(this$5);
+  var $$x1 = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath((-10.0), 0.0));
+  var x = this.Lpolygons_Coordinates$__f_maxWidth;
+  var openPath = $n($$x1).lineTo__D__D__Ldoodle_core_OpenPath(x, 0.0);
+  var this$4 = new $c_Ldoodle_syntax_PathSyntax$OpenPathOps(this$3, openPath);
+  var picture = new $c_Ldoodle_syntax_PathSyntax$$anon$2(this$4);
+  var this$9 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$5, picture);
+  var this$7 = $m_Ldoodle_syntax_package$all$();
+  var $$x2 = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath(0.0, (-10.0)));
+  var x$1 = this.Lpolygons_Coordinates$__f_maxHeight;
+  var openPath$1 = $n($$x2).lineTo__D__D__Ldoodle_core_OpenPath(0.0, x$1);
+  var this$8 = new $c_Ldoodle_syntax_PathSyntax$OpenPathOps(this$7, openPath$1);
+  var that = new $c_Ldoodle_syntax_PathSyntax$$anon$2(this$8);
   var s = $m_Lcats_implicits$().Lcats_implicits$__f_catsKernelStdAlgebraForUnit;
-  this.Lpolygons_Cartesian$__f_axes = new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that, s, this$6);
-  $m_Lcats_implicits$();
-  var this$7 = $m_Ldoodle_interact_syntax_package$all$();
-  var _1 = new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$7, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(200.0, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator);
-  var this$8 = $m_Ldoodle_interact_syntax_package$all$();
-  var _2 = new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$8, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(100.0, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator);
-  var t2 = new $c_T2(_1, _2);
-  var this$19 = $n($as_Ldoodle_interact_animation_Interpolation(new $c_Lcats_syntax_Tuple2SemigroupalOps(t2).mapN__F2__Lcats_Functor__Lcats_Semigroupal__O(new $c_sjsr_AnonFunction2(((x, y) => {
-    var x$1 = $uD(x);
-    var y$1 = $uD(y);
-    return this.picture__Ldoodle_core_Point__Ldoodle_algebra_Picture(($m_Ldoodle_core_Point$(), new $c_Ldoodle_core_Point$Cartesian(x$1, y$1)))
-  })), $m_Ldoodle_interact_animation_Interpolation$().Ldoodle_interact_animation_Interpolation$__f_interpolationInstance, $as_Lcats_Semigroupal($m_Ldoodle_interact_animation_Interpolation$().Ldoodle_interact_animation_Interpolation$__f_interpolationInstance))));
-  var this$15 = new $c_s_concurrent_duration_package$DurationInt(2);
+  this.Lpolygons_Coordinates$__f_axes = new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that, s, this$9);
+  var this$10 = $m_Ldoodle_interact_syntax_package$all$();
+  var this$14 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$10, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_maxX, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
+  var f = new $c_sjsr_AnonFunction1(((x$2) => {
+    var x$3 = $uD(x$2);
+    return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.cartesianPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(($m_Ldoodle_core_Point$(), new $c_Ldoodle_core_Point$Cartesian(x$3, 0.0))))
+  }));
+  var this$18 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$14, f);
+  var this$17 = new $c_s_concurrent_duration_package$DurationDouble(1.5);
   var unit = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
-  var this$ = this$15.s_concurrent_duration_package$DurationInt__f_scala$concurrent$duration$DurationInt$$n;
-  $m_s_concurrent_duration_Duration$();
-  var hi = (this$ >> 31);
-  var duration = new $c_s_concurrent_duration_FiniteDuration(new $c_RTLong(this$, hi), unit);
-  var this$20 = $n($f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$19, duration));
-  this.Lpolygons_Cartesian$__f_animation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$20)
+  var duration = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$17.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit);
+  var this$27 = $n($f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$18, duration));
+  var f$2 = new $c_sjsr_AnonFunction1(((_$1) => {
+    $as_Ldoodle_algebra_Picture(_$1);
+    var this$19 = $m_Ldoodle_interact_syntax_package$all$();
+    var this$22 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$19, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_maxY, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
+    var f$1 = new $c_sjsr_AnonFunction1(((y) => {
+      var y$1 = $uD(y);
+      $m_Ldoodle_core_Point$();
+      var x$4 = this.Lpolygons_Coordinates$__f_maxX;
+      return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.cartesianPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(new $c_Ldoodle_core_Point$Cartesian(x$4, y$1)))
+    }));
+    var this$26 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$22, f$1);
+    var this$25 = new $c_s_concurrent_duration_package$DurationDouble(1.5);
+    var unit$1 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
+    var duration$1 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$25.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$1);
+    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$26, duration$1)
+  }));
+  var this$28 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f$2, this$27);
+  this.Lpolygons_Coordinates$__f_cartesianAnimation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$28);
+  var this$29 = $m_Ldoodle_interact_syntax_package$all$();
+  var this$32 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$29, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_length, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
+  var f$3 = new $c_sjsr_AnonFunction1(((x$2$1) => {
+    var x$5 = $uD(x$2$1);
+    return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(($m_Ldoodle_core_Point$(), new $c_Ldoodle_core_Point$Cartesian(x$5, 0.0))))
+  }));
+  var this$36 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$32, f$3);
+  var this$35 = new $c_s_concurrent_duration_package$DurationDouble(1.5);
+  var unit$2 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
+  var duration$2 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$35.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$2);
+  var this$49 = $n($f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$36, duration$2));
+  var f$5 = new $c_sjsr_AnonFunction1(((_$2) => {
+    $as_Ldoodle_algebra_Picture(_$2);
+    var this$37 = $m_Ldoodle_interact_syntax_package$all$();
+    var start = $m_Ldoodle_core_Angle$().Ldoodle_core_Angle$__f_zero;
+    var $$x3 = new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$37, start);
+    var this$39 = $m_Ldoodle_syntax_package$all$();
+    var angle = $uD(Math.atan(0.5625));
+    var this$40 = new $c_Ldoodle_syntax_AngleSyntax$AngleDoubleOps(this$39, angle);
+    $m_Ldoodle_core_Angle$();
+    var rad = this$40.Ldoodle_syntax_AngleSyntax$AngleDoubleOps__f_angle;
+    var this$44 = $n($$x3.upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation($m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(rad), $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_angleInterpolator));
+    var f$4 = new $c_sjsr_AnonFunction1(((a$1) => {
+      var a$2 = $as_Ldoodle_core_Angle(a$1);
+      $m_Ldoodle_core_Point$();
+      var r = this.Lpolygons_Coordinates$__f_length;
+      return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(new $c_Ldoodle_core_Point$Polar(r, a$2)))
+    }));
+    var this$48 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$44, f$4);
+    var this$47 = new $c_s_concurrent_duration_package$DurationDouble(1.5);
+    var unit$3 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
+    var duration$3 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$47.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$3);
+    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$48, duration$3)
+  }));
+  var this$50 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f$5, this$49);
+  this.Lpolygons_Coordinates$__f_polarAnimation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$50)
 }
-$c_Lpolygons_Cartesian$.prototype = new $h_O();
-$c_Lpolygons_Cartesian$.prototype.constructor = $c_Lpolygons_Cartesian$;
+$c_Lpolygons_Coordinates$.prototype = new $h_O();
+$c_Lpolygons_Coordinates$.prototype.constructor = $c_Lpolygons_Coordinates$;
 /** @constructor */
-function $h_Lpolygons_Cartesian$() {
+function $h_Lpolygons_Coordinates$() {
   /*<skip>*/
 }
-$h_Lpolygons_Cartesian$.prototype = $c_Lpolygons_Cartesian$.prototype;
-$c_Lpolygons_Cartesian$.prototype.point__Ldoodle_core_Point__Ldoodle_algebra_Picture = (function(pt) {
+$h_Lpolygons_Coordinates$.prototype = $c_Lpolygons_Coordinates$.prototype;
+$c_Lpolygons_Coordinates$.prototype.makeFrame__T__Ldoodle_svg_effect_Frame = (function(id) {
+  var $$x1 = $n($n($m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_Frame).apply__T__Ldoodle_svg_effect_Frame(id));
+  var x = ((10 + this.Lpolygons_Coordinates$__f_maxWidth) | 0);
+  var x$1 = ((10 + this.Lpolygons_Coordinates$__f_maxHeight) | 0);
+  return $n($$x1).withSize__D__D__Ldoodle_svg_effect_Frame(x, x$1)
+});
+$c_Lpolygons_Coordinates$.prototype.cartesianPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture = (function(pt) {
   var this$13 = $m_Ldoodle_syntax_package$all$();
   var this$11 = $m_Ldoodle_syntax_package$all$();
   var this$9 = $m_Ldoodle_syntax_package$all$();
   var this$7 = $m_Ldoodle_syntax_package$all$();
   var this$3 = $m_Ldoodle_syntax_package$all$();
   var this$1 = $m_Ldoodle_syntax_package$all$();
-  var openPath = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath($n(pt).Ldoodle_core_Point$Cartesian__f_x, 0.0)).lineTo__D__D__Ldoodle_core_OpenPath($n(pt).Ldoodle_core_Point$Cartesian__f_x, $n(pt).Ldoodle_core_Point$Cartesian__f_y);
+  var openPath = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath($n(pt).x__D(), 0.0)).lineTo__D__D__Ldoodle_core_OpenPath($n(pt).x__D(), $n(pt).y__D());
   var this$2 = new $c_Ldoodle_syntax_PathSyntax$OpenPathOps(this$1, openPath);
   var picture = new $c_Ldoodle_syntax_PathSyntax$$anon$2(this$2);
   var this$6 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$3, picture);
   var this$4 = $m_Ldoodle_syntax_package$all$();
-  var openPath$1 = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath(0.0, $n(pt).Ldoodle_core_Point$Cartesian__f_y)).lineTo__D__D__Ldoodle_core_OpenPath($n(pt).Ldoodle_core_Point$Cartesian__f_x, $n(pt).Ldoodle_core_Point$Cartesian__f_y);
+  var openPath$1 = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__D__D__Ldoodle_core_OpenPath(0.0, $n(pt).y__D())).lineTo__D__D__Ldoodle_core_OpenPath($n(pt).x__D(), $n(pt).y__D());
   var this$5 = new $c_Ldoodle_syntax_PathSyntax$OpenPathOps(this$4, openPath$1);
   var that = new $c_Ldoodle_syntax_PathSyntax$$anon$2(this$5);
   var s = $m_Lcats_implicits$().Lcats_implicits$__f_catsKernelStdAlgebraForUnit;
@@ -12320,20 +12390,51 @@ $c_Lpolygons_Cartesian$.prototype.point__Ldoodle_core_Point__Ldoodle_algebra_Pic
   var s$1 = $m_Lcats_implicits$().Lcats_implicits$__f_catsKernelStdAlgebraForUnit;
   return new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that$1, s$1, this$21)
 });
-$c_Lpolygons_Cartesian$.prototype.picture__Ldoodle_core_Point__Ldoodle_algebra_Picture = (function(pt) {
+$c_Lpolygons_Coordinates$.prototype.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture = (function(pt) {
+  var this$9 = $m_Ldoodle_syntax_package$all$();
+  var this$7 = $m_Ldoodle_syntax_package$all$();
+  var this$5 = $m_Ldoodle_syntax_package$all$();
   var this$3 = $m_Ldoodle_syntax_package$all$();
   var this$1 = $m_Ldoodle_syntax_package$all$();
-  var picture = this.point__Ldoodle_core_Point__Ldoodle_algebra_Picture(pt);
+  var openPath = $n($n($m_Ldoodle_core_OpenPath$().Ldoodle_core_OpenPath$__f_empty).moveTo__Ldoodle_core_Point__Ldoodle_core_OpenPath($m_Ldoodle_core_Point$().Ldoodle_core_Point$__f_zero)).lineTo__D__D__Ldoodle_core_OpenPath($n(pt).x__D(), $n(pt).y__D());
+  var this$2 = new $c_Ldoodle_syntax_PathSyntax$OpenPathOps(this$1, openPath);
+  var picture = new $c_Ldoodle_syntax_PathSyntax$$anon$2(this$2);
+  var this$4 = new $c_Ldoodle_syntax_StyleSyntax$StylePictureOps(this$3, picture);
+  var picture$1 = new $c_Ldoodle_syntax_StyleSyntax$$anon$4(3.0, this$4);
+  var this$6 = new $c_Ldoodle_syntax_StyleSyntax$StylePictureOps(this$5, picture$1);
+  var pattern = new $ac_D(new Float64Array([7.0, 3.0]));
+  var picture$2 = new $c_Ldoodle_syntax_StyleSyntax$$anon$5(pattern, this$6);
+  var this$8 = new $c_Ldoodle_syntax_StyleSyntax$StylePictureOps(this$7, picture$2);
+  var strokeColor = $m_Ldoodle_core_Color$().Ldoodle_core_Color$__f_darkBlue;
+  var picture$3 = new $c_Ldoodle_syntax_StyleSyntax$$anon$3(strokeColor, this$8);
+  var this$17 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$9, picture$3);
+  var this$15 = $m_Ldoodle_syntax_package$all$();
+  var this$13 = $m_Ldoodle_syntax_package$all$();
+  var this$11 = $m_Ldoodle_syntax_package$all$();
+  var picture$4 = new $c_Ldoodle_algebra_ShapeConstructor$$anon$4(5.0);
+  var this$12 = new $c_Ldoodle_syntax_StyleSyntax$StylePictureOps(this$11, picture$4);
+  var picture$5 = new $c_Ldoodle_syntax_StyleSyntax$$anon$10(this$12);
+  var this$14 = new $c_Ldoodle_syntax_StyleSyntax$StylePictureOps(this$13, picture$5);
+  var fillColor = $m_Ldoodle_core_Color$().Ldoodle_core_Color$__f_darkBlue;
+  var picture$6 = new $c_Ldoodle_syntax_StyleSyntax$$anon$1(fillColor, this$14);
+  var this$16 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$15, picture$6);
+  var that = new $c_Ldoodle_syntax_LayoutSyntax$$anon$10(pt, this$16);
+  var s = $m_Lcats_implicits$().Lcats_implicits$__f_catsKernelStdAlgebraForUnit;
+  return new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that, s, this$17)
+});
+$c_Lpolygons_Coordinates$.prototype.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture = (function(picture) {
+  var this$3 = $m_Ldoodle_syntax_package$all$();
+  var this$1 = $m_Ldoodle_syntax_package$all$();
   var this$2 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$1, picture);
-  var that = this.Lpolygons_Cartesian$__f_axes;
+  var that = this.Lpolygons_Coordinates$__f_axes;
   var s = $m_Lcats_implicits$().Lcats_implicits$__f_catsKernelStdAlgebraForUnit;
   var picture$1 = new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that, s, this$2);
   var this$4 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$3, picture$1);
   return new $c_Ldoodle_syntax_LayoutSyntax$$anon$12(120.0, 70.0, this$4)
 });
-$c_Lpolygons_Cartesian$.prototype.draw__T__V = (function(id) {
-  var frame = $n($n($m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_Frame).apply__T__Ldoodle_svg_effect_Frame(id)).withSize__D__D__Ldoodle_svg_effect_Frame(300.0, 200.0);
-  var this$2 = $n(this.Lpolygons_Cartesian$__f_animation);
+$c_Lpolygons_Coordinates$.prototype.cartesian__T__V = (function(id) {
+  var this$2 = $n(this.Lpolygons_Coordinates$__f_cartesianAnimation);
+  var frame = this.makeFrame__T__Ldoodle_svg_effect_Frame(id);
   var a = $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgAnimationRenderer;
   var e = $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgRenderer;
   var r = $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgCanvas;
@@ -12342,23 +12443,38 @@ $c_Lpolygons_Cartesian$.prototype.draw__T__V = (function(id) {
   var runtime = $m_Lcats_effect_unsafe_implicits$().Lcats_effect_unsafe_implicits$__f_global;
   $f_Ldoodle_interact_animation_Transducer__animate__O__Ldoodle_interact_effect_AnimationRenderer__Ldoodle_effect_Renderer__Ldoodle_interact_algebra_Redraw__s_$less$colon$less__Lcats_effect_unsafe_IORuntime__V(this$2, frame, a, e, r, ev, runtime)
 });
-$c_Lpolygons_Cartesian$.prototype.draw = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.draw__T__V(prep0)
+$c_Lpolygons_Coordinates$.prototype.polar__T__V = (function(id) {
+  var this$2 = $n(this.Lpolygons_Coordinates$__f_polarAnimation);
+  var frame = this.makeFrame__T__Ldoodle_svg_effect_Frame(id);
+  var a = $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgAnimationRenderer;
+  var e = $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgRenderer;
+  var r = $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgCanvas;
+  var this$1 = $m_s_$less$colon$less$();
+  var ev = this$1.s_$less$colon$less$__f_singleton;
+  var runtime = $m_Lcats_effect_unsafe_implicits$().Lcats_effect_unsafe_implicits$__f_global;
+  $f_Ldoodle_interact_animation_Transducer__animate__O__Ldoodle_interact_effect_AnimationRenderer__Ldoodle_effect_Renderer__Ldoodle_interact_algebra_Redraw__s_$less$colon$less__Lcats_effect_unsafe_IORuntime__V(this$2, frame, a, e, r, ev, runtime)
 });
-var $d_Lpolygons_Cartesian$ = new $TypeData().initClass({
-  Lpolygons_Cartesian$: 0
-}, false, "polygons.Cartesian$", {
-  Lpolygons_Cartesian$: 1,
+$c_Lpolygons_Coordinates$.prototype.polar = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.polar__T__V(prep0)
+});
+$c_Lpolygons_Coordinates$.prototype.cartesian = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.cartesian__T__V(prep0)
+});
+var $d_Lpolygons_Coordinates$ = new $TypeData().initClass({
+  Lpolygons_Coordinates$: 0
+}, false, "polygons.Coordinates$", {
+  Lpolygons_Coordinates$: 1,
   O: 1
 });
-$c_Lpolygons_Cartesian$.prototype.$classData = $d_Lpolygons_Cartesian$;
-var $n_Lpolygons_Cartesian$;
-function $m_Lpolygons_Cartesian$() {
-  if ((!$n_Lpolygons_Cartesian$)) {
-    $n_Lpolygons_Cartesian$ = new $c_Lpolygons_Cartesian$()
+$c_Lpolygons_Coordinates$.prototype.$classData = $d_Lpolygons_Coordinates$;
+var $n_Lpolygons_Coordinates$;
+function $m_Lpolygons_Coordinates$() {
+  if ((!$n_Lpolygons_Coordinates$)) {
+    $n_Lpolygons_Coordinates$ = new $c_Lpolygons_Coordinates$()
   };
-  return $n_Lpolygons_Cartesian$
+  return $n_Lpolygons_Coordinates$
 }
 /** @constructor */
 function $c_s_Array$EmptyArrays$() {
@@ -15960,6 +16076,48 @@ function $asArrayOf_s_concurrent_ExecutionContext(obj, depth) {
   return (($isArrayOf_s_concurrent_ExecutionContext(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.ExecutionContext;", depth))
 }
 /** @constructor */
+function $c_s_concurrent_duration_package$DurationDouble$() {
+  /*<skip>*/
+}
+$c_s_concurrent_duration_package$DurationDouble$.prototype = new $h_O();
+$c_s_concurrent_duration_package$DurationDouble$.prototype.constructor = $c_s_concurrent_duration_package$DurationDouble$;
+/** @constructor */
+function $h_s_concurrent_duration_package$DurationDouble$() {
+  /*<skip>*/
+}
+$h_s_concurrent_duration_package$DurationDouble$.prototype = $c_s_concurrent_duration_package$DurationDouble$.prototype;
+$c_s_concurrent_duration_package$DurationDouble$.prototype.durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration = (function(this$, unit) {
+  var x1 = $m_s_concurrent_duration_Duration$().apply__D__ju_concurrent_TimeUnit__s_concurrent_duration_Duration(this$, unit);
+  if ((x1 instanceof $c_s_concurrent_duration_FiniteDuration)) {
+    var x2 = $as_s_concurrent_duration_FiniteDuration(x1);
+    return x2
+  } else {
+    throw $ct_jl_IllegalArgumentException__T__(new $c_jl_IllegalArgumentException(), ("Duration DSL not applicable to " + this$))
+  }
+});
+$c_s_concurrent_duration_package$DurationDouble$.prototype.equals$extension__D__O__Z = (function(this$, x$1) {
+  if ((x$1 instanceof $c_s_concurrent_duration_package$DurationDouble)) {
+    var DurationDouble$1 = $n($as_s_concurrent_duration_package$DurationDouble(x$1)).s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d;
+    return (this$ === DurationDouble$1)
+  } else {
+    return false
+  }
+});
+var $d_s_concurrent_duration_package$DurationDouble$ = new $TypeData().initClass({
+  s_concurrent_duration_package$DurationDouble$: 0
+}, false, "scala.concurrent.duration.package$DurationDouble$", {
+  s_concurrent_duration_package$DurationDouble$: 1,
+  O: 1
+});
+$c_s_concurrent_duration_package$DurationDouble$.prototype.$classData = $d_s_concurrent_duration_package$DurationDouble$;
+var $n_s_concurrent_duration_package$DurationDouble$;
+function $m_s_concurrent_duration_package$DurationDouble$() {
+  if ((!$n_s_concurrent_duration_package$DurationDouble$)) {
+    $n_s_concurrent_duration_package$DurationDouble$ = new $c_s_concurrent_duration_package$DurationDouble$()
+  };
+  return $n_s_concurrent_duration_package$DurationDouble$
+}
+/** @constructor */
 function $c_s_concurrent_duration_package$DurationInt$() {
   /*<skip>*/
 }
@@ -17749,18 +17907,6 @@ function $h_Lcats_EvalInstances0() {
   /*<skip>*/
 }
 $h_Lcats_EvalInstances0.prototype = $c_Lcats_EvalInstances0.prototype;
-function $is_Lcats_Semigroupal(obj) {
-  return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcats_Semigroupal)))
-}
-function $as_Lcats_Semigroupal(obj) {
-  return (($is_Lcats_Semigroupal(obj) || (obj === null)) ? obj : $throwClassCastException(obj, "cats.Semigroupal"))
-}
-function $isArrayOf_Lcats_Semigroupal(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Lcats_Semigroupal)))
-}
-function $asArrayOf_Lcats_Semigroupal(obj, depth) {
-  return (($isArrayOf_Lcats_Semigroupal(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lcats.Semigroupal;", depth))
-}
 function $is_Lcats_arrow_FunctionK(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Lcats_arrow_FunctionK)))
 }
@@ -20952,6 +21098,83 @@ var $d_Ldoodle_interact_animation_Transducer$$anon$2 = new $TypeData().initClass
 });
 $c_Ldoodle_interact_animation_Transducer$$anon$2.prototype.$classData = $d_Ldoodle_interact_animation_Transducer$$anon$2;
 /** @constructor */
+function $c_Ldoodle_interact_animation_Transducer$$anon$3(f$9, outer) {
+  this.Ldoodle_interact_animation_Transducer$$anon$3__f_f$2 = null;
+  this.Ldoodle_interact_animation_Transducer$$anon$3__f_initial = null;
+  this.Ldoodle_interact_animation_Transducer$$anon$3__f_f$2 = f$9;
+  if ((outer === null)) {
+    throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
+  };
+  var state = $n(outer).initial__O();
+  var _2 = new $c_Ldoodle_interact_animation_Transducer$Box(outer, state);
+  this.Ldoodle_interact_animation_Transducer$$anon$3__f_initial = new $c_T2(true, _2)
+}
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype = new $h_O();
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.constructor = $c_Ldoodle_interact_animation_Transducer$$anon$3;
+/** @constructor */
+function $h_Ldoodle_interact_animation_Transducer$$anon$3() {
+  /*<skip>*/
+}
+$h_Ldoodle_interact_animation_Transducer$$anon$3.prototype = $c_Ldoodle_interact_animation_Transducer$$anon$3.prototype;
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.next__T2__T2 = (function(current) {
+  if ((current !== null)) {
+    var x18 = $as_Ldoodle_interact_animation_Transducer$Box($n(current).T2__f__2);
+    var first = $uZ($n(current).T2__f__1);
+    if ((x18 !== null)) {
+      var nextS = $n(x18).next__O();
+      if ((first && $n($n(x18).Ldoodle_interact_animation_Transducer$Box__f_transducer).stopped__O__Z(nextS))) {
+        var nextT = $as_Ldoodle_interact_animation_Transducer($n(this.Ldoodle_interact_animation_Transducer$$anon$3__f_f$2).apply__O__O($n(x18).output__O()));
+        var state = $n(nextT).initial__O();
+        var _2 = new $c_Ldoodle_interact_animation_Transducer$Box(nextT, state);
+        return new $c_T2(false, _2)
+      } else {
+        var transducer = $n(x18).Ldoodle_interact_animation_Transducer$Box__f_transducer;
+        var _2$1 = new $c_Ldoodle_interact_animation_Transducer$Box(transducer, nextS);
+        return new $c_T2(first, _2$1)
+      }
+    }
+  };
+  throw new $c_s_MatchError(current)
+});
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.output__T2__O = (function(state) {
+  if ((state !== null)) {
+    var x22 = $as_Ldoodle_interact_animation_Transducer$Box($n(state).T2__f__2);
+    if ((x22 !== null)) {
+      return $n(x22).output__O()
+    }
+  };
+  throw new $c_s_MatchError(state)
+});
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.stopped__T2__Z = (function(state) {
+  if ((state !== null)) {
+    var x26 = $as_Ldoodle_interact_animation_Transducer$Box($n(state).T2__f__2);
+    if ((x26 !== null)) {
+      return $n(x26).stopped__Z()
+    }
+  };
+  throw new $c_s_MatchError(state)
+});
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.initial__O = (function() {
+  return this.Ldoodle_interact_animation_Transducer$$anon$3__f_initial
+});
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.next__O__O = (function(current) {
+  return this.next__T2__T2($as_T2(current))
+});
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.output__O__O = (function(state) {
+  return this.output__T2__O($as_T2(state))
+});
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.stopped__O__Z = (function(state) {
+  return this.stopped__T2__Z($as_T2(state))
+});
+var $d_Ldoodle_interact_animation_Transducer$$anon$3 = new $TypeData().initClass({
+  Ldoodle_interact_animation_Transducer$$anon$3: 0
+}, false, "doodle.interact.animation.Transducer$$anon$3", {
+  Ldoodle_interact_animation_Transducer$$anon$3: 1,
+  O: 1,
+  Ldoodle_interact_animation_Transducer: 1
+});
+$c_Ldoodle_interact_animation_Transducer$$anon$3.prototype.$classData = $d_Ldoodle_interact_animation_Transducer$$anon$3;
+/** @constructor */
 function $c_Ldoodle_interact_animation_Transducer$$anon$5(that$5, outer) {
   this.Ldoodle_interact_animation_Transducer$$anon$5__f_that$6 = null;
   this.Ldoodle_interact_animation_Transducer$$anon$5__f_initial = null;
@@ -21326,8 +21549,8 @@ $c_Ldoodle_syntax_LayoutSyntax$$anon$10.prototype.apply__Ldoodle_algebra_Layout_
   var this$1 = $n(algebra);
   var img = $n($n(this.Ldoodle_syntax_LayoutSyntax$$anon$10__f_$outer).Ldoodle_syntax_LayoutSyntax$LayoutPictureOps__f_doodle$syntax$LayoutSyntax$LayoutPictureOps$$picture).apply__Ldoodle_algebra_Algebra__O(algebra);
   var offset = this.Ldoodle_syntax_LayoutSyntax$$anon$10__f_offset$2;
-  var x = $n(offset).Ldoodle_core_Point$Cartesian__f_x;
-  var y = $n(offset).Ldoodle_core_Point$Cartesian__f_y;
+  var x = $n(offset).x__D();
+  var y = $n(offset).y__D();
   return $f_Ldoodle_algebra_Layout__at__O__D__D__O(this$1, img, x, y)
 });
 $c_Ldoodle_syntax_LayoutSyntax$$anon$10.prototype.apply__Ldoodle_algebra_Algebra__O = (function(algebra) {
@@ -26526,6 +26749,42 @@ function $m_s_concurrent_duration_Duration$() {
   return $n_s_concurrent_duration_Duration$
 }
 /** @constructor */
+function $c_s_concurrent_duration_package$DurationDouble(d) {
+  this.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d = 0.0;
+  this.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d = d
+}
+$c_s_concurrent_duration_package$DurationDouble.prototype = new $h_O();
+$c_s_concurrent_duration_package$DurationDouble.prototype.constructor = $c_s_concurrent_duration_package$DurationDouble;
+/** @constructor */
+function $h_s_concurrent_duration_package$DurationDouble() {
+  /*<skip>*/
+}
+$h_s_concurrent_duration_package$DurationDouble.prototype = $c_s_concurrent_duration_package$DurationDouble.prototype;
+$c_s_concurrent_duration_package$DurationDouble.prototype.hashCode__I = (function() {
+  var this$ = this.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d;
+  return $m_jl_FloatingPointBits$().numberHashCode__D__I(this$)
+});
+$c_s_concurrent_duration_package$DurationDouble.prototype.equals__O__Z = (function(x$1) {
+  return $m_s_concurrent_duration_package$DurationDouble$().equals$extension__D__O__Z(this.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, x$1)
+});
+function $as_s_concurrent_duration_package$DurationDouble(obj) {
+  return (((obj instanceof $c_s_concurrent_duration_package$DurationDouble) || (obj === null)) ? obj : $throwClassCastException(obj, "scala.concurrent.duration.package$DurationDouble"))
+}
+function $isArrayOf_s_concurrent_duration_package$DurationDouble(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.s_concurrent_duration_package$DurationDouble)))
+}
+function $asArrayOf_s_concurrent_duration_package$DurationDouble(obj, depth) {
+  return (($isArrayOf_s_concurrent_duration_package$DurationDouble(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.concurrent.duration.package$DurationDouble;", depth))
+}
+var $d_s_concurrent_duration_package$DurationDouble = new $TypeData().initClass({
+  s_concurrent_duration_package$DurationDouble: 0
+}, false, "scala.concurrent.duration.package$DurationDouble", {
+  s_concurrent_duration_package$DurationDouble: 1,
+  O: 1,
+  s_concurrent_duration_DurationConversions: 1
+});
+$c_s_concurrent_duration_package$DurationDouble.prototype.$classData = $d_s_concurrent_duration_package$DurationDouble;
+/** @constructor */
 function $c_s_concurrent_duration_package$DurationInt(n) {
   this.s_concurrent_duration_package$DurationInt__f_scala$concurrent$duration$DurationInt$$n = 0;
   this.s_concurrent_duration_package$DurationInt__f_scala$concurrent$duration$DurationInt$$n = n
@@ -29366,7 +29625,7 @@ function $f_Ldoodle_algebra_generic_GenericLayout__at__Lcats_data_IndexedStateT_
       var rdr = $as_Lcats_data_IndexedStateT($n(x$1$1).T2__f__2);
       var point = $n(bb).eval__Ldoodle_core_Landmark__Ldoodle_core_Point(landmark);
       var _1 = $n(bb).at__Ldoodle_core_Point__Ldoodle_core_BoundingBox(point);
-      var _2 = $m_Ldoodle_algebra_generic_package$Renderable$().transform__Ldoodle_core_Transform__Lcats_data_IndexedStateT__Lcats_data_IndexedStateT($m_Ldoodle_core_Transform$().translate__D__D__Ldoodle_core_Transform($n(point).Ldoodle_core_Point$Cartesian__f_x, $n(point).Ldoodle_core_Point$Cartesian__f_y), rdr);
+      var _2 = $m_Ldoodle_algebra_generic_package$Renderable$().transform__Ldoodle_core_Transform__Lcats_data_IndexedStateT__Lcats_data_IndexedStateT($m_Ldoodle_core_Transform$().translate__D__D__Ldoodle_core_Transform($n(point).x__D(), $n(point).y__D()), rdr);
       return new $c_T2(_1, _2)
     };
     throw new $c_s_MatchError(x$1$1)
@@ -29380,7 +29639,7 @@ function $f_Ldoodle_algebra_generic_GenericLayout__originAt__Lcats_data_IndexedS
       var rdr = $as_Lcats_data_IndexedStateT($n(x$1$1).T2__f__2);
       var point = $n(bb).eval__Ldoodle_core_Landmark__Ldoodle_core_Point(landmark);
       var _1 = $n(bb).originAt__Ldoodle_core_Landmark__Ldoodle_core_BoundingBox(landmark);
-      var _2 = $m_Ldoodle_algebra_generic_package$Renderable$().transform__Ldoodle_core_Transform__Lcats_data_IndexedStateT__Lcats_data_IndexedStateT($m_Ldoodle_core_Transform$().translate__D__D__Ldoodle_core_Transform((-$n(point).Ldoodle_core_Point$Cartesian__f_x), (-$n(point).Ldoodle_core_Point$Cartesian__f_y)), rdr);
+      var _2 = $m_Ldoodle_algebra_generic_package$Renderable$().transform__Ldoodle_core_Transform__Lcats_data_IndexedStateT__Lcats_data_IndexedStateT($m_Ldoodle_core_Transform$().translate__D__D__Ldoodle_core_Transform((-$n(point).x__D()), (-$n(point).y__D())), rdr);
       return new $c_T2(_1, _2)
     };
     throw new $c_s_MatchError(x$1$1)
@@ -29426,19 +29685,19 @@ function $f_Ldoodle_algebra_generic_GenericPath__boundingBox__sci_List__Ldoodle_
             var x$1 = $as_Ldoodle_core_PathElement$MoveTo(hd);
             var this$6 = $n(x$1);
             var x12 = this$6.Ldoodle_core_PathElement$MoveTo__f_to;
-            var x = $n(x12).Ldoodle_core_Point$Cartesian__f_x;
+            var x = $n(x12).x__D();
             var that = elem;
             var ev$1 = $uD(Math.min(x, that));
             elem = ev$1;
-            var x$2 = $n(x12).Ldoodle_core_Point$Cartesian__f_y;
+            var x$2 = $n(x12).y__D();
             var that$1 = elem$1;
             var ev$2 = $uD(Math.min(x$2, that$1));
             elem$1 = ev$2;
-            var x$3 = $n(x12).Ldoodle_core_Point$Cartesian__f_x;
+            var x$3 = $n(x12).x__D();
             var that$2 = elem$2;
             var ev$3 = $uD(Math.max(x$3, that$2));
             elem$2 = ev$3;
-            var x$4 = $n(x12).Ldoodle_core_Point$Cartesian__f_y;
+            var x$4 = $n(x12).y__D();
             var that$3 = elem$3;
             var ev$4 = $uD(Math.max(x$4, that$3));
             elem$3 = ev$4;
@@ -29448,19 +29707,19 @@ function $f_Ldoodle_algebra_generic_GenericPath__boundingBox__sci_List__Ldoodle_
             var x$1$1 = $as_Ldoodle_core_PathElement$LineTo(hd);
             var this$24 = $n(x$1$1);
             var x9 = this$24.Ldoodle_core_PathElement$LineTo__f_to;
-            var x$5 = $n(x9).Ldoodle_core_Point$Cartesian__f_x;
+            var x$5 = $n(x9).x__D();
             var that$4 = elem;
             var ev$5 = $uD(Math.min(x$5, that$4));
             elem = ev$5;
-            var x$6 = $n(x9).Ldoodle_core_Point$Cartesian__f_y;
+            var x$6 = $n(x9).y__D();
             var that$5 = elem$1;
             var ev$6 = $uD(Math.min(x$6, that$5));
             elem$1 = ev$6;
-            var x$7 = $n(x9).Ldoodle_core_Point$Cartesian__f_x;
+            var x$7 = $n(x9).x__D();
             var that$6 = elem$2;
             var ev$7 = $uD(Math.max(x$7, that$6));
             elem$2 = ev$7;
-            var x$8 = $n(x9).Ldoodle_core_Point$Cartesian__f_y;
+            var x$8 = $n(x9).y__D();
             var that$7 = elem$3;
             var ev$8 = $uD(Math.max(x$8, that$7));
             elem$3 = ev$8;
@@ -29471,34 +29730,34 @@ function $f_Ldoodle_algebra_generic_GenericPath__boundingBox__sci_List__Ldoodle_
             var x4 = $n(x$1$2)._1__Ldoodle_core_Point();
             var x5 = $n(x$1$2)._2__Ldoodle_core_Point();
             var x6 = $n(x$1$2)._3__Ldoodle_core_Point();
-            var x$9 = $n(x6).Ldoodle_core_Point$Cartesian__f_x;
-            var that$8 = $n(x5).Ldoodle_core_Point$Cartesian__f_x;
+            var x$9 = $n(x6).x__D();
+            var that$8 = $n(x5).x__D();
             var x$10 = $uD(Math.min(x$9, that$8));
-            var that$9 = $n(x4).Ldoodle_core_Point$Cartesian__f_x;
+            var that$9 = $n(x4).x__D();
             var x$11 = $uD(Math.min(x$10, that$9));
             var that$10 = elem;
             var ev$9 = $uD(Math.min(x$11, that$10));
             elem = ev$9;
-            var x$12 = $n(x6).Ldoodle_core_Point$Cartesian__f_y;
-            var that$11 = $n(x5).Ldoodle_core_Point$Cartesian__f_y;
+            var x$12 = $n(x6).y__D();
+            var that$11 = $n(x5).y__D();
             var x$13 = $uD(Math.min(x$12, that$11));
-            var that$12 = $n(x4).Ldoodle_core_Point$Cartesian__f_y;
+            var that$12 = $n(x4).y__D();
             var x$14 = $uD(Math.min(x$13, that$12));
             var that$13 = elem$1;
             var ev$10 = $uD(Math.min(x$14, that$13));
             elem$1 = ev$10;
-            var x$15 = $n(x6).Ldoodle_core_Point$Cartesian__f_x;
-            var that$14 = $n(x5).Ldoodle_core_Point$Cartesian__f_x;
+            var x$15 = $n(x6).x__D();
+            var that$14 = $n(x5).x__D();
             var x$16 = $uD(Math.max(x$15, that$14));
-            var that$15 = $n(x4).Ldoodle_core_Point$Cartesian__f_x;
+            var that$15 = $n(x4).x__D();
             var x$17 = $uD(Math.max(x$16, that$15));
             var that$16 = elem$2;
             var ev$11 = $uD(Math.max(x$17, that$16));
             elem$2 = ev$11;
-            var x$18 = $n(x6).Ldoodle_core_Point$Cartesian__f_y;
-            var that$17 = $n(x5).Ldoodle_core_Point$Cartesian__f_y;
+            var x$18 = $n(x6).y__D();
+            var that$17 = $n(x5).y__D();
             var x$19 = $uD(Math.max(x$18, that$17));
-            var that$18 = $n(x4).Ldoodle_core_Point$Cartesian__f_y;
+            var that$18 = $n(x4).y__D();
             var x$20 = $uD(Math.max(x$19, that$18));
             var that$19 = elem$3;
             var ev$12 = $uD(Math.max(x$20, that$19));
@@ -29975,8 +30234,9 @@ function $m_Ldoodle_core_PathElement$() {
 }
 /** @constructor */
 function $c_Ldoodle_core_Point$() {
+  this.Ldoodle_core_Point$__f_zero = null;
   $n_Ldoodle_core_Point$ = this;
-  new $c_Ldoodle_core_Point$Cartesian(0.0, 0.0)
+  this.Ldoodle_core_Point$__f_zero = new $c_Ldoodle_core_Point$Cartesian(0.0, 0.0)
 }
 $c_Ldoodle_core_Point$.prototype = new $h_O();
 $c_Ldoodle_core_Point$.prototype.constructor = $c_Ldoodle_core_Point$;
@@ -30225,9 +30485,8 @@ function $m_Ldoodle_core_font_FontWeight$() {
 }
 /** @constructor */
 function $c_Ldoodle_interact_animation_Interpolation$() {
-  this.Ldoodle_interact_animation_Interpolation$__f_interpolationInstance = null;
   $n_Ldoodle_interact_animation_Interpolation$ = this;
-  this.Ldoodle_interact_animation_Interpolation$__f_interpolationInstance = new $c_Ldoodle_interact_animation_Interpolation$$anon$1()
+  new $c_Ldoodle_interact_animation_Interpolation$$anon$1()
 }
 $c_Ldoodle_interact_animation_Interpolation$.prototype = new $h_O();
 $c_Ldoodle_interact_animation_Interpolation$.prototype.constructor = $c_Ldoodle_interact_animation_Interpolation$;
@@ -36680,8 +36939,8 @@ $c_Ldoodle_core_BoundingBox.prototype.eval__Ldoodle_core_Landmark__Ldoodle_core_
   return new $c_Ldoodle_core_Point$Cartesian(x, y)
 });
 $c_Ldoodle_core_BoundingBox.prototype.at__Ldoodle_core_Point__Ldoodle_core_BoundingBox = (function(point) {
-  var x = $n(point).Ldoodle_core_Point$Cartesian__f_x;
-  var y = $n(point).Ldoodle_core_Point$Cartesian__f_y;
+  var x = $n(point).x__D();
+  var y = $n(point).y__D();
   var x$1 = (this.Ldoodle_core_BoundingBox__f_left + x);
   var newLeft = $uD(Math.min(x$1, 0.0));
   var x$2 = (this.Ldoodle_core_BoundingBox__f_top + y);
@@ -37213,9 +37472,33 @@ $c_Ldoodle_core_Point.prototype.productIterator__sc_Iterator = (function() {
 });
 $c_Ldoodle_core_Point.prototype.$minus__Ldoodle_core_Point__Ldoodle_core_Vec = (function(that) {
   $m_Ldoodle_core_Vec$();
-  var x = (this.Ldoodle_core_Point$Cartesian__f_x - $n(that).Ldoodle_core_Point$Cartesian__f_x);
-  var y = (this.Ldoodle_core_Point$Cartesian__f_y - $n(that).Ldoodle_core_Point$Cartesian__f_y);
+  var x = (this.x__D() - $n(that).x__D());
+  var y = (this.y__D() - $n(that).y__D());
   return new $c_Ldoodle_core_Vec(x, y)
+});
+$c_Ldoodle_core_Point.prototype.toCartesian__Ldoodle_core_Point$Cartesian = (function() {
+  if ((this instanceof $c_Ldoodle_core_Point$Cartesian)) {
+    var x$1 = $as_Ldoodle_core_Point$Cartesian(this);
+    var this$2 = $n(x$1);
+    var this$3 = $n(x$1);
+    var c = $as_Ldoodle_core_Point$Cartesian(this);
+    return c
+  };
+  if ((this instanceof $c_Ldoodle_core_Point$Polar)) {
+    var x$1$1 = $as_Ldoodle_core_Point$Polar(this);
+    var this$5 = $n(x$1$1);
+    var x4 = this$5.Ldoodle_core_Point$Polar__f_r;
+    var this$6 = $n(x$1$1);
+    var x5 = this$6.Ldoodle_core_Point$Polar__f_angle;
+    var this$7 = $n(x5);
+    var x = this$7.Ldoodle_core_Angle__f_toRadians;
+    var x$3 = (x4 * $uD(Math.cos(x)));
+    var this$10 = $n(x5);
+    var x$2 = this$10.Ldoodle_core_Angle__f_toRadians;
+    var y = (x4 * $uD(Math.sin(x$2)));
+    return new $c_Ldoodle_core_Point$Cartesian(x$3, y)
+  };
+  throw new $c_s_MatchError(this)
 });
 /** @constructor */
 function $c_Ldoodle_core_Transform(elements) {
@@ -37249,8 +37532,8 @@ $c_Ldoodle_core_Transform.prototype.productElement__I__O = (function(n) {
   throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
 });
 $c_Ldoodle_core_Transform.prototype.apply__Ldoodle_core_Point__Ldoodle_core_Point = (function(point) {
-  var x = $n(point).Ldoodle_core_Point$Cartesian__f_x;
-  var y = $n(point).Ldoodle_core_Point$Cartesian__f_y;
+  var x = $n(point).x__D();
+  var y = $n(point).y__D();
   var newX = (((x * $n(this.Ldoodle_core_Transform__f_elements).get(0)) + (y * $n(this.Ldoodle_core_Transform__f_elements).get(1))) + $n(this.Ldoodle_core_Transform__f_elements).get(2));
   var newY = (((x * $n(this.Ldoodle_core_Transform__f_elements).get(3)) + (y * $n(this.Ldoodle_core_Transform__f_elements).get(4))) + $n(this.Ldoodle_core_Transform__f_elements).get(5));
   $m_Ldoodle_core_Point$();
@@ -37654,6 +37937,87 @@ $h_Ldoodle_core_font_FontWeight.prototype = $c_Ldoodle_core_font_FontWeight.prot
 $c_Ldoodle_core_font_FontWeight.prototype.productIterator__sc_Iterator = (function() {
   return new $c_s_Product$$anon$1(this)
 });
+/** @constructor */
+function $c_Ldoodle_interact_animation_Transducer$Box(transducer, state) {
+  this.Ldoodle_interact_animation_Transducer$Box__f_transducer = null;
+  this.Ldoodle_interact_animation_Transducer$Box__f_state = null;
+  this.Ldoodle_interact_animation_Transducer$Box__f_transducer = transducer;
+  this.Ldoodle_interact_animation_Transducer$Box__f_state = state
+}
+$c_Ldoodle_interact_animation_Transducer$Box.prototype = new $h_O();
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.constructor = $c_Ldoodle_interact_animation_Transducer$Box;
+/** @constructor */
+function $h_Ldoodle_interact_animation_Transducer$Box() {
+  /*<skip>*/
+}
+$h_Ldoodle_interact_animation_Transducer$Box.prototype = $c_Ldoodle_interact_animation_Transducer$Box.prototype;
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Ldoodle_interact_animation_Transducer$Box)) {
+    var x$0$2 = $as_Ldoodle_interact_animation_Transducer$Box(x$0);
+    var x = this.Ldoodle_interact_animation_Transducer$Box__f_transducer;
+    var x$2 = $n(x$0$2).Ldoodle_interact_animation_Transducer$Box__f_transducer;
+    if ((x === null)) {
+      return (x$2 === null)
+    } else {
+      var this$1 = $n(x);
+      return (this$1 === x$2)
+    }
+  } else {
+    return false
+  }
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.productArity__I = (function() {
+  return 1
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.productPrefix__T = (function() {
+  return "Box"
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.productElement__I__O = (function(n) {
+  if ((n === 0)) {
+    return this.Ldoodle_interact_animation_Transducer$Box__f_transducer
+  };
+  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.next__O = (function() {
+  return $n(this.Ldoodle_interact_animation_Transducer$Box__f_transducer).next__O__O(this.Ldoodle_interact_animation_Transducer$Box__f_state)
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.output__O = (function() {
+  return $n(this.Ldoodle_interact_animation_Transducer$Box__f_transducer).output__O__O(this.Ldoodle_interact_animation_Transducer$Box__f_state)
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.stopped__Z = (function() {
+  return $n(this.Ldoodle_interact_animation_Transducer$Box__f_transducer).stopped__O__Z(this.Ldoodle_interact_animation_Transducer$Box__f_state)
+});
+function $as_Ldoodle_interact_animation_Transducer$Box(obj) {
+  return (((obj instanceof $c_Ldoodle_interact_animation_Transducer$Box) || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.interact.animation.Transducer$Box"))
+}
+function $isArrayOf_Ldoodle_interact_animation_Transducer$Box(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ldoodle_interact_animation_Transducer$Box)))
+}
+function $asArrayOf_Ldoodle_interact_animation_Transducer$Box(obj, depth) {
+  return (($isArrayOf_Ldoodle_interact_animation_Transducer$Box(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.interact.animation.Transducer$Box;", depth))
+}
+var $d_Ldoodle_interact_animation_Transducer$Box = new $TypeData().initClass({
+  Ldoodle_interact_animation_Transducer$Box: 0
+}, false, "doodle.interact.animation.Transducer$Box", {
+  Ldoodle_interact_animation_Transducer$Box: 1,
+  O: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Ldoodle_interact_animation_Transducer$Box.prototype.$classData = $d_Ldoodle_interact_animation_Transducer$Box;
 function $f_Ldoodle_svg_algebra_TextModule$Text__$init$__V($thiz) {
   new $c_Ldoodle_svg_algebra_TextModule$$anon$1($thiz)
 }
@@ -46465,6 +46829,12 @@ $c_Ldoodle_core_Point$Cartesian.prototype.productElement__I__O = (function(n) {
   };
   throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
 });
+$c_Ldoodle_core_Point$Cartesian.prototype.x__D = (function() {
+  return this.Ldoodle_core_Point$Cartesian__f_x
+});
+$c_Ldoodle_core_Point$Cartesian.prototype.y__D = (function() {
+  return this.Ldoodle_core_Point$Cartesian__f_y
+});
 function $as_Ldoodle_core_Point$Cartesian(obj) {
   return (((obj instanceof $c_Ldoodle_core_Point$Cartesian) || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.core.Point$Cartesian"))
 }
@@ -46485,6 +46855,96 @@ var $d_Ldoodle_core_Point$Cartesian = new $TypeData().initClass({
   Ljava_io_Serializable: 1
 });
 $c_Ldoodle_core_Point$Cartesian.prototype.$classData = $d_Ldoodle_core_Point$Cartesian;
+/** @constructor */
+function $c_Ldoodle_core_Point$Polar(r, angle) {
+  this.Ldoodle_core_Point$Polar__f_r = 0.0;
+  this.Ldoodle_core_Point$Polar__f_angle = null;
+  this.Ldoodle_core_Point$Polar__f_r = r;
+  this.Ldoodle_core_Point$Polar__f_angle = angle
+}
+$c_Ldoodle_core_Point$Polar.prototype = new $h_Ldoodle_core_Point();
+$c_Ldoodle_core_Point$Polar.prototype.constructor = $c_Ldoodle_core_Point$Polar;
+/** @constructor */
+function $h_Ldoodle_core_Point$Polar() {
+  /*<skip>*/
+}
+$h_Ldoodle_core_Point$Polar.prototype = $c_Ldoodle_core_Point$Polar.prototype;
+$c_Ldoodle_core_Point$Polar.prototype.hashCode__I = (function() {
+  var acc = (-889275714);
+  var hash = acc;
+  var data = $f_T__hashCode__I("Polar");
+  acc = $m_sr_Statics$().mix__I__I__I(hash, data);
+  var hash$1 = acc;
+  var dv = this.Ldoodle_core_Point$Polar__f_r;
+  var data$1 = $m_sr_Statics$().doubleHash__D__I(dv);
+  acc = $m_sr_Statics$().mix__I__I__I(hash$1, data$1);
+  var hash$2 = acc;
+  var x = this.Ldoodle_core_Point$Polar__f_angle;
+  var data$2 = $m_sr_Statics$().anyHash__O__I(x);
+  acc = $m_sr_Statics$().mix__I__I__I(hash$2, data$2);
+  var hash$3 = acc;
+  return $m_sr_Statics$().finalizeHash__I__I__I(hash$3, 2)
+});
+$c_Ldoodle_core_Point$Polar.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Ldoodle_core_Point$Polar)) {
+    var x$0$2 = $as_Ldoodle_core_Point$Polar(x$0);
+    if ((this.Ldoodle_core_Point$Polar__f_r === $n(x$0$2).Ldoodle_core_Point$Polar__f_r)) {
+      var x = this.Ldoodle_core_Point$Polar__f_angle;
+      var x$2 = $n(x$0$2).Ldoodle_core_Point$Polar__f_angle;
+      return ((x === null) ? (x$2 === null) : $n(x).equals__O__Z(x$2))
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Ldoodle_core_Point$Polar.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Ldoodle_core_Point$Polar.prototype.productArity__I = (function() {
+  return 2
+});
+$c_Ldoodle_core_Point$Polar.prototype.productPrefix__T = (function() {
+  return "Polar"
+});
+$c_Ldoodle_core_Point$Polar.prototype.productElement__I__O = (function(n) {
+  if ((n === 0)) {
+    return this.Ldoodle_core_Point$Polar__f_r
+  };
+  if ((n === 1)) {
+    return this.Ldoodle_core_Point$Polar__f_angle
+  };
+  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+});
+$c_Ldoodle_core_Point$Polar.prototype.x__D = (function() {
+  return $n(this.toCartesian__Ldoodle_core_Point$Cartesian()).Ldoodle_core_Point$Cartesian__f_x
+});
+$c_Ldoodle_core_Point$Polar.prototype.y__D = (function() {
+  return $n(this.toCartesian__Ldoodle_core_Point$Cartesian()).Ldoodle_core_Point$Cartesian__f_y
+});
+function $as_Ldoodle_core_Point$Polar(obj) {
+  return (((obj instanceof $c_Ldoodle_core_Point$Polar) || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.core.Point$Polar"))
+}
+function $isArrayOf_Ldoodle_core_Point$Polar(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ldoodle_core_Point$Polar)))
+}
+function $asArrayOf_Ldoodle_core_Point$Polar(obj, depth) {
+  return (($isArrayOf_Ldoodle_core_Point$Polar(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.core.Point$Polar;", depth))
+}
+var $d_Ldoodle_core_Point$Polar = new $TypeData().initClass({
+  Ldoodle_core_Point$Polar: 0
+}, false, "doodle.core.Point$Polar", {
+  Ldoodle_core_Point$Polar: 1,
+  Ldoodle_core_Point: 1,
+  O: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Ldoodle_core_Point$Polar.prototype.$classData = $d_Ldoodle_core_Point$Polar;
 /** @constructor */
 function $c_Ldoodle_core_font_FontSize$Points(get) {
   this.Ldoodle_core_font_FontSize$Points__f_get = 0;
@@ -85905,6 +86365,6 @@ function $m_Lcats_implicits$() {
 }
 $L0 = new $c_RTLong(0, 0);
 $d_J.zero = $L0;
-Cartesian = $m_Lpolygons_Cartesian$();
+Coordinates = $m_Lpolygons_Coordinates$();
 }).call(this);
 //# sourceMappingURL=main.js.map
