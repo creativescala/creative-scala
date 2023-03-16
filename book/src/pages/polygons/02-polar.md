@@ -1,11 +1,9 @@
 # Polar Coordinates
 
-You are probably used to specifying a point in two dimensions using x and y coordinates. These are known as *Cartesian coordinates* after their inventor, René Descartes.
-
-In cartesian coordinates, we determine a point using an x and a y coordinate. We can think of this as moving to a spot on the x-axis, and tracing up or down till we reach the spot on the y-axis. The animation below shows this.
+A point in two dimensions is most commonly specified using x and y coordinates. These are known as *Cartesian coordinates* after their inventor, René Descartes. We can visualize a Cartesian coordinate as projecting a vertical line from the x-axis and a horizontal line from the y-axis. The intersection of these two lines is the chosen point. The animation below shows this.
 
 @:doodle("cartesian", "Coordinates.cartesian")
 
-In polar coordinates, a point is determined by a length followed by a rotation. The animation below illustrates this.
+An alternate representation is *polar coordinates*. In polar coordinates, a point is specified by a length and a rotation. The animation below illustrates this.
 
 @:doodle("polar", "Coordinates.polar")

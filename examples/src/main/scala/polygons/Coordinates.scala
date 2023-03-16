@@ -11,36 +11,46 @@ import scala.scalajs.js.annotation.*
 
 @JSExportTopLevel("Coordinates")
 object Coordinates {
-  // 256x144 = 16:9 aspect ratio
-  val maxWidth = 256
-  val maxHeight = 144
+  // 4:3 aspect ratio
+  val maxWidth = 16.0 * 16.0
+  val maxHeight = 16.0 * 12.0
 
-  val maxX = 13.0 * 16.0
-  val maxY = 13.0 * 9.0
-  val length = Math.sqrt(maxX * maxX + maxY * maxY)
+  // 3/4/5 right-angled triangle
+  val m = 33.0
+  val maxX = m * 4.0
+  val maxY = m * 3.0
+  val length = m * 5.0
+
+  val xStart = -10.0
+  val yStart = -10.0
 
   def makeFrame(id: String): Frame =
     Frame(id).withSize(maxWidth + 10, maxHeight + 10)
 
+  val point =
+    Picture.circle(7.0).noStroke.fillColor(Color.darkBlue).at(maxX, maxY)
+
   val axes: Picture[Unit] =
     OpenPath.empty
-      .moveTo(-10.0, 0.0)
+      .moveTo(xStart, 0.0)
       .lineTo(maxWidth, 0.0)
       .path
       .on(
-        OpenPath.empty.moveTo(0.0, -10.0).lineTo(0.0, maxHeight).path
+        OpenPath.empty.moveTo(0.0, yStart).lineTo(0.0, maxHeight).path
       )
 
-  def cartesianPoint(pt: Point): Picture[Unit] =
+  def cartesianLines(pt: Point): Picture[Unit] =
     OpenPath.empty
-      .moveTo(pt.x, 0.0)
-      .lineTo(pt.x, pt.y)
+      .moveTo(maxX, yStart)
+      .lineTo(maxX, pt.y)
       .path
-      .on(OpenPath.empty.moveTo(0.0, pt.y).lineTo(pt.x, pt.y).path)
+      .on(
+        OpenPath.empty.moveTo(xStart, maxY).lineTo(pt.x, maxY).path
+      )
       .strokeWidth(3.0)
-      .strokeDash(Array(7.0, 3.0))
+      .strokeDash(Array(3.0, 3.0))
       .strokeColor(Color.darkBlue)
-      .on(Picture.circle(5.0).noStroke.fillColor(Color.darkBlue).at(pt))
+      .on(point)
 
   def polarPoint(pt: Point): Picture[Unit] =
     OpenPath.empty
@@ -48,36 +58,31 @@ object Coordinates {
       .lineTo(pt.x, pt.y)
       .path
       .strokeWidth(3.0)
-      .strokeDash(Array(7.0, 3.0))
+      .strokeDash(Array(3.0, 3.0))
       .strokeColor(Color.darkBlue)
-      .on(Picture.circle(5.0).noStroke.fillColor(Color.darkBlue).at(pt))
+      .on(point)
 
   def withAxes(picture: Picture[Unit]): Picture[Unit] =
     picture.on(axes).originAt(120, 70)
 
   val cartesianAnimation =
-    0.0
-      .upTo(maxX)
-      .map(x => withAxes(cartesianPoint(Point(x, 0.0))))
-      .forDuration(1.5.seconds)
-      .andThen(_ =>
-        0.0
-          .upTo(maxY)
-          .map(y => withAxes(cartesianPoint(Point(maxX, y))))
-          .forDuration(1.5.seconds)
-      )
+    (
+      0.0.upTo(maxWidth).forDuration(1.5.seconds),
+      0.0.upTo(maxHeight).forDuration(1.5.seconds)
+    )
+      .mapN((x, y) => withAxes(cartesianLines(Point(x, y))))
       .repeatForever
 
   val polarAnimation =
     0.0
       .upTo(length)
       .map(x => withAxes(polarPoint(Point(x, 0.0))))
-      .forDuration(1.5.seconds)
+      .forDuration(0.75.seconds)
       .andThen(_ =>
         Angle.zero
-          .upTo(Math.atan(9.0 / 16.0).radians)
+          .upTo(Math.atan(3.0 / 4.0).radians)
           .map(a => withAxes(polarPoint(Point(length, a))))
-          .forDuration(1.5.seconds)
+          .forDuration(0.75.seconds)
       )
       .repeatForever
 
