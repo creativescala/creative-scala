@@ -51,7 +51,7 @@ object Coordinates {
       .strokeWidth(3.0)
       .strokeDash(Array(3.0, 3.0))
       .strokeColor(Color.darkBlue)
-      .on(point)
+      .under(point)
 
   def polarPoint(pt: Point): Picture[Unit] =
     OpenPath.empty
@@ -61,7 +61,7 @@ object Coordinates {
       .strokeWidth(3.0)
       .strokeDash(Array(3.0, 3.0))
       .strokeColor(Color.darkBlue)
-      .on(point)
+      .under(point)
 
   def withAxes(picture: Picture[Unit]): Picture[Unit] =
     picture.on(axes).originAt(120, 70)
