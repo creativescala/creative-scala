@@ -84,7 +84,7 @@ object Coordinates {
       .forDuration(0.75.seconds)
       .andThen(_ =>
         Angle.zero
-          .upTo(Math.atan(3.0 / 4.0).radians)
+          .upTo(Point(maxX, maxY).angle)
           .map(a => withAxes(polarPoint(Point(length, a))))
           .forDuration(0.75.seconds)
       )
