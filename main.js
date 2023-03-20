@@ -1,4 +1,4 @@
-let Coordinates;
+let Polygons,Coordinates;
 (function(){
 'use strict';
 var $linkingInfo = Object.freeze({
@@ -3553,6 +3553,16 @@ $c_Ldoodle_core_Angle.prototype.$minus__Ldoodle_core_Angle__Ldoodle_core_Angle =
   var rad = (this.Ldoodle_core_Angle__f_toRadians - $n(that).Ldoodle_core_Angle__f_toRadians);
   return $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(rad)
 });
+$c_Ldoodle_core_Angle.prototype.$times__D__Ldoodle_core_Angle = (function(m) {
+  $m_Ldoodle_core_Angle$();
+  var rad = (this.Ldoodle_core_Angle__f_toRadians * m);
+  return $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(rad)
+});
+$c_Ldoodle_core_Angle.prototype.$div__D__Ldoodle_core_Angle = (function(m) {
+  $m_Ldoodle_core_Angle$();
+  var rad = (this.Ldoodle_core_Angle__f_toRadians / m);
+  return $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(rad)
+});
 $c_Ldoodle_core_Angle.prototype.toTurns__D = (function() {
   return (this.Ldoodle_core_Angle__f_toRadians / $m_Ldoodle_core_Angle$().Ldoodle_core_Angle$__f_TwoPi)
 });
@@ -3590,10 +3600,11 @@ $c_Ldoodle_core_Angle.prototype.$classData = $d_Ldoodle_core_Angle;
 function $c_Ldoodle_core_Angle$() {
   this.Ldoodle_core_Angle$__f_TwoPi = 0.0;
   this.Ldoodle_core_Angle$__f_zero = null;
+  this.Ldoodle_core_Angle$__f_one = null;
   $n_Ldoodle_core_Angle$ = this;
   this.Ldoodle_core_Angle$__f_TwoPi = 6.283185307179586;
   this.Ldoodle_core_Angle$__f_zero = $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(0.0);
-  $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(this.Ldoodle_core_Angle$__f_TwoPi)
+  this.Ldoodle_core_Angle$__f_one = $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(this.Ldoodle_core_Angle$__f_TwoPi)
 }
 $c_Ldoodle_core_Angle$.prototype = new $h_O();
 $c_Ldoodle_core_Angle$.prototype.constructor = $c_Ldoodle_core_Angle$;
@@ -5184,6 +5195,46 @@ function $m_Ldoodle_svg_package$() {
   };
   return $n_Ldoodle_svg_package$
 }
+/** @constructor */
+function $c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps(outer, picture) {
+  this.Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps__f_picture = null;
+  this.Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps__f_$outer = null;
+  this.Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps__f_picture = picture;
+  if ((outer === null)) {
+    throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
+  };
+  this.Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps__f_$outer = outer
+}
+$c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype = new $h_O();
+$c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype.constructor = $c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps;
+/** @constructor */
+function $h_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps() {
+  /*<skip>*/
+}
+$h_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype = $c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype;
+$c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype.drawWithFrame__O__Ldoodle_effect_Renderer__Lcats_effect_unsafe_IORuntime__V = (function(frame, renderer, r) {
+  var this$1 = $n(this.Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps__f_$outer);
+  var io = this.drawWithFrameToIO__O__Ldoodle_effect_Renderer__Lcats_effect_IO(frame, renderer);
+  $f_Ldoodle_syntax_RendererSyntax__runIO__Lcats_effect_IO__Lcats_effect_unsafe_IORuntime__V(this$1, io, r)
+});
+$c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype.drawWithFrameToIO__O__Ldoodle_effect_Renderer__Lcats_effect_IO = (function(frame, renderer) {
+  $n(renderer);
+  var description = $as_Ldoodle_svg_effect_Frame(frame);
+  return $n($m_Ldoodle_svg_effect_Canvas$().fromFrame__Ldoodle_svg_effect_Frame__Lcats_effect_unsafe_IORuntime__Lcats_effect_IO(description, $m_Lcats_effect_unsafe_implicits$().Lcats_effect_unsafe_implicits$__f_global)).flatMap__F1__Lcats_effect_IO(new $c_sjsr_AnonFunction1(((canvas) => this.drawWithCanvasToIO__O__Ldoodle_effect_Renderer__Lcats_effect_IO(canvas, renderer))))
+});
+$c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype.drawWithCanvasToIO__O__Ldoodle_effect_Renderer__Lcats_effect_IO = (function(canvas, renderer) {
+  $n(renderer);
+  var picture = this.Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps__f_picture;
+  var canvas$1 = $as_Ldoodle_svg_effect_Canvas(canvas);
+  return $n(canvas$1).render__Ldoodle_algebra_Picture__Lcats_effect_IO(picture)
+});
+var $d_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps = new $TypeData().initClass({
+  Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps: 0
+}, false, "doodle.syntax.AbstractRendererSyntax$RendererPictureOps", {
+  Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps: 1,
+  O: 1
+});
+$c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps.prototype.$classData = $d_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps;
 /** @constructor */
 function $c_Ldoodle_syntax_AngleSyntax$AngleDoubleOps(outer, angle) {
   this.Ldoodle_syntax_AngleSyntax$AngleDoubleOps__f_angle = 0.0;
@@ -12504,6 +12555,43 @@ function $m_Lpolygons_Coordinates$() {
     $n_Lpolygons_Coordinates$ = new $c_Lpolygons_Coordinates$()
   };
   return $n_Lpolygons_Coordinates$
+}
+/** @constructor */
+function $c_Lpolygons_Polygons$() {
+  /*<skip>*/
+}
+$c_Lpolygons_Polygons$.prototype = new $h_O();
+$c_Lpolygons_Polygons$.prototype.constructor = $c_Lpolygons_Polygons$;
+/** @constructor */
+function $h_Lpolygons_Polygons$() {
+  /*<skip>*/
+}
+$h_Lpolygons_Polygons$.prototype = $c_Lpolygons_Polygons$.prototype;
+$c_Lpolygons_Polygons$.prototype.makeFrame__T__Ldoodle_svg_effect_Frame = (function(id) {
+  return $n($n($m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_Frame).apply__T__Ldoodle_svg_effect_Frame(id)).withSize__D__D__Ldoodle_svg_effect_Frame(200.0, 200.0)
+});
+$c_Lpolygons_Polygons$.prototype.points__T__V = (function(id) {
+  var background = new $c_Ldoodle_algebra_PathConstructor$$anon$3(6, 100.0);
+  var this$2 = $m_Ldoodle_syntax_package$all$();
+  new $c_Ldoodle_syntax_AbstractRendererSyntax$RendererPictureOps(this$2, background).drawWithFrame__O__Ldoodle_effect_Renderer__Lcats_effect_unsafe_IORuntime__V(this.makeFrame__T__Ldoodle_svg_effect_Frame(id), $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgRenderer, $m_Lcats_effect_unsafe_implicits$().Lcats_effect_unsafe_implicits$__f_global)
+});
+$c_Lpolygons_Polygons$.prototype.points = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.points__T__V(prep0)
+});
+var $d_Lpolygons_Polygons$ = new $TypeData().initClass({
+  Lpolygons_Polygons$: 0
+}, false, "polygons.Polygons$", {
+  Lpolygons_Polygons$: 1,
+  O: 1
+});
+$c_Lpolygons_Polygons$.prototype.$classData = $d_Lpolygons_Polygons$;
+var $n_Lpolygons_Polygons$;
+function $m_Lpolygons_Polygons$() {
+  if ((!$n_Lpolygons_Polygons$)) {
+    $n_Lpolygons_Polygons$ = new $c_Lpolygons_Polygons$()
+  };
+  return $n_Lpolygons_Polygons$
 }
 /** @constructor */
 function $c_s_Array$EmptyArrays$() {
@@ -20310,6 +20398,12 @@ function $isArrayOf_Ldoodle_algebra_Layout(obj, depth) {
 function $asArrayOf_Ldoodle_algebra_Layout(obj, depth) {
   return (($isArrayOf_Ldoodle_algebra_Layout(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.algebra.Layout;", depth))
 }
+function $f_Ldoodle_algebra_Path__regularPolygon__I__D__O($thiz, sides, radius) {
+  $m_Ldoodle_core_ClosedPath$();
+  var elts = $m_Ldoodle_core_PathElement$().regularPolygon__I__D__sci_List(sides, radius);
+  var path = new $c_Ldoodle_core_ClosedPath($n(elts).reverse__sci_List());
+  return $f_Ldoodle_algebra_generic_GenericPath__path__Ldoodle_core_ClosedPath__Lcats_data_IndexedStateT($thiz, path)
+}
 function $is_Ldoodle_algebra_Path(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Ldoodle_algebra_Path)))
 }
@@ -20322,6 +20416,37 @@ function $isArrayOf_Ldoodle_algebra_Path(obj, depth) {
 function $asArrayOf_Ldoodle_algebra_Path(obj, depth) {
   return (($isArrayOf_Ldoodle_algebra_Path(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.algebra.Path;", depth))
 }
+/** @constructor */
+function $c_Ldoodle_algebra_PathConstructor$$anon$3(sides$2, radius$3) {
+  this.Ldoodle_algebra_PathConstructor$$anon$3__f_sides$1 = 0;
+  this.Ldoodle_algebra_PathConstructor$$anon$3__f_radius$1 = 0.0;
+  this.Ldoodle_algebra_PathConstructor$$anon$3__f_sides$1 = sides$2;
+  this.Ldoodle_algebra_PathConstructor$$anon$3__f_radius$1 = radius$3
+}
+$c_Ldoodle_algebra_PathConstructor$$anon$3.prototype = new $h_O();
+$c_Ldoodle_algebra_PathConstructor$$anon$3.prototype.constructor = $c_Ldoodle_algebra_PathConstructor$$anon$3;
+/** @constructor */
+function $h_Ldoodle_algebra_PathConstructor$$anon$3() {
+  /*<skip>*/
+}
+$h_Ldoodle_algebra_PathConstructor$$anon$3.prototype = $c_Ldoodle_algebra_PathConstructor$$anon$3.prototype;
+$c_Ldoodle_algebra_PathConstructor$$anon$3.prototype.apply__Ldoodle_algebra_Path__O = (function(algebra) {
+  var this$1 = $n(algebra);
+  var sides = this.Ldoodle_algebra_PathConstructor$$anon$3__f_sides$1;
+  var radius = this.Ldoodle_algebra_PathConstructor$$anon$3__f_radius$1;
+  return $f_Ldoodle_algebra_Path__regularPolygon__I__D__O(this$1, sides, radius)
+});
+$c_Ldoodle_algebra_PathConstructor$$anon$3.prototype.apply__Ldoodle_algebra_Algebra__O = (function(algebra) {
+  return this.apply__Ldoodle_algebra_Path__O($as_Ldoodle_algebra_Path(algebra))
+});
+var $d_Ldoodle_algebra_PathConstructor$$anon$3 = new $TypeData().initClass({
+  Ldoodle_algebra_PathConstructor$$anon$3: 0
+}, false, "doodle.algebra.PathConstructor$$anon$3", {
+  Ldoodle_algebra_PathConstructor$$anon$3: 1,
+  O: 1,
+  Ldoodle_algebra_Picture: 1
+});
+$c_Ldoodle_algebra_PathConstructor$$anon$3.prototype.$classData = $d_Ldoodle_algebra_PathConstructor$$anon$3;
 function $is_Ldoodle_algebra_Shape(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.ancestors.Ldoodle_algebra_Shape)))
 }
@@ -21419,6 +21544,15 @@ function $h_Ldoodle_svg_algebra_PathModule$Path$PathApi$() {
   /*<skip>*/
 }
 $h_Ldoodle_svg_algebra_PathModule$Path$PathApi$.prototype = $c_Ldoodle_svg_algebra_PathModule$Path$PathApi$.prototype;
+$c_Ldoodle_svg_algebra_PathModule$Path$PathApi$.prototype.closedPath__Ldoodle_core_Transform__s_Option__s_Option__sci_List__T3 = (function(tx, fill, stroke, elements) {
+  var dAttr = $n($n($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_$outer).Ldoodle_svg_algebra_JsAlgebraModule$JsAlgebra__f_$outer).Svg__Ldoodle_svg_algebra_SvgModule$Svg$()).toSvgPath__sci_List__Ldoodle_svg_algebra_SvgModule$Svg$PathType__T(elements, $n($n($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_$outer).Ldoodle_svg_algebra_JsAlgebraModule$JsAlgebra__f_$outer).Svg__Ldoodle_svg_algebra_SvgModule$Svg$()).Closed__Ldoodle_svg_algebra_SvgModule$Svg$Closed$());
+  var set = $as_scm_Set($m_scm_Set$().empty__O());
+  var style = $n($n($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_$outer).Ldoodle_svg_algebra_JsAlgebraModule$JsAlgebra__f_$outer).Svg__Ldoodle_svg_algebra_SvgModule$Svg$()).toStyle__s_Option__s_Option__scm_Set__T(stroke, fill, set);
+  var this$8 = $n(($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_b), $m_Lscalatags_JsDom$svgTags$()).path__Lscalatags_generic_TypedTag());
+  var xs = $m_sr_ScalaRunTime$().wrapRefArray__AO__sci_ArraySeq(new ($d_Lscalatags_generic_Modifier.getArrayOf().constr)([$n(($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_b), $m_Lscalatags_JsDom$svgAttrs$()).transform__Lscalatags_generic_Attr()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair($n($n($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_$outer).Ldoodle_svg_algebra_JsAlgebraModule$JsAlgebra__f_$outer).Svg__Ldoodle_svg_algebra_SvgModule$Svg$()).toSvgTransform__Ldoodle_core_Transform__T(tx), ($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_b), $m_Lscalatags_JsDom$implicits$()).Lscalatags_JsDom$implicits$__f_stringAttr), $n(($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_b), $m_Lscalatags_JsDom$svgAttrs$()).style__Lscalatags_generic_Attr()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(style, ($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_b), $m_Lscalatags_JsDom$implicits$()).Lscalatags_JsDom$implicits$__f_stringAttr), $n(($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_b), $m_Lscalatags_JsDom$svgAttrs$()).d__Lscalatags_generic_Attr()).$colon$eq__O__Lscalatags_generic_AttrValue__Lscalatags_generic_AttrPair(dAttr, ($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_b), $m_Lscalatags_JsDom$implicits$()).Lscalatags_JsDom$implicits$__f_stringAttr)]));
+  var elt = this$8.apply__sci_Seq__Lscalatags_JsDom$TypedTag(xs);
+  return new $c_T3(elt, set, (void 0))
+});
 $c_Ldoodle_svg_algebra_PathModule$Path$PathApi$.prototype.openPath__Ldoodle_core_Transform__s_Option__s_Option__sci_List__T3 = (function(tx, fill, stroke, elements) {
   var dAttr = $n($n($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_$outer).Ldoodle_svg_algebra_JsAlgebraModule$JsAlgebra__f_$outer).Svg__Ldoodle_svg_algebra_SvgModule$Svg$()).toSvgPath__sci_List__Ldoodle_svg_algebra_SvgModule$Svg$PathType__T(elements, $n($n($n(this.Ldoodle_svg_algebra_PathModule$Path$PathApi$__f_$outer).Ldoodle_svg_algebra_JsAlgebraModule$JsAlgebra__f_$outer).Svg__Ldoodle_svg_algebra_SvgModule$Svg$()).Open__Ldoodle_svg_algebra_SvgModule$Svg$Open$());
   var set = $as_scm_Set($m_scm_Set$().empty__O());
@@ -21698,6 +21832,25 @@ var $d_Ldoodle_syntax_PathSyntax$$anon$2 = new $TypeData().initClass({
   Ldoodle_algebra_Picture: 1
 });
 $c_Ldoodle_syntax_PathSyntax$$anon$2.prototype.$classData = $d_Ldoodle_syntax_PathSyntax$$anon$2;
+function $f_Ldoodle_syntax_RendererSyntax__runIO__Lcats_effect_IO__Lcats_effect_unsafe_IORuntime__V($thiz, io, runtime) {
+  $n(io).unsafeRunAsync__F1__Lcats_effect_unsafe_IORuntime__V(new $c_sjsr_AnonFunction1(((x$1) => {
+    var x$1$1 = $as_s_util_Either(x$1);
+    matchResult1: {
+      if ((x$1$1 instanceof $c_s_util_Left)) {
+        var exn = $as_jl_Throwable($n($as_s_util_Left(x$1$1)).s_util_Left__f_value);
+        var x = ("Rendering failed with exception " + exn);
+        var this$2 = $m_s_Console$();
+        var this$3 = $n(this$2.out__Ljava_io_PrintStream());
+        this$3.java$lang$JSConsoleBasedPrintStream$$printString__T__V((x + "\n"));
+        break matchResult1
+      };
+      if ((x$1$1 instanceof $c_s_util_Right)) {
+        break matchResult1
+      };
+      throw new $c_s_MatchError(x$1$1)
+    }
+  })), runtime)
+}
 /** @constructor */
 function $c_Ldoodle_syntax_StyleSyntax$$anon$1(fillColor$2, outer) {
   this.Ldoodle_syntax_StyleSyntax$$anon$1__f_fillColor$1 = null;
@@ -26361,6 +26514,38 @@ function $isArrayOf_sci_MapNode(obj, depth) {
 function $asArrayOf_sci_MapNode(obj, depth) {
   return (($isArrayOf_sci_MapNode(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Lscala.collection.immutable.MapNode;", depth))
 }
+function $p_sci_Range$__description__I__I__I__Z__T($thiz, start, end, step, isInclusive) {
+  return ((((start + (isInclusive ? " to " : " until ")) + end) + " by ") + step)
+}
+/** @constructor */
+function $c_sci_Range$() {
+  /*<skip>*/
+}
+$c_sci_Range$.prototype = new $h_O();
+$c_sci_Range$.prototype.constructor = $c_sci_Range$;
+/** @constructor */
+function $h_sci_Range$() {
+  /*<skip>*/
+}
+$h_sci_Range$.prototype = $c_sci_Range$.prototype;
+$c_sci_Range$.prototype.scala$collection$immutable$Range$$fail__I__I__I__Z__E = (function(start, end, step, isInclusive) {
+  throw $ct_jl_IllegalArgumentException__T__(new $c_jl_IllegalArgumentException(), ($p_sci_Range$__description__I__I__I__Z__T(this, start, end, step, isInclusive) + ": seqs cannot contain more than Int.MaxValue elements."))
+});
+var $d_sci_Range$ = new $TypeData().initClass({
+  sci_Range$: 0
+}, false, "scala.collection.immutable.Range$", {
+  sci_Range$: 1,
+  O: 1,
+  Ljava_io_Serializable: 1
+});
+$c_sci_Range$.prototype.$classData = $d_sci_Range$;
+var $n_sci_Range$;
+function $m_sci_Range$() {
+  if ((!$n_sci_Range$)) {
+    $n_sci_Range$ = new $c_sci_Range$()
+  };
+  return $n_sci_Range$
+}
 /** @constructor */
 function $c_sci_RedBlackTree$SetHelper() {
   this.sci_RedBlackTree$Helper__f_ordering = null
@@ -29711,6 +29896,24 @@ function $f_Ldoodle_algebra_generic_GenericLayout__originAt__Lcats_data_IndexedS
     throw new $c_s_MatchError(x$1$1)
   })), $m_Lcats_Eval$().Lcats_EvalInstances__f_catsBimonadForEval)
 }
+function $f_Ldoodle_algebra_generic_GenericPath__path__Ldoodle_core_ClosedPath__Lcats_data_IndexedStateT($thiz, path) {
+  return $m_Ldoodle_algebra_generic_package$Finalized$().leaf__F1__Lcats_data_IndexedStateT(new $c_sjsr_AnonFunction1(((dc) => {
+    var dc$1 = $as_Ldoodle_algebra_generic_DrawingContext(dc);
+    var this$2 = $n(path);
+    var elements = $n(this$2.Ldoodle_core_ClosedPath__f_reversed).reverse__sci_List();
+    var this$3 = $n($n(dc$1).Ldoodle_algebra_generic_DrawingContext__f_strokeWidth);
+    var strokeWidth = $uD((this$3.isEmpty__Z() ? 0.0 : this$3.get__O()));
+    var bb = $n($f_Ldoodle_algebra_generic_GenericPath__boundingBox__sci_List__Ldoodle_core_BoundingBox($thiz, elements)).expand__D__Ldoodle_core_BoundingBox(strokeWidth);
+    var _2 = $m_Lcats_data_package$State$().inspect__F1__Lcats_data_IndexedStateT(new $c_sjsr_AnonFunction1(((tx) => {
+      var tx$1 = $as_Ldoodle_core_Transform(tx);
+      var this$4 = $n($thiz.PathApi__Ldoodle_svg_algebra_PathModule$Path$PathApi$());
+      var fill = $n(dc$1).Ldoodle_algebra_generic_DrawingContext__f_fill;
+      var stroke = $n(dc$1).stroke__s_Option();
+      return this$4.closedPath__Ldoodle_core_Transform__s_Option__s_Option__sci_List__T3(tx$1, fill, stroke, elements)
+    })));
+    return new $c_T2(bb, _2)
+  })))
+}
 function $f_Ldoodle_algebra_generic_GenericPath__path__Ldoodle_core_OpenPath__Lcats_data_IndexedStateT($thiz, path) {
   return $m_Ldoodle_algebra_generic_package$Finalized$().leaf__F1__Lcats_data_IndexedStateT(new $c_sjsr_AnonFunction1(((dc) => {
     var dc$1 = $as_Ldoodle_algebra_generic_DrawingContext(dc);
@@ -30112,6 +30315,40 @@ function $m_Ldoodle_core_Cap$() {
   return $n_Ldoodle_core_Cap$
 }
 /** @constructor */
+function $c_Ldoodle_core_ClosedPath$() {
+  $n_Ldoodle_core_ClosedPath$ = this;
+  $m_Ldoodle_core_ClosedPath$();
+  $n($m_s_package$().s_package$__f_List);
+  var elts = $m_sci_Nil$();
+  new $c_Ldoodle_core_ClosedPath(elts.reverse__sci_List())
+}
+$c_Ldoodle_core_ClosedPath$.prototype = new $h_O();
+$c_Ldoodle_core_ClosedPath$.prototype.constructor = $c_Ldoodle_core_ClosedPath$;
+/** @constructor */
+function $h_Ldoodle_core_ClosedPath$() {
+  /*<skip>*/
+}
+$h_Ldoodle_core_ClosedPath$.prototype = $c_Ldoodle_core_ClosedPath$.prototype;
+$c_Ldoodle_core_ClosedPath$.prototype.toString__T = (function() {
+  return "ClosedPath"
+});
+var $d_Ldoodle_core_ClosedPath$ = new $TypeData().initClass({
+  Ldoodle_core_ClosedPath$: 0
+}, false, "doodle.core.ClosedPath$", {
+  Ldoodle_core_ClosedPath$: 1,
+  O: 1,
+  s_deriving_Mirror: 1,
+  s_deriving_Mirror$Product: 1
+});
+$c_Ldoodle_core_ClosedPath$.prototype.$classData = $d_Ldoodle_core_ClosedPath$;
+var $n_Ldoodle_core_ClosedPath$;
+function $m_Ldoodle_core_ClosedPath$() {
+  if ((!$n_Ldoodle_core_ClosedPath$)) {
+    $n_Ldoodle_core_ClosedPath$ = new $c_Ldoodle_core_ClosedPath$()
+  };
+  return $n_Ldoodle_core_ClosedPath$
+}
+/** @constructor */
 function $c_Ldoodle_core_Coordinate$() {
   this.Ldoodle_core_Coordinate$__f_zero = null;
   this.Ldoodle_core_Coordinate$__f_oneHundredPercent = null;
@@ -30282,6 +30519,47 @@ function $h_Ldoodle_core_PathElement$() {
   /*<skip>*/
 }
 $h_Ldoodle_core_PathElement$.prototype = $c_Ldoodle_core_PathElement$.prototype;
+$c_Ldoodle_core_PathElement$.prototype.moveTo__D__Ldoodle_core_Angle__Ldoodle_core_PathElement = (function(r, angle) {
+  $m_Ldoodle_core_Point$();
+  var point = new $c_Ldoodle_core_Point$Polar(r, angle);
+  return new $c_Ldoodle_core_PathElement$MoveTo(point)
+});
+$c_Ldoodle_core_PathElement$.prototype.lineTo__D__Ldoodle_core_Angle__Ldoodle_core_PathElement = (function(r, angle) {
+  $m_Ldoodle_core_Point$();
+  var point = new $c_Ldoodle_core_Point$Polar(r, angle);
+  return new $c_Ldoodle_core_PathElement$LineTo(point)
+});
+$c_Ldoodle_core_PathElement$.prototype.regularPolygon__I__D__sci_List = (function(sides, radius) {
+  var rotation = $n($m_Ldoodle_core_Angle$().Ldoodle_core_Angle$__f_one).$div__D__Ldoodle_core_Angle(sides);
+  var isEmpty = (sides < 1);
+  if (isEmpty) {
+    var scala$collection$immutable$Range$$numRangeElements = 0
+  } else {
+    var hi = (sides >> 31);
+    var lo = (((-1) + sides) | 0);
+    var hi$1 = ((lo !== (-1)) ? hi : (((-1) + hi) | 0));
+    var lo$1 = ((1 + lo) | 0);
+    var hi$2 = ((lo$1 === 0) ? ((1 + hi$1) | 0) : hi$1);
+    var scala$collection$immutable$Range$$numRangeElements = (((hi$2 === 0) ? (((-2147483648) ^ lo$1) > (-1)) : (hi$2 > 0)) ? (-1) : lo$1)
+  };
+  if ((scala$collection$immutable$Range$$numRangeElements < 0)) {
+    $m_sci_Range$().scala$collection$immutable$Range$$fail__I__I__I__Z__E(1, sides, 1, true)
+  };
+  var b = $m_sci_IndexedSeq$().newBuilder__scm_Builder();
+  var it = new $c_sci_RangeIterator(1, 1, sides, isEmpty);
+  while (it.sci_RangeIterator__f__hasNext) {
+    var this$7 = $n(b);
+    var arg1 = it.next__I();
+    var elem = this.lineTo__D__Ldoodle_core_Angle__Ldoodle_core_PathElement(radius, $n(rotation).$times__D__Ldoodle_core_Angle(arg1));
+    this$7.addOne__O__scm_Growable(elem)
+  };
+  var this$8 = $n($as_sci_IndexedSeq($n(b).result__O()));
+  $m_sci_List$();
+  var path = $m_sci_Nil$().prependedAll__sc_IterableOnce__sci_List(this$8);
+  var elem$1 = this.moveTo__D__Ldoodle_core_Angle__Ldoodle_core_PathElement(radius, $m_Ldoodle_core_Angle$().Ldoodle_core_Angle$__f_zero);
+  var this$10 = $n(path);
+  return this$10.prepended__O__sci_List(elem$1)
+});
 var $d_Ldoodle_core_PathElement$ = new $TypeData().initClass({
   Ldoodle_core_PathElement$: 0
 }, false, "doodle.core.PathElement$", {
@@ -37082,6 +37360,71 @@ $h_Ldoodle_core_Cap.prototype = $c_Ldoodle_core_Cap.prototype;
 $c_Ldoodle_core_Cap.prototype.productIterator__sc_Iterator = (function() {
   return new $c_s_Product$$anon$1(this)
 });
+/** @constructor */
+function $c_Ldoodle_core_ClosedPath(reversed) {
+  this.Ldoodle_core_ClosedPath__f_reversed = null;
+  this.Ldoodle_core_ClosedPath__f_reversed = reversed
+}
+$c_Ldoodle_core_ClosedPath.prototype = new $h_O();
+$c_Ldoodle_core_ClosedPath.prototype.constructor = $c_Ldoodle_core_ClosedPath;
+/** @constructor */
+function $h_Ldoodle_core_ClosedPath() {
+  /*<skip>*/
+}
+$h_Ldoodle_core_ClosedPath.prototype = $c_Ldoodle_core_ClosedPath.prototype;
+$c_Ldoodle_core_ClosedPath.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Ldoodle_core_ClosedPath.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Ldoodle_core_ClosedPath.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Ldoodle_core_ClosedPath)) {
+    var x$0$2 = $as_Ldoodle_core_ClosedPath(x$0);
+    var x = this.Ldoodle_core_ClosedPath__f_reversed;
+    var x$2 = $n(x$0$2).Ldoodle_core_ClosedPath__f_reversed;
+    return ((x === null) ? (x$2 === null) : $n(x).equals__O__Z(x$2))
+  } else {
+    return false
+  }
+});
+$c_Ldoodle_core_ClosedPath.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Ldoodle_core_ClosedPath.prototype.productArity__I = (function() {
+  return 1
+});
+$c_Ldoodle_core_ClosedPath.prototype.productPrefix__T = (function() {
+  return "ClosedPath"
+});
+$c_Ldoodle_core_ClosedPath.prototype.productElement__I__O = (function(n) {
+  if ((n === 0)) {
+    return this.Ldoodle_core_ClosedPath__f_reversed
+  };
+  throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+});
+function $as_Ldoodle_core_ClosedPath(obj) {
+  return (((obj instanceof $c_Ldoodle_core_ClosedPath) || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.core.ClosedPath"))
+}
+function $isArrayOf_Ldoodle_core_ClosedPath(obj, depth) {
+  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ldoodle_core_ClosedPath)))
+}
+function $asArrayOf_Ldoodle_core_ClosedPath(obj, depth) {
+  return (($isArrayOf_Ldoodle_core_ClosedPath(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.core.ClosedPath;", depth))
+}
+var $d_Ldoodle_core_ClosedPath = new $TypeData().initClass({
+  Ldoodle_core_ClosedPath: 0
+}, false, "doodle.core.ClosedPath", {
+  Ldoodle_core_ClosedPath: 1,
+  O: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Ldoodle_core_ClosedPath.prototype.$classData = $d_Ldoodle_core_ClosedPath;
 function $ps_Ldoodle_core_Color__hueToRgb$1__D__D__D__D(p, q, t) {
   var this$1 = $m_Ldoodle_core_Normalized$();
   var value = ((t < 0.16666666666666666) ? (p + ((6.0 * (q - p)) * t)) : ((t < 0.5) ? q : ((t < 0.6666666666666666) ? (p + (6.0 * ((q - p) * (0.6666666666666666 - t)))) : p)));
@@ -78544,6 +78887,9 @@ $c_sci_List.prototype.reverse_$colon$colon$colon__sci_List__sci_List = (function
 $c_sci_List.prototype.isEmpty__Z = (function() {
   return (this === $m_sci_Nil$())
 });
+$c_sci_List.prototype.prepended__O__sci_List = (function(elem) {
+  return new $c_sci_$colon$colon(elem, this)
+});
 $c_sci_List.prototype.prependedAll__sc_IterableOnce__sci_List = (function(prefix) {
   if ((prefix instanceof $c_sci_List)) {
     var x2 = $as_sci_List(prefix);
@@ -86498,6 +86844,7 @@ function $m_Lcats_implicits$() {
 }
 $L0 = new $c_RTLong(0, 0);
 $d_J.zero = $L0;
+Polygons = $m_Lpolygons_Polygons$();
 Coordinates = $m_Lpolygons_Coordinates$();
 }).call(this);
 //# sourceMappingURL=main.js.map
