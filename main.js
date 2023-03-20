@@ -3743,7 +3743,7 @@ function $f_Ldoodle_core_CommonColors__$init$__V($thiz) {
   var this$58 = $m_Ldoodle_core_Color$();
   this$58.rgba__I__I__I__D__Ldoodle_core_Color(240, 255, 240, 1.0);
   var this$59 = $m_Ldoodle_core_Color$();
-  this$59.rgba__I__I__I__D__Ldoodle_core_Color(255, 105, 180, 1.0);
+  $thiz.Ldoodle_core_Color$__f_hotpink = this$59.rgba__I__I__I__D__Ldoodle_core_Color(255, 105, 180, 1.0);
   var this$60 = $m_Ldoodle_core_Color$();
   this$60.rgba__I__I__I__D__Ldoodle_core_Color(205, 92, 92, 1.0);
   var this$61 = $m_Ldoodle_core_Color$();
@@ -12294,7 +12294,7 @@ function $c_Lpolygons_Coordinates$() {
   var this$3 = new $c_Ldoodle_syntax_StyleSyntax$StylePictureOps(this$2, picture);
   var picture$1 = new $c_Ldoodle_syntax_StyleSyntax$$anon$10(this$3);
   var this$5 = new $c_Ldoodle_syntax_StyleSyntax$StylePictureOps(this$4, picture$1);
-  var fillColor = $m_Ldoodle_core_Color$().Ldoodle_core_Color$__f_darkBlue;
+  var fillColor = $m_Ldoodle_core_Color$().Ldoodle_core_Color$__f_hotpink;
   var picture$2 = new $c_Ldoodle_syntax_StyleSyntax$$anon$1(fillColor, this$5);
   var this$7 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$6, picture$2);
   var x = this.Lpolygons_Coordinates$__f_maxX;
@@ -12326,91 +12326,68 @@ function $c_Lpolygons_Coordinates$() {
   var duration$1 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$20.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$1);
   var _2 = $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$21, duration$1);
   var t2 = new $c_T2(_1, _2);
-  var this$36 = $n($as_Ldoodle_interact_animation_Transducer(new $c_Lcats_syntax_Tuple2SemigroupalOps(t2).mapN__F2__Lcats_Functor__Lcats_Semigroupal__O(new $c_sjsr_AnonFunction2(((x$1, y$1) => {
+  var this$32 = $n($as_Ldoodle_interact_animation_Transducer(new $c_Lcats_syntax_Tuple2SemigroupalOps(t2).mapN__F2__Lcats_Functor__Lcats_Semigroupal__O(new $c_sjsr_AnonFunction2(((x$1, y$1) => {
     var x$2 = $uD(x$1);
     var y$2 = $uD(y$1);
     return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.cartesianLines__Ldoodle_core_Point__Ldoodle_algebra_Picture(($m_Ldoodle_core_Point$(), new $c_Ldoodle_core_Point$Cartesian(x$2, y$2))))
   })), $m_Ldoodle_interact_animation_Transducer$().Ldoodle_interact_animation_Transducer$__f_transducerTraverseAndApplicative, $m_Ldoodle_interact_animation_Transducer$().Ldoodle_interact_animation_Transducer$__f_transducerTraverseAndApplicative)));
-  var f$1 = new $c_sjsr_AnonFunction1(((_$1) => {
-    $as_Ldoodle_algebra_Picture(_$1);
+  var f = new $c_sjsr_AnonFunction1(((picture$4) => {
+    var picture$5 = $as_Ldoodle_algebra_Picture(picture$4);
     $m_Ldoodle_interact_animation_Interpolation$();
-    $m_Ldoodle_core_Point$();
-    var x$3 = this.Lpolygons_Coordinates$__f_maxWidth;
-    var y$3 = this.Lpolygons_Coordinates$__f_maxHeight;
-    var value = new $c_Ldoodle_core_Point$Cartesian(x$3, y$3);
-    var this$31 = new $c_Ldoodle_interact_animation_Interpolation$Constant(value);
-    var f = new $c_sjsr_AnonFunction1(((pt) => {
-      var pt$1 = $as_Ldoodle_core_Point(pt);
-      return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.cartesianLines__Ldoodle_core_Point__Ldoodle_algebra_Picture(pt$1))
-    }));
-    var this$35 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$31, f);
-    var this$34 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
+    var this$31 = new $c_Ldoodle_interact_animation_Interpolation$Constant(picture$5);
+    var this$30 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
     var unit$2 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
-    var duration$2 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$34.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$2);
-    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$35, duration$2)
+    var duration$2 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$30.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$2);
+    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$31, duration$2)
   }));
-  var this$37 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f$1, this$36);
-  this.Lpolygons_Coordinates$__f_cartesianAnimation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$37);
-  var this$38 = $m_Ldoodle_interact_syntax_package$all$();
-  var this$41 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$38, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_length, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
-  var f$2 = new $c_sjsr_AnonFunction1(((x$2$1) => {
-    var x$4 = $uD(x$2$1);
-    return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(($m_Ldoodle_core_Point$(), new $c_Ldoodle_core_Point$Cartesian(x$4, 0.0))))
+  var this$33 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f, this$32);
+  this.Lpolygons_Coordinates$__f_cartesianAnimation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$33);
+  var this$34 = $m_Ldoodle_interact_syntax_package$all$();
+  var this$37 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$34, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_length, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
+  var f$1 = new $c_sjsr_AnonFunction1(((x$2$1) => {
+    var x$3 = $uD(x$2$1);
+    return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(($m_Ldoodle_core_Point$(), new $c_Ldoodle_core_Point$Cartesian(x$3, 0.0))))
   }));
-  var this$45 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$41, f$2);
-  var this$44 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
+  var this$41 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$37, f$1);
+  var this$40 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
   var unit$3 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
-  var duration$3 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$44.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$3);
-  var this$58 = $n($f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$45, duration$3));
-  var f$4 = new $c_sjsr_AnonFunction1(((_$2) => {
-    $as_Ldoodle_algebra_Picture(_$2);
-    var this$46 = $m_Ldoodle_interact_syntax_package$all$();
+  var duration$3 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$40.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$3);
+  var this$54 = $n($f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$41, duration$3));
+  var f$3 = new $c_sjsr_AnonFunction1(((_$1) => {
+    $as_Ldoodle_algebra_Picture(_$1);
+    var this$42 = $m_Ldoodle_interact_syntax_package$all$();
     var start = $m_Ldoodle_core_Angle$().Ldoodle_core_Angle$__f_zero;
-    var $$x1 = new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$46, start);
-    var this$48 = $m_Ldoodle_syntax_package$all$();
+    var $$x1 = new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$42, start);
+    var this$44 = $m_Ldoodle_syntax_package$all$();
     var angle = $uD(Math.atan(0.75));
-    var this$49 = new $c_Ldoodle_syntax_AngleSyntax$AngleDoubleOps(this$48, angle);
+    var this$45 = new $c_Ldoodle_syntax_AngleSyntax$AngleDoubleOps(this$44, angle);
     $m_Ldoodle_core_Angle$();
-    var rad = this$49.Ldoodle_syntax_AngleSyntax$AngleDoubleOps__f_angle;
-    var this$53 = $n($$x1.upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation($m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(rad), $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_angleInterpolator));
-    var f$3 = new $c_sjsr_AnonFunction1(((a) => {
+    var rad = this$45.Ldoodle_syntax_AngleSyntax$AngleDoubleOps__f_angle;
+    var this$49 = $n($$x1.upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation($m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(rad), $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_angleInterpolator));
+    var f$2 = new $c_sjsr_AnonFunction1(((a) => {
       var a$1 = $as_Ldoodle_core_Angle(a);
       $m_Ldoodle_core_Point$();
       var r = this.Lpolygons_Coordinates$__f_length;
       return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(new $c_Ldoodle_core_Point$Polar(r, a$1)))
     }));
-    var this$57 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$53, f$3);
-    var this$56 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
+    var this$53 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$49, f$2);
+    var this$52 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
     var unit$4 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
-    var duration$4 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$56.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$4);
-    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$57, duration$4)
+    var duration$4 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$52.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$4);
+    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$53, duration$4)
   }));
-  var this$72 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f$4, this$58);
-  var f$6 = new $c_sjsr_AnonFunction1(((_$3) => {
-    $as_Ldoodle_algebra_Picture(_$3);
+  var this$60 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f$3, this$54);
+  var f$4 = new $c_sjsr_AnonFunction1(((picture$2$1) => {
+    var picture$6 = $as_Ldoodle_algebra_Picture(picture$2$1);
     $m_Ldoodle_interact_animation_Interpolation$();
-    $m_Ldoodle_core_Point$();
-    var r$1 = this.Lpolygons_Coordinates$__f_length;
-    var this$60 = $m_Ldoodle_syntax_package$all$();
-    var angle$1 = $uD(Math.atan(0.75));
-    var this$61 = new $c_Ldoodle_syntax_AngleSyntax$AngleDoubleOps(this$60, angle$1);
-    $m_Ldoodle_core_Angle$();
-    var rad$1 = this$61.Ldoodle_syntax_AngleSyntax$AngleDoubleOps__f_angle;
-    var angle$2 = $m_Ldoodle_core_Angle$().apply__D__Ldoodle_core_Angle(rad$1);
-    var value$1 = new $c_Ldoodle_core_Point$Polar(r$1, angle$2);
-    var this$67 = new $c_Ldoodle_interact_animation_Interpolation$Constant(value$1);
-    var f$5 = new $c_sjsr_AnonFunction1(((pt$2) => {
-      var pt$3 = $as_Ldoodle_core_Point(pt$2);
-      return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(pt$3))
-    }));
-    var this$71 = new $c_Ldoodle_interact_animation_Interpolation$Map(this$67, f$5);
-    var this$70 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
+    var this$59 = new $c_Ldoodle_interact_animation_Interpolation$Constant(picture$6);
+    var this$58 = new $c_s_concurrent_duration_package$DurationDouble(0.75);
     var unit$5 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
-    var duration$5 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$70.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$5);
-    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$71, duration$5)
+    var duration$5 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$58.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$5);
+    return $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$59, duration$5)
   }));
-  var this$73 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f$6, this$72);
-  this.Lpolygons_Coordinates$__f_polarAnimation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$73)
+  var this$61 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f$4, this$60);
+  this.Lpolygons_Coordinates$__f_polarAnimation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$61)
 }
 $c_Lpolygons_Coordinates$.prototype = new $h_O();
 $c_Lpolygons_Coordinates$.prototype.constructor = $c_Lpolygons_Coordinates$;
@@ -12506,13 +12483,13 @@ $c_Lpolygons_Coordinates$.prototype.polar__T__V = (function(id) {
   var runtime = $m_Lcats_effect_unsafe_implicits$().Lcats_effect_unsafe_implicits$__f_global;
   $f_Ldoodle_interact_animation_Transducer__animate__O__Ldoodle_interact_effect_AnimationRenderer__Ldoodle_effect_Renderer__Ldoodle_interact_algebra_Redraw__s_$less$colon$less__Lcats_effect_unsafe_IORuntime__V(this$2, frame, a, e, r, ev, runtime)
 });
-$c_Lpolygons_Coordinates$.prototype.cartesian = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.cartesian__T__V(prep0)
-});
 $c_Lpolygons_Coordinates$.prototype.polar = (function(arg) {
   var prep0 = $as_T(arg);
   this.polar__T__V(prep0)
+});
+$c_Lpolygons_Coordinates$.prototype.cartesian = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.cartesian__T__V(prep0)
 });
 var $d_Lpolygons_Coordinates$ = new $TypeData().initClass({
   Lpolygons_Coordinates$: 0
@@ -37253,6 +37230,7 @@ function $asArrayOf_Ldoodle_core_Color(obj, depth) {
 function $c_Ldoodle_core_Color$() {
   this.Ldoodle_core_Color$__f_black = null;
   this.Ldoodle_core_Color$__f_darkBlue = null;
+  this.Ldoodle_core_Color$__f_hotpink = null;
   $n_Ldoodle_core_Color$ = this;
   $f_Ldoodle_core_CommonColors__$init$__V(this)
 }
@@ -37589,15 +37567,6 @@ $c_Ldoodle_core_Point.prototype.toCartesian__Ldoodle_core_Point$Cartesian = (fun
   };
   throw new $c_s_MatchError(this)
 });
-function $as_Ldoodle_core_Point(obj) {
-  return (((obj instanceof $c_Ldoodle_core_Point) || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.core.Point"))
-}
-function $isArrayOf_Ldoodle_core_Point(obj, depth) {
-  return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ldoodle_core_Point)))
-}
-function $asArrayOf_Ldoodle_core_Point(obj, depth) {
-  return (($isArrayOf_Ldoodle_core_Point(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.core.Point;", depth))
-}
 /** @constructor */
 function $c_Ldoodle_core_Transform(elements) {
   this.Ldoodle_core_Transform__f_elements = null;
