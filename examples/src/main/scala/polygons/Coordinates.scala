@@ -29,7 +29,7 @@ object Coordinates {
     Frame(id).withSize(maxWidth + 10, maxHeight + 10)
 
   val point =
-    Picture.circle(7.0).noStroke.fillColor(Color.darkBlue).at(maxX, maxY)
+    Picture.circle(7.0).noStroke.fillColor(Color.hotpink).at(maxX, maxY)
 
   val axes: Picture[Unit] =
     OpenPath.empty
@@ -72,11 +72,8 @@ object Coordinates {
       0.0.upTo(maxHeight).forDuration(1.5.seconds)
     )
       .mapN((x, y) => withAxes(cartesianLines(Point(x, y))))
-      .andThen(_ =>
-        Interpolation
-          .constant(Point(maxWidth, maxHeight))
-          .map(pt => withAxes(cartesianLines(pt)))
-          .forDuration(0.75.seconds)
+      .andThen(picture =>
+        Interpolation.constant(picture).forDuration(0.75.seconds)
       )
       .repeatForever
 
@@ -91,11 +88,8 @@ object Coordinates {
           .map(a => withAxes(polarPoint(Point(length, a))))
           .forDuration(0.75.seconds)
       )
-      .andThen(_ =>
-        Interpolation
-          .constant(Point(length, Math.atan(3.0 / 4.0).radians))
-          .map(pt => withAxes(polarPoint(pt)))
-          .forDuration(0.75.seconds)
+      .andThen(picture =>
+        Interpolation.constant(picture).forDuration(0.75.seconds)
       )
       .repeatForever
 
