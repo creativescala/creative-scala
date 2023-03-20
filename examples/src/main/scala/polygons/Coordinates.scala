@@ -3,6 +3,7 @@ package polygons
 import cats.implicits.*
 import doodle.core.*
 import doodle.syntax.all.*
+import doodle.interact.animation.Interpolation
 import doodle.interact.syntax.all.*
 import doodle.svg.*
 import scala.concurrent.duration.*
@@ -71,6 +72,12 @@ object Coordinates {
       0.0.upTo(maxHeight).forDuration(1.5.seconds)
     )
       .mapN((x, y) => withAxes(cartesianLines(Point(x, y))))
+      .andThen(_ =>
+        Interpolation
+          .constant(Point(maxWidth, maxHeight))
+          .map(pt => withAxes(cartesianLines(pt)))
+          .forDuration(0.75.seconds)
+      )
       .repeatForever
 
   val polarAnimation =
@@ -82,6 +89,12 @@ object Coordinates {
         Angle.zero
           .upTo(Math.atan(3.0 / 4.0).radians)
           .map(a => withAxes(polarPoint(Point(length, a))))
+          .forDuration(0.75.seconds)
+      )
+      .andThen(_ =>
+        Interpolation
+          .constant(Point(length, Math.atan(3.0 / 4.0).radians))
+          .map(pt => withAxes(polarPoint(pt)))
           .forDuration(0.75.seconds)
       )
       .repeatForever

@@ -29,8 +29,8 @@ lazy val build = taskKey[Unit]("Build the book")
 
 val commonSettings = Seq(
   libraryDependencies ++= Seq(
-    "org.creativescala" %%% "doodle" % "0.17.0",
-    "org.creativescala" %%% "doodle-svg" % "0.14.0"
+    "org.creativescala" %%% "doodle" % "0.18.0",
+    "org.creativescala" %%% "doodle-svg" % "0.15.0"
   )
 )
 
