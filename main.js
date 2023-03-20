@@ -12477,7 +12477,7 @@ $c_Lpolygons_Coordinates$.prototype.cartesianLines__Ldoodle_core_Point__Ldoodle_
   var this$14 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$13, picture$4);
   var that$1 = this.Lpolygons_Coordinates$__f_point;
   var s$1 = $m_Lcats_implicits$().Lcats_implicits$__f_catsKernelStdAlgebraForUnit;
-  return new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that$1, s$1, this$14)
+  return new $c_Ldoodle_syntax_LayoutSyntax$$anon$4(that$1, s$1, this$14)
 });
 $c_Lpolygons_Coordinates$.prototype.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture = (function(pt) {
   var this$9 = $m_Ldoodle_syntax_package$all$();
@@ -12499,7 +12499,7 @@ $c_Lpolygons_Coordinates$.prototype.polarPoint__Ldoodle_core_Point__Ldoodle_alge
   var this$10 = new $c_Ldoodle_syntax_LayoutSyntax$LayoutPictureOps(this$9, picture$3);
   var that = this.Lpolygons_Coordinates$__f_point;
   var s = $m_Lcats_implicits$().Lcats_implicits$__f_catsKernelStdAlgebraForUnit;
-  return new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that, s, this$10)
+  return new $c_Ldoodle_syntax_LayoutSyntax$$anon$4(that, s, this$10)
 });
 $c_Lpolygons_Coordinates$.prototype.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture = (function(picture) {
   var this$3 = $m_Ldoodle_syntax_package$all$();
@@ -21763,6 +21763,45 @@ var $d_Ldoodle_syntax_LayoutSyntax$$anon$12 = new $TypeData().initClass({
   Ldoodle_algebra_Picture: 1
 });
 $c_Ldoodle_syntax_LayoutSyntax$$anon$12.prototype.$classData = $d_Ldoodle_syntax_LayoutSyntax$$anon$12;
+/** @constructor */
+function $c_Ldoodle_syntax_LayoutSyntax$$anon$4(that$9, s$9, outer) {
+  this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_that$4 = null;
+  this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_s$4 = null;
+  this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_$outer = null;
+  this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_that$4 = that$9;
+  this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_s$4 = s$9;
+  if ((outer === null)) {
+    throw $ct_jl_NullPointerException__(new $c_jl_NullPointerException())
+  };
+  this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_$outer = outer
+}
+$c_Ldoodle_syntax_LayoutSyntax$$anon$4.prototype = new $h_O();
+$c_Ldoodle_syntax_LayoutSyntax$$anon$4.prototype.constructor = $c_Ldoodle_syntax_LayoutSyntax$$anon$4;
+/** @constructor */
+function $h_Ldoodle_syntax_LayoutSyntax$$anon$4() {
+  /*<skip>*/
+}
+$h_Ldoodle_syntax_LayoutSyntax$$anon$4.prototype = $c_Ldoodle_syntax_LayoutSyntax$$anon$4.prototype;
+$c_Ldoodle_syntax_LayoutSyntax$$anon$4.prototype.apply__Ldoodle_algebra_Layout__O = (function(algebra) {
+  var this$1 = $n(algebra);
+  var bottom = $n($n(this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_$outer).Ldoodle_syntax_LayoutSyntax$LayoutPictureOps__f_doodle$syntax$LayoutSyntax$LayoutPictureOps$$picture).apply__Ldoodle_algebra_Algebra__O(algebra);
+  var top = $n(this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_that$4).apply__Ldoodle_algebra_Algebra__O(algebra);
+  var s = this.Ldoodle_syntax_LayoutSyntax$$anon$4__f_s$4;
+  var top$1 = $as_Lcats_data_IndexedStateT(top);
+  var bottom$1 = $as_Lcats_data_IndexedStateT(bottom);
+  return $f_Ldoodle_algebra_generic_GenericLayout__on__Lcats_data_IndexedStateT__Lcats_data_IndexedStateT__Lcats_kernel_Semigroup__Lcats_data_IndexedStateT(this$1, top$1, bottom$1, s)
+});
+$c_Ldoodle_syntax_LayoutSyntax$$anon$4.prototype.apply__Ldoodle_algebra_Algebra__O = (function(algebra) {
+  return this.apply__Ldoodle_algebra_Layout__O($as_Ldoodle_algebra_Layout(algebra))
+});
+var $d_Ldoodle_syntax_LayoutSyntax$$anon$4 = new $TypeData().initClass({
+  Ldoodle_syntax_LayoutSyntax$$anon$4: 0
+}, false, "doodle.syntax.LayoutSyntax$$anon$4", {
+  Ldoodle_syntax_LayoutSyntax$$anon$4: 1,
+  O: 1,
+  Ldoodle_algebra_Picture: 1
+});
+$c_Ldoodle_syntax_LayoutSyntax$$anon$4.prototype.$classData = $d_Ldoodle_syntax_LayoutSyntax$$anon$4;
 /** @constructor */
 function $c_Ldoodle_syntax_LayoutSyntax$$anon$7(x$3, y$3, outer) {
   this.Ldoodle_syntax_LayoutSyntax$$anon$7__f_x$1 = 0.0;
