@@ -25,7 +25,7 @@ To create a polar point we need a length and an angle. In Doodle angles are thei
 val ninety = 90.degrees
 ```
 
-We can also use radians, or turns. A turn is the proportion of a full circle: 1.0 is a full circle (360 degrees), 0.5 is half a circle, and so on. Here are some examples.
+As well as degrees we can also use radians or turns. 2π radians make a full circle. A turn is the proportion of a full circle: 1.0 is a full circle (360 degrees), 0.5 is half a circle, and so on. Here are some examples.
 
 ```scala mdoc:silent
 val radians = 2.radians
@@ -37,3 +37,8 @@ Now we know how to create an `Angle` we can create a `Point` in polar coordinate
 ```scala mdoc:silent
 val polar = Point(5, 45.degrees)
 ```
+
+
+## From Points to Polygons
+
+@:doodle("points", "Polygons.points")
