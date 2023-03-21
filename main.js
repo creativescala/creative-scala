@@ -4172,14 +4172,11 @@ function $ps_Ldoodle_interact_animation_Interpolation__loop$1__J__Ldoodle_intera
       var that = $ps_Ldoodle_interact_animation_Interpolation__loop$1__J__Ldoodle_interact_animation_Interpolation__s_Option__Ldoodle_interact_animation_Transducer(steps$1, x24, easing$tailLocal1);
       return new $c_Ldoodle_interact_animation_Transducer$$anon$5(that, this$10)
     };
-    if ((x7 instanceof $c_Ldoodle_interact_animation_Interpolation$HalfOpen)) {
+    if (false) {
       var x$1$3 = $as_Ldoodle_interact_animation_Interpolation$HalfOpen(x7);
-      var this$12 = $n(x$1$3);
-      var x18 = this$12.Ldoodle_interact_animation_Interpolation$HalfOpen__f_start;
-      var this$13 = $n(x$1$3);
-      var x19 = this$13.Ldoodle_interact_animation_Interpolation$HalfOpen__f_stop;
-      var this$14 = $n(x$1$3);
-      var x20 = this$14.Ldoodle_interact_animation_Interpolation$HalfOpen__f_interpolator;
+      var x18 = $n(x$1$3)._1__O();
+      var x19 = $n(x$1$3)._2__O();
+      var x20 = $n(x$1$3)._3__Ldoodle_interact_animation_Interpolator();
       var x1 = easing$tailLocal1;
       if ((x1 instanceof $c_s_Some)) {
         var e$2 = $as_Ldoodle_interact_easing_Easing($n($as_s_Some(x1)).s_Some__f_value);
@@ -4191,11 +4188,14 @@ function $ps_Ldoodle_interact_animation_Interpolation__loop$1__J__Ldoodle_intera
       };
       throw new $c_s_MatchError(x1)
     };
-    if (false) {
+    if ((x7 instanceof $c_Ldoodle_interact_animation_Interpolation$Closed)) {
       var x$1$4 = $as_Ldoodle_interact_animation_Interpolation$Closed(x7);
-      var x13 = $n(x$1$4)._1__O();
-      var x14 = $n(x$1$4)._2__O();
-      var x15 = $n(x$1$4)._3__Ldoodle_interact_animation_Interpolator();
+      var this$13 = $n(x$1$4);
+      var x13 = this$13.Ldoodle_interact_animation_Interpolation$Closed__f_start;
+      var this$14 = $n(x$1$4);
+      var x14 = this$14.Ldoodle_interact_animation_Interpolation$Closed__f_stop;
+      var this$15 = $n(x$1$4);
+      var x15 = this$15.Ldoodle_interact_animation_Interpolation$Closed__f_interpolator;
       var x4 = easing$tailLocal1;
       if ((x4 instanceof $c_s_Some)) {
         var e$3 = $as_Ldoodle_interact_easing_Easing($n($as_s_Some(x4)).s_Some__f_value);
@@ -4476,10 +4476,10 @@ function $h_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(
   /*<skip>*/
 }
 $h_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps.prototype = $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps.prototype;
-$c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps.prototype.upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation = (function(stop, i) {
+$c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps.prototype.upToIncluding__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation = (function(stop, i) {
   $m_Ldoodle_interact_animation_Interpolation$();
   var start = this.Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps__f_start;
-  return new $c_Ldoodle_interact_animation_Interpolation$HalfOpen(start, stop, i)
+  return new $c_Ldoodle_interact_animation_Interpolation$Closed(start, stop, i)
 });
 var $d_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps = new $TypeData().initClass({
   Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps: 0
@@ -12365,13 +12365,13 @@ function $c_Lpolygons_Coordinates$() {
   this.Lpolygons_Coordinates$__f_axes = new $c_Ldoodle_syntax_LayoutSyntax$$anon$1(that, s, this$13);
   $m_Lcats_implicits$();
   var this$14 = $m_Ldoodle_interact_syntax_package$all$();
-  var this$17 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$14, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_maxWidth, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
+  var this$17 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$14, 0.0).upToIncluding__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_maxWidth, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
   var this$16 = new $c_s_concurrent_duration_package$DurationDouble(1.5);
   var unit = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
   var duration = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$16.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit);
   var _1 = $f_Ldoodle_interact_animation_Interpolation__forDuration__s_concurrent_duration_Duration__Ldoodle_interact_animation_Transducer(this$17, duration);
   var this$18 = $m_Ldoodle_interact_syntax_package$all$();
-  var this$21 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$18, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_maxHeight, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
+  var this$21 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$18, 0.0).upToIncluding__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_maxHeight, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
   var this$20 = new $c_s_concurrent_duration_package$DurationDouble(1.5);
   var unit$1 = $m_ju_concurrent_TimeUnit$().ju_concurrent_TimeUnit$__f_SECONDS;
   var duration$1 = $m_s_concurrent_duration_package$DurationDouble$().durationIn$extension__D__ju_concurrent_TimeUnit__s_concurrent_duration_FiniteDuration(this$20.s_concurrent_duration_package$DurationDouble__f_scala$concurrent$duration$DurationDouble$$d, unit$1);
@@ -12394,7 +12394,7 @@ function $c_Lpolygons_Coordinates$() {
   var this$33 = new $c_Ldoodle_interact_animation_Transducer$$anon$3(f, this$32);
   this.Lpolygons_Coordinates$__f_cartesianAnimation = new $c_Ldoodle_interact_animation_Transducer$$anon$7(this$33);
   var this$34 = $m_Ldoodle_interact_syntax_package$all$();
-  var this$37 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$34, 0.0).upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_length, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
+  var this$37 = $n(new $c_Ldoodle_interact_syntax_InterpolationSyntax$InterpolationBuilderOps(this$34, 0.0).upToIncluding__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation(this.Lpolygons_Coordinates$__f_length, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_doubleInterpolator));
   var f$1 = new $c_sjsr_AnonFunction1(((x$2$1) => {
     var x$3 = $uD(x$2$1);
     return this.withAxes__Ldoodle_algebra_Picture__Ldoodle_algebra_Picture(this.polarPoint__Ldoodle_core_Point__Ldoodle_algebra_Picture(($m_Ldoodle_core_Point$(), new $c_Ldoodle_core_Point$Cartesian(x$3, 0.0))))
@@ -12413,7 +12413,7 @@ function $c_Lpolygons_Coordinates$() {
     var x$4 = this.Lpolygons_Coordinates$__f_maxX;
     var y$3 = this.Lpolygons_Coordinates$__f_maxY;
     var this$45 = new $c_Ldoodle_core_Point$Cartesian(x$4, y$3);
-    var this$48 = $n($$x1.upTo__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation($n(this$45.toPolar__Ldoodle_core_Point$Polar()).Ldoodle_core_Point$Polar__f_angle, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_angleInterpolator));
+    var this$48 = $n($$x1.upToIncluding__O__Ldoodle_interact_animation_Interpolator__Ldoodle_interact_animation_Interpolation($n(this$45.toPolar__Ldoodle_core_Point$Polar()).Ldoodle_core_Point$Polar__f_angle, $m_Ldoodle_interact_animation_Interpolator$().Ldoodle_interact_animation_Interpolator$__f_angleInterpolator));
     var f$2 = new $c_sjsr_AnonFunction1(((a) => {
       var a$1 = $as_Ldoodle_core_Angle(a);
       $m_Ldoodle_core_Point$();
@@ -47528,8 +47528,89 @@ var $d_Ldoodle_interact_animation_Interpolation$$anon$1 = new $TypeData().initCl
   Lcats_Semigroupal: 1
 });
 $c_Ldoodle_interact_animation_Interpolation$$anon$1.prototype.$classData = $d_Ldoodle_interact_animation_Interpolation$$anon$1;
+/** @constructor */
+function $c_Ldoodle_interact_animation_Interpolation$Closed(start, stop, interpolator) {
+  this.Ldoodle_interact_animation_Interpolation$Closed__f_start = null;
+  this.Ldoodle_interact_animation_Interpolation$Closed__f_stop = null;
+  this.Ldoodle_interact_animation_Interpolation$Closed__f_interpolator = null;
+  this.Ldoodle_interact_animation_Interpolation$Closed__f_start = start;
+  this.Ldoodle_interact_animation_Interpolation$Closed__f_stop = stop;
+  this.Ldoodle_interact_animation_Interpolation$Closed__f_interpolator = interpolator
+}
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype = new $h_O();
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.constructor = $c_Ldoodle_interact_animation_Interpolation$Closed;
+/** @constructor */
+function $h_Ldoodle_interact_animation_Interpolation$Closed() {
+  /*<skip>*/
+}
+$h_Ldoodle_interact_animation_Interpolation$Closed.prototype = $c_Ldoodle_interact_animation_Interpolation$Closed.prototype;
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.productIterator__sc_Iterator = (function() {
+  return new $c_s_Product$$anon$1(this)
+});
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.hashCode__I = (function() {
+  var this$2 = $m_s_util_hashing_MurmurHash3$();
+  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
+});
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.equals__O__Z = (function(x$0) {
+  if ((this === x$0)) {
+    return true
+  } else if ((x$0 instanceof $c_Ldoodle_interact_animation_Interpolation$Closed)) {
+    var x$0$2 = $as_Ldoodle_interact_animation_Interpolation$Closed(x$0);
+    var x = this.Ldoodle_interact_animation_Interpolation$Closed__f_start;
+    var y = $n(x$0$2).Ldoodle_interact_animation_Interpolation$Closed__f_start;
+    if ($m_sr_BoxesRunTime$().equals__O__O__Z(x, y)) {
+      var x$1 = this.Ldoodle_interact_animation_Interpolation$Closed__f_stop;
+      var y$1 = $n(x$0$2).Ldoodle_interact_animation_Interpolation$Closed__f_stop;
+      var $$x1 = $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y$1)
+    } else {
+      var $$x1 = false
+    };
+    if ($$x1) {
+      var x$2 = this.Ldoodle_interact_animation_Interpolation$Closed__f_interpolator;
+      var x$2$1 = $n(x$0$2).Ldoodle_interact_animation_Interpolation$Closed__f_interpolator;
+      if ((x$2 === null)) {
+        return (x$2$1 === null)
+      } else {
+        var this$1 = $n(x$2);
+        return (this$1 === x$2$1)
+      }
+    } else {
+      return false
+    }
+  } else {
+    return false
+  }
+});
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.toString__T = (function() {
+  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
+});
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.productArity__I = (function() {
+  return 3
+});
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.productPrefix__T = (function() {
+  return "Closed"
+});
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.productElement__I__O = (function(n) {
+  switch (n) {
+    case 0: {
+      return this.Ldoodle_interact_animation_Interpolation$Closed__f_start;
+      break
+    }
+    case 1: {
+      return this.Ldoodle_interact_animation_Interpolation$Closed__f_stop;
+      break
+    }
+    case 2: {
+      return this.Ldoodle_interact_animation_Interpolation$Closed__f_interpolator;
+      break
+    }
+    default: {
+      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
+    }
+  }
+});
 function $as_Ldoodle_interact_animation_Interpolation$Closed(obj) {
-  return ((false || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.interact.animation.Interpolation$Closed"))
+  return (((obj instanceof $c_Ldoodle_interact_animation_Interpolation$Closed) || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.interact.animation.Interpolation$Closed"))
 }
 function $isArrayOf_Ldoodle_interact_animation_Interpolation$Closed(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ldoodle_interact_animation_Interpolation$Closed)))
@@ -47537,6 +47618,17 @@ function $isArrayOf_Ldoodle_interact_animation_Interpolation$Closed(obj, depth) 
 function $asArrayOf_Ldoodle_interact_animation_Interpolation$Closed(obj, depth) {
   return (($isArrayOf_Ldoodle_interact_animation_Interpolation$Closed(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.interact.animation.Interpolation$Closed;", depth))
 }
+var $d_Ldoodle_interact_animation_Interpolation$Closed = new $TypeData().initClass({
+  Ldoodle_interact_animation_Interpolation$Closed: 0
+}, false, "doodle.interact.animation.Interpolation$Closed", {
+  Ldoodle_interact_animation_Interpolation$Closed: 1,
+  O: 1,
+  Ldoodle_interact_animation_Interpolation: 1,
+  s_Equals: 1,
+  s_Product: 1,
+  Ljava_io_Serializable: 1
+});
+$c_Ldoodle_interact_animation_Interpolation$Closed.prototype.$classData = $d_Ldoodle_interact_animation_Interpolation$Closed;
 /** @constructor */
 function $c_Ldoodle_interact_animation_Interpolation$Constant(value) {
   this.Ldoodle_interact_animation_Interpolation$Constant__f_value = null;
@@ -47603,89 +47695,8 @@ var $d_Ldoodle_interact_animation_Interpolation$Constant = new $TypeData().initC
   Ljava_io_Serializable: 1
 });
 $c_Ldoodle_interact_animation_Interpolation$Constant.prototype.$classData = $d_Ldoodle_interact_animation_Interpolation$Constant;
-/** @constructor */
-function $c_Ldoodle_interact_animation_Interpolation$HalfOpen(start, stop, interpolator) {
-  this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_start = null;
-  this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_stop = null;
-  this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_interpolator = null;
-  this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_start = start;
-  this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_stop = stop;
-  this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_interpolator = interpolator
-}
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype = new $h_O();
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.constructor = $c_Ldoodle_interact_animation_Interpolation$HalfOpen;
-/** @constructor */
-function $h_Ldoodle_interact_animation_Interpolation$HalfOpen() {
-  /*<skip>*/
-}
-$h_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype = $c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype;
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.productIterator__sc_Iterator = (function() {
-  return new $c_s_Product$$anon$1(this)
-});
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.hashCode__I = (function() {
-  var this$2 = $m_s_util_hashing_MurmurHash3$();
-  return this$2.productHash__s_Product__I__Z__I(this, (-889275714), false)
-});
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.equals__O__Z = (function(x$0) {
-  if ((this === x$0)) {
-    return true
-  } else if ((x$0 instanceof $c_Ldoodle_interact_animation_Interpolation$HalfOpen)) {
-    var x$0$2 = $as_Ldoodle_interact_animation_Interpolation$HalfOpen(x$0);
-    var x = this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_start;
-    var y = $n(x$0$2).Ldoodle_interact_animation_Interpolation$HalfOpen__f_start;
-    if ($m_sr_BoxesRunTime$().equals__O__O__Z(x, y)) {
-      var x$1 = this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_stop;
-      var y$1 = $n(x$0$2).Ldoodle_interact_animation_Interpolation$HalfOpen__f_stop;
-      var $$x1 = $m_sr_BoxesRunTime$().equals__O__O__Z(x$1, y$1)
-    } else {
-      var $$x1 = false
-    };
-    if ($$x1) {
-      var x$2 = this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_interpolator;
-      var x$2$1 = $n(x$0$2).Ldoodle_interact_animation_Interpolation$HalfOpen__f_interpolator;
-      if ((x$2 === null)) {
-        return (x$2$1 === null)
-      } else {
-        var this$1 = $n(x$2);
-        return (this$1 === x$2$1)
-      }
-    } else {
-      return false
-    }
-  } else {
-    return false
-  }
-});
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.toString__T = (function() {
-  return $m_sr_ScalaRunTime$()._toString__s_Product__T(this)
-});
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.productArity__I = (function() {
-  return 3
-});
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.productPrefix__T = (function() {
-  return "HalfOpen"
-});
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.productElement__I__O = (function(n) {
-  switch (n) {
-    case 0: {
-      return this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_start;
-      break
-    }
-    case 1: {
-      return this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_stop;
-      break
-    }
-    case 2: {
-      return this.Ldoodle_interact_animation_Interpolation$HalfOpen__f_interpolator;
-      break
-    }
-    default: {
-      throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n))
-    }
-  }
-});
 function $as_Ldoodle_interact_animation_Interpolation$HalfOpen(obj) {
-  return (((obj instanceof $c_Ldoodle_interact_animation_Interpolation$HalfOpen) || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.interact.animation.Interpolation$HalfOpen"))
+  return ((false || (obj === null)) ? obj : $throwClassCastException(obj, "doodle.interact.animation.Interpolation$HalfOpen"))
 }
 function $isArrayOf_Ldoodle_interact_animation_Interpolation$HalfOpen(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.arrayDepth === depth)) && obj.$classData.arrayBase.ancestors.Ldoodle_interact_animation_Interpolation$HalfOpen)))
@@ -47693,17 +47704,6 @@ function $isArrayOf_Ldoodle_interact_animation_Interpolation$HalfOpen(obj, depth
 function $asArrayOf_Ldoodle_interact_animation_Interpolation$HalfOpen(obj, depth) {
   return (($isArrayOf_Ldoodle_interact_animation_Interpolation$HalfOpen(obj, depth) || (obj === null)) ? obj : $throwArrayCastException(obj, "Ldoodle.interact.animation.Interpolation$HalfOpen;", depth))
 }
-var $d_Ldoodle_interact_animation_Interpolation$HalfOpen = new $TypeData().initClass({
-  Ldoodle_interact_animation_Interpolation$HalfOpen: 0
-}, false, "doodle.interact.animation.Interpolation$HalfOpen", {
-  Ldoodle_interact_animation_Interpolation$HalfOpen: 1,
-  O: 1,
-  Ldoodle_interact_animation_Interpolation: 1,
-  s_Equals: 1,
-  s_Product: 1,
-  Ljava_io_Serializable: 1
-});
-$c_Ldoodle_interact_animation_Interpolation$HalfOpen.prototype.$classData = $d_Ldoodle_interact_animation_Interpolation$HalfOpen;
 /** @constructor */
 function $c_Ldoodle_interact_animation_Interpolation$Map(source, f) {
   this.Ldoodle_interact_animation_Interpolation$Map__f_source = null;
