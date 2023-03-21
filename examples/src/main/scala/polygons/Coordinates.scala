@@ -68,8 +68,8 @@ object Coordinates {
 
   val cartesianAnimation =
     (
-      0.0.upTo(maxWidth).forDuration(1.5.seconds),
-      0.0.upTo(maxHeight).forDuration(1.5.seconds)
+      0.0.upToIncluding(maxWidth).forDuration(1.5.seconds),
+      0.0.upToIncluding(maxHeight).forDuration(1.5.seconds)
     )
       .mapN((x, y) => withAxes(cartesianLines(Point(x, y))))
       .andThen(picture =>
@@ -79,12 +79,12 @@ object Coordinates {
 
   val polarAnimation =
     0.0
-      .upTo(length)
+      .upToIncluding(length)
       .map(x => withAxes(polarPoint(Point(x, 0.0))))
       .forDuration(0.75.seconds)
       .andThen(_ =>
         Angle.zero
-          .upTo(Point(maxX, maxY).angle)
+          .upToIncluding(Point(maxX, maxY).angle)
           .map(a => withAxes(polarPoint(Point(length, a))))
           .forDuration(0.75.seconds)
       )
