@@ -3,6 +3,8 @@ package polygons
 import cats.implicits.*
 import doodle.core.*
 import doodle.syntax.all.*
+import doodle.image.*
+import doodle.image.syntax.all.*
 import doodle.interact.animation.*
 import doodle.interact.syntax.all.*
 import doodle.svg.*
@@ -21,7 +23,7 @@ object Polygons {
 
     val background = Picture
       .regularPolygon(6, 100)
-      .strokeWidth(3.0)
+      .strokeWidth(1.0)
       .strokeColor(Color.darkBlue)
 
     val point =
@@ -65,5 +67,20 @@ object Polygons {
         .repeatForever
 
     animation.animate(makeFrame(id))
+  }
+
+  @JSExport
+  def vertices(id: String): Unit = {
+    val dot = Image.circle(5).fillColor(Color.darkViolet)
+    val image =
+      dot
+        .at(Point(100, 0.degrees))
+        .on(dot.at(Point(100, 60.degrees)))
+        .on(dot.at(Point(100, 120.degrees)))
+        .on(dot.at(Point(100, 180.degrees)))
+        .on(dot.at(Point(100, 240.degrees)))
+        .on(dot.at(Point(100, 300.degrees)))
+
+    image.drawWithFrame(makeFrame(id))
   }
 }

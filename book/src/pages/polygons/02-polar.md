@@ -3,7 +3,13 @@
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.syntax.all._
+import doodle.image._
 ```
+
+In this section we'll learn about polar coordinates: what they are and how to create them in Doodle. We're interested in polar coordinates because they allow us to easily create regular polygons. We'll look at this in the final part of this section.
+
+
+## Points in Two Dimensions
 
 A point in two dimensions is most commonly specified using x and y coordinates. These are known as *Cartesian coordinates* after their inventor, René Descartes. We can visualize a Cartesian coordinate as projecting a vertical line from the x-axis and a horizontal line from the y-axis. The intersection of these two lines is the chosen point. The animation below shows this.
 
@@ -25,7 +31,7 @@ To create a polar point we need a length and an angle. In Doodle angles are thei
 val ninety = 90.degrees
 ```
 
-As well as degrees we can also use radians or turns. 2π radians make a full circle. A turn is the proportion of a full circle: 1.0 is a full circle (360 degrees), 0.5 is half a circle, and so on. Here are some examples.
+As well as degrees we can also use radians or turns. 2π radians make a full circle. A turn is a proportion of a full circle: 1.0 is a full circle (360 degrees), 0.5 is half a circle, and so on. Here are some examples.
 
 ```scala mdoc:silent
 val radians = 2.radians
@@ -41,4 +47,23 @@ val polar = Point(5, 45.degrees)
 
 ## From Points to Polygons
 
+The reason we're interested in polar coordinates is that they allow us to easily specify the corners (vertices) of regular polygons, and drawing polygons is our ultimate goal. Look at the hexagon below. If we wanted to specify the vertices in Cartesian coordinates, we'd have to do some involved geometry. This is simple with polar coordinates, however. Each vertex is has the same length but differs in angle, as the animation shows. In the case of the hexagon, each vertex is a 60 degree rotation from the prior vertex. This is because a full turn of 360 degrees must visit all vertices, and there are 6 evenly spaced vertices, so each vertex is a turn of 360/60 = 60 degrees.
+
 @:doodle("points", "Polygons.points")
+
+We can use this idea to draw circles, or another image, as the vertices of a regular polygon. Here's an example demonstrating what I mean.
+
+```scala mdoc:silent
+val dot = Image.circle(5).fillColor(Color.darkViolet)
+val vertices =
+  dot.at(Point(100, 0.degrees))
+    .on(dot.at(Point(100, 60.degrees)))
+    .on(dot.at(Point(100, 120.degrees)))
+    .on(dot.at(Point(100, 180.degrees)))
+    .on(dot.at(Point(100, 240.degrees)))
+    .on(dot.at(Point(100, 300.degrees)))
+```
+
+When we draw this we get the output shown below.
+
+@:doodle("vertices", "Polygons.vertices")
