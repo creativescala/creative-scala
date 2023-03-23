@@ -15,7 +15,7 @@ A point in two dimensions is most commonly specified using x and y coordinates. 
 
 @:doodle("cartesian", "Coordinates.cartesian")
 
-An alternate representation is *polar coordinates*. In polar coordinates, a point is specified by a length and a rotation. The animation below illustrates this.
+An alternate representation is *polar coordinates*. In polar coordinates, a point is specified by a distance from the origin and an angle. The animation below illustrates this.
 
 @:doodle("polar", "Coordinates.polar")
 
@@ -25,7 +25,7 @@ In Doodle we can construct points using either Cartesian or polar coordinates. T
 val cartesian = Point(3, 4)
 ```
 
-To create a polar point we need a length and an angle. In Doodle angles are their own type, called `Angle`. We usually construct angles in terms of degrees. Here's an example.
+To create a polar point we need a length and an angle. The length is just a number, but in Doodle angles are their own type called `Angle`. We usually construct angles in terms of degrees. Here's an example.
 
 ```scala mdoc:silent
 val ninety = 90.degrees
@@ -38,7 +38,7 @@ val radians = 2.radians
 val fullTurn = 1.turns
 ```
 
-Now we know how to create an `Angle` we can create a `Point` in polar coordinates.
+Now we know how to create an `Angle` we can create a `Point` using polar coordinates.
 
 ```scala mdoc:silent
 val polar = Point(5, 45.degrees)
@@ -47,11 +47,11 @@ val polar = Point(5, 45.degrees)
 
 ## From Points to Polygons
 
-The reason we're interested in polar coordinates is that they allow us to easily specify the corners (vertices) of regular polygons, and drawing polygons is our ultimate goal. Look at the hexagon below. If we wanted to specify the vertices in Cartesian coordinates, we'd have to do some involved geometry. This is simple with polar coordinates, however. Each vertex is has the same length but differs in angle, as the animation shows. In the case of the hexagon, each vertex is a 60 degree rotation from the prior vertex. This is because a full turn of 360 degrees must visit all vertices, and there are 6 evenly spaced vertices, so each vertex is a turn of 360/60 = 60 degrees.
+Drawing polygons is our ultimate goal, and polar coordinates allow us to easily specify the corners (vertices) of regular polygons. Look at the hexagon below. To specify the vertices in Cartesian coordinates we'd have to do some involved geometry. With polar coordinates, however, it's very simple. Each vertex is the same distance from the center but differs in angle, as the animation shows. In the case of the hexagon, each vertex is a 60 degree rotation from the one before. (This is because a full turn of 360 degrees must visit all vertices, and there are 6 evenly spaced vertices, so each vertex is a turn of 360/60 = 60 degrees.)
 
 @:doodle("points", "Polygons.points")
 
-We can use this idea to draw circles, or another image, as the vertices of a regular polygon. Here's an example demonstrating what I mean.
+We can use this idea to draw circles, or another `Image`, at the vertices of a regular polygon. Here's an example demonstrating what I mean.
 
 ```scala mdoc:silent
 val dot = Image.circle(5).fillColor(Color.darkViolet)
@@ -64,6 +64,49 @@ val vertices =
     .on(dot.at(Point(100, 300.degrees)))
 ```
 
-When we draw this we get the output shown below.
+Drawing this gives the output shown below.
 
 @:doodle("vertices", "Polygons.vertices")
+
+
+@:exercise("Get To The Point")
+
+Implement a method `polygonPoints` that produces an `Image` with circles (or something else of your choice) at the vertices of a regular polygon as shown above. The method should accept two parameters:
+
+- the number of sides of the polygon; and
+- the radius (distance of the vertices from the center)
+
+Below shows the output of 
+
+```scala
+polygonPoints(3, 50)
+  .fillColor(Color.crimson)
+  .beside(polygonPoints(5, 50).fillColor(Color.lawngreen))
+  .beside(polygonPoints(7, 50).fillColor(Color.dodgerBlue))
+```
+
+(I've used color to make it clearer which points belong to which polygon.)
+
+@:doodle("polygon-points", "Polygons.polygonPointsExercise")
+
+@:@
+@:solution
+This is a structural recursion over the natural numbers, but we need a helper method to actually do the counting. Here's my implementation. I used turns to specify the angle `turn`, because I felt was the most natural way to express it.
+
+```scala mdoc:silent
+def polygonPoints(sides: Int, radius: Double): Image = {
+  val turn = (1.0 / sides).turns
+  def helper(count: Int): Image =
+    count match {
+      case 0 => Image.empty
+      case n =>
+        Image
+          .circle(5)
+          .at(Point(radius, turn * n))
+          .on(helper(n - 1))
+    }
+
+  helper(sides)
+}
+```
+@:@

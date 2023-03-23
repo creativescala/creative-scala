@@ -83,4 +83,28 @@ object Polygons {
 
     image.drawWithFrame(makeFrame(id))
   }
+
+  @JSExport
+  def polygonPointsExercise(id: String): Unit = {
+    def polygonPoints(sides: Int, radius: Double): Image = {
+      val turn = (1.0 / sides).turns
+      def helper(count: Int): Image =
+        count match {
+          case 0 => Image.empty
+          case n =>
+            Image
+              .circle(5)
+              .at(Point(radius, turn * n))
+              .on(helper(n - 1))
+        }
+
+      helper(sides)
+    }
+
+    val image = polygonPoints(3, 50)
+      .fillColor(Color.crimson)
+      .beside(polygonPoints(5, 50).fillColor(Color.lawngreen))
+      .beside(polygonPoints(7, 50).fillColor(Color.dodgerBlue))
+    image.drawWithFrame(Frame(id))
+  }
 }
