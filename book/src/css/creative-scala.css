@@ -44,51 +44,37 @@ main {
 h1, h2, h3, h4, h5 {
     @apply text-pink-800;
 }
-.content h1, h2, h3, h4 {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
-}
 h1 {
     @apply text-6xl mb-16;
 }
 h2 {
-    @apply text-4xl;
+    @apply text-4xl mt-8 mb-4;
 }
 h3 {
-    @apply text-2xl;
+    @apply text-2xl mt-8 mb-4;
 }
 h4 {
-    @apply text-xl;
+    @apply text-xl mt-8 mb-4;
 }
 h5 {
-    @apply text-lg;
+    @apply text-lg mt-8 mb-4;
 }
-
-
 p {
     @apply mb-4;
 }
-.content p {
+.content * {
     grid-column-start: main-start;
     grid-column-end: main-end;
 }
 .content ol.arabic {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
     @apply list-decimal list-outside pl-4 mb-4;
 }
 .content ul {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
     @apply list-disc list-outside pl-4 mb-4;
 }
 .content pre {
     grid-column-start: main-start;
     grid-column-end: overflow-end;
-}
-.content table {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
 }
 .content table.footnote tbody tr td {
     @apply pr-4 text-sm;
@@ -97,16 +83,9 @@ pre {
     @apply mb-4 p-2 bg-slate-100;
 }
 .content div.doodle {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
-}
-.content div.solution {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
+    @apply my-4;
 }
 .content div.callout {
-    grid-column-start: main-start;
-    grid-column-end: main-end;
     @apply my-4 p-4;
 }
 .content div.info {
