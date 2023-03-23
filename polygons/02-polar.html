@@ -75,6 +75,7 @@
           <li class="level1 nav-node"><a href="index.html">Points, Paths, and Polygons</a></li>
           <li class="level2 active nav-leaf"><a href="#">Polar Coordinates</a></li>
           <li class="level2 nav-leaf"><a href="03-path.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="04-creative.html">Creative Extensions</a></li>
           <li class="level1 nav-header">declarations</li>
           <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
           <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
@@ -209,17 +210,17 @@
                 <p>This is a structural recursion over the natural numbers, but we need a helper method to actually do the counting. Here&#39;s my implementation. I used turns to specify the angle <code>turn</code>, because I felt was the most natural way to express it.</p>
                 <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">polygonPoints</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> = {
   </span><span class="keyword">val</span><span> </span><span class="identifier">turn</span><span> = (</span><span class="number-literal">1.0</span><span> / </span><span class="identifier">sides</span><span>).</span><span class="identifier">turns</span><span>
-  </span><span class="keyword">def</span><span> </span><span class="declaration-name">helper</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
     </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
       </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
       </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
         </span><span class="type-name">Image</span><span>
           .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">5</span><span>)
           .</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">turn</span><span> * </span><span class="identifier">n</span><span>))
-          .</span><span class="identifier">on</span><span>(</span><span class="identifier">helper</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
+          .</span><span class="identifier">on</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
     }
 
-  </span><span class="identifier">helper</span><span>(</span><span class="identifier">sides</span><span>)
+  </span><span class="identifier">loop</span><span>(</span><span class="identifier">sides</span><span>)
 }</span></code></pre>
               </div>
             </div>

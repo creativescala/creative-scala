@@ -23,7 +23,7 @@
 <body>
     <nav id="topbar"><p><a href="02-polar.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="../declarations/method-declarations.html">→</a></p></nav>
+<p><a href="04-creative.html">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -75,6 +75,7 @@
           <li class="level1 nav-node"><a href="index.html">Points, Paths, and Polygons</a></li>
           <li class="level2 nav-leaf"><a href="02-polar.html">Polar Coordinates</a></li>
           <li class="level2 active nav-leaf"><a href="#">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="04-creative.html">Creative Extensions</a></li>
           <li class="level1 nav-header">declarations</li>
           <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
           <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
@@ -181,10 +182,29 @@
               <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">regularPolygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> =
   ???</span></code></pre>
               <p>Given the number of sides and the radius is should produce a regular polygon using a <code>ClosedPath</code>.</p>
+              <p>The drawing below shows the output of </p>
+              <pre><code class="nohighlight"><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="number-literal">25</span><span>)
+  .</span><span class="identifier">on</span><span>(</span><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="number-literal">50</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">7</span><span>, </span><span class="number-literal">75</span><span>))</span></code></pre>
               <div class="doodle" id="regular-polygon"></div>
               <script>Paths.regularPolygonExercise("regular-polygon")</script>
             </div>
-            <p class="nextPage"><a href="../declarations/method-declarations.html">Method Declarations→</a></p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The structure of this method is the same as <code>polygonPoints</code>: a structural recursion over the natural numbers, with an auxillary helper method. There is a little wrinkle where we convert the <code>ClosedPath</code> to an <code>Image</code> after calling the helper.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">regularPolygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">turn</span><span> = (</span><span class="number-literal">1.0</span><span> / </span><span class="identifier">sides</span><span>).</span><span class="identifier">turns</span><span>
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">ClosedPath</span><span> =
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">ClosedPath</span><span>.</span><span class="identifier">empty</span><span>.</span><span class="identifier">moveTo</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>)
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>).</span><span class="identifier">lineTo</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">turn</span><span> * </span><span class="identifier">n</span><span>)
+    }
+
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">path</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">sides</span><span>))
+}</span></code></pre>
+              </div>
+            </div>
+            <p class="nextPage"><a href="04-creative.html">Creative Extensions→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
