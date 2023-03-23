@@ -1,4 +1,4 @@
-# Polygons and Polar Coordinates
+# Points, Paths, and Polygons
 
 In this chapter we'll learn about polar coordinates and use them to draw polygons and stars.
 
