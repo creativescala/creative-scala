@@ -13084,13 +13084,13 @@ $c_Lpolygons_Polygons$.prototype.polygonPointsExercise = (function(arg) {
   var prep0 = $as_T(arg);
   this.polygonPointsExercise__T__V(prep0)
 });
-$c_Lpolygons_Polygons$.prototype.vertices = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.vertices__T__V(prep0)
-});
 $c_Lpolygons_Polygons$.prototype.points = (function(arg) {
   var prep0 = $as_T(arg);
   this.points__T__V(prep0)
+});
+$c_Lpolygons_Polygons$.prototype.vertices = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.vertices__T__V(prep0)
 });
 var $d_Lpolygons_Polygons$ = new $TypeData().initClass({
   Lpolygons_Polygons$: 0
