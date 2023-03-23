@@ -72,7 +72,7 @@
           <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="index.html">Polygons and Polar Coordinates</a></li>
+          <li class="level1 nav-node"><a href="index.html">Points, Paths, and Polygons</a></li>
           <li class="level2 active nav-leaf"><a href="#">Polar Coordinates</a></li>
           <li class="level1 nav-header">declarations</li>
           <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
@@ -157,24 +157,24 @@
             <p>A point in two dimensions is most commonly specified using x and y coordinates. These are known as <em>Cartesian coordinates</em> after their inventor, René Descartes. We can visualize a Cartesian coordinate as projecting a vertical line from the x-axis and a horizontal line from the y-axis. The intersection of these two lines is the chosen point. The animation below shows this.</p>
             <div class="doodle" id="cartesian"></div>
             <script>Coordinates.cartesian("cartesian")</script>
-            <p>An alternate representation is <em>polar coordinates</em>. In polar coordinates, a point is specified by a length and a rotation. The animation below illustrates this.</p>
+            <p>An alternate representation is <em>polar coordinates</em>. In polar coordinates, a point is specified by a distance from the origin and an angle. The animation below illustrates this.</p>
             <div class="doodle" id="polar"></div>
             <script>Coordinates.polar("polar")</script>
             <p>In Doodle we can construct points using either Cartesian or polar coordinates. To create a Cartesian point we pass the x and y values to the <code>Point</code> constructor.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">cartesian</span><span> = </span><span class="type-name">Point</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="number-literal">4</span><span>)</span></code></pre>
-            <p>To create a polar point we need a length and an angle. In Doodle angles are their own type, called <code>Angle</code>. We usually construct angles in terms of degrees. Here&#39;s an example.</p>
+            <p>To create a polar point we need a length and an angle. The length is just a number, but in Doodle angles are their own type called <code>Angle</code>. We usually construct angles in terms of degrees. Here&#39;s an example.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">ninety</span><span> = </span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span></code></pre>
             <p>As well as degrees we can also use radians or turns. 2π radians make a full circle. A turn is a proportion of a full circle: 1.0 is a full circle (360 degrees), 0.5 is half a circle, and so on. Here are some examples.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">radians</span><span> = </span><span class="number-literal">2</span><span>.</span><span class="identifier">radians</span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">fullTurn</span><span> = </span><span class="number-literal">1</span><span>.</span><span class="identifier">turns</span></code></pre>
-            <p>Now we know how to create an <code>Angle</code> we can create a <code>Point</code> in polar coordinates.</p>
+            <p>Now we know how to create an <code>Angle</code> we can create a <code>Point</code> using polar coordinates.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">polar</span><span> = </span><span class="type-name">Point</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>)</span></code></pre>
             
             <h2 id="from-points-to-polygons" class="section">From Points to Polygons</h2>
-            <p>The reason we&#39;re interested in polar coordinates is that they allow us to easily specify the corners (vertices) of regular polygons, and drawing polygons is our ultimate goal. Look at the hexagon below. If we wanted to specify the vertices in Cartesian coordinates, we&#39;d have to do some involved geometry. This is simple with polar coordinates, however. Each vertex is has the same length but differs in angle, as the animation shows. In the case of the hexagon, each vertex is a 60 degree rotation from the prior vertex. This is because a full turn of 360 degrees must visit all vertices, and there are 6 evenly spaced vertices, so each vertex is a turn of 360/60 = 60 degrees.</p>
+            <p>Drawing polygons is our ultimate goal, and polar coordinates allow us to easily specify the corners (vertices) of regular polygons. Look at the hexagon below. To specify the vertices in Cartesian coordinates we&#39;d have to do some involved geometry. With polar coordinates, however, it&#39;s very simple. Each vertex is the same distance from the center but differs in angle, as the animation shows. In the case of the hexagon, each vertex is a 60 degree rotation from the one before. (This is because a full turn of 360 degrees must visit all vertices, and there are 6 evenly spaced vertices, so each vertex is a turn of 360/60 = 60 degrees.)</p>
             <div class="doodle" id="points"></div>
             <script>Polygons.points("points")</script>
-            <p>We can use this idea to draw circles, or another image, as the vertices of a regular polygon. Here&#39;s an example demonstrating what I mean.</p>
+            <p>We can use this idea to draw circles, or another <code>Image</code>, at the vertices of a regular polygon. Here&#39;s an example demonstrating what I mean.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">dot</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">5</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkViolet</span><span>)
 </span><span class="keyword">val</span><span> </span><span class="identifier">vertices</span><span> =
   </span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>))
@@ -183,9 +183,45 @@
     .</span><span class="identifier">on</span><span>(</span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>)))
     .</span><span class="identifier">on</span><span>(</span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">240</span><span>.</span><span class="identifier">degrees</span><span>)))
     .</span><span class="identifier">on</span><span>(</span><span class="identifier">dot</span><span>.</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">300</span><span>.</span><span class="identifier">degrees</span><span>)))</span></code></pre>
-            <p>When we draw this we get the output shown below.</p>
+            <p>Drawing this gives the output shown below.</p>
             <div class="doodle" id="vertices"></div>
             <script>Polygons.vertices("vertices")</script>
+            <div class="exercise">
+              
+              <h4 id="exercise-get-to-the-point">Exercise: Get To The Point</h4>
+              <p>Implement a method <code>polygonPoints</code> that produces an <code>Image</code> with circles (or something else of your choice) at the vertices of a regular polygon as shown above. The method should accept two parameters:</p>
+              <ul>
+                <li>the number of sides of the polygon; and</li>
+                <li>the radius (distance of the vertices from the center)</li>
+              </ul>
+              <p>Below shows the output of </p>
+              <pre><code class="nohighlight"><span class="identifier">polygonPoints</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="number-literal">50</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">crimson</span><span>)
+  .</span><span class="identifier">beside</span><span>(</span><span class="identifier">polygonPoints</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="number-literal">50</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">lawngreen</span><span>))
+  .</span><span class="identifier">beside</span><span>(</span><span class="identifier">polygonPoints</span><span>(</span><span class="number-literal">7</span><span>, </span><span class="number-literal">50</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">dodgerBlue</span><span>))</span></code></pre>
+              <p>(I&#39;ve used color to make it clearer which points belong to which polygon.)</p>
+              <div class="doodle" id="polygon-points"></div>
+              <script>Polygons.polygonPointsExercise("polygon-points")</script>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>This is a structural recursion over the natural numbers, but we need a helper method to actually do the counting. Here&#39;s my implementation. I used turns to specify the angle <code>turn</code>, because I felt was the most natural way to express it.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">polygonPoints</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">turn</span><span> = (</span><span class="number-literal">1.0</span><span> / </span><span class="identifier">sides</span><span>).</span><span class="identifier">turns</span><span>
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">helper</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="type-name">Image</span><span>
+          .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">5</span><span>)
+          .</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">turn</span><span> * </span><span class="identifier">n</span><span>))
+          .</span><span class="identifier">on</span><span>(</span><span class="identifier">helper</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
+    }
+
+  </span><span class="identifier">helper</span><span>(</span><span class="identifier">sides</span><span>)
+}</span></code></pre>
+              </div>
+            </div>
             <p class="nextPage"><a href="../declarations/method-declarations.html">Method Declarations→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>

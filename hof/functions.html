@@ -72,7 +72,7 @@
           <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="../polygons/">Polygons and Polar Coordinates</a></li>
+          <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
           <li class="level1 nav-header">declarations</li>
           <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
@@ -159,7 +159,7 @@
             </ul>
             <p>Here&#39;s an example where we give the name <code>add42</code> to a function that adds 42 to its input.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">add42</span><span> = (</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">42</span><span>
-</span><span class="comment">// add42: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13832/0x0000000103a85840@7af0db33</span></code></pre>
+</span><span class="comment">// add42: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13899/0x0000000103aa1040@5d4cda04</span></code></pre>
             <p>We can call it just like we&#39;d call a method.</p>
             <pre><code class="nohighlight"><span class="identifier">add42</span><span>(</span><span class="number-literal">0</span><span>)
 </span><span class="comment">// res0: Int = 42</span></code></pre>
@@ -168,7 +168,7 @@
             <h3 id="function-literals-1" class="section">Function Literals</h3>
             <p>We&#39;ve just seen an example of a function literal, which was</p>
             <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> + </span><span class="number-literal">42</span><span>
-</span><span class="comment">// res1: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13833/0x0000000103a86040@5bd14c7b</span></code></pre>
+</span><span class="comment">// res1: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13900/0x0000000103aa2040@33290f8b</span></code></pre>
             <p>The general syntax is an extension of this.</p>
             <p>&lt;div class=&quot;callout callout-info&quot;&gt;</p>
             
@@ -214,16 +214,16 @@
             <p>All first class values are objects in Scala, including functions.
             This means functions can have methods, including some useful means for composition.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">addTen</span><span> = (</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">a</span><span> + </span><span class="number-literal">10</span><span>
-</span><span class="comment">// addTen: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13835/0x0000000103a6b840@2cde10fb
+</span><span class="comment">// addTen: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13902/0x0000000103aa4040@1a56905
 </span><span class="keyword">val</span><span> </span><span class="identifier">double</span><span> = (</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">a</span><span> * </span><span class="number-literal">2</span><span>
-</span><span class="comment">// double: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13836/0x0000000103a6c840@ce405eb
+</span><span class="comment">// double: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13903/0x0000000103aa5040@79782b23
 </span><span class="keyword">val</span><span> </span><span class="identifier">combined</span><span> = </span><span class="identifier">addTen</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">double</span><span>) </span><span class="comment">// this composes the two functions
-// combined: Function1[Int, Int] = scala.Function1$$Lambda$13766/0x0000000103a63040@70316e07 // this composes the two functions
+// combined: Function1[Int, Int] = scala.Function1$$Lambda$13833/0x0000000103a72840@425f42f2 // this composes the two functions
 </span><span class="identifier">combined</span><span>(</span><span class="number-literal">5</span><span>)
 </span><span class="comment">// res4: Int = 30</span></code></pre>
             <p>Calling a function is actually calling the method called <code>apply</code> on the function. Scala allows a shortcut for any object that has a method called <code>apply</code>, where can drop the method name <code>apply</code> and write the call like a function call. This means the following are equivalent.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">halve</span><span> = (</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">a</span><span> / </span><span class="number-literal">2</span><span>
-</span><span class="comment">// halve: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13837/0x0000000103a78840@21d256ee
+</span><span class="comment">// halve: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13904/0x0000000103aa6040@39f15865
 </span><span class="identifier">halve</span><span>(</span><span class="number-literal">4</span><span>)
 </span><span class="comment">// res5: Int = 2
 </span><span class="identifier">halve</span><span>.</span><span class="identifier">apply</span><span>(</span><span class="number-literal">4</span><span>)
@@ -235,10 +235,10 @@
   </span><span class="identifier">x</span><span> * </span><span class="number-literal">42</span><span>
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">times42Function</span><span> = </span><span class="identifier">times42</span><span> </span><span class="identifier">_</span><span>
-</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13838/0x0000000103a97840@7d57d3e7</span></code></pre>
+</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13905/0x0000000103aa7040@13b6f31f</span></code></pre>
             <p>We can also write a method call but replace all parameters with <code>_</code> and Scala will convert the method to a function.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function2</span><span> = </span><span class="identifier">times42</span><span>(</span><span class="identifier">_</span><span>)
-</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13839/0x0000000103a96840@51b04afb</span></code></pre>
+</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13906/0x0000000103aa6840@2b2ff379</span></code></pre>
             
             <h4 id="exercises" class="section">Exercises {-}</h4>
             
@@ -252,17 +252,17 @@
             <p>&lt;div class=&quot;solution&quot;&gt;
             The first function is</p>
             <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res7: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13840/0x0000000103a96040@2a8a579c</span></code></pre>
+</span><span class="comment">// res7: Function1[Int, Int] = repl.MdocSession$MdocApp$$Lambda$13907/0x0000000103ab0840@135f6c3c</span></code></pre>
             <p>The second is</p>
             <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res8: Function1[Color, HSLA] = repl.MdocSession$MdocApp$$Lambda$13841/0x0000000103a95040@19dc1105</span></code></pre>
+</span><span class="comment">// res8: Function1[Color, HSLA] = repl.MdocSession$MdocApp$$Lambda$13908/0x0000000103ab1040@20de2c42</span></code></pre>
             <p>The third is</p>
             <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res9: Function1[Image, Image] = repl.MdocSession$MdocApp$$Lambda$13842/0x0000000103a94840@5ad73132</span></code></pre>
+</span><span class="comment">// res9: Function1[Image, Image] = repl.MdocSession$MdocApp$$Lambda$13909/0x0000000103ab2040@4d41d4d</span></code></pre>
             <p>&lt;/div&gt;</p>
             
             <h5 id="function-types-2" class="section">Function Types {-}</h5>

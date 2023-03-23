@@ -622,11 +622,6 @@ h1, h2, h3, h4, h5 {
   color: rgb(157 23 77 / var(--tw-text-opacity));
 }
 
-.content h1, h2, h3, h4 {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
-}
-
 h1 {
   margin-bottom: 4rem;
   font-size: 3.75rem;
@@ -634,21 +629,29 @@ h1 {
 }
 
 h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   font-size: 2.25rem;
   line-height: 2.5rem;
 }
 
 h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.5rem;
   line-height: 2rem;
 }
 
 h4 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
 
 h5 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
   font-size: 1.125rem;
   line-height: 1.75rem;
 }
@@ -657,14 +660,12 @@ p {
   margin-bottom: 1rem;
 }
 
-.content p {
+.content * {
   grid-column-start: main-start;
   grid-column-end: main-end;
 }
 
 .content ol.arabic {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
   margin-bottom: 1rem;
   list-style-position: outside;
   list-style-type: decimal;
@@ -672,8 +673,6 @@ p {
 }
 
 .content ul {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
   margin-bottom: 1rem;
   list-style-position: outside;
   list-style-type: disc;
@@ -683,11 +682,6 @@ p {
 .content pre {
   grid-column-start: main-start;
   grid-column-end: overflow-end;
-}
-
-.content table {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
 }
 
 .content table.footnote tbody tr td {
@@ -704,18 +698,11 @@ pre {
 }
 
 .content div.doodle {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
-}
-
-.content div.solution {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .content div.callout {
-  grid-column-start: main-start;
-  grid-column-end: main-end;
   margin-top: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
@@ -736,8 +723,43 @@ details summary > * {
   display: inline;
 }
 
+.exercise {
+  padding-bottom: 1rem;
+  grid-column-start: main-start;
+  grid-column-end: overflow-end;
+  display: grid;
+  grid-template-columns: [main-start] minmax(20ch, 70ch) [main-end] minmax(0ch,20ch) [overflow-end];
+}
+
+.exercise * {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
+}
+
+.exercise pre {
+  grid-column-start: main-start;
+  grid-column-end: overflow-end;
+}
+
 .solution {
   padding-bottom: 1rem;
+  grid-column-start: main-start;
+  grid-column-end: overflow-end;
+}
+
+.solution details .solution-body {
+  display: grid;
+  grid-template-columns: [main-start] minmax(20ch, 70ch) [main-end] minmax(0ch,20ch) [overflow-end];
+}
+
+.solution details .solution-body * {
+  grid-column-start: main-start;
+  grid-column-end: main-end;
+}
+
+.solution details .solution-body pre {
+  grid-column-start: main-start;
+  grid-column-end: overflow-end;
 }
 
 code {

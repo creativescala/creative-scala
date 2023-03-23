@@ -72,7 +72,7 @@
           <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="../polygons/">Polygons and Polar Coordinates</a></li>
+          <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
           <li class="level1 nav-header">declarations</li>
           <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
@@ -181,41 +181,47 @@
             <h4 id="i-go-round-in-circles" class="section">I Go Round in Circles</h4>
             <p>Create circles that are 1, 10, and 100 units wide. Now draw them!</p>
             <div class="solution">
-              <p>In this exercise we&#39;re checking that our Doodle install is working correctly and we&#39;re getting used to using the library. One of the important points in Doodle is we separate <em>defining the image</em> from <em>drawing the image</em>. We&#39;ll talk more about this throughout the book.</p>
-              <p>We can create circles with the code below.</p>
-              <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>)
+              <div class="solution-body">
+                <p>In this exercise we&#39;re checking that our Doodle install is working correctly and we&#39;re getting used to using the library. One of the important points in Doodle is we separate <em>defining the image</em> from <em>drawing the image</em>. We&#39;ll talk more about this throughout the book.</p>
+                <p>We can create circles with the code below.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>)
 </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
 </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)</span></code></pre>
-              <p>We can draw the circles by calling the <code>draw</code> method on each circle.</p>
-              <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>).</span><span class="identifier">draw</span><span>()
+                <p>We can draw the circles by calling the <code>draw</code> method on each circle.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>).</span><span class="identifier">draw</span><span>()
 </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()
 </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+              </div>
             </div>
             
             <h4 id="my-type-of-art" class="section">My Type of Art</h4>
             <p>What is the type of a circle? A rectangle? A triangle?</p>
             <div class="solution">
-              <p>They all have type <code>Image</code>, as we can tell from the console.</p>
-              <pre><code class="nohighlight"><span>:</span><span class="keyword">type</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
+              <div class="solution-body">
+                <p>They all have type <code>Image</code>, as we can tell from the console.</p>
+                <pre><code class="nohighlight"><span>:</span><span class="keyword">type</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
 </span><span class="comment">// doodle.core.Image
 </span><span>:</span><span class="keyword">type</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>)
 </span><span class="comment">// doodle.core.Image
 </span><span>:</span><span class="keyword">type</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>)
 </span><span class="comment">// doodle.core.Image</span></code></pre>
+              </div>
             </div>
             
             <h4 id="not-my-type-of-art" class="section">Not My Type of Art</h4>
             <p>What&#39;s the type of <em>drawing</em> an image? What does this mean?</p>
             <div class="solution">
-              <p>Once again, we can ask the console this quesstion.</p>
-              <pre><code class="nohighlight"><span>:</span><span class="keyword">type</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()
+              <div class="solution-body">
+                <p>Once again, we can ask the console this quesstion.</p>
+                <pre><code class="nohighlight"><span>:</span><span class="keyword">type</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()
 </span><span class="comment">// Unit</span></code></pre>
-              <p>We see that the type of drawing an image is <code>Unit</code>. <code>Unit</code> is the type of expressions that have no interesting value to return. This is the case for <code>draw</code>; we call it because we want something to appear on the screen, not because we have a use for the value it returns. There is only one value with type <code>Unit</code>. This value is also called unit, which written as a literal expression is <code>()</code></p>
-              <p>You&#39;ll note that the console doesn&#39;t print unit by default.</p>
-              <pre><code class="nohighlight"><span>()</span></code></pre>
-              <p>We can ask the console for the type to show that there really is unit here.</p>
-              <pre><code class="nohighlight"><span>:</span><span class="keyword">type</span><span> ()
+                <p>We see that the type of drawing an image is <code>Unit</code>. <code>Unit</code> is the type of expressions that have no interesting value to return. This is the case for <code>draw</code>; we call it because we want something to appear on the screen, not because we have a use for the value it returns. There is only one value with type <code>Unit</code>. This value is also called unit, which written as a literal expression is <code>()</code></p>
+                <p>You&#39;ll note that the console doesn&#39;t print unit by default.</p>
+                <pre><code class="nohighlight"><span>()</span></code></pre>
+                <p>We can ask the console for the type to show that there really is unit here.</p>
+                <pre><code class="nohighlight"><span>:</span><span class="keyword">type</span><span> ()
 </span><span class="comment">// Unit</span></code></pre>
+              </div>
             </div>
             <p class="nextPage"><a href="exercises.html">Exercises→</a></p>
         </main>
