@@ -124,7 +124,7 @@ object CreativeScalaDirectives extends DirectiveRegistry {
 
       (attribute(0).as[String], parsedBody).mapN((title, body) =>
         BlockSequence(
-          content = Header(4, title) +: body,
+          content = Header(4, "Exercise: " ++ title) +: body,
           options = Options(styles = Set("exercise"))
         )
       )
@@ -135,7 +135,14 @@ object CreativeScalaDirectives extends DirectiveRegistry {
       import Blocks.dsl._
 
       parsedBody.map { body =>
-        BlockSequence(body, Options(id = None, styles = Set("solution")))
+        BlockSequence(
+          Seq(
+            BlockSequence(body).withOptions(
+              Options(styles = Set("solution-body"))
+            )
+          ),
+          Options(id = None, styles = Set("solution"))
+        )
       }
     }
 

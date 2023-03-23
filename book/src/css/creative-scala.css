@@ -98,8 +98,37 @@ details summary {
 details summary > * {
     display: inline;
 }
+.exercise {
+    @apply pb-4;
+    grid-column-start: main-start;
+    grid-column-end: overflow-end;
+    display: grid;
+    grid-template-columns: [main-start] minmax(20ch, 70ch) [main-end] minmax(0ch,20ch) [overflow-end];
+}
+.exercise * {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
+}
+.exercise pre {
+    grid-column-start: main-start;
+    grid-column-end: overflow-end;
+}
 .solution {
     @apply pb-4;
+    grid-column-start: main-start;
+    grid-column-end: overflow-end;
+}
+.solution details .solution-body {
+    display: grid;
+    grid-template-columns: [main-start] minmax(20ch, 70ch) [main-end] minmax(0ch,20ch) [overflow-end];
+}
+.solution details .solution-body * {
+    grid-column-start: main-start;
+    grid-column-end: main-end;
+}
+.solution details .solution-body pre {
+    grid-column-start: main-start;
+    grid-column-end: overflow-end;
 }
 code {
     @apply text-sm;
