@@ -112,6 +112,24 @@ object CreativeScalaDirectives extends DirectiveRegistry {
       }
     }
 
+  // @:exercise(title)
+  // Content
+  // @:@
+  // @:solution
+  // Solution content
+  // @:@
+  val exercise: Blocks.Directive =
+    Blocks.create("exercise") {
+      import Blocks.dsl._
+
+      (attribute(0).as[String], parsedBody).mapN((title, body) =>
+        BlockSequence(
+          content = Header(4, title) +: body,
+          options = Options(styles = Set("exercise"))
+        )
+      )
+    }
+
   val solution: Blocks.Directive =
     Blocks.create("solution") {
       import Blocks.dsl._
@@ -184,7 +202,7 @@ object CreativeScalaDirectives extends DirectiveRegistry {
 
   val spanDirectives = Seq(fref, fnref, tref)
   val blockDirectives =
-    Seq(divWithId, doodle, figure, footnote, script, solution)
+    Seq(divWithId, doodle, exercise, figure, footnote, script, solution)
   val templateDirectives = Seq(compactNavBar, nextPage)
   val linkDirectives = Seq()
 }
