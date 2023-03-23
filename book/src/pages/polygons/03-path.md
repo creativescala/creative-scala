@@ -50,5 +50,28 @@ def regularPolygon(sides: Int, radius: Double): Image =
 
 Given the number of sides and the radius is should produce a regular polygon using a `ClosedPath`.
 
+The drawing below shows the output of 
+```scala
+regularPolygon(3, 25)
+  .on(regularPolygon(5, 50))
+  .on(regularPolygon(7, 75))
+```
+
 @:doodle("regular-polygon", "Paths.regularPolygonExercise")
+@:@
+@:solution
+The structure of this method is the same as `polygonPoints`: a structural recursion over the natural numbers, with an auxillary helper method. There is a little wrinkle where we convert the `ClosedPath` to an `Image` after calling the helper.
+
+```scala mdoc:silent
+def regularPolygon(sides: Int, radius: Double): Image = {
+  val turn = (1.0 / sides).turns
+  def loop(count: Int): ClosedPath =
+    count match {
+      case 0 => ClosedPath.empty.moveTo(radius, 0.degrees)
+      case n => loop(n - 1).lineTo(radius, turn * n)
+    }
+
+  Image.path(loop(sides))
+}
+```
 @:@

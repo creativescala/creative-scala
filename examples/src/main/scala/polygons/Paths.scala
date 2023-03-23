@@ -34,13 +34,13 @@ object Paths {
   def regularPolygonExercise(id: String): Unit = {
     def regularPolygon(sides: Int, radius: Double): Image = {
       val turn = (1.0 / sides).turns
-      def helper(count: Int): ClosedPath =
+      def loop(count: Int): ClosedPath =
         count match {
           case 0 => ClosedPath.empty.moveTo(radius, 0.degrees)
-          case n => helper(n - 1).lineTo(radius, turn * n)
+          case n => loop(n - 1).lineTo(radius, turn * n)
         }
 
-      Image.path(helper(sides))
+      Image.path(loop(sides))
     }
 
     val polygons =

@@ -96,17 +96,17 @@ This is a structural recursion over the natural numbers, but we need a helper me
 ```scala mdoc:silent
 def polygonPoints(sides: Int, radius: Double): Image = {
   val turn = (1.0 / sides).turns
-  def helper(count: Int): Image =
+  def loop(count: Int): Image =
     count match {
       case 0 => Image.empty
       case n =>
         Image
           .circle(5)
           .at(Point(radius, turn * n))
-          .on(helper(n - 1))
+          .on(loop(n - 1))
     }
 
-  helper(sides)
+  loop(sides)
 }
 ```
 @:@
