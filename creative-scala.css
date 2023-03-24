@@ -660,6 +660,21 @@ p {
   margin-bottom: 1rem;
 }
 
+a:hover {
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+}
+
+.content a {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-thickness: 1px;
+}
+
+.content a:hover {
+  text-decoration-style: solid;
+}
+
 .content * {
   grid-column-start: main-start;
   grid-column-end: main-end;
