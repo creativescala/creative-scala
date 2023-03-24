@@ -62,6 +62,12 @@ h5 {
 p {
     @apply mb-4;
 }
+a {
+    @apply hover:underline hover:decoration-solid;
+}
+.content a {
+    @apply underline decoration-dotted decoration-1 hover:decoration-solid;
+}
 .content * {
     grid-column-start: main-start;
     grid-column-end: main-end;
