@@ -121,16 +121,50 @@ object Creative {
 
       Image.path(loop(sides))
     }
+    def concentricCurvygon(
+        total: Int,
+        sides: Int,
+        radiusStart: Int,
+        radiusStep: Int,
+        radiusOffsetPercentage: Double,
+        offset1: Double,
+        offset2: Double
+    ): Image = {
+      def loop(count: Int): Image =
+        count match {
+          case 0 =>
+            regularCurvygon(
+              sides,
+              radiusStart,
+              (radiusOffsetPercentage * radiusStart).toInt,
+              offset1,
+              offset2
+            )
+          case n =>
+            val r = radiusStart + (n * radiusStep)
+            loop(n - 1).on(
+              regularCurvygon(
+                sides,
+                r,
+                (r * radiusOffsetPercentage).toInt,
+                offset1,
+                offset2
+              )
+            )
+        }
 
-    -70.0
-      .upToIncluding(70.0)
-      .map(offset => regularCurvygon(5, 100, offset.toInt, 0.2, 0.7).compile)
+      loop(total)
+    }
+
+    -0.9
+      .upToIncluding(0.9)
+      .map(offset => concentricCurvygon(7, 5, 20, 10, offset, 0.2, 0.7).compile)
       .forDuration(2.5.seconds)
       .andThen(_ =>
-        70.0
-          .upToIncluding(-70.0)
+        0.9
+          .upToIncluding(-0.9)
           .map(offset =>
-            regularCurvygon(5, 100, offset.toInt, 0.2, 0.7).compile
+            concentricCurvygon(7, 5, 20, 10, offset, 0.2, 0.7).compile
           )
           .forDuration(2.5.seconds)
       )
