@@ -157,22 +157,26 @@
             <p>We&#39;re now going to look at a few creative extensions of what we&#39;ve been working with so far. This gives us more practice with these core ideas: polar coordinates, paths, and structural recursion over the natural numbers. It also might show you a few tricks to use if you&#39;re interested in your own creative computing applications.</p>
             
             <h2 id="concentric-polygons" class="section">Concentric Polygons</h2>
-            <p>We&#39;ve created concentric shapes before. It&#39;s natural to use this same idea with polygons. In my example I&#39;ve also increased the number of sides in the polygon as the shape gets bigger.</p>
+            <p>We&#39;ve created concentric shapes before. It&#39;s natural to use this same idea with polygons. In my example I&#39;ve also increased the number of sides in the polygon as the shape gets bigger. The colors are created by smoothly reducing the lightness to zero as the polygons get larger.</p>
             <div class="doodle" id="concentric"></div>
             <script>Creative.concentricExercise("concentric")</script>
             
-            <h2 id="polygon-spiral" class="section">Polygon spiral</h2>
+            <h2 id="polygon-spiral" class="section">Polygon Spiral</h2>
+            <p>This takes the idea of concentric polygons and adds a small rotation at each step. Here I slowly change the stroke hue as the spiral grows.</p>
             <div class="doodle" id="spiral"></div>
             <script>Creative.spiralExercise("spiral")</script>
-            
-            <h2 id="curvygons" class="section">Curvygons</h2>
-            <p>I couldn&#39;t resist animating this one, bu tI&#39;m not expecting you to do so. (We haven&#39;t discussed how to create animations, but you can check the <a href="https://www.creativescala.org/doodle/interact/animation.html">Doodle documentation</a>.)</p>
-            <div class="doodle" id="curvygon"></div>
-            <script>Creative.curvygonExercise("curvygon")</script>
+            <p>This alternate version uses a fill instead of a stroke. Alternating between white and black fills give the result an <a href="https://en.wikipedia.org/wiki/Op_art">Op Art</a> style.</p>
+            <div class="doodle" id="spiral-op-art"></div>
+            <script>Creative.spiralOpArtExercise("spiral-op-art")</script>
             
             <h2 id="rosettes" class="section">Rosettes</h2>
             <div class="doodle" id="rosette"></div>
             <script>Creative.rosetteExercise("rosette")</script>
+            
+            <h2 id="curvygons" class="section">Curvygons</h2>
+            <p>I couldn&#39;t resist animating this one, but I&#39;m not expecting you to do so. (We haven&#39;t discussed how to create animations, but you can check the <a href="https://www.creativescala.org/doodle/interact/animation.html">Doodle documentation</a>.)</p>
+            <div class="doodle" id="curvygon"></div>
+            <script>Creative.curvygonExercise("curvygon")</script>
             <p class="nextPage"><a href="05-conclusions.html">Conclusions→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
