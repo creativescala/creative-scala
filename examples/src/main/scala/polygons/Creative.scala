@@ -66,7 +66,7 @@ object Creative {
     def style(percentage: Double, image: Image): Image = {
       image
         .strokeColor(
-          Color.turquoise.darkenBy((percentage * percentage).normalized)
+          Color.turquoise.spin(30.degrees * percentage)
         )
         .strokeWidth(3.0)
     }
@@ -84,6 +84,36 @@ object Creative {
             loop(count - 1).on(
               style(
                 count.toDouble / total,
+                regularPolygon(5, startRadius + (radiusStep * n))
+                  .rotate(angleStep * n)
+              )
+            )
+        }
+
+      loop(total)
+    }
+    polygonSpiral(15, 20, 7, 5.degrees).drawWithFrame(Frame(id))
+  }
+
+  @JSExport
+  def spiralOpArtExercise(id: String): Unit = {
+    def style(count: Int, image: Image): Image = {
+      image.noStroke.fillColor(if (count % 2 == 0) Color.white else Color.black)
+    }
+
+    def polygonSpiral(
+        total: Int,
+        startRadius: Double,
+        radiusStep: Double,
+        angleStep: Angle
+    ): Image = {
+      def loop(count: Int): Image =
+        count match {
+          case 0 => style(0, regularPolygon(5, startRadius))
+          case n =>
+            loop(count - 1).on(
+              style(
+                count,
                 regularPolygon(5, startRadius + (radiusStep * n))
                   .rotate(angleStep * n)
               )
