@@ -13007,7 +13007,7 @@ $c_Lpolygons_Creative$.prototype.starPolygonExercise__T__V = (function(id) {
   var this$1 = $n($p_Lpolygons_Creative$__starPolygon$1__I__I__I__Ldoodle_image_Image(this, 7, 100, 3));
   var right = $p_Lpolygons_Creative$__starPolygon$1__I__I__I__Ldoodle_image_Image(this, 12, 100, 5);
   var this$3 = new $c_Ldoodle_image_Image$Elements$Beside(this$1, right);
-  var right$1 = $p_Lpolygons_Creative$__starPolygon$1__I__I__I__Ldoodle_image_Image(this, 24, 100, 9);
+  var right$1 = $p_Lpolygons_Creative$__starPolygon$1__I__I__I__Ldoodle_image_Image(this, 24, 100, 13);
   var image = new $c_Ldoodle_image_Image$Elements$Beside(this$3, right$1);
   new $c_Ldoodle_image_syntax_AbstractImageSyntax$ImageOps(this$5, image).drawWithFrame__O__Ldoodle_effect_Renderer__Lcats_effect_unsafe_IORuntime__V($n($m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_Frame).apply__T__Ldoodle_svg_effect_Frame(id), $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgRenderer, $m_Lcats_effect_unsafe_implicits$().Lcats_effect_unsafe_implicits$__f_global)
 });
