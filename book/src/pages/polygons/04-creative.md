@@ -16,7 +16,7 @@ This next example takes the idea of concentric polygons and adds a small rotatio
 @:doodle("spiral", "Creative.spiralExercise")
 
 
-## Rosettes
+## Star Polygons
 
 Our method of constructing polygons was to join each vertex to its neighbours with a straight line. If we skip one or more points we get what is called a star polygon.
 
