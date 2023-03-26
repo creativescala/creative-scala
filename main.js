@@ -13011,6 +13011,10 @@ $c_Lpolygons_Creative$.prototype.starPolygonExercise__T__V = (function(id) {
   var image = new $c_Ldoodle_image_Image$Elements$Beside(this$3, right$1);
   new $c_Ldoodle_image_syntax_AbstractImageSyntax$ImageOps(this$5, image).drawWithFrame__O__Ldoodle_effect_Renderer__Lcats_effect_unsafe_IORuntime__V($n($m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_Frame).apply__T__Ldoodle_svg_effect_Frame(id), $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgRenderer, $m_Lcats_effect_unsafe_implicits$().Lcats_effect_unsafe_implicits$__f_global)
 });
+$c_Lpolygons_Creative$.prototype.starPolygonExercise = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.starPolygonExercise__T__V(prep0)
+});
 $c_Lpolygons_Creative$.prototype.spiralExercise = (function(arg) {
   var prep0 = $as_T(arg);
   this.spiralExercise__T__V(prep0)
@@ -13022,10 +13026,6 @@ $c_Lpolygons_Creative$.prototype.concentricExercise = (function(arg) {
 $c_Lpolygons_Creative$.prototype.curvygonExercise = (function(arg) {
   var prep0 = $as_T(arg);
   this.curvygonExercise__T__V(prep0)
-});
-$c_Lpolygons_Creative$.prototype.starPolygonExercise = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.starPolygonExercise__T__V(prep0)
 });
 var $d_Lpolygons_Creative$ = new $TypeData().initClass({
   Lpolygons_Creative$: 0
