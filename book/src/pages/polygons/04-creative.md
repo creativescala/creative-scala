@@ -20,7 +20,7 @@ This next example takes the idea of concentric polygons and adds a small rotatio
 
 Our method of constructing polygons was to join each vertex to its neighbours with a straight line. If we skip one or more points we get what is called a star polygon.
 
-@:doodle("rosette", "Creative.rosetteExercise")
+@:doodle("star-polygon", "Creative.starPolygonExercise")
 
 
 ## Curvygons
