@@ -11,16 +11,14 @@ We've created concentric shapes before. It's natural to use this same idea with 
 
 ## Polygon Spiral
 
-This takes the idea of concentric polygons and adds a small rotation at each step. Here I slowly change the stroke hue as the spiral grows.
+This next example takes the idea of concentric polygons and adds a small rotation at each step. Here I've used a fill instead of a stroke. Alternating between white and black fills give the result an [Op Art](https://en.wikipedia.org/wiki/Op_art) style.
 
 @:doodle("spiral", "Creative.spiralExercise")
 
-This alternate version uses a fill instead of a stroke. Alternating between white and black fills give the result an [Op Art](https://en.wikipedia.org/wiki/Op_art) style.
-
-@:doodle("spiral-op-art", "Creative.spiralOpArtExercise")
-
 
 ## Rosettes
+
+Our method of constructing polygons was to join each vertex to its neighbours with a straight line. If we skip one or more points we get what is called a star polygon.
 
 @:doodle("rosette", "Creative.rosetteExercise")
 

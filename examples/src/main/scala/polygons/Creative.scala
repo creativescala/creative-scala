@@ -63,40 +63,6 @@ object Creative {
 
   @JSExport
   def spiralExercise(id: String): Unit = {
-    def style(percentage: Double, image: Image): Image = {
-      image
-        .strokeColor(
-          Color.turquoise.spin(30.degrees * percentage)
-        )
-        .strokeWidth(3.0)
-    }
-
-    def polygonSpiral(
-        total: Int,
-        startRadius: Double,
-        radiusStep: Double,
-        angleStep: Angle
-    ): Image = {
-      def loop(count: Int): Image =
-        count match {
-          case 0 => style(0.0, regularPolygon(5, startRadius))
-          case n =>
-            loop(count - 1).on(
-              style(
-                count.toDouble / total,
-                regularPolygon(5, startRadius + (radiusStep * n))
-                  .rotate(angleStep * n)
-              )
-            )
-        }
-
-      loop(total)
-    }
-    polygonSpiral(15, 20, 7, 5.degrees).drawWithFrame(Frame(id))
-  }
-
-  @JSExport
-  def spiralOpArtExercise(id: String): Unit = {
     def style(count: Int, image: Image): Image = {
       image.noStroke.fillColor(if (count % 2 == 0) Color.white else Color.black)
     }
@@ -203,8 +169,8 @@ object Creative {
   }
 
   @JSExport
-  def rosetteExercise(id: String): Unit = {
-    def rosette(sides: Int, radius: Int, skip: Int): Image = {
+  def starPolygonExercise(id: String): Unit = {
+    def starPolygon(sides: Int, radius: Int, skip: Int): Image = {
       val turn = (1.0 / sides).turns
       def loop(count: Int): ClosedPath =
         count match {
@@ -216,9 +182,9 @@ object Creative {
       Image.path(loop(sides))
     }
 
-    rosette(7, 100, 3)
-      .beside(rosette(8, 100, 3))
-      .beside(rosette(10, 100, 3))
+    starPolygon(7, 100, 3)
+      .beside(starPolygon(12, 100, 5))
+      .beside(starPolygon(24, 100, 5))
       .drawWithFrame(Frame(id))
   }
 }
