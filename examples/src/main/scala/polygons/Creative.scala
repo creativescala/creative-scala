@@ -184,7 +184,7 @@ object Creative {
 
     starPolygon(7, 100, 3)
       .beside(starPolygon(12, 100, 5))
-      .beside(starPolygon(24, 100, 9))
+      .beside(starPolygon(24, 100, 13))
       .drawWithFrame(Frame(id))
   }
 }
