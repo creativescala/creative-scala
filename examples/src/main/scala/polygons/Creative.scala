@@ -206,7 +206,7 @@ object Creative {
             .forDuration(2.5.seconds)
         )
         .repeatForever
-        .animate(Frame(id).withSize(220, 120))
+        .animate(Frame(id).withSize(240, 140))
   }
 
   @JSExport
