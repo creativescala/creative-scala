@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.19.0" />
-    <title>Creative Extensions</title>
+    <title>Going Further</title>
     
     
     <meta name="description" content="book" />
@@ -75,7 +75,7 @@
           <li class="level1 nav-node"><a href="index.html">Points, Paths, and Polygons</a></li>
           <li class="level2 nav-leaf"><a href="02-polar.html">Polar Coordinates</a></li>
           <li class="level2 nav-leaf"><a href="03-path.html">Paths</a></li>
-          <li class="level2 active nav-leaf"><a href="#">Creative Extensions</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Going Further</a></li>
           <li class="level2 nav-leaf"><a href="05-conclusions.html">Conclusions</a></li>
           <li class="level1 nav-header">declarations</li>
           <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
@@ -153,28 +153,148 @@
 
     <div id="content">
         <main class="content">
-            <h1 id="creative-extensions" class="title">Creative Extensions</h1>
-            <p>We&#39;re now going to look at a few creative extensions of what we&#39;ve been working with so far. This gives us more practice with these core ideas: polar coordinates, paths, and structural recursion over the natural numbers. It also might show you a few tricks to use if you&#39;re interested in your own creative computing applications.</p>
+            <h1 id="going-further" class="title">Going Further</h1>
+            <p>We&#39;re now going to look at a few creative extensions to what we&#39;ve been working with so far. This gives us more practice with the core ideas: polar coordinates, paths, and structural recursion over the natural numbers. It also might show you a few tricks to use if you&#39;re interested in your own creative computing sketches.</p>
             
             <h2 id="concentric-polygons" class="section">Concentric Polygons</h2>
             <p>We&#39;ve created concentric shapes before. It&#39;s natural to use this same idea with polygons. In my example I&#39;ve also increased the number of sides in the polygon as the shape gets bigger. The colors are created by smoothly reducing the lightness to zero as the polygons get larger.</p>
             <div class="doodle" id="concentric"></div>
             <script>Creative.concentricExercise("concentric")</script>
+            <p>Create your own version of this concept. </p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>This is a little twist on the structural recursion pattern we&#39;ve used so far. I extracted the styling into it&#39;s own method to make the code easier to read. I use the method <code>darkenBy</code> to reduce the lightness by the given percentage. Calling <code>darkenBy</code> with <code>1.0.normalized</code> decreases the lightness by one hundred percent, while calling it with <code>0.5.normalized</code> reduces the lightness by half. Squaring the <code>percentage</code> in <code>style</code> makes the lightness decrease more slowly. You could also try the square root (<code>Math.sqrt</code>) for a faster transition.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">style</span><span>(</span><span class="identifier">percentage</span><span>: </span><span class="type-name">Double</span><span>, </span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="identifier">image</span><span>
+    .</span><span class="identifier">strokeColor</span><span>(
+      </span><span class="type-name">Color</span><span>.</span><span class="identifier">crimson</span><span>.</span><span class="identifier">darkenBy</span><span>((</span><span class="identifier">percentage</span><span> * </span><span class="identifier">percentage</span><span>).</span><span class="identifier">normalized</span><span>)
+    )
+    .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">3.0</span><span>)
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">concentricPolygons</span><span>(
+    </span><span class="identifier">total</span><span>: </span><span class="type-name">Int</span><span>,
+    </span><span class="identifier">startRadius</span><span>: </span><span class="type-name">Double</span><span>,
+    </span><span class="identifier">radiusStep</span><span>: </span><span class="type-name">Double</span><span>
+): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt;
+        </span><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">3</span><span>, </span><span class="identifier">startRadius</span><span>)
+          .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">crimson</span><span>)
+          .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">3.0</span><span>)
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>).</span><span class="identifier">on</span><span>(
+          </span><span class="identifier">style</span><span>(
+            </span><span class="identifier">n</span><span>.</span><span class="identifier">toDouble</span><span> / </span><span class="identifier">total</span><span>.</span><span class="identifier">toDouble</span><span>,
+            </span><span class="identifier">regularPolygon</span><span>(</span><span class="identifier">n</span><span> + </span><span class="number-literal">3</span><span>, </span><span class="identifier">startRadius</span><span> + (</span><span class="identifier">radiusStep</span><span> * </span><span class="identifier">n</span><span>))
+          )
+        )
+    }
+
+  </span><span class="identifier">loop</span><span>(</span><span class="identifier">total</span><span>)
+}</span></code></pre>
+              </div>
+            </div>
             
             <h2 id="polygon-spiral" class="section">Polygon Spiral</h2>
             <p>This next example takes the idea of concentric polygons and adds a small rotation at each step. Here I&#39;ve used a fill instead of a stroke. Alternating between white and black fills give the result an <a href="https://en.wikipedia.org/wiki/Op_art">Op Art</a> style.</p>
             <div class="doodle" id="spiral"></div>
             <script>Creative.spiralExercise("spiral")</script>
+            <p>Create your own take on this idea.</p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Once again, the core idea is a structural recursion over the natural numbers. As I did in the previous example, I have extracted the styling into it&#39;s own method. Using the modulo operator (<code>%</code>) allows me to choose a different fill for odd and even values of <code>count</code>, which creates the alternating fills in the image above.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">style</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="identifier">image</span><span>.</span><span class="identifier">noStroke</span><span>.</span><span class="identifier">fillColor</span><span>(</span><span class="keyword">if</span><span> (</span><span class="identifier">count</span><span> % </span><span class="number-literal">2</span><span> == </span><span class="number-literal">0</span><span>) </span><span class="type-name">Color</span><span>.</span><span class="identifier">white</span><span> </span><span class="keyword">else</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>)
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">polygonSpiral</span><span>(
+    </span><span class="identifier">total</span><span>: </span><span class="type-name">Int</span><span>,
+    </span><span class="identifier">startRadius</span><span>: </span><span class="type-name">Double</span><span>,
+    </span><span class="identifier">radiusStep</span><span>: </span><span class="type-name">Double</span><span>,
+    </span><span class="identifier">angleStep</span><span>: </span><span class="type-name">Angle</span><span>
+): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="identifier">style</span><span>(</span><span class="number-literal">0</span><span>, </span><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="identifier">startRadius</span><span>))
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="identifier">loop</span><span>(</span><span class="identifier">count</span><span> - </span><span class="number-literal">1</span><span>).</span><span class="identifier">on</span><span>(
+          </span><span class="identifier">style</span><span>(
+            </span><span class="identifier">count</span><span>,
+            </span><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="identifier">startRadius</span><span> + (</span><span class="identifier">radiusStep</span><span> * </span><span class="identifier">n</span><span>))
+              .</span><span class="identifier">rotate</span><span>(</span><span class="identifier">angleStep</span><span> * </span><span class="identifier">n</span><span>)
+          )
+        )
+    }
+
+  </span><span class="identifier">loop</span><span>(</span><span class="identifier">total</span><span>)
+}</span></code></pre>
+              </div>
+            </div>
             
             <h2 id="star-polygons" class="section">Star Polygons</h2>
-            <p>Our method of constructing polygons was to join each vertex to its neighbours with a straight line. If we skip one or more points we get what is called a star polygon.</p>
+            <p>Our method of constructing polygons was to join a vertex to its immediate neighbour with a straight line. If we skip one or more neighbours we get what is called a star polygon. The animation below illustrates how this construction works for an octagon.</p>
+            <div class="doodle" id="star-construction"></div>
+            <script>Creative.starPolygonConstruction("star-construction")</script>
+            <p>Below are a few examples of star polygons that I created.</p>
             <div class="doodle" id="star-polygon"></div>
             <script>Creative.starPolygonExercise("star-polygon")</script>
+            <p>Take this idea and give it your own spin.</p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>I made a few mistakes in calculating the vertex that is joined to the current vertex, but got it right after a little while. Once again, the core is a structural recursion over the natural numbers. No styling in this code because I separately styled the three star polygons in the example above.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">starPolygon</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">skip</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">turn</span><span> = (</span><span class="number-literal">1.0</span><span> / </span><span class="identifier">sides</span><span>).</span><span class="identifier">turns</span><span>
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">ClosedPath</span><span> =
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">ClosedPath</span><span>.</span><span class="identifier">empty</span><span>.</span><span class="identifier">moveTo</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>)
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>).</span><span class="identifier">lineTo</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">turn</span><span> * (</span><span class="identifier">n</span><span> * </span><span class="identifier">skip</span><span>))
+    }
+
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">path</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">sides</span><span>))
+}</span></code></pre>
+              </div>
+            </div>
             
             <h2 id="curvygons" class="section">Curvygons</h2>
-            <p>I couldn&#39;t resist animating this one, but I&#39;m not expecting you to do so. (We haven&#39;t discussed how to create animations, but you can check the <a href="https://www.creativescala.org/doodle/interact/animation.html">Doodle documentation</a>.)</p>
+            <p>So far we have used only straight lines in paths. Paths can also include curves. In particular, they can include Bézier curves, which are defined by two control points and an end point. The animation below shows how the curve changes as the control points change.</p>
+            <div class="doodle" id="bezier"></div>
+            <script>Creative.bezierCurveAnimation("bezier")</script>
+            <p>Using a Bézier curve to join vertices gives us a shape with curving edges that I call a curvygon. There is an example below. I couldn&#39;t resist animating this one, but I&#39;m not expecting you to do so. (We haven&#39;t discussed how to create animations, but you can check the <a href="https://www.creativescala.org/doodle/interact/animation.html">Doodle documentation</a>.)</p>
             <div class="doodle" id="curvygon"></div>
             <script>Creative.curvygonExercise("curvygon")</script>
+            <p>Take this idea and go create!</p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>I&#39;m not including all the code I wrote here. It&#39;s a bit long and uses features we haven&#39;t yet seen. You can find it online if you want, as everything about this book is freely available. Below is the core of it: the method <code>regularCurvygon</code> creates a curvygon given a number of sides, the radius, the amount to offset the control points relative to the radius, and proportion of turn where the first and second control points are located. If you don&#39;t understand what each parameter does (which is quite understandable, this is very brief description) play around with different values and draw the results.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">regularCurvygon</span><span>(
+    </span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>,
+    </span><span class="identifier">radius</span><span>: </span><span class="type-name">Int</span><span>,
+    </span><span class="identifier">radiusOffset</span><span>: </span><span class="type-name">Int</span><span>,
+    </span><span class="identifier">offset1</span><span>: </span><span class="type-name">Double</span><span>,
+    </span><span class="identifier">offset2</span><span>: </span><span class="type-name">Double</span><span>
+): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">turn</span><span> = (</span><span class="number-literal">1.0</span><span> / </span><span class="identifier">sides</span><span>).</span><span class="identifier">turns</span><span>
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">ClosedPath</span><span> =
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">ClosedPath</span><span>.</span><span class="identifier">empty</span><span>.</span><span class="identifier">moveTo</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>)
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>).</span><span class="identifier">curveTo</span><span>(
+          </span><span class="identifier">radius</span><span> - </span><span class="identifier">radiusOffset</span><span>,
+          </span><span class="identifier">turn</span><span> * (</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>) + (</span><span class="identifier">turn</span><span> * </span><span class="identifier">offset1</span><span>),
+          </span><span class="identifier">radius</span><span> + </span><span class="identifier">radiusOffset</span><span>,
+          </span><span class="identifier">turn</span><span> * (</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>) + (</span><span class="identifier">turn</span><span> * </span><span class="identifier">offset2</span><span>),
+          </span><span class="identifier">radius</span><span>,
+          </span><span class="identifier">turn</span><span> * </span><span class="identifier">n</span><span>
+        )
+    }
+
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">path</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">sides</span><span>))
+}</span></code></pre>
+              </div>
+            </div>
             <p class="nextPage"><a href="05-conclusions.html">Conclusions→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
