@@ -1,5 +1,3 @@
 # Points, Paths, and Polygons
 
-In this chapter we'll learn about polar coordinates and use them to draw polygons and stars.
-
-What are polar coordinates? They are a way of representing points that are different (and more useful for our task) from the x and y coordinates you're probably used to.
+In this chapter we'll learn about polar coordinates and paths. We'll use these tools to expand our creative coding skills, producing pictures themed around polygons and stars. We'll also get more practie with structural recursion, reinforcing this core technique.
