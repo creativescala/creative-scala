@@ -22,16 +22,17 @@ Enough background. Let's dive in to see:
 
 Our motivating example for this will be drawing flowers as in @:fref(hof:flower-power).
 
-@:figure{ img = "src/pages/hof/flower-power.pdf+svg", key = "#fig:hof:flower-power", caption = "A flower created using the techniques in this chapter" }
+@:figure{ img = "./flower-power.svg", key = "#fig:hof:flower-power", caption = "A flower created using the techniques in this chapter" }
 
-<div class="callout callout-info">
-If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
+@:callout(info)
+Don't forget, you will need to start your code with the following imports for the examples to work.
 
 ```scala mdoc:silent
+import cats.effect.unsafe.implicits.global
 import doodle.core._
 import doodle.image._
 import doodle.syntax.all._
 import doodle.image.syntax.all._
 import doodle.java2d._
 ```
-</div>
+@:@

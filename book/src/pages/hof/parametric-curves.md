@@ -28,7 +28,7 @@ In @:fref(hof:parametric-circles) we give an example of drawing small circles at
 Going from left to right we draw points every 90, 45, and 22.5 degrees.
 You can see how the outline of the shape, the large circle, becomes clearer as we draw more points.
 
-@:figure{ img = "src/pages/hof/parametric-circles.pdf+svg", key = "#fig:hof:parametric-circles", caption = "Parametric circle with points drawn, from left to right, every 90, 45, and 22.5 degrees." }
+@:figure{ img = "./parametric-circles.svg", key = "#fig:hof:parametric-circles", caption = "Parametric circle with points drawn, from left to right, every 90, 45, and 22.5 degrees." }
 
 To create parametric curves we need to learn 1) how to represent points in Doodle, 2) how to position an image at a particular point in space, and 3) revise a bit of geometry you might not have touched since high school. Let's look at each item in turn.
 
@@ -42,7 +42,7 @@ In Doodle we have a `Point` type to represent a position in two dimensions. We h
 
 This difference is shown in @:fref(hof:representation).
 
-@:figure{ img = "./src/pages/hof/representation.pdf+svg", key = "#fig:hof:representation", caption = "A point represented in cartesian (x and y) coordinates and polar (radius and angle) coordinates" }
+@:figure{ img = "./representation.svg", key = "#fig:hof:representation", caption = "A point represented in cartesian (x and y) coordinates and polar (radius and angle) coordinates" }
 
 We can create points in the cartesian representation using `Point(Double, Double)` where the two parameters are the x and y coordinates, and in the polar representation using `Point(Double, Angle)` where we specify the radius and the angle. The table below shows the main methods on `Point`.
 
@@ -91,7 +91,7 @@ val squareDots =
 
 This produces the image shown in @:fref(hof:square-dots).
 
-@:figure{ img = "src/pages/hof/square-dots.pdf+svg", key = "#fig:hof:square-dots", caption = "Using `at` layout to position four dots at the corners of a square." }
+@:figure{ img = "./square-dots.svg", key = "#fig:hof:square-dots", caption = "Using `at` layout to position four dots at the corners of a square." }
 
 To understand how `at` layout works, and why we have to place the dots `on` each other, we need to know a bit more about how Doodle does layout.
 
@@ -107,7 +107,7 @@ c1.above(c2).above(c3)
 
 This shows how the origin and bounding box change as we combines `Images`.
 
-@:figure{ img = "src/pages/hof/debug.pdf+svg", key = "#fig:hof:debug", caption = "Using the `debug` method to inspect the origin and bounding box of an `Image`" }
+@:figure{ img = "./debug.svg", key = "#fig:hof:debug", caption = "Using the `debug` method to inspect the origin and bounding box of an `Image`" }
 
 When we layout `Images` using `above`, `beside`, or `on` it is the bounding boxes and origins that determine how the individual components are positioned relative to one another. For `on` the rule is that the origins are placed on top of one another. For `beside` the rule is that origins are horizontally aligned and placed so that the bounding boxes just touch. The origin of the compound image is placed equidistant from the left and right edges of the compound bounding box on the horizontal line that connects the origins of the component images. The rule for `above` is the same as `beside`, but we use vertical alignment instead of horizontal alignment.
 
@@ -203,7 +203,7 @@ This is a structural recursion, which is hopefully a familiar pattern by now.
 If we draw this we'll see the outline of a circle suggested by the triangles.
 See @:fref(hof:triangle-circle), which shows the result of `sample(72)`.
 
-@:figure{ img = "src/pages/hof/triangle-circle.pdf+svg", key = "#fig:hof:triangle-circle", caption = "Triangles arranged in a circle, using the code from `sample` above." }
+@:figure{ img = "./triangle-circle.svg", key = "#fig:hof:triangle-circle", caption = "Triangles arranged in a circle, using the code from `sample` above." }
 
 
 ### Parametric Curves as First-class Functions
@@ -263,4 +263,4 @@ def parametricSpiral(angle: Angle): Point =
 
 Use the parametric curves we have defined so far to create something interesting. There is an example in @:fref(hof:psychedelic-spirals)
 
-@:figure{ img = "src/pages/hof/psychedelic-spirals.pdf+svg", key = "hof:psychedelic-spirals", caption = "A picture created using the parametric curves we have seen so far." }
+@:figure{ img = "./psychedelic-spirals.svg", key = "hof:psychedelic-spirals", caption = "A picture created using the parametric curves we have seen so far." }

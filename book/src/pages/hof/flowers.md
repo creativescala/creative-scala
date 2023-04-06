@@ -12,7 +12,7 @@ In the previous section we saw that is was useful for methods to accept function
 
 We've seen all the basic steps we need to make our flowers. Now we just need to know the curve that makes the flower shape! The shape I used is known as the [rose curve][rose-curve]. One example is shown in @:fref(hof:rose7). 
 
-@:figure{ img = "src/pages/hof/rose7.pdf+svg", key = "#fig:hof:rose7", caption = "An example of the rose curve." }
+@:figure{ img = "./rose7.svg", key = "#fig:hof:rose7", caption = "An example of the rose curve." }
 
 The code for the parametric curve that gives this shape is below.
 
@@ -31,12 +31,12 @@ def rose(k: Int): Angle => Point =
 
 The `rose` method describes a family of curves. They all look similar, and we create individuals by choosing a particular value for the parameter `k`. In @:fref(hof:rose) we show more rose curves, this time with `k` as 5, 8, and 9 respectively.
 
-@:figure{ img = "src/pages/hof/rose.pdf+svg", key = "#fig:hof:rose", caption = "Examples of rose curves, with the parameter k chosen as 5, 8, or 9." }
+@:figure{ img = "./rose.svg", key = "#fig:hof:rose", caption = "Examples of rose curves, with the parameter k chosen as 5, 8, or 9." }
 
 
 Let's look at some other interesting curves. In @:fref(hof:lissajous) we show examples of a family of curves called [Lissajous curves][lissajous].
 
-@:figure{ img = "src/pages/hof/lissajous.pdf+svg", key = "#fig:hof:lissajous", caption = "Examples of Lissajous curves, with the parameters a and b chosen as 1, 2, or 3." }
+@:figure{ img = "./lissajous.svg", key = "#fig:hof:lissajous", caption = "Examples of Lissajous curves, with the parameters a and b chosen as 1, 2, or 3." }
 
 The code for this is
 
@@ -60,7 +60,7 @@ You might notice this code converts points to vectors and back again. This is a 
 
 In @:fref(hof:epicycloid) we see three examples created by choosing the parameters a, b, c, as (1, 6, 14), (7, 13, 25), and (1, 7, -21) respectively.
 
-@:figure{ img = "src/pages/hof/epicycloid.pdf+svg", key = "#fig:hof:epicycloid", caption = "Examples of epicycloid curves, with the parameters chosen as (1, 6, 14), (7, 13, 25), and (1, 7 -21)." }
+@:figure{ img = "./epicycloid.svg", key = "#fig:hof:epicycloid", caption = "Examples of epicycloid curves, with the parameters chosen as (1, 6, 14), (7, 13, 25), and (1, 7 -21)." }
 
 
 #### Exercise {-}
