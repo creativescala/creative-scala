@@ -1,3 +1,3 @@
 # Conclusions
 
-In this chapter we've focused on reinforcing our knowledge of structural recursion over the natural numbers, while introducing polar coordinates and exploring some of the creative possibilities they bring.
+In this chapter we've had two focuses. Firstly, we've reinforced our knowledge of structural recursion by working with it in a new content. We've also introduced polar coordinates and paths, and explored some of the creative possibilities they bring, expanding our capabilities as creative programmers.

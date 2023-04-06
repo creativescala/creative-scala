@@ -30,7 +30,9 @@ Create your own version of this concept.
 
 @:solution
 
-This is a little twist on the structural recursion pattern we've used so far. I extracted the styling into it's own method to make the code easier to read. I use the method `darkenBy` to reduce the lightness by the given percentage. Calling `darkenBy` with `1.0.normalized` decreases the lightness by one hundred percent, while calling it with `0.5.normalized` reduces the lightness by half. Squaring the `percentage` in `style` makes the lightness decrease more slowly. You could also try the square root (`Math.sqrt`) for a faster transition.
+This is a little twist on the structural recursion pattern we've used so far. The base case of my method is a triangle. A polygon with less than three points does not make a very interesting picture.
+
+I extracted the styling into it's own method to make the code easier to read. I use the method `darkenBy` to reduce the lightness by the given percentage. Calling `darkenBy` with `1.0.normalized` decreases the lightness by one hundred percent, while calling it with `0.5.normalized` reduces the lightness by half. Squaring the `percentage` in `style` makes the lightness decrease more slowly. You could also try the square root (`Math.sqrt`) for a faster transition.
 
 ```scala mdoc:silent
 def style(percentage: Double, image: Image): Image = {
@@ -48,10 +50,7 @@ def concentricPolygons(
 ): Image = {
   def loop(count: Int): Image =
     count match {
-      case 0 =>
-        regularPolygon(3, startRadius)
-          .strokeColor(Color.crimson)
-          .strokeWidth(3.0)
+      case 0 => style(0.0, regularPolygon(3, startRadius))
       case n =>
         loop(n - 1).on(
           style(
@@ -111,7 +110,7 @@ def polygonSpiral(
 
 ## Star Polygons
 
-Our method of constructing polygons was to join a vertex to its immediate neighbour with a straight line. If we skip one or more neighbours we get what is called a star polygon. The animation below illustrates how this construction works for an octagon.
+Our method of constructing polygons was to join a vertex to its immediate neighbour with a straight line. If we skip one or more neighbours we get what is called a star polygon. The animation below illustrates how this construction works for an octagon, where a vertex is joined to its third closest neighbour.
 
 @:doodle("star-construction", "Creative.starPolygonConstruction")
 
@@ -123,7 +122,7 @@ Take this idea and give it your own spin.
 
 @:solution
 
-I made a few mistakes in calculating the vertex that is joined to the current vertex, but got it right after a little while. Once again, the core is a structural recursion over the natural numbers. No styling in this code because I separately styled the three star polygons in the example above.
+I made a few mistakes in calculating the vertex that is joined to the current vertex, so don't feel bad if it took you a little while to work out the maths. Once again, the core is a structural recursion over the natural numbers. No styling in this code because I separately styled the three star polygons in the example above.
 
 ```scala mdoc:silent
 def starPolygon(sides: Int, radius: Int, skip: Int): Image = {

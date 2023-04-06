@@ -42,10 +42,7 @@ object Creative {
     ): Image = {
       def loop(count: Int): Image =
         count match {
-          case 0 =>
-            regularPolygon(3, startRadius)
-              .strokeColor(Color.crimson)
-              .strokeWidth(3.0)
+          case 0 => style(0.0, regularPolygon(3, startRadius))
           case n =>
             loop(n - 1).on(
               style(

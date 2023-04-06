@@ -6,7 +6,7 @@ import doodle.syntax.all._
 import doodle.image._
 ```
 
-In this section we'll learn about polar coordinates: what they are and how to create them in Doodle. We're interested in polar coordinates because they allow us to easily create regular polygons. We'll look at this in the final part of this section.
+In this section we'll learn about polar coordinates: what they are and how to create them in Doodle. We're interested in polar coordinates because they allow us to easily create regular polygons. We'll construct regular polygons in the final part of this section.
 
 
 ## Points in Two Dimensions
@@ -47,7 +47,7 @@ val polar = Point(5, 45.degrees)
 
 ## From Points to Polygons
 
-Drawing polygons is our ultimate goal, and polar coordinates allow us to easily specify the corners (vertices) of regular polygons. Look at the hexagon below. To specify the vertices in Cartesian coordinates we'd have to do some involved geometry. With polar coordinates, however, it's very simple. Each vertex is the same distance from the center but differs in angle, as the animation shows. In the case of the hexagon, each vertex is a 60 degree rotation from the one before. (This is because a full turn of 360 degrees must visit all vertices, and there are 6 evenly spaced vertices, so each vertex is a turn of 360/60 = 60 degrees.)
+Drawing polygons is our ultimate goal, and polar coordinates allow us to easily specify the corners, or vertices, of regular polygons. Look at the hexagon below. To specify the vertices in Cartesian coordinates we'd have to do some involved geometry. With polar coordinates, however, it's very simple. Each vertex is the same distance from the center but differs in angle, as the animation shows. In the case of the hexagon, each vertex is a 60 degree rotation from the one before. (This is because a full turn of 360 degrees must visit all vertices, and there are 6 evenly spaced vertices, so each vertex is a turn of 360/60 = 60 degrees.)
 
 @:doodle("points", "Polygons.points")
 
