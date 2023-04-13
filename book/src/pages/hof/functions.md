@@ -36,7 +36,88 @@ def polygonPoints(sides: Int, radius: Double): Image = {
 }
 ```
 
-As you can appreciate, there is an underlying pattern here that stays the same. In fact that's one of the points we're really emphasizing in this section: that there are these basic underlying patterns in programming that can adapt to many different situations.
+The details are different, but the underlying structure of the two examples is the same. In fact that's one of the points we're really emphasizing: that code has underlying patterns that apply in many different situations.
+
+When we see this repetition we might wonder if we can somehow capture the commonality in code, so we don't have to write it out again and again. This is what we're going to look at in this section, and in doing so we'll introduce functions.
+
+Let's start by putting the two structural recursions next to each other, and in the case of `polygonPoints` removing the surrounding code.
+
+```scala mdoc:silent:reset
+def stackedBoxes(count: Int): Image =
+  count match {
+    case 0 => Image.empty
+    case n => aBox.beside(stackedBoxes(n-1))
+  }
+
+def loop(count: Int): Image =
+  count match {
+    case 0 => Image.empty
+    case n =>
+      Image
+        .circle(5)
+        .at(Point(radius, turn * n))
+        .on(loop(n - 1))
+  }
+```
+
+If we keep the common parts of these methods and replace the parts that vary with `???` we end up with something like
+
+```scala
+def aMethod(count: Int): Image =
+  count match {
+    case 0 => Image.empty
+    case n => ??? aMethod(count - 1)
+  }
+```
+
+This is the code skeleton for structural recursion over the natural numbers.
+
+Now our challenge is to turn this into something we can actually use in Scala. Let's look at the recursive case in the code skeleton
+
+```scala
+case n => ??? aMethod(count - 1)
+```
+
+This is the only part that has a `???`. In the real methods we have
+
+```scala
+case n => aBox.beside(stackedBoxes(n-1))
+```
+
+and
+
+```scala
+case n =>
+  Image
+    .circle(5)
+    .at(Point(radius, turn * n))
+    .on(loop(n - 1))
+```
+
+We cannot use any kind of value we currently know about because:
+
+1. how we build from the result of the recursion changes (in one case it's `beside`, while we use `on` in the other); and
+2. in the case taken from `polygonPoints` we use the value `n` to determine how we create the `Image` at the current step.
+
+In other words, the value we build is parameterized by the result of the recursion and the value `n`. We could express this with a method
+
+```scala
+def build(n: Int, recursive: Image): Image = ???
+```
+
+and then, with different implementations of `build`, we could write both original methods in terms of
+
+```scala
+def aMethod(count: Int, build: ???): Image =
+  count match {
+    case 0 => Image.empty
+    case n => build(n, aMethod(count - 1))
+  }
+
+```
+
+However this won't work; we cannot pass a method as a parameter to a method. The solution, of course, is to use a function.
+
 
 A function is basically a method, but we can use a function as a first-class value:
 
