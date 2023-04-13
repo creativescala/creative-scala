@@ -68,6 +68,36 @@ Drawing this gives the output shown below.
 
 @:doodle("vertices", "Polygons.vertices")
 
+### Flexible Layout with `at`
+
+The example above uses a method we haven't seen before: `at`. This is another tool for laying out images, like `on`, `beside`, and `above`. `at` changes the position of an image relative to its origin. The understand this, and why we have to place the dots `on` each other, we need to understand how layout works in Doodle.
+
+Every `Image` in Doodle has a point called its *origin*, and a *bounding box* which determines the extent of the image. By convention the origin is in the center of the bounding box but this is not required. We can see the origin and bounding box of an `Image` by calling the `debug` method.
+
+The example code below uses `debug` to draw the origin and bounding box for:
+
+- the entire image, consisting of three circles;
+- the individual circles after they have been moved with `at`; and
+- the individual circles before shifting them with `at.`
+
+```scala mdoc:silent
+val c = Image.circle(40)
+val c1 = c.beside(c.at(10, 10)).beside(c.at(10, -10)).debug
+val c2 = c.debug.beside(c.at(10, 10).debug).beside(c.at(10, -10).debug)
+val c3 = c.debug.beside(c.debug.at(10, 10)).beside(c.debug.at(10, -10))
+val example = c1.above(c2).above(c3)
+```
+
+This produces the output shown below.
+
+@:doodle("debug", "PolygonsDebug.debug")
+
+When we layout `Images` using `above`, `beside`, or `on` it is the bounding boxes and origins that determine how the individual components are positioned relative to one another. For `on` the rule is that the origins are placed on top of one another. For `beside` the rule is that origins are horizontally aligned and placed so that the bounding boxes just touch. The origin of the compound image is placed equidistant from the left and right edges of the compound bounding box on the horizontal line that connects the origins of the component images. The rule for `above` is the same as `beside`, but we use vertical alignment instead of horizontal alignment.
+
+Using `at` moves an `Image` relative to its origin. So `c.at(10, 10)` moves the circle 10 units up and to the right relative to its origin.
+
+Taken together these rules explain the results we've seen. When drawing the polygon vertices, we want all the elements to share the same origin, so we use `on` to combine `Images` that we have moved using `at`.
+
 
 @:exercise("Get To The Point")
 
