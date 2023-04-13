@@ -1,4 +1,6 @@
-## Functions
+## Functions as Abstractions
+
+We have written a lot of structural recursions over the natural numbers. We started with code like
 
 ```scala mdoc:invisible
 import doodle.core._
@@ -7,6 +9,34 @@ import doodle.syntax.all._
 import doodle.image.syntax.all._
 import doodle.java2d._
 ```
+```scala mdoc:silent
+def stackedBoxes(count: Int): Image =
+  count match {
+    case 0 => Image.empty
+    case n => aBox.beside(stackedBoxes(n-1))
+  }
+```
+
+and more recently have been writing code like
+
+```scala mdoc:silent
+def polygonPoints(sides: Int, radius: Double): Image = {
+  val turn = (1.0 / sides).turns
+  def loop(count: Int): Image =
+    count match {
+      case 0 => Image.empty
+      case n =>
+        Image
+          .circle(5)
+          .at(Point(radius, turn * n))
+          .on(loop(n - 1))
+    }
+
+  loop(sides)
+}
+```
+
+As you can appreciate, there is an underlying pattern here that stays the same. In fact that's one of the points we're really emphasizing in this section: that there are these basic underlying patterns in programming that can adapt to many different situations.
 
 A function is basically a method, but we can use a function as a first-class value:
 
