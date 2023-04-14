@@ -93,7 +93,7 @@ fold(5, growingCircles)
 Let's try a fractal. Below is the Sierpinski triangle. Can you write this using `fold`? If not, why not? Can you change `fold` so you can write it using `fold`?
 
 @:doodle("sierpinski", "HofSierpinski.sierpinskiExample")
-                        HofSierpinski.sierpinskiExample
+
 @:solution
 The way the question is worded is a strong hint that we cannot write the Sierpinski triangle using `fold` as we have currently written it. The reason is that `fold`, as currently written, always uses `Image.empty` as the base case. For the Sierpinski triangle we need a different base case. The solution is to add another parameter to `fold` that allows us to change the base case.
 @:@
