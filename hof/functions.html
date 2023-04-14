@@ -315,10 +315,10 @@
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">times42</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   </span><span class="identifier">x</span><span> * </span><span class="number-literal">42</span></code></pre>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function</span><span> = </span><span class="identifier">times42</span><span> </span><span class="identifier">_</span><span>
-</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13937/0x0000000103a48040@5d512bbc</span></code></pre>
+</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13926/0x0000000103aa8840@362c4f</span></code></pre>
             <p>We can also write a method call but replace all parameters with <code>_</code> and Scala will convert the method to a function.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function2</span><span> = </span><span class="identifier">times42</span><span>(</span><span class="identifier">_</span><span>)
-</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13938/0x0000000103aad040@54805129</span></code></pre>
+</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13927/0x0000000103aa9040@2626720d</span></code></pre>
             
             <h4 id="exercises" class="section">Exercises</h4>
             <div class="exercise">
@@ -335,17 +335,17 @@
               <div class="solution-body">
                 <p>The first function is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res8: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13939/0x0000000103aae040@3c72f5a8</span></code></pre>
+</span><span class="comment">// res8: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13928/0x0000000103aaa040@7a8a387e</span></code></pre>
                 <p>The second is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res9: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13940/0x0000000103aae840@8d4295c</span></code></pre>
+</span><span class="comment">// res9: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13929/0x0000000103aaa840@15c70827</span></code></pre>
                 <p>The third is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res10: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13941/0x0000000103aaf840@5c0cff31</span></code></pre>
+</span><span class="comment">// res10: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13930/0x0000000103aab840@24221a84</span></code></pre>
               </div>
             </div>
             <div class="exercise">

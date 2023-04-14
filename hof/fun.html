@@ -215,7 +215,6 @@
             <p>Let&#39;s try a fractal. Below is the Sierpinski triangle. Can you write this using <code>fold</code>? If not, why not? Can you change <code>fold</code> so you can write it using <code>fold</code>?</p>
             <div class="doodle" id="sierpinski"></div>
             <script>HofSierpinski.sierpinskiExample("sierpinski")</script>
-            <pre><code>                    HofSierpinski.sierpinskiExample</code></pre>
             <div class="solution">
               <div class="solution-body">
                 <p>The way the question is worded is a strong hint that we cannot write the Sierpinski triangle using <code>fold</code> as we have currently written it. The reason is that <code>fold</code>, as currently written, always uses <code>Image.empty</code> as the base case. For the Sierpinski triangle we need a different base case. The solution is to add another parameter to <code>fold</code> that allows us to change the base case.</p>
