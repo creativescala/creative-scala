@@ -7,9 +7,8 @@ import doodle.core._
 import doodle.image._
 import doodle.syntax.all._
 import doodle.image.syntax.all._
-import doodle.java2d._
 ```
-```scala mdoc:silent
+```scala
 def stackedBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -42,7 +41,13 @@ When we see this repetition we might wonder if we can somehow capture the common
 
 Let's start by putting the two structural recursions next to each other, and in the case of `polygonPoints` removing the surrounding code.
 
-```scala mdoc:silent:reset
+```scala mdoc:invisible:reset
+import doodle.core._
+import doodle.image._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
+```
+```scala
 def stackedBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
@@ -94,10 +99,10 @@ case n =>
     .on(loop(n - 1))
 ```
 
-We cannot use any kind of value we currently know about because:
+To capture in code we need to allow:
 
-1. how we build from the result of the recursion changes (in one case it's `beside`, while we use `on` in the other); and
-2. in the case taken from `polygonPoints` we use the value `n` to determine how we create the `Image` at the current step.
+1. varying how we build the result of the recursion (in one case it's `beside`, while we use `on` in the other); and
+2. creating the `Image` at the current step to depend on `n` (as in the case taken from `polygonPoints`, where we use the value `n` to determine the location of the circle.)
 
 In other words, the value we build is parameterized by the result of the recursion and the value `n`. We could express this with a method
 
@@ -105,7 +110,7 @@ In other words, the value we build is parameterized by the result of the recursi
 def build(n: Int, recursive: Image): Image = ???
 ```
 
-and then, with different implementations of `build`, we could write both original methods in terms of
+and then, with two different implementations of `build`, we could write both original methods in terms of
 
 ```scala
 def aMethod(count: Int, build: ???): Image =
@@ -118,7 +123,6 @@ def aMethod(count: Int, build: ???): Image =
 
 However this won't work; we cannot pass a method as a parameter to a method. The solution, of course, is to use a function.
 
-
 A function is basically a method, but we can use a function as a first-class value:
 
 - we can pass it as an argument or parameter to a method or function; 
@@ -127,7 +131,7 @@ A function is basically a method, but we can use a function as a first-class val
 
 Here's an example where we give the name `add42` to a function that adds 42 to its input.
 
-```scala mdoc
+```scala mdoc:silent
 val add42 = (x: Int) => x + 42
 ```
 
@@ -140,20 +144,19 @@ add42(0)
 This is an example of a function literal. Let's learn about them now.
 
 
-
 ### Function Literals
 
 We've just seen an example of a function literal, which was
 
-```scala mdoc
+```scala mdoc:silent
 (x: Int) => x + 42
 ```
 
 The general syntax is an extension of this.
 
 
-<div class="callout callout-info">
-#### Function Literal Syntax {-}
+@:callout(info)
+#### Function Literal Syntax
 
 The syntax for declaring a function literal is
 
@@ -167,7 +170,7 @@ where
 - the `expression` determines the result of the function.
 
 The parentheses around the parameters are optional if the function has just a single parameter.
-</div>
+@:@
 
 
 
@@ -180,7 +183,7 @@ The same pattern generalises from functions of no arguments to an arbitrary numb
 
 Here's an example. We create a method that accepts a function, and that function is from `Int` to `Int`. We write this type as `Int => Int` or `(Int) => Int`.
 
-```scala mdoc
+```scala mdoc:silent
 def squareF(x: Int, f: Int => Int): Int =
   f(x) * f(x)
 ```
@@ -201,8 +204,8 @@ Note that we didn't have to put the parameter type on the function literal in th
 
 
 
-<div class="callout callout-info">
-#### Function Type Declaration Syntax {-}
+@:callout(info)
+#### Function Type Declaration Syntax
 
 To declare a function type, write
 
@@ -220,7 +223,7 @@ If a function only has one parameter the parentheses may be dropped:
 ```scala
 A => B
 ```
-</div>
+@:@
 
 
 
@@ -229,17 +232,23 @@ A => B
 All first class values are objects in Scala, including functions.
 This means functions can have methods, including some useful means for composition.
 
-```scala mdoc
+```scala mdoc:silent
 val addTen = (a: Int) => a + 10
 val double = (a: Int) => a * 2
 val combined = addTen.andThen(double) // this composes the two functions
+```
+
+```scala mdoc
 combined(5)
 ```
 
 Calling a function is actually calling the method called `apply` on the function. Scala allows a shortcut for any object that has a method called `apply`, where can drop the method name `apply` and write the call like a function call. This means the following are equivalent.
 
-```scala mdoc
+```scala mdoc:silent
 val halve = (a: Int) => a / 2
+```
+
+```scala mdoc
 halve(4)
 halve.apply(4)
 ```
@@ -249,10 +258,12 @@ halve.apply(4)
 
 Methods are very similar to functions, so Scala provides a way to convert functions to methods. If we follow a method name with a `_` it will be converted to a function.
 
-```scala mdoc
+```scala mdoc:silent
 def times42(x: Int): Int =
   x * 42
+```
 
+```scala mdoc
 val times42Function = times42 _
 ```
 
@@ -264,7 +275,7 @@ val times42Function2 = times42(_)
 
 
 
-#### Exercises {-}
+#### Exercises
 
 ##### Function Literals
 
