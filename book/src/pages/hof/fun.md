@@ -113,7 +113,7 @@ import doodle.image.syntax.all._
 def fold(count: Int, base: Image, build: (Int, Image) => Image): Image =
   count match {
     case 0 => base
-    case n => build(n, fold(count - 1, build))
+    case n => build(n, fold(count - 1, base, build))
   }
 ```
 
