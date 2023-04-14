@@ -23,7 +23,7 @@
 <body>
     <nav id="topbar"><p><a href="index.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="parametric-curves.html">→</a></p></nav>
+<p><a href="fun.html">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -79,6 +79,7 @@
           <li class="level2 nav-leaf"><a href="../polygons/05-conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="index.html">Horticulture and Higher-order Functions</a></li>
           <li class="level2 active nav-leaf"><a href="#">Functions as Abstractions</a></li>
+          <li class="level2 nav-leaf"><a href="fun.html">Fun with Functions</a></li>
           <li class="level2 nav-leaf"><a href="parametric-curves.html">Parametric Curves</a></li>
           <li class="level2 nav-leaf"><a href="flowers.html">Flowers and Other Curves</a></li>
           <li class="level2 nav-leaf"><a href="hof.html">Higher Order Methods and Functions</a></li>
@@ -314,10 +315,10 @@
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">times42</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   </span><span class="identifier">x</span><span> * </span><span class="number-literal">42</span></code></pre>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function</span><span> = </span><span class="identifier">times42</span><span> </span><span class="identifier">_</span><span>
-</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13889/0x0000000103ab0840@64360893</span></code></pre>
+</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13896/0x0000000103a86840@a1963d7</span></code></pre>
             <p>We can also write a method call but replace all parameters with <code>_</code> and Scala will convert the method to a function.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function2</span><span> = </span><span class="identifier">times42</span><span>(</span><span class="identifier">_</span><span>)
-</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13890/0x0000000103ab1840@77de4bce</span></code></pre>
+</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13897/0x0000000103a87040@3106ea51</span></code></pre>
             
             <h4 id="exercises" class="section">Exercises</h4>
             <div class="exercise">
@@ -334,17 +335,17 @@
               <div class="solution-body">
                 <p>The first function is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res8: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13891/0x0000000103ab2040@164ff975</span></code></pre>
+</span><span class="comment">// res8: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13898/0x0000000103a86040@285c40f4</span></code></pre>
                 <p>The second is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res9: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13892/0x0000000103ab3040@2bbcdda6</span></code></pre>
+</span><span class="comment">// res9: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13899/0x0000000103a85840@4831a72</span></code></pre>
                 <p>The third is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res10: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13893/0x0000000103ab3840@7f1a2ad2</span></code></pre>
+</span><span class="comment">// res10: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13900/0x0000000103a81040@4545d6ee</span></code></pre>
               </div>
             </div>
             <div class="exercise">
@@ -360,7 +361,7 @@
                 <p>The type is <code>Angle =&gt; Point</code>. This means <code>roseFn</code> is a function that takes a single argument of type <code>Angle</code> and returns a value of type <code>Point</code>. In other words, <code>roseFn</code> transforms an <code>Angle</code> to a <code>Point</code>.</p>
               </div>
             </div>
-            <p class="nextPage"><a href="parametric-curves.html">Parametric Curves→</a></p>
+            <p class="nextPage"><a href="fun.html">Fun with Functions→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
