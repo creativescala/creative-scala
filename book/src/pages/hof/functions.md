@@ -146,7 +146,7 @@ This method definition says that the parameter `build` is a function from two ar
 ```scala mdoc:silent
 val aBox = Image.square(20).fillColor(Color.royalBlue).strokeColor(Color.crimson)
 
-val stack = (count: Int, image: Image) => aBox.above(image)
+val stack = (count: Int, image: Image) => aBox.beside(image)
 ```
 
 We can now call `fold` with `stack`.

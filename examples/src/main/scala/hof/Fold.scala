@@ -24,7 +24,7 @@ object Fold {
     val aBox =
       Image.square(20).fillColor(Color.royalBlue).strokeColor(Color.crimson)
 
-    val stack = (count: Int, image: Image) => aBox.above(image)
+    val stack = (count: Int, image: Image) => aBox.beside(image)
 
     fold(5, stack).drawWithFrame(Frame(id))
   }
