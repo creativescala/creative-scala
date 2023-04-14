@@ -1,15 +1,16 @@
 ## Functions as Abstractions
 
-Let's motivate functions by look at structural recursion over the natural numbers, and trying to capture in code the pattern we've used many times.
-
-We have written a lot of structural recursions over the natural numbers. We started with code like
-
 ```scala mdoc:invisible
 import doodle.core._
 import doodle.image._
 import doodle.syntax.all._
 import doodle.image.syntax.all._
 ```
+
+Let's motivate functions by look at structural recursion over the natural numbers, and trying to capture in code the pattern we've used many times.
+
+We have written a lot of structural recursions over the natural numbers. We started with code like
+
 ```scala
 def stackedBoxes(count: Int): Image =
   count match {
