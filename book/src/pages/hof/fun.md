@@ -90,4 +90,44 @@ fold(5, growingCircles)
 ```
 @:@
 
-Let's try a fractal.
+Let's try a fractal. Below is the Sierpinski triangle. Can you write this using `fold`? If not, why not? Can you change `fold` so you can write it using `fold`?
+
+@:doodle("sierpinski", "HofSierpinski.sierpinskiExample")
+                        HofSierpinski.sierpinskiExample
+@:solution
+The way the question is worded is a strong hint that we cannot write the Sierpinski triangle using `fold` as we have currently written it. The reason is that `fold`, as currently written, always uses `Image.empty` as the base case. For the Sierpinski triangle we need a different base case. The solution is to add another parameter to `fold` that allows us to change the base case.
+@:@
+
+
+## A More General Fold
+
+In the previous section we saw there are some kinds of `Images` we cannot create using `fold`. A more general fold will allow us to also vary the base case as well as the recursive case. This is simply another parameter to the method.
+
+```scala mdoc:invisible:reset
+import doodle.core._
+import doodle.image._
+import doodle.syntax.all._
+import doodle.image.syntax.all._
+```
+```scala mdoc:silent
+def fold(count: Int, base: Image, build: (Int, Image) => Image): Image =
+  count match {
+    case 0 => base
+    case n => build(n, fold(count - 1, build))
+  }
+```
+
+Using the version of fold we can create the Sierpinski triangle. 
+
+```scala mdoc:silent
+val sierpinski: (Int, Image) => Image =
+  (count, image) => image.above(image.beside(image))
+
+fold(
+  5,
+  Image.equilateralTriangle(10).strokeColor(Color.hotpink),
+  sierpinski
+)
+```
+
+To make a fully general fold we'd need to be able to change the result type. This requires *generic types*, which we haven't encountered yet. 

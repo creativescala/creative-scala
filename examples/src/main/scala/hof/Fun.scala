@@ -1,4 +1,4 @@
-package polygons
+package hof
 
 import cats.implicits.*
 import doodle.core.*
@@ -19,12 +19,6 @@ object HofFractals {
       case 0 => Image.empty
       case n => build(n, fold(count - 1, build))
     }
-
-  @JSExport
-  def sierpinskiExample(id: String): Unit = {
-    val sierpinski: (Int, Image) => Image =
-      (count, image) => image.above(image.beside(image))
-  }
 
   @JSExport
   def gradientBoxesExample(id: String): Unit = {

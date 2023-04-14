@@ -1,4 +1,4 @@
-package polygons
+package hof
 
 import cats.implicits.*
 import doodle.core.*
