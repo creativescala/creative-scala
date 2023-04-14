@@ -239,7 +239,7 @@
             <p>This method definition says that the parameter <code>build</code> is a function from two arguments (an <code>Int</code> and an <code>Image</code>) to an <code>Image</code>. To call <code>fold</code> we need to create a function, so let&#39;s see an example of that.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">aBox</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">crimson</span><span>)
 
-</span><span class="keyword">val</span><span> </span><span class="identifier">stack</span><span> = (</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">image</span><span>)</span></code></pre>
+</span><span class="keyword">val</span><span> </span><span class="identifier">stack</span><span> = (</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>)</span></code></pre>
             <p>We can now call <code>fold</code> with <code>stack</code>.</p>
             <pre><code class="nohighlight"><span class="identifier">fold</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="identifier">stack</span><span>)</span></code></pre>
             <p>This produes the output below.</p>
@@ -314,10 +314,10 @@
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">times42</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   </span><span class="identifier">x</span><span> * </span><span class="number-literal">42</span></code></pre>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function</span><span> = </span><span class="identifier">times42</span><span> </span><span class="identifier">_</span><span>
-</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13982/0x0000000103a77840@193a53c8</span></code></pre>
+</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13889/0x0000000103ab0840@64360893</span></code></pre>
             <p>We can also write a method call but replace all parameters with <code>_</code> and Scala will convert the method to a function.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function2</span><span> = </span><span class="identifier">times42</span><span>(</span><span class="identifier">_</span><span>)
-</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13983/0x0000000103a78040@2d8dd57f</span></code></pre>
+</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13890/0x0000000103ab1840@77de4bce</span></code></pre>
             
             <h4 id="exercises" class="section">Exercises</h4>
             <div class="exercise">
@@ -334,17 +334,17 @@
               <div class="solution-body">
                 <p>The first function is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res8: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13984/0x0000000103a76840@759552aa</span></code></pre>
+</span><span class="comment">// res8: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13891/0x0000000103ab2040@164ff975</span></code></pre>
                 <p>The second is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res9: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13985/0x0000000103a75040@4c0b6850</span></code></pre>
+</span><span class="comment">// res9: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13892/0x0000000103ab3040@2bbcdda6</span></code></pre>
                 <p>The third is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res10: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13986/0x0000000103a74040@7e4c60a</span></code></pre>
+</span><span class="comment">// res10: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13893/0x0000000103ab3840@7f1a2ad2</span></code></pre>
               </div>
             </div>
             <div class="exercise">
