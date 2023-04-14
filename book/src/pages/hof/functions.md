@@ -1,5 +1,7 @@
 ## Functions as Abstractions
 
+Let's motivate functions by look at structural recursion over the natural numbers, and trying to capture in code the pattern we've used many times.
+
 We have written a lot of structural recursions over the natural numbers. We started with code like
 
 ```scala mdoc:invisible
@@ -99,7 +101,7 @@ case n =>
     .on(loop(n - 1))
 ```
 
-To capture in code we need to allow:
+To capture this in code we need to allow:
 
 1. varying how we build the result of the recursion (in one case it's `beside`, while we use `on` in the other); and
 2. creating the `Image` at the current step to depend on `n` (as in the case taken from `polygonPoints`, where we use the value `n` to determine the location of the circle.)
@@ -116,7 +118,7 @@ and then, with two different implementations of `build`, we could write both ori
 def aMethod(count: Int, build: ???): Image =
   count match {
     case 0 => Image.empty
-    case n => build(n, aMethod(count - 1))
+    case n => build(n, aMethod(count - 1, build))
   }
 
 ```
@@ -129,19 +131,35 @@ A function is basically a method, but we can use a function as a first-class val
 - we can return it from a method or function; and
 - we can give it a name using `val`.
 
-Here's an example where we give the name `add42` to a function that adds 42 to its input.
+Here's how we can solve the problem above using functions. First I'm going to define the method we've been calling `aMethod` above. I'm going to call it `fold`, which is the usual name for this kind of method. (This isn't an entirely correct implementation for fold, but we don't have all the tools to do it properly right now. This is something we'll come back to in a later chapter.)
 
 ```scala mdoc:silent
-val add42 = (x: Int) => x + 42
+def fold(count: Int, build: (Int, Image) => Image): Image =
+  count match {
+    case 0 => Image.empty
+    case n => build(n, fold(count - 1, build))
+  }
 ```
 
-We can call it just like we'd call a method.
+This method definition says that the parameter `build` is a function from two arguments (an `Int` and an `Image`) to an `Image`. To call `fold` we need to create a function, so let's see an example of that.
 
-```scala mdoc
-add42(0)
+```scala mdoc:silent
+val aBox = Image.square(20).fillColor(Color.royalBlue).strokeColor(Color.crimson)
+
+val stack = (count: Int, image: Image) => aBox.above(image)
 ```
 
-This is an example of a function literal. Let's learn about them now.
+We can now call `fold` with `stack`.
+
+```scala mdoc:silent
+fold(5, stack)
+```
+
+This produes the output below.
+
+@:doodle("fold", "HofFold.stack")
+
+Now that we've seen an example of functions, let's go into the details of defining and using them.
 
 
 ### Function Literals
@@ -149,7 +167,7 @@ This is an example of a function literal. Let's learn about them now.
 We've just seen an example of a function literal, which was
 
 ```scala mdoc:silent
-(x: Int) => x + 42
+(count: Int, image: Image) => aBox.above(image)
 ```
 
 The general syntax is an extension of this.
@@ -188,8 +206,11 @@ def squareF(x: Int, f: Int => Int): Int =
   f(x) * f(x)
 ```
 
-We can pass `add42` to this method
+We can define a function `add42`, and pass it to this method
 
+```scala mdoc:silent
+val add42 = (x: Int) => x + 42
+```
 ```scala mdoc
 squareF(0, add42)
 ```
@@ -277,15 +298,16 @@ val times42Function2 = times42(_)
 
 #### Exercises
 
-##### Function Literals
+@:exercise(Function Literals)
 
 Let's get some practice writing function literals. Write a function literal that:
 
 - squares it's `Int` input;
 - has a `Color` parameter and spins the hue of that `Color` by 15 degrees; and
 - takes an `Image` input and creates four copies in a row, where each copy is rotated by 90 degrees relative to the previous image (use the `rotate` method on `Image` to achieve this.)
+@:@
 
-<div class="solution">
+@:solution
 The first function is
 
 ```scala mdoc
@@ -307,11 +329,11 @@ The third is
     .beside(image.rotate(270.degrees))
     .beside(image.rotate(360.degrees))
 ```
-</div>
+@:@
 
 
 
-##### Function Types {-}
+@:exercise(Function Types)
 
 Here's an interesting function we'll do more with in later sections. We don't need to understand what it does right now, though you might want to experiment with it.
 
@@ -321,7 +343,8 @@ val roseFn = (angle: Angle) =>
 ```
 
 What is the type of the function `roseFn` defined above? What does this type mean?
+@:@
 
-<div class="solution">
+@:solution
 The type is `Angle => Point`. This means `roseFn` is a function that takes a single argument of type `Angle` and returns a value of type `Point`. In other words, `roseFn` transforms an `Angle` to a `Point`.
-</div>
+@:@
