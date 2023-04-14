@@ -212,7 +212,33 @@
                 <pre><code class="nohighlight"><span class="identifier">fold</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="identifier">growingCircles</span><span>)</span></code></pre>
               </div>
             </div>
-            <p>Let&#39;s try a fractal.</p>
+            <p>Let&#39;s try a fractal. Below is the Sierpinski triangle. Can you write this using <code>fold</code>? If not, why not? Can you change <code>fold</code> so you can write it using <code>fold</code>?</p>
+            <div class="doodle" id="sierpinski"></div>
+            <script>HofSierpinski.sierpinskiExample("sierpinski")</script>
+            <pre><code>                    HofSierpinski.sierpinskiExample</code></pre>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The way the question is worded is a strong hint that we cannot write the Sierpinski triangle using <code>fold</code> as we have currently written it. The reason is that <code>fold</code>, as currently written, always uses <code>Image.empty</code> as the base case. For the Sierpinski triangle we need a different base case. The solution is to add another parameter to <code>fold</code> that allows us to change the base case.</p>
+              </div>
+            </div>
+            
+            <h2 id="a-more-general-fold" class="section">A More General Fold</h2>
+            <p>In the previous section we saw there are some kinds of <code>Images</code> we cannot create using <code>fold</code>. A more general fold will allow us to also vary the base case as well as the recursive case. This is simply another parameter to the method.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">fold</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">base</span><span>: </span><span class="type-name">Image</span><span>, </span><span class="identifier">build</span><span>: (</span><span class="type-name">Int</span><span>, </span><span class="type-name">Image</span><span>) =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="identifier">base</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">build</span><span>(</span><span class="identifier">n</span><span>, </span><span class="identifier">fold</span><span>(</span><span class="identifier">count</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">base</span><span>, </span><span class="identifier">build</span><span>))
+  }</span></code></pre>
+            <p>Using the version of fold we can create the Sierpinski triangle. </p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">sierpinski</span><span>: (</span><span class="type-name">Int</span><span>, </span><span class="type-name">Image</span><span>) =&gt; </span><span class="type-name">Image</span><span> =
+  (</span><span class="identifier">count</span><span>, </span><span class="identifier">image</span><span>) =&gt; </span><span class="identifier">image</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>))
+
+</span><span class="identifier">fold</span><span>(
+  </span><span class="number-literal">5</span><span>,
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">equilateralTriangle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">hotpink</span><span>),
+  </span><span class="identifier">sierpinski</span><span>
+)</span></code></pre>
+            <p>To make a fully general fold we&#39;d need to be able to change the result type. This requires <em>generic types</em>, which we haven&#39;t encountered yet. </p>
             <p class="nextPage"><a href="parametric-curves.html">Parametric Curves→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
