@@ -79,7 +79,7 @@
           <li class="level2 nav-leaf"><a href="../polygons/05-conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
           <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
-          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions as Abstractions</a></li>
           <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
           <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
           <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
@@ -346,15 +346,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$13824/0x0000000103a3a040@4fddde63
+//           f = cats.free.Free$$Lambda$13825/0x0000000103a69840@6025b6e8
 //         ),
-//         f = cats.free.Free$$Lambda$13824/0x0000000103a3a040@65de60af
+//         f = cats.free.Free$$Lambda$13825/0x0000000103a69840@357085e2
 //       ),
-//       f = cats.free.Free$$Lambda$13824/0x0000000103a3a040@7985aa3e
+//       f = cats.free.Free$$Lambda$13825/0x0000000103a69840@6d266b78
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$13842/0x0000000103a81040@175485ed
+//     f = repl.MdocSession$MdocApp5$$Lambda$13843/0x0000000103a7d040@687f8298
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$13845/0x0000000103a83040@365b7fa2
+//   f = repl.MdocSession$MdocApp5$$Lambda$13846/0x0000000103a7a840@25a0eb89
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -375,7 +375,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$13824/0x0000000103a3a040@2096aade
+//   f = cats.free.Free$$Lambda$13825/0x0000000103a69840@14ce254a
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -383,9 +383,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$13824/0x0000000103a3a040@2096aade
+//     f = cats.free.Free$$Lambda$13825/0x0000000103a69840@14ce254a
 //   ),
-//   f = cats.free.Free$$Lambda$13824/0x0000000103a3a040@749630a8
+//   f = cats.free.Free$$Lambda$13825/0x0000000103a69840@4aedf100
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =

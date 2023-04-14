@@ -79,7 +79,7 @@
           <li class="level2 nav-leaf"><a href="../polygons/05-conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../hof/">Horticulture and Higher-order Functions</a></li>
           <li class="level2 nav-leaf"><a href="../hof/parametric-curves.html">Parametric Curves</a></li>
-          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../hof/functions.html">Functions as Abstractions</a></li>
           <li class="level2 nav-leaf"><a href="../hof/flowers.html">Flowers and Other Curves</a></li>
           <li class="level2 nav-leaf"><a href="../hof/hof.html">Higher Order Methods and Functions</a></li>
           <li class="level2 nav-leaf"><a href="../hof/exercises.html">Exercises</a></li>
@@ -167,7 +167,7 @@
 // )</span></code></pre>
             <p>No random numbers are actually created until we call the <code>run</code> method.</p>
             <pre><code class="nohighlight"><span class="identifier">randomDouble</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res0: Double = 0.5700743290760821</span></code></pre>
+</span><span class="comment">// res0: Double = 0.246625758487795</span></code></pre>
             <p>The type <code>Random[Double]</code> indicates we have something that will produce a random <code>Double</code> when we <code>run</code> it. Just like with <code>Image</code> and <code>draw</code>, substitution holds with <code>Random</code> up until the point we call <code>run</code>.</p>
             <p>Table Table generative:random shows some of the ways to construct <code>Random</code> values.</p>
             <hr>
@@ -205,9 +205,9 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)</span></code></pre>
             <p>When we <code>run</code> <code>RandomAngle</code> we can generate randomly created <code>Angle</code></p>
             <pre><code class="nohighlight"><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res1: Angle = Angle(5.102001770067568)
+</span><span class="comment">// res1: Angle = Angle(4.824692179369128)
 </span><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res2: Angle = Angle(5.482589914670277)</span></code></pre>
+</span><span class="comment">// res2: Angle = Angle(5.295338554774298)</span></code></pre>
             
             <h3 id="exercises" class="section">Exercises {-}</h3>
             
