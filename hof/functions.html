@@ -159,7 +159,7 @@
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">stackedBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
-    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">stackedBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">stackedBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
   }</span></code></pre>
             <p>and more recently have been writing code like</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">polygonPoints</span><span>(</span><span class="identifier">sides</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Image</span><span> = {
@@ -176,8 +176,8 @@
 
   </span><span class="identifier">loop</span><span>(</span><span class="identifier">sides</span><span>)
 }</span></code></pre>
-            <p>The details are different, but the underlying structure of the two examples is the same. In fact that&#39;s one of the points we&#39;re really emphasizing: that code has underlying patterns that apply in many different situations.</p>
-            <p>When we see this repetition we might wonder if we can somehow capture the commonality in code, so we don&#39;t have to write it out again and again. This is what we&#39;re going to look at in this section, and in doing so we&#39;ll introduce functions.</p>
+            <p>The details are different, but the underlying structure of the two examples is the same. In fact that&#39;s one of the points we&#39;re emphasizing: that code has underlying patterns that apply in many different situations.</p>
+            <p>When we see this repetition we might wonder if we can somehow capture it in code, so we don&#39;t have to write it out again and again. We&#39;re going to do this in this section, and in doing so we&#39;ll introduce functions.</p>
             <p>Let&#39;s start by putting the two structural recursions next to each other, and in the case of <code>polygonPoints</code> removing the surrounding code.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">stackedBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
@@ -194,7 +194,7 @@
         .</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">turn</span><span> * </span><span class="identifier">n</span><span>))
         .</span><span class="identifier">on</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
   }</span></code></pre>
-            <p>If we keep the common parts of these methods and replace the parts that vary with <code>???</code> we end up with something like</p>
+            <p>Keeping the common parts of these methods, and replacing those that vary with <code>???</code>, leaves us with something like</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">aMethod</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
@@ -203,7 +203,7 @@
             <p>This is the code skeleton for structural recursion over the natural numbers.</p>
             <p>Now our challenge is to turn this into something we can actually use in Scala. Let&#39;s look at the recursive case in the code skeleton</p>
             <pre><code class="nohighlight"><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; ??? </span><span class="identifier">aMethod</span><span>(</span><span class="identifier">count</span><span> - </span><span class="number-literal">1</span><span>)</span></code></pre>
-            <p>This is the only part that has a <code>???</code>. In the real methods we have</p>
+            <p>This is the only part that has a <code>???</code>. In the actual methods we have</p>
             <pre><code class="nohighlight"><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">stackedBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))</span></code></pre>
             <p>and</p>
             <pre><code class="nohighlight"><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
@@ -211,10 +211,11 @@
     .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">5</span><span>)
     .</span><span class="identifier">at</span><span>(</span><span class="type-name">Point</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">turn</span><span> * </span><span class="identifier">n</span><span>))
     .</span><span class="identifier">on</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))</span></code></pre>
+            <p>respectively.</p>
             <p>To capture this in code we need to allow:</p>
             <ol class="arabic">
               <li>varying how we build the result of the recursion (in one case it&#39;s <code>beside</code>, while we use <code>on</code> in the other); and</li>
-              <li>creating the <code>Image</code> at the current step to depend on <code>n</code> (as in the case taken from <code>polygonPoints</code>, where we use the value <code>n</code> to determine the location of the circle.)</li>
+              <li>the <code>Image</code> at the current step to depend on <code>n</code> (as in the case taken from <code>polygonPoints</code>, where we use the value <code>n</code> to determine the location of the circle.)</li>
             </ol>
             <p>In other words, the value we build is parameterized by the result of the recursion and the value <code>n</code>. We could express this with a method</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">build</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">recursive</span><span>: </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> = ???</span></code></pre>
@@ -314,11 +315,13 @@
             <p>Methods are very similar to functions, so Scala provides a way to convert functions to methods. If we follow a method name with a <code>_</code> it will be converted to a function.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">times42</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   </span><span class="identifier">x</span><span> * </span><span class="number-literal">42</span></code></pre>
-            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function</span><span> = </span><span class="identifier">times42</span><span> </span><span class="identifier">_</span><span>
-</span><span class="comment">// times42Function: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13926/0x0000000103aa8840@362c4f</span></code></pre>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function</span><span> = </span><span class="identifier">times42</span><span> </span><span class="identifier">_</span></code></pre>
+            <pre><code class="nohighlight"><span class="identifier">times42Function</span><span>(</span><span class="number-literal">2</span><span>)
+</span><span class="comment">// res8: Int = 84</span></code></pre>
             <p>We can also write a method call but replace all parameters with <code>_</code> and Scala will convert the method to a function.</p>
-            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function2</span><span> = </span><span class="identifier">times42</span><span>(</span><span class="identifier">_</span><span>)
-</span><span class="comment">// times42Function2: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13927/0x0000000103aa9040@2626720d</span></code></pre>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">times42Function2</span><span> = </span><span class="identifier">times42</span><span>(</span><span class="identifier">_</span><span>)</span></code></pre>
+            <pre><code class="nohighlight"><span class="identifier">times42Function2</span><span>(</span><span class="number-literal">2</span><span>)
+</span><span class="comment">// res9: Int = 84</span></code></pre>
             
             <h4 id="exercises" class="section">Exercises</h4>
             <div class="exercise">
@@ -335,17 +338,17 @@
               <div class="solution-body">
                 <p>The first function is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res8: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13928/0x0000000103aaa040@7a8a387e</span></code></pre>
+</span><span class="comment">// res10: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$15391/0x0000000103ea0040@ffce937</span></code></pre>
                 <p>The second is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res9: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13929/0x0000000103aaa840@15c70827</span></code></pre>
+</span><span class="comment">// res11: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$15392/0x0000000103ea0840@3549840c</span></code></pre>
                 <p>The third is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res10: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13930/0x0000000103aab840@24221a84</span></code></pre>
+</span><span class="comment">// res12: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$15393/0x0000000103ea1840@115ce546</span></code></pre>
               </div>
             </div>
             <div class="exercise">
@@ -354,7 +357,7 @@
               <p>Here&#39;s an interesting function we&#39;ll do more with in later sections. We don&#39;t need to understand what it does right now, though you might want to experiment with it.</p>
               <pre><code>val roseFn = (angle: Angle) =&gt;
   Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)</code></pre>
-              <p>What is the type of the function <code>roseFn</code> defined above? What does this type mean?</p>
+              <p>What is the type of the function <code>roseFn</code> defined above? What does this type tell us?</p>
             </div>
             <div class="solution">
               <div class="solution-body">

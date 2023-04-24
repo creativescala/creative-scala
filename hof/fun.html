@@ -228,7 +228,7 @@
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="identifier">base</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">build</span><span>(</span><span class="identifier">n</span><span>, </span><span class="identifier">fold</span><span>(</span><span class="identifier">count</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">base</span><span>, </span><span class="identifier">build</span><span>))
   }</span></code></pre>
-            <p>Using the version of fold we can create the Sierpinski triangle. </p>
+            <p>Using this version of fold we can create the Sierpinski triangle. </p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">sierpinski</span><span>: (</span><span class="type-name">Int</span><span>, </span><span class="type-name">Image</span><span>) =&gt; </span><span class="type-name">Image</span><span> =
   (</span><span class="identifier">count</span><span>, </span><span class="identifier">image</span><span>) =&gt; </span><span class="identifier">image</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>))
 
@@ -237,7 +237,7 @@
   </span><span class="type-name">Image</span><span>.</span><span class="identifier">equilateralTriangle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">hotpink</span><span>),
   </span><span class="identifier">sierpinski</span><span>
 )</span></code></pre>
-            <p>To make a fully general fold we&#39;d need to be able to change the result type. This requires <em>generic types</em>, which we haven&#39;t encountered yet. </p>
+            <p>To make a fully general fold we&#39;d need to be able to change the result type. This requires <em>generic types</em>, which we will learn about in a later section.</p>
             <p class="nextPage"><a href="parametric-curves.html">Parametric Curves→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
