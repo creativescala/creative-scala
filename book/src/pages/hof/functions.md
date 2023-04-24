@@ -15,7 +15,7 @@ We have written a lot of structural recursions over the natural numbers. We star
 def stackedBoxes(count: Int): Image =
   count match {
     case 0 => Image.empty
-    case n => aBox.beside(stackedBoxes(n-1))
+    case n => Image.square(20).beside(stackedBoxes(n-1))
   }
 ```
 
@@ -38,9 +38,9 @@ def polygonPoints(sides: Int, radius: Double): Image = {
 }
 ```
 
-The details are different, but the underlying structure of the two examples is the same. In fact that's one of the points we're really emphasizing: that code has underlying patterns that apply in many different situations.
+The details are different, but the underlying structure of the two examples is the same. In fact that's one of the points we're emphasizing: that code has underlying patterns that apply in many different situations.
 
-When we see this repetition we might wonder if we can somehow capture the commonality in code, so we don't have to write it out again and again. This is what we're going to look at in this section, and in doing so we'll introduce functions.
+When we see this repetition we might wonder if we can somehow capture it in code, so we don't have to write it out again and again. We're going to do this in this section, and in doing so we'll introduce functions.
 
 Let's start by putting the two structural recursions next to each other, and in the case of `polygonPoints` removing the surrounding code.
 
@@ -68,7 +68,7 @@ def loop(count: Int): Image =
   }
 ```
 
-If we keep the common parts of these methods and replace the parts that vary with `???` we end up with something like
+Keeping the common parts of these methods, and replacing those that vary with `???`, leaves us with something like
 
 ```scala
 def aMethod(count: Int): Image =
@@ -86,7 +86,7 @@ Now our challenge is to turn this into something we can actually use in Scala. L
 case n => ??? aMethod(count - 1)
 ```
 
-This is the only part that has a `???`. In the real methods we have
+This is the only part that has a `???`. In the actual methods we have
 
 ```scala
 case n => aBox.beside(stackedBoxes(n-1))
@@ -102,10 +102,12 @@ case n =>
     .on(loop(n - 1))
 ```
 
+respectively.
+
 To capture this in code we need to allow:
 
 1. varying how we build the result of the recursion (in one case it's `beside`, while we use `on` in the other); and
-2. creating the `Image` at the current step to depend on `n` (as in the case taken from `polygonPoints`, where we use the value `n` to determine the location of the circle.)
+2. the `Image` at the current step to depend on `n` (as in the case taken from `polygonPoints`, where we use the value `n` to determine the location of the circle.)
 
 In other words, the value we build is parameterized by the result of the recursion and the value `n`. We could express this with a method
 
@@ -285,16 +287,21 @@ def times42(x: Int): Int =
   x * 42
 ```
 
-```scala mdoc
+```scala mdoc:silent
 val times42Function = times42 _
+```
+```scala mdoc
+times42Function(2)
 ```
 
 We can also write a method call but replace all parameters with `_` and Scala will convert the method to a function.
 
-```scala mdoc
+```scala mdoc:silent
 val times42Function2 = times42(_)
 ```
-
+```scala mdoc
+times42Function2(2)
+```
 
 
 #### Exercises
@@ -343,7 +350,7 @@ val roseFn = (angle: Angle) =>
   Point.cartesian((angle * 7).cos * angle.cos, (angle * 7).cos * angle.sin)
 ```
 
-What is the type of the function `roseFn` defined above? What does this type mean?
+What is the type of the function `roseFn` defined above? What does this type tell us?
 @:@
 
 @:solution

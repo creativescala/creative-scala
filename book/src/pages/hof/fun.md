@@ -117,7 +117,7 @@ def fold(count: Int, base: Image, build: (Int, Image) => Image): Image =
   }
 ```
 
-Using the version of fold we can create the Sierpinski triangle. 
+Using this version of fold we can create the Sierpinski triangle. 
 
 ```scala mdoc:silent
 val sierpinski: (Int, Image) => Image =
@@ -130,4 +130,4 @@ fold(
 )
 ```
 
-To make a fully general fold we'd need to be able to change the result type. This requires *generic types*, which we haven't encountered yet. 
+To make a fully general fold we'd need to be able to change the result type. This requires *generic types*, which we will learn about in a later section.
