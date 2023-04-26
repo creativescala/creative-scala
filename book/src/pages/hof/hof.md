@@ -8,9 +8,11 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-In previous sections we have seen the utility of passing functions to methods and returning functions from methods. In this section we'll see the usefulness of *function composition**. Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. By composing functions we mean to create a function that connects the output of one component function to the input of another component function.
+In previous sections we have seen the utility of passing functions to methods and returning functions from methods. In this section we'll see the usefulness of *function composition*. Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. By composing functions we mean to create a function that connects the output of one component function to the input of another component function.
 
-Here's an example. We use the `andThen` method to create a function that connects the output of the first function to the input of the second function.
+Written in terms of types, function composition joins functions of type `A => B` and `B => C` to produce a function type `A => C`. In Scala we use the `andThen` method to do this.
+
+Here's an example. We start by defining two functions. The first adds a [drop shadow](https://en.wikipedia.org/wiki/Drop_shadow) to an `Image`. The second mirrors an `Image` around the y-axis.
 
 ```scala mdoc:silent
 val dropShadow = (image: Image) =>
@@ -19,10 +21,15 @@ val dropShadow = (image: Image) =>
 val mirrored = (image: Image) =>
   image.beside(image.transform(Transform.horizontalReflection))
 
+```
+
+Both functions have type `Image => Image`, so we can compose them together. We do this using the `andThen` method to create a function that connects the output of the first function to the input of the second function.
+
+```scala mdoc:silent
 val composed = mirrored.andThen(dropShadow)
 ```
 
-In @:fref(hof:composed) we see the output of the program
+Below we see the image created by the program
 
 ```scala mdoc:silent
 val star = Image
@@ -30,14 +37,15 @@ val star = Image
   .fillColor(Color.fireBrick)
   .strokeColor(Color.dodgerBlue)
   .strokeWidth(7.0)
+
 dropShadow(star)
   .beside(mirrored(star))
   .beside(composed(star))
 ```
 
-This shows how the composed function applies the output of the first function to the second function: we first mirror the function then add a drop shadow.
-
 @:figure{ img = "./composed.svg", key = "#fig:hof:composed", caption = "Illustrating function composition by showing the output of the individual components and the composition." }
+
+This shows how the composed function applies the output of the first function to the second function: we first mirror the star and then add a drop shadow.
 
 Let's see how we can apply function composition to our examples of parametric curves. One limitation of the parametric cures we've created so far is that their size is fixed. For example when we defined `parametricCircle` we fixed the radius at 200.
 
@@ -114,7 +122,7 @@ What else can we do with function composition?
 
 Our parametric functions have type `Angle => Point`. We can compose these with functions of type `Point => Image` and with this setup we can make the "dots" from which we build our images depend on the point.
 
-Here's an example when the dots get bigger as the angle increases.
+Here's an example where the dots get bigger as the angle increases.
 
 ```scala mdoc:silent
 val growingDot: Point => Image = 
