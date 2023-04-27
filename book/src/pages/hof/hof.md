@@ -316,6 +316,7 @@ and use the result of the combinator as an argument to `concentricShapes`
 def colored(shape: Int => Image, color: Int => Color): Int => Image =
   (n: Int) => ???
 ```
+@:@
 
 @:solution
 The simplest solution is to define three `singleShapes` as follows:
@@ -478,3 +479,4 @@ concentricShapes(10, colored(dottyCircle, spinning))
 ```
 
 Use the techniques we've seen so far to create a picture of your choosing (perhaps similar to the flower with which we started the chapter). No solution here; there is no right or wrong answer.
+@:@
