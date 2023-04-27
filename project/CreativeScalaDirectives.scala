@@ -9,6 +9,9 @@ object CreativeScalaDirectives extends DirectiveRegistry {
   override val description: String =
     "Directive to work with CreativeScala SVG pictures."
 
+  val leftArrow = "←"
+  val rightArrow = "→"
+
   val divWithId: Blocks.Directive =
     Blocks.create("divWithId") {
       import Blocks.dsl._
@@ -161,9 +164,6 @@ object CreativeScalaDirectives extends DirectiveRegistry {
     Templates.create("compactNavBar") {
       import Templates.dsl._
 
-      val leftArrow = "←"
-      val rightArrow = "→"
-
       cursor.map { cursor =>
         val previous =
           cursor.flattenedSiblings.previousDocument
@@ -184,11 +184,29 @@ object CreativeScalaDirectives extends DirectiveRegistry {
       }
     }
 
+  val previousPage: Templates.Directive =
+    Templates.create("previousPage") {
+      import Templates.dsl._
+
+      cursor.map { cursor =>
+        val previous = cursor.flattenedSiblings.previousDocument
+
+        val title = previous.flatMap(c => c.target.title)
+        val path = previous.map(c => c.path)
+
+        val link =
+          (title, path).mapN { (t, p) =>
+            SpanLink(Seq(Text(leftArrow), t), InternalTarget(p))
+              .withStyle("pageNavigation")
+          }
+
+        TemplateElement(link.getOrElse(Text("")))
+      }
+    }
+
   val nextPage: Templates.Directive =
     Templates.create("nextPage") {
       import Templates.dsl._
-
-      val rightArrow = "→"
 
       cursor.map { cursor =>
         val next = cursor.flattenedSiblings.nextDocument
@@ -198,9 +216,8 @@ object CreativeScalaDirectives extends DirectiveRegistry {
 
         val link =
           (title, path).mapN { (t, p) =>
-            Paragraph(
-              SpanLink(Seq(t, Text(rightArrow)), InternalTarget(p))
-            ).withStyle("nextPage")
+            SpanLink(Seq(t, Text(rightArrow)), InternalTarget(p))
+              .withStyle("pageNavigation")
           }
 
         TemplateElement(link.getOrElse(Text("")))
@@ -210,6 +227,6 @@ object CreativeScalaDirectives extends DirectiveRegistry {
   val spanDirectives = Seq(fref, fnref, tref)
   val blockDirectives =
     Seq(divWithId, doodle, exercise, figure, footnote, script, solution)
-  val templateDirectives = Seq(compactNavBar, nextPage)
+  val templateDirectives = Seq(compactNavBar, previousPage, nextPage)
   val linkDirectives = Seq()
 }

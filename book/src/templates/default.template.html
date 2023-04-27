@@ -35,7 +35,9 @@
     <div id="content">
         <main class="content">
             ${cursor.currentDocument.content}
-            @:nextPage
+            <div class="flex flex-row justify-between">
+                @:previousPage @:nextPage
+            </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
