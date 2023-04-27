@@ -154,9 +154,9 @@
     <div id="content">
         <main class="content">
             <h1 id="higher-order-methods-and-functions" class="title">Higher Order Methods and Functions</h1>
-            <p>In previous sections we have seen the utility of passing functions to methods and returning functions from methods. In this section we&#39;ll see the usefulness of <em>function composition</em>. Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. </p>
-            <p>Composing functions means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type <code>A =&gt; B</code> and <code>B =&gt; C</code> to produce a function type <code>A =&gt; C</code>. In Scala we use the <code>andThen</code> method to do this.</p>
-            <p>Here&#39;s an example. We start by defining two functions. The first adds a <a href="https://en.wikipedia.org/wiki/Drop_shadow">drop shadow</a> to an <code>Image</code>. The second places an <code>Image</code> beside its mirror around the y-axis.</p>
+            <p>In previous sections we have seen the utility of passing functions to methods and returning functions from methods. In this section we&#39;ll see the usefulness of <em>function composition</em>. </p>
+            <p>Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. Composing functions means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type <code>A =&gt; B</code> and <code>B =&gt; C</code> to produce a function type <code>A =&gt; C</code>. In Scala we use the <code>andThen</code> method to do this.</p>
+            <p>Here&#39;s an example. We start by defining two functions. The first adds a <a href="https://en.wikipedia.org/wiki/Drop_shadow">drop shadow</a> to an <code>Image</code>. The second places an <code>Image</code> beside a copy of itself mirrored around the y-axis.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">dropShadow</span><span> = (</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt;
   </span><span class="identifier">image</span><span>.</span><span class="identifier">on</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>).</span><span class="identifier">at</span><span>(</span><span class="number-literal">5</span><span>, -</span><span class="number-literal">5</span><span>))
 
@@ -217,16 +217,19 @@
 </span><span class="keyword">val</span><span> </span><span class="identifier">growingCircle</span><span> = </span><span class="identifier">parametricCircle</span><span>
   .</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span>))
   .</span><span class="identifier">andThen</span><span>(</span><span class="identifier">growingDot</span><span>)</span></code></pre>
-            
-            <h4 id="exercise-sample" class="section">Exercise: Sample {-}</h4>
-            <p>If we want to draw this function we&#39;ll need to change <code>sample</code> so the parametric has type <code>Angle =&gt; Image</code> instead of <code>Angle =&gt; Point</code>. In other words we want the following skeleton.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">sample</span><span>(</span><span class="identifier">samples</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">curve</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+            <div class="exercise">
+              
+              <h4 id="exercise-drawing-curves">Exercise: Drawing Curves</h4>
+              <p>If we want to draw this function we&#39;ll need to change <code>drawCurve</code> so the parameter has type <code>Angle =&gt; Image</code> instead of <code>Angle =&gt; Point</code>. In other words we want the following skeleton.</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">drawCurve</span><span>(</span><span class="identifier">points</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">curve</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
   ???</span></code></pre>
-            <p>Implement <code>sample</code>.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;</p>
-            <p>The answer is a small modification of the original <code>sample</code>. We drop the <code>dot</code> parameter and the type of the <code>curve</code> parameter changes. The rest follows from this.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">sample</span><span>(</span><span class="identifier">samples</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">curve</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> = {
-  </span><span class="keyword">val</span><span> </span><span class="identifier">step</span><span> = </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">samples</span><span>
+              <p>Implement <code>drawCurve</code>.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The answer is a small modification of the original <code>drawCurve</code>. We drop the <code>marker</code> parameter and the type of the <code>curve</code> parameter changes. The rest follows from this.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">drawCurve</span><span>(</span><span class="identifier">points</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">curve</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">step</span><span> = </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">points</span><span>
   </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
     </span><span class="keyword">val</span><span> </span><span class="identifier">angle</span><span> = </span><span class="identifier">step</span><span> * </span><span class="identifier">count</span><span>
     </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
@@ -236,10 +239,11 @@
     }
   }
   
-  </span><span class="identifier">loop</span><span>(</span><span class="identifier">samples</span><span>)
+  </span><span class="identifier">loop</span><span>(</span><span class="identifier">points</span><span>)
 }</span></code></pre>
-            <p>&lt;/div&gt;</p>
-            <p>Once we&#39;ve implemented <code>sample</code> we can start drawing pictures. For example, in Figure hof:growing-circle we have the output of <code>growingCircle</code> above.</p>
+              </div>
+            </div>
+            <p>Having implemented <code>drawCurve</code> we can start drawing pictures. For example, below we have the output of <code>growingCircle</code> above.</p>
             <p><img src="./growing-circle.svg" alt="A circle created by composing smaller components." title="Figure Some(#fig:hof:growing-circle): caption"></p>
             
             <h3 id="more-uses-of-composition" class="section">More Uses of Composition</h3>
@@ -276,62 +280,63 @@
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">redCircles</span><span>: </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">redCircle</span><span> </span><span class="identifier">_</span><span>)</span></code></pre>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
-            
-            <h4 id="the-colour-and-the-shape" class="section">The Colour and the Shape {-}</h4>
-            <p>Starting with the code below we are going to write color and shape functions to produce the image shown in Figure hof:colors-and-shapes.</p>
-            <p><img src="./colors-and-shapes.svg" alt="Colors and Shapes" title="Figure Some(#fig:hof:colors-and-shapes): caption"></p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+            <div class="exercise">
+              
+              <h4 id="exercise-the-colour-and-the-shape">Exercise: The Colour and the Shape</h4>
+              <p>Starting with the code below we are going to write color and shape functions to produce the image shown below.</p>
+              <p><img src="./colors-and-shapes.svg" alt="Colors and Shapes" title="Figure Some(#fig:hof:colors-and-shapes): caption"></p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>))
   }</span></code></pre>
-            <p>The <code>concentricShapes</code> method is equivalent to the
-            <code>concentricCircles</code> method from previous exercises.
-            The main difference is that we pass in
-            the definition of <code>singleShape</code> as a parameter.</p>
-            <p>Let&#39;s think about the problem a little.
-            We need to do two things:</p>
-            <ol class="arabic">
-              <li>write an appropriate definition of <code>singleShape</code> for each
-              of the three shapes in the target image; and</li>
-            </ol>
-            <ol class="arabic">
-              <li>call <code>concentricShapes</code> three times,
-              passing in the appropriate definition of <code>singleShape</code> each time
-              and putting the results <code>beside</code> one another.</li>
-            </ol>
-            <p>Let&#39;s look at the definition of the <code>singleShape</code> parameter in more detail.
-            The type of the parameter is <code>Int =&gt; Image</code>,
-            which means a function that accepts an <code>Int</code> parameter and returns an <code>Image</code>.
-            We can declare a method of this type as follows:</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">outlinedCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+              <p>The <code>concentricShapes</code> method is equivalent to the
+              <code>concentricCircles</code> method from previous exercises.
+              The main difference is that we pass in
+              the definition of <code>singleShape</code> as a parameter.</p>
+              <p>Let&#39;s think about the problem a little.
+              We need to do two things:</p>
+              <ol class="arabic">
+                <li>write an appropriate definition of <code>singleShape</code> for each
+                of the three shapes in the target image; and</li>
+              </ol>
+              <ol class="arabic">
+                <li>call <code>concentricShapes</code> three times,
+                passing in the appropriate definition of <code>singleShape</code> each time
+                and putting the results <code>beside</code> one another.</li>
+              </ol>
+              <p>Let&#39;s look at the definition of the <code>singleShape</code> parameter in more detail.
+              The type of the parameter is <code>Int =&gt; Image</code>,
+              which means a function that accepts an <code>Int</code> parameter and returns an <code>Image</code>.
+              We can declare a method of this type as follows:</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">outlinedCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">n</span><span> * </span><span class="number-literal">10</span><span>)</span></code></pre>
-            <p>We can convert this method to a function, and pass it to <code>concentricShapes</code> to create
-            an image of concentric black outlined circles:</p>
-            <pre><code class="nohighlight"><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">outlinedCircle</span><span> </span><span class="identifier">_</span><span>)</span></code></pre>
-            <p>This produces the output shown in Figure hof:colors-and-shapes-step1.</p>
-            <p><img src="./colors-and-shapes-step1.svg" alt="Many outlined circles" title="Figure Some(#fig:hof:colors-and-shapes-step1): caption"></p>
-            <p>The rest of the exercise is just a matter of copying, renaming,
-            and customising this function to produce
-            the desired combinations of colours and shapes:</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">circleOrSquare</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =
+              <p>We can convert this method to a function, and pass it to <code>concentricShapes</code> to create
+              an image of concentric black outlined circles:</p>
+              <pre><code class="nohighlight"><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">outlinedCircle</span><span> </span><span class="identifier">_</span><span>)</span></code></pre>
+              <p>This produces the output shown in below.</p>
+              <p><img src="./colors-and-shapes-step1.svg" alt="Many outlined circles" title="Figure Some(#fig:hof:colors-and-shapes-step1): caption"></p>
+              <p>The rest of the exercise is just a matter of copying, renaming,
+              and customising this function to produce
+              the desired combinations of colours and shapes:</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">circleOrSquare</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =
   </span><span class="keyword">if</span><span>(</span><span class="identifier">n</span><span> % </span><span class="number-literal">2</span><span> == </span><span class="number-literal">0</span><span>) </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="identifier">n</span><span>*</span><span class="number-literal">20</span><span>, </span><span class="identifier">n</span><span>*</span><span class="number-literal">20</span><span>) </span><span class="keyword">else</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">n</span><span>*</span><span class="number-literal">10</span><span>)
 
 </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">outlinedCircle</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">circleOrSquare</span><span>))</span></code></pre>
-            <p>See Figure hof:colors-and-shapes-step2 for the output.</p>
-            <p><img src="./colors-and-shapes-step2.svg" alt="Many outlined circles beside many circles and squares" title="Figure Some(#fig:hof:colors-and-shapes-step2): caption"></p>
-            <p>For extra credit, when you&#39;ve written your code to
-            create the sample shapes above, refactor it so you have two sets
-            of base functions---one to produce colours and one to produce shapes.
-            Combine these functions using a <em>combinator</em> as follows,
-            and use the result of the combinator as an argument to <code>concentricShapes</code></p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">colored</span><span>(</span><span class="identifier">shape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Color</span><span>): </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> =
+              <p>See below for the output.</p>
+              <p><img src="./colors-and-shapes-step2.svg" alt="Many outlined circles beside many circles and squares" title="Figure Some(#fig:hof:colors-and-shapes-step2): caption"></p>
+              <p>For extra credit, when you&#39;ve written your code to
+              create the sample shapes above, refactor it so you have two sets
+              of base functions: one to produce colours and one to produce shapes.
+              Combine these functions using a <em>combinator</em> as follows,
+              and use the result of the combinator as an argument to <code>concentricShapes</code></p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">colored</span><span>(</span><span class="identifier">shape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Color</span><span>): </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> =
   (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt; ???</span></code></pre>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            The simplest solution is to define three <code>singleShapes</code> as follows:</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The simplest solution is to define three <code>singleShapes</code> as follows:</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>))
@@ -361,14 +366,14 @@
       </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">fadingTriangle</span><span>)
         .</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">rainbowSquare</span><span>))
     )</span></code></pre>
-            <p>However, there is some redundancy here:
-            <code>rainbowCircle</code> and <code>rainbowTriangle</code>, in particular,
-            use the same definition of <code>color</code>.
-            There are also repeated calls to <code>strokeWidth(10)</code> and
-            <code>strokeColor(color)</code> that can be eliminated.
-            The extra credit solution factors these out into their own functions
-            and combines them with the <code>colored</code> combinator:</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+                <p>However, there is some redundancy here:
+                <code>rainbowCircle</code> and <code>rainbowTriangle</code>, in particular,
+                use the same definition of <code>color</code>.
+                There are also repeated calls to <code>strokeWidth(10)</code> and
+                <code>strokeColor(color)</code> that can be eliminated.
+                The extra credit solution factors these out into their own functions
+                and combines them with the <code>colored</code> combinator:</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>) </span><span class="identifier">on</span><span> </span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>)
@@ -401,71 +406,24 @@
     .</span><span class="identifier">beside</span><span>(
       </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">triangle</span><span>, </span><span class="identifier">fading</span><span>))
         .</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">square</span><span>, </span><span class="identifier">spinning</span><span>)))
-    )
-</span><span class="comment">// answer: Image = Beside(
-//   l = On(
-//     t = StrokeColor(
-//       image = StrokeWidth(image = Circle(d = 340.0), width = 10.0),
-//       color = HSLA(
-//         h = Angle(9.42477796076938),
-//         s = Normalized(get = 0.5),
-//         l = Normalized(get = 0.5),
-//         a = Normalized(get = 1.0)
-//       )
-//     ),
-//     b = On(
-//       t = StrokeColor(
-//         image = StrokeWidth(image = Circle(d = 316.0), width = 10.0),
-//         color = HSLA(
-//           h = Angle(8.901179185171081),
-//           s = Normalized(get = 0.5),
-//           l = Normalized(get = 0.5),
-//           a = Normalized(get = 1.0)
-//         )
-//       ),
-//       b = On(
-//         t = StrokeColor(
-//           image = StrokeWidth(image = Circle(d = 292.0), width = 10.0),
-//           color = HSLA(
-//             h = Angle(8.377580409572781),
-//             s = Normalized(get = 0.5),
-//             l = Normalized(get = 0.5),
-//             a = Normalized(get = 1.0)
-//           )
-//         ),
-//         b = On(
-//           t = StrokeColor(
-//             image = StrokeWidth(image = Circle(d = 268.0), width = 10.0),
-//             color = HSLA(
-//               h = Angle(7.853981633974483),
-//               s = Normalized(get = 0.5),
-//               l = Normalized(get = 0.5),
-//               a = Normalized(get = 1.0)
-//             )
-//           ),
-//           b = On(
-//             t = StrokeColor(
-//               image = StrokeWidth(image = Circle(d = 244.0), width = 10.0),
-//               color = HSLA(
-//                 h = Angle(7.330382858376184),
-//                 s = Normalized(get = 0.5),
-//                 l = Normalized(get = 0.5),
-//                 a = Normalized(get = 1.0)
-// ...</span></code></pre>
-            <p>&lt;/div&gt;</p>
-            
-            <h4 id="more-shapes" class="section">More Shapes {-}</h4>
-            <p>The <code>concentricShapes</code> methods takes an <code>Int =&gt; Image</code> function, and we can construct such as function using <code>sample</code>, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example is Figure hof:concentric-dotty-circle.</p>
-            <p><img src="./concentric-dotty-circle.svg" alt="Concentric dotty circles" title="Figure Some(#fig:hof:concentric-dotty-circle): caption"></p>
-            <p>The code to create this is below.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">dottyCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">sample</span><span>(
+    )</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-more-shapes">Exercise: More Shapes</h4>
+              <p>The <code>concentricShapes</code> methods takes an <code>Int =&gt; Image</code> function, and we can construct such as function using <code>drawCurve</code>, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example below.</p>
+              <p><img src="./concentric-dotty-circle.svg" alt="Concentric dotty circles" title="Figure Some(#fig:hof:concentric-dotty-circle): caption"></p>
+              <p>The code to create this is below.</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">dottyCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">drawCurve</span><span>(
     </span><span class="number-literal">72</span><span>,
     </span><span class="identifier">parametricCircle</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span> * </span><span class="number-literal">24</span><span>)).</span><span class="identifier">andThen</span><span>(</span><span class="identifier">growingDot</span><span>)
   )
 
 </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">dottyCircle</span><span>, </span><span class="identifier">spinning</span><span>))</span></code></pre>
-            <p>Use the techniques we&#39;ve seen so far to create a picture of your choosing (perhaps similar to the flower with which we started the chapter). No solution here---there is no right or wrong answer.</p>
+              <p>Use the techniques we&#39;ve seen so far to create a picture of your choosing (perhaps similar to the flower with which we started the chapter). No solution here; there is no right or wrong answer.</p>
+            </div>
             <p class="nextPage"><a href="flowers.html">Flowers and Other Curves→</a></p>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
