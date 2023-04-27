@@ -8,11 +8,11 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-In previous sections we have seen the utility of passing functions to methods and returning functions from methods. In this section we'll see the usefulness of *function composition*. Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. 
+In previous sections we have seen the utility of passing functions to methods and returning functions from methods. In this section we'll see the usefulness of *function composition*. 
 
-Composing functions means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type `A => B` and `B => C` to produce a function type `A => C`. In Scala we use the `andThen` method to do this.
+Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. Composing functions means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type `A => B` and `B => C` to produce a function type `A => C`. In Scala we use the `andThen` method to do this.
 
-Here's an example. We start by defining two functions. The first adds a [drop shadow](https://en.wikipedia.org/wiki/Drop_shadow) to an `Image`. The second places an `Image` beside its mirror around the y-axis.
+Here's an example. We start by defining two functions. The first adds a [drop shadow](https://en.wikipedia.org/wiki/Drop_shadow) to an `Image`. The second places an `Image` beside a copy of itself mirrored around the y-axis.
 
 ```scala mdoc:silent
 val dropShadow = (image: Image) =>
@@ -133,18 +133,18 @@ val growingCircle = parametricCircle
   .andThen(growingDot)
 ```
 
-#### Exercise: Sample {-}
-
-If we want to draw this function we'll need to change `sample` so the parametric has type `Angle => Image` instead of `Angle => Point`. In other words we want the following skeleton.
+@:exercise(Drawing Curves)
+If we want to draw this function we'll need to change `drawCurve` so the parameter has type `Angle => Image` instead of `Angle => Point`. In other words we want the following skeleton.
 
 ```scala mdoc:silent
-def sample(samples: Int, curve: Angle => Image): Image =
+def drawCurve(points: Int, curve: Angle => Image): Image =
   ???
 ```
 
-Implement `sample`.
+Implement `drawCurve`.
+@:@
 
-<div class="solution">
+@:solution
 ```scala mdoc:reset:invisible
 import doodle.core._
 import doodle.image._
@@ -153,11 +153,11 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-The answer is a small modification of the original `sample`. We drop the `dot` parameter and the type of the `curve` parameter changes. The rest follows from this.
+The answer is a small modification of the original `drawCurve`. We drop the `marker` parameter and the type of the `curve` parameter changes. The rest follows from this.
 
 ```scala mdoc:silent
-def sample(samples: Int, curve: Angle => Image): Image = {
-  val step = Angle.one / samples
+def drawCurve(points: Int, curve: Angle => Image): Image = {
+  val step = Angle.one / points
   def loop(count: Int): Image = {
     val angle = step * count
     count match {
@@ -167,13 +167,13 @@ def sample(samples: Int, curve: Angle => Image): Image = {
     }
   }
   
-  loop(samples)
+  loop(points)
 }
 ```
-</div>
+@:@
 
 
-Once we've implemented `sample` we can start drawing pictures. For example, in @:fref(hof:growing-circle) we have the output of `growingCircle` above.
+Having implemented `drawCurve` we can start drawing pictures. For example, below we have the output of `growingCircle` above.
 
 @:figure{ img = "./growing-circle.svg", key = "#fig:hof:growing-circle", caption = "A circle created by composing smaller components." }
 
@@ -234,11 +234,9 @@ val redCircles: Image =
 ```
 
 
-### Exercises {-}
+@:exercise(The Colour and the Shape)
 
-#### The Colour and the Shape {-}
-
-Starting with the code below we are going to write color and shape functions to produce the image shown in @:fref(hof:colors-and-shapes).
+Starting with the code below we are going to write color and shape functions to produce the image shown below.
 
 @:figure{ img = "./colors-and-shapes.svg", key = "#fig:hof:colors-and-shapes", caption = "Colors and Shapes" }
 
@@ -289,7 +287,7 @@ an image of concentric black outlined circles:
 concentricShapes(10, outlinedCircle _)
 ```
 
-This produces the output shown in @:fref(hof:colors-and-shapes-step1).
+This produces the output shown in below.
 
 @:figure{ img = "./colors-and-shapes-step1.svg", key = "#fig:hof:colors-and-shapes-step1", caption = "Many outlined circles" }
 
@@ -304,13 +302,13 @@ def circleOrSquare(n: Int) =
 concentricShapes(10, outlinedCircle).beside(concentricShapes(10, circleOrSquare))
 ```
 
-See @:fref(hof:colors-and-shapes-step2) for the output.
+See below for the output.
 
 @:figure{ img = "./colors-and-shapes-step2.svg", key = "#fig:hof:colors-and-shapes-step2", caption = "Many outlined circles beside many circles and squares" }
 
 For extra credit, when you've written your code to
 create the sample shapes above, refactor it so you have two sets
-of base functions---one to produce colours and one to produce shapes.
+of base functions: one to produce colours and one to produce shapes.
 Combine these functions using a *combinator* as follows,
 and use the result of the combinator as an argument to `concentricShapes`
 
@@ -319,7 +317,7 @@ def colored(shape: Int => Image, color: Int => Color): Int => Image =
   (n: Int) => ???
 ```
 
-<div class="solution">
+@:solution
 The simplest solution is to define three `singleShapes` as follows:
 
 ```scala mdoc:reset:invisible
@@ -377,7 +375,7 @@ import doodle.syntax.all._
 import doodle.image.syntax.all._
 import doodle.java2d._
 ```
-```scala mdoc
+```scala mdoc:silent
 def concentricShapes(count: Int, singleShape: Int => Image): Image =
   count match {
     case 0 => Image.empty
@@ -413,12 +411,11 @@ val answer =
         .beside(concentricShapes(10, colored(square, spinning)))
     )
 ```
-</div>
+@:@
 
 
-#### More Shapes {-}
-
-The `concentricShapes` methods takes an `Int => Image` function, and we can construct such as function using `sample`, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example is @:fref(hof:concentric-dotty-circle).
+@:exercise(More Shapes)
+The `concentricShapes` methods takes an `Int => Image` function, and we can construct such as function using `drawCurve`, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example below.
 
 @:figure{ img = "./concentric-dotty-circle.svg", key = "#fig:hof:concentric-dotty-circle", caption = "Concentric dotty circles" }
 
@@ -456,8 +453,8 @@ def scale(factor: Double): Point => Point =
 val growingDot: Point => Image = 
   (pt: Point) => Image.circle(pt.angle.toTurns * 20).at(pt)
 
-def sample(samples: Int, curve: Angle => Image): Image = {
-  val step = Angle.one / samples
+def drawCurve(points: Int, curve: Angle => Image): Image = {
+  val step = Angle.one / points
   def loop(count: Int): Image = {
     val angle = step * count
     count match {
@@ -467,12 +464,12 @@ def sample(samples: Int, curve: Angle => Image): Image = {
     }
   }
   
-  loop(samples)
+  loop(points)
 }
 ```
 ```scala mdoc:silent
 def dottyCircle(n: Int): Image =
-  sample(
+  drawCurve(
     72,
     parametricCircle.andThen(scale(100 + n * 24)).andThen(growingDot)
   )
@@ -480,4 +477,4 @@ def dottyCircle(n: Int): Image =
 concentricShapes(10, colored(dottyCircle, spinning))
 ```
 
-Use the techniques we've seen so far to create a picture of your choosing (perhaps similar to the flower with which we started the chapter). No solution here---there is no right or wrong answer.
+Use the techniques we've seen so far to create a picture of your choosing (perhaps similar to the flower with which we started the chapter). No solution here; there is no right or wrong answer.
