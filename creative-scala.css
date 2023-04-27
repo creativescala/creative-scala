@@ -522,6 +522,18 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
 body {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -823,9 +835,8 @@ pre code .comment {
   font-style: italic;
 }
 
-.nextPage {
+.pageNavigation {
   margin-top: 1rem;
-  text-align: right;
   font-size: 1.25rem;
   line-height: 1.75rem;
   --tw-text-opacity: 1;

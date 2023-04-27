@@ -347,15 +347,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$13833/0x0000000103a76840@43e1f4d9
+//           f = cats.free.Free$$Lambda$13825/0x0000000103a68040@5ce3912a
 //         ),
-//         f = cats.free.Free$$Lambda$13833/0x0000000103a76840@5b531bcc
+//         f = cats.free.Free$$Lambda$13825/0x0000000103a68040@2751ad28
 //       ),
-//       f = cats.free.Free$$Lambda$13833/0x0000000103a76840@5dd0f43d
+//       f = cats.free.Free$$Lambda$13825/0x0000000103a68040@5d9fef98
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$13851/0x0000000103a44040@25494df9
+//     f = repl.MdocSession$MdocApp5$$Lambda$13843/0x0000000103a82040@7c57ebdf
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$13854/0x0000000103a41840@69c222b5
+//   f = repl.MdocSession$MdocApp5$$Lambda$13846/0x0000000103a84040@3cfd5fbe
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -376,7 +376,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$13833/0x0000000103a76840@2a8cd93a
+//   f = cats.free.Free$$Lambda$13825/0x0000000103a68040@166f8de4
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -384,9 +384,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$13833/0x0000000103a76840@2a8cd93a
+//     f = cats.free.Free$$Lambda$13825/0x0000000103a68040@166f8de4
 //   ),
-//   f = cats.free.Free$$Lambda$13833/0x0000000103a76840@7027a14a
+//   f = cats.free.Free$$Lambda$13825/0x0000000103a68040@34ae539e
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
@@ -403,7 +403,9 @@
       }
   }</span></code></pre>
             <p>&lt;/div&gt;</p>
-            <p class="nextPage"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}→</a></p>
+            <div class="flex flex-row justify-between">
+                <a class="pageNavigation" href="index.html">←Composition of Generative Art</a> <a class="pageNavigation" href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}→</a>
+            </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>

@@ -168,7 +168,7 @@
 // )</span></code></pre>
             <p>No random numbers are actually created until we call the <code>run</code> method.</p>
             <pre><code class="nohighlight"><span class="identifier">randomDouble</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res0: Double = 0.03960068569441355</span></code></pre>
+</span><span class="comment">// res0: Double = 0.4849159494903056</span></code></pre>
             <p>The type <code>Random[Double]</code> indicates we have something that will produce a random <code>Double</code> when we <code>run</code> it. Just like with <code>Image</code> and <code>draw</code>, substitution holds with <code>Random</code> up until the point we call <code>run</code>.</p>
             <p>Table Table generative:random shows some of the ways to construct <code>Random</code> values.</p>
             <hr>
@@ -206,9 +206,9 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)</span></code></pre>
             <p>When we <code>run</code> <code>RandomAngle</code> we can generate randomly created <code>Angle</code></p>
             <pre><code class="nohighlight"><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res1: Angle = Angle(3.952813468625496)
+</span><span class="comment">// res1: Angle = Angle(0.62632236410718)
 </span><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res2: Angle = Angle(2.3185959731801993)</span></code></pre>
+</span><span class="comment">// res2: Angle = Angle(3.1567018696776588)</span></code></pre>
             
             <h3 id="exercises" class="section">Exercises {-}</h3>
             
@@ -231,7 +231,9 @@
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">randomCircle</span><span>(</span><span class="identifier">r</span><span>: </span><span class="type-name">Double</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>]): </span><span class="type-name">Random</span><span>[</span><span class="type-name">Image</span><span>] =
   </span><span class="identifier">color</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">fill</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">r</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="identifier">fill</span><span>))</span></code></pre>
             <p>&lt;/div&gt;</p>
-            <p class="nextPage"><a href="api.html">Exploring Random→</a></p>
+            <div class="flex flex-row justify-between">
+                <a class="pageNavigation" href="generative.html">←Generative Art</a> <a class="pageNavigation" href="api.html">Exploring Random→</a>
+            </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
     </div>
