@@ -21,7 +21,7 @@ Let's see if that is really the case, and get a bit more practice using function
 
 Below is an example of a row of boxes, where the color changes from each box to the next. We've already written this as a method. Now I want you to rewrite it using `fold` and a function you create.
 
-@:doodle("gradient-boxes", "HofFun.gradientBoxesExample")
+@:doodle("gradient-boxes", "FlowersFun.gradientBoxesExample")
 
 @:solution
 Here's how I wrote it.
@@ -70,7 +70,7 @@ and turning it into a function.
 
 Here's a variation on that idea, which changes size as well as changing color. Write this using `fold` and a function of your own construction.
 
-@:doodle("growing-circles", "HofFun.growingCirclesExample")
+@:doodle("growing-circles", "FlowersFun.growingCirclesExample")
 
 @:solution
 Here's what I wrote. It's the same idea as the previous example, with a small modification to change the size of the element as well as the color.
@@ -92,7 +92,7 @@ fold(5, growingCircles)
 
 Let's try a fractal. Below is the Sierpinski triangle. Can you write this using `fold`? If not, why not? Can you change `fold` so you can write it using `fold`?
 
-@:doodle("sierpinski", "HofSierpinski.sierpinskiExample")
+@:doodle("sierpinski", "FlowersSierpinski.sierpinskiExample")
 
 @:solution
 The way the question is worded is a strong hint that we cannot write the Sierpinski triangle using `fold` as we have currently written it. The reason is that `fold`, as currently written, always uses `Image.empty` as the base case. For the Sierpinski triangle we need a different base case. The solution is to add another parameter to `fold` that allows us to change the base case.

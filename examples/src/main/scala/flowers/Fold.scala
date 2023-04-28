@@ -1,4 +1,4 @@
-package hof
+package flowers
 
 import cats.implicits.*
 import doodle.core.*
@@ -12,7 +12,7 @@ import scala.concurrent.duration.*
 import cats.effect.unsafe.implicits.global
 import scala.scalajs.js.annotation.*
 
-@JSExportTopLevel("HofFold")
+@JSExportTopLevel("FlowersFold")
 object Fold {
   @JSExport
   def stack(id: String): Unit = {

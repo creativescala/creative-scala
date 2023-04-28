@@ -160,7 +160,7 @@ fold(5, stack)
 
 This produes the output below.
 
-@:doodle("fold", "HofFold.stack")
+@:doodle("fold", "FlowersFold.stack")
 
 Now that we've seen an example of functions, let's go into the details of defining and using them.
 

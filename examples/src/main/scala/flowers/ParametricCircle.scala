@@ -1,4 +1,4 @@
-package hof
+package flowers
 
 import cats.syntax.all.*
 import doodle.core.*
@@ -12,7 +12,7 @@ import scala.concurrent.duration.*
 import cats.effect.unsafe.implicits.global
 import scala.scalajs.js.annotation.*
 
-@JSExportTopLevel("HofParametricCircle")
+@JSExportTopLevel("FlowersParametricCircle")
 object ParametricCircle {
   @JSExport
   def circle(id: String): Unit = {

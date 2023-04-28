@@ -1,4 +1,4 @@
-package hof
+package flowers
 
 import cats.implicits.*
 import doodle.core.*
@@ -12,8 +12,8 @@ import scala.concurrent.duration.*
 import cats.effect.unsafe.implicits.global
 import scala.scalajs.js.annotation.*
 
-@JSExportTopLevel("HofSierpinski")
-object HofSierpinski {
+@JSExportTopLevel("FlowersSierpinski")
+object FlowersSierpinski {
   def fold(count: Int, empty: Image, build: (Int, Image) => Image): Image =
     count match {
       case 0 => empty

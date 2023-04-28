@@ -24,7 +24,7 @@ The input to a parametric curve tells us how far along the curve we are. In the 
 
 If we choose lots of different values for the input, and then draw a shape at each point we get back from the parametric equation, we can suggest the shape of the parametric curve. The example below shows this, choosing twelve evenly spaced angles and drawing a circle at each point. As you should notice, this is very similar to how we went about creating polygons.
 
-@:doodle("parametric-circle", "HofParametricCircle.circle")
+@:doodle("parametric-circle", "FlowersParametricCircle.circle")
 
 @:exercise(Drawing a Parametric Curve)
 Implement a method `drawCurve` with the skeleton below.
@@ -81,7 +81,7 @@ def parametricSpiral(angle: Angle): Point =
 @:exercise(Expressive Drawing)
 Modify `drawCurve` so that `marker` is a function from `Point` to `Image`. The point passed to `marker` should be the point produced by the parametric curve. This allows the marker image to depend on the point so we can, for example, make the marker image bigger as the radius increases, or change its color in response to the angle. The picture below shows an example using this new expressivity.
 
-@:doodle("changing-spiral", "HofParametricCurve.spiral")
+@:doodle("changing-spiral", "FlowersParametricCurve.spiral")
 @:@
 
 @:solution
