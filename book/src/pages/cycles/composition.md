@@ -1,4 +1,4 @@
-## Higher Order Methods and Functions
+## Function Composition
 
 ```scala mdoc:invisible
 import doodle.core._
