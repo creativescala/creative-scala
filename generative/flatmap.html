@@ -51,6 +51,13 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
@@ -82,9 +89,9 @@
           <li class="level2 nav-leaf"><a href="../flowers/fun.html">Fun with Functions</a></li>
           <li class="level2 nav-leaf"><a href="../flowers/parametric-curves.html">Parametric Curves</a></li>
           <li class="level2 nav-leaf"><a href="../flowers/flowers.html">Flowers and Other Curves</a></li>
-          <li class="level2 nav-leaf"><a href="../flowers/exercises.html">Exercises</a></li>
           <li class="level2 nav-leaf"><a href="../flowers/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../cycles/">Cycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/epicycloids.html">Epicycloids</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/hof.html">Higher Order Methods and Functions</a></li>
           <li class="level1 nav-header">collections</li>
           <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
@@ -92,13 +99,6 @@
           <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
           <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
           <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
-          <li class="level1 nav-header">programs</li>
-          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-header">generative</li>
           <li class="level2 nav-leaf"><a href="generative.html">Generative Art</a></li>
           <li class="level2 nav-leaf"><a href="random.html">Randomness without Effect</a></li>
@@ -348,15 +348,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$13886/0x0000000103a80040@1f2c0c8b
+//           f = cats.free.Free$$Lambda$13943/0x0000000103a90840@1bbfd772
 //         ),
-//         f = cats.free.Free$$Lambda$13886/0x0000000103a80040@171f56d8
+//         f = cats.free.Free$$Lambda$13943/0x0000000103a90840@f6267fb
 //       ),
-//       f = cats.free.Free$$Lambda$13886/0x0000000103a80040@51ba2e20
+//       f = cats.free.Free$$Lambda$13943/0x0000000103a90840@115ab567
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$13903/0x0000000103a99040@397c6139
+//     f = repl.MdocSession$MdocApp5$$Lambda$13960/0x0000000103a58040@b356c5e
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$13906/0x0000000103a9b840@464b6ac9
+//   f = repl.MdocSession$MdocApp5$$Lambda$13963/0x0000000103a5d840@6e542e0d
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -377,7 +377,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$13886/0x0000000103a80040@2b0f4d4e
+//   f = cats.free.Free$$Lambda$13943/0x0000000103a90840@7295c183
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -385,9 +385,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$13886/0x0000000103a80040@2b0f4d4e
+//     f = cats.free.Free$$Lambda$13943/0x0000000103a90840@7295c183
 //   ),
-//   f = cats.free.Free$$Lambda$13886/0x0000000103a80040@2bc4ad21
+//   f = cats.free.Free$$Lambda$13943/0x0000000103a90840@3620a33b
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =

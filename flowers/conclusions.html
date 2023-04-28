@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="exercises.html">←</a></p>
+    <nav id="topbar"><p><a href="flowers.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
 <p><a href="../cycles/">→</a></p></nav>
     <nav id="sidebar">
@@ -51,6 +51,13 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
@@ -82,9 +89,9 @@
           <li class="level2 nav-leaf"><a href="fun.html">Fun with Functions</a></li>
           <li class="level2 nav-leaf"><a href="parametric-curves.html">Parametric Curves</a></li>
           <li class="level2 nav-leaf"><a href="flowers.html">Flowers and Other Curves</a></li>
-          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
           <li class="level2 active nav-leaf"><a href="#">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../cycles/">Cycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/epicycloids.html">Epicycloids</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/hof.html">Higher Order Methods and Functions</a></li>
           <li class="level1 nav-header">collections</li>
           <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
@@ -92,13 +99,6 @@
           <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
           <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
           <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
-          <li class="level1 nav-header">programs</li>
-          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-header">generative</li>
           <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
           <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
@@ -156,9 +156,22 @@
         <main class="content">
             <h1 id="conclusions" class="title">Conclusions</h1>
             <p>In this chapter we looked at functions. We saw that functions are, unlike methods <em>first-class values</em>. This means we can pass functions to methods (or other functions), return them from methods and functions, and give them a name using <code>val</code>.</p>
-            <p>We saw that, because functions are values, we can <em>compose</em> them. This means to create new functions by combining existing functions. We saw a few different ways of doing this. Function composition allowed us to build a toolbox of useful functions that we could then combine to create interesting results. Composition is one of the key ideas in functional programming. Doodle is another example of composition: we combine <code>Images</code> using methods like <code>on</code> and <code>above</code> to create new <code>Images</code>.</p>
+            <p>Functions are one of our core tools for abstraction. Remember that abstraction is removing irrelevant details. We&#39;ve seen that names allow us to abstract over expressions. We can replace multiple occurrences of an expression with a name. So, we can replace</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>))</span></code></pre>
+            <p>with</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
+</span><span class="identifier">circle</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">circle</span><span>)</span></code></pre>
+            <p>We&#39;ve also seen that methods allow us to abstract over several expressions that are the same in some places but differ in others. The parts that differ become the parameters to the method. Here&#39;s an example. We can replace</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>))</span></code></pre>
+            <p>with</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">makeCircle</span><span>(</span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
+  
+</span><span class="identifier">makeCircle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">makeCircle</span><span>(</span><span class="number-literal">20</span><span>))</span></code></pre>
+            <p>A method captures a computation that allows the caller to change certain parts of the computation.</p>
+            <p>What new form of abstraction do functions provide? We&#39;ve seen two uses in this chapter: passing functions to methods and returning functions from methods. Passing a function to a method allows the method to choose the parameters that the function is applied to. This allows us to split the computation between the method and the function, so the method can abstract over <em>part</em> of the computation and the function can abstract over the rest. Returning a function from a method is essentially the same. Therefore we can see that first-class functions allow us to better split up computations than we can without them. In the next chapter we&#39;ll see one more use of functions, function composition, which takes this idea and builds new functions from functions.  This will close out this first part of the book focused on creative computing.</p>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="exercises.html">←Exercises</a> <a class="pageNavigation" href="../cycles/">Cycles→</a>
+                <a class="pageNavigation" href="flowers.html">←Flowers and Other Curves</a> <a class="pageNavigation" href="../cycles/">Cycles→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>

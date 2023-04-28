@@ -23,7 +23,7 @@
 <body>
     <nav id="topbar"><p><a href="parametric-curves.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="exercises.html">→</a></p></nav>
+<p><a href="conclusions.html">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -51,6 +51,13 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
@@ -82,9 +89,9 @@
           <li class="level2 nav-leaf"><a href="fun.html">Fun with Functions</a></li>
           <li class="level2 nav-leaf"><a href="parametric-curves.html">Parametric Curves</a></li>
           <li class="level2 active nav-leaf"><a href="#">Flowers and Other Curves</a></li>
-          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
           <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../cycles/">Cycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/epicycloids.html">Epicycloids</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/hof.html">Higher Order Methods and Functions</a></li>
           <li class="level1 nav-header">collections</li>
           <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
@@ -92,13 +99,6 @@
           <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
           <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
           <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
-          <li class="level1 nav-header">programs</li>
-          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-header">generative</li>
           <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
           <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
@@ -174,18 +174,13 @@
   (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt;
     </span><span class="type-name">Point</span><span>(</span><span class="number-literal">100</span><span> * ((</span><span class="identifier">angle</span><span> * </span><span class="identifier">a</span><span>) + </span><span class="identifier">offset</span><span>).</span><span class="identifier">sin</span><span>, </span><span class="number-literal">100</span><span> * (</span><span class="identifier">angle</span><span> * </span><span class="identifier">b</span><span>).</span><span class="identifier">sin</span><span>)</span></code></pre>
             <p>The examples use values of <code>a</code> and <code>b</code> of 1, 2, or 3, and the <code>offset</code> set to 90 degrees.</p>
-            <p>There are an unlimited number of functions we could use to create interesting curves. Let&#39;s see one more example, this time of what known as an <a href="https://en.wikipedia.org/wiki/Epicycloid">epicycloid</a>. An epicycloid is produced when we trace a point on a circle rotating around another circle. We can stack circles on top of circles, and change the speed at which they rotate, to produce many different curves. For our example we are going to fix the number and radius of the circles and allow their speed of rotation to vary. Here is the code:</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">epicycloid</span><span>(</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">b</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">c</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
-  (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt;
-    (</span><span class="type-name">Point</span><span>(</span><span class="number-literal">75</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="identifier">a</span><span>).</span><span class="identifier">toVec</span><span> + </span><span class="type-name">Point</span><span>(</span><span class="number-literal">32</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="identifier">b</span><span>).</span><span class="identifier">toVec</span><span> + </span><span class="type-name">Point</span><span>(</span><span class="number-literal">15</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="identifier">c</span><span>).</span><span class="identifier">toVec</span><span>).</span><span class="identifier">toPoint</span></code></pre>
-            <p>You might notice this code converts points to vectors and back again. This is a little technical detail (we cannot add points but we can add vectors) that isn&#39;t important if you aren&#39;t familiar with vectors.</p>
-            <p>Below are three examples created by choosing the parameters a, b, c, as (1, 6, 14), (7, 13, 25), and (1, 7, -21) respectively.</p>
-            <p><img src="./epicycloid.svg" alt="Examples of epicycloid curves, with the parameters chosen as (1, 6, 14), (7, 13, 25), and (1, 7 -21)." title="Figure Some(#fig:hof:epicycloid): caption"></p>
-            
-            <h4 id="exercise" class="section">Exercise {-}</h4>
-            <p>We now have a lot of tools to play with. Your task here is simply to use some of the ideas we&#39;ve just seen to make an image that you like. For inspiration you could use the image that we started the chapter with, but don&#39;t let it constrain you if you think of something else to explore.</p>
+            <div class="exercise">
+              
+              <h4 id="exercise-pick-your-own">Exercise: Pick Your Own</h4>
+              <p>We now have a lot of tools to play with. Your task here is simply to use some of the ideas we&#39;ve just seen to make an image that you like. For inspiration you could use the image that we started the chapter with, but don&#39;t let it constrain you if you think of something else to explore.</p>
+            </div>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="parametric-curves.html">←Parametric Curves</a> <a class="pageNavigation" href="exercises.html">Exercises→</a>
+                <a class="pageNavigation" href="parametric-curves.html">←Parametric Curves</a> <a class="pageNavigation" href="conclusions.html">Conclusions→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
