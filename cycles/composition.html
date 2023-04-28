@@ -1,0 +1,438 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0" />
+    <title>Function Composition</title>
+    
+    
+    <meta name="description" content="book" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../creative-scala.css" />
+    <script src="../solution.js"></script>
+    <script src="../main.js"></script>
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body>
+    <nav id="topbar"><p><a href="index.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="epicycloids.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-summary.html">Summary</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
+          <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
+          <li class="level1 nav-header">programs</li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-node"><a href="../methods/">Methods without Madness</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../recursion/">Structural Recursion over the Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/03-path.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/04-creative.html">Going Further</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/05-conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../flowers/">Functions and Flowers</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/functions.html">Functions as Abstractions</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/fun.html">Fun with Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="index.html">Composition and Cycles</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Function Composition</a></li>
+          <li class="level2 nav-leaf"><a href="epicycloids.html">Epicycloids</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+            <h1 id="function-composition" class="title">Function Composition</h1>
+            <p>In previous sections we have seen the utility of passing functions to methods and returning functions from methods. In this section we&#39;ll see the usefulness of <em>function composition</em>. </p>
+            <p>Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. Composing functions means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type <code>A =&gt; B</code> and <code>B =&gt; C</code> to produce a function type <code>A =&gt; C</code>. In Scala we use the <code>andThen</code> method to do this.</p>
+            <p>Here&#39;s an example. We start by defining two functions. The first adds a <a href="https://en.wikipedia.org/wiki/Drop_shadow">drop shadow</a> to an <code>Image</code>. The second places an <code>Image</code> beside a copy of itself mirrored around the y-axis.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">dropShadow</span><span> = (</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt;
+  </span><span class="identifier">image</span><span>.</span><span class="identifier">on</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>).</span><span class="identifier">at</span><span>(</span><span class="number-literal">5</span><span>, -</span><span class="number-literal">5</span><span>))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">mirrored</span><span> = (</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt;
+  </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">transform</span><span>(</span><span class="type-name">Transform</span><span>.</span><span class="identifier">horizontalReflection</span><span>))</span></code></pre>
+            <p>Both functions have type <code>Image =&gt; Image</code>, so we can compose them together. We do this using the <code>andThen</code> method to create a function that connects the output of the first function to the input of the second function.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">composed</span><span> = </span><span class="identifier">mirrored</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">dropShadow</span><span>)</span></code></pre>
+            <p>Below we see the image created by the program</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">star</span><span> = </span><span class="type-name">Image</span><span>
+  .</span><span class="identifier">star</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">50</span><span>, </span><span class="number-literal">5</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">fireBrick</span><span>)
+  .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">dodgerBlue</span><span>)
+  .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">7.0</span><span>)
+
+</span><span class="identifier">dropShadow</span><span>(</span><span class="identifier">star</span><span>)
+  .</span><span class="identifier">beside</span><span>(</span><span class="identifier">mirrored</span><span>(</span><span class="identifier">star</span><span>))
+  .</span><span class="identifier">beside</span><span>(</span><span class="identifier">composed</span><span>(</span><span class="identifier">star</span><span>))</span></code></pre>
+            <p><img src="./composed.svg" alt="Illustrating function composition by showing the output of the individual components and the composition." title="Figure Some(#fig:hof:composed): caption"></p>
+            <p>This shows how the composed function applies the output of the first function to the second function: we first mirror the star and then add a drop shadow.</p>
+            <p>Let&#39;s see how we can apply function composition to our examples of parametric curves. One limitation of the parametric cures we&#39;ve created so far is that their size is fixed. For example when we defined <code>parametricCircle</code> we fixed the radius at 200.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">parametricCircle</span><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Point</span><span> =
+  </span><span class="type-name">Point</span><span>.</span><span class="identifier">polar</span><span>(</span><span class="number-literal">200</span><span>, </span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>What if we want to create circles of different radius? We could use a method that returns a function like so.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">parametricCircle</span><span>(</span><span class="identifier">radius</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> = 
+  (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; </span><span class="type-name">Point</span><span>.</span><span class="identifier">polar</span><span>(</span><span class="identifier">radius</span><span>, </span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>This would be a reasonable solution but we&#39;re going to explore a different approach using our new tool of function composition. Our approach will be this:</p>
+            <ul>
+              <li>
+                <p>each parametric curve will be of some default size that we&#39;ll loosely define as &quot;usually between 0 and 1&quot;; and</p>
+              </li>
+              <li>
+                <p>we&#39;ll define a function <code>scale</code> that will change the size as appropriate.</p>
+              </li>
+            </ul>
+            <p>A quick example will make this more concrete. Let&#39;s redefine <code>parametricCircle</code> so the radius is 1.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">parametricCircle</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> = 
+  (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; </span><span class="type-name">Point</span><span>(</span><span class="number-literal">1.0</span><span>, </span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>Now we can define <code>scale</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">scale</span><span>(</span><span class="identifier">factor</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  (</span><span class="identifier">point</span><span>: </span><span class="type-name">Point</span><span>) =&gt; </span><span class="type-name">Point</span><span>(</span><span class="identifier">point</span><span>.</span><span class="identifier">r</span><span> * </span><span class="identifier">factor</span><span>, </span><span class="identifier">point</span><span>.</span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>We can use function composition to create circles of different sizes as follows.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">circle100</span><span> = </span><span class="identifier">parametricCircle</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span>))
+</span><span class="keyword">val</span><span> </span><span class="identifier">circle200</span><span> = </span><span class="identifier">parametricCircle</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">200</span><span>))
+</span><span class="keyword">val</span><span> </span><span class="identifier">circle300</span><span> = </span><span class="identifier">parametricCircle</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">300</span><span>))</span></code></pre>
+            <p>We can use the same approach for our spiral, adjusting the function slightly so the radius of the spiral varies from about 0.36 at 0 degrees to 1 at 360 degrees.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">parametricSpiral</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; </span><span class="type-name">Point</span><span>(</span><span class="type-name">Math</span><span>.</span><span class="identifier">exp</span><span>(</span><span class="identifier">angle</span><span>.</span><span class="identifier">toTurns</span><span> - </span><span class="number-literal">1</span><span>), </span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>Then we can compose with <code>scale</code> to produce spirals of different size.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">spiral100</span><span> = </span><span class="identifier">parametricSpiral</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span>))
+</span><span class="keyword">val</span><span> </span><span class="identifier">spiral200</span><span> = </span><span class="identifier">parametricSpiral</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">200</span><span>))
+</span><span class="keyword">val</span><span> </span><span class="identifier">spiral300</span><span> = </span><span class="identifier">parametricSpiral</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">300</span><span>))</span></code></pre>
+            <p>What else can we do with function composition? </p>
+            <p>Our parametric functions have type <code>Angle =&gt; Point</code>. We can compose these with functions of type <code>Point =&gt; Image</code> and with this setup we can make the &quot;dots&quot; from which we build our images depend on the point.</p>
+            <p>Here&#39;s an example where the dots get bigger as the angle increases.</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">growingDot</span><span>: </span><span class="type-name">Point</span><span> =&gt; </span><span class="type-name">Image</span><span> = 
+  (</span><span class="identifier">pt</span><span>: </span><span class="type-name">Point</span><span>) =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">pt</span><span>.</span><span class="identifier">angle</span><span>.</span><span class="identifier">toTurns</span><span> * </span><span class="number-literal">20</span><span>).</span><span class="identifier">at</span><span>(</span><span class="identifier">pt</span><span>)
+  
+</span><span class="keyword">val</span><span> </span><span class="identifier">growingCircle</span><span> = </span><span class="identifier">parametricCircle</span><span>
+  .</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span>))
+  .</span><span class="identifier">andThen</span><span>(</span><span class="identifier">growingDot</span><span>)</span></code></pre>
+            <div class="exercise">
+              
+              <h4 id="exercise-drawing-curves">Exercise: Drawing Curves</h4>
+              <p>If we want to draw this function we&#39;ll need to change <code>drawCurve</code> so the parameter has type <code>Angle =&gt; Image</code> instead of <code>Angle =&gt; Point</code>. In other words we want the following skeleton.</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">drawCurve</span><span>(</span><span class="identifier">points</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">curve</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  ???</span></code></pre>
+              <p>Implement <code>drawCurve</code>.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The answer is a small modification of the original <code>drawCurve</code>. We drop the <code>marker</code> parameter and the type of the <code>curve</code> parameter changes. The rest follows from this.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">drawCurve</span><span>(</span><span class="identifier">points</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">curve</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">step</span><span> = </span><span class="type-name">Angle</span><span>.</span><span class="identifier">one</span><span> / </span><span class="identifier">points</span><span>
+  </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+    </span><span class="keyword">val</span><span> </span><span class="identifier">angle</span><span> = </span><span class="identifier">step</span><span> * </span><span class="identifier">count</span><span>
+    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+        </span><span class="identifier">curve</span><span>(</span><span class="identifier">angle</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
+    }
+  }
+  
+  </span><span class="identifier">loop</span><span>(</span><span class="identifier">points</span><span>)
+}</span></code></pre>
+              </div>
+            </div>
+            <p>Having implemented <code>drawCurve</code> we can start drawing pictures. For example, below we have the output of <code>growingCircle</code> above.</p>
+            <p><img src="./growing-circle.svg" alt="A circle created by composing smaller components." title="Figure Some(#fig:hof:growing-circle): caption"></p>
+            
+            <h3 id="more-uses-of-composition" class="section">More Uses of Composition</h3>
+            <p>At this point we can do a lot. Let&#39;s see another example. Remember the concentric circles exercise we used as an example:</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricCircles</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricCircles</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span> + </span><span class="number-literal">5</span><span>))
+  }</span></code></pre>
+            <p>This pattern allows us to create many different images
+            by changing the use of <code>Image.circle</code> to another shape.
+            However, each time we provide a new replacement for <code>Image.circle</code>,
+            we also need a new definition of <code>concentricCircles</code> to go with it.</p>
+            <p>We can make <code>concentricCircles</code> completely general by supplying
+            the replacement for <code>Image.circle</code> as a parameter.
+            Here we&#39;ve renamed the method to <code>concentricShapes</code>, as we&#39;re no longer restricted to drawing circles,
+            and made <code>singleShape</code> responsible for drawing an appropriately sized shape.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>))
+  }</span></code></pre>
+            <p>Now we can re-use the same definition of <code>concentricShapes</code>
+            to produce plain circles, squares of different hue,
+            circles with different opacity, and so on.
+            All we have to do is pass in a suitable definition of <code>singleShape</code>:</p>
+            <pre><code class="nohighlight"><span class="comment">// Passing a function literal directly:
+</span><span class="keyword">val</span><span> </span><span class="identifier">blackCircles</span><span>: </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span>*</span><span class="identifier">n</span><span>))
+
+</span><span class="comment">// Converting a method to a function:
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">redCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span>*</span><span class="identifier">n</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">redCircles</span><span>: </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">redCircle</span><span> </span><span class="identifier">_</span><span>)</span></code></pre>
+            <div class="exercise">
+              
+              <h4 id="exercise-the-colour-and-the-shape">Exercise: The Colour and the Shape</h4>
+              <p>Starting with the code below we are going to write color and shape functions to produce the image shown below.</p>
+              <p><img src="./colors-and-shapes.svg" alt="Colors and Shapes" title="Figure Some(#fig:hof:colors-and-shapes): caption"></p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>))
+  }</span></code></pre>
+              <p>The <code>concentricShapes</code> method is equivalent to the
+              <code>concentricCircles</code> method from previous exercises.
+              The main difference is that we pass in
+              the definition of <code>singleShape</code> as a parameter.</p>
+              <p>Let&#39;s think about the problem a little.
+              We need to do two things:</p>
+              <ol class="arabic">
+                <li>write an appropriate definition of <code>singleShape</code> for each
+                of the three shapes in the target image; and</li>
+              </ol>
+              <ol class="arabic">
+                <li>call <code>concentricShapes</code> three times,
+                passing in the appropriate definition of <code>singleShape</code> each time
+                and putting the results <code>beside</code> one another.</li>
+              </ol>
+              <p>Let&#39;s look at the definition of the <code>singleShape</code> parameter in more detail.
+              The type of the parameter is <code>Int =&gt; Image</code>,
+              which means a function that accepts an <code>Int</code> parameter and returns an <code>Image</code>.
+              We can declare a method of this type as follows:</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">outlinedCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">n</span><span> * </span><span class="number-literal">10</span><span>)</span></code></pre>
+              <p>We can convert this method to a function, and pass it to <code>concentricShapes</code> to create
+              an image of concentric black outlined circles:</p>
+              <pre><code class="nohighlight"><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">outlinedCircle</span><span> </span><span class="identifier">_</span><span>)</span></code></pre>
+              <p>This produces the output shown in below.</p>
+              <p><img src="./colors-and-shapes-step1.svg" alt="Many outlined circles" title="Figure Some(#fig:hof:colors-and-shapes-step1): caption"></p>
+              <p>The rest of the exercise is just a matter of copying, renaming,
+              and customising this function to produce
+              the desired combinations of colours and shapes:</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">circleOrSquare</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =
+  </span><span class="keyword">if</span><span>(</span><span class="identifier">n</span><span> % </span><span class="number-literal">2</span><span> == </span><span class="number-literal">0</span><span>) </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="identifier">n</span><span>*</span><span class="number-literal">20</span><span>, </span><span class="identifier">n</span><span>*</span><span class="number-literal">20</span><span>) </span><span class="keyword">else</span><span> </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">n</span><span>*</span><span class="number-literal">10</span><span>)
+
+</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">outlinedCircle</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">circleOrSquare</span><span>))</span></code></pre>
+              <p>See below for the output.</p>
+              <p><img src="./colors-and-shapes-step2.svg" alt="Many outlined circles beside many circles and squares" title="Figure Some(#fig:hof:colors-and-shapes-step2): caption"></p>
+              <p>For extra credit, when you&#39;ve written your code to
+              create the sample shapes above, refactor it so you have two sets
+              of base functions: one to produce colours and one to produce shapes.
+              Combine these functions using a <em>combinator</em> as follows,
+              and use the result of the combinator as an argument to <code>concentricShapes</code></p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">colored</span><span>(</span><span class="identifier">shape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Color</span><span>): </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> =
+  (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt; ???</span></code></pre>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The simplest solution is to define three <code>singleShapes</code> as follows:</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>))
+  }
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">rainbowCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>).</span><span class="identifier">spin</span><span>((</span><span class="identifier">n</span><span> * </span><span class="number-literal">30</span><span>).</span><span class="identifier">degrees</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">shape</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">12</span><span>)
+  </span><span class="identifier">shape</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">fadingTriangle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">fadeOut</span><span>((</span><span class="number-literal">1</span><span> - </span><span class="identifier">n</span><span> / </span><span class="number-literal">20.0</span><span>).</span><span class="identifier">normalized</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">shape</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>, </span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>)
+  </span><span class="identifier">shape</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
+}
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">rainbowSquare</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>).</span><span class="identifier">spin</span><span>((</span><span class="identifier">n</span><span> * </span><span class="number-literal">30</span><span>).</span><span class="identifier">degrees</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">shape</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>, </span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>)
+  </span><span class="identifier">shape</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
+}
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">answer</span><span> =
+  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">rainbowCircle</span><span>)
+    .</span><span class="identifier">beside</span><span>(
+      </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">fadingTriangle</span><span>)
+        .</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">rainbowSquare</span><span>))
+    )</span></code></pre>
+                <p>However, there is some redundancy here:
+                <code>rainbowCircle</code> and <code>rainbowTriangle</code>, in particular,
+                use the same definition of <code>color</code>.
+                There are also repeated calls to <code>strokeWidth(10)</code> and
+                <code>strokeColor(color)</code> that can be eliminated.
+                The extra credit solution factors these out into their own functions
+                and combines them with the <code>colored</code> combinator:</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>) </span><span class="identifier">on</span><span> </span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>)
+  }
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">colored</span><span>(</span><span class="identifier">shape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Color</span><span>): </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> =
+  (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt;
+    </span><span class="identifier">shape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>(</span><span class="identifier">n</span><span>))
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">fading</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Color</span><span> =
+  </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">fadeOut</span><span>((</span><span class="number-literal">1</span><span> - </span><span class="identifier">n</span><span> / </span><span class="number-literal">20.0</span><span>).</span><span class="identifier">normalized</span><span>)
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">spinning</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Color</span><span> =
+  </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>).</span><span class="identifier">spin</span><span>((</span><span class="identifier">n</span><span> * </span><span class="number-literal">30</span><span>).</span><span class="identifier">degrees</span><span>)
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">size</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Double</span><span> =
+  </span><span class="number-literal">100</span><span> + </span><span class="number-literal">24</span><span> * </span><span class="identifier">n</span><span>
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">circle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>))
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>))
+
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">triangle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>), </span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">answer</span><span> =
+  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">circle</span><span>, </span><span class="identifier">spinning</span><span>))
+    .</span><span class="identifier">beside</span><span>(
+      </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">triangle</span><span>, </span><span class="identifier">fading</span><span>))
+        .</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">square</span><span>, </span><span class="identifier">spinning</span><span>)))
+    )</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-more-shapes">Exercise: More Shapes</h4>
+              <p>The <code>concentricShapes</code> methods takes an <code>Int =&gt; Image</code> function, and we can construct such as function using <code>drawCurve</code>, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example below.</p>
+              <p><img src="./concentric-dotty-circle.svg" alt="Concentric dotty circles" title="Figure Some(#fig:hof:concentric-dotty-circle): caption"></p>
+              <p>The code to create this is below.</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">dottyCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">drawCurve</span><span>(
+    </span><span class="number-literal">72</span><span>,
+    </span><span class="identifier">parametricCircle</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span> * </span><span class="number-literal">24</span><span>)).</span><span class="identifier">andThen</span><span>(</span><span class="identifier">growingDot</span><span>)
+  )
+
+</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">dottyCircle</span><span>, </span><span class="identifier">spinning</span><span>))</span></code></pre>
+              <p>Use the techniques we&#39;ve seen so far to create a picture of your choosing (perhaps similar to the flower with which we started the chapter). No solution here; there is no right or wrong answer.</p>
+            </div>
+            <div class="flex flex-row justify-between">
+                <a class="pageNavigation" href="index.html">←Composition and Cycles</a> <a class="pageNavigation" href="epicycloids.html">Epicycloids→</a>
+            </div>
+        </main>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>

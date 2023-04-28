@@ -90,9 +90,9 @@
           <li class="level2 nav-leaf"><a href="parametric-curves.html">Parametric Curves</a></li>
           <li class="level2 nav-leaf"><a href="flowers.html">Flowers and Other Curves</a></li>
           <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
-          <li class="level1 nav-node"><a href="../cycles/">Cycles</a></li>
+          <li class="level1 nav-node"><a href="../cycles/">Composition and Cycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/composition.html">Function Composition</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/epicycloids.html">Epicycloids</a></li>
-          <li class="level2 nav-leaf"><a href="../cycles/hof.html">Higher Order Methods and Functions</a></li>
           <li class="level1 nav-header">collections</li>
           <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
           <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
@@ -339,17 +339,17 @@
               <div class="solution-body">
                 <p>The first function is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res10: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13874/0x0000000103a5d040@2a85ab8b</span></code></pre>
+</span><span class="comment">// res10: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$13917/0x0000000103a5d040@29986086</span></code></pre>
                 <p>The second is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res11: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13875/0x0000000103a5c040@1d44076b</span></code></pre>
+</span><span class="comment">// res11: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$13918/0x0000000103a5c040@4f1b0f64</span></code></pre>
                 <p>The third is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res12: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13876/0x0000000103a5b840@47d538e2</span></code></pre>
+</span><span class="comment">// res12: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$13919/0x0000000103a5b840@502585ec</span></code></pre>
               </div>
             </div>
             <div class="exercise">
