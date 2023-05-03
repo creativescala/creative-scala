@@ -32,9 +32,9 @@ function tocPatch() {
     return header;
   }
 
-  // Array[Element] => Boolean
-  function isActive(elements) {
-    return elements.some(elt => elt.classList.contains('active'))
+  // Element => Boolean
+  function isActive(element) {
+    return element.classList.contains('active');
   }
 
   // Array[Element] => Element
@@ -59,7 +59,7 @@ function tocPatch() {
       children.push(list);
 
       const details = document.createElement('details');
-      if (isActive(chapter)) {
+      if (isActive(first) || chapter.some(isActive)) {
         details.setAttribute('open', 'true');
       }
       details.replaceChildren(...children);
