@@ -15,6 +15,7 @@
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../creative-scala.css" />
+    <script src="../toc.js"></script>
     <script src="../solution.js"></script>
     <script src="../main.js"></script>
     <script> /* for avoiding page load transitions */</script>
@@ -51,12 +52,11 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
-          <li class="level1 nav-header">programs</li>
+          <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
           <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
@@ -161,12 +161,12 @@
     .</span><span class="identifier">withRender</span><span>(</span><span class="identifier">r</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">r</span><span>))
 </span><span class="comment">// bubble: Reactor[Double] = Reactor(
 //   initial = 0.0,
-//   onMouseClickHandler = doodle.reactor.Reactor$$$Lambda$13608/0x0000000103940040@6f6d07be,
-//   onMouseMoveHandler = doodle.reactor.Reactor$$$Lambda$13609/0x0000000103940840@796e2e65,
-//   onTickHandler = doodle.reactor.Reactor$$$Lambda$13613/0x0000000103947040@283ad6a5,
+//   onMouseClickHandler = doodle.reactor.Reactor$$$Lambda$13483/0x000000010393f840@fc86b2d,
+//   onMouseMoveHandler = doodle.reactor.Reactor$$$Lambda$13484/0x0000000103940040@13135566,
+//   onTickHandler = doodle.reactor.Reactor$$$Lambda$13488/0x0000000103947040@5371214d,
 //   tickRate = 100 milliseconds,
-//   renderHandler = repl.MdocSession$MdocApp$$Lambda$13615/0x0000000103944840@249933d4,
-//   stopHandler = doodle.reactor.Reactor$$$Lambda$13614/0x0000000103945840@60a6c83f
+//   renderHandler = repl.MdocSession$MdocApp$$Lambda$13490/0x0000000103944840@41db6e5d,
+//   stopHandler = doodle.reactor.Reactor$$$Lambda$13489/0x0000000103945840@4d12fab4
 // )</span></code></pre>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="reactor.html">←Reactors</a> <a class="pageNavigation" href="index.html">Animation and Fireworks→</a>

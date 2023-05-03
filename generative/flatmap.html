@@ -15,6 +15,7 @@
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../creative-scala.css" />
+    <script src="../toc.js"></script>
     <script src="../solution.js"></script>
     <script src="../main.js"></script>
     <script> /* for avoiding page load transitions */</script>
@@ -51,12 +52,11 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
-          <li class="level1 nav-header">programs</li>
+          <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
           <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Coding Outside the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
@@ -348,15 +348,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$13986/0x0000000103a79840@2191685e
+//           f = cats.free.Free$$Lambda$13861/0x0000000103a78040@63bcf703
 //         ),
-//         f = cats.free.Free$$Lambda$13986/0x0000000103a79840@2402eb9a
+//         f = cats.free.Free$$Lambda$13861/0x0000000103a78040@549fa3c2
 //       ),
-//       f = cats.free.Free$$Lambda$13986/0x0000000103a79840@4fb0f796
+//       f = cats.free.Free$$Lambda$13861/0x0000000103a78040@3b59d08c
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$14003/0x0000000103a4b040@15b28a22
+//     f = repl.MdocSession$MdocApp5$$Lambda$13878/0x0000000103a85040@89a1f14
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$14006/0x0000000103a48840@3fcbd352
+//   f = repl.MdocSession$MdocApp5$$Lambda$13881/0x0000000103a82840@c1ae5eb
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -377,7 +377,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$13986/0x0000000103a79840@c26b10a
+//   f = cats.free.Free$$Lambda$13861/0x0000000103a78040@25b2d619
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -385,9 +385,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$13986/0x0000000103a79840@c26b10a
+//     f = cats.free.Free$$Lambda$13861/0x0000000103a78040@25b2d619
 //   ),
-//   f = cats.free.Free$$Lambda$13986/0x0000000103a79840@44e2eb5f
+//   f = cats.free.Free$$Lambda$13861/0x0000000103a78040@501abf93
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =

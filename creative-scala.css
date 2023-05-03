@@ -590,9 +590,7 @@ nav#sidebar {
   }
 }
 
-li.level1.nav-leaf {
-  margin-top: 1rem;
-  list-style-type: none;
+.nav-list details summary {
   --tw-text-opacity: 1;
   color: rgb(249 168 212 / var(--tw-text-opacity));
 }
@@ -601,27 +599,31 @@ ul.nav-list:first-child {
   margin-top: 0px;
 }
 
-ul.nav-list li:first-child {
+ul.nav-list > li:first-child {
   text-transform: uppercase;
 }
 
-li.level1.nav-node {
+.level1 {
   margin-top: 1rem;
   list-style-type: none;
+}
+
+.level1.nav-node h5, .level1.nav-header h5 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(249 168 212 / var(--tw-text-opacity));
 }
 
-li.level1.nav-header {
-  margin-top: 1rem;
-  list-style-type: none;
-  text-transform: uppercase;
+.level1.nav-leaf > h5 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   --tw-text-opacity: 1;
   color: rgb(249 168 212 / var(--tw-text-opacity));
 }
 
-li.level2 {
+.level2.nav-leaf {
   list-style-type: none;
   padding-left: 1rem;
   --tw-text-opacity: 1;
