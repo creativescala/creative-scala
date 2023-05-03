@@ -14,22 +14,25 @@ nav#topbar p {
 nav#sidebar {
     @apply bg-slate-800 hidden max-w-sm p-12 xl:flex-none xl:block;
 }
-li.level1.nav-leaf {
-    @apply list-none text-pink-300 mt-4;
+.nav-list details summary {
+    @apply text-pink-300;
 }
 ul.nav-list:first-child {
     @apply mt-0;
 }
-ul.nav-list li:first-child {
+ul.nav-list > li:first-child {
     @apply uppercase;
 }
-li.level1.nav-node {
-    @apply list-none uppercase text-pink-300 mt-4;
+.level1 {
+    @apply list-none mt-4;
 }
-li.level1.nav-header {
-    @apply list-none uppercase text-pink-300 mt-4;
+.level1.nav-node h5, .level1.nav-header h5 {
+    @apply uppercase text-pink-300 my-2;
 }
-li.level2 {
+.level1.nav-leaf > h5 {
+    @apply text-pink-300 my-2;
+}
+.level2.nav-leaf {
     @apply list-none text-slate-300 pl-4;
 }
 
