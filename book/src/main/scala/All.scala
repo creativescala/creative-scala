@@ -6,5 +6,4 @@ object All extends App {
   cycles.All
   recursion.All
   fractals.All
-  polygons.All
 }
