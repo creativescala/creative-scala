@@ -93,20 +93,24 @@ With this we can construct the functions we need.
 
 ```scala mdoc:silent
 val blackCircle = circle // Black is the default stroke
-val redCircle = size.andThen(circle).andThen(color(Color.red))
+val redCircle = size.andThen(circle).andThen(strokeColor(Color.red))
 ```
 
-A few points to note:
-
-1. In this example, and in this chapter in general, we're being quite extreme with function composition. 
-This particular example is so small it doesn't benefit much from function composition, so if this was a real example I probably wouldn't bother with using function composition. 
+In this example, and in this chapter in general, we're being quite extreme with function composition. 
+This particular example is so small that using function composition is probably making it more complex, so if this was real code I probably wouldn't bother with using function composition. 
 However we have a different goal here, which is learning about function composition.
-We're deliberately keeping the examples small, so they are overwhelming while we're becoming familiar with function composition.
+We're deliberately keeping the examples small, so they are not overwhelming, while we're becoming familiar with function composition.
 
-2. Using `andThen` is a way to compose functions, but *not* the only way to compose functions.
+Using `andThen` is *a* way to compose functions, but not *the* only way to compose functions.
 We can write all sorts of functions that compose functions. 
-We call these *combinators*.
-Here's an example, which ...
+Sometimes we use the term *combinator* for a method or function whose job is to compose its parameters.
+For example, the `on`, `beside`, and `above` combinators compose `Images`.
+Here's an example of a function combinator that combines two `Int => Image` functions to produce another `Int => Image` function.
+
+```scala mdoc:silent
+def withSizeOn(f: Int => Image, g: Int => Image): Int => Image =
+  size => f(size).on(g(size))
+```
 
 
 

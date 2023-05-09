@@ -62,14 +62,17 @@ object Fun {
   def size(n: Int): Double =
     100 + 24 * n
 
+  def withSizeOn(f: Int => Image, g: Int => Image): Int => Image =
+    size => f(size).on(g(size))
+
   def circle(n: Int): Image =
-    Image.circle(size(n))
+    Image.circle(n)
 
   def square(n: Int): Image =
-    Image.square(size(n))
+    Image.square(n)
 
   def triangle(n: Int): Image =
-    Image.triangle(size(n), size(n))
+    Image.triangle(n, n)
 
   concentricShapes(10, colored(circle, spinning))
     .beside(
