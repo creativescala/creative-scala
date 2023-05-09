@@ -26,4 +26,40 @@ object Composition {
     .beside(mirrored(star))
     .beside(composed(star))
     .save("cycles/composed")
+
+  val parametricCircle: Angle => Point =
+    (angle: Angle) => Point(1.0, angle)
+
+  val parametricSpiral: Angle => Point =
+    (angle: Angle) => Point(Math.exp(angle.toTurns - 1), angle)
+
+  def scale(factor: Double): Point => Point =
+    (point: Point) => point.scaleLength(factor)
+
+  val circle100 = parametricCircle.andThen(scale(100))
+  val circle200 = parametricCircle.andThen(scale(200))
+  val circle300 = parametricCircle.andThen(scale(300))
+
+  val growingDot: Point => Image =
+    (pt: Point) => Image.circle(pt.angle.toTurns * 20).at(pt)
+
+  val growingCircle = parametricCircle
+    .andThen(scale(100))
+    .andThen(growingDot)
+
+  def drawCurve(samples: Int, curve: Angle => Image): Image = {
+    val step = Angle.one / samples
+    def loop(count: Int): Image = {
+      val angle = step * count
+      count match {
+        case 0 => Image.empty
+        case n =>
+          curve(angle).on(loop(n - 1))
+      }
+    }
+
+    loop(samples)
+  }
+
+  drawCurve(32, growingCircle).save("cycles/growing-circle")
 }
