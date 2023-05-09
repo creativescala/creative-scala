@@ -89,6 +89,7 @@ lazy val examples = project
 build := Def
   .sequential(
     (examples / Compile / fastLinkJS),
+    (book / Compile / run).toTask(""),
     (book / mdoc).toTask(""),
     book / css,
     book / laikaSite,

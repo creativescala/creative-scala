@@ -14,5 +14,5 @@ object ColorSection {
     .on(Image.circle(20).fillColor(Color.cornflowerBlue))
     .on(Image.circle(30).fillColor(Color.white))
     .on(Image.circle(50).fillColor(Color.darkBlue))
-    .save("pictures/evil-eye")
+    .save("expressive-expressions/evil-eye")
 }

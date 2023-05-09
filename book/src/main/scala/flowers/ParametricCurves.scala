@@ -1,5 +1,5 @@
 package creativescala
-package hof
+package flowers
 
 import cats.implicits._
 import doodle.core._
@@ -53,7 +53,7 @@ object ParametricCurves {
       .on(r)
 
   val representation =
-    cartesian.beside(pad).beside(polar).save("hof/representation")
+    cartesian.beside(pad).beside(polar).save("flowers/representation")
 
   def circle(angle: Angle): Point =
     Point(100, angle)
@@ -107,7 +107,7 @@ object ParametricCurves {
           )
         )
       )
-      .save("hof/parametric-circles")
+      .save("flowers/parametric-circles")
 
   def sample(samples: Int, dot: Image)(f: Angle => Point): Image = {
     // Angle.one is one complete turn. I.e. 360 degrees
@@ -133,7 +133,7 @@ object ParametricCurves {
         .strokeColor(Color.lawngreen)
     ) { angle =>
       Point(200, angle)
-    }.save("hof/triangle-circle")
+    }.save("flowers/triangle-circle")
 
   val dottedRose =
     sample(
@@ -146,7 +146,7 @@ object ParametricCurves {
         .on(Image.regularPolygon(6, 14).fillColor(Color.black))
     ) { angle =>
       Point((angle * 7).cos * 300, angle)
-    }.save("hof/rose")
+    }.save("flowers/rose")
 
   // Debug
   val debug = {
@@ -156,7 +156,7 @@ object ParametricCurves {
     val c3 = c.debug.beside(c.debug.at(10, 10)).beside(c.debug.at(10, -10))
     c1.above(c2).above(c3)
   }
-  debug.save("hof/debug")
+  debug.save("flowers/debug")
 
   def parametricCircle(angle: Angle): Point =
     Point.polar(200, angle)
@@ -190,5 +190,5 @@ object ParametricCurves {
         )
     )
 
-  psychedelicSpirals.save("hof/psychedelic-spirals")
+  psychedelicSpirals.save("flowers/psychedelic-spirals")
 }

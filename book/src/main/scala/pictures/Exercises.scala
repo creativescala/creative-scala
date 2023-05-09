@@ -12,7 +12,7 @@ object Exercises {
     .circle(20)
     .on(Image.circle(40))
     .on(Image.circle(60))
-    .save("pictures/target1")
+    .save("expressive-expressions/target1")
 
   Image
     .circle(20)
@@ -20,7 +20,7 @@ object Exercises {
     .on(Image.circle(60))
     .above(Image.rectangle(6, 20))
     .above(Image.rectangle(20, 6))
-    .save("pictures/target2")
+    .save("expressive-expressions/target2")
 
   Image
     .circle(20).fillColor(Color.red)
@@ -29,5 +29,5 @@ object Exercises {
     .above(Image.rectangle(6, 20).fillColor(Color.brown))
     .above(Image.rectangle(20, 6).fillColor(Color.brown))
     .above(Image.rectangle(80, 25).noStroke.fillColor(Color.green))
-    .save("pictures/target3")
+    .save("expressive-expressions/target3")
 }

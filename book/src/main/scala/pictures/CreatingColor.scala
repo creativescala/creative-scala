@@ -29,7 +29,7 @@ object CreatingColor {
     }
     .toList
     .allOn
-    .save("pictures/color-wheel")
+    .save("expressive-expressions/color-wheel")
 
   val box = Image.square(20).noStroke
   val color = Color.royalBlue
@@ -46,12 +46,12 @@ object CreatingColor {
     .beside(box.fillColor(color.saturation(0.8.normalized)))
     .beside(box.fillColor(color.saturation(0.9.normalized)))
     .beside(box.fillColor(color.saturation(1.0.normalized)))
-    .save("pictures/saturation")
+    .save("expressive-expressions/saturation")
 
   Image
     .triangle(60, 60)
     .fillColor(Color.hsl(0.degrees, 0.8, 0.6))
-    .save("pictures/triangle-pastel-red")
+    .save("expressive-expressions/triangle-pastel-red")
 
   Image
     .circle(100)
@@ -67,7 +67,7 @@ object CreatingColor {
         .fillColor(Color.red.spin(30.degrees))
     )
     .strokeWidth(5.0)
-    .save("pictures/three-circles-spin")
+    .save("expressive-expressions/three-circles-spin")
 
   Image
     .circle(40)
@@ -85,14 +85,14 @@ object CreatingColor {
         )
         .beside(Image.rectangle(40, 40).fillColor(Color.red))
     )
-    .save("pictures/saturate-and-lighten")
+    .save("expressive-expressions/saturate-and-lighten")
 
   Image
     .circle(40)
     .fillColor(Color.red.alpha(0.5.normalized))
     .beside(Image.circle(40).fillColor(Color.blue.alpha(0.5.normalized)))
     .on(Image.circle(40).fillColor(Color.green.alpha(0.5.normalized)))
-    .save("pictures/rgb-alpha")
+    .save("expressive-expressions/rgb-alpha")
 
   Image
     .triangle(40, 40)
@@ -128,5 +128,5 @@ object CreatingColor {
             )
         )
     )
-    .save("pictures/analogous-triangles")
+    .save("expressive-expressions/analogous-triangles")
 }

@@ -5,6 +5,4 @@ import doodle.core._
 import doodle.syntax.all._
 import doodle.java2d._
 
-object Cartesian {
-  println("cartesian---fix me")
-}
+object Cartesian {}

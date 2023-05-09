@@ -1,5 +1,5 @@
 package creativescala
-package hof
+package flowers
 
 import cats.implicits._
 import doodle.core._
@@ -9,23 +9,6 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 
 object Hof {
-  val dropShadow = (image: Image) =>
-    image.on(image.strokeColor(Color.black).fillColor(Color.black).at(5, -5))
-
-  val mirrored = (image: Image) =>
-    image.beside(image.transform(Transform.horizontalReflection))
-
-  val composed = mirrored.andThen(dropShadow)
-
-  val star = Image
-    .star(5, 150, 50)
-    .fillColor(Color.fireBrick)
-    .strokeColor(Color.dodgerBlue)
-    .strokeWidth(7.0)
-  dropShadow(star)
-    .beside(mirrored(star))
-    .beside(composed(star))
-    .save("hof/composed")
 
   val parametricCircle: Angle => Point =
     (angle: Angle) => Point(1.0, angle)
@@ -61,7 +44,7 @@ object Hof {
     loop(samples)
   }
 
-  sample(32, growingCircle).save("hof/growing-circle")
+  sample(32, growingCircle).save("flowers/growing-circle")
 
   def concentricShapes(count: Int, singleShape: Int => Image): Image =
     count match {
@@ -95,7 +78,7 @@ object Hof {
       concentricShapes(10, colored(triangle, fading))
         .beside(concentricShapes(10, colored(square, spinning)))
     )
-    .save("hof/colors-and-shapes")
+    .save("flowers/colors-and-shapes")
 
   def dottyCircle(n: Int): Image =
     sample(
@@ -104,5 +87,5 @@ object Hof {
     )
 
   concentricShapes(10, colored(dottyCircle, spinning))
-    .save("hof/concentric-dotty-circle")
+    .save("flowers/concentric-dotty-circle")
 }

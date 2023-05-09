@@ -1,5 +1,5 @@
 package creativescala
-package hof
+package flowers
 
 import cats.implicits._
 import doodle.core._
@@ -36,7 +36,7 @@ object Flowers {
         .on(Image.regularPolygon(6, 9).fillColor(Color.black))
     ) { angle =>
       Point((angle * 7).cos * 300, angle)
-    }.save("hof/rose7")
+    }.save("flowers/rose7")
 
   def rose(k: Int): Angle => Point =
     (angle: Angle) => Point((angle * k).cos * 150, angle)
@@ -48,7 +48,7 @@ object Flowers {
     sample(nSamples, dot)(rose(5))
       .beside(sample(nSamples, dot)(rose(8)))
       .beside(sample(nSamples, dot)(rose(9)))
-  }.save("hof/rose")
+  }.save("flowers/rose")
 
   def lissajous(a: Int, b: Int, offset: Angle): Angle => Point =
     (angle: Angle) =>
@@ -63,7 +63,7 @@ object Flowers {
         sample(nSamples, dot)(lissajous(a, b, 90.degrees))
       }).foldLeft(Image.empty)(_.beside(_))
     }).foldLeft(Image.empty)(_.above(_))
-  }.save("hof/lissajous")
+  }.save("flowers/lissajous")
 
   def epicycloid(a: Int, b: Int, c: Int): Angle => Point =
     (angle: Angle) =>
@@ -79,5 +79,5 @@ object Flowers {
     sample(nSamples, dot)(epicycloid(1, 6, 14))
       .beside(sample(nSamples, dot)(epicycloid(7, 13, 25)))
       .beside(sample(nSamples, dot)(epicycloid(1, 7, -21)))
-  }.save("hof/epicycloid")
+  }.save("flowers/epicycloid")
 }

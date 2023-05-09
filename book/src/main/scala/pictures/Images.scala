@@ -10,7 +10,7 @@ import doodle.java2d._
 object Images {
   import doodle.core.Color
 
-  Image.circle(10).save("pictures/circle")
-  Image.rectangle(100, 50).save("pictures/rectangle")
-  Image.triangle(60, 40).save("pictures/triangle")
+  Image.circle(10).save("expressive-expressions/circle")
+  Image.rectangle(100, 50).save("expressive-expressions/rectangle")
+  Image.triangle(60, 40).save("expressive-expressions/triangle")
 }

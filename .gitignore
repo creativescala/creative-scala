@@ -1,3 +1,6 @@
+book/src/pages/**/*.svg
+book/src/pages**/*.pdf
+
 _site/*
 _theme_packages/*
 
