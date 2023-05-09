@@ -79,7 +79,7 @@ val size: Int => Int = n => 50 + 5*n
 Now we can build a function that creates a circle of size computed from `n`.
 
 ```scala mdoc:silent
-val circle: Int => Image = size.andThen(Image.circle _)
+val circle: Int => Image = size.andThen(size => Image.circle(size.toDouble))
 ```
 
 Notice how I've converted the `Image.circle` method into a function so that we can use function composition.
