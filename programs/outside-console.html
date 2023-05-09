@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.19.0" />
-    <title>Coding Outside the Console</title>
+    <title>Working Without Worksheets</title>
     
     
     <meta name="description" content="book" />
@@ -54,7 +54,7 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
           <li class="level1 nav-node"><a href="index.html">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="console.html">Working Within the Console</a></li>
-          <li class="level2 active nav-leaf"><a href="#">Coding Outside the Console</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Working Without Worksheets</a></li>
           <li class="level2 nav-leaf"><a href="names.html">Names</a></li>
           <li class="level2 nav-leaf"><a href="abstraction.html">Abstraction</a></li>
           <li class="level2 nav-leaf"><a href="imports.html">Packages and Imports</a></li>
@@ -92,7 +92,9 @@
           <li class="level2 nav-leaf"><a href="../flowers/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../cycles/">Composition and Cycles</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/composition.html">Function Composition</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/fun.html">Fun with Composition</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/epicycloids.html">Epicycloids</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-header">collections</li>
           <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
           <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
@@ -154,7 +156,7 @@
 
     <div id="content">
         <main class="content">
-            <h1 id="coding-outside-the-console" class="title">Coding Outside the Console</h1>
+            <h1 id="working-without-worksheets" class="title">Working Without Worksheets</h1>
             <p>The code we&#39;ve been writing inside the console will cause problems running outside the console. For example, put the following code into <code>Example.scala</code> in the <code>src/main/scala</code>.</p>
             <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGoldenrod</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">indianRed</span><span>)</span></code></pre>
             <p>Now restart SBT and try to enter the console. You should see an error similar to</p>
