@@ -26,7 +26,7 @@ we also need a new definition of `concentricCircles` to go with it.
 We can make `concentricCircles` completely general by supplying
 the replacement for `Image.circle` as a parameter.
 Here we've renamed the method to `concentricShapes`, as we're no longer restricted to drawing circles,
-and made `singleShape` responsible for drawing an appropriately sized shape.
+and made the `singleShape` parameter responsible for drawing an appropriately sized shape.
 
 ```scala mdoc:reset:invisible
 import doodle.core._
@@ -62,6 +62,54 @@ val redCircles: Image =
 ```
 
 @:figure{ img = "./red-black-circles.svg", key = "#fig:cycles:red-black-circles", caption = "Black and Red Concentric Circles" }
+
+You might notice two things about this example: we're not using function composition, and we duplication in the definitions. 
+In both cases we draw circles, but they differ in color.
+No problem.
+This feels like a problem we can solve with function composition.
+Let's give it a go.
+
+In both cases the radius of the circle is `50 + 5*n`, where `n` is the iteration count.
+We can extract this into a function.
+
+```scala mdoc:silent
+val size: Int => Int = n => 50 + 5*n
+```
+
+Now we can build a function that creates a circle of size computed from `n`.
+
+```scala mdoc:silent
+val circle: Int => Image = size.andThen(Image.circle _)
+```
+
+Notice how I've converted the `Image.circle` method into a function so that we can use function composition.
+
+Now we just need a function that can change the stroke color.
+
+```scala mdoc:silent
+def strokeColor(color: Color): Image => Image =
+  image => image.strokeColor(color)
+```
+
+With this we can construct the functions we need.
+
+```scala mdoc:silent
+val blackCircle = circle // Black is the default stroke
+val redCircle = circle.andThen(color(Color.red))
+```
+
+A few points to note:
+
+1. In this example, and in this chapter in general, we're being quite extreme with function composition. 
+This particular example is so small it doesn't benefit much from function composition, so if this was a real example I probably wouldn't bother with using function composition. 
+However we have a different goal here, which is learning about function composition.
+We're deliberately keeping the examples small, so they are overwhelming while we're becoming familiar with function composition.
+
+2. Using `andThen` is a way to compose functions, but *not* the only way to compose functions.
+We can write all sorts of functions that compose functions. 
+We call these *combinators*.
+Here's an example, which ...
+
 
 
 @:exercise(The Colour and the Shape)

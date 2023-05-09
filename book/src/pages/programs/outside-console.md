@@ -1,4 +1,4 @@
-## Coding Outside the Console
+## Working Without Worksheets
 
 ```scala mdoc:invisible
 import doodle.core._
