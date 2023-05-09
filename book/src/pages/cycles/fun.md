@@ -79,10 +79,8 @@ val size: Int => Int = n => 50 + 5*n
 Now we can build a function that creates a circle of size computed from `n`.
 
 ```scala mdoc:silent
-val circle: Int => Image = size.andThen(size => Image.circle(size.toDouble))
+val circle: Int => Image = size => Image.circle(size)
 ```
-
-Notice how I've converted the `Image.circle` method into a function so that we can use function composition.
 
 Now we just need a function that can change the stroke color.
 
@@ -95,7 +93,7 @@ With this we can construct the functions we need.
 
 ```scala mdoc:silent
 val blackCircle = circle // Black is the default stroke
-val redCircle = circle.andThen(color(Color.red))
+val redCircle = size.andThen(circle).andThen(color(Color.red))
 ```
 
 A few points to note:
