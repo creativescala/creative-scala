@@ -10,5 +10,4 @@ import doodle.java2d._
 object All {
   ParametricCurves
   Flowers
-  Hof
 }
