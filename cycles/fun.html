@@ -161,7 +161,7 @@
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricCircles</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
-    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricCircles</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span> + </span><span class="number-literal">5</span><span>))
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricCircles</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">size</span><span> + </span><span class="number-literal">10</span><span>))
   }</span></code></pre>
             <p>This pattern allows us to create many different images
             by changing the use of <code>Image.circle</code> to another shape.
@@ -182,11 +182,11 @@
             All we have to do is pass in a suitable definition of <code>singleShape</code>:</p>
             <pre><code class="nohighlight"><span class="comment">// Passing a function literal directly:
 </span><span class="keyword">val</span><span> </span><span class="identifier">blackCircles</span><span>: </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span>*</span><span class="identifier">n</span><span>))
+  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="number-literal">24</span><span>*</span><span class="identifier">n</span><span>))
 
 </span><span class="comment">// Converting a method to a function:
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">redCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span>*</span><span class="identifier">n</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="number-literal">24</span><span>*</span><span class="identifier">n</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">redCircles</span><span>: </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">redCircle</span><span> </span><span class="identifier">_</span><span>)</span></code></pre>
@@ -196,9 +196,9 @@
             No problem.
             This feels like a problem we can solve with function composition.
             Let&#39;s give it a go.</p>
-            <p>In both cases the radius of the circle is <code>50 + 5*n</code>, where <code>n</code> is the iteration count.
+            <p>In both cases the radius of the circle is <code>100 + 24*n</code>, where <code>n</code> is the iteration count.
             We can extract this into a function.</p>
-            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Int</span><span> = </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">50</span><span> + </span><span class="number-literal">5</span><span>*</span><span class="identifier">n</span></code></pre>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">size</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Int</span><span> = </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">100</span><span> + </span><span class="number-literal">24</span><span>*</span><span class="identifier">n</span></code></pre>
             <p>Now we can build a function that creates a circle of size computed from <code>n</code>.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> = </span><span class="identifier">size</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>)</span></code></pre>
             <p>Now we just need a function that can change the stroke color.</p>
@@ -207,10 +207,6 @@
             <p>With this we can construct the functions we need.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">blackCircle</span><span> = </span><span class="identifier">circle</span><span> </span><span class="comment">// Black is the default stroke
 </span><span class="keyword">val</span><span> </span><span class="identifier">redCircle</span><span> = </span><span class="identifier">size</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">circle</span><span>).</span><span class="identifier">andThen</span><span>(</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))</span></code></pre>
-            <p>In this example, and in this chapter in general, we&#39;re being quite extreme with function composition. 
-            This particular example is so small that using function composition is probably making it more complex, so if this was real code I probably wouldn&#39;t bother with using function composition. 
-            However we have a different goal here, which is learning about function composition.
-            We&#39;re deliberately keeping the examples small, so they are not overwhelming, while we&#39;re becoming familiar with function composition.</p>
             <p>Using <code>andThen</code> is <em>a</em> way to compose functions, but not <em>the</em> only way to compose functions.
             We can write all sorts of functions that compose functions. 
             Sometimes we use the term <em>combinator</em> for a method or function whose job is to compose its parameters.
@@ -218,17 +214,23 @@
             Here&#39;s an example of a function combinator that combines two <code>Int =&gt; Image</code> functions to produce another <code>Int =&gt; Image</code> function.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">withSizeOn</span><span>(</span><span class="identifier">f</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>, </span><span class="identifier">g</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">size</span><span> =&gt; </span><span class="identifier">f</span><span>(</span><span class="identifier">size</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">g</span><span>(</span><span class="identifier">size</span><span>))</span></code></pre>
+            <p>With this definition we can produce the image below.</p>
+            <p><img src="./combinator.svg" alt="Using the `withSizeOn` combinator" title="Figure Some(#fig:cycles:combinator): caption"></p>
+            <p>To create it we define a function to make a square given a size, and then compose it with our existing <code>circle</code> function as shown below.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="identifier">n</span><span>)
+  
+</span><span class="identifier">concentricShapes</span><span>(
+  </span><span class="number-literal">10</span><span>,
+  </span><span class="identifier">size</span><span>
+    .</span><span class="identifier">andThen</span><span>(</span><span class="identifier">withSizeOn</span><span>(</span><span class="identifier">circle</span><span>, </span><span class="identifier">square</span><span>))
+    .</span><span class="identifier">andThen</span><span>(</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>))
+)</span></code></pre>
             <div class="exercise">
               
               <h4 id="exercise-the-colour-and-the-shape">Exercise: The Colour and the Shape</h4>
-              <p>We&#39;re going to write code to produce the image below.</p>
-              <p><img src="./colors-and-shapes.svg" alt="Colors and Shapes" title="Figure Some(#fig:hof:colors-and-shapes): caption"></p>
-              <p>Our starting point is <code>concentricShapes</code>.</p>
-              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
-    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
-    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>))
-  }</span></code></pre>
+              <p>Your mission is to write code to produce the image below.</p>
+              <p><img src="./colors-and-shapes.svg" alt="Colors and Shapes" title="Figure Some(#fig:cycles:colors-and-shapes): caption"></p>
               <p>Let&#39;s think about the problem a little.
               We need to do two things:</p>
               <ol class="arabic">
@@ -241,97 +243,52 @@
                 and putting the results <code>beside</code> one another.</li>
               </ol>
               <p>We also want to use function composition, 
-              to create the definitions of <code>singleShape</code> from small, reusuable components.</p>
-              <p>If we look at the picture we can break it down into the shape and the color change.
+              to create the definitions of <code>singleShape</code> from small, reusable components.</p>
+              <p>The variation in the image comes from changing the shape and the color.
               For shapes we have circle, triangle, and square.
               The color changes by spinning the hue of the circle and square,
               and fading the color for the triangle.
               This suggests functions for each shape,
-              and functions to do the color manipulation.</p>
+              and functions for each color manipulation.</p>
               <p>That&#39;s probably enough guidance.
               It&#39;s now over to you to finish up the code.</p>
             </div>
             <div class="solution">
               <div class="solution-body">
-                <p>The simplest solution is to define three <code>singleShapes</code> as follows:</p>
-                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
-    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
-    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">on</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>))
-  }
+                <p>We can start with the basic functions for shapes we&#39;ve already used, and add a function for triangles.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">circle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">n</span><span>)
 
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">rainbowCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) = {
-  </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>).</span><span class="identifier">spin</span><span>((</span><span class="identifier">n</span><span> * </span><span class="number-literal">30</span><span>).</span><span class="identifier">degrees</span><span>)
-  </span><span class="keyword">val</span><span> </span><span class="identifier">shape</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">12</span><span>)
-  </span><span class="identifier">shape</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
-}
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="identifier">n</span><span>)
 
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">fadingTriangle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) = {
-  </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">fadeOut</span><span>((</span><span class="number-literal">1</span><span> - </span><span class="identifier">n</span><span> / </span><span class="number-literal">20.0</span><span>).</span><span class="identifier">normalized</span><span>)
-  </span><span class="keyword">val</span><span> </span><span class="identifier">shape</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>, </span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>)
-  </span><span class="identifier">shape</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
-}
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">rainbowSquare</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) = {
-  </span><span class="keyword">val</span><span> </span><span class="identifier">color</span><span> = </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>).</span><span class="identifier">spin</span><span>((</span><span class="identifier">n</span><span> * </span><span class="number-literal">30</span><span>).</span><span class="identifier">degrees</span><span>)
-  </span><span class="keyword">val</span><span> </span><span class="identifier">shape</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>, </span><span class="number-literal">100</span><span> + </span><span class="identifier">n</span><span>*</span><span class="number-literal">24</span><span>)
-  </span><span class="identifier">shape</span><span>.</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>)
-}
-
-</span><span class="keyword">val</span><span> </span><span class="identifier">answer</span><span> =
-  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">rainbowCircle</span><span>)
-    .</span><span class="identifier">beside</span><span>(
-      </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">fadingTriangle</span><span>)
-        .</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">rainbowSquare</span><span>))
-    )</span></code></pre>
-                <p>However, there is some redundancy here:
-                <code>rainbowCircle</code> and <code>rainbowTriangle</code>, in particular,
-                use the same definition of <code>color</code>.
-                There are also repeated calls to <code>strokeWidth(10)</code> and
-                <code>strokeColor(color)</code> that can be eliminated.
-                We can use function composition to factor these out into their own functions
-                and combines them with the <code>colored</code> combinator:</p>
-                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">concentricShapes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">singleShape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
-    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
-    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">singleShape</span><span>(</span><span class="identifier">n</span><span>) </span><span class="identifier">on</span><span> </span><span class="identifier">concentricShapes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>, </span><span class="identifier">singleShape</span><span>)
-  }
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">colored</span><span>(</span><span class="identifier">shape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Color</span><span>): </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> =
-  (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt;
-    </span><span class="identifier">shape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>(</span><span class="identifier">n</span><span>))
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">fading</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Color</span><span> =
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">triangle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="identifier">n</span><span>, </span><span class="identifier">n</span><span>)</span></code></pre>
+                <p>We also need functions that produce the color as a function of the iteration count.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">fading</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Color</span><span> =
   </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">fadeOut</span><span>((</span><span class="number-literal">1</span><span> - </span><span class="identifier">n</span><span> / </span><span class="number-literal">20.0</span><span>).</span><span class="identifier">normalized</span><span>)
 
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">spinning</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Color</span><span> =
-  </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>).</span><span class="identifier">spin</span><span>((</span><span class="identifier">n</span><span> * </span><span class="number-literal">30</span><span>).</span><span class="identifier">degrees</span><span>)
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">size</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Double</span><span> =
-  </span><span class="number-literal">100</span><span> + </span><span class="number-literal">24</span><span> * </span><span class="identifier">n</span><span>
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">circle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>))
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>))
-
-</span><span class="keyword">def</span><span> </span><span class="declaration-name">triangle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>), </span><span class="identifier">size</span><span>(</span><span class="identifier">n</span><span>))
-
-</span><span class="keyword">val</span><span> </span><span class="identifier">answer</span><span> =
-  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">circle</span><span>, </span><span class="identifier">spinning</span><span>))
-    .</span><span class="identifier">beside</span><span>(
-      </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">triangle</span><span>, </span><span class="identifier">fading</span><span>))
-        .</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">square</span><span>, </span><span class="identifier">spinning</span><span>)))
-    )</span></code></pre>
+  </span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>).</span><span class="identifier">spin</span><span>((</span><span class="identifier">n</span><span> * </span><span class="number-literal">30</span><span>).</span><span class="identifier">degrees</span><span>)</span></code></pre>
+                <p>Now we need to put these functions together. 
+                We have one group of functions of type <code>Int =&gt; Image</code> and another with type <code>Int =&gt; Color</code>.
+                We cannot compose these with <code>andThen</code> as the types don&#39;t work out.
+                However we can create our own combinator that does what we want.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">colored</span><span>(</span><span class="identifier">shape</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Color</span><span>): </span><span class="type-name">Int</span><span> =&gt; </span><span class="type-name">Image</span><span> =
+  (</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">shape</span><span>(</span><span class="identifier">n</span><span>).</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>(</span><span class="identifier">n</span><span>))</span></code></pre>
+                <p>Putting it all together gets us the output we want.</p>
+                <pre><code class="nohighlight"><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">size</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">circle</span><span>), </span><span class="identifier">spinning</span><span>))
+  .</span><span class="identifier">beside</span><span>(
+    </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">size</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">triangle</span><span>), </span><span class="identifier">fading</span><span>))
+      .</span><span class="identifier">beside</span><span>(</span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">size</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">square</span><span>), </span><span class="identifier">spinning</span><span>)))
+  )</span></code></pre>
               </div>
             </div>
             <div class="exercise">
               
               <h4 id="exercise-more-shapes">Exercise: More Shapes</h4>
-              <p>The <code>concentricShapes</code> methods takes an <code>Int =&gt; Image</code> function, and we can construct such as function using <code>drawCurve</code>, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example below.</p>
-              <p><img src="./concentric-dotty-circle.svg" alt="Concentric dotty circles" title="Figure Some(#fig:hof:concentric-dotty-circle): caption"></p>
+              <p>The <code>concentricShapes</code> methods takes an <code>Int =&gt; Image</code> function. We can make a function with this type using <code>drawCurve</code>, the parametric curves we created earlier, and the various utilities we have created along the way. There is an example below.</p>
+              <p><img src="./concentric-dotty-circle.svg" alt="Concentric dotty circles" title="Figure Some(#fig:cycles:concentric-dotty-circle): caption"></p>
               <p>The code to create this is below.</p>
               <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">dottyCircle</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">drawCurve</span><span>(
@@ -340,7 +297,7 @@
   )
 
 </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">colored</span><span>(</span><span class="identifier">dottyCircle</span><span>, </span><span class="identifier">spinning</span><span>))</span></code></pre>
-              <p>Use the techniques we&#39;ve seen so far to create a picture of your choosing (perhaps similar to the flower with which we started the chapter). No solution here; there is no right or wrong answer.</p>
+              <p>Use the techniques we&#39;ve seen so far to create a picture of your choosing (perhaps using the flowers we have seen earlier). No solution here; there is no right or wrong answer.</p>
             </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="composition.html">←Function Composition</a> <a class="pageNavigation" href="epicycloids.html">Epicycloids→</a>
