@@ -169,6 +169,9 @@ def concentricShapes(count: Int, singleShape: Int => Image): Image =
     case 0 => Image.empty
     case n => singleShape(n).on(concentricShapes(n-1, singleShape))
   }
+  
+def size(n: Int): Int =
+  100 + 24 * n
 ```
 
 We can start with the basic functions for shapes we've already used, and add a function for triangles.
