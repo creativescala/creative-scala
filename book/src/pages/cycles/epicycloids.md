@@ -1,6 +1,10 @@
 # Epicycloids
 
-There are an unlimited number of functions we could use to create interesting curves. Let's see one more example, this time of what known as an [epicycloid][epicycloid]. An epicycloid is produced when we trace a point on a circle rotating around another circle. We can stack circles on top of circles, and change the speed at which they rotate, to produce many different curves. For our example we are going to fix the number and radius of the circles and allow their speed of rotation to vary. Here is the code:
+We're now going to see a different example of composition, in creating a type of curve known as an [epicycloid][epicycloid]. An epicycloid is produced when we trace a point on a circle rotating around another circle. We can stack circles on top of circles, and change the speed at which they rotate, to produce many different curves. 
+
+@:doodle("epicycloid", "CyclesEpicycloids.epicycloidTwoWheels")
+
+For our example we are going to fix the number and radius of the circles and allow their speed of rotation to vary. Here is the code:
 
 ```scala
 def epicycloid(a: Int, b: Int, c: Int): Angle => Point =
