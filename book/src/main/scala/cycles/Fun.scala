@@ -39,27 +39,21 @@ object Fun {
     }
 
   val blackCircles: Image =
-    concentricShapes(10, (n: Int) => Image.circle(50 + 5 * n))
+    concentricShapes(10, (n: Int) => Image.circle(100 + 24 * n))
 
-  // Converting a method to a function:
+// Converting a method to a function:
   def redCircle(n: Int): Image =
-    Image.circle(50 + 5 * n).strokeColor(Color.red)
+    Image.circle(100 + 24 * n).strokeColor(Color.red)
 
   val redCircles: Image =
     concentricShapes(10, redCircle _)
 
   blackCircles.beside(redCircles).save("cycles/red-black-circles")
 
-  def colored(shape: Int => Image, color: Int => Color): Int => Image =
-    (n: Int) => shape(n).strokeWidth(10).strokeColor(color(n))
+  def strokeColor(color: Color): Image => Image =
+    image => image.strokeColor(color)
 
-  def fading(n: Int): Color =
-    Color.blue.fadeOut((1 - n / 20.0).normalized)
-
-  def spinning(n: Int): Color =
-    Color.blue.desaturate(0.5.normalized).spin((n * 30).degrees)
-
-  def size(n: Int): Double =
+  def size(n: Int): Int =
     100 + 24 * n
 
   def withSizeOn(f: Int => Image, g: Int => Image): Int => Image =
@@ -71,13 +65,29 @@ object Fun {
   def square(n: Int): Image =
     Image.square(n)
 
+  concentricShapes(
+    10,
+    size
+      .andThen(withSizeOn(circle, square))
+      .andThen(strokeColor(Color.royalBlue))
+  ).save("cycles/combinator")
+
+  def colored(shape: Int => Image, color: Int => Color): Int => Image =
+    (n: Int) => shape(n).strokeWidth(10).strokeColor(color(n))
+
+  def fading(n: Int): Color =
+    Color.blue.fadeOut((1 - n / 20.0).normalized)
+
+  def spinning(n: Int): Color =
+    Color.blue.desaturate(0.5.normalized).spin((n * 30).degrees)
+
   def triangle(n: Int): Image =
     Image.triangle(n, n)
 
-  concentricShapes(10, colored(circle, spinning))
+  concentricShapes(10, colored(size.andThen(circle), spinning))
     .beside(
-      concentricShapes(10, colored(triangle, fading))
-        .beside(concentricShapes(10, colored(square, spinning)))
+      concentricShapes(10, colored(size.andThen(triangle), fading))
+        .beside(concentricShapes(10, colored(size.andThen(square), spinning)))
     )
     .save("cycles/colors-and-shapes")
 
