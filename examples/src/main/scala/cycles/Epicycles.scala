@@ -13,8 +13,8 @@ import cats.effect.unsafe.implicits.global
 import scala.scalajs.js.annotation.*
 import doodle.syntax.angle
 
-@JSExportTopLevel("CyclesEpicycloids")
-object Epicycloids {
+@JSExportTopLevel("CyclesEpicycles")
+object Epicycles {
 
   def drawCurve(samples: Int, curve: Angle => Image): Image = {
     val step = Angle.one / samples
@@ -46,6 +46,7 @@ object Epicycloids {
         val p =
           Picture
             .path(OpenPath(PathElement.interpolatingSpline(nextPts)))
+            .strokeColor(Color.darkBlue)
             .on(draw(angle))
         (p, nextPts)
       }
@@ -77,7 +78,7 @@ object Epicycloids {
     pt => Image.circle(5).noStroke.fillColor(Color.blueViolet).at(pt)
 
   @JSExport
-  def epicycloid(id: String): Unit = {
+  def epicycle(id: String): Unit = {
     val curve: Angle => Image =
       threeWheels(7, 75.0, 13, 32.0, 25, 15.0).andThen(dot)
 
@@ -85,21 +86,21 @@ object Epicycloids {
   }
 
   @JSExport
-  def epicycloidTwoWheels(id: String): Unit = {
-    val r1 = 75.0
-    val r2 = 32.0
+  def epicycleTwoWheels(id: String): Unit = {
+    val r1 = 100.0
+    val r2 = 16.0
     val wheel1 = wheel(7, r1)
     val wheel2 = wheel(13, r2)
 
-    val dot = Picture.circle(5).noStroke.fillColor(Color.red)
+    val dot = Picture.circle(5).noStroke.fillColor(Color.hotpink)
 
     def picture(angle: Angle): Picture[Unit] = {
       val pt1 = wheel1(angle)
       val pt2 = wheel2(angle)
       val pt3 = pt2 + pt1.toVec
 
-      val c1 = dot.at(pt1).on(Picture.circle(75 * 2))
-      val c2 = dot.at(pt3).on(Picture.circle(32 * 2).at(pt1))
+      val c1 = dot.at(pt1).on(Picture.circle(75 * 2).strokeWidth(3.0))
+      val c2 = dot.at(pt3).on(Picture.circle(32 * 2).at(pt1).strokeWidth(3.0))
 
       c2.on(c1).on(Picture.path(OpenPath.empty.lineTo(pt1).lineTo(pt3)))
     }
