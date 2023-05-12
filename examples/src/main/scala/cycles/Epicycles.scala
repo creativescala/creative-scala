@@ -87,10 +87,11 @@ object Epicycles {
 
   @JSExport
   def epicycleTwoWheels(id: String): Unit = {
-    val r1 = 100.0
-    val r2 = 16.0
-    val wheel1 = wheel(7, r1)
-    val wheel2 = wheel(13, r2)
+    val r1 = 75.0
+    val r2 = 32.0
+    val size = 2 * (r1 + r2)
+    val wheel1 = wheel(6, r1)
+    val wheel2 = wheel(11, r2)
 
     val dot = Picture.circle(5).noStroke.fillColor(Color.hotpink)
 
@@ -99,14 +100,17 @@ object Epicycles {
       val pt2 = wheel2(angle)
       val pt3 = pt2 + pt1.toVec
 
-      val c1 = dot.at(pt1).on(Picture.circle(75 * 2).strokeWidth(3.0))
-      val c2 = dot.at(pt3).on(Picture.circle(32 * 2).at(pt1).strokeWidth(3.0))
+      val c1 = dot.at(pt1).on(Picture.circle(r1 * 2).strokeWidth(1.0))
+      val c2 = dot.at(pt3).on(Picture.circle(r2 * 2).at(pt1).strokeWidth(1.0))
 
       c2.on(c1).on(Picture.path(OpenPath.empty.lineTo(pt1).lineTo(pt3)))
     }
 
-    animateCurve(700, on(wheel1, wheel2), picture, dot).animate(
-      Frame(id).withSize(300, 300)
-    )
+    animateCurve(700, on(wheel1, wheel2), picture, dot)
+      .andThen(p => Interpolation.constant(p).forDuration(1.seconds))
+      .repeatForever
+      .animate(
+        Frame(id).withSize(size, size)
+      )
   }
 }
