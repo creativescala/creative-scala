@@ -42,16 +42,23 @@ By the same reasoning
 is a parametric circle with radius 32 spinning eleven times faster.
 
 The remaining portion of the code is a conversion from `Point` to `Vec` (the call to `toVec`) and addition of a `Point` and a `Vec`. 
+
+```scala
+Point(..., ...) + Point(..., ...).toVec
+```
+
 This moves the center of the smaller circle to the current point on the larger circle. 
 The conversion from `Point` to `Vec` is needed for technical reasons which I'll attempt to briefly explain. 
 A point specifies a location relative to a fixed origin. 
 A vector represents a displacement relative to some arbitrary starting point. 
 Therefore we can add a vector to a point to get a new point that is shifted by the vector.
 Adding a point to a point, however, is not possible as points are both locations relative to the same origin, not displacements like a vector is.
-If this doesn't make sense there are many online resources that describe vectors.
+(If this explanation doesn't work for you, there are many online resources that describe vectors.)
 
-
-For our example we are going to fix the number and radius of the circles and allow their speed of rotation to vary. Here is the code:
+This is everything we need to build our own curves based on epicycles.
+The more circles we add, the more complex the curve we can create.
+The examples below are created using the following code. 
+It uses three circles with fixed radius, but allows us to change the speed of rotation.
 
 ```scala
 def epicycle(a: Int, b: Int, c: Int): Angle => Point =
@@ -59,8 +66,76 @@ def epicycle(a: Int, b: Int, c: Int): Angle => Point =
     (Point(75, angle * a).toVec + Point(32, angle * b).toVec + Point(15, angle * c).toVec).toPoint
 ```
 
-You might notice this code converts points to vectors and back again. This is a little technical detail (we cannot add points but we can add vectors) that isn't important if you aren't familiar with vectors.
-
-Below are three examples created by choosing the parameters a, b, c, as (1, 6, 14), (7, 13, 25), and (1, 7, -21) respectively.
+The examples are created by choosing the parameters a, b, c, as (1, 6, 14), (7, 13, 25), and (1, 7, -21) respectively.
 
 @:figure{ img = "./epicycle.svg", key = "#fig:cycles:epicycle", caption = "Examples of epicycle curves, with the parameters chosen as (1, 6, 14), (7, 13, 25), and (1, 7 -21)." }
+
+
+## Composing Epicycles
+
+Let's return to the theme of this chapter, function composition.
+Using function composition we can do what we've done before,
+and break the epicycle curves into small reusuable parts.
+
+The first component we need is a parametric circle that allows us to change the speed of rotation.
+I called this a `wheel`.
+
+```scala
+def wheel(speed: Int): Angle => Point =
+  ???
+```
+
+We can use `scale`, which we've already defined, to change the radius.
+
+The other component we need is a way to position a wheel relative to another wheel. 
+(This is the point / vector addition part.)
+I called this `on`.
+
+```scala
+def on(wheel1: Angle => Point, wheel2: Angle => Point): Angle => Point =
+  ???
+```
+
+
+@:exercise(Wheels on Wheels)
+Implement `wheel` and `on`, described above. 
+Then use them, as well as tools we've created earlier, to draw your own epicycle curves.
+@:@
+
+@:solution
+`wheel` is a parametric circle that rotates at the given speed.
+
+```scala mdoc:silent
+def wheel(speed: Int): Angle => Point =
+  angle => Point(1.0, angle * speed)
+```
+
+`on` implements the point and vector addition we discussed earlier.
+
+```scala mdoc:silent
+def on(wheel1: Angle => Point, wheel2: Angle => Point): Angle => Point =
+  angle => wheel1(angle) + wheel2(angle).toVec
+```
+
+With these we can easily construct epicycle curves. 
+The example we started this section with
+
+```scala
+val twoWheels: Angle => Point =
+  (angle: Angle) =>
+    Point(75, angle * 6) + Point(32, angle * 11).toVec
+```
+
+can be written as
+
+```scala mdoc:invisible
+def scale(factor: Double): Point => Point =
+  (point: Point) => Point(point.r * factor, point.angle)
+```
+```scala mdoc:silent
+val wheel1 = wheel(6).andThen(scale(75))
+val wheel2 = wheel(11).andThen(scale(32))
+
+val combined = on(wheel1, wheel2)
+```
+@:@

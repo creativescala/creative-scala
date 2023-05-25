@@ -10,4 +10,5 @@ import doodle.java2d._
 object All {
   Composition
   Fun
+  Epicycles
 }
