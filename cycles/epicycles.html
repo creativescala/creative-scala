@@ -172,21 +172,65 @@
             By the same reasoning</p>
             <pre><code class="nohighlight"><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; </span><span class="type-name">Point</span><span>(</span><span class="number-literal">32</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="number-literal">11</span><span>)</span></code></pre>
             <p>is a parametric circle with radius 32 spinning eleven times faster.</p>
-            <p>The remaining portion of the code is a conversion from <code>Point</code> to <code>Vec</code> (the call to <code>toVec</code>) and addition of a <code>Point</code> and a <code>Vec</code>. 
-            This moves the center of the smaller circle to the current point on the larger circle. 
+            <p>The remaining portion of the code is a conversion from <code>Point</code> to <code>Vec</code> (the call to <code>toVec</code>) and addition of a <code>Point</code> and a <code>Vec</code>. </p>
+            <pre><code class="nohighlight"><span class="type-name">Point</span><span>(..., ...) + </span><span class="type-name">Point</span><span>(..., ...).</span><span class="identifier">toVec</span></code></pre>
+            <p>This moves the center of the smaller circle to the current point on the larger circle. 
             The conversion from <code>Point</code> to <code>Vec</code> is needed for technical reasons which I&#39;ll attempt to briefly explain. 
             A point specifies a location relative to a fixed origin. 
             A vector represents a displacement relative to some arbitrary starting point. 
             Therefore we can add a vector to a point to get a new point that is shifted by the vector.
             Adding a point to a point, however, is not possible as points are both locations relative to the same origin, not displacements like a vector is.
-            If this doesn&#39;t make sense there are many online resources that describe vectors.</p>
-            <p>For our example we are going to fix the number and radius of the circles and allow their speed of rotation to vary. Here is the code:</p>
+            (If this explanation doesn&#39;t work for you, there are many online resources that describe vectors.)</p>
+            <p>This is everything we need to build our own curves based on epicycles.
+            The more circles we add, the more complex the curve we can create.
+            The examples below are created using the following code. 
+            It uses three circles with fixed radius, but allows us to change the speed of rotation.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">epicycle</span><span>(</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">b</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">c</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
   (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt;
     (</span><span class="type-name">Point</span><span>(</span><span class="number-literal">75</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="identifier">a</span><span>).</span><span class="identifier">toVec</span><span> + </span><span class="type-name">Point</span><span>(</span><span class="number-literal">32</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="identifier">b</span><span>).</span><span class="identifier">toVec</span><span> + </span><span class="type-name">Point</span><span>(</span><span class="number-literal">15</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="identifier">c</span><span>).</span><span class="identifier">toVec</span><span>).</span><span class="identifier">toPoint</span></code></pre>
-            <p>You might notice this code converts points to vectors and back again. This is a little technical detail (we cannot add points but we can add vectors) that isn&#39;t important if you aren&#39;t familiar with vectors.</p>
-            <p>Below are three examples created by choosing the parameters a, b, c, as (1, 6, 14), (7, 13, 25), and (1, 7, -21) respectively.</p>
+            <p>The examples are created by choosing the parameters a, b, c, as (1, 6, 14), (7, 13, 25), and (1, 7, -21) respectively.</p>
             <p><img src="./epicycle.svg" alt="Examples of epicycle curves, with the parameters chosen as (1, 6, 14), (7, 13, 25), and (1, 7 -21)." title="Figure Some(#fig:cycles:epicycle): caption"></p>
+            
+            <h2 id="composing-epicycles" class="section">Composing Epicycles</h2>
+            <p>Let&#39;s return to the theme of this chapter, function composition.
+            Using function composition we can do what we&#39;ve done before,
+            and break the epicycle curves into small reusuable parts.</p>
+            <p>The first component we need is a parametric circle that allows us to change the speed of rotation.
+            I called this a <code>wheel</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">wheel</span><span>(</span><span class="identifier">speed</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  ???</span></code></pre>
+            <p>We can use <code>scale</code>, which we&#39;ve already defined, to change the radius.</p>
+            <p>The other component we need is a way to position a wheel relative to another wheel. 
+            (This is the point / vector addition part.)
+            I called this <code>on</code>.</p>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">on</span><span>(</span><span class="identifier">wheel1</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span>, </span><span class="identifier">wheel2</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  ???</span></code></pre>
+            <div class="exercise">
+              
+              <h4 id="exercise-wheels-on-wheels">Exercise: Wheels on Wheels</h4>
+              <p>Implement <code>wheel</code> and <code>on</code>, described above. 
+              Then use them, as well as tools we&#39;ve created earlier, to draw your own epicycle curves.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p><code>wheel</code> is a parametric circle that rotates at the given speed.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">wheel</span><span>(</span><span class="identifier">speed</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  </span><span class="identifier">angle</span><span> =&gt; </span><span class="type-name">Point</span><span>(</span><span class="number-literal">1.0</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="identifier">speed</span><span>)</span></code></pre>
+                <p><code>on</code> implements the point and vector addition we discussed earlier.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">on</span><span>(</span><span class="identifier">wheel1</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span>, </span><span class="identifier">wheel2</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  </span><span class="identifier">angle</span><span> =&gt; </span><span class="identifier">wheel1</span><span>(</span><span class="identifier">angle</span><span>) + </span><span class="identifier">wheel2</span><span>(</span><span class="identifier">angle</span><span>).</span><span class="identifier">toVec</span></code></pre>
+                <p>With these we can easily construct epicycle curves. 
+                The example we started this section with</p>
+                <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">twoWheels</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt;
+    </span><span class="type-name">Point</span><span>(</span><span class="number-literal">75</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="number-literal">6</span><span>) + </span><span class="type-name">Point</span><span>(</span><span class="number-literal">32</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="number-literal">11</span><span>).</span><span class="identifier">toVec</span></code></pre>
+                <p>can be written as</p>
+                <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">wheel1</span><span> = </span><span class="identifier">wheel</span><span>(</span><span class="number-literal">6</span><span>).</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">75</span><span>))
+</span><span class="keyword">val</span><span> </span><span class="identifier">wheel2</span><span> = </span><span class="identifier">wheel</span><span>(</span><span class="number-literal">11</span><span>).</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">32</span><span>))
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">combined</span><span> = </span><span class="identifier">on</span><span>(</span><span class="identifier">wheel1</span><span>, </span><span class="identifier">wheel2</span><span>)</span></code></pre>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="fun.html">←Fun with Composition</a> <a class="pageNavigation" href="conclusions.html">Conclusions→</a>
             </div>
