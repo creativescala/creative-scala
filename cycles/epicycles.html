@@ -157,9 +157,29 @@
     <div id="content">
         <main class="content">
             <h1 id="epicycles" class="title">Epicycles</h1>
-            <p>We&#39;re now going to see a different example of composition, in creating a type of curve known as an epicycle. An epicycle is produced when we trace a point on a circle rotating on another circle. We can stack circles on top of circles, and change the speed at which they rotate, to produce many different curves. </p>
+            <p>We&#39;re now going to see a different example of composition, in creating a type of curve known as an epicycle. An epicycle is produced when we trace a point on a circle rotating on another circle. We can stack circles on top of circles, and change the speed at which they rotate, to produce many different curves. Here&#39;s an example using two circles.</p>
             <div class="doodle" id="epicycle"></div>
             <script>CyclesEpicycles.epicycleTwoWheels("epicycle")</script>
+            <p>The parametric curve that produces this result is</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">twoWheels</span><span>: </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
+  (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt;
+    </span><span class="type-name">Point</span><span>(</span><span class="number-literal">75</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="number-literal">6</span><span>) + </span><span class="type-name">Point</span><span>(</span><span class="number-literal">32</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="number-literal">11</span><span>).</span><span class="identifier">toVec</span></code></pre>
+            <p>Let&#39;s walk through this code. We know that a parametric circle is</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; </span><span class="type-name">Point</span><span>(</span><span class="number-literal">1.0</span><span>, </span><span class="identifier">angle</span><span>)</span></code></pre>
+            <p>where I&#39;ve chosen the radius to be 1. So</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; </span><span class="type-name">Point</span><span>(</span><span class="number-literal">75</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="number-literal">6</span><span>)</span></code></pre>
+            <p>is a parametric circle with radius 75, which is spinning six times faster.
+            By the same reasoning</p>
+            <pre><code class="nohighlight"><span>(</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt; </span><span class="type-name">Point</span><span>(</span><span class="number-literal">32</span><span>, </span><span class="identifier">angle</span><span> * </span><span class="number-literal">11</span><span>)</span></code></pre>
+            <p>is a parametric circle with radius 32 spinning eleven times faster.</p>
+            <p>The remaining portion of the code is a conversion from <code>Point</code> to <code>Vec</code> (the call to <code>toVec</code>) and addition of a <code>Point</code> and a <code>Vec</code>. 
+            This moves the center of the smaller circle to the current point on the larger circle. 
+            The conversion from <code>Point</code> to <code>Vec</code> is needed for technical reasons which I&#39;ll attempt to briefly explain. 
+            A point specifies a location relative to a fixed origin. 
+            A vector represents a displacement relative to some arbitrary starting point. 
+            Therefore we can add a vector to a point to get a new point that is shifted by the vector.
+            Adding a point to a point, however, is not possible as points are both locations relative to the same origin, not displacements like a vector is.
+            If this doesn&#39;t make sense there are many online resources that describe vectors.</p>
             <p>For our example we are going to fix the number and radius of the circles and allow their speed of rotation to vary. Here is the code:</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">epicycle</span><span>(</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">b</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">c</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Angle</span><span> =&gt; </span><span class="type-name">Point</span><span> =
   (</span><span class="identifier">angle</span><span>: </span><span class="type-name">Angle</span><span>) =&gt;
