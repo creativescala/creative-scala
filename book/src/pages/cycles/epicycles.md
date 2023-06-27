@@ -8,7 +8,10 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-We're now going to see a different example of composition, in creating a type of curve known as an epicycle. An epicycle is produced when we trace a point on a circle rotating on another circle. We can stack circles on top of circles, and change the speed at which they rotate, to produce many different curves. Here's an example using two circles.
+We're now going to see a different example of composition, in creating a type of curve known as an epicycle. 
+An epicycle is produced when we trace a point on a circle rotating on another circle. 
+We can stack circles on top of circles, and change the speed at which they rotate, to produce many different curves. 
+Here's an example using two circles.
 
 @:doodle("epicycle", "CyclesEpicycles.epicycleTwoWheels")
 

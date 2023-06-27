@@ -10,7 +10,9 @@ import doodle.java2d._
 
 In the previous chapter we have how useful it is to pass function to methods and return functions from methods. In this section we'll explore another thing we can do with functions: *function composition*. 
 
-Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. Composing functions means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type `A => B` and `B => C` to produce a function type `A => C`. In Scala we use the `andThen` method to do this.
+Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. In mathematics we might say we compose the numbers 1 and 1, using addition, to produce 2. In our work so far, we've composed images using methods like `above` and `on`.
+
+Function composition means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type `A => B` and `B => C` to produce a function of type `A => C`. In Scala we use the `andThen` method to do this.
 
 Here's an example. We start by defining two functions. The first adds a [drop shadow](https://en.wikipedia.org/wiki/Drop_shadow) to an `Image`. The second places an `Image` beside a copy of itself mirrored around the y-axis.
 

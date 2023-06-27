@@ -25,6 +25,21 @@ object Epicycles {
     loop(samples)
   }
 
+  def sampleCurve(samples: Int, curve: Angle => Point): List[Point] = {
+    // Angle.one is one complete turn. I.e. 360 degrees
+    val step = Angle.one / samples
+    def loop(count: Int): List[Point] = {
+      count match {
+        case 0 => List.empty
+        case n =>
+          val angle = step * count
+          curve(angle) :: loop(n - 1)
+      }
+    }
+
+    loop(samples)
+  }
+
   def epicycle(a: Int, b: Int, c: Int): Angle => Point =
     (angle: Angle) =>
       (Point(75, angle * a).toVec + Point(32, angle * b).toVec + Point(
@@ -40,4 +55,17 @@ object Epicycles {
       .beside(drawCurve(nSamples, dot)(epicycle(7, 13, 25)))
       .beside(drawCurve(nSamples, dot)(epicycle(1, 7, -21)))
   }.save("cycles/epicycle")
+
+  {
+    val nSamples = 700
+
+    Image
+      .interpolatingSpline(sampleCurve(nSamples, epicycle(1, 6, 14)))
+      .beside(
+        Image.interpolatingSpline(sampleCurve(nSamples, epicycle(7, 13, 25)))
+      )
+      .beside(
+        Image.interpolatingSpline(sampleCurve(nSamples, epicycle(1, 7, -21)))
+      )
+  }.save("cycles/epicurve")
 }

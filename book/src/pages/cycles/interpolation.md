@@ -8,15 +8,16 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 ```
 
-Interpolation is our final topic before we can create the pictures we're after.
+Our next step is to learn how to create smooth curves connecting points.
+The specific types of curves are known as interpolated splines.
 Interpolation means guessing at a value inbetween points.
-In our case we're going to use interpolation to create smooth curves that connect the points we sample from our parametric curves.
+A spline is a specific type of function that will generate the smooth curve.
 
 The example below sampling between 3 and 15 points from a parametric circle, and interpolating a curve from these points.
 
 @:doodle("circle-interpolation", "CyclesInterpolation.circleInterpolation")
 
-We can see that the curve more closely resembles a circle as we increase the number of points it's based off.
+We can see that the curve more closely resembles a circle as we increase the number of points used to create it.
 
 We use the `Image.interpolatingSpline` method to interpolate a curve. 
 The method expects a `List[Point]`, which is a type in two parts:
@@ -24,7 +25,7 @@ The method expects a `List[Point]`, which is a type in two parts:
 1. `List`, which is what's known as a container or collection, meaning it holds other values; and
 2. `Point`, which is the type of the values inside the list.
 
-Notice that all the elements of a list must have the same type.
+(Notice that all the elements of a list must have the same type.)
 
 Right now we only need to know how to create lists.
 In later chapters we'll learn a lot more about how to work with lists and other collections.
