@@ -93,8 +93,9 @@
           <li class="level1 nav-node"><a href="index.html">Composition and Cycles</a></li>
           <li class="level2 active nav-leaf"><a href="#">Function Composition</a></li>
           <li class="level2 nav-leaf"><a href="fun.html">Fun with Composition</a></li>
-          <li class="level2 nav-leaf"><a href="epicycles.html">Epicycles</a></li>
           <li class="level2 nav-leaf"><a href="interpolation.html">Interpolation</a></li>
+          <li class="level2 nav-leaf"><a href="epicycles.html">Epicycles</a></li>
+          <li class="level2 nav-leaf"><a href="sketching.html">Sketching</a></li>
           <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
           <li class="level1 nav-header">generative</li>
           <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
@@ -159,7 +160,8 @@
         <main class="content">
             <h1 id="function-composition" class="title">Function Composition</h1>
             <p>In the previous chapter we have how useful it is to pass function to methods and return functions from methods. In this section we&#39;ll explore another thing we can do with functions: <em>function composition</em>. </p>
-            <p>Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. We could say we compose the numbers 1 and 1, using addition, to produce 2. Composing functions means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type <code>A =&gt; B</code> and <code>B =&gt; C</code> to produce a function type <code>A =&gt; C</code>. In Scala we use the <code>andThen</code> method to do this.</p>
+            <p>Composition, in the mathematical rather than artistic sense, means creating something more complex by combining simpler parts. In mathematics we might say we compose the numbers 1 and 1, using addition, to produce 2. In our work so far, we&#39;ve composed images using methods like <code>above</code> and <code>on</code>.</p>
+            <p>Function composition means creating a function that connects the output of one component function to the input of another component function. Written in terms of types, function composition joins functions of type <code>A =&gt; B</code> and <code>B =&gt; C</code> to produce a function of type <code>A =&gt; C</code>. In Scala we use the <code>andThen</code> method to do this.</p>
             <p>Here&#39;s an example. We start by defining two functions. The first adds a <a href="https://en.wikipedia.org/wiki/Drop_shadow">drop shadow</a> to an <code>Image</code>. The second places an <code>Image</code> beside a copy of itself mirrored around the y-axis.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">dropShadow</span><span> = (</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt;
   </span><span class="identifier">image</span><span>.</span><span class="identifier">on</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>).</span><span class="identifier">at</span><span>(</span><span class="number-literal">5</span><span>, -</span><span class="number-literal">5</span><span>))
