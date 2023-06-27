@@ -19,8 +19,10 @@ The example below sampling between 3 and 15 points from a parametric circle, and
 
 We can see that the curve more closely resembles a circle as we increase the number of points used to create it.
 
-We use the `Image.interpolatingSpline` method to interpolate a curve. 
-The method expects a `List[Point]`, which is a type in two parts:
+We use the `PathElement.interpolatingSpline` method to interpolate a curve, producing a `List[PathElement]`. 
+The method expects a `List[Point]`.
+These lists are types made of two parts. 
+For example, `List[Point]` consists of
 
 1. `List`, which is what's known as a container or collection, meaning it holds other values; and
 2. `Point`, which is the type of the values inside the list.
@@ -216,7 +218,6 @@ Now we can put all the pieces together:
 2. interpolate that `List[Point]` to produce a smooth curve.
 
 The first part requires a method, which we'll call `sampleCurve`, that is very similar to `drawCurve` that we've used earlier.
-The second part is a call to `Image.interpolatingSpline`.
 
 @:exercise(Getting to the Point)
 Implement `sampleCurve` with the following skeleton
@@ -244,4 +245,5 @@ def sampleCurve(points: Int, curve: Angle => Point): List[Point] = {
   loop(points)
 }
 ```
-@:@
+
+To do the second part 
