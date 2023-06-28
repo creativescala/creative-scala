@@ -167,8 +167,10 @@
             <div class="doodle" id="circle-interpolation"></div>
             <script>CyclesInterpolation.circleInterpolation("circle-interpolation")</script>
             <p>We can see that the curve more closely resembles a circle as we increase the number of points used to create it.</p>
-            <p>We use the <code>Image.interpolatingSpline</code> method to interpolate a curve. 
-            The method expects a <code>List[Point]</code>, which is a type in two parts:</p>
+            <p>We use the <code>PathElement.interpolatingSpline</code> method to interpolate a curve, producing a <code>List[PathElement]</code>. 
+            The method expects a <code>List[Point]</code>.
+            These lists are types made of two parts. 
+            For example, <code>List[Point]</code> consists of</p>
             <ol class="arabic">
               <li><code>List</code>, which is what&#39;s known as a container or collection, meaning it holds other values; and</li>
               <li><code>Point</code>, which is the type of the values inside the list.</li>
@@ -308,8 +310,7 @@
               <li>sample a <code>List[Point]</code> from a parametric curve; and</li>
               <li>interpolate that <code>List[Point]</code> to produce a smooth curve.</li>
             </ol>
-            <p>The first part requires a method, which we&#39;ll call <code>sampleCurve</code>, that is very similar to <code>drawCurve</code> that we&#39;ve used earlier.
-            The second part is a call to <code>Image.interpolatingSpline</code>.</p>
+            <p>The first part requires a method, which we&#39;ll call <code>sampleCurve</code>, that is very similar to <code>drawCurve</code> that we&#39;ve used earlier.</p>
             <div class="exercise">
               
               <h4 id="exercise-getting-to-the-point">Exercise: Getting to the Point</h4>
@@ -334,6 +335,7 @@
 }</span></code></pre>
               </div>
             </div>
+            <p>To do the second part </p>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="fun.html">←Fun with Composition</a> <a class="pageNavigation" href="epicycles.html">Epicycles→</a>
             </div>
