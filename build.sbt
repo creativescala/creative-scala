@@ -2,8 +2,8 @@ import scala.sys.process._
 import laika.config.LaikaKeys
 import laika.theme.Theme
 
-val scala213 = "2.13.10"
-val scala3 = "3.2.2"
+val scala213 = "2.13.11"
+val scala3 = "3.3.0"
 
 ThisBuild / organization := "org.creativescala"
 ThisBuild / organizationName := "Creative Scala"
@@ -29,8 +29,8 @@ lazy val build = taskKey[Unit]("Build the book")
 
 val commonSettings = Seq(
   libraryDependencies ++= Seq(
-    "org.creativescala" %%% "doodle" % "0.18.0",
-    "org.creativescala" %%% "doodle-svg" % "0.15.0"
+    "org.creativescala" %%% "doodle" % "0.19.0",
+    "org.creativescala" %%% "doodle-svg" % "0.16.0"
   )
 )
 

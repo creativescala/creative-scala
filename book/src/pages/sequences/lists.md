@@ -496,7 +496,7 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
       case n =>
         LineTo(polar(size, rotation * n + initialRotation)) :: iter(n - 1, rotation)
     }
-  Image.closedPath(moveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides))
+  Image.path(ClosedPath(moveTo(polar(size, initialRotation)) :: iter(sides, 360.degrees / sides)))
 }
 
 def style(img: Image): Image = {

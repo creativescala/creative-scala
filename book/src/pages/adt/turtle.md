@@ -186,7 +186,7 @@ object Turtle {
       }
     }
     
-    openPath(iterate(TurtleState(Vec.zero, Angle.zero), instructions))
+    path(OpenPath(iterate(TurtleState(Vec.zero, Angle.zero), instructions)))
   }
 }
 ```

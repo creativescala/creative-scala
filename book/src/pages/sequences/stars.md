@@ -52,7 +52,7 @@ def star(sides: Int, skip: Int, radius: Double): Image = {
     lineTo(point)
   }
 
-  Image.closedPath(start :: elements) strokeWidth 2
+  Image.path(ClosedPath(start :: elements)).strokeWidth(2)
 }
 ```
 </div>
@@ -86,7 +86,7 @@ def star(sides: Int, skip: Int, radius: Double): Image = {
     lineTo(point)
   }
 
-  Image.closedPath(start :: elements) strokeWidth 2
+  Image.path(ClosedPath(start :: elements)) strokeWidth 2
 }
 ```
 ```scala mdoc:invisible
@@ -162,7 +162,7 @@ def star(sides: Int, skip: Int, radius: Double): Image = {
     lineTo(point)
   }
 
-  Image.closedPath(start :: elements) strokeWidth 2
+  Image.path(ClosedPath(start :: elements)) strokeWidth 2
 }
 ```
 ```scala mdoc:silent

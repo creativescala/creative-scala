@@ -302,7 +302,7 @@ def polygon(sides: Int, size: Int, initialRotation: Angle): Image = {
       lineTo(polar(size, initialRotation + deg.degrees))
     }
     
-  Image.closedPath(moveTo(polar(size, initialRotation)) :: path)
+  Image.path(ClosedPath(moveTo(polar(size, initialRotation)) :: path))
 }
 ```
 </div>

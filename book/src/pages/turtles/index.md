@@ -23,8 +23,8 @@ For example, if we wanted to draw a square we'd use code like
 import doodle.core.PathElement._
 
 val path = 
-  Image.openPath(
-    List(moveTo(10,10), lineTo(-10,10), lineTo(-10,-10), lineTo(10, -10), lineTo(10, 10))
+  Image.path(
+    OpenPath(List(moveTo(10,10), lineTo(-10,10), lineTo(-10,-10), lineTo(10, -10), lineTo(10, 10)))
   )
 ```
 

@@ -34,7 +34,7 @@ The picture in @:fref(sequences:open-closed-paths) illustrates the components th
 
 Now we know about paths, how do we create them in Doodle? Here's the code that created @:fref(pictures:open-closed-paths).
 
-```scala mdoc:silent
+```scala
 import doodle.core.PathElement._
 
 val triangle =
@@ -55,10 +55,10 @@ def style(image: Image): Image =
 val openPaths =
   style(Image.openPath(triangle).beside(Image.openPath(curve)))
 
-val closedPaths =
-  style(Image.closedPath(triangle).beside(Image.closedPath(curve)))
+val paths =
+  style(Image.path(triangle).beside(Image.closedPath(curve)))
 
-val paths = openPaths.above(closedPaths)
+val paths = openPaths.above(paths)
 ```
 
 From this code we can see we create paths using the `openPath` and `closePath` methods on `Image`, just as we create other shapes. 
@@ -127,19 +127,19 @@ import doodle.syntax.all._
 import doodle.image.syntax.all._
 import doodle.java2d._
 ```
-```scala mdoc:silent
+```scala 
 import doodle.core.PathElement._
 import doodle.core.Point._
 import doodle.core.Color._
 val triangle =
-  Image.closedPath(List(
+  Image.path(List(
                      moveTo(polar(50, 0.degrees)),
                      lineTo(polar(50, 120.degrees)),
                      lineTo(polar(50, 240.degrees))
                    ))
 
 val square =
-  Image.closedPath(List(
+  Image.path(List(
                      moveTo(polar(50, 45.degrees)),
                      lineTo(polar(50, 135.degrees)),
                      lineTo(polar(50, 225.degrees)),
@@ -147,7 +147,7 @@ val square =
                    ))
 
 val pentagon =
-  Image.closedPath(List(
+  Image.path(List(
                      moveTo(polar(50, 72.degrees)),
                      lineTo(polar(50, 144.degrees)),
                      lineTo(polar(50, 216.degrees)),
@@ -187,7 +187,7 @@ import doodle.syntax.all._
 import doodle.image.syntax.all._
 import doodle.java2d._
 ```
-```scala mdoc:silent
+```scala 
 import doodle.core.Point._
 import doodle.core.PathElement._
 import doodle.core.Color._
@@ -201,7 +201,7 @@ def curve(radius: Int, start: Angle, increment: Angle): PathElement = {
 }
 
 val triangle =
-  Image.closedPath(List(
+  Image.path(List(
                      moveTo(polar(50, 0.degrees)),
                      curve(50, 0.degrees, 120.degrees),
                      curve(50, 120.degrees, 120.degrees),
@@ -209,7 +209,7 @@ val triangle =
                    ))
 
 val square =
-  Image.closedPath(List(
+  Image.path(List(
                      moveTo(polar(50, 45.degrees)),
                      curve(50, 45.degrees, 90.degrees),
                      curve(50, 135.degrees, 90.degrees),
@@ -218,7 +218,7 @@ val square =
                    ))
 
 val pentagon =
-  Image.closedPath((List(
+  Image.path((List(
                       moveTo(polar(50, 72.degrees)),
                       curve(50, 72.degrees, 72.degrees),
                       curve(50, 144.degrees, 72.degrees),

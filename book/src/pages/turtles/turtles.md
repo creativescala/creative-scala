@@ -142,7 +142,7 @@ def polygon(sides: Int, size: Int): Image = {
     (1 to sides).toList.map { i =>
       PathElement.lineTo(polar(size, rotation * i))
     }
-  Image.closedPath(PathElement.moveTo(polar(size, Angle.zero)) :: elts)
+  Image.path(ClosedPath(PathElement.moveTo(polar(size, Angle.zero)) :: elts))
 }
 ```
 
