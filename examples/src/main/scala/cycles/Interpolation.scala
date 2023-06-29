@@ -47,7 +47,7 @@ object Interpolation {
         val dots = pts.map(pt => dot.at(pt)).allOn
         // Make the curve end at it's start
         val c = Picture
-          .interpolatingSpline(pts :+ pts.head)
+          .path(ClosedPath.interpolatingSpline(pts :+ pts.head))
           .strokeColor(Color.darkBlue)
         I.constant(dots.on(c)).forDuration(1.seconds)
       }

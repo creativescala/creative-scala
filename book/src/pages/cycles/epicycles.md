@@ -35,14 +35,14 @@ where I've chosen the radius to be 1. So
 (angle: Angle) => Point(75, angle * 6)
 ```
 
-is a parametric circle with radius 75, which is spinning six times faster.
+is a parametric circle with radius 75, which is spinning six times faster than normal.
 By the same reasoning
 
 ```scala mdoc:silent
 (angle: Angle) => Point(32, angle * 11)
 ```
 
-is a parametric circle with radius 32 spinning eleven times faster.
+is a parametric circle with radius 32 spinning eleven times faster than normal.
 
 The remaining portion of the code is a conversion from `Point` to `Vec` (the call to `toVec`) and addition of a `Point` and a `Vec`. 
 
@@ -71,7 +71,7 @@ def epicycle(a: Int, b: Int, c: Int): Angle => Point =
 
 The examples are created by choosing the parameters a, b, c, as (1, 6, 14), (7, 13, 25), and (1, 7, -21) respectively.
 
-@:figure{ img = "./epicycle.svg", key = "#fig:cycles:epicycle", caption = "Examples of epicycle curves, with the parameters chosen as (1, 6, 14), (7, 13, 25), and (1, 7 -21)." }
+@:figure{ img = "./epicurve.svg", key = "#fig:cycles:epicycle", caption = "Examples of epicycle curves, with the parameters chosen as (1, 6, 14), (7, 13, 25), and (1, 7 -21)." }
 
 
 ## Composing Epicycles
@@ -102,7 +102,6 @@ def on(wheel1: Angle => Point, wheel2: Angle => Point): Angle => Point =
 
 @:exercise(Wheels on Wheels)
 Implement `wheel` and `on`, described above. 
-Then use them, as well as tools we've created earlier, to draw your own epicycle curves.
 @:@
 
 @:solution
@@ -141,4 +140,29 @@ val wheel2 = wheel(11).andThen(scale(32))
 
 val combined = on(wheel1, wheel2)
 ```
+@:@
+
+@:exercise(Put It Together)
+Explore the curves you can create using epicycles.
+
+Below are some examples to get you started.
+These examples all use three wheels. 
+It can be helpful to place some limits (in my case the number of wheels) to reduce the number of possibilities you consider.
+
+This example shows 7-fold symmetry. The speeds of the wheels (from largest to smallest) are 1, 8, and 22. 
+Notice that these values are all equal to \\((7 \times n) + 1\\), for different choices of \\(n\\).
+In mathematics, we'd say they are [congruent modulo 7](https://en.wikipedia.org/wiki/Modular_arithmetic).
+It is this fact that creates the 7-fold symmetry.
+
+@:figure{ img = "./epicycle-7fold.svg", key = "#fig:cycles:epicycle-7fold", caption = "An epicycle showing 7-fold symmetry, with speeds 1, 8, and 22." }
+
+We don't need to be symmetrical. 
+This example has speeds of 7, 20, and 32.
+As it's not symmetrical it doesn't neatly join up after a full turn.
+Therefore it's sampled over 1080 degrees, which shows more of the shape.
+It's loopy patterns make me think of hand stitching.
+
+@:figure{ img = "./epicycle-asymmetrical.svg", key = "#fig:cycles:epicycle-asymmetrical", caption = "An epicycle that is not symmetrical." }
+
+Now go explore and find your own shapes.
 @:@

@@ -25,9 +25,11 @@ object Epicycles {
     loop(samples)
   }
 
-  def sampleCurve(samples: Int, curve: Angle => Point): List[Point] = {
+  def sampleCurve(samples: Int, stop: Angle = Angle.one)(
+      curve: Angle => Point
+  ): List[Point] = {
     // Angle.one is one complete turn. I.e. 360 degrees
-    val step = Angle.one / samples
+    val step = stop / samples
     def loop(count: Int): List[Point] = {
       count match {
         case 0 => List.empty
@@ -47,25 +49,47 @@ object Epicycles {
         angle * c
       ).toVec).toPoint
 
-  {
-    val nSamples = 700
-    val dot = Image.circle(5).noStroke.fillColor(Color.darkBlue)
+  val nSamples = 350
 
-    drawCurve(nSamples, dot)(epicycle(1, 6, 14))
-      .beside(drawCurve(nSamples, dot)(epicycle(7, 13, 25)))
-      .beside(drawCurve(nSamples, dot)(epicycle(1, 7, -21)))
-  }.save("cycles/epicycle")
-
-  {
-    val nSamples = 700
-
-    Image
-      .interpolatingSpline(sampleCurve(nSamples, epicycle(1, 6, 14)))
-      .beside(
-        Image.interpolatingSpline(sampleCurve(nSamples, epicycle(7, 13, 25)))
+  Image
+    .path(
+      ClosedPath.interpolatingSpline(
+        sampleCurve(nSamples)(epicycle(1, 6, 14))
       )
-      .beside(
-        Image.interpolatingSpline(sampleCurve(nSamples, epicycle(1, 7, -21)))
+    )
+    .beside(
+      Image.path(
+        ClosedPath.interpolatingSpline(
+          sampleCurve(nSamples)(epicycle(7, 13, 25))
+        )
       )
-  }.save("cycles/epicurve")
+    )
+    .beside(
+      Image.path(
+        ClosedPath.interpolatingSpline(
+          sampleCurve(nSamples)(epicycle(1, 7, -21))
+        )
+      )
+    )
+    .strokeColor(Color.darkBlue)
+    .save("cycles/epicurve")
+
+  Image
+    .path(
+      ClosedPath.interpolatingSpline(
+        sampleCurve(nSamples)(epicycle(1, 8, 22))
+      )
+    )
+    .strokeColor(Color.darkBlue)
+    .save("cycles/epicycle-7fold")
+
+  Image
+    .path(
+      ClosedPath
+        .interpolatingSpline(
+          (sampleCurve(nSamples, 1080.degrees)(epicycle(7, 20, 32)))
+        )
+    )
+    .strokeColor(Color.darkBlue)
+    .save("cycles/epicycle-asymmetrical")
 }

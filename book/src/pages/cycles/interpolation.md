@@ -19,7 +19,8 @@ The example below sampling between 3 and 15 points from a parametric circle, and
 
 We can see that the curve more closely resembles a circle as we increase the number of points used to create it.
 
-We use the `PathElement.interpolatingSpline` method to interpolate a curve, producing a `List[PathElement]`. 
+We use the `OpenPath.interpolatingSplice` or `ClosedPath.interpolatingSpline` method to interpolate a curve,
+producing a `List[PathElement]`. 
 The method expects a `List[Point]`.
 These lists are types made of two parts. 
 For example, `List[Point]` consists of
@@ -247,4 +248,46 @@ def sampleCurve(points: Int, curve: Angle => Point): List[Point] = {
 ```
 @:@
 
-To do the second part 
+To do the second part is to create the spline by calling the `interpolatingSpline`  method on either `ClosedPath` or `OpenPath`.
+Remember that closed paths always have a line connecting the end to the start,
+while open paths do not.
+Which you should use depends on the curve you're drawing.
+If we're drawing a spiral, for example, an open path is appropriate.
+For a circle we'd use a closed path instead.
+The example below shows this.
+
+@:figure{ img = "./interpolation.svg", key = "#fig:cycles:interpolation", caption = "Examples of interpolated curves, with a spiral (an open path) beside a circle (a closed path)." }
+
+This image is created with the code
+
+```scala
+val nSamples = 350
+
+Image
+  .path(
+    OpenPath.interpolatingSpline(
+      sampleCurve(nSamples, parametricSpiral.andThen(scale(100)))
+    )
+  )
+  .beside(
+    Image
+      .path(
+        ClosedPath.interpolatingSpline(
+          sampleCurve(nSamples, parametricCircle.andThen(scale(100)))
+        )
+      )
+  )
+```
+
+@:exercise(The Spline of Your Life)
+
+Use `sampleCurve`, interpolation, and the parametric curves we've created earlier to create your own masterpiece.
+In addition to spirals and circles, we have seen rose and Lissajous curves in a previous chapter.
+
+For many curves, such as a spiral, it's useful to sample over more than a full turn.
+You might find it useful to add an additional parameter to `sampleCurve`, to give the angle that should be covered by the samples.
+
+Below is an example I created using Lissajous curves. I'm sure you can be a lot more creative.
+
+@:figure{ img = "./lissajous-stack.svg", key = "#fig:cycles:lissajous-stack", caption = "Many Lissajous curves stacked atop one another." }
+@:@
