@@ -11,6 +11,8 @@
     
     <meta name="description" content="book" />
     
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
@@ -95,7 +97,6 @@
           <li class="level2 nav-leaf"><a href="../cycles/fun.html">Fun with Composition</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/interpolation.html">Interpolation</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/epicycles.html">Epicycles</a></li>
-          <li class="level2 nav-leaf"><a href="../cycles/sketching.html">Sketching</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
           <li class="level1 nav-header">collections</li>
@@ -188,29 +189,29 @@
               </tbody>
             </table>
             <pre><code class="nohighlight"><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>
-</span><span class="comment">// res0: Double = 0.98613128761757
+</span><span class="comment">// res0: Double = 0.7647404740654727
 </span><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>
-</span><span class="comment">// res1: Double = 0.009159513375075257</span></code></pre>
+</span><span class="comment">// res1: Double = 0.05832442467534871</span></code></pre>
             <p>Given <code>math.random</code> we could produce a method that returns a random <code>Angle</code> like so.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">randomAngle</span><span>: </span><span class="type-name">Angle</span><span> = 
   </span><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>.</span><span class="identifier">turns</span><span>
   
 </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// res2: Angle = Angle(5.833957265319289)
+</span><span class="comment">// res2: Angle = Angle(2.7062390505926546)
 </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// res3: Angle = Angle(0.2061281535960721)</span></code></pre>
+</span><span class="comment">// res3: Angle = Angle(0.09463161127317622)</span></code></pre>
             <p>Why might we not want to do this? What principle does this break?</p>
             <p>&lt;div class=&quot;solution&quot;&gt;
             Generating random numbers in this way breaks substitution. Remember substitution says wherever we see an expression we should be able to substitute the value it evaluates to without changing the meaning of the program. Concretely, this means</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">result1</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result1: Angle = Angle(4.189115950564013)
+</span><span class="comment">// result1: Angle = Angle(0.9869873933209616)
 </span><span class="keyword">val</span><span> </span><span class="identifier">result2</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result2: Angle = Angle(5.137314596166244)</span></code></pre>
+</span><span class="comment">// result2: Angle = Angle(6.192488366613353)</span></code></pre>
             <p>and </p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">result1</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result1: Angle = Angle(3.591577317996502)
+</span><span class="comment">// result1: Angle = Angle(2.0283659506450054)
 </span><span class="keyword">val</span><span> </span><span class="identifier">result2</span><span> = </span><span class="identifier">result1</span><span>
-</span><span class="comment">// result2: Angle = Angle(3.591577317996502)</span></code></pre>
+</span><span class="comment">// result2: Angle = Angle(2.0283659506450054)</span></code></pre>
             <p>should be the same program and clearly they are not.
             &lt;/div&gt;</p>
             <p>What should we do? Suffer the slings and arrows of outrageous computational models, or take arms against a sea of side-effects, and by opposing end them! There&#39;s really only one choice.</p>

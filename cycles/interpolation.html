@@ -11,6 +11,8 @@
     
     <meta name="description" content="book" />
     
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
@@ -95,7 +97,6 @@
           <li class="level2 nav-leaf"><a href="fun.html">Fun with Composition</a></li>
           <li class="level2 active nav-leaf"><a href="#">Interpolation</a></li>
           <li class="level2 nav-leaf"><a href="epicycles.html">Epicycles</a></li>
-          <li class="level2 nav-leaf"><a href="sketching.html">Sketching</a></li>
           <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
           <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
           <li class="level1 nav-header">collections</li>
@@ -167,7 +168,8 @@
             <div class="doodle" id="circle-interpolation"></div>
             <script>CyclesInterpolation.circleInterpolation("circle-interpolation")</script>
             <p>We can see that the curve more closely resembles a circle as we increase the number of points used to create it.</p>
-            <p>We use the <code>PathElement.interpolatingSpline</code> method to interpolate a curve, producing a <code>List[PathElement]</code>. 
+            <p>We use the <code>OpenPath.interpolatingSplice</code> or <code>ClosedPath.interpolatingSpline</code> method to interpolate a curve,
+            producing a <code>List[PathElement]</code>. 
             The method expects a <code>List[Point]</code>.
             These lists are types made of two parts. 
             For example, <code>List[Point]</code> consists of</p>
@@ -335,7 +337,41 @@
 }</span></code></pre>
               </div>
             </div>
-            <p>To do the second part </p>
+            <p>To do the second part is to create the spline by calling the <code>interpolatingSpline</code>  method on either <code>ClosedPath</code> or <code>OpenPath</code>.
+            Remember that closed paths always have a line connecting the end to the start,
+            while open paths do not.
+            Which you should use depends on the curve you&#39;re drawing.
+            If we&#39;re drawing a spiral, for example, an open path is appropriate.
+            For a circle we&#39;d use a closed path instead.
+            The example below shows this.</p>
+            <p><img src="./interpolation.svg" alt="Examples of interpolated curves, with a spiral (an open path) beside a circle (a closed path)." title="Figure Some(#fig:cycles:interpolation): caption"></p>
+            <p>This image is created with the code</p>
+            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">nSamples</span><span> = </span><span class="number-literal">350</span><span>
+
+</span><span class="type-name">Image</span><span>
+  .</span><span class="identifier">path</span><span>(
+    </span><span class="type-name">OpenPath</span><span>.</span><span class="identifier">interpolatingSpline</span><span>(
+      </span><span class="identifier">sampleCurve</span><span>(</span><span class="identifier">nSamples</span><span>, </span><span class="identifier">parametricSpiral</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span>)))
+    )
+  )
+  .</span><span class="identifier">beside</span><span>(
+    </span><span class="type-name">Image</span><span>
+      .</span><span class="identifier">path</span><span>(
+        </span><span class="type-name">ClosedPath</span><span>.</span><span class="identifier">interpolatingSpline</span><span>(
+          </span><span class="identifier">sampleCurve</span><span>(</span><span class="identifier">nSamples</span><span>, </span><span class="identifier">parametricCircle</span><span>.</span><span class="identifier">andThen</span><span>(</span><span class="identifier">scale</span><span>(</span><span class="number-literal">100</span><span>)))
+        )
+      )
+  )</span></code></pre>
+            <div class="exercise">
+              
+              <h4 id="exercise-the-spline-of-your-life">Exercise: The Spline of Your Life</h4>
+              <p>Use <code>sampleCurve</code>, interpolation, and the parametric curves we&#39;ve created earlier to create your own masterpiece.
+              In addition to spirals and circles, we have seen rose and Lissajous curves in a previous chapter.</p>
+              <p>For many curves, such as a spiral, it&#39;s useful to sample over more than a full turn.
+              You might find it useful to add an additional parameter to <code>sampleCurve</code>, to give the angle that should be covered by the samples.</p>
+              <p>Below is an example I created using Lissajous curves. I&#39;m sure you can be a lot more creative.</p>
+              <p><img src="./lissajous-stack.svg" alt="Many Lissajous curves stacked atop one another." title="Figure Some(#fig:cycles:lissajous-stack): caption"></p>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="fun.html">←Fun with Composition</a> <a class="pageNavigation" href="epicycles.html">Epicycles→</a>
             </div>

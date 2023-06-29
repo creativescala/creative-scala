@@ -11,6 +11,8 @@
     
     <meta name="description" content="book" />
     
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
@@ -95,7 +97,6 @@
           <li class="level2 nav-leaf"><a href="../cycles/fun.html">Fun with Composition</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/interpolation.html">Interpolation</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/epicycles.html">Epicycles</a></li>
-          <li class="level2 nav-leaf"><a href="../cycles/sketching.html">Sketching</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
           <li class="level1 nav-header">collections</li>
@@ -173,7 +174,7 @@
 // )</span></code></pre>
             <p>No random numbers are actually created until we call the <code>run</code> method.</p>
             <pre><code class="nohighlight"><span class="identifier">randomDouble</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res0: Double = 0.1772907626897826</span></code></pre>
+</span><span class="comment">// res0: Double = 0.7039722994609712</span></code></pre>
             <p>The type <code>Random[Double]</code> indicates we have something that will produce a random <code>Double</code> when we <code>run</code> it. Just like with <code>Image</code> and <code>draw</code>, substitution holds with <code>Random</code> up until the point we call <code>run</code>.</p>
             <p>Table Table generative:random shows some of the ways to construct <code>Random</code> values.</p>
             <hr>
@@ -211,9 +212,9 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)</span></code></pre>
             <p>When we <code>run</code> <code>RandomAngle</code> we can generate randomly created <code>Angle</code></p>
             <pre><code class="nohighlight"><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res1: Angle = Angle(5.360923727523208)
+</span><span class="comment">// res1: Angle = Angle(5.525572368378454)
 </span><span class="identifier">randomAngle</span><span>.</span><span class="identifier">run</span><span>
-</span><span class="comment">// res2: Angle = Angle(3.645479514838191)</span></code></pre>
+</span><span class="comment">// res2: Angle = Angle(5.244907464222529)</span></code></pre>
             
             <h3 id="exercises" class="section">Exercises {-}</h3>
             

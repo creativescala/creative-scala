@@ -11,6 +11,8 @@
     
     <meta name="description" content="book" />
     
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
         rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
@@ -95,7 +97,6 @@
           <li class="level2 nav-leaf"><a href="../cycles/fun.html">Fun with Composition</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/interpolation.html">Interpolation</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/epicycles.html">Epicycles</a></li>
-          <li class="level2 nav-leaf"><a href="../cycles/sketching.html">Sketching</a></li>
           <li class="level2 nav-leaf"><a href="../cycles/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
           <li class="level1 nav-header">collections</li>
@@ -343,17 +344,17 @@
               <div class="solution-body">
                 <p>The first function is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res10: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$15666/0x0000000104095040@7effb50b</span></code></pre>
+</span><span class="comment">// res10: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$14286/0x0000000103c4b040@668f64cd</span></code></pre>
                 <p>The second is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res11: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$15667/0x0000000104094840@41aca33d</span></code></pre>
+</span><span class="comment">// res11: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$14287/0x0000000103c4a040@2f8e3725</span></code></pre>
                 <p>The third is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res12: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$15668/0x0000000104093840@47dc8ac4</span></code></pre>
+</span><span class="comment">// res12: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$14288/0x0000000103c49840@4306df64</span></code></pre>
               </div>
             </div>
             <div class="exercise">
