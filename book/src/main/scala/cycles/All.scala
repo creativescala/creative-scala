@@ -12,4 +12,5 @@ object All {
   Fun
   Interpolation
   Epicycles
+  Final
 }
