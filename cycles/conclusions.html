@@ -163,12 +163,20 @@
             <h1 id="conclusions" class="title">Conclusions</h1>
             <p>This chapter has focused on function composition.
             We&#39;ve used <code>Angle =&gt; Point</code> functions to represent parametric curves,
-            and we have seen that we can build many useful abstractions around them by using function composition.</p>
+            and we have seen that we can build many useful abstractions based on function composition.</p>
             <p>Functions are not the only things that compose. 
             Every time we&#39;ve used the <code>beside</code>, or <code>above</code> methods on <code>Image</code>, for example, we&#39;ve been composing images.
-            This notion of composition is one of the key ideas in functional programming, and we&#39;ll continue to see it throughout the book.</p>
-            <p>closure</p>
-            <p>combinators</p>
+            Composition is one of the key ideas in functional programming, and we&#39;ll continue to see it throughout the book.
+            These methods are sometimes known as <strong>combinators</strong>.
+            This isn&#39;t a term we&#39;ll use much, but you may find it in other literature so it&#39;s useful to know what it means.</p>
+            <p>The methods of composition, or combinators, all have a property known as <strong>closure</strong>.
+            This means that the input is the same sort of thing as the output.
+            When we combine two <code>Images</code> using <code>above</code> we get back an <code>Image</code>.
+            When we combine two functions using <code>andThen</code> we get back a function.</p>
+            <p>It isn&#39;t necessary for all the parameters of a method to have the same type for a method to be a combinator.
+            For example, <code>strokeColor</code> combiines an <code>Image</code> and a <code>Color</code> to produce an <code>Image</code>. 
+            We still consider this a combinator because we&#39;re most interested in the <code>Image</code> type, which is both an input and an output of <code>strokeColor</code>.
+            So we could say that <code>strokeColor</code> composes an <code>Image</code> and a <code>Color</code> to produce an <code>Image</code>.</p>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="culmination.html">←Bringing it Together</a> 
             </div>
