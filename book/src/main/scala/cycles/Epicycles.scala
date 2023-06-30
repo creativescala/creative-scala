@@ -77,7 +77,7 @@ object Epicycles {
   Image
     .path(
       ClosedPath.interpolatingSpline(
-        sampleCurve(nSamples)(epicycle(1, 8, 22))
+        sampleCurve(nSamples, 1.turns)(epicycle(1, 8, 22))
       )
     )
     .strokeColor(Color.darkBlue)
@@ -85,9 +85,36 @@ object Epicycles {
 
   Image
     .path(
+      ClosedPath.interpolatingSpline(
+        sampleCurve(nSamples, 1.turns)(epicycle(1, -8, 22))
+      )
+    )
+    .strokeColor(Color.darkBlue)
+    .save("cycles/epicycle-7fold-reverse")
+
+  Image
+    .path(
       ClosedPath
         .interpolatingSpline(
-          (sampleCurve(nSamples, 1080.degrees)(epicycle(7, 20, 32)))
+          (sampleCurve(nSamples, 1.turns)(epicycle(7, 17, 29)))
+        )
+    )
+    .above(
+      Image
+        .path(
+          ClosedPath
+            .interpolatingSpline(
+              (sampleCurve(nSamples, 3.turns)(epicycle(7, 17, 29)))
+            )
+        )
+    )
+    .above(
+      Image
+        .path(
+          ClosedPath
+            .interpolatingSpline(
+              (sampleCurve(nSamples, 10.turns)(epicycle(7, 17, 29)))
+            )
         )
     )
     .strokeColor(Color.darkBlue)

@@ -156,13 +156,19 @@ It is this fact that creates the 7-fold symmetry.
 
 @:figure{ img = "./epicycle-7fold.svg", key = "#fig:cycles:epicycle-7fold", caption = "An epicycle showing 7-fold symmetry, with speeds 1, 8, and 22." }
 
-We don't need to be symmetrical. 
-This example has speeds of 7, 20, and 32.
-As it's not symmetrical it doesn't neatly join up after a full turn.
-Therefore it's sampled over 1080 degrees, which shows more of the shape.
-It's loopy patterns make me think of hand stitching.
+We don't have to always use positive speeds. 
+A negative speed means the wheel rotates in the opposite direction.
+In the example below I've used speeds of 1, -8, and 22.
 
-@:figure{ img = "./epicycle-asymmetrical.svg", key = "#fig:cycles:epicycle-asymmetrical", caption = "An epicycle that is not symmetrical." }
+@:figure{ img = "./epicycle-7fold-reverse.svg", key = "#fig:cycles:epicycle-7fold-reverse", caption = "An epicycle showing 7-fold symmetry, with speeds 1, 8, and 22." }
 
-Now go explore and find your own shapes.
+We don't need to use speeds that are congruent modulo \\(n\\). 
+This example has speeds of 7, 17, and 29, which are all prime numbers.
+The examples below keep the number of samples constant,
+but sample 1 turn, 3 turns, and 10 turns respectively from top to bottom.
+
+@:figure{ img = "./epicycle-asymmetrical.svg", key = "#fig:cycles:epicycle-asymmetrical", caption = "An epicycle with prime numbers speeds, sampled over 1, 3, and 10 turns respectively." }
+
+Hopefully these examples have given you some ideas of the different parameters you can explore.
+Now go and make some shapes!
 @:@
