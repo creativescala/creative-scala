@@ -1,6 +1,6 @@
 # Part One: Conclusions
 
-We've now reached the end of Part One, where we focused on creative computing.
-We're going to finish by mentioning a few places where you can find out more,
-if you'd like to continue exploring this domain.
+We've reached the end of Part One, which focused on creative computing.
+Before we set this topic aside, let's discuss some places where  you find more on creative computing should you wish to continue exploring this domain. 
 
+We'll start with a few artists.
