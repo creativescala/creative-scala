@@ -191,29 +191,29 @@
               </tbody>
             </table>
             <pre><code class="nohighlight"><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>
-</span><span class="comment">// res0: Double = 0.6788567489925293
+</span><span class="comment">// res0: Double = 0.14871277631836521
 </span><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>
-</span><span class="comment">// res1: Double = 0.323684603008335</span></code></pre>
+</span><span class="comment">// res1: Double = 0.4740502298630307</span></code></pre>
             <p>Given <code>math.random</code> we could produce a method that returns a random <code>Angle</code> like so.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">randomAngle</span><span>: </span><span class="type-name">Angle</span><span> = 
   </span><span class="identifier">math</span><span>.</span><span class="identifier">random</span><span>.</span><span class="identifier">turns</span><span>
   
 </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// res2: Angle = Angle(4.652563409237889)
+</span><span class="comment">// res2: Angle = Angle(3.883470742309488)
 </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// res3: Angle = Angle(1.719143096911647)</span></code></pre>
+</span><span class="comment">// res3: Angle = Angle(4.552529726511162)</span></code></pre>
             <p>Why might we not want to do this? What principle does this break?</p>
             <p>&lt;div class=&quot;solution&quot;&gt;
             Generating random numbers in this way breaks substitution. Remember substitution says wherever we see an expression we should be able to substitute the value it evaluates to without changing the meaning of the program. Concretely, this means</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">result1</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result1: Angle = Angle(5.771784980257951)
+</span><span class="comment">// result1: Angle = Angle(4.213217351688848)
 </span><span class="keyword">val</span><span> </span><span class="identifier">result2</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result2: Angle = Angle(5.181551398979252)</span></code></pre>
+</span><span class="comment">// result2: Angle = Angle(5.938966261686806)</span></code></pre>
             <p>and </p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">result1</span><span> = </span><span class="identifier">randomAngle</span><span>
-</span><span class="comment">// result1: Angle = Angle(3.5777165176186894)
+</span><span class="comment">// result1: Angle = Angle(0.8037007176404501)
 </span><span class="keyword">val</span><span> </span><span class="identifier">result2</span><span> = </span><span class="identifier">result1</span><span>
-</span><span class="comment">// result2: Angle = Angle(3.5777165176186894)</span></code></pre>
+</span><span class="comment">// result2: Angle = Angle(0.8037007176404501)</span></code></pre>
             <p>should be the same program and clearly they are not.
             &lt;/div&gt;</p>
             <p>What should we do? Suffer the slings and arrows of outrageous computational models, or take arms against a sea of side-effects, and by opposing end them! There&#39;s really only one choice.</p>
