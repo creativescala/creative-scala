@@ -23,7 +23,7 @@ If symmetrical tiling is your thing, [Creating Symmetry](https://press.princeton
 
 [George Savva](https://linktr.ee/georgemsavva) creates artworks that make creative use of parametric curves. He also posts detailed breakdowns of the process behind his images [such as this post which uses Lissajous curves](https://georgemsavva.github.io/creativecoding/posts/lissajous/).
 
-[Jared Tarbell](http://www.complexification.net/gallery/) is a legend in the field of creative computing, and also a co-founder of [Etsy](https://www.etsy.com/). A lot of his work is over two decades old, but it still feels fresh. His website has just enough detail on his process that it's possible to reconstruct some of his work.
+[Jared Tarbell](http://www.complexification.net/gallery/) is something of a legend in the field of creative computing, and also a co-founder of [Etsy](https://www.etsy.com/). A lot of his work is over two decades old, but it still feels fresh. His has just enough detail on his process that it's possible to reconstruct some of his work, whilst his [newer site](https://www.infinite.center/) has code with every image.
 
 You can't go far in creative computing without running into [Processing](https://processing.org/) and its descendant [p5.js](https://p5js.org/). 
 They are probably the two most widely used software packages in the creative computing world, but are based on quite a different programming model to Doodle. You can't go very far in the Processing world without running into [Daniel Shiffman](https://en.wikipedia.org/wiki/Daniel_Shiffman) and his website [The Coding Train](https://thecodingtrain.com/), which has many many tutorials on a huge range of topics.
