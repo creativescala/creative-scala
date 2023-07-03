@@ -600,7 +600,7 @@ ul.nav-list:first-child {
 }
 
 ul.nav-list > li:first-child {
-  text-transform: uppercase;
+  /* @apply uppercase; */
 }
 
 .level1 {
