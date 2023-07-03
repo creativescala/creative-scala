@@ -1,6 +1,6 @@
 # Expressions, Values, and Types
 
-With the setup complete we're ready to start learning to program! We have two goals in this chapter:
+We have two goals in this chapter:
 
 1. to write and run our first Scala code; and
 2. to start building our model of how code works.
