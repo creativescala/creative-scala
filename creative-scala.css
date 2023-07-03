@@ -600,7 +600,7 @@ ul.nav-list:first-child {
 }
 
 ul.nav-list > li:first-child {
-  /* @apply uppercase; */
+  text-transform: uppercase;
 }
 
 .level1 {
@@ -611,7 +611,6 @@ ul.nav-list > li:first-child {
 .level1.nav-node h5, .level1.nav-header h5 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
-  text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(249 168 212 / var(--tw-text-opacity));
 }
