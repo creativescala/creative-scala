@@ -97,10 +97,25 @@ object Final {
     .strokeColor(Color.darkBlue)
     .save("cycles/wheel-lissajous")
 
-  drawCurve(60)(angle =>
+  val sand = Color.rgb(84, 76, 60)
+  val blush = Color.rgb(84, 64, 60)
+  val rose = Color.rgb(214, 152, 171)
+  val lightSteel = Color.rgb(152, 202, 214)
+  val darkBlush = Color.rgb(192, 116, 97)
+  val olive = Color.rgb(202, 214, 152)
+  val darkSand = Color.rgb(192, 163, 97)
+  val blackSand = Color.rgb(37, 30, 15)
+
+  val sandPalette =
+    Vector(sand, blush, rose, lightSteel, darkBlush, olive, darkSand, blackSand)
+
+  def sandColor(index: Int): Color =
+    sandPalette(index % sandPalette.size)
+
+  drawCurve(120)(angle =>
     Image
       .circle(angle.toTurns * 24 + 2)
-      .strokeColor(Color.blue.saturation(0.7.normalized).spin(angle * 0.2))
+      .strokeColor(sandColor((angle.toTurns * 192.0).toInt))
       .strokeWidth(3.0)
   )(
     on(
