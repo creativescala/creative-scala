@@ -21,13 +21,13 @@ ul.nav-list:first-child {
     @apply mt-0;
 }
 ul.nav-list > li:first-child {
-    /* @apply uppercase; */
+    @apply uppercase;
 }
 .level1 {
     @apply list-none mt-4;
 }
 .level1.nav-node h5, .level1.nav-header h5 {
-    @apply uppercase text-pink-300 my-2;
+    @apply text-pink-300 my-2;
 }
 .level1.nav-leaf > h5 {
     @apply text-pink-300 my-2;
