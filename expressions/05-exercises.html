@@ -49,8 +49,8 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
-          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/exercises.html">Exercises</a></li>
           <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
@@ -164,10 +164,12 @@
         <main class="content">
             <h1 id="exercises" class="title">Exercises</h1>
             <p>Let&#39;s check our understanding of the core concepts in this chapter with some exercises.</p>
-            
-            <h4 id="arithmetic" class="section">Arithmetic</h4>
-            <p>Write an expression using integers, addition, and subtraction that evaluates to 42.</p>
-            <p>This exercise is just about getting used to writing Scala code. There are many possible solutions.</p>
+            <div class="exercise">
+              
+              <h4 id="exercise-arithmetic">Exercise: Arithmetic</h4>
+              <p>Write an expression using integers, addition, and subtraction that evaluates to 42.</p>
+              <p>This exercise is just about getting used to writing Scala code. There are many possible solutions.</p>
+            </div>
             <div class="solution">
               <div class="solution-body">
                 <p>Here&#39;s how I chose to do it.</p>
@@ -175,9 +177,11 @@
 </span><span class="comment">// res0: Int = 42</span></code></pre>
               </div>
             </div>
-            
-            <h4 id="precedence" class="section">Precedence</h4>
-            <p>In mathematics we learned that some operators take <em>precedence</em> over others. For example, in the expression <code>1 + 2 * 3</code> we should do the multiplication before the addition. Do the same rules hold in Scala? Use the worksheet to find out.</p>
+            <div class="exercise">
+              
+              <h4 id="exercise-precedence">Exercise: Precedence</h4>
+              <p>In mathematics we learned that some operators take <em>precedence</em> over others. For example, in the expression <code>1 + 2 * 3</code> we should do the multiplication before the addition. Do the same rules hold in Scala? Use the worksheet to find out.</p>
+            </div>
             <div class="solution">
               <div class="solution-body">
                 <p>A bit of exploration should convince you that yes, Scala does maintain the standard precedence rules. The example below demonstrates this.</p>
@@ -189,22 +193,22 @@
 </span><span class="comment">// res3: Int = 9</span></code></pre>
               </div>
             </div>
-            
-            <h4 id="types-and-values" class="section">Types and Values</h4>
-            <p>Below we&#39;ve written a number of expressions. For each expression, try to answer the questions:</p>
-            <ol class="arabic">
-              <li>It will compile?</li>
-              <li>If it compiles, what is it&#39;s type?</li>
-              <li>If it compiles can it be evaluated, or will it fail at run-time?</li>
-            </ol>
-            <p>Then try to check your guesses using the worksheet. If you guessed wrong, try to think about what part of your understanding is incorrect. </p>
-            <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span></code></pre>
-            <pre><code class="nohighlight"><span class="number-literal">1</span><span> ? </span><span class="number-literal">2</span></code></pre>
-            <pre><code class="nohighlight"><span class="number-literal">4</span><span> / </span><span class="number-literal">2</span></code></pre>
-            <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">2</span></code></pre>
-            <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">0</span><span>
-</span><span class="comment">// java.lang.ArithmeticException: / by zero
-// 	at repl.MdocSession$MdocApp.$init$$$anonfun$1(05-exercises.md:59)</span></code></pre>
+            <div class="exercise">
+              
+              <h4 id="exercise-types-and-values">Exercise: Types and Values</h4>
+              <p>Below we&#39;ve written a number of expressions. For each expression, try to answer the questions:</p>
+              <ol class="arabic">
+                <li>It will compile?</li>
+                <li>If it compiles, what is it&#39;s type?</li>
+                <li>If it compiles can it be evaluated, or will it fail at run-time?</li>
+              </ol>
+              <p>Then try to check your guesses using the worksheet. If you guessed wrong, try to think about what part of your understanding is incorrect. </p>
+              <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span></code></pre>
+              <pre><code class="nohighlight"><span class="number-literal">1</span><span> ? </span><span class="number-literal">2</span></code></pre>
+              <pre><code class="nohighlight"><span class="number-literal">4</span><span> / </span><span class="number-literal">2</span></code></pre>
+              <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">2</span></code></pre>
+              <pre><code class="nohighlight"><span class="number-literal">1</span><span> / </span><span class="number-literal">0</span></code></pre>
+            </div>
             <div class="solution">
               <div class="solution-body">
                 <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span><span>
@@ -213,8 +217,8 @@
                 <pre><code class="nohighlight"><span class="number-literal">1</span><span> ? </span><span class="number-literal">2</span><span>
 </span><span class="comment">// error:
 // value ? is not a member of Int
-// 1 / 2
-//  ^
+// 1 ? 2
+// ^^^
 // error:
 // A pure expression does nothing in statement position; you may be omitting necessary parentheses
 // 1 + 43 - 2
@@ -296,38 +300,6 @@
 // 1 / 2
 // ^^^^^</span></code></pre>
                 <p>This expression has type <code>Int</code> but fails at run-time. This exercise is emphasizing that the type is a property of the expression, not the value, and types are not determined by run time behaviour.</p>
-              </div>
-            </div>
-            
-            <h4 id="appending-strings" class="section">Appending Strings</h4>
-            <p>Join together two strings (known as <em>appending</em> strings) using the <code>++</code> method. Write equivalent expressions using both the normal method call style and the operator style.</p>
-            <div class="solution">
-              <div class="solution-body">
-                <p>Something like the below should do.</p>
-                <pre><code class="nohighlight"><span class="string-literal">&quot;It is a truth &quot;</span><span>.++(</span><span class="string-literal">&quot;universally acknowledged&quot;</span><span>)
-</span><span class="comment">// res13: String = &quot;It is a truth universally acknowledged&quot;
-</span><span class="string-literal">&quot;It is a truth &quot;</span><span> ++ </span><span class="string-literal">&quot;universally acknowledged&quot;</span><span>
-</span><span class="comment">// res14: String = &quot;It is a truth universally acknowledged&quot;</span></code></pre>
-              </div>
-            </div>
-            
-            <h4 id="floating-point-failings" class="section">Floating Point Failings</h4>
-            <p>When we introduced Doubles, I said they are an approximation to the real numbers. Why do you think this is? Think about representing numbers like ⅓ and π. How much space would it take to represent these numbers in decimal?</p>
-            <div class="solution">
-              <div class="solution-body">
-                <p><code>Double</code> is an approximation because it has the fit within the computer&#39;s finite memory. A <code>Double</code> takes up precisely 64-bits, which is enough space to store a lot of digits but not enough to store a number that, like π, has an infinite expansion.</p>
-                <p>The number ⅓ also has an infinite expansion in decimal. Because Doubles are stored in binary there are some numbers that can be represented in a finite number of decimal digits but have no finite representation in binary. 0.1 turns out to be one such number.</p>
-                <p>In general, floating point numbers can lead to nasty surprises if you expect them to act like the reals. They are fine for our purposes in Creative Scala, but don&#39;t go using them to write accounting software!</p>
-              </div>
-            </div>
-            
-            <h4 id="beyond-expressions" class="section">Beyond Expressions</h4>
-            <p>In our current model of computation there are only three components: expressions (program text) with types, that evaluate to values (something within the computer&#39;s memory). Is this sufficient? Could we write a stock market or a computer game with just this model? Can you think of ways to extend this model? (We haven&#39;t so far addressed this in the book, so there is no reason you should be able to answer this question.)</p>
-            <div class="solution">
-              <div class="solution-body">
-                <p>This is very open ended question. There are several ways to go beyond the model we have so far.</p>
-                <p>To be useful our programs must be capable of creating effects—changes in the world that go beyond the computer&#39;s memory. For example, displaying things on the screen, making sound, sending messages to other computers, and the like. The console implicitly does some of this for us, by printing values on the screen. We&#39;ll need to go a bit beyond that for more useful programs.</p>
-                <p>We also don&#39;t have any way to define our own objects and methods, or reuse values in our programs. If we want to, say, use someone&#39;s name across a program we have to repeat that name everywhere. We need more methods of <em>abstraction</em> and that&#39;s what we&#39;ll turn to soon.</p>
               </div>
             </div>
             <div class="flex flex-row justify-between">

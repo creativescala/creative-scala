@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="04-types.html">←</a></p>
+    <nav id="topbar"><p><a href="04-images.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="04-images.html">→</a></p></nav>
+<p><a href="../expressive-expressions/">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -49,8 +49,8 @@
           <li class="level2 nav-leaf"><a href="02-literals.html">Literal Expressions</a></li>
           <li class="level2 nav-leaf"><a href="03-objects.html">Values are Objects</a></li>
           <li class="level2 nav-leaf"><a href="04-types.html">Types</a></li>
-          <li class="level2 active nav-leaf"><a href="#">Exercises</a></li>
           <li class="level2 nav-leaf"><a href="04-images.html">Images</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Exercises</a></li>
           <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
@@ -163,46 +163,92 @@
     <div id="content">
         <main class="content">
             <h1 id="exercises" class="title">Exercises</h1>
-            
-            <h3 id="compilation-target" class="section">Compilation Target</h3>
-            <p>Create a line drawing of an archery target with three concentric scoring bands, as shown in Figure pictures:target1.</p>
-            <p><img src="src/pages/pictures/target1.pdf+svg" alt="Simple archery target" title="Figure Some(#fig:pictures:target1): caption"></p>
-            <p>For bonus credit add a stand so we can place the target on a range, as shown in Figure pictures:target2.</p>
-            <p><img src="src/pages/pictures/target2.pdf+svg" alt="Archery target with a stand" title="Figure Some(#fig:pictures:target2): caption"></p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            The simplest solution is to create three concentric circles using the <code>on</code> method:</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+            <div class="exercise">
+              
+              <h4 id="exercise-compilation-target">Exercise: Compilation Target</h4>
+              <p>Create a line drawing of an archery target with three concentric scoring bands, as shown in Figure pictures:target1.</p>
+              <p><img src="target1.svg" alt="Simple archery target" title="Figure Some(#fig:pictures:target1): caption"></p>
+              <p>For bonus credit add a stand so we can place the target on a range, as shown in Figure pictures:target2.</p>
+              <p><img src="target2.svg" alt="Archery target with a stand" title="Figure Some(#fig:pictures:target2): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The simplest solution is to create three concentric circles using the <code>on</code> method:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
   .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>)
   .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>))
   .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>))</span></code></pre>
-            <p>For the extra credit we can create a stand using two rectangles:</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+                <p>For the extra credit we can create a stand using two rectangles:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
   .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>)
   .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>))
   .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>))
   .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">6</span><span>, </span><span class="number-literal">20</span><span>))
   .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">20</span><span>, </span><span class="number-literal">6</span><span>))</span></code></pre>
-            <p>&lt;/div&gt;</p>
-            
-            <h3 id="stay-on-target" class="section">Stay on Target</h3>
-            <p>Colour your target red and white, the stand in brown (if applicable),
-            and some ground in green. See Figure pictures:target3 for an example.</p>
-            <p><img src="src/pages/pictures/target3.pdf+svg" alt="Colour archery target" title="Figure Some(#fig:pictures:target3): caption"></p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            The trick here is using parentheses to control the order of composition.
-            The <code>fillColor()</code>, <code>strokeColor()</code>, and <code>strokeWidth()</code> methods
-            apply to a single image---we need to make sure that image
-            comprises the correct set of shapes:</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-stay-on-target">Exercise: Stay on Target</h4>
+              <p>Colour your target red and white, the stand in brown (if applicable),
+              and some ground in green. See Figure pictures:target3 for an example.</p>
+              <p><img src="target3.svg" alt="Colour archery target" title="Figure Some(#fig:pictures:target3): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The trick here is using parentheses to control the order of composition.
+                The <code>fillColor()</code>, <code>strokeColor()</code>, and <code>strokeWidth()</code> methods
+                apply to a single image---we need to make sure that image
+                comprises the correct set of shapes:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
   .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
   .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">white</span><span>))
   .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))
   .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">6</span><span>, </span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">brown</span><span>))
   .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">20</span><span>, </span><span class="number-literal">6</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">brown</span><span>))
   .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">80</span><span>, </span><span class="number-literal">25</span><span>).</span><span class="identifier">noStroke</span><span>.</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">green</span><span>))</span></code></pre>
-            <p>&lt;/div&gt;</p>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-floating-point-failings">Exercise: Floating Point Failings</h4>
+              <p>When we introduced Doubles, I said they are an approximation to the real numbers. Why do you think this is? Think about representing numbers like ⅓ and π. How much space would it take to represent these numbers in decimal?</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p><code>Double</code> is an approximation because it has the fit within the computer&#39;s finite memory. A <code>Double</code> takes up precisely 64-bits, which is enough space to store a lot of digits but not enough to store a number that, like π, has an infinite expansion.</p>
+                <p>The number ⅓ also has an infinite expansion in decimal. Because Doubles are stored in binary there are some numbers that can be represented in a finite number of decimal digits but have no finite representation in binary. 0.1 turns out to be one such number.</p>
+                <p>In general, floating point numbers can lead to nasty surprises if you expect them to act like the reals. They are fine for our purposes in Creative Scala, but don&#39;t go using them to write accounting software!</p>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-appending-strings">Exercise: Appending Strings</h4>
+              <p>Join together two strings (known as <em>appending</em> strings) using the <code>++</code> method. Write equivalent expressions using both the normal method call style and the operator style.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Something like the below should do.</p>
+                <pre><code class="nohighlight"><span class="string-literal">&quot;It is a truth &quot;</span><span>.++(</span><span class="string-literal">&quot;universally acknowledged&quot;</span><span>)
+</span><span class="comment">// res3: String = &quot;It is a truth universally acknowledged&quot;
+</span><span class="string-literal">&quot;It is a truth &quot;</span><span> ++ </span><span class="string-literal">&quot;universally acknowledged&quot;</span><span>
+</span><span class="comment">// res4: String = &quot;It is a truth universally acknowledged&quot;</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-beyond-expressions">Exercise: Beyond Expressions</h4>
+              <p>In our current model of computation there are only three components: expressions (program text) with types, that evaluate to values (something within the computer&#39;s memory). Is this sufficient? Could we write a stock market or a computer game with just this model? Can you think of ways to extend this model? (We haven&#39;t so far addressed this in the book, so there is no reason you should be able to answer this question.)</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>This is very open ended question. There are several ways to go beyond the model we have so far.</p>
+                <p>To be useful our programs must be capable of creating effects—changes in the world that go beyond the computer&#39;s memory. For example, displaying things on the screen, making sound, sending messages to other computers, and the like. The console implicitly does some of this for us, by printing values on the screen. We&#39;ll need to go a bit beyond that for more useful programs.</p>
+                <p>We also don&#39;t have any way to define our own objects and methods, or reuse values in our programs. If we want to, say, use someone&#39;s name across a program we have to repeat that name everywhere. We need more methods of <em>abstraction</em> and that&#39;s what we&#39;ll turn to soon.</p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="04-types.html">←Types</a> <a class="pageNavigation" href="04-images.html">Images→</a>
+                <a class="pageNavigation" href="04-images.html">←Images</a> <a class="pageNavigation" href="../expressive-expressions/">Expressive Expressions→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
