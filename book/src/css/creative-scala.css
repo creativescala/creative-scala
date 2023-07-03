@@ -21,7 +21,7 @@ ul.nav-list:first-child {
     @apply mt-0;
 }
 ul.nav-list > li:first-child {
-    @apply uppercase;
+    /* @apply uppercase; */
 }
 .level1 {
     @apply list-none mt-4;
