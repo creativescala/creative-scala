@@ -6,7 +6,7 @@ The simplest expressions are *literals*. Here's a literal expression:
 3
 ```
 
-A literal evaluates to "itself." How we write the expression and how the worksheet prints the value are the same. Remember though, there is a difference between the written representation of a value and its actual representation in the computer's memory.
+A literal evaluates to "itself": how we write the expression and how the worksheet prints the value are the same. Remember though, there is a difference between the written representation of a value and its actual representation in the computer's memory.
 
 Scala has many different forms of literals. We've already seen `Int` literals. There is a different type, and a different literal syntax, for what are called *floating point numbers*. This corresponds to a computer's approximation of the real numbers. Here's an example:
 

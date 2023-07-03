@@ -4,11 +4,11 @@ We're now going to look at creating images. The code library we use to create im
 
 ```scala mdoc:silent
 import cats.effect.unsafe.implicits.global
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
 Let's start with some simple shapes, programming in the worksheet as we've done before.
@@ -29,7 +29,7 @@ We draw the circle by calling the `draw` method.
 Image.circle(10).draw()
 ```
 
-A window should appear as shown in @:fref(pictures:circle).
+A window should appear showing the picture below.
 
 @:figure{ img = "circle.svg", key = "#fig:pictures:circle", caption = "A circle" }
 
@@ -39,11 +39,11 @@ Doodle supports a handful of "primitive" images: circles, rectangles, and triang
 Image.rectangle(100, 50).draw()
 ```
 
-The output is shown in @:fref(pictures:rectangle).
+The output is shown below.
 
 @:figure{ img = "rectangle.svg", key = "#fig:pictures:rectangle", caption = "A rectangle" }
 
-Finally let's try a triangle, for which the output is shown in @:fref(pictures:triangle).
+Finally let's try a triangle, for which you should see the below image.
 
 
 ```scala
@@ -54,9 +54,10 @@ Image.triangle(60, 40).draw()
 
 ### Exercises
 
-#### I Go Round in Circles
+@:exercise(I Go Round in Circles)
 
 Create circles that are 1, 10, and 100 units wide. Now draw them!
+@:@
 
 @:solution
 In this exercise we're checking that our Doodle install is working correctly and we're getting used to using the library. One of the important points in Doodle is we separate *defining the image* from *drawing the image*. We'll talk more about this throughout the book.
@@ -79,48 +80,33 @@ Image.circle(100).draw()
 @:@
 
 
-#### My Type of Art
+@:exercise(My Type of Art)
 
 What is the type of a circle? A rectangle? A triangle?
+@:@
 
 @:solution
-They all have type `Image`, as we can tell from the console.
+They all have type `Image`, as we can tell from the worksheet.
 
 ```scala
-:type Image.circle(10)
-// doodle.core.Image
-:type Image.rectangle(10, 10)
-// doodle.core.Image
-:type Image.triangle(10, 10)
-// doodle.core.Image
+Image.circle(10) // doodle.core.Image
+Image.rectangle(10, 10) // doodle.core.Image
+Image.triangle(10, 10) // doodle.core.Image
 ```
 @:@
 
 
-#### Not My Type of Art
+@:exercise(Not My Type of Art)
 
 What's the type of *drawing* an image? What does this mean?
+@:@
 
 @:solution
-Once again, we can ask the console this quesstion.
+In this case the worksheet doesn't print any type.
 
 ```scala
-:type Image.circle(10).draw()
-// Unit
+Image.circle(10).draw()
 ```
 
-We see that the type of drawing an image is `Unit`. `Unit` is the type of expressions that have no interesting value to return. This is the case for `draw`; we call it because we want something to appear on the screen, not because we have a use for the value it returns. There is only one value with type `Unit`. This value is also called unit, which written as a literal expression is `()`
-
-You'll note that the console doesn't print unit by default.
-
-```scala
-()
-```
-
-We can ask the console for the type to show that there really is unit here.
-
-```scala
-:type ()
-// Unit
-```
+However, we can mouse over the expression, or use the trick of giving the expression an incorrect type, to find that the type is `Unit`. `Unit` is the type of expressions that have no interesting value to return. This is the case for `draw`; we call it because we want something to appear on the screen, not because we have a use for the value it returns. There is only one value with type `Unit`. This value is also called unit, which written as a literal expression is `()`
 @:@

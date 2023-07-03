@@ -60,7 +60,7 @@ In Scala, and expression written `a.b(c)` can be written `a b c`. So these are e
 This first way of calling a method is known as *operator* style.
 
 @:callout(info)
-#### Infix Operator Notation {-}
+#### Infix Operator Notation
 
 Any Scala expression written `a.b(c)` can also be written `a b c`.
 
