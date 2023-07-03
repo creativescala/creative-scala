@@ -18,4 +18,4 @@ Here's the same curve, but I'm drawing circles at selected points (where the siz
 @:figure{ img = "./wheel-lissajous-circles.svg", key = "#fig:cycles:wheel-lissajous-circles", caption = "A rose curve rotating around a Lissajous curve." }
 
 Now it's over to you.
-Give yourself a good chunk of time and, using the tools we've made, create an image that you're proud of to mark your progress so far.
+Give yourself a good chunk of time and, using the tools we've made, create an image that you're proud of to mark completion of this part of the book.
