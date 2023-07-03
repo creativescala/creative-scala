@@ -59,7 +59,17 @@ object Interpolation {
 
   {
     val nSamples = 350
-
+    // Color palette from https://openprocessing.org/sketch/1643153
+    val palette = Array(
+      Color.rgb(146, 55, 77),
+      Color.rgb(140, 83, 131),
+      Color.rgb(107, 86, 142),
+      Color.rgb(74, 88, 153),
+      Color.rgb(110, 140, 178),
+      Color.rgb(145, 191, 202),
+      Color.rgb(169, 185, 187),
+      Color.rgb(193, 178, 171)
+    )
     val paths =
       for {
         a <- 1.to(4)
@@ -74,8 +84,8 @@ object Interpolation {
               )
             )
         )
-        .strokeColor(Color.turquoise.spin((a * b * 5).degrees))
-        .strokeWidth((a * b) % 5 + 2)
+        .strokeColor(palette((a + b) % palette.length))
+        .strokeDash(Array(a.toDouble, 1.0, 2.0, b.toDouble))
 
     paths.toList.allOn
   }.save("cycles/lissajous-stack")

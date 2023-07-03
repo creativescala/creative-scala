@@ -287,7 +287,7 @@ In addition to spirals and circles, we have seen rose and Lissajous curves in a 
 For many curves, such as a spiral, it's useful to sample over more than a full turn.
 You might find it useful to add an additional parameter to `sampleCurve`, to give the angle that should be covered by the samples.
 
-Below is an example I created using Lissajous curves. I'm sure you can be a lot more creative.
+Below is an example I created using Lissajous curves. (The dashed lines are created using the `strokeDash` method.) I'm sure you can be a lot more creative.
 
 @:figure{ img = "./lissajous-stack.svg", key = "#fig:cycles:lissajous-stack", caption = "Many Lissajous curves stacked atop one another." }
 @:@
