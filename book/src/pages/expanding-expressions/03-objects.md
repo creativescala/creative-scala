@@ -23,6 +23,23 @@ A method call is an expression, and thus evaluates to an object. This means we c
 "Titan!".toUpperCase.toLowerCase
 ```
 
+Some methods have more than one parameter.
+When this is the case we separate parameters with a comma.
+
+```scala mdoc
+"Gilgamesh went abroad in the world".substring(10, 14)
+```
+
+Sometimes there are two or more methods that have the same name but a different number of parameters, or parameters of different types.
+We call these *overloaded methods*.
+For example, the `substring` method that we saw above has two overloads: one where we specify only where want to start the substring from, and one where we specify both the start and the end.
+
+```scala mdoc
+"Gilgamesh went abroad in the world".substring(10)
+"Gilgamesh went abroad in the world".substring(10, 14)
+```
+
+
 @:callout(info)
 #### Method Call Syntax
 
@@ -58,6 +75,8 @@ In Scala, and expression written `a.b(c)` can be written `a b c`. So these are e
 ```
 
 This first way of calling a method is known as *operator* style.
+It is considered good style to only use operator style when the method is widely understand to be written that way.
+For example, we write `1 + 2` because everyone understands that notation better than `1.+(2)`. However, it is bad style to write `"Gilgamesh" substring 4` instead of `"Gilgamesh".substring(4)` as `substring` is not widely known to be an operator.
 
 @:callout(info)
 #### Infix Operator Notation
