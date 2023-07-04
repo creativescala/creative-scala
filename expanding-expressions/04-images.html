@@ -163,7 +163,9 @@
     <div id="content">
         <main class="content">
             <h1 id="images" class="title">Images</h1>
-            <p>We&#39;re now going to look at creating images. The code library we use to create images is not built-in to Scala. You will need to add the following to the worksheet to be able to use it.</p>
+            <p>We&#39;re now going to look at creating images, which is our main theme for this part of the book.
+            To create image we will use a library called <a href="https://www.creativescala.org/doodle/">Doodle</a>
+            You will need to add the following to the worksheet to be able to use it.</p>
             <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="identifier">unsafe</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">global</span><span>
 </span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.*
 </span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.*
@@ -171,22 +173,20 @@
 </span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
 </span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.*</span></code></pre>
             <p>Let&#39;s start with some simple shapes, programming in the worksheet as we&#39;ve done before.</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
-</span><span class="comment">// res0: Image = Circle(d = 10.0)</span></code></pre>
-            <p>What is happening here? <code>Image</code> is an object and <code>circle</code> a method on that object. We pass to <code>circle</code> a parameter, <code>10</code> that gives the diameter of the circle we&#39;re constructing. Note the type of the result: an <code>Image</code>.</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
-</span><span class="comment">// res1: Image = Circle(d = 10.0)</span></code></pre>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+</span><span class="comment">// res0: Image = Circle(d = 100.0)</span></code></pre>
+            <p>What is happening here? <code>Image</code> is an object and <code>circle</code> a method on that object. We pass to <code>circle</code> a parameter, <code>100</code> that gives the diameter of the circle we&#39;re constructing. Note the type of the result is <code>Image</code>.</p>
             <p>We draw the circle by calling the <code>draw</code> method.</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
             <p>A window should appear showing the picture below.</p>
-            <p><img src="circle.svg" alt="A circle" title="Figure Some(#fig:pictures:circle): caption"></p>
+            <p><img src="circle.svg" alt="A circle" title="Figure Some(#fig:expanding-expressions:circle): caption"></p>
             <p>Doodle supports a handful of &quot;primitive&quot; images: circles, rectangles, and triangles. Let&#39;s try drawing a rectangle.</p>
             <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">50</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
             <p>The output is shown below.</p>
-            <p><img src="rectangle.svg" alt="A rectangle" title="Figure Some(#fig:pictures:rectangle): caption"></p>
-            <p>Finally let&#39;s try a triangle, for which you should see the below image.</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">60</span><span>, </span><span class="number-literal">40</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
-            <p><img src="triangle.svg" alt="A triangle" title="Figure Some(#fig:pictures:triangle): caption"></p>
+            <p><img src="rectangle.svg" alt="A rectangle" title="Figure Some(#fig:expanding-expressions:rectangle): caption"></p>
+            <p>Finally let&#39;s try a triangle, which we specify in terms of a width and a height. You should see the below image.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">120</span><span>, </span><span class="number-literal">80</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p><img src="triangle.svg" alt="A triangle" title="Figure Some(#fig:expanding-expressions:triangle): caption"></p>
             
             <h3 id="exercises" class="section">Exercises</h3>
             <div class="exercise">
