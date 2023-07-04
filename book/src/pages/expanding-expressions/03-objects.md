@@ -25,6 +25,8 @@ A method call is an expression, and thus evaluates to an object. This means we c
 
 Some methods have more than one parameter.
 When this is the case we separate parameters with a comma.
+In the example below we use `substring` method, which copies a portion of a `String`.
+It has two parameters, which specify the start and end positions that we copy.
 
 ```scala mdoc
 "Gilgamesh went abroad in the world".substring(10, 14)
