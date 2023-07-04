@@ -26,7 +26,7 @@
 <body>
     <nav id="topbar"><p><a href="03-color.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="images.html">→</a></p></nav>
+<p><a href="exercises.html">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -51,10 +51,10 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/05-exercises.html">Exercises</a></li>
           <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="01-images.html">Images</a></li>
           <li class="level2 nav-leaf"><a href="02-layout.html">Layout</a></li>
           <li class="level2 nav-leaf"><a href="03-color.html">Color</a></li>
           <li class="level2 active nav-leaf"><a href="#">Creating Colors</a></li>
-          <li class="level2 nav-leaf"><a href="images.html">Images</a></li>
           <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
@@ -192,9 +192,10 @@
               <li><em>saturation</em>, which is a number between 0 and 1 giving the intensity of the color from a drab gray to a pure color; and</li>
               <li><em>lightness</em> between 0 and 1 giving the color a brightness varying from black to pure white.</li>
             </ul>
-            <p>Figure pictures:color-wheel shows how colors vary as we change hue and lightness, and Figure pictures:saturation shows the effect of changing saturation.</p>
-            <p><img src="src/pages/pictures/color-wheel.pdf+svg" alt="A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1." title="Figure Some(#fig:pictures:color-wheel): caption"></p>
-            <p><img src="src/pages/pictures/saturation.pdf+svg" alt="A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right." title="Figure Some(#fig:pictures:saturation): caption"></p>
+            <p>The picture below shows how colors vary as we change hue and lightness.</p>
+            <p><img src="color-wheel.svg" alt="A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1." title="Figure Some(#fig:expressive-expressions:color-wheel): caption"></p>
+            <p>The picture below shows the effect of changing saturation.</p>
+            <p><img src="saturation.svg" alt="A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right." title="Figure Some(#fig:expressive-expressions:saturation): caption"></p>
             <p>We can construct a color in the HSL representation using the <code>Color.hsl</code> method. This method takes as parameters the hue, saturation, and lightness. The hue is an <code>Angle</code>. We can convert a <code>Double</code> to an <code>Angle</code> using the <code>degrees</code> (or <code>radians</code>) methods.</p>
             <pre><code class="nohighlight"><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>
 </span><span class="comment">// res8: Angle = Angle(0.0)
@@ -205,8 +206,8 @@
             <p>Saturation and lightness are both <code>Doubles</code> that should be between 0.0 and 1.0. Values outside this range will be converted to the closest number within the range. </p>
             <p>We can now create colors using the HSL representation.</p>
             <pre><code class="nohighlight"><span class="type-name">Color</span><span>.</span><span class="identifier">hsl</span><span>(</span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>, </span><span class="number-literal">0.8</span><span>, </span><span class="number-literal">0.6</span><span>) </span><span class="comment">// A pastel red</span></code></pre>
-            <p>To view this color we can render it in a picture. See Figure pictures:triangle-pastel-red for an example.</p>
-            <p><img src="./src/pages/pictures/triangle-pastel-red.pdf+svg" alt="Rendering pastel red in a triangle" title="Figure Some(#fig:pictures:triangle-pastel-red): caption"></p>
+            <p>To view this color we can render it in a picture. See below for an example.</p>
+            <p><img src="triangle-pastel-red.svg" alt="Rendering pastel red in a triangle" title="Figure Some(#fig:expressive-expressions:triangle-pastel-red): caption"></p>
             
             <h3 id="manipulating-colors" class="section">Manipulating Colors</h3>
             <p>The effectiveness of a composition often depends as much on the relationships between colors as the actual colors used. Colors have several methods that allow us to create a new color from an existing one. The most commonly used ones are:</p>
@@ -221,9 +222,9 @@
      .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)))
      .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)))
      .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)</span></code></pre>
-            <p>produces Figure pictures:three-circles-spin.</p>
-            <p><img src="./src/pages/pictures/three-circles-spin.pdf+svg" alt="Three circles, starting with Color.red and spinning by 15 degrees for each successive circle" title="Figure Some(#fig:pictures:three-circles-spin): caption"></p>
-            <p>Here&#39;s a similar example, this time manipulating saturation and lightness, shown in Figure pictures:saturate-and-lighten.</p>
+            <p>produces the below.</p>
+            <p><img src="three-circles-spin.svg" alt="Three circles, starting with Color.red and spinning by 15 degrees for each successive circle" title="Figure Some(#fig:expressive-expressions:three-circles-spin): caption"></p>
+            <p>Here&#39;s a similar example, this time manipulating saturation and lightness, shown in below.</p>
             <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
    .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">darken</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>))
    .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))
@@ -231,7 +232,7 @@
    .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.6</span><span>.</span><span class="identifier">normalized</span><span>))
                .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>,</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)))
                .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>,</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)))</span></code></pre>
-            <p><img src="./src/pages/pictures/saturate-and-lighten.pdf+svg" alt="The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation." title="Figure Some(#fig:pictures:saturate-and-lighten): caption"></p>
+            <p><img src="saturate-and-lighten.svg" alt="The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation." title="Figure Some(#fig:expressive-expressions:saturate-and-lighten): caption"></p>
             <table class="footnote">
               <colgroup>
                 <col class="label"></col>
@@ -246,14 +247,14 @@
             </table>
             
             <h3 id="transparency" class="section">Transparency</h3>
-            <p>We can also add a degree of transparency to our colors, by adding an <em>alpha</em> value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods <code>Color.rgba</code> and <code>Color.hsla</code> have a fourth parameter that is a <code>Normalized</code> alpha value. We can also create a new color with a different transparency by using the <code>alpha</code> method on a color. Here&#39;s an example, shown in Figure pictures:rgb-alpha.</p>
+            <p>We can also add a degree of transparency to our colors, by adding an <em>alpha</em> value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods <code>Color.rgba</code> and <code>Color.hsla</code> have a fourth parameter that is a <code>Normalized</code> alpha value. We can also create a new color with a different transparency by using the <code>alpha</code> method on a color. Here&#39;s an example, shown below.</p>
             <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
      .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>))
      .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)))
      .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">green</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)))</span></code></pre>
-            <p><img src="./src/pages/pictures/rgb-alpha.pdf+svg" alt="Circles with alpha of 0.5 showing transparency" title="Figure Some(#fig:pictures:rgb-alpha): caption"></p>
+            <p><img src="rgb-alpha.svg" alt="Circles with alpha of 0.5 showing transparency" title="Figure Some(#fig:expressive-expressions:rgb-alpha): caption"></p>
             
-            <h3 id="exercises" class="section">Exercises {-}</h3>
+            <h2 id="exercises" class="section">Exercises</h2>
             
             <h4 id="analogous-triangles" class="section">Analogous Triangles {-}</h4>
             <p>Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example in Figure pictures:analogous-triangles.</p>
@@ -333,7 +334,7 @@
 // ...</span></code></pre>
             <p>&lt;/div&gt;</p>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="03-color.html">←Color</a> <a class="pageNavigation" href="images.html">Images→</a>
+                <a class="pageNavigation" href="03-color.html">←Color</a> <a class="pageNavigation" href="exercises.html">Exercises→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>

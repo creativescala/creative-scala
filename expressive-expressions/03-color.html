@@ -51,10 +51,10 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/05-exercises.html">Exercises</a></li>
           <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="01-images.html">Images</a></li>
           <li class="level2 nav-leaf"><a href="02-layout.html">Layout</a></li>
           <li class="level2 active nav-leaf"><a href="#">Color</a></li>
           <li class="level2 nav-leaf"><a href="04-creating-color.html">Creating Colors</a></li>
-          <li class="level2 nav-leaf"><a href="images.html">Images</a></li>
           <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
@@ -164,104 +164,60 @@
     <div id="content">
         <main class="content">
             <h1 id="color" class="title">Color</h1>
-            <p>In addition to layout, Doodle has some simple operators to add a splash of colour to our images. Try these out the methods described in Table pictures:color to see how they work.</p>
-            <p>+-----------------------------+-----------+-------------------------+------------------------------+
-            | Method                      | Parameter | Description             | Example                      |
-            +=============================+===========+=========================+==============================+
-            | <code>fillColor</code>                 | <code>Color</code>   | Fills the image with    | <code>Image.circle(10)            |
-|                             |           | the specified color.    |    .fillColor(Color.red)</code>    |
-            +-----------------------------+-----------+-------------------------+------------------------------+
-            | <code>strokeColor</code>               | <code>Color</code>   | Outlines the image with | <code>Image.circle(10)            |
-|                             |           | the specified color.    |    .strokeColor(Color.blue)</code> |
-            +-----------------------------+-----------+-------------------------+------------------------------+
-            | <code>strokeWdith</code>               | <code>Double</code>  | Sets the width of the   | <code>Image.circle(10)            |
-|                             |           | image outline.          |    .strokeWidth(3)</code>          |
-            +-----------------------------+-----------+-------------------------+------------------------------+
-            | <code>noFill</code>                    | None      | Removes any fill from   | <code>Image.circle(10).noFill</code>    |
-            |                             |           | the image.              |                              |
-            +-----------------------------+-----------+-------------------------+------------------------------+
-            | <code>noStroke</code>                  | None      | Removes any stroke from | <code>Image.circle(10).noStroke</code>  |
-            |                             |           | the image.              |                              | 
-            +-----------------------------+-----------+-------------------------+------------------------------+</p>
-            <p>: Some of the methods to add color to images in Doodle. Table pictures:color</p>
+            <p>It would be nice to add some color to our images.
+            No surprises that Doodle has methods to do just this.
+            In addition to layout, Doodle has some simple operators to add a splash of colour to our images. Try these out the methods described in Table pictures:color to see how they work.</p>
+            <ul>
+              <li>
+                <p><code>fillColor</code> fills the image with the given color. Example:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">hotpink</span><span>) </span></code></pre>
+              </li>
+              <li>
+                <p><code>strokeColor</code> outlines the image with the given color. Example:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">chartreuse</span><span>) </span></code></pre>
+              </li>
+              <li>
+                <p><code>strokeWidth</code> sets the width of the image outline. Example:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">3</span><span>) </span></code></pre>
+              </li>
+              <li>
+                <p><code>noFill</code> removes any fill from the image. Example:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">noFill</span></code></pre>
+              </li>
+              <li>
+                <p><code>noStroke</code> removes any stroke from the image. Example:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">noStroke</span></code></pre>
+              </li>
+            </ul>
             <p>Doodle has various ways of creating colours.
-            The simplest are the predefined colours in <a href="https://github.com/underscoreio/doodle/blob/develop/shared/src/main/scala/doodle/core/CommonColors.scala">CommonColors.scala</a>.
-            Some of the most commonly used are described in Table pictures:colors.</p>
-            <p>+--------------+-------+------------------------------------------+
-            | Color        | Type  | Example                                  |
-            +==============+=======+==========================================+
-            |<code>Color.red</code>   |<code>Color</code>| <code>Image.circle(10).fillColor(Color.red)</code>  |
-            +--------------+-------+------------------------------------------+
-            |<code>Color.blue</code>  |<code>Color</code>| <code>Image.circle(10).fillColor(Color.blue)</code> |
-            +--------------+-------+------------------------------------------+
-            |<code>Color.green</code> |<code>Color</code>| <code>Image.circle(10).fillColor(Color.green)</code>|
-            +--------------+-------+------------------------------------------+
-            |<code>Color.black</code> |<code>Color</code>| <code>Image.circle(10).fillColor(Color.black)</code>|
-            +--------------+-------+------------------------------------------+
-            |<code>Color.white</code> |<code>Color</code>| <code>Image.circle(10).fillColor(Color.white)</code>|
-            +--------------+-------+------------------------------------------+
-            |<code>Color.gray</code>  |<code>Color</code>| <code>Image.circle(10).fillColor(Color.gray)</code> |
-            +--------------+-------+------------------------------------------+
-            |<code>Color.brown</code> |<code>Color</code>| <code>Image.circle(10).fillColor(Color.brown)</code>|
-            +--------------+-------+------------------------------------------+</p>
-            <p>: Some of the most common predefined colors. Table pictures:colors</p>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
-            
-            <h4 id="evil-eye" class="section">Evil Eye {-}</h4>
-            <p>Make the image in Figure pictures:evil-eye, designed to look like a traditional amulet protecting against the evil eye. I used <code>cornflowerBlue</code> for the iris, and <code>darkBlue</code> for the outer color, but experiment with your own choices!</p>
-            <p><img src="evil-eye.svg" alt="No evil eyes here!" title="Figure Some(pictures:evil-eye): caption"></p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            Here&#39;s my amulet:</p>
+            The simplest are the predefined colours on <a href="https://javadoc.io/doc/org.creativescala/doodle-docs_3/latest/doodle/core/Color$.html"><code>Color</code></a>.
+            We use these colors by writing <code>Color.black</code>, <code>Color.blue</code>, and so on.</p>
+            <p>Here is a small example illustrating these methods in action.</p>
             <pre><code class="nohighlight"><span class="type-name">Image</span><span>
-  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">wheat</span><span>)
+  .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">midnightBlue</span><span>)
+  .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">7</span><span>)</span></code></pre>
+            <p><img src="color-example.svg" alt="A circle with a dark blue border and a beige fill." title="Figure Some(fig:expressive-expressions:color-example): caption"></p>
+            
+            <h2 id="exercises" class="section">Exercises</h2>
+            <div class="exercise">
+              
+              <h4 id="exercise-evil-eye">Exercise: Evil Eye</h4>
+              <p>Make the image in Figure pictures:evil-eye, designed to look like a traditional amulet protecting against the evil eye. I used <code>cornflowerBlue</code> for the iris, and <code>darkBlue</code> for the outer color, but experiment with your own choices!</p>
+              <p><img src="evil-eye.svg" alt="No evil eyes here!" title="Figure Some(fig:expressive-expressions:evil-eye): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Here&#39;s my amulet:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">30</span><span>)
   .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>)
-  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">cornflowerBlue</span><span>))
-  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">30</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">white</span><span>))
-  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkBlue</span><span>))
-</span><span class="comment">// res0: Image = On(
-//   t = On(
-//     t = On(
-//       t = FillColor(
-//         image = Circle(d = 10.0),
-//         color = RGBA(
-//           r = UnsignedByte(value = -128),
-//           g = UnsignedByte(value = -128),
-//           b = UnsignedByte(value = -128),
-//           a = Normalized(get = 1.0)
-//         )
-//       ),
-//       b = FillColor(
-//         image = Circle(d = 20.0),
-//         color = RGBA(
-//           r = UnsignedByte(value = -28),
-//           g = UnsignedByte(value = 21),
-//           b = UnsignedByte(value = 109),
-//           a = Normalized(get = 1.0)
-//         )
-//       )
-//     ),
-//     b = FillColor(
-//       image = Circle(d = 30.0),
-//       color = RGBA(
-//         r = UnsignedByte(value = 127),
-//         g = UnsignedByte(value = 127),
-//         b = UnsignedByte(value = 127),
-//         a = Normalized(get = 1.0)
-//       )
-//     )
-//   ),
-//   b = FillColor(
-//     image = Circle(d = 50.0),
-//     color = RGBA(
-//       r = UnsignedByte(value = -128),
-//       g = UnsignedByte(value = -128),
-//       b = UnsignedByte(value = 11),
-//       a = Normalized(get = 1.0)
-//     )
-//   )
-// )</span></code></pre>
-            <p>&lt;/div&gt;</p>
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">cornflowerBlue</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">90</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">white</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">150</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkBlue</span><span>))</span></code></pre>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="02-layout.html">←Layout</a> <a class="pageNavigation" href="04-creating-color.html">Creating Colors→</a>
             </div>

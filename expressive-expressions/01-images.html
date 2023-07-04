@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Laika 0.19.0" />
+    <title>Images</title>
+    
+    
+    <meta name="description" content="book" />
+    
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400|Source+Sans+Pro:300,400,600"
+        rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../creative-scala.css" />
+    <script src="../toc.js"></script>
+    <script src="../solution.js"></script>
+    <script src="../main.js"></script>
+    <script> /* for avoiding page load transitions */</script>
+</head>
+
+<body>
+    <nav id="topbar"><p><a href="index.html">←</a></p>
+<p><a href="../../">Creative Scala: Form and Function</a></p>
+<p><a href="02-layout.html">→</a></p></nav>
+    <nav id="sidebar">
+        <ul class="nav-list">
+          <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
+          <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
+          <li class="level1 nav-leaf"><a href="../part-one-introduction.html">Part One: Introduction</a></li>
+          <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/03-expressions.html">Expressions and Values</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/05-exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../expressions/06-conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../expanding-expressions/">Expanding Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/02-literals.html">Literal Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
+          <li class="level2 nav-leaf"><a href="../expanding-expressions/05-exercises.html">Exercises</a></li>
+          <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Images</a></li>
+          <li class="level2 nav-leaf"><a href="02-layout.html">Layout</a></li>
+          <li class="level2 nav-leaf"><a href="03-color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="04-creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Working Without Worksheets</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
+          <li class="level2 nav-leaf"><a href="../substitution/local-reasoning.html">Local Reasoning</a></li>
+          <li class="level1 nav-node"><a href="../methods/">Methods without Madness</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/methods.html">Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/syntax.html">Method Syntax</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/semantics.html">Method Semantics</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/writing-methods.html">Writing Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../methods/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../recursion/">Structural Recursion over the Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/boxes.html">A Line of Boxes</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/natural-numbers.html">The Natural Numbers</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
+          <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/03-path.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/04-creative.html">Going Further</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/05-conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../flowers/">Functions and Flowers</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/functions.html">Functions as Abstractions</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/fun.html">Fun with Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/parametric-curves.html">Parametric Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/flowers.html">Flowers and Other Curves</a></li>
+          <li class="level2 nav-leaf"><a href="../flowers/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../cycles/">Composition and Cycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/composition.html">Function Composition</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/fun.html">Fun with Composition</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/interpolation.html">Interpolation</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/epicycles.html">Epicycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/culmination.html">Bringing it Together</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-leaf"><a href="../part-one-conclusions.html">Part One: Conclusions</a></li>
+          <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
+          <li class="level1 nav-header">collections</li>
+          <li class="level2 nav-leaf"><a href="../collections/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/create.html">Creating Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/paths.html">Drawing Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/">Collections {#collections}</a></li>
+          <li class="level2 nav-leaf"><a href="../collections/transform.html">Transforming Sequences</a></li>
+          <li class="level1 nav-header">data</li>
+          <li class="level2 nav-leaf"><a href="../data/case-classes.html">Case Classes</a></li>
+          <li class="level2 nav-leaf"><a href="../data/">Creating and Working With Data</a></li>
+          <li class="level2 nav-leaf"><a href="../data/data.html">Data</a></li>
+          <li class="level1 nav-header">turtles</li>
+          <li class="level2 nav-leaf"><a href="../turtles/branching.html">Branching Structures</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/turtles.html">Controlling the Turtle</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../turtles/">Turtle Algebra and Algebraic Data Types</a></li>
+          <li class="level1 nav-header">fp</li>
+          <li class="level2 nav-leaf"><a href="../fp/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/functions.html">Functions as Values</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/recursion.html">Recursive Algorithms</a></li>
+          <li class="level2 nav-leaf"><a href="../fp/">(Functional) Programming</a></li>
+          <li class="level1 nav-header">generative</li>
+          <li class="level2 nav-leaf"><a href="../generative/flatmap.html">Combining Random Values</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/random.html">Randomness without Effect</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/generative.html">Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/">Composition of Generative Art</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/for.html">For Comprehensions</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/api.html">Exploring Random</a></li>
+          <li class="level2 nav-leaf"><a href="../generative/product.html">Combining Random Values</a></li>
+          <li class="level1 nav-header">declarations</li>
+          <li class="level2 nav-leaf"><a href="../declarations/method-declarations.html">Method Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/take-home-points.html">Take Home Points</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/">Declarations</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/color-palette.html">Extended Exercise: Color Palettes</a></li>
+          <li class="level2 nav-leaf"><a href="../declarations/value-declarations.html">Value Declarations</a></li>
+          <li class="level1 nav-header">sequences</li>
+          <li class="level2 nav-leaf"><a href="../sequences/map.html">Transforming Sequences</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/lists.html">Working with Lists</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/paths.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/stars.html">My God, It&#39;s Full of Stars!</a></li>
+          <li class="level2 nav-leaf"><a href="../sequences/">Shapes, Sequences, and Stars</a></li>
+          <li class="level1 nav-header">animation</li>
+          <li class="level2 nav-leaf"><a href="../animation/easing.html">Easing Functions</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/reactor.html">Reactors</a></li>
+          <li class="level2 nav-leaf"><a href="../animation/">Animation and Fireworks</a></li>
+          <li class="level1 nav-header">summary</li>
+          <li class="level2 nav-leaf"><a href="../summary/">Summary</a></li>
+          <li class="level1 nav-leaf"><a href="../solutions.html">Solutions to Exercises {#solutions}</a></li>
+          <li class="level1 nav-leaf"><a href="../intro.html">Introduction</a></li>
+          <li class="level1 nav-header">quickreference</li>
+          <li class="level2 nav-leaf"><a href="../quickreference/">Syntax Quick Reference {#syntax-quick-reference}</a></li>
+          <li class="level1 nav-header">adt</li>
+          <li class="level2 nav-leaf"><a href="../adt/">Algebraic Data Types To Call Our Own</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/adt.html">Algebraic Data Types</a></li>
+          <li class="level2 nav-leaf"><a href="../adt/turtle.html">Build Your Own Turtle</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <main class="content">
+            <h1 id="images" class="title">Images</h1>
+            <p>Let&#39;s start with some simple shapes, programming in the worksheet as we&#39;ve done before.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+</span><span class="comment">// res0: Image = Circle(d = 100.0)</span></code></pre>
+            <p>What is happening here? <code>Image</code> is an object and <code>circle</code> a method on that object. We pass to <code>circle</code> a parameter, <code>100</code> that gives the diameter of the circle we&#39;re constructing. Note the type of the result is <code>Image</code>.</p>
+            <p>We draw the circle by calling the <code>draw</code> method.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p>A window should appear showing the picture below.</p>
+            <p><img src="circle.svg" alt="A circle" title="Figure Some(#fig:expanding-expressions:circle): caption"></p>
+            <p>Doodle supports a handful of &quot;primitive&quot; images: circles, rectangles, and triangles. Let&#39;s try drawing a rectangle.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">50</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p>The output is shown below.</p>
+            <p><img src="rectangle.svg" alt="A rectangle" title="Figure Some(#fig:expanding-expressions:rectangle): caption"></p>
+            <p>Finally let&#39;s try a triangle, which we specify in terms of a width and a height. You should see the below image.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">120</span><span>, </span><span class="number-literal">80</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p><img src="triangle.svg" alt="A triangle" title="Figure Some(#fig:expanding-expressions:triangle): caption"></p>
+            
+            <h2 id="exercises" class="section">Exercises</h2>
+            <div class="exercise">
+              
+              <h4 id="exercise-i-go-round-in-circles">Exercise: I Go Round in Circles</h4>
+              <p>Create circles that are 1, 10, and 100 units wide. Now draw them!</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>In this exercise we&#39;re checking that our Doodle install is working correctly and we&#39;re getting used to using the library. One of the important points in Doodle is we separate <em>defining the image</em> from <em>drawing the image</em>. We&#39;ll talk more about this throughout the book.</p>
+                <p>We can create circles with the code below.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>)
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)</span></code></pre>
+                <p>We can draw the circles by calling the <code>draw</code> method on each circle.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>).</span><span class="identifier">draw</span><span>()
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-my-type-of-art">Exercise: My Type of Art</h4>
+              <p>What is the type of a circle? A rectangle? A triangle?</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>They all have type <code>Image</code>, as we can tell from the worksheet.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>) </span><span class="comment">// doodle.core.Image
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>) </span><span class="comment">// doodle.core.Image
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>) </span><span class="comment">// doodle.core.Image</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-not-my-type-of-art">Exercise: Not My Type of Art</h4>
+              <p>What&#39;s the type of <em>drawing</em> an image? What does this mean?</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>In this case the worksheet doesn&#39;t print any type.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+                <p>However, we can mouse over the expression, or use the trick of giving the expression an incorrect type, to find that the type is <code>Unit</code>. <code>Unit</code> is the type of expressions that have no interesting value to return. This is the case for <code>draw</code>; we call it because we want something to appear on the screen, not because we have a use for the value it returns. There is only one value with type <code>Unit</code>. This value is also called unit, which written as a literal expression is <code>()</code></p>
+              </div>
+            </div>
+            <div class="flex flex-row justify-between">
+                <a class="pageNavigation" href="index.html">←Expressive Expressions</a> <a class="pageNavigation" href="02-layout.html">Layout→</a>
+            </div>
+        </main>
+        <footer>Creative Scala is copyright Noel Welsh</footer>
+    </div>
+
+    </div>
+</body>
+
+</html>
