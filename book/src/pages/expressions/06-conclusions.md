@@ -1,4 +1,4 @@
-# Summary
+# Conclusions
 
 Our focus in this chapter was on getting Scala code running in a worksheet, and starting to build a basic model of program evaluation.
 
