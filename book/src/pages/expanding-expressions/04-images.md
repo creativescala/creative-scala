@@ -1,6 +1,8 @@
 ## Images
 
-We're now going to look at creating images. The code library we use to create images is not built-in to Scala. You will need to add the following to the worksheet to be able to use it.
+We're now going to look at creating images, which is our main theme for this part of the book.
+To create image we will use a library called [Doodle](https://www.creativescala.org/doodle/)
+You will need to add the following to the worksheet to be able to use it.
 
 ```scala mdoc:silent
 import cats.effect.unsafe.implicits.global
@@ -14,24 +16,20 @@ import doodle.java2d.*
 Let's start with some simple shapes, programming in the worksheet as we've done before.
 
 ```scala mdoc
-Image.circle(10)
+Image.circle(100)
 ```
 
-What is happening here? `Image` is an object and `circle` a method on that object. We pass to `circle` a parameter, `10` that gives the diameter of the circle we're constructing. Note the type of the result: an `Image`.
-
-```scala mdoc
-Image.circle(10)
-```
+What is happening here? `Image` is an object and `circle` a method on that object. We pass to `circle` a parameter, `100` that gives the diameter of the circle we're constructing. Note the type of the result is `Image`.
 
 We draw the circle by calling the `draw` method.
 
 ```scala
-Image.circle(10).draw()
+Image.circle(100).draw()
 ```
 
 A window should appear showing the picture below.
 
-@:figure{ img = "circle.svg", key = "#fig:pictures:circle", caption = "A circle" }
+@:figure{ img = "circle.svg", key = "#fig:expanding-expressions:circle", caption = "A circle" }
 
 Doodle supports a handful of "primitive" images: circles, rectangles, and triangles. Let's try drawing a rectangle.
 
@@ -41,16 +39,16 @@ Image.rectangle(100, 50).draw()
 
 The output is shown below.
 
-@:figure{ img = "rectangle.svg", key = "#fig:pictures:rectangle", caption = "A rectangle" }
+@:figure{ img = "rectangle.svg", key = "#fig:expanding-expressions:rectangle", caption = "A rectangle" }
 
-Finally let's try a triangle, for which you should see the below image.
+Finally let's try a triangle, which we specify in terms of a width and a height. You should see the below image.
 
 
 ```scala
-Image.triangle(60, 40).draw()
+Image.triangle(120, 80).draw()
 ```
 
-@:figure{ img = "triangle.svg", key = "#fig:pictures:triangle", caption = "A triangle" }
+@:figure{ img = "triangle.svg", key = "#fig:expanding-expressions:triangle", caption = "A triangle" }
 
 ### Exercises
 
