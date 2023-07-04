@@ -217,22 +217,96 @@
               <li><code>lighten</code> and <code>darken</code>, which respectively add and subtract a <code>Normalised</code> value from the lightness.</li>
             </ul>
             <p>For example,</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
-     .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
-     .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)))
-     .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)))
-     .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)</span></code></pre>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
+  .</span><span class="identifier">beside</span><span>(
+    </span><span class="type-name">Image</span><span>
+      .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+      .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>))
+  )
+  .</span><span class="identifier">beside</span><span>(
+    </span><span class="type-name">Image</span><span>
+      .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+      .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>))
+  )
+  .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)</span></code></pre>
             <p>produces the below.</p>
             <p><img src="three-circles-spin.svg" alt="Three circles, starting with Color.red and spinning by 15 degrees for each successive circle" title="Figure Some(#fig:expressive-expressions:three-circles-spin): caption"></p>
             <p>Here&#39;s a similar example, this time manipulating saturation and lightness, shown in below.</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
-   .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">darken</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>))
-   .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))
-   .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>((</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>))))
-   .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.6</span><span>.</span><span class="identifier">normalized</span><span>))
-               .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>,</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)))
-               .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>,</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)))</span></code></pre>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">darken</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>))
+  .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))
+  .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>((</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>))))
+  .</span><span class="identifier">above</span><span>(
+    </span><span class="type-name">Image</span><span>
+      .</span><span class="identifier">square</span><span>(</span><span class="number-literal">100</span><span>)
+      .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.6</span><span>.</span><span class="identifier">normalized</span><span>))
+      .</span><span class="identifier">beside</span><span>(
+        </span><span class="type-name">Image</span><span>
+          .</span><span class="identifier">square</span><span>(</span><span class="number-literal">100</span><span>)
+          .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">desaturate</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>))
+      )
+      .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))
+  )</span></code></pre>
             <p><img src="saturate-and-lighten.svg" alt="The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation." title="Figure Some(#fig:expressive-expressions:saturate-and-lighten): caption"></p>
+            
+            <h3 id="transparency" class="section">Transparency</h3>
+            <p>We can also add a degree of transparency to our colors, by adding an <em>alpha</em> value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods <code>Color.rgba</code> and <code>Color.hsla</code> have a fourth parameter that is a <code>Normalized</code> alpha value. We can also create a new color with a different transparency by using the <code>alpha</code> method on a color. Here&#39;s an example, shown below.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>))
+  .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">green</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)))</span></code></pre>
+            <p><img src="rgb-alpha.svg" alt="Circles with alpha of 0.5 showing transparency" title="Figure Some(#fig:expressive-expressions:rgb-alpha): caption"></p>
+            
+            <h2 id="exercises" class="section">Exercises</h2>
+            <div class="exercise">
+              
+              <h4 id="exercise-analogous-triangles">Exercise: Analogous Triangles</h4>
+              <p>Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example below.</p>
+              <p><img src="analogous-triangles.svg" alt="Analogous triangles. The colors chosen are variations on `darkSlateBlue`" title="Figure Some(#fig:expressive-expressions:analogous-triangles): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>These sort of examples are getting a tedious to write out. We&#39;ll soon see how to make them a bit shorter.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">equilateralTriangle</span><span>(</span><span class="number-literal">80</span><span>)
+  .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>)
+  .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(
+    </span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>
+      .</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)
+      .</span><span class="identifier">saturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+      .</span><span class="identifier">spin</span><span>(</span><span class="number-literal">10</span><span>.</span><span class="identifier">degrees</span><span>)
+  )
+  .</span><span class="identifier">above</span><span>(
+    </span><span class="type-name">Image</span><span>
+      .</span><span class="identifier">equilateralTriangle</span><span>(</span><span class="number-literal">80</span><span>)
+      .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>)
+      .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>))
+      .</span><span class="identifier">fillColor</span><span>(
+        </span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>
+          .</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)
+          .</span><span class="identifier">saturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+          .</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">20</span><span>.</span><span class="identifier">degrees</span><span>)
+      )
+      .</span><span class="identifier">beside</span><span>(
+        </span><span class="type-name">Image</span><span>
+          .</span><span class="identifier">equilateralTriangle</span><span>(</span><span class="number-literal">80</span><span>)
+          .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>)
+          .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>))
+          .</span><span class="identifier">fillColor</span><span>(
+            </span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>
+              .</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)
+              .</span><span class="identifier">saturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
+              .</span><span class="identifier">spin</span><span>(</span><span class="number-literal">40</span><span>.</span><span class="identifier">degrees</span><span>)
+          )
+      )
+  )</span></code></pre>
+              </div>
+            </div>
             <table class="footnote">
               <colgroup>
                 <col class="label"></col>
@@ -245,94 +319,6 @@
                 </tr>
               </tbody>
             </table>
-            
-            <h3 id="transparency" class="section">Transparency</h3>
-            <p>We can also add a degree of transparency to our colors, by adding an <em>alpha</em> value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods <code>Color.rgba</code> and <code>Color.hsla</code> have a fourth parameter that is a <code>Normalized</code> alpha value. We can also create a new color with a different transparency by using the <code>alpha</code> method on a color. Here&#39;s an example, shown below.</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
-     .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>))
-     .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">blue</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)))
-     .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">green</span><span>.</span><span class="identifier">alpha</span><span>(</span><span class="number-literal">0.5</span><span>.</span><span class="identifier">normalized</span><span>)))</span></code></pre>
-            <p><img src="rgb-alpha.svg" alt="Circles with alpha of 0.5 showing transparency" title="Figure Some(#fig:expressive-expressions:rgb-alpha): caption"></p>
-            
-            <h2 id="exercises" class="section">Exercises</h2>
-            
-            <h4 id="analogous-triangles" class="section">Analogous Triangles {-}</h4>
-            <p>Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example in Figure pictures:analogous-triangles.</p>
-            <p><img src="./src/pages/pictures/complementary-triangles.pdf+svg" alt="Analogous triangles. The colors chosen are variations on `darkSlateBlue`" title="Figure Some(#fig:pictures:analogous-triangles): caption"></p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            These sort of examples are getting a bit too long to write out at the console. We&#39;ll look at a way around this next.</p>
-            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">40</span><span>)
-  .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>)
-  .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>)
-  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>
-               .</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)
-               .</span><span class="identifier">saturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
-               .</span><span class="identifier">spin</span><span>(</span><span class="number-literal">10</span><span>.</span><span class="identifier">degrees</span><span>))
-  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">40</span><span>)
-           .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>)
-           .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>))
-           .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>
-                        .</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)
-                        .</span><span class="identifier">saturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
-                        .</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">20</span><span>.</span><span class="identifier">degrees</span><span>))
-           .</span><span class="identifier">beside</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">40</span><span>)
-                     .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">6.0</span><span>)
-                     .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>))
-                     .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">darkSlateBlue</span><span>
-                                  .</span><span class="identifier">lighten</span><span>(</span><span class="number-literal">0.3</span><span>.</span><span class="identifier">normalized</span><span>)
-                                  .</span><span class="identifier">saturate</span><span>(</span><span class="number-literal">0.2</span><span>.</span><span class="identifier">normalized</span><span>)
-                                  .</span><span class="identifier">spin</span><span>(</span><span class="number-literal">40</span><span>.</span><span class="identifier">degrees</span><span>))))
-</span><span class="comment">// res15: Image = Above(
-//   l = FillColor(
-//     image = StrokeColor(
-//       image = StrokeWidth(image = Triangle(w = 40.0, h = 40.0), width = 6.0),
-//       color = RGBA(
-//         r = UnsignedByte(value = -56),
-//         g = UnsignedByte(value = -67),
-//         b = UnsignedByte(value = 11),
-//         a = Normalized(get = 1.0)
-//       )
-//     ),
-//     color = HSLA(
-//       h = Angle(4.5110048359238055),
-//       s = Normalized(get = 0.5899999999999999),
-//       l = Normalized(get = 0.692156862745098),
-//       a = Normalized(get = 1.0)
-//     )
-//   ),
-//   r = Beside(
-//     l = FillColor(
-//       image = StrokeColor(
-//         image = StrokeWidth(image = Triangle(w = 40.0, h = 40.0), width = 6.0),
-//         color = HSLA(
-//           h = Angle(3.812873135126074),
-//           s = Normalized(get = 0.3899999999999999),
-//           l = Normalized(get = 0.39215686274509803),
-//           a = Normalized(get = 1.0)
-//         )
-//       ),
-//       color = HSLA(
-//         h = Angle(3.987406060325507),
-//         s = Normalized(get = 0.5899999999999999),
-//         l = Normalized(get = 0.692156862745098),
-//         a = Normalized(get = 1.0)
-//       )
-//     ),
-//     r = FillColor(
-//       image = StrokeColor(
-//         image = StrokeWidth(image = Triangle(w = 40.0, h = 40.0), width = 6.0),
-//         color = HSLA(
-//           h = Angle(4.860070686322672),
-//           s = Normalized(get = 0.3899999999999999),
-//           l = Normalized(get = 0.39215686274509803),
-//           a = Normalized(get = 1.0)
-//         )
-//       ),
-//       color = HSLA(
-//         h = Angle(5.034603611522105),
-//         s = Normalized(get = 0.5899999999999999),
-// ...</span></code></pre>
-            <p>&lt;/div&gt;</p>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="03-color.html">←Color</a> <a class="pageNavigation" href="exercises.html">Exercises→</a>
             </div>
