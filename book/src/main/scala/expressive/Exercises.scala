@@ -1,5 +1,5 @@
 package creativescala
-package pictures
+package expressive
 
 import doodle.core._
 import doodle.image._
@@ -23,7 +23,8 @@ object Exercises {
     .save("expressive-expressions/target2")
 
   Image
-    .circle(20).fillColor(Color.red)
+    .circle(20)
+    .fillColor(Color.red)
     .on(Image.circle(40).fillColor(Color.white))
     .on(Image.circle(60).fillColor(Color.red))
     .above(Image.rectangle(6, 20).fillColor(Color.brown))

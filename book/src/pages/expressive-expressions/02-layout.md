@@ -1,59 +1,64 @@
-## Layout
+# Layout
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
-We can seen how to create primitive images. We can combine together images using layouts methods to create more complex images. Try the following code---you should see a circle and a rectangle displayed beside one another, as in @:fref(picture:circle-rect).
+We can seen how to create basic images. 
+We can combine images using layouts methods to create more complex images. 
+Try the following code. 
+You should see a circle and a rectangle displayed beside one another, as shown below.
 
 ```scala
-(Image.circle(10).beside(Image.rectangle(10, 20))).draw()
+(Image.circle(100).beside(Image.rectangle(100, 200))).draw()
 ```
 
-@:figure{ img = "src/pages/pictures/circle-beside-rectangle.pdf+svg", key = "#fig:picture:circle-rect", caption = "A circle beside a rectangle" }
+@:figure{ img = "circle-beside-rectangle.svg", key = "#fig:expressive-expressions:circle-rect", caption = "A circle beside a rectangle" }
 
-`Image` contains several layout methods for combining images, described in @:tref(pictures:layout). Try them out now to see what they do.
+`Image` contains many layout methods for combining images. 
+Here are one we'll use to start with.
 
-+---------------+-----------+----------------------------+------------------------------+
-| Method        | Parameter | Description                | Example                      |
-+===============+===========+============================+==============================+
-| `beside`      |`Image`    | Places images horizontally | `Image.circle(10)            |
-|               |           | next to one another        |    .beside(Image.circle(10))`|
-+---------------+-----------+----------------------------+------------------------------+
-| `above`       |`Image`    | Places images vertically   | `Image.circle(10)            |
-|               |           | next to one another        |    .above(Image.circle(10))` |
-+---------------+-----------+----------------------------+------------------------------+
-| `below`       |`Image`    | Places images vertically   | `Image.circle(10)            |
-|               |           | next to one another        |    .below(Image.circle(10))` |
-+---------------+-----------+----------------------------+------------------------------+
-| `on`          |`Image`    | Places images centered     | `Image.circle(10)            |
-|               |           | on top of one another      |    .on(Image.circle(10))`    |
-+---------------+-----------+----------------------------+------------------------------+
-| `under`       |`Image`    | Places images centered     | `Image.circle(10)            |
-|               |           | on top of one another      |    .under(Image.circle(10))` |
-+---------------+-----------+----------------------------+------------------------------+
+* `beside` places images horizontally next to one another. Example:
 
-: Layout methods available in Doodle @:tref(pictures:layout)
+  ```scala
+  Image.circle(100).beside(Image.circle(50)) 
+  ```
+* `above` places images vertically next to one another. Example:
 
-### Exercises {-}
+  ```scala
+  Image.circle(100).above(Image.circle(50)) 
+  ```
 
-#### The Width of a Circle {-}
+* `on` places images centered on top of one another. Example:
 
-Create the picture @:fref(picture:width-of-a-circle) using the layout methods and basic images we've covered so far.
+  ```scala
+  Image.circle(100).on(Image.circle(50)) 
+  ```
 
-@:figure{ img = "src/pages/pictures/width-of-a-circle.pdf+svg", key = "#fig:picture:width-of-a-circle", caption = "The width of a circle" }
+Try out these methods until you're sure you understand them.
 
-<div class="solution">
+
+## Exercises
+
+@:exercise(The Width of a Circle)
+
+Create the picture below using the layout methods and basic images we've covered so far.
+
+@:figure{ img = "width-of-a-circle.svg", key = "#fig:expressive-expressions:width-of-a-circle", caption = "The width of a circle" }
+@:@
+
+@:solution
 It's three small circles on top of a bigger circle, and we can just about state this as is in code.
 
 ```scala mdoc
-(Image
-   .circle(20)
-   .beside(Image.circle(20))
-   .beside(Image.circle(20))).on(Image.circle(60))
+Image
+  .circle(60)
+  .beside(Image.circle(60))
+  .beside(Image.circle(60))
+  .on(Image.circle(180))
 ```
-</div>
+@:@

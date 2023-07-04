@@ -8,5 +8,9 @@ import doodle.image.syntax.all._
 import doodle.java2d._
 
 object All {
+  ColorSection
+  CreatingColor
   Images
+  Layout
+  Exercises
 }

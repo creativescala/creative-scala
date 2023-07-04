@@ -1,77 +1,80 @@
 ## Color
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
+It would be nice to add some color to our images.
+No surprises that Doodle has methods to do just this.
 In addition to layout, Doodle has some simple operators to add a splash of colour to our images. Try these out the methods described in @:tref(pictures:color) to see how they work.
 
-+-----------------------------+-----------+-------------------------+------------------------------+
-| Method                      | Parameter | Description             | Example                      |
-+=============================+===========+=========================+==============================+
-| `fillColor`                 | `Color`   | Fills the image with    | `Image.circle(10)            |
-|                             |           | the specified color.    |    .fillColor(Color.red)`    |
-+-----------------------------+-----------+-------------------------+------------------------------+
-| `strokeColor`               | `Color`   | Outlines the image with | `Image.circle(10)            |
-|                             |           | the specified color.    |    .strokeColor(Color.blue)` |
-+-----------------------------+-----------+-------------------------+------------------------------+
-| `strokeWdith`               | `Double`  | Sets the width of the   | `Image.circle(10)            |
-|                             |           | image outline.          |    .strokeWidth(3)`          |
-+-----------------------------+-----------+-------------------------+------------------------------+
-| `noFill`                    | None      | Removes any fill from   | `Image.circle(10).noFill`    |
-|                             |           | the image.              |                              |
-+-----------------------------+-----------+-------------------------+------------------------------+
-| `noStroke`                  | None      | Removes any stroke from | `Image.circle(10).noStroke`  |
-|                             |           | the image.              |                              | 
-+-----------------------------+-----------+-------------------------+------------------------------+
+* `fillColor` fills the image with the given color. Example:
 
-: Some of the methods to add color to images in Doodle. @:tref(pictures:color)
+  ```scala
+  Image.circle(100).fillColor(Color.hotpink) 
+  ```
+* `strokeColor` outlines the image with the given color. Example:
+
+  ```scala
+  Image.circle(100).strokeColor(Color.chartreuse) 
+  ```
+* `strokeWidth` sets the width of the image outline. Example:
+
+  ```scala
+  Image.circle(100).strokeWidth(3) 
+  ```
+* `noFill` removes any fill from the image. Example:
+
+  ```scala
+  Image.circle(100).noFill
+  ```
+* `noStroke` removes any stroke from the image. Example:
+
+  ```scala
+  Image.circle(100).noStroke
+  ```
 
 Doodle has various ways of creating colours.
-The simplest are the predefined colours in [CommonColors.scala][common-colors].
-Some of the most commonly used are described in @:tref(pictures:colors).
+The simplest are the predefined colours on [`Color`][color].
+We use these colors by writing `Color.black`, `Color.blue`, and so on.
 
-+--------------+-------+------------------------------------------+
-| Color        | Type  | Example                                  |
-+==============+=======+==========================================+
-|`Color.red`   |`Color`| `Image.circle(10).fillColor(Color.red)`  |
-+--------------+-------+------------------------------------------+
-|`Color.blue`  |`Color`| `Image.circle(10).fillColor(Color.blue)` |
-+--------------+-------+------------------------------------------+
-|`Color.green` |`Color`| `Image.circle(10).fillColor(Color.green)`|
-+--------------+-------+------------------------------------------+
-|`Color.black` |`Color`| `Image.circle(10).fillColor(Color.black)`|
-+--------------+-------+------------------------------------------+
-|`Color.white` |`Color`| `Image.circle(10).fillColor(Color.white)`|
-+--------------+-------+------------------------------------------+
-|`Color.gray`  |`Color`| `Image.circle(10).fillColor(Color.gray)` |
-+--------------+-------+------------------------------------------+
-|`Color.brown` |`Color`| `Image.circle(10).fillColor(Color.brown)`|
-+--------------+-------+------------------------------------------+
+Here is a small example illustrating these methods in action.
 
-: Some of the most common predefined colors. @:tref(pictures:colors)
+```scala mdoc:silent
+Image
+  .circle(100)
+  .fillColor(Color.wheat)
+  .strokeColor(Color.midnightBlue)
+  .strokeWidth(7)
+```
 
-### Exercises {-}
+@:figure{ img = "color-example.svg", key = "fig:expressive-expressions:color-example", caption = "A circle with a dark blue border and a beige fill." }
 
-#### Evil Eye {-}
+
+## Exercises
+
+@:exercise(Evil Eye)
 
 Make the image in @:fref(pictures:evil-eye), designed to look like a traditional amulet protecting against the evil eye. I used `cornflowerBlue` for the iris, and `darkBlue` for the outer color, but experiment with your own choices!
 
-@:figure{ img = "evil-eye.svg", key = "pictures:evil-eye", caption = "No evil eyes here!" }
+@:figure{ img = "evil-eye.svg", key = "fig:expressive-expressions:evil-eye", caption = "No evil eyes here!" }
 
-<div class="solution">
+@:@
+@:solution
 Here's my amulet:
 
-```scala mdoc
+```scala mdoc:silent
 Image
-  .circle(10)
+  .circle(30)
   .fillColor(Color.black)
-  .on(Image.circle(20).fillColor(Color.cornflowerBlue))
-  .on(Image.circle(30).fillColor(Color.white))
-  .on(Image.circle(50).fillColor(Color.darkBlue))
+  .on(Image.circle(60).fillColor(Color.cornflowerBlue))
+  .on(Image.circle(90).fillColor(Color.white))
+  .on(Image.circle(150).fillColor(Color.darkBlue))
 ```
-</div>
+@:@
+
+[color]: https://javadoc.io/doc/org.creativescala/doodle-docs_3/latest/doodle/core/Color$.html

@@ -1,11 +1,11 @@
 ## Creating Colors
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
 We've seen how to use predefined colors in our images. What about creating our own colors? In this section we will see how to create colors of our own, and transform existing colors into new ones.
@@ -42,11 +42,14 @@ The RGB color representation is not very easy to use. The hue-saturation-lightne
 - *saturation*, which is a number between 0 and 1 giving the intensity of the color from a drab gray to a pure color; and
 - *lightness* between 0 and 1 giving the color a brightness varying from black to pure white.
 
-@:fref(pictures:color-wheel) shows how colors vary as we change hue and lightness, and @:fref(pictures:saturation) shows the effect of changing saturation.
+The picture below shows how colors vary as we change hue and lightness.
 
-@:figure{ img = "src/pages/pictures/color-wheel.pdf+svg", key = "#fig:pictures:color-wheel", caption = "A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1." }
 
-@:figure{ img = "src/pages/pictures/saturation.pdf+svg", key = "#fig:pictures:saturation", caption = "A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right." }
+@:figure{ img = "color-wheel.svg", key = "#fig:expressive-expressions:color-wheel", caption = "A color wheel showing changes in hue (rotations) and lightness (distance from the center) with saturation fixed at 1." }
+
+The picture below shows the effect of changing saturation.
+
+@:figure{ img = "saturation.svg", key = "#fig:expressive-expressions:saturation", caption = "A gradient showing how changing saturation effects color, with hue and lightness held constant. Saturation is zero on the left and one on the right." }
 
 We can construct a color in the HSL representation using the `Color.hsl` method. This method takes as parameters the hue, saturation, and lightness. The hue is an `Angle`. We can convert a `Double` to an `Angle` using the `degrees` (or `radians`) methods.
 
@@ -64,9 +67,9 @@ We can now create colors using the HSL representation.
 Color.hsl(0.degrees, 0.8, 0.6) // A pastel red
 ```
 
-To view this color we can render it in a picture. See @:fref(pictures:triangle-pastel-red) for an example.
+To view this color we can render it in a picture. See below for an example.
 
-@:figure{ img = "./src/pages/pictures/triangle-pastel-red.pdf+svg", key = "#fig:pictures:triangle-pastel-red", caption = "Rendering pastel red in a triangle" }
+@:figure{ img = "triangle-pastel-red.svg", key = "#fig:expressive-expressions:triangle-pastel-red", caption = "Rendering pastel red in a triangle" }
 
 
 ### Manipulating Colors
@@ -87,11 +90,11 @@ Image.circle(100)
      .strokeWidth(5.0)
 ```
 
-produces @:fref(pictures:three-circles-spin).
+produces the below.
 
-@:figure{ img = "./src/pages/pictures/three-circles-spin.pdf+svg", key = "#fig:pictures:three-circles-spin", caption = "Three circles, starting with Color.red and spinning by 15 degrees for each successive circle" }
+@:figure{ img = "three-circles-spin.svg", key = "#fig:expressive-expressions:three-circles-spin", caption = "Three circles, starting with Color.red and spinning by 15 degrees for each successive circle" }
 
-Here's a similar example, this time manipulating saturation and lightness, shown in @:fref(pictures:saturate-and-lighten).
+Here's a similar example, this time manipulating saturation and lightness, shown in below.
 
 ```scala mdoc:silent
 Image.circle(40)
@@ -103,7 +106,7 @@ Image.circle(40)
                .beside(Image.rectangle(40,40).fillColor(Color.red)))
 ```
 
-@:figure{ img = "./src/pages/pictures/saturate-and-lighten.pdf+svg", key = "#fig:pictures:saturate-and-lighten", caption = "The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation." }
+@:figure{ img = "saturate-and-lighten.svg", key = "#fig:expressive-expressions:saturate-and-lighten", caption = "The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation." }
 
 @:footnote(byte)
 A byte is a number with 256 possible values, which takes 8 bits within a computer to represent. A signed byte has integer values from -128 to 127, while an unsigned byte ranges from 0 to 255.
@@ -112,7 +115,7 @@ A byte is a number with 256 possible values, which takes 8 bits within a compute
 
 ### Transparency
 
-We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value. We can also create a new color with a different transparency by using the `alpha` method on a color. Here's an example, shown in @:fref(pictures:rgb-alpha).
+We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value. We can also create a new color with a different transparency by using the `alpha` method on a color. Here's an example, shown below.
 
 ```scala mdoc:silent
 Image.circle(40)
@@ -121,10 +124,10 @@ Image.circle(40)
      .on(Image.circle(40).fillColor(Color.green.alpha(0.5.normalized)))
 ```
 
-@:figure{ img = "./src/pages/pictures/rgb-alpha.pdf+svg", key = "#fig:pictures:rgb-alpha", caption = "Circles with alpha of 0.5 showing transparency" }
+@:figure{ img = "rgb-alpha.svg", key = "#fig:expressive-expressions:rgb-alpha", caption = "Circles with alpha of 0.5 showing transparency" }
 
 
-### Exercises {-}
+## Exercises
 
 #### Analogous Triangles {-}
 

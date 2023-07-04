@@ -1,20 +1,23 @@
 package creativescala
-package pictures
+package expressive
 
+import cats.implicits._
 import doodle.core._
-import doodle.image._
 import doodle.syntax.all._
+import doodle.image._
 import doodle.image.syntax.all._
 import doodle.java2d._
 
 object Layout {
-  Image.circle(10)
-    .beside(Image.rectangle(10, 20))
+  Image
+    .circle(100)
+    .beside(Image.rectangle(100, 200))
     .save("expressive-expressions/circle-beside-rectangle")
 
-  Image.circle(20)
-    .beside(Image.circle(20))
-    .beside(Image.circle(20))
-    .on(Image.circle(60))
+  Image
+    .circle(60)
+    .beside(Image.circle(60))
+    .beside(Image.circle(60))
+    .on(Image.circle(180))
     .save("expressive-expressions/width-of-a-circle")
 }

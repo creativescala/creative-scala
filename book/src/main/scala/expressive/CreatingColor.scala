@@ -1,5 +1,5 @@
 package creativescala
-package pictures
+package expressive
 
 import cats.implicits._
 import doodle.core._
@@ -49,7 +49,7 @@ object CreatingColor {
     .save("expressive-expressions/saturation")
 
   Image
-    .triangle(60, 60)
+    .equilateralTriangle(180)
     .fillColor(Color.hsl(0.degrees, 0.8, 0.6))
     .save("expressive-expressions/triangle-pastel-red")
 

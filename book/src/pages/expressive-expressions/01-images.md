@@ -1,10 +1,6 @@
-## Images
+# Images
 
-We're now going to look at creating images, which is our main theme for this part of the book.
-To create image we will use a library called [Doodle](https://www.creativescala.org/doodle/)
-You will need to add the following to the worksheet to be able to use it.
-
-```scala mdoc:silent
+```scala mdoc:invisible
 import cats.effect.unsafe.implicits.global
 import doodle.core.*
 import doodle.image.*
@@ -50,7 +46,8 @@ Image.triangle(120, 80).draw()
 
 @:figure{ img = "triangle.svg", key = "#fig:expanding-expressions:triangle", caption = "A triangle" }
 
-### Exercises
+
+## Exercises
 
 @:exercise(I Go Round in Circles)
 
