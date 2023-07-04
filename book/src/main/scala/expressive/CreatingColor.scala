@@ -21,17 +21,17 @@ object CreatingColor {
           val c = Color.hsl(h, 1.0, l)
 
           Image
-            .circle(10)
+            .circle(20)
             .noStroke
             .fillColor(c)
-            .at(5.0 * (lightness / 10.0) + 5, h)
+            .at(10.0 * (lightness / 10.0) + 5, h)
         }
     }
     .toList
     .allOn
     .save("expressive-expressions/color-wheel")
 
-  val box = Image.square(20).noStroke
+  val box = Image.square(40).noStroke
   val color = Color.royalBlue
 
   box
@@ -46,10 +46,11 @@ object CreatingColor {
     .beside(box.fillColor(color.saturation(0.8.normalized)))
     .beside(box.fillColor(color.saturation(0.9.normalized)))
     .beside(box.fillColor(color.saturation(1.0.normalized)))
+    .noStroke
     .save("expressive-expressions/saturation")
 
   Image
-    .equilateralTriangle(180)
+    .triangle(180, 180)
     .fillColor(Color.hsl(0.degrees, 0.8, 0.6))
     .save("expressive-expressions/triangle-pastel-red")
 
@@ -70,32 +71,32 @@ object CreatingColor {
     .save("expressive-expressions/three-circles-spin")
 
   Image
-    .circle(40)
+    .circle(100)
     .fillColor(Color.red.darken(0.2.normalized))
-    .beside(Image.circle(40).fillColor(Color.red))
-    .beside(Image.circle(40).fillColor((Color.red.lighten(0.2.normalized))))
+    .beside(Image.circle(100).fillColor(Color.red))
+    .beside(Image.circle(100).fillColor((Color.red.lighten(0.2.normalized))))
     .above(
       Image
-        .rectangle(40, 40)
+        .square(100)
         .fillColor(Color.red.desaturate(0.6.normalized))
         .beside(
           Image
-            .rectangle(40, 40)
+            .square(100)
             .fillColor(Color.red.desaturate(0.3.normalized))
         )
-        .beside(Image.rectangle(40, 40).fillColor(Color.red))
+        .beside(Image.square(100).fillColor(Color.red))
     )
     .save("expressive-expressions/saturate-and-lighten")
 
   Image
-    .circle(40)
+    .circle(100)
     .fillColor(Color.red.alpha(0.5.normalized))
-    .beside(Image.circle(40).fillColor(Color.blue.alpha(0.5.normalized)))
-    .on(Image.circle(40).fillColor(Color.green.alpha(0.5.normalized)))
+    .beside(Image.circle(100).fillColor(Color.blue.alpha(0.5.normalized)))
+    .on(Image.circle(100).fillColor(Color.green.alpha(0.5.normalized)))
     .save("expressive-expressions/rgb-alpha")
 
   Image
-    .triangle(40, 40)
+    .equilateralTriangle(80)
     .strokeWidth(6.0)
     .strokeColor(Color.darkSlateBlue)
     .fillColor(
@@ -106,7 +107,7 @@ object CreatingColor {
     )
     .above(
       Image
-        .triangle(40, 40)
+        .equilateralTriangle(80)
         .strokeWidth(6.0)
         .strokeColor(Color.darkSlateBlue.spin(-30.degrees))
         .fillColor(
@@ -117,7 +118,7 @@ object CreatingColor {
         )
         .beside(
           Image
-            .triangle(40, 40)
+            .equilateralTriangle(80)
             .strokeWidth(6.0)
             .strokeColor(Color.darkSlateBlue.spin(30.degrees))
             .fillColor(

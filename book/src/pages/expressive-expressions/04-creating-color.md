@@ -83,11 +83,20 @@ The effectiveness of a composition often depends as much on the relationships be
 For example,
 
 ```scala mdoc:silent
-Image.circle(100)
-     .fillColor(Color.red)
-     .beside(Image.circle(100).fillColor(Color.red.spin(15.degrees)))
-     .beside(Image.circle(100).fillColor(Color.red.spin(30.degrees)))
-     .strokeWidth(5.0)
+Image
+  .circle(100)
+  .fillColor(Color.red)
+  .beside(
+    Image
+      .circle(100)
+      .fillColor(Color.red.spin(15.degrees))
+  )
+  .beside(
+    Image
+      .circle(100)
+      .fillColor(Color.red.spin(30.degrees))
+  )
+  .strokeWidth(5.0)
 ```
 
 produces the below.
@@ -97,20 +106,25 @@ produces the below.
 Here's a similar example, this time manipulating saturation and lightness, shown in below.
 
 ```scala mdoc:silent
-Image.circle(40)
-   .fillColor(Color.red.darken(0.2.normalized))
-   .beside(Image.circle(40).fillColor(Color.red))
-   .beside(Image.circle(40).fillColor((Color.red.lighten(0.2.normalized))))
-   .above(Image.rectangle(40, 40).fillColor(Color.red.desaturate(0.6.normalized))
-               .beside(Image.rectangle(40,40).fillColor(Color.red.desaturate(0.3.normalized)))
-               .beside(Image.rectangle(40,40).fillColor(Color.red)))
+Image
+  .circle(100)
+  .fillColor(Color.red.darken(0.2.normalized))
+  .beside(Image.circle(100).fillColor(Color.red))
+  .beside(Image.circle(100).fillColor((Color.red.lighten(0.2.normalized))))
+  .above(
+    Image
+      .square(100)
+      .fillColor(Color.red.desaturate(0.6.normalized))
+      .beside(
+        Image
+          .square(100)
+          .fillColor(Color.red.desaturate(0.3.normalized))
+      )
+      .beside(Image.square(100).fillColor(Color.red))
+  )
 ```
 
 @:figure{ img = "saturate-and-lighten.svg", key = "#fig:expressive-expressions:saturate-and-lighten", caption = "The top three circles show the effect of changing lightness, and the bottom three squares show the effect of changing saturation." }
-
-@:footnote(byte)
-A byte is a number with 256 possible values, which takes 8 bits within a computer to represent. A signed byte has integer values from -128 to 127, while an unsigned byte ranges from 0 to 255.
-@:@
 
 
 ### Transparency
@@ -118,10 +132,11 @@ A byte is a number with 256 possible values, which takes 8 bits within a compute
 We can also add a degree of transparency to our colors, by adding an *alpha* value. An alpha value of 0.0 indicates a completely transparent color, while a color with an alpha of 1.0 is completely opaque. The methods `Color.rgba` and `Color.hsla` have a fourth parameter that is a `Normalized` alpha value. We can also create a new color with a different transparency by using the `alpha` method on a color. Here's an example, shown below.
 
 ```scala mdoc:silent
-Image.circle(40)
-     .fillColor(Color.red.alpha(0.5.normalized))
-     .beside(Image.circle(40).fillColor(Color.blue.alpha(0.5.normalized)))
-     .on(Image.circle(40).fillColor(Color.green.alpha(0.5.normalized)))
+Image
+  .circle(100)
+  .fillColor(Color.red.alpha(0.5.normalized))
+  .beside(Image.circle(100).fillColor(Color.blue.alpha(0.5.normalized)))
+  .on(Image.circle(100).fillColor(Color.green.alpha(0.5.normalized)))
 ```
 
 @:figure{ img = "rgb-alpha.svg", key = "#fig:expressive-expressions:rgb-alpha", caption = "Circles with alpha of 0.5 showing transparency" }
@@ -129,36 +144,54 @@ Image.circle(40)
 
 ## Exercises
 
-#### Analogous Triangles {-}
+@:exercise(Analogous Triangles)
 
-Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example in @:fref(pictures:analogous-triangles).
+Create three triangles, arranged in a triangle, with analogous colors. Analogous colors are colors that are similar in hue. See a (fairly elaborate) example below.
 
-@:figure{ img = "./src/pages/pictures/complementary-triangles.pdf+svg", key = "#fig:pictures:analogous-triangles", caption = "Analogous triangles. The colors chosen are variations on `darkSlateBlue`" }
+@:figure{ img = "analogous-triangles.svg", key = "#fig:expressive-expressions:analogous-triangles", caption = "Analogous triangles. The colors chosen are variations on `darkSlateBlue`" }
+@:@
 
-<div class="solution">
-These sort of examples are getting a bit too long to write out at the console. We'll look at a way around this next.
+@:solution
+These sort of examples are getting a tedious to write out. We'll soon see how to make them a bit shorter.
 
-```scala mdoc
-Image.triangle(40, 40)
+```scala mdoc:silent
+Image
+  .equilateralTriangle(80)
   .strokeWidth(6.0)
   .strokeColor(Color.darkSlateBlue)
-  .fillColor(Color.darkSlateBlue
-               .lighten(0.3.normalized)
-               .saturate(0.2.normalized)
-               .spin(10.degrees))
-  .above(Image.triangle(40, 40)
-           .strokeWidth(6.0)
-           .strokeColor(Color.darkSlateBlue.spin(-30.degrees))
-           .fillColor(Color.darkSlateBlue
-                        .lighten(0.3.normalized)
-                        .saturate(0.2.normalized)
-                        .spin(-20.degrees))
-           .beside(Image.triangle(40, 40)
-                     .strokeWidth(6.0)
-                     .strokeColor(Color.darkSlateBlue.spin(30.degrees))
-                     .fillColor(Color.darkSlateBlue
-                                  .lighten(0.3.normalized)
-                                  .saturate(0.2.normalized)
-                                  .spin(40.degrees))))
+  .fillColor(
+    Color.darkSlateBlue
+      .lighten(0.3.normalized)
+      .saturate(0.2.normalized)
+      .spin(10.degrees)
+  )
+  .above(
+    Image
+      .equilateralTriangle(80)
+      .strokeWidth(6.0)
+      .strokeColor(Color.darkSlateBlue.spin(-30.degrees))
+      .fillColor(
+        Color.darkSlateBlue
+          .lighten(0.3.normalized)
+          .saturate(0.2.normalized)
+          .spin(-20.degrees)
+      )
+      .beside(
+        Image
+          .equilateralTriangle(80)
+          .strokeWidth(6.0)
+          .strokeColor(Color.darkSlateBlue.spin(30.degrees))
+          .fillColor(
+            Color.darkSlateBlue
+              .lighten(0.3.normalized)
+              .saturate(0.2.normalized)
+              .spin(40.degrees)
+          )
+      )
+  )
 ```
-</div>
+@:@
+
+@:footnote(byte)
+A byte is a number with 256 possible values, which takes 8 bits within a computer to represent. A signed byte has integer values from -128 to 127, while an unsigned byte ranges from 0 to 255.
+@:@
