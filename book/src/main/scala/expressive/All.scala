@@ -1,5 +1,5 @@
 package creativescala
-package expanding
+package expressive
 
 import doodle.core._
 import doodle.image._

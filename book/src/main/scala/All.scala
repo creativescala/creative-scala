@@ -1,7 +1,7 @@
 package creativescala
 
 object All extends App {
-  expanding.All
+  expressive.All
   pictures.All
   flowers.All
   cycles.All
