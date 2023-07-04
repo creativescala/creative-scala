@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.19.0" />
-    <title>GitHub</title>
+    <title>Exercises</title>
     
     
     <meta name="description" content="book" />
@@ -24,20 +24,20 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="terminal.html">←</a></p>
+    <nav id="topbar"><p><a href="images.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="intellij.html">→</a></p></nav>
+<p><a href="../programs/">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
           <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
           <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
-          <li class="level1 nav-node"><a href="index.html">Getting Started</a></li>
-          <li class="level2 nav-leaf"><a href="background.html">Background</a></li>
-          <li class="level2 nav-leaf"><a href="terminal.html">Installing Terminal Software and a Text Editor</a></li>
-          <li class="level2 active nav-leaf"><a href="#">GitHub</a></li>
-          <li class="level2 nav-leaf"><a href="intellij.html">IntelliJ</a></li>
-          <li class="level2 nav-leaf"><a href="index.html">Setup</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
           <li class="level1 nav-leaf"><a href="../part-one-introduction.html">Part One: Introduction</a></li>
           <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
           <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
@@ -50,12 +50,12 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/05-exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/images.html">Images</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/exercises.html">Exercises</a></li>
+          <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="02-layout.html">Layout</a></li>
+          <li class="level2 nav-leaf"><a href="03-color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="04-creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="images.html">Images</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Exercises</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Working Without Worksheets</a></li>
@@ -163,42 +163,55 @@
 
     <div id="content">
         <main class="content">
-            <h1 id="github" class="title">GitHub</h1>
-            <p>We have created a <a href="https://github.com/creativescala/creative-scala-template">template</a> for you that will get you set up with all the code you need to work through Creative Scala.
-            This template is stored on <a href="https://github.com/">GitHub</a>, a website for sharing code.</p>
-            <p>You can copy the template onto your computer, which Git calls cloning, but this means you won&#39;t be able to save any changes you make back to GitHub where other people can view them.</p>
-            <p>If you want to be able to share your changes, you need to make a copy of the template project on GitHub that you own.
-            Git calls this forking.
-            You fork the repository on GitHub and then clone <em>your fork</em> to your computer.
-            Then you can save your changes back to your fork on GitHub.</p>
-            <p>To start this process you need to create a GitHub account, if you do not have one already.</p>
-            <p>Once you have an account, visit the <a href="https://github.com/creativescala/creative-scala-template">template project</a> in your browser.
-            At the top right is button called &quot;Fork&quot;.
-            Press this button to create your own copy of the template.
-            You will be taken to a web page displaying your own fork of the template.
-            Remember the name of this repository. It should be something like <code>yourname/creative-scala-template</code> where <code>yourname</code> is your GitHub user name.</p>
-            <p>Now cloning your fork is as simple as running this command and replacing <code>yourname</code> with your actual GitHub user name.</p>
-            <pre><code class="bash">git clone git@github.com:yourname/creative-scala-template.git</code></pre>
-            <p>Now any changes you make can be sent back to your fork on GitHub.
-            The process for doing this in Git is a bit involved.
-            When you&#39;ve made a change you must:</p>
-            <ul>
-              <li><code>add</code> the change to what&#39;s called Git&#39;s index;</li>
-            </ul>
-            <ul>
-              <li><code>commit</code> the change; and finally</li>
-            </ul>
-            <ul>
-              <li><code>push</code> the change to the fork.</li>
-            </ul>
-            <p>Here&#39;s an example of using the command line to do this.</p>
-            <pre><code class="bash">git add
-git commit -m &quot;Explain here what you did&quot;
-git push</code></pre>
-            <p>GitHub makes a nice free graphical tool for using Git, called <a href="https://desktop.github.com/">GitHub Desktop</a>.
-            It&#39;s probably the easiest way to use Git when you&#39;re getting started.</p>
+            <h1 id="exercises" class="title">Exercises</h1>
+            <div class="exercise">
+              
+              <h4 id="exercise-compilation-target">Exercise: Compilation Target</h4>
+              <p>Create a line drawing of an archery target with three concentric scoring bands, as shown in Figure pictures:target1.</p>
+              <p><img src="target1.svg" alt="Simple archery target" title="Figure Some(#fig:pictures:target1): caption"></p>
+              <p>For bonus credit add a stand so we can place the target on a range, as shown in Figure pictures:target2.</p>
+              <p><img src="target2.svg" alt="Archery target with a stand" title="Figure Some(#fig:pictures:target2): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The simplest solution is to create three concentric circles using the <code>on</code> method:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>)
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>))</span></code></pre>
+                <p>For the extra credit we can create a stand using two rectangles:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>)
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">6</span><span>, </span><span class="number-literal">20</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">20</span><span>, </span><span class="number-literal">6</span><span>))</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-stay-on-target">Exercise: Stay on Target</h4>
+              <p>Colour your target red and white, the stand in brown (if applicable),
+              and some ground in green. See Figure pictures:target3 for an example.</p>
+              <p><img src="target3.svg" alt="Colour archery target" title="Figure Some(#fig:pictures:target3): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The trick here is using parentheses to control the order of composition.
+                The <code>fillColor()</code>, <code>strokeColor()</code>, and <code>strokeWidth()</code> methods
+                apply to a single image---we need to make sure that image
+                comprises the correct set of shapes:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">white</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">60</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">6</span><span>, </span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">brown</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">20</span><span>, </span><span class="number-literal">6</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">brown</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">80</span><span>, </span><span class="number-literal">25</span><span>).</span><span class="identifier">noStroke</span><span>.</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">green</span><span>))</span></code></pre>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="terminal.html">←Installing Terminal Software and a Text Editor</a> <a class="pageNavigation" href="intellij.html">IntelliJ→</a>
+                <a class="pageNavigation" href="images.html">←Images</a> <a class="pageNavigation" href="../programs/">Writing Larger Programs→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>

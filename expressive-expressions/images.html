@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.19.0" />
-    <title>GitHub</title>
+    <title>Images</title>
     
     
     <meta name="description" content="book" />
@@ -24,20 +24,20 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="terminal.html">←</a></p>
+    <nav id="topbar"><p><a href="04-creating-color.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="intellij.html">→</a></p></nav>
+<p><a href="exercises.html">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
           <li class="level1 nav-leaf"><a href="../foreword-1.html">Foreword to the First Edition</a></li>
           <li class="level1 nav-leaf"><a href="../foreword-2.html">Foreword to the Second Edition</a></li>
-          <li class="level1 nav-node"><a href="index.html">Getting Started</a></li>
-          <li class="level2 nav-leaf"><a href="background.html">Background</a></li>
-          <li class="level2 nav-leaf"><a href="terminal.html">Installing Terminal Software and a Text Editor</a></li>
-          <li class="level2 active nav-leaf"><a href="#">GitHub</a></li>
-          <li class="level2 nav-leaf"><a href="intellij.html">IntelliJ</a></li>
-          <li class="level2 nav-leaf"><a href="index.html">Setup</a></li>
+          <li class="level1 nav-node"><a href="../setup/">Getting Started</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/background.html">Background</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/terminal.html">Installing Terminal Software and a Text Editor</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/github.html">GitHub</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/intellij.html">IntelliJ</a></li>
+          <li class="level2 nav-leaf"><a href="../setup/">Setup</a></li>
           <li class="level1 nav-leaf"><a href="../part-one-introduction.html">Part One: Introduction</a></li>
           <li class="level1 nav-node"><a href="../expressions/">Expressions, Values, and Types</a></li>
           <li class="level2 nav-leaf"><a href="../expressions/02-starting.html">Starting to Program</a></li>
@@ -50,12 +50,12 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/05-exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/images.html">Images</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/exercises.html">Exercises</a></li>
+          <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="02-layout.html">Layout</a></li>
+          <li class="level2 nav-leaf"><a href="03-color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="04-creating-color.html">Creating Colors</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Images</a></li>
+          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Working Without Worksheets</a></li>
@@ -163,42 +163,78 @@
 
     <div id="content">
         <main class="content">
-            <h1 id="github" class="title">GitHub</h1>
-            <p>We have created a <a href="https://github.com/creativescala/creative-scala-template">template</a> for you that will get you set up with all the code you need to work through Creative Scala.
-            This template is stored on <a href="https://github.com/">GitHub</a>, a website for sharing code.</p>
-            <p>You can copy the template onto your computer, which Git calls cloning, but this means you won&#39;t be able to save any changes you make back to GitHub where other people can view them.</p>
-            <p>If you want to be able to share your changes, you need to make a copy of the template project on GitHub that you own.
-            Git calls this forking.
-            You fork the repository on GitHub and then clone <em>your fork</em> to your computer.
-            Then you can save your changes back to your fork on GitHub.</p>
-            <p>To start this process you need to create a GitHub account, if you do not have one already.</p>
-            <p>Once you have an account, visit the <a href="https://github.com/creativescala/creative-scala-template">template project</a> in your browser.
-            At the top right is button called &quot;Fork&quot;.
-            Press this button to create your own copy of the template.
-            You will be taken to a web page displaying your own fork of the template.
-            Remember the name of this repository. It should be something like <code>yourname/creative-scala-template</code> where <code>yourname</code> is your GitHub user name.</p>
-            <p>Now cloning your fork is as simple as running this command and replacing <code>yourname</code> with your actual GitHub user name.</p>
-            <pre><code class="bash">git clone git@github.com:yourname/creative-scala-template.git</code></pre>
-            <p>Now any changes you make can be sent back to your fork on GitHub.
-            The process for doing this in Git is a bit involved.
-            When you&#39;ve made a change you must:</p>
-            <ul>
-              <li><code>add</code> the change to what&#39;s called Git&#39;s index;</li>
-            </ul>
-            <ul>
-              <li><code>commit</code> the change; and finally</li>
-            </ul>
-            <ul>
-              <li><code>push</code> the change to the fork.</li>
-            </ul>
-            <p>Here&#39;s an example of using the command line to do this.</p>
-            <pre><code class="bash">git add
-git commit -m &quot;Explain here what you did&quot;
-git push</code></pre>
-            <p>GitHub makes a nice free graphical tool for using Git, called <a href="https://desktop.github.com/">GitHub Desktop</a>.
-            It&#39;s probably the easiest way to use Git when you&#39;re getting started.</p>
+            <h1 id="images" class="title">Images</h1>
+            <p>We&#39;re now going to look at creating images, which is our main theme for this part of the book.
+            To create image we will use a library called <a href="https://www.creativescala.org/doodle/">Doodle</a>
+            You will need to add the following to the worksheet to be able to use it.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="identifier">unsafe</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">global</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.*</span></code></pre>
+            <p>Let&#39;s start with some simple shapes, programming in the worksheet as we&#39;ve done before.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+</span><span class="comment">// res0: Image = Circle(d = 100.0)</span></code></pre>
+            <p>What is happening here? <code>Image</code> is an object and <code>circle</code> a method on that object. We pass to <code>circle</code> a parameter, <code>100</code> that gives the diameter of the circle we&#39;re constructing. Note the type of the result is <code>Image</code>.</p>
+            <p>We draw the circle by calling the <code>draw</code> method.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p>A window should appear showing the picture below.</p>
+            <p><img src="circle.svg" alt="A circle" title="Figure Some(#fig:expanding-expressions:circle): caption"></p>
+            <p>Doodle supports a handful of &quot;primitive&quot; images: circles, rectangles, and triangles. Let&#39;s try drawing a rectangle.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">100</span><span>, </span><span class="number-literal">50</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p>The output is shown below.</p>
+            <p><img src="rectangle.svg" alt="A rectangle" title="Figure Some(#fig:expanding-expressions:rectangle): caption"></p>
+            <p>Finally let&#39;s try a triangle, which we specify in terms of a width and a height. You should see the below image.</p>
+            <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">120</span><span>, </span><span class="number-literal">80</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+            <p><img src="triangle.svg" alt="A triangle" title="Figure Some(#fig:expanding-expressions:triangle): caption"></p>
+            
+            <h3 id="exercises" class="section">Exercises</h3>
+            <div class="exercise">
+              
+              <h4 id="exercise-i-go-round-in-circles">Exercise: I Go Round in Circles</h4>
+              <p>Create circles that are 1, 10, and 100 units wide. Now draw them!</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>In this exercise we&#39;re checking that our Doodle install is working correctly and we&#39;re getting used to using the library. One of the important points in Doodle is we separate <em>defining the image</em> from <em>drawing the image</em>. We&#39;ll talk more about this throughout the book.</p>
+                <p>We can create circles with the code below.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>)
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>)
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)</span></code></pre>
+                <p>We can draw the circles by calling the <code>draw</code> method on each circle.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">1</span><span>).</span><span class="identifier">draw</span><span>()
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-my-type-of-art">Exercise: My Type of Art</h4>
+              <p>What is the type of a circle? A rectangle? A triangle?</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>They all have type <code>Image</code>, as we can tell from the worksheet.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>) </span><span class="comment">// doodle.core.Image
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>) </span><span class="comment">// doodle.core.Image
+</span><span class="type-name">Image</span><span>.</span><span class="identifier">triangle</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">10</span><span>) </span><span class="comment">// doodle.core.Image</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-not-my-type-of-art">Exercise: Not My Type of Art</h4>
+              <p>What&#39;s the type of <em>drawing</em> an image? What does this mean?</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>In this case the worksheet doesn&#39;t print any type.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">draw</span><span>()</span></code></pre>
+                <p>However, we can mouse over the expression, or use the trick of giving the expression an incorrect type, to find that the type is <code>Unit</code>. <code>Unit</code> is the type of expressions that have no interesting value to return. This is the case for <code>draw</code>; we call it because we want something to appear on the screen, not because we have a use for the value it returns. There is only one value with type <code>Unit</code>. This value is also called unit, which written as a literal expression is <code>()</code></p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="terminal.html">←Installing Terminal Software and a Text Editor</a> <a class="pageNavigation" href="intellij.html">IntelliJ→</a>
+                <a class="pageNavigation" href="04-creating-color.html">←Creating Colors</a> <a class="pageNavigation" href="exercises.html">Exercises→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
