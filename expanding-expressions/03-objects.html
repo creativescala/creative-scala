@@ -177,6 +177,17 @@
             <p>A method call is an expression, and thus evaluates to an object. This means we can chain method calls together to make more complex programs:</p>
             <pre><code class="nohighlight"><span class="string-literal">&quot;Titan!&quot;</span><span>.</span><span class="identifier">toUpperCase</span><span>.</span><span class="identifier">toLowerCase</span><span>
 </span><span class="comment">// res3: String = &quot;titan!&quot;</span></code></pre>
+            <p>Some methods have more than one parameter.
+            When this is the case we separate parameters with a comma.</p>
+            <pre><code class="nohighlight"><span class="string-literal">&quot;Gilgamesh went abroad in the world&quot;</span><span>.</span><span class="identifier">substring</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">14</span><span>)
+</span><span class="comment">// res4: String = &quot;went&quot;</span></code></pre>
+            <p>Sometimes there are two or more methods that have the same name but a different number of parameters, or parameters of different types.
+            We call these <em>overloaded methods</em>.
+            For example, the <code>substring</code> method that we saw above has two overloads: one where we specify only where want to start the substring from, and one where we specify both the start and the end.</p>
+            <pre><code class="nohighlight"><span class="string-literal">&quot;Gilgamesh went abroad in the world&quot;</span><span>.</span><span class="identifier">substring</span><span>(</span><span class="number-literal">10</span><span>)
+</span><span class="comment">// res5: String = &quot;went abroad in the world&quot;
+</span><span class="string-literal">&quot;Gilgamesh went abroad in the world&quot;</span><span>.</span><span class="identifier">substring</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="number-literal">14</span><span>)
+</span><span class="comment">// res6: String = &quot;went&quot;</span></code></pre>
             <div class="callout info">
               
               <h4 id="method-call-syntax">Method Call Syntax</h4>
@@ -196,10 +207,12 @@
             <p>We have said that all values are objects, and we call methods with the syntax <code>object.methodName(parameter)</code>. How then do we explain expressions like <code>1 + 2</code>?</p>
             <p>In Scala, and expression written <code>a.b(c)</code> can be written <code>a b c</code>. So these are equivalent:</p>
             <pre><code class="nohighlight"><span class="number-literal">1</span><span> + </span><span class="number-literal">2</span><span>
-</span><span class="comment">// res4: Int = 3
+</span><span class="comment">// res7: Int = 3
 </span><span class="number-literal">1.</span><span>+(</span><span class="number-literal">2</span><span>)
-</span><span class="comment">// res5: Int = 3</span></code></pre>
-            <p>This first way of calling a method is known as <em>operator</em> style.</p>
+</span><span class="comment">// res8: Int = 3</span></code></pre>
+            <p>This first way of calling a method is known as <em>operator</em> style.
+            It is considered good style to only use operator style when the method is widely understand to be written that way.
+            For example, we write <code>1 + 2</code> because everyone understands that notation better than <code>1.+(2)</code>. However, it is bad style to write <code>&quot;Gilgamesh&quot; substring 4</code> instead of <code>&quot;Gilgamesh&quot;.substring(4)</code> as <code>substring</code> is not widely known to be an operator.</p>
             <div class="callout info">
               
               <h4 id="infix-operator-notation">Infix Operator Notation</h4>
