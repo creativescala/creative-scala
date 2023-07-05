@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="culmination.html">←</a></p>
+    <nav id="topbar"><p><a href="05-exercises.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="../part-one-conclusions.html">→</a></p></nav>
+<p><a href="../programs/">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -50,13 +50,13 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/05-exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/01-images.html">Images</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/05-exercises.html">Exercises</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/06-conclusions.html">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="01-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="02-layout.html">Layout</a></li>
+          <li class="level2 nav-leaf"><a href="03-color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="04-creating-color.html">Creating Colors</a></li>
+          <li class="level2 nav-leaf"><a href="05-exercises.html">Exercises</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Working Without Worksheets</a></li>
@@ -95,13 +95,13 @@
           <li class="level2 nav-leaf"><a href="../flowers/parametric-curves.html">Parametric Curves</a></li>
           <li class="level2 nav-leaf"><a href="../flowers/flowers.html">Flowers and Other Curves</a></li>
           <li class="level2 nav-leaf"><a href="../flowers/conclusions.html">Conclusions</a></li>
-          <li class="level1 nav-node"><a href="index.html">Composition and Cycles</a></li>
-          <li class="level2 nav-leaf"><a href="composition.html">Function Composition</a></li>
-          <li class="level2 nav-leaf"><a href="fun.html">Fun with Composition</a></li>
-          <li class="level2 nav-leaf"><a href="interpolation.html">Interpolation</a></li>
-          <li class="level2 nav-leaf"><a href="epicycles.html">Epicycles</a></li>
-          <li class="level2 nav-leaf"><a href="culmination.html">Bringing it Together</a></li>
-          <li class="level2 active nav-leaf"><a href="#">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../cycles/">Composition and Cycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/composition.html">Function Composition</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/fun.html">Fun with Composition</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/interpolation.html">Interpolation</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/epicycles.html">Epicycles</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/culmination.html">Bringing it Together</a></li>
+          <li class="level2 nav-leaf"><a href="../cycles/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-leaf"><a href="../part-one-conclusions.html">Part One: Conclusions</a></li>
           <li class="level1 nav-leaf"><a href="../links.html">links.md</a></li>
           <li class="level1 nav-header">collections</li>
@@ -165,24 +165,10 @@
     <div id="content">
         <main class="content">
             <h1 id="conclusions" class="title">Conclusions</h1>
-            <p>This chapter has focused on function composition.
-            We&#39;ve used <code>Angle =&gt; Point</code> functions to represent parametric curves,
-            and we have seen that we can build many useful abstractions based on function composition.</p>
-            <p>Functions are not the only things that compose. 
-            Every time we&#39;ve used the <code>beside</code>, or <code>above</code> methods on <code>Image</code>, for example, we&#39;ve been composing images.
-            Composition is one of the key ideas in functional programming, and we&#39;ll continue to see it throughout the book.
-            These methods are sometimes known as <strong>combinators</strong>.
-            This isn&#39;t a term we&#39;ll use much, but you may find it in other literature so it&#39;s useful to know what it means.</p>
-            <p>The methods of composition, or combinators, all have a property known as <strong>closure</strong>.
-            This means that the input is the same sort of thing as the output.
-            When we combine two <code>Images</code> using <code>above</code> we get back an <code>Image</code>.
-            When we combine two functions using <code>andThen</code> we get back a function.</p>
-            <p>It isn&#39;t necessary for all the parameters of a method to have the same type for a method to be a combinator.
-            For example, <code>strokeColor</code> combiines an <code>Image</code> and a <code>Color</code> to produce an <code>Image</code>. 
-            We still consider this a combinator because we&#39;re most interested in the <code>Image</code> type, which is both an input and an output of <code>strokeColor</code>.
-            So we could say that <code>strokeColor</code> composes an <code>Image</code> and a <code>Color</code> to produce an <code>Image</code>.</p>
+            <p>In this chapter we&#39;ve learned how to create images using Doodle. We&#39;ve seen how to create basic shapes, how to add color to them, and how to position them relative to one another.</p>
+            <p>We&#39;ve seen the difference between creating an <code>Image</code> and drawing an <code>Image</code>. The types help us understand this difference; drawing an <code>Image</code> has type <code>Unit</code>, which indicates a method only called for its side-effect.</p>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="culmination.html">←Bringing it Together</a> <a class="pageNavigation" href="../part-one-conclusions.html">Part One: Conclusions→</a>
+                <a class="pageNavigation" href="05-exercises.html">←Exercises</a> <a class="pageNavigation" href="../programs/">Writing Larger Programs→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
