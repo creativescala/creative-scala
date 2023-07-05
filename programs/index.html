@@ -165,19 +165,19 @@
     <div id="content">
         <main class="content">
             <h1 id="writing-larger-programs" class="title">Writing Larger Programs</h1>
-            <p>We&#39;re getting to the point where it&#39;s inconvenient to type programs into the console. 
-            In this chapter we&#39;ll learn about two tools for writing larger programs:</p>
+            <p>In this chapter we&#39;ll learn about two tools for writing larger programs:</p>
             <ul>
-              <li>saving programs to a file so we don&#39;t have to type code over and over again;</li>
+              <li>writing programs in code files outside of a worksheet; and</li>
               <li>giving names to values so we can reuse them.</li>
             </ul>
             <div class="callout info">
-              <p>If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.</p>
-              <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.</span><span class="identifier">_</span></code></pre>
+              <p>You will need to start your code with the following imports to make Doodle available.</p>
+              <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="identifier">unsafe</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">global</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.*</span></code></pre>
             </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="../expressive-expressions/06-conclusions.html">←Conclusions</a> <a class="pageNavigation" href="console.html">Working Within the Console→</a>
