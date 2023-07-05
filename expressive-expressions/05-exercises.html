@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.19.0" />
-    <title>Conclusions</title>
+    <title>Exercises</title>
     
     
     <meta name="description" content="book" />
@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="04-creative.html">←</a></p>
+    <nav id="topbar"><p><a href="04-creating-color.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="../flowers/">→</a></p></nav>
+<p><a href="../programs/">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -50,12 +50,12 @@
           <li class="level2 nav-leaf"><a href="../expanding-expressions/03-objects.html">Values are Objects</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/04-types.html">Types</a></li>
           <li class="level2 nav-leaf"><a href="../expanding-expressions/05-exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="../expressive-expressions/">Expressive Expressions</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/01-images.html">Images</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/02-layout.html">Layout</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/03-color.html">Color</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
-          <li class="level2 nav-leaf"><a href="../expressive-expressions/05-exercises.html">Exercises</a></li>
+          <li class="level1 nav-node"><a href="index.html">Expressive Expressions</a></li>
+          <li class="level2 nav-leaf"><a href="01-images.html">Images</a></li>
+          <li class="level2 nav-leaf"><a href="02-layout.html">Layout</a></li>
+          <li class="level2 nav-leaf"><a href="03-color.html">Color</a></li>
+          <li class="level2 nav-leaf"><a href="04-creating-color.html">Creating Colors</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Exercises</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
           <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Working Without Worksheets</a></li>
@@ -83,11 +83,11 @@
           <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
-          <li class="level1 nav-node"><a href="index.html">Points, Paths, and Polygons</a></li>
-          <li class="level2 nav-leaf"><a href="02-polar.html">Polar Coordinates</a></li>
-          <li class="level2 nav-leaf"><a href="03-path.html">Paths</a></li>
-          <li class="level2 nav-leaf"><a href="04-creative.html">Going Further</a></li>
-          <li class="level2 active nav-leaf"><a href="#">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/03-path.html">Paths</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/04-creative.html">Going Further</a></li>
+          <li class="level2 nav-leaf"><a href="../polygons/05-conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../flowers/">Functions and Flowers</a></li>
           <li class="level2 nav-leaf"><a href="../flowers/functions.html">Functions as Abstractions</a></li>
           <li class="level2 nav-leaf"><a href="../flowers/fun.html">Fun with Functions</a></li>
@@ -163,10 +163,56 @@
 
     <div id="content">
         <main class="content">
-            <h1 id="conclusions" class="title">Conclusions</h1>
-            <p>In this chapter we&#39;ve had two focuses. Firstly, we&#39;ve reinforced our knowledge of structural recursion by working with it in a new content. We&#39;ve also introduced polar coordinates and paths, and explored some of the creative possibilities they bring, expanding our capabilities as creative programmers.</p>
+            <h1 id="exercises" class="title">Exercises</h1>
+            <div class="exercise">
+              
+              <h4 id="exercise-compilation-target">Exercise: Compilation Target</h4>
+              <p>Create a line drawing of an archery target with three concentric scoring bands, as shown below.</p>
+              <p><img src="target1.svg" alt="Simple archery target" title="Figure Some(#fig:pictures:target1): caption"></p>
+              <p>For bonus credit add a stand so we can place the target on a range, as below.</p>
+              <p><img src="target2.svg" alt="Archery target with a stand" title="Figure Some(#fig:pictures:target2): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The simplest solution is to create three concentric circles using the <code>on</code> method:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">80</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">120</span><span>))</span></code></pre>
+                <p>For the extra credit we can create a stand using two rectangles:</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">80</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">120</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">12</span><span>, </span><span class="number-literal">40</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">12</span><span>))</span></code></pre>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-stay-on-target">Exercise: Stay on Target</h4>
+              <p>Colour your target red and white, the stand in brown (if applicable),
+              and some ground in green. The example below shows what we are aiming for.</p>
+              <p><img src="target3.svg" alt="Colour archery target" title="Figure Some(#fig:pictures:target3): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The trick here is using parentheses to control the order of composition.
+                The <code>fillColor()</code>, <code>strokeColor()</code>, and <code>strokeWidth()</code> methods
+                apply to a single image, so we need to make sure that image
+                comprises the correct set of shapes.</p>
+                <pre><code class="nohighlight"><span class="type-name">Image</span><span>
+  .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">40</span><span>)
+  .</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">80</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">white</span><span>))
+  .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">120</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">12</span><span>, </span><span class="number-literal">40</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">brown</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">12</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">brown</span><span>))
+  .</span><span class="identifier">above</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">160</span><span>, </span><span class="number-literal">50</span><span>).</span><span class="identifier">noStroke</span><span>.</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">green</span><span>))</span></code></pre>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="04-creative.html">←Going Further</a> <a class="pageNavigation" href="../flowers/">Functions and Flowers→</a>
+                <a class="pageNavigation" href="04-creating-color.html">←Creating Colors</a> <a class="pageNavigation" href="../programs/">Writing Larger Programs→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
