@@ -1,16 +1,14 @@
-## Methods
+# Methods
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
-In a previous chapter we created the image shown in @:fref(methods:sequential-boxes) using the program
-
-@:figure{ img = "./src/pages/programs/sequential-boxes.pdf+svg", key = "#fig:methods:sequential-boxes", caption = "Five boxes filled with Royal Blue" }
+In a previous chapter we used this program
 
 ```scala mdoc:silent
 val box =
@@ -19,8 +17,13 @@ val box =
     strokeColor(Color.royalBlue.spin(30.degrees)).
     fillColor(Color.royalBlue)
 
-box beside box beside box beside box beside box
+box.beside(box).beside(box).beside(box).beside(box)
 ```
+
+to create this image
+
+@:figure{ img = "sequential-boxes.svg", key = "#fig:methods:sequential-boxes", caption = "Five boxes filled with Royal Blue" }
+
 
 Imagine we wanted to change the color of the boxes.
 Right now we would have to write out the expression again for each different choice of color.
@@ -33,7 +36,7 @@ val paleGoldenrod = {
       strokeColor(Color.paleGoldenrod.spin(30.degrees)).
       fillColor(Color.paleGoldenrod)
 
-  box beside box beside box beside box beside box
+  box.beside(box).beside(box).beside(box).beside(box)
 }
 
 val lightSteelBlue = {
@@ -43,7 +46,7 @@ val lightSteelBlue = {
       strokeColor(Color.lightSteelBlue.spin(30.degrees)).
       fillColor(Color.lightSteelBlue)
 
-  box beside box beside box beside box beside box
+  box.beside(box).beside(box).beside(box).beside(box)
 }
 
 val mistyRose = {
@@ -53,7 +56,7 @@ val mistyRose = {
       strokeColor(Color.mistyRose.spin(30.degrees)).
       fillColor(Color.mistyRose)
 
-  box beside box beside box beside box beside box
+  box.beside(box).beside(box).beside(box).beside(box)
 }
 ```
 
@@ -70,7 +73,7 @@ def boxes(color: Color): Image = {
       strokeColor(color.spin(30.degrees)).
       fillColor(color)
 
-  box beside box beside box beside box beside box
+  box.beside(box).beside(box).beside(box).beside(box)
 }
 
 // Create boxes with different colors

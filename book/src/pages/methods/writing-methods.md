@@ -1,17 +1,17 @@
-## Writing Methods
+# Writing Methods
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
-There is systematic way to writing methods that will help us implement methods correctly.
+There is a systematic way to writing methods that will help us implement methods correctly.
 We've already talked about this in the solution to some exercises, but it is worth calling out here.
 
-Our goal is to first build a *method skeleton*, which is a method declaration with the body replaced with `???`.
+Our first goal is to build a *method skeleton*, which is a method declaration with the body replaced with `???`.
 This tells us the name of the method, its parameters and their types, and the type of the result.
 We then fill in the body.
 
@@ -24,14 +24,14 @@ From this we can infer:
 
 The skeleton for this is
 
-```tut:silent:book
+```scala mdoc:silent
 def boxes(color: Color): Image =
   ???
 ```
 
 Notice that Scala will let you run this skeleton, and it will fail with an exception.
 
-```tut:fail:book
+```scala mdoc:silent:fail
 boxes(Color.mistyRose)
 ```
 
@@ -42,23 +42,23 @@ This is an extremely powerful technique that we will only scratch the surface of
 
 Now we know all about methods let's implement some more complex examples.
 
-### Exercises {-}
 
-#### Gradient Boxes {-}
+@:exercise(Gradient Boxes)
 
-Let's turn `boxes` up to eleven by making the color of the boxes change in a smooth gradient, like that shown in @:fref(methods:gradient-boxes).
+Let's turn `boxes` up to eleven by making the color of the boxes change in a smooth gradient, like that shown below.
 
 To minimise the amount of code we have to write, implement this by writing *two* methods.
 The first method, `box`, should accept a `Color` and an `Angle` and create a box with the color spun by the angle.
-The second method, `graidentBoxes`, should accept a `Color` and return an `Image` of five boxes fill with a gradient starting from the given color and changing by `15.degrees` at each successive box. `gradientBoxes` should make use of `box`.
+The second method, `graidentBoxes`, should accept a `Color` and return an `Image` of five boxes filled with a gradient starting from the given color and changing by `15.degrees` at each successive box. `gradientBoxes` should make use of `box`.
 Remember to write out the method skeletons first.
 
-@:figure{ img = "./src/pages/recursion/gradient-boxes.pdf+svg", key = "#fig:methods:gradient-boxes", caption = "Five boxes filled with a gradient starting from Royal Blue" }
+@:figure{ img = "gradient-boxes.svg", key = "#fig:methods:gradient-boxes", caption = "Five boxes filled with a gradient starting from Royal Blue" }
+@:@
 
-<div class="solution">
+@:solution
 The first step is to write out the skeletons.
 
-```tut:silent:book
+```scala mdoc:reset:silent
 def box(color: Color, spin: Angle): Image =
   ???
 
@@ -68,7 +68,7 @@ def gradientBoxes(color: Color): Image =
 
 Now fill in the body of the methods.
 
-```tut:silent:book
+```scala mdoc:reset:silent
 def box(color: Color, spin: Angle): Image =
   Image.rectangle(40, 40).
     strokeWidth(5.0).
@@ -83,7 +83,7 @@ def gradientBoxes(color: Color): Image = {
   box(color, 60.degrees)
 }
 ```
-</div>
+@:@
 
 
 #### Gradient Concentric Circles {-}

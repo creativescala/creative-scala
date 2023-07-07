@@ -6,7 +6,7 @@ In this chapter we'll learn how to write our own methods.
 Names allow us to abstract over expressions.
 Methods allow us to abstract over and *generalise* expressions.
 By generalisation we mean the ability to express a group of related things, in this case expressions.
-A method captures a template for an expression, and allows the caller to fill in parts of that template by passing the method parameters.
+A method captures a template for an expression, and allows the caller to fill in parts of that template by passing arguments to the method.
 
 @:callout(info)
 You will need to start your code with the following imports to make Doodle available.

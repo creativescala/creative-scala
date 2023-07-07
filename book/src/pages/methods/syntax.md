@@ -1,11 +1,11 @@
 ## Method Syntax
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
 We've already seen an example of declaring a method.
@@ -18,17 +18,17 @@ def boxes(color: Color): Image = {
       strokeColor(color.spin(30.degrees)).
       fillColor(color)
 
-  box beside box beside box beside box beside box
+  box.beside(box).beside(box).beside(box).beside(box)
 }
 ```
 
 Let's use this as a model for understanding the syntax of declaring a method.
 The first part is the *keyword* `def`.
-A keyword is a special word that indicates something important to the Scala compiler---in this case that we're going to declare a method.
+A keyword is a special word that indicates something important to the Scala compiler;
+in this case that we're going to declare a method.
 We're already seen the `object` and `val` keywords.
 
 The `def` is immediately followed by the name of the method, in this case `boxes`, in the same way that `val` and `object` are immediately followed by the name they declare.
-Like a `val` declaration, a method declaration is not a top-level declaration and must be wrapped in an `object` declaration (or other top-level declaration) when written in a file.
 
 Next we have the method parameters, defined in brackets (`()`).
 The method parameters are the parts that the caller can "plug-in" to the expression that the method evaluates.
@@ -40,13 +40,13 @@ Type inference, however, cannot infer the type of method parameters so we must p
 
 After the method parameters comes the result type.
 The result type is the type of the value the method evaluates to when it is called.
-Unlike parameter types Scala can infer the result type, but it is good practice to include it and we will do so throughout Creative Scala.
+Unlike parameter types Scala can infer the result type, but it is good practice to include it and we will do so throughout the book.
 
 Finally, the body expression of the method calculates the result of calling the method.
 A body can be a block expression, as in `boxes` above, or just a single expression.
 
-<div class="callout callout-info">
-#### Method Declaration Syntax {-}
+@:callout(info)
+#### Method Declaration Syntax
 
 The syntax for a method declaration is
 
@@ -61,18 +61,17 @@ where
 - the optional `param1 : Param1Type, ...` are one or more pairs of parameter name and parameter type;
 - the optional `ResultType` is the type of the result of calling the method; and
 - `bodyExpression` is the expression that is evaluated to yield the result of calling the method.
-</div>
+@:@
 
-
-### Exercises {-}
 
 Let's practice declaring methods by writing some simple examples.
 
-#### Square {-}
+@:exercise(Square)
 
 Write a method `square` that accepts an `Int` argument and returns the `Int` square of it's argument. (Squaring a number is multiplying it by itself.)
+@:@
 
-<div class="solution">
+@:solution
 The solution is
 
 ```scala mdoc:silent
@@ -95,24 +94,25 @@ This is a fairly arbitrary choice.
 Where there is no meaningful name you often see one-letter names such as `x`, `v`, or `i` used.
 
 By the way this is valid code.
-Enter it into the console and see!
+Try it and see!
 What happens if you call `square` when it's defined like so?
 
 Now we need to complete the body.
 We've been told that squaring is multiplying a number by itself, so `x * x` is what we replace the `???` with.
 We don't need to wrap this in braces as there is only a single expression in the body.
-</div>
+@:@
 
 
-#### Halve {-}
+@:solution(Halve)
 
 Write a method `halve` that accepts a `Double` argument and returns the `Double` that is half of it's argument.
+@:@
 
-<div class="solution">
+@:solution
 ```scala mdoc:silent
 def halve(x: Double): Double =
  x / 2.0
 ```
 
 We can follow the same process as for `square` above to arrive at the solution.
-</div>
+@:@
