@@ -10,15 +10,16 @@ In this chapter we see our first major programming strategy for structuring comp
 
 Structural recursion means a recursion that follows the structure of the data it is processing. If the data is recursive (refers to itself) then the structural recursion will also refer to itself. We'll see in more detail what this means in a moment.
 
-<div class="callout callout-info">
-If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
+@:callout(info)
+You will need to start your code with the following imports to make Doodle available.
 
 ```scala mdoc:silent
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import cats.effect.unsafe.implicits.global
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
-</div>
+@:@
 

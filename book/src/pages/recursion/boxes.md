@@ -1,16 +1,16 @@
 ## A Line of Boxes
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
-Let's start with an example, drawing a line or row of boxes as in @:fref(recursion:sequential-boxes).
+Let's start with an example, drawing a line or row of boxes like in the image below.
 
-@:figure{ img = "./src/pages/recursion/sequential-boxes.pdf+svg", key = "#fig:recursion:sequential-boxes", caption = "Five boxes filled with Royal Blue" }
+@:figure{ img = "sequential-boxes.svg", key = "#fig:recursion:sequential-boxes", caption = "Five boxes filled with Royal Blue" }
 
 Let's define a box to begin with.
 
@@ -42,11 +42,11 @@ You might think this is an unusual way to create these images.
 Why not just write something like this, for example?
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 val oneBox = aBox
 val twoBoxes = aBox.beside(oneBox)
@@ -76,11 +76,11 @@ We noticed that `threeBoxes` above is defined in terms of `twoBoxes`, and `twoBo
 We could even define `box` in terms of *no* boxes, like so:
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent
@@ -110,11 +110,11 @@ In fact we can implement `boxes` by converting these properties into code.
 A full implementation of `boxes` is
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent
