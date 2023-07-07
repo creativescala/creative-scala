@@ -7,13 +7,13 @@ Like many things in programming we're using some fancy words for a simple concep
 In this case you've probably already learned about substitution in high school algebra, and we're just taking those ideas into a new context.
 
 <div class="callout callout-info">
-If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.
+You will need to start your code with the following imports to make Doodle available.
 
 ```scala mdoc:silent
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 </div>

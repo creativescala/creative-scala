@@ -1,4 +1,4 @@
-## Substitution
+# Substitution
 
 Substitution says that wherever we see an expression we can replace it with the value it evaluates to. For example, where we see
 
@@ -21,14 +21,14 @@ we can substitute `2` for `1 + 1` giving
 
 which evaluates to `4`.
 
-This type of reasoning is what we do in high school algebra when we simplify an expression.
+This is the type of reasoning we do in high school algebra when we simplify an expression.
 Naturally computer science has fancy words for this process.
 In addition to substitution, we can call this *reducing an expression*, or *equational reasoning*.
 
 Substitution gives us a way to reason about our programs, which is another
 way of saying "working out what they do".
 We can apply substitution to just about any expression we've seen so far.
-It's easier to use examples that work with numbers and strings, rather than images, here so we'll return to an example we saw in an earlier chapter:
+It's easier to use examples that work with numbers and strings, rather than images, so we'll return to an example we saw in an earlier chapter:
 
 ```scala mdoc:silent
 1 + ("Moonage daydream".indexOf("N"))
@@ -40,7 +40,8 @@ We are trying to emulate the computer, after all.
 
 The expression containing the `+` consists of two sub-expressions, `1` and `("Moonage daydream".indexOf("N"))`.
 We have to decide which to evaluate first: the left or the right.
-Let's arbitrarily choose the right sub-expression (we'll return to this choice later.)
+Let's arbitrarily choose the right sub-expression. 
+(We'll return to this choice later.)
 
 The sub-expression `("Moonage daydream".indexOf("N"))` again consists of two sub-expressions, `"Moonage daydream"` and `"N"`.
 Let's again evaluate the right-hand first, remembering that literal expressions are not values so they must be evaluated.
@@ -192,4 +193,5 @@ val d = b.indexOf(c)
 ```
 
 because `e` depends on `a` and `d`, and in our top-to-bottom ordering `a` and `d` have yet to be evaluated.
-We might rightly claim that this is a bit silly to even attempt. The complete expression we're trying to evaluate is  `e` but `a` to `d` are sub-expressions of `e`, so of course we have to evaluate the sub-expressions before we evaluate the expression.
+We might rightly claim that this is a bit silly to even attempt. 
+The complete expression we're trying to evaluate is  `e` but `a` to `d` are sub-expressions of `e`, so of course we have to evaluate the sub-expressions before we evaluate the expression.

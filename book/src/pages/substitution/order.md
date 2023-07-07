@@ -1,11 +1,11 @@
-## Order of Evaluation
+# Order of Evaluation
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
 We're now ready to tackle the question of order-of-evaluation.
@@ -38,18 +38,18 @@ Hardly an exciting difference, but it *is* a difference, which is the point.
 The key distinguishing feature of impure expressions is that their evaluation causes some change that we can see.
 For example, evaluating `draw` causes an image to be displayed.
 We call these observable changes *side effects*, or just *effects* for short.
-In a program containing side effects we cannot freely use substitution.
-However we can use side effects to investigate the order of evaluation.
+In a program containing side effects we cannot use substitution in any order we like.
+However we can use side effects to investigate the order of evaluation that Scala uses.
 Our tool for doing so will be the `println` method.
 
-The `println` method displays text on the console (a side effect) and evaluates to unit.
+The `println` method displays text on the console (a side effect) and evaluates to `()` (the single value with type `Unit`).
 Here's an example:
 
 ```scala mdoc
 println("Hello!")
 ```
 
-The side-effect of `println`---printing to the console---gives us a convenient way to investigate the order of evaluation.
+The side-effect of `println`, printing to the console, gives us a convenient way to investigate the order of evaluation.
 For example, the result of running
 
 ```scala mdoc
@@ -62,9 +62,8 @@ indicates to us that expressions are evaluated from top to bottom.
 Let's use `println` to investigate further.
 
 
-### Exercises {-}
 
-#### No Substitute for Println {-}
+@:exercise(No Substitute for Println)
 
 In a pure program we can give a name to any expression and substitute any other occurrences of that expression with the name.
 Concretely, we can rewrite
@@ -83,8 +82,9 @@ a + a
 and the result of the program doesn't change.
 
 Using `println` as an example of an impure expression, demonstrates that this is *not* the case for impure expressions, and hence we can say that impure expressions, or side effects, break substitution.
+@:@
 
-<div class="solution">
+@:solution
 Here is a simple example that illustrates this.
 The following two programs are observably different.
 
@@ -102,13 +102,15 @@ happy
 ```
 
 Therefore we cannot freely use substitution in the presence of side effects, and we must be aware of the order of evaluation.
-</div>
+@:@
 
 
-#### Madness to our Methods {-}
+@:(Madness to our Methods)
 
-When we introduced scopes we also introduced block expressions, though we didn't call them that at the time.
-A block is created by curly braces (`{}`). It evaluates all the expressions inside the braces. The final result is the result of the last expression in the block.
+When we introduced scopes we also introduced block expressions.
+A block is created by curly braces (`{}`). 
+It evaluates all the expressions inside the braces. 
+The final result is the result of the last expression in the block.
 
 ```scala mdoc
 // Evaluates to three
@@ -121,7 +123,7 @@ A block is created by curly braces (`{}`). It evaluates all the expressions insi
 
 We can use block expressions to investigate the order in which method parameters are evaluated, by putting `println` expression inside a block that evaluates to some other useful value.
 
-For example, using `Image.rectangle` or `Color.hsl` and block expressions, we can determine if Scala evaluates method parameters in a fixed order, and if so what that order is.
+Using a method with multiple parameters (for example, `Image.rectangle` or `Color.hsl`) and block expressions, determine if Scala evaluates method parameters in a fixed order, and if so what that order is.
 
 Note that you can write a block compactly, on one line, by separating expressions with semicolons (`;`).
 This is generally not good style but might be useful for these experiments.
@@ -131,8 +133,9 @@ Here's an example.
 // Evaluates to three
 { val one = 1; val two = 2; one + two }
 ```
+@:@
 
-<div class="solution">
+@:solution
 The following code demonstrates that method parameters are evaluated from left to right.
 
 ```scala mdoc
@@ -158,17 +161,18 @@ Color.hsl({ println("a"); 0.degrees },
           { println("b"); 1.0 },
           { println("c"); 1.0 })
 ```
-</div>
+@:@
 
 
-#### The Last Order {-}
+@:(The Last Order)
 
 In what order are Scala expressions evaluated?
 Perform whatever experiments you need to determine an answer to this question to your own satisfaction.
 You can reasonably assume that Scala uses consistent rules across all expressions.
 There aren't special cases for different expressions.
+@:@
 
-<div class="solution">
+@:solution
 We've already seen that expressions are evaluated from top-to-bottom, and method parameters are evaluated from left-to-right.
 We might want to check that expressions are in general evaluated left-to-right.
 We can show this fairly easily.
@@ -178,7 +182,7 @@ We can show this fairly easily.
 ```
 
 So in conclusion we can say that Scala expressions are evaluated from top-to-bottom and left-to-right.
-</div>
+@:@
 
 @:footnote(corner-cases)
 This is not entirely true. There are some corner cases where the order of evaluation does make a difference even with pure expressions. We're not going to worry about these cases here. If you're interested in learning more, and this is interesting and useful stuff, you can read up on "eager evaluation" and "lazy evaluation".

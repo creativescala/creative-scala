@@ -1,4 +1,4 @@
-## Local Reasoning
+# Local Reasoning
 
 We've seen that the order of evaluation is only really important when we have side effects.
 For example, if the following expressions produce side effects
@@ -33,7 +33,7 @@ Functional programming doesn't mean avoiding effects, because all useful program
 It does, however, mean controlling effects so the majority of the code can be reasoned about using the simple model of substitution.
 
 
-### The Meaning of Meaning
+## The Meaning of Meaning
 
 So far, we've talked a lot about the meaning of code, where we've taken "meaning" to mean to the result it evaluates to, and perhaps the side effects it performs.
 
@@ -49,4 +49,4 @@ Substitution is an abstraction, and the details it throws away are everything ex
 Side effects, time, and memory usage are all irrelevant to substitution, but perhaps not to the people writing or running the program.
 There is a tradeoff here.
 We can employ richer models that capture more of these details, but they are much harder to work with.
-For most people most of the time substitution makes the right tradeoff of being dead simple to use while still being useful.
+For most people most of the time, substitution makes the right tradeoff of being dead simple to use while still being useful.
