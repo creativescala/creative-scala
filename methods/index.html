@@ -166,20 +166,21 @@
     <div id="content">
         <main class="content">
             <h1 id="methods-without-madness" class="title">Methods without Madness</h1>
-            <p>We&#39;ve already used methods---methods are the way we interact with objects.
+            <p>We&#39;ve already used methods; methods are the way we interact with objects.
             In this chapter we&#39;ll learn how to write our own methods.</p>
             <p>Names allow us to abstract over expressions.
             Methods allow us to abstract over and <em>generalise</em> expressions.
             By generalisation we mean the ability to express a group of related things, in this case expressions.
             A method captures a template for an expression, and allows the caller to fill in parts of that template by passing the method parameters.</p>
-            <p>&lt;div class=&quot;callout callout-info&quot;&gt;
-            If you run the examples from the SBT console within Doodle they will just work. If not, you will need to start your code with the following imports to make Doodle available.</p>
-            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.</span><span class="identifier">_</span><span>
-</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.</span><span class="identifier">_</span></code></pre>
-            <p>&lt;/div&gt;</p>
+            <div class="callout info">
+              <p>You will need to start your code with the following imports to make Doodle available.</p>
+              <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="identifier">unsafe</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">global</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.*</span></code></pre>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="../substitution/conclusions.html">←Conclusions</a> <a class="pageNavigation" href="methods.html">Methods→</a>
             </div>
