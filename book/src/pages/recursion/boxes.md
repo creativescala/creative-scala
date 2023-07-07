@@ -1,4 +1,4 @@
-## A Line of Boxes
+# A Line of Boxes
 
 ```scala mdoc:invisible
 import doodle.core.*
@@ -126,22 +126,23 @@ def boxes(count: Int): Image =
 ```
 
 Try it and see what results you get!
-This implementation is only tiny bit more verbose than the properties we wrote above, and is our first structural recursion over the natural numbers.
+This implementation is only a tiny bit more verbose than the properties we wrote above, and is our first structural recursion over the natural numbers.
 
 At this point we have two questions to answer.
 Firstly, how does this `match` expression work?
 More importantly, is there some general principle we can use to create methods like this on our own?
 Let's take each question in turn.
 
-### Exercise: Stacking Boxes {-}
+@:exercise(Stacking Boxes)
 
-Even before we get into the details of `match` expressions you should be able to modify `boxes` to produce an image like @:fref(recursion:stacked-boxes).
+Even before we get into the details of `match` expressions you should be able to modify `boxes` to produce an image like the one below.
 
 At this point we're trying to get used to the syntax of `match`, so rather than copying and pasting `boxes` write it all out by hand again to get some practice.
 
-@:figure{ img = "./src/pages/recursion/sequential-boxes.pdf+svg", key = "#fig:recursion:stacked-boxes", caption = "Three stacked boxes filled with Royal Blue" }
+@:figure{ img = "sequential-boxes.svg", key = "#fig:recursion:stacked-boxes", caption = "Three stacked boxes filled with Royal Blue" }
+@:@
 
-<div class="solution">
+@:solution
 All you to do is change `beside` to `above` in `boxes`.
 
 ```scala mdoc:silent
@@ -151,4 +152,4 @@ def stackedBoxes(count: Int): Image =
     case n => aBox.beside(stackedBoxes(n-1))
   }
 ```
-</div>
+@:@
