@@ -6,14 +6,15 @@ In this section we make our model a bit more formal by learning about the *subst
 Like many things in programming we're using some fancy words for a simple concept.
 In this case you've probably already learned about substitution in high school algebra, and we're just taking those ideas into a new context.
 
-<div class="callout callout-info">
+@:callout(info)
 You will need to start your code with the following imports to make Doodle available.
 
 ```scala mdoc:silent
+import cats.effect.unsafe.implicits.global
 import doodle.core.*
 import doodle.image.*
 import doodle.syntax.all.*
 import doodle.image.syntax.all.*
 import doodle.java2d.*
 ```
-</div>
+@:@
