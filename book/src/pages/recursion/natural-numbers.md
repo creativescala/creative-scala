@@ -312,7 +312,7 @@ Successive elements in the picture add circles to the top, bottom, left, and rig
 Now finish the implementation of `cross`.
 
 @:solution
-Here's what we wrote.
+Here's what I wrote.
 
 ```scala mdoc:reset:invisible
 import doodle.core.*
