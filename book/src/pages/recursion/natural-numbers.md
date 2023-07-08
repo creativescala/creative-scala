@@ -112,12 +112,12 @@ So to implement a structural recursion over the natural numbers we must
  - recognise the method we're writing has a natural number as it's input;
  - work out the result type; and
  - decide what should be the base, unit, and addition for the result.
- @:@
+@:@
 
 We're now ready to go explore the fun that can be had with this simple but powerful tool.
 
 @:callout(info)
-### Proofs and Programs
+#### Proofs and Programs
 
 If you've studied maths you have probably come across proof by induction.
 The general pattern of a proof by induction looks very much like the general pattern of a structural recursion over the natural numbers.
@@ -130,7 +130,7 @@ This general connection between proofs and programs is known as the *Curry-Howar
 @:@
 
 
-@:exercise(Three (or More) Stacks)
+@:exercise(Three or More Stacks)
 
 We've seen how to create a horizontal row of boxes. Now write a method `stacks` that takes a natural number as input and creates a vertical stack of boxes.
 @:@

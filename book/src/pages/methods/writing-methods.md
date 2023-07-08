@@ -58,7 +58,14 @@ Remember to write out the method skeletons first.
 @:solution
 The first step is to write out the skeletons.
 
-```scala mdoc:reset:silent
+```scala mdoc:reset:invisible
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
+```
+```scala mdoc:silent
 def box(color: Color, spin: Angle): Image =
   ???
 
@@ -68,7 +75,14 @@ def gradientBoxes(color: Color): Image =
 
 Now fill in the body of the methods.
 
-```scala mdoc:reset:silent
+```scala mdoc:reset:invisible
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
+```
+```scala mdoc:silent
 def box(color: Color, spin: Angle): Image =
   Image.rectangle(40, 40).
     strokeWidth(5.0).
