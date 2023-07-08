@@ -10,7 +10,7 @@ import doodle.java2d.*
 
 We now have a number of new tools in our toolbox. It's time to get some practice putting them all together.
 
-Here's an example of the familiar chessboard pattern. We have used an auxillary parameter to pass along a color that we change at each recursion. By changing the hue by a prime number we end up a complex pattern with infrequently repeating colors. See @:fref(fractals:chessboard-2) for an example.
+Here's an example of the familiar chessboard pattern. We have used an auxillary parameter to pass along a color that we change at each recursion. By changing the hue by a prime number we end up a complex pattern with infrequently repeating colors. See the image below for an example.
 
 ```scala mdoc
 def chessboard(count: Int, color: Color): Image =
