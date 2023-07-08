@@ -1,11 +1,11 @@
-## Reasoning about Recursion
+# Reasoning about Recursion
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
 We're now experienced users of structural recursion over the natural numbers.
@@ -117,18 +117,18 @@ This is great!
 However the substitutions are quite complex and difficult to keep track of without writing them down.
 
 
-### Reasoning About Structural Recursion
+## Reasoning About Structural Recursion
 
 There is a more practical way to reason about structural recursion. Structural recursion guarantees the overall recursion is correct if we get the individual components correct. There are two parts to the structural recursion; the base case and the recursive case. The base case we can check just by looking at it. The recursive case has the recursive call (the method calling itself) but *we don't have to consider this*. It is given to us by structural recursion so it will be correct so long as the other parts are correct. We can simply assume the recursive call it correct and then check that we are doing the right thing with the result of this call.
 
 Let's apply this to reasoning about `boxes`.
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 ```scala mdoc:silent
@@ -148,7 +148,7 @@ Since the individual cases are correct the whole thing is guaranted correct by s
 This way of reasoning is much more compact than using substitution *and* guaranteed to work *if* we're using structural recursion.
 
 
-### Exercises {-}
+@:exercise(Reasonable Recursion)
 
 Below are some rather silly examples of structural recursion.
 Work out if the methods do what they claim to do *without* running them.
@@ -164,13 +164,14 @@ def identity(n: Int): Int =
     case n => 1 + identity(n-1)
   }
 ```
+@:@
 
-<div class="solution">
+@:solution
 It sure does!
 The base case is straightforward.
 Looking at the recursive case, we assume that `identity(n-1)` returns the identity for `n-1` (which is exactly `n-1`).
 The identity for `n` is then `1 + identity(n-1)`.
-</div>
+@:@
 
 ```scala mdoc:silent
 // Given a natural number, double that number
@@ -184,7 +185,7 @@ def double(n: Int): Int =
   }
 ```
 
-<div class="solution">
+@:solution
 No way!
 This method is broken in two different ways.
 Firstly, because we're multiplying in the recursive case we will eventualy end up multiplying by base case of zero, and therefore the entire result will be zero.
@@ -218,4 +219,4 @@ def double(n: Int): Int =
     case n => 2 + double(n-1)
   }
 ```
-</div>
+@:@
