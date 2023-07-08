@@ -81,10 +81,11 @@
           <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../fractals/">Fractals</a></li>
-          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">The Chessboard</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">Fun with Fractals</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
           <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/03-path.html">Paths</a></li>
@@ -359,15 +360,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$14317/0x0000000103ce6040@99112fd
+//           f = cats.free.Free$$Lambda$14385/0x0000000103cdc040@58db4e11
 //         ),
-//         f = cats.free.Free$$Lambda$14317/0x0000000103ce6040@5829ae18
+//         f = cats.free.Free$$Lambda$14385/0x0000000103cdc040@639c0f81
 //       ),
-//       f = cats.free.Free$$Lambda$14317/0x0000000103ce6040@7fd41e64
+//       f = cats.free.Free$$Lambda$14385/0x0000000103cdc040@74daef8b
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$14334/0x0000000103c65840@4bc8e66f
+//     f = repl.MdocSession$MdocApp5$$Lambda$14402/0x0000000103cf2840@63dccdce
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$14337/0x0000000103c63040@4acf0311
+//   f = repl.MdocSession$MdocApp5$$Lambda$14405/0x0000000103cf5040@61f5ac62
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -388,7 +389,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$14317/0x0000000103ce6040@5f832d3e
+//   f = cats.free.Free$$Lambda$14385/0x0000000103cdc040@621657da
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -396,9 +397,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$14317/0x0000000103ce6040@5f832d3e
+//     f = cats.free.Free$$Lambda$14385/0x0000000103cdc040@621657da
 //   ),
-//   f = cats.free.Free$$Lambda$14317/0x0000000103ce6040@fb2f94
+//   f = cats.free.Free$$Lambda$14385/0x0000000103cdc040@41935aa4
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =

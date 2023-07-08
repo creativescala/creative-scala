@@ -81,10 +81,11 @@
           <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="index.html">Fractals</a></li>
-          <li class="level2 nav-leaf"><a href="fractals.html">The Chessboard</a></li>
+          <li class="level2 nav-leaf"><a href="fractals.html">Fun with Fractals</a></li>
           <li class="level2 active nav-leaf"><a href="#">Nested Methods</a></li>
           <li class="level2 nav-leaf"><a href="auxillary-parameter.html">Auxiliary Parameters</a></li>
           <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/03-path.html">Paths</a></li>
@@ -306,14 +307,13 @@
             We just need to ensure that we call it in <code>cross</code>.
             I usually name this sort of internal method <code>loop</code> or <code>iter</code> (short for iterate) to indicate that they&#39;re performing a loop.</p>
             <p>This technique is just a small variation of what we&#39;ve done already, but let&#39;s do a few exercises to make sure we&#39;ve got the pattern.</p>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
-            
-            <h4 id="chessboard" class="section">Chessboard {-}</h4>
-            <p>Rewrite <code>chessboard</code> using a nested method so that <code>blackSquare</code>, <code>redSquare</code>, and <code>base</code> are only created once when <code>chessboard</code> is called.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">chessboard</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
-  </span><span class="keyword">val</span><span> </span><span class="identifier">blackSquare</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">30</span><span>) </span><span class="identifier">fillColor</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>
-  </span><span class="keyword">val</span><span> </span><span class="identifier">redSquare</span><span>   = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">30</span><span>) </span><span class="identifier">fillColor</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>
+            <div class="exercise">
+              
+              <h4 id="exercise-chessboard">Exercise: Chessboard</h4>
+              <p>Rewrite <code>chessboard</code> using a nested method so that <code>blackSquare</code>, <code>redSquare</code>, and <code>base</code> are only created once when <code>chessboard</code> is called.</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">chessboard</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">blackSquare</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">30</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>)
+  </span><span class="keyword">val</span><span> </span><span class="identifier">redSquare</span><span>   = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">30</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
 
   </span><span class="keyword">val</span><span> </span><span class="identifier">base</span><span> =
     (</span><span class="identifier">redSquare</span><span>   </span><span class="identifier">beside</span><span> </span><span class="identifier">blackSquare</span><span>) </span><span class="identifier">above</span><span> (</span><span class="identifier">blackSquare</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">redSquare</span><span>)
@@ -324,9 +324,11 @@
       (</span><span class="identifier">unit</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">unit</span><span>) </span><span class="identifier">above</span><span> (</span><span class="identifier">unit</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">unit</span><span>)
   }
 }</span></code></pre>
-            <p>&lt;div class=&quot;solution&quot;&gt;</p>
-            <p>Here&#39;s how we did it. It has exactly the same pattern we used with <code>boxes</code>.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">chessboard</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Here&#39;s how I did it. It has exactly the same pattern we used with <code>boxes</code>.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">chessboard</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
   </span><span class="keyword">val</span><span> </span><span class="identifier">blackSquare</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">30</span><span>) </span><span class="identifier">fillColor</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">black</span><span>
   </span><span class="keyword">val</span><span> </span><span class="identifier">redSquare</span><span>   = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">30</span><span>) </span><span class="identifier">fillColor</span><span> </span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>
   </span><span class="keyword">val</span><span> </span><span class="identifier">base</span><span> =
@@ -341,40 +343,45 @@
 
   </span><span class="identifier">loop</span><span>(</span><span class="identifier">count</span><span>)
 }</span></code></pre>
-            <p>&lt;/div&gt;</p>
-            
-            <h4 id="boxing-clever" class="section">Boxing Clever {-}</h4>
-            <p>Rewrite <code>boxes</code>, shown below, so that <code>aBox</code> is only in scope within <code>boxes</code> and only created once when <code>boxes</code> is called.</p>
-            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">aBox</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-boxing-clever">Exercise: Boxing Clever</h4>
+              <p>Rewrite <code>boxes</code>, shown below, so that <code>aBox</code> is only in scope within <code>boxes</code> and only created once when <code>boxes</code> is called.</p>
+              <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">aBox</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
 
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
   }</span></code></pre>
-            <p>&lt;div class=&quot;solution&quot;&gt;</p>
-            <p>We can do this in two stages, first moving <code>aBox</code> within <code>boxes</code>.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>We can do this in two stages, first moving <code>aBox</code> within <code>boxes</code>.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
   </span><span class="keyword">val</span><span> </span><span class="identifier">aBox</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
-    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
   }
 }</span></code></pre>
-            <p>Then we can use an internal method to avoid recreating <code>aBox</code> on every recursion.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+                <p>Then we can use an internal method to avoid recreating <code>aBox</code> on every recursion.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
   </span><span class="keyword">val</span><span> </span><span class="identifier">aBox</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
   </span><span class="keyword">def</span><span> </span><span class="declaration-name">loop</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
     </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
       </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
-      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
+      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">loop</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
     }
 
   </span><span class="identifier">loop</span><span>(</span><span class="identifier">count</span><span>)
 }</span></code></pre>
-            <p>&lt;/div&gt;</p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="fractals.html">←The Chessboard</a> <a class="pageNavigation" href="auxillary-parameter.html">Auxiliary Parameters→</a>
+                <a class="pageNavigation" href="fractals.html">←Fun with Fractals</a> <a class="pageNavigation" href="auxillary-parameter.html">Auxiliary Parameters→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>
