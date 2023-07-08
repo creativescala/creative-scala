@@ -166,8 +166,8 @@
     <div id="content">
         <main class="content">
             <h1 id="a-line-of-boxes" class="title">A Line of Boxes</h1>
-            <p>Let&#39;s start with an example, drawing a line or row of boxes as in Figure recursion:sequential-boxes.</p>
-            <p><img src="./src/pages/recursion/sequential-boxes.pdf+svg" alt="Five boxes filled with Royal Blue" title="Figure Some(#fig:recursion:sequential-boxes): caption"></p>
+            <p>Let&#39;s start with an example, drawing a line or row of boxes like in the image below.</p>
+            <p><img src="sequential-boxes.svg" alt="Five boxes filled with Royal Blue" title="Figure Some(#fig:recursion:sequential-boxes): caption"></p>
             <p>Let&#39;s define a box to begin with.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">aBox</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">square</span><span>(</span><span class="number-literal">20</span><span>).</span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)</span></code></pre>
             <p>Then one box in a row is just</p>
@@ -219,24 +219,28 @@
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
   }</span></code></pre>
             <p>Try it and see what results you get!
-            This implementation is only tiny bit more verbose than the properties we wrote above, and is our first structural recursion over the natural numbers.</p>
+            This implementation is only a tiny bit more verbose than the properties we wrote above, and is our first structural recursion over the natural numbers.</p>
             <p>At this point we have two questions to answer.
             Firstly, how does this <code>match</code> expression work?
             More importantly, is there some general principle we can use to create methods like this on our own?
             Let&#39;s take each question in turn.</p>
-            
-            <h3 id="exercise-stacking-boxes" class="section">Exercise: Stacking Boxes {-}</h3>
-            <p>Even before we get into the details of <code>match</code> expressions you should be able to modify <code>boxes</code> to produce an image like Figure recursion:stacked-boxes.</p>
-            <p>At this point we&#39;re trying to get used to the syntax of <code>match</code>, so rather than copying and pasting <code>boxes</code> write it all out by hand again to get some practice.</p>
-            <p><img src="./src/pages/recursion/sequential-boxes.pdf+svg" alt="Three stacked boxes filled with Royal Blue" title="Figure Some(#fig:recursion:stacked-boxes): caption"></p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            All you to do is change <code>beside</code> to <code>above</code> in <code>boxes</code>.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">stackedBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+            <div class="exercise">
+              
+              <h4 id="exercise-stacking-boxes">Exercise: Stacking Boxes</h4>
+              <p>Even before we get into the details of <code>match</code> expressions you should be able to modify <code>boxes</code> to produce an image like the one below.</p>
+              <p>At this point we&#39;re trying to get used to the syntax of <code>match</code>, so rather than copying and pasting <code>boxes</code> write it all out by hand again to get some practice.</p>
+              <p><img src="sequential-boxes.svg" alt="Three stacked boxes filled with Royal Blue" title="Figure Some(#fig:recursion:stacked-boxes): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>All you to do is change <code>beside</code> to <code>above</code> in <code>boxes</code>.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">stackedBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">stackedBoxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
   }</span></code></pre>
-            <p>&lt;/div&gt;</p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="index.html">←Structural Recursion over the Natural Numbers</a> <a class="pageNavigation" href="natural-numbers.html">The Natural Numbers→</a>
             </div>

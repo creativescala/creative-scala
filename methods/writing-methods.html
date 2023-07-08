@@ -166,9 +166,9 @@
     <div id="content">
         <main class="content">
             <h1 id="writing-methods" class="title">Writing Methods</h1>
-            <p>There is systematic way to writing methods that will help us implement methods correctly.
+            <p>There is a systematic way to writing methods that will help us implement methods correctly.
             We&#39;ve already talked about this in the solution to some exercises, but it is worth calling out here.</p>
-            <p>Our goal is to first build a <em>method skeleton</em>, which is a method declaration with the body replaced with <code>???</code>.
+            <p>Our first goal is to build a <em>method skeleton</em>, which is a method declaration with the body replaced with <code>???</code>.
             This tells us the name of the method, its parameters and their types, and the type of the result.
             We then fill in the body.</p>
             <p>For example, we could describe the method <code>boxes</code> as a method that accepts a <code>Color</code> value and returns five boxes in a row filled with that color.
@@ -179,47 +179,49 @@
               <li>the result is an <code>Image</code>.</li>
             </ul>
             <p>The skeleton for this is</p>
-            <pre><code class="tut:silent:book">def boxes(color: Color): Image =
-  ???</code></pre>
+            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  ???</span></code></pre>
             <p>Notice that Scala will let you run this skeleton, and it will fail with an exception.</p>
-            <pre><code class="tut:fail:book">boxes(Color.mistyRose)</code></pre>
+            <pre><code class="nohighlight"><span class="identifier">boxes</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">mistyRose</span><span>)</span></code></pre>
             <p>The reason we use this technique is it allows us to do <em>type-driven development</em>.
             The types give us a lot of structure to our program, and as we&#39;ll see in the next chapter given a type we can derive a lot of our program in many cases.
             By declaring the types but not implementing the body we can get Scala&#39;s type checker to see if large programs make sense, from the point of view of types, before we start implementing them.
             This is an extremely powerful technique that we will only scratch the surface of.</p>
             <p>Now we know all about methods let&#39;s implement some more complex examples.</p>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
-            
-            <h4 id="gradient-boxes" class="section">Gradient Boxes {-}</h4>
-            <p>Let&#39;s turn <code>boxes</code> up to eleven by making the color of the boxes change in a smooth gradient, like that shown in Figure methods:gradient-boxes.</p>
-            <p>To minimise the amount of code we have to write, implement this by writing <em>two</em> methods.
-            The first method, <code>box</code>, should accept a <code>Color</code> and an <code>Angle</code> and create a box with the color spun by the angle.
-            The second method, <code>graidentBoxes</code>, should accept a <code>Color</code> and return an <code>Image</code> of five boxes fill with a gradient starting from the given color and changing by <code>15.degrees</code> at each successive box. <code>gradientBoxes</code> should make use of <code>box</code>.
-            Remember to write out the method skeletons first.</p>
-            <p><img src="./src/pages/recursion/gradient-boxes.pdf+svg" alt="Five boxes filled with a gradient starting from Royal Blue" title="Figure Some(#fig:methods:gradient-boxes): caption"></p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            The first step is to write out the skeletons.</p>
-            <pre><code class="tut:silent:book">def box(color: Color, spin: Angle): Image =
+            <div class="exercise">
+              
+              <h4 id="exercise-gradient-boxes">Exercise: Gradient Boxes</h4>
+              <p>Let&#39;s turn <code>boxes</code> up to eleven by making the color of the boxes change in a smooth gradient, like that shown below.</p>
+              <p>To minimise the amount of code we have to write, implement this by writing <em>two</em> methods.
+              The first method, <code>box</code>, should accept a <code>Color</code> and an <code>Angle</code> and create a box with the color spun by the angle.
+              The second method, <code>graidentBoxes</code>, should accept a <code>Color</code> and return an <code>Image</code> of five boxes filled with a gradient starting from the given color and changing by <code>15.degrees</code> at each successive box. <code>gradientBoxes</code> should make use of <code>box</code>.
+              Remember to write out the method skeletons first.</p>
+              <p><img src="gradient-boxes.svg" alt="Five boxes filled with a gradient starting from Royal Blue" title="Figure Some(#fig:methods:gradient-boxes): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The first step is to write out the skeletons.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">box</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>, </span><span class="identifier">spin</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Image</span><span> =
   ???
 
-def gradientBoxes(color: Color): Image =
-  ???</code></pre>
-            <p>Now fill in the body of the methods.</p>
-            <pre><code class="tut:silent:book">def box(color: Color, spin: Angle): Image =
-  Image.rectangle(40, 40).
-    strokeWidth(5.0).
-    strokeColor(color.spin(spin + 30.degrees)).
-    fillColor(color.spin(spin)) 
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  ???</span></code></pre>
+                <p>Now fill in the body of the methods.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">box</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>, </span><span class="identifier">spin</span><span>: </span><span class="type-name">Angle</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">40</span><span>).
+    </span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>).
+    </span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="identifier">spin</span><span> + </span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)).
+    </span><span class="identifier">fillColor</span><span>(</span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="identifier">spin</span><span>)) 
 
-def gradientBoxes(color: Color): Image = {
-  box(color, 0.degrees) beside 
-  box(color, 15.degrees) beside
-  box(color, 20.degrees) beside
-  box(color, 45.degrees) beside
-  box(color, 60.degrees)
-}</code></pre>
-            <p>&lt;/div&gt;</p>
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="identifier">box</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">0</span><span>.</span><span class="identifier">degrees</span><span>) </span><span class="identifier">beside</span><span> 
+  </span><span class="identifier">box</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>) </span><span class="identifier">beside</span><span>
+  </span><span class="identifier">box</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">20</span><span>.</span><span class="identifier">degrees</span><span>) </span><span class="identifier">beside</span><span>
+  </span><span class="identifier">box</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">45</span><span>.</span><span class="identifier">degrees</span><span>) </span><span class="identifier">beside</span><span>
+  </span><span class="identifier">box</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">60</span><span>.</span><span class="identifier">degrees</span><span>)
+}</span></code></pre>
+              </div>
+            </div>
             
             <h4 id="gradient-concentric-circles" class="section">Gradient Concentric Circles {-}</h4>
             <p>Now implement methods to draw a picture similar to Figure methods:gradient-concentric-circles.

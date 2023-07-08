@@ -179,7 +179,7 @@
             <p>We use the recursive rule to expand the equation until we cannot use it any more. We then use the base case to stop the recursion.</p>
             
             <h2 id="structural-recursion" class="section">Structural Recursion</h2>
-            <p>Now onto structural recursion. The structural recursion pattern for the natural numbers gives us two things:</p>
+            <p>Now on to structural recursion. The structural recursion pattern for the natural numbers gives us two things:</p>
             <ul>
               <li>a reusable code skeleton for processing any natural number; and</li>
               <li>the guarantee that we can use this skeleton to implement <em>any</em> computation on natural numbers.</li>
@@ -219,58 +219,61 @@
             We always have a <code>match</code> expression.
             We always have the two patterns, corresponding to the base and recursive cases.
             The right hand side expressions always consist of the base case, and the recursive case which itself has a result specific substitute for <code>1</code> and <code>+</code>, and a recursive call for <code>n-1</code>.</p>
-            <p>&lt;div class=&quot;callout callout-info&quot;&gt;</p>
-            
-            <h4 id="structural-recursion-over-natural-numbers-pattern">Structural Recursion over Natural Numbers Pattern {-}</h4>
-            <p>The general pattern for structural recursion over the natural numbers is</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">name</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Result</span><span> =
+            <div class="callout info">
+              
+              <h4 id="structural-recursion-over-natural-numbers-pattern">Structural Recursion over Natural Numbers Pattern</h4>
+              <p>The general pattern for structural recursion over the natural numbers is</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">name</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Result</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="identifier">resultBase</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">resultUnit</span><span> </span><span class="identifier">add</span><span> </span><span class="identifier">name</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
   }</span></code></pre>
-            <p>where <code>Result</code>, <code>resultBase</code>, <code>resultUnit</code>, and <code>add</code> are specific to the problem we&#39;re solving.
-            So to implement a structural recursion over the natural numbers we must</p>
-            <ul>
-              <li>recognise the method we&#39;re writing has a natural number as it&#39;s input;</li>
-            </ul>
-            <ul>
-              <li>work out the result type; and</li>
-            </ul>
-            <ul>
-              <li>decide what should be the base, unit, and addition for the result.
-              &lt;/div&gt;</li>
-            </ul>
+              <p>where <code>Result</code>, <code>resultBase</code>, <code>resultUnit</code>, and <code>add</code> are specific to the problem we&#39;re solving.
+              So to implement a structural recursion over the natural numbers we must</p>
+              <ul>
+                <li>recognise the method we&#39;re writing has a natural number as it&#39;s input;</li>
+              </ul>
+              <ul>
+                <li>work out the result type; and</li>
+              </ul>
+              <ul>
+                <li>decide what should be the base, unit, and addition for the result.</li>
+              </ul>
+            </div>
             <p>We&#39;re now ready to go explore the fun that can be had with this simple but powerful tool.</p>
-            <p>&lt;div class=&quot;callout callout-info&quot;&gt;</p>
-            
-            <h3 id="proofs-and-programs">Proofs and Programs</h3>
-            <p>If you&#39;ve studied maths you have probably come across proof by induction.
-            The general pattern of a proof by induction looks very much like the general pattern of a structural recursion over the natural numbers.
-            This is no coincidence; there is a deep relationship between the two.
-            We can view a structural recursion over the natural numbers as exactly a proof by induction.
-            When we claim the ability to write any transformation on the natural numbers in terms of the structural recursion skeleton, this claim is backed up by the mathematical foundation we&#39;re implicitly using.
-            We can also prove properties of our code by using the connection between the two: any structural recursion is implicitly defining a proof of some property.</p>
-            <p>This general connection between proofs and programs is known as the <em>Curry-Howard Isomorphism</em>.
-            &lt;/div&gt;</p>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
-            
-            <h4 id="three-or-more-stacks" class="section">Three (or More) Stacks {-}</h4>
-            <p>We&#39;ve seen how to create a horizontal row of boxes. Now write a method <code>stacks</code> that takes a natural number as input and creates a vertical stack of boxes.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            This is a modification of <code>boxes</code>, replacing <code>beside</code> with <code>above</code>.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">stacks</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+            <div class="callout info">
+              
+              <h4 id="proofs-and-programs">Proofs and Programs</h4>
+              <p>If you&#39;ve studied maths you have probably come across proof by induction.
+              The general pattern of a proof by induction looks very much like the general pattern of a structural recursion over the natural numbers.
+              This is no coincidence; there is a deep relationship between the two.
+              We can view a structural recursion over the natural numbers as exactly a proof by induction.
+              When we claim the ability to write any transformation on the natural numbers in terms of the structural recursion skeleton, this claim is backed up by the mathematical foundation we&#39;re implicitly using.
+              We can also prove properties of our code by using the connection between the two: any structural recursion is implicitly defining a proof of some property.</p>
+              <p>This general connection between proofs and programs is known as the <em>Curry-Howard Isomorphism</em>.</p>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-three-or-more-stacks">Exercise: Three or More Stacks</h4>
+              <p>We&#39;ve seen how to create a horizontal row of boxes. Now write a method <code>stacks</code> that takes a natural number as input and creates a vertical stack of boxes.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>This is a modification of <code>boxes</code>, replacing <code>beside</code> with <code>above</code>.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">stacks</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="identifier">aBox</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">boxes</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
   }</span></code></pre>
-            <p>&lt;/div&gt;</p>
-            
-            <h4 id="alternating-images" class="section">Alternating Images {-}</h4>
-            <p>We do more with the counter than simply using it in the recursive call. In this exercise we&#39;ll choose one <code>Image</code> when the counter is odd and a different <code>Image</code> when the counter is even. This will give us a row of alternating images as shown in Figure recursion:alternating-row.</p>
-            <p><img src="./src/pages/recursion/alternating-row.pdf+svg" alt="A row constructed by alternating between two different images." title="Figure Some(#fig:recursion:alternating-row): caption"></p>
-            <p>To do this we need to learn about a new method on <code>Int</code>. The <em>modulo</em> method, written <code>%</code>, returns the remainder of dividing one <code>Int</code> by another. Here are some examples.</p>
-            <pre><code class="nohighlight"><span class="number-literal">4</span><span> % </span><span class="number-literal">2</span><span>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-alternating-images">Exercise: Alternating Images</h4>
+              <p>We do more with the counter than simply using it in the recursive call. In this exercise we&#39;ll choose one <code>Image</code> when the counter is odd and a different <code>Image</code> when the counter is even. This will give us a row of alternating images as shown below.</p>
+              <p><img src="alternating-row.svg" alt="A row constructed by alternating between two different images." title="Figure Some(#fig:recursion:alternating-row): caption"></p>
+              <p>To do this we need to learn about a new method on <code>Int</code>. The <em>modulo</em> method, written <code>%</code>, returns the remainder of dividing one <code>Int</code> by another. Here are some examples.</p>
+              <pre><code class="nohighlight"><span class="number-literal">4</span><span> % </span><span class="number-literal">2</span><span>
 </span><span class="comment">// res1: Int = 0
 </span><span class="number-literal">3</span><span> % </span><span class="number-literal">2</span><span>
 </span><span class="comment">// res2: Int = 1
@@ -278,24 +281,26 @@
 </span><span class="comment">// res3: Int = 0
 </span><span class="number-literal">1</span><span> % </span><span class="number-literal">2</span><span>
 </span><span class="comment">// res4: Int = 1</span></code></pre>
-            <p>We can see that when the first number is even the result is 0; otherwise it is 1. So we need to check is the result is 0 and act accordingly. There are a few ways to do this. Here&#39;s one example</p>
-            <pre><code class="nohighlight"><span>(</span><span class="number-literal">4</span><span> % </span><span class="number-literal">2</span><span> == </span><span class="number-literal">0</span><span>) </span><span class="keyword">match</span><span> {
+              <p>We can see that when the first number is even the result is 0; otherwise it is 1. So we need to check is the result is 0 and act accordingly. There are a few ways to do this. Here&#39;s one example</p>
+              <pre><code class="nohighlight"><span>(</span><span class="number-literal">4</span><span> % </span><span class="number-literal">2</span><span> == </span><span class="number-literal">0</span><span>) </span><span class="keyword">match</span><span> {
   </span><span class="keyword">case</span><span> </span><span class="boolean-literal">true</span><span>  =&gt; </span><span class="string-literal">&quot;It&#39;s even!&quot;</span><span>
   </span><span class="keyword">case</span><span> </span><span class="boolean-literal">false</span><span> =&gt; </span><span class="string-literal">&quot;It&#39;s odd!&quot;</span><span>
 }</span></code></pre>
-            <p>Here we match against the result of the comparison <code>(4 % 2 == 0)</code>. The type of this expression is <code>Boolean</code>, which has two possible values (<code>true</code> and <code>false</code>).</p>
-            <p>For <code>Booleans</code> there is special syntax that is more compact than <code>match</code>: an <code>if</code> expression. Here&#39;s the same code rewritten using <code>if</code>.</p>
-            <pre><code class="nohighlight"><span class="keyword">if</span><span>(</span><span class="number-literal">4</span><span> % </span><span class="number-literal">2</span><span> == </span><span class="number-literal">0</span><span>) </span><span class="string-literal">&quot;It&#39;s even!&quot;</span><span>
+              <p>Here we match against the result of the comparison <code>(4 % 2 == 0)</code>. The type of this expression is <code>Boolean</code>, which has two possible values (<code>true</code> and <code>false</code>).</p>
+              <p>For <code>Booleans</code> there is special syntax that is more compact than <code>match</code>: an <code>if</code> expression. Here&#39;s the same code rewritten using <code>if</code>.</p>
+              <pre><code class="nohighlight"><span class="keyword">if</span><span>(</span><span class="number-literal">4</span><span> % </span><span class="number-literal">2</span><span> == </span><span class="number-literal">0</span><span>) </span><span class="string-literal">&quot;It&#39;s even!&quot;</span><span>
 </span><span class="keyword">else</span><span> </span><span class="string-literal">&quot;It&#39;s odd!&quot;</span><span>
 </span><span class="comment">// res6: String = &quot;It&#39;s even!&quot;</span></code></pre>
-            <p>Use whichever you are more comfortable with!</p>
-            <p>That&#39;s all the background we need. Now we can write the method we&#39;re interested in. Here&#39;s the skeleton:</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">alternatingRow</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+              <p>Use whichever you are more comfortable with!</p>
+              <p>That&#39;s all the background we need. Now we can write the method we&#39;re interested in. Here&#39;s the skeleton:</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">alternatingRow</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   ???</span></code></pre>
-            <p>Implement the method. It&#39;s up to you what you choose for the two images used in the output.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            Here&#39;s my solution. I used an <code>if</code> expression because it&#39;s a bit shorter than matching on the <code>Boolean</code>. Otherwise it&#39;s the same structural recursion pattern as before.</p>
-            <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">star</span><span> = </span><span class="type-name">Image</span><span>
+              <p>Implement the method. It&#39;s up to you what you choose for the two images used in the output.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Here&#39;s my solution. I used an <code>if</code> expression because it&#39;s a bit shorter than matching on the <code>Boolean</code>. Otherwise it&#39;s the same structural recursion pattern as before.</p>
+                <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">star</span><span> = </span><span class="type-name">Image</span><span>
   .</span><span class="identifier">star</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="number-literal">30</span><span>, </span><span class="number-literal">15</span><span>)
   .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">teal</span><span>)
   .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">star</span><span>(</span><span class="number-literal">5</span><span>, </span><span class="number-literal">12</span><span>, </span><span class="number-literal">7</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>))
@@ -315,17 +320,21 @@
       </span><span class="keyword">else</span><span> </span><span class="identifier">circle</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">alternatingRow</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>))
   }
 }</span></code></pre>
-            <p>&lt;/div&gt;</p>
-            
-            <h4 id="getting-creative" class="section">Getting Creative {-}</h4>
-            <p>We can use the counter to modify the image in other ways. For example we can make the color, size, or any othe property of an image depend on the counter. I have made an example in Figure recursion:fun-row, but come up with your own ideas. Implement a method</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">funRow</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-getting-creative">Exercise: Getting Creative</h4>
+              <p>We can use the counter to modify the image in other ways. For example we can make the color, size, or any othe property of an image depend on the counter. I have made an example below, but come up with your own ideas. Implement a method</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">funRow</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   ???</span></code></pre>
-            <p>that generates such an image.</p>
-            <p><img src="./src/pages/recursion/fun-row.pdf+svg" alt="A row constructed by making size and color depend on the counter." title="Figure Some(#fig:recursion:fun-row): caption"></p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            Here&#39;s my solution. I made the size of the star and its color depend on the counter.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">funRow</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+              <p>that generates such an image.</p>
+              <p><img src="fun-row.svg" alt="A row constructed by making size and color depend on the counter." title="Figure Some(#fig:recursion:fun-row): caption"></p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Here&#39;s my solution. I made the size of the star and its color depend on the counter.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">funRow</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
@@ -336,24 +345,29 @@
         .</span><span class="identifier">beside</span><span>(</span><span class="identifier">funRow</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>))
   }
 }</span></code></pre>
-            <p>&lt;/div&gt;</p>
-            
-            <h4 id="cross" class="section">Cross {-}</h4>
-            <p>Our final exercise is to create a method <code>cross</code> that will generate cross images. Figure recursion:cross shows four cross images, which correspond to calling the method <code>cross</code> with <code>0</code> to <code>3</code>.</p>
-            <p>The method skeleton is</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">cross</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-cross">Exercise: Cross</h4>
+              <p>Our final exercise is to create a method <code>cross</code> that will generate cross images. The example below shows four cross images, which correspond to calling the method <code>cross</code> with <code>0</code> to <code>3</code>.</p>
+              <p>The method skeleton is</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">cross</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   ???</span></code></pre>
-            <p><img src="./src/pages/recursion/cross.pdf+svg" alt="Crosses generated by `count` from 0 to 3." title="Figure Some(#fig:recursion:cross): caption"></p>
-            <p>People often find this exercise harder than the preceding ones, so we&#39;ll make the process very explicit here.</p>
-            <p>Firstly, what pattern will we use to fill in the body of <code>cross</code>? Write out the pattern.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            It&#39;s structural recursion over the natural numbers. You should end up with something like</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">cross</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+              <p><img src="cross.svg" alt="Crosses generated by `count` from 0 to 3." title="Figure Some(#fig:recursion:cross): caption"></p>
+              <p>People often find this exercise harder than the preceding ones, so we&#39;ll make the process very explicit here.</p>
+              <p>Firstly, what pattern will we use to fill in the body of <code>cross</code>? Write out the pattern.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>It&#39;s structural recursion over the natural numbers. You should end up with something like</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">cross</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
   </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; &lt;</span><span class="identifier">resultBase</span><span>&gt;
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; &lt;</span><span class="identifier">resultUnit</span><span>&gt; &lt;</span><span class="identifier">add</span><span>&gt; </span><span class="identifier">cross</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
   }</span></code></pre>
-            <p>&lt;/div&gt;</p>
+              </div>
+            </div>
             <p>Now we&#39;ve identified the pattern we&#39;re using, we need to fill in the problem specific parts:</p>
             <ul>
               <li>the base case; and</li>
@@ -361,31 +375,35 @@
             <ul>
               <li>the unit and addition operators.</li>
             </ul>
-            <p>Hint: use Figure recursion:cross to identify the elements above.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            From the picture we can work out that the base case is the hexagon in red.</p>
-            <p>Successive elements in the picture add circles to the top, bottom, left, and right of the image. So our unit is a circle, but the addition operator is not a simple <code>beside</code> or <code>above</code> like we&#39;ve seen before but <code>unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)</code>.
-            &lt;/div&gt;</p>
+            <p>Hint: use the example image to identify the elements above.</p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>From the picture we can work out that the base case is the hexagon in red.</p>
+                <p>Successive elements in the picture add circles to the top, bottom, left, and right of the image. So our unit is a circle, but the addition operator is not a simple <code>beside</code> or <code>above</code> like we&#39;ve seen before but <code>unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)</code>.</p>
+              </div>
+            </div>
             <p>Now finish the implementation of <code>cross</code>.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            Here&#39;s what we wrote.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">cross</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
-    </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
-      </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt;
-        </span><span class="type-name">Image</span><span>.</span><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">6</span><span>, </span><span class="number-literal">10</span><span>)
-          .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
-          .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)
-      </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
-        </span><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span> = </span><span class="type-name">Image</span><span>
-          .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>)
-          .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>)
-          .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">15</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)))
-          .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)))
-          .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)
-        </span><span class="identifier">circle</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">circle</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">cross</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>)).</span><span class="identifier">above</span><span>(</span><span class="identifier">circle</span><span>)).</span><span class="identifier">beside</span><span>(</span><span class="identifier">circle</span><span>)
-    }
-  }</span></code></pre>
-            <p>&lt;/div&gt;</p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Here&#39;s what I wrote.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">cross</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
+    </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt;
+      </span><span class="type-name">Image</span><span>.</span><span class="identifier">regularPolygon</span><span>(</span><span class="number-literal">6</span><span>, </span><span class="number-literal">10</span><span>)
+        .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
+        .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)
+    </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
+      </span><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span> = </span><span class="type-name">Image</span><span>
+        .</span><span class="identifier">circle</span><span>(</span><span class="number-literal">20</span><span>)
+        .</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>)
+        .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">15</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)))
+        .</span><span class="identifier">on</span><span>(</span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">10</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">deepSkyBlue</span><span>.</span><span class="identifier">spin</span><span>(-</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)))
+        .</span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>)
+      </span><span class="identifier">circle</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">circle</span><span>.</span><span class="identifier">above</span><span>(</span><span class="identifier">cross</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>)).</span><span class="identifier">above</span><span>(</span><span class="identifier">circle</span><span>)).</span><span class="identifier">beside</span><span>(</span><span class="identifier">circle</span><span>)
+  }
+}</span></code></pre>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="boxes.html">←A Line of Boxes</a> <a class="pageNavigation" href="match.html">Match Expressions→</a>
             </div>

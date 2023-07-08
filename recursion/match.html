@@ -193,18 +193,15 @@
               <li>a literal (as in <code>case 0</code>) which matches exactly the value that literal evaluates to; and</li>
             </ul>
             <ul>
-              <li>a wildcard (as in <code>case n</code>) which matches <em>anything</em>, and introduces a binding within the right-hand side expression.</li>
+              <li>a wildcard (as in <code>case n</code>) which matches <em>anything</em>, and creates a binding within the right-hand side expression.</li>
             </ul>
             <p>Finally, the right-hand side expressions, <code>&lt;expression1&gt;</code> and so on, are just expressions like any other we&#39;ve written so far.
             The entire <code>match</code> expression evaluates to the value of the right-hand side expression of the <em>first</em> pattern that matches.
             So when we call <code>boxes(0)</code> both patterns will match (because the wildcard matches anything), but because the literal pattern comes first the expression <code>Image.empty</code> is the one that is evaluated.</p>
             <p>A <code>match</code> expression that checks for all possible cases is called an exhaustive match.
-            If we can assume that <code>count</code> is always greater or equal to zero, the <code>match</code> in <code>boxes</code> is exhaustive.</p>
+            The <code>match</code> in <code>boxes</code> is exhaustive because it has a wildcard pattern.</p>
             <p>Once we&#39;re comfortable with <code>match</code> expressions we need to look at the structure of the natural numbers before we can explain structural recursion over them.</p>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
-            
-            <h4 id="guess-the-result" class="section">Guess the Result {-}</h4>
+            <p>@exercise(Guess the Result)</p>
             <p>Let&#39;s check our understanding of match by guessing what each of the following expressions evaluates to, and why.</p>
             <pre><code class="nohighlight"><span class="string-literal">&quot;abcd&quot;</span><span> </span><span class="keyword">match</span><span> {
   </span><span class="keyword">case</span><span> </span><span class="string-literal">&quot;bcde&quot;</span><span> =&gt; </span><span class="number-literal">0</span><span>
@@ -225,39 +222,46 @@
   </span><span class="keyword">case</span><span> </span><span class="identifier">b</span><span> =&gt; </span><span class="identifier">b</span><span> + </span><span class="number-literal">1</span><span>
   </span><span class="keyword">case</span><span> </span><span class="identifier">c</span><span> =&gt; </span><span class="identifier">c</span><span> * </span><span class="number-literal">2</span><span>
 }</span></code></pre>
-            <p>&lt;div class=&quot;solution&quot;&gt;</p>
-            <p>The first example evaluates to <code>2</code>, as the pattern <code>&quot;abcd&quot;</code> is the only match for the literal <code>&quot;abcd&quot;</code> amongst the patterns.</p>
-            <p>The second example evaluates to <code>&quot;one&quot;</code>, because the first matching case is the one that is evaluated.</p>
-            <p>The third example evaluates to <code>2</code>, because <code>case n</code> defines a wildcard pattern that matches anything.</p>
-            <p>The final example evaluates to <code>1</code> because the first matching case is evaluated.
-            &lt;/div&gt;</p>
-            
-            <h4 id="no-match" class="section">No Match {-}</h4>
-            <p>What happens if no pattern matches in a <code>match</code> expression?
-            Take a guess, then write a <code>match</code> expression that fails to match and see if you managed to guess correctly.
-            (At this point we have no reason to expect any particular behavior so any reasonable guess will do.)</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            Here are three reasonable possibilities I can think of; perhaps you came up with something else?</p>
-            <ul>
-              <li>The expression could evaluate to some default, like <code>Image.empty</code> (but how should Scala pick the right default?)</li>
-            </ul>
-            <ul>
-              <li>The Scala compiler should just not let you write code like that.</li>
-            </ul>
-            <ul>
-              <li>The <code>match</code> expression will fail at runtime.</li>
-            </ul>
-            <p>Here&#39;s a match expression that doesn&#39;t match.</p>
-            <pre><code class="nohighlight"><span class="number-literal">2</span><span> </span><span class="keyword">match</span><span> {
+            <p>@:@</p>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The first example evaluates to <code>2</code>, as the pattern <code>&quot;abcd&quot;</code> is the only match for the literal <code>&quot;abcd&quot;</code> amongst the patterns.</p>
+                <p>The second example evaluates to <code>&quot;one&quot;</code>, because the first matching case is the one that is evaluated.</p>
+                <p>The third example evaluates to <code>2</code>, because <code>case n</code> defines a wildcard pattern that matches anything.</p>
+                <p>The final example evaluates to <code>1</code> because the first matching case is evaluated.</p>
+              </div>
+            </div>
+            <div class="exercise">
+              
+              <h4 id="exercise-no-match">Exercise: No Match</h4>
+              <p>What happens if no pattern matches in a <code>match</code> expression?
+              Take a guess, then write a <code>match</code> expression that fails to match and see if you managed to guess correctly.
+              (At this point we have no reason to expect any particular behavior so any reasonable guess will do.)</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Here are three reasonable possibilities I can think of; perhaps you came up with something else?</p>
+                <ul>
+                  <li>The expression could evaluate to some default, like <code>Image.empty</code> (but how should Scala pick the right default?)</li>
+                </ul>
+                <ul>
+                  <li>The Scala compiler should just not let you write code like that.</li>
+                </ul>
+                <ul>
+                  <li>The <code>match</code> expression will fail at runtime.</li>
+                </ul>
+                <p>Here&#39;s a match expression that doesn&#39;t match.</p>
+                <pre><code class="nohighlight"><span class="number-literal">2</span><span> </span><span class="keyword">match</span><span> {
   </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="string-literal">&quot;zero&quot;</span><span>
   </span><span class="keyword">case</span><span> </span><span class="number-literal">1</span><span> =&gt; </span><span class="string-literal">&quot;one&quot;</span><span>
 }
 </span><span class="comment">// scala.MatchError: 2 (of class java.lang.Integer)
 // 	at repl.MdocSession$MdocApp.$init$$$anonfun$1(match.md:34)</span></code></pre>
-            <p>The correct answer is one of the last two possibilities, failing to compile or failing at runtime.
-            In this example we have an error at runtime.
-            The exact answer depends on how Scala is configured (we can tell the compiler to refuse to compile matches that it can show are not exhaustive, but this is not the default behavior).
-            &lt;/div&gt;</p>
+                <p>The correct answer is one of the last two possibilities, failing to compile or failing at runtime.
+                In this example we have an error at runtime.
+                The exact answer depends on how Scala is configured (we can tell the compiler to refuse to compile matches that it can show are not exhaustive, but this is not the default behavior).</p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="natural-numbers.html">←The Natural Numbers</a> <a class="pageNavigation" href="substitution.html">Reasoning about Recursion→</a>
             </div>

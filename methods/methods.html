@@ -166,15 +166,16 @@
     <div id="content">
         <main class="content">
             <h1 id="methods" class="title">Methods</h1>
-            <p>In a previous chapter we created the image shown in Figure methods:sequential-boxes using the program</p>
-            <p><img src="./src/pages/programs/sequential-boxes.pdf+svg" alt="Five boxes filled with Royal Blue" title="Figure Some(#fig:methods:sequential-boxes): caption"></p>
+            <p>In a previous chapter we used this program</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">box</span><span> =
   </span><span class="type-name">Image</span><span>.</span><span class="identifier">rectangle</span><span>(</span><span class="number-literal">40</span><span>, </span><span class="number-literal">40</span><span>).
     </span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">5.0</span><span>).
     </span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)).
     </span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">royalBlue</span><span>)
 
-</span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span></code></pre>
+</span><span class="identifier">box</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>)</span></code></pre>
+            <p>to create this image</p>
+            <p><img src="sequential-boxes.svg" alt="Five boxes filled with Royal Blue" title="Figure Some(#fig:methods:sequential-boxes): caption"></p>
             <p>Imagine we wanted to change the color of the boxes.
             Right now we would have to write out the expression again for each different choice of color.</p>
             <pre><code class="nohighlight"><span class="keyword">val</span><span> </span><span class="identifier">paleGoldenrod</span><span> = {
@@ -184,7 +185,7 @@
       </span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGoldenrod</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)).
       </span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">paleGoldenrod</span><span>)
 
-  </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span>
+  </span><span class="identifier">box</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>)
 }
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">lightSteelBlue</span><span> = {
@@ -194,7 +195,7 @@
       </span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">lightSteelBlue</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)).
       </span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">lightSteelBlue</span><span>)
 
-  </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span>
+  </span><span class="identifier">box</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>)
 }
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">mistyRose</span><span> = {
@@ -204,7 +205,7 @@
       </span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">mistyRose</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)).
       </span><span class="identifier">fillColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">mistyRose</span><span>)
 
-  </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span>
+  </span><span class="identifier">box</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>)
 }</span></code></pre>
             <p>This is tedious.
             Each expression only differs in a minor way.
@@ -217,7 +218,7 @@
       </span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)).
       </span><span class="identifier">fillColor</span><span>(</span><span class="identifier">color</span><span>)
 
-  </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span>
+  </span><span class="identifier">box</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>)
 }
 
 </span><span class="comment">// Create boxes with different colors

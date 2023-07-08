@@ -202,17 +202,20 @@
   </span><span class="number-literal">4</span><span>
 }</span></code></pre>
             <p>Once again we see that substitution is involved but no single step was particularly difficult.</p>
-            
-            <h3 id="exercise" class="section">Exercise {-}</h3>
-            <p>Last time we looked at substitution we spent a lot of time investigating order of evaluation.
-            In the description above we have decided that a method&#39;s arguments are evaluated before the body is evaluated.
-            This is not the only possibility.
-            We could, for example, evaluate the method&#39;s arguments only at the point they are needed.
-            This could save us some time if a method doesn&#39;t use one of its parameters.
-            By using our old friend <code>println</code>, determine when method parameters are evaluated in Scala.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            The following program demonstrates that parameters are evaluated before the method body.</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">example</span><span>(</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">b</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> = {
+            <div class="exercise">
+              
+              <h4 id="exercise-method-order-of-evaluation">Exercise: Method Order of Evaluation</h4>
+              <p>Last time we looked at substitution we spent a lot of time investigating order of evaluation.
+              In the description above we have decided that a method&#39;s arguments are evaluated before the body is evaluated.
+              This is not the only possibility.
+              We could, for example, evaluate the method&#39;s arguments only at the point they are needed.
+              This could save us some time if a method doesn&#39;t use one of its parameters.
+              By using our old friend <code>println</code>, determine when method parameters are evaluated in Scala.</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The following program demonstrates that parameters are evaluated before the method body.</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">example</span><span>(</span><span class="identifier">a</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">b</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> = {
   </span><span class="identifier">println</span><span>(</span><span class="string-literal">&quot;In the method body!&quot;</span><span>)
   </span><span class="identifier">a</span><span> + </span><span class="identifier">b</span><span>
 }
@@ -222,8 +225,9 @@
 // b
 // In the method body!
 // res6: Int = 3</span></code></pre>
-            <p>The alternative we described above is used by some languages, most notably Haskell, and is known as lazy or non-strict evaluation.
-            &lt;/div&gt;</p>
+                <p>The alternative we described above is used by some languages, most notably Haskell, and is known as lazy or non-strict evaluation.</p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="syntax.html">←Method Syntax</a> <a class="pageNavigation" href="writing-methods.html">Writing Methods→</a>
             </div>

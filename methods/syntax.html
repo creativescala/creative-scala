@@ -174,14 +174,14 @@
       </span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">30</span><span>.</span><span class="identifier">degrees</span><span>)).
       </span><span class="identifier">fillColor</span><span>(</span><span class="identifier">color</span><span>)
 
-  </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span> </span><span class="identifier">beside</span><span> </span><span class="identifier">box</span><span>
+  </span><span class="identifier">box</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>).</span><span class="identifier">beside</span><span>(</span><span class="identifier">box</span><span>)
 }</span></code></pre>
             <p>Let&#39;s use this as a model for understanding the syntax of declaring a method.
             The first part is the <em>keyword</em> <code>def</code>.
-            A keyword is a special word that indicates something important to the Scala compiler---in this case that we&#39;re going to declare a method.
+            A keyword is a special word that indicates something important to the Scala compiler;
+            in this case that we&#39;re going to declare a method.
             We&#39;re already seen the <code>object</code> and <code>val</code> keywords.</p>
-            <p>The <code>def</code> is immediately followed by the name of the method, in this case <code>boxes</code>, in the same way that <code>val</code> and <code>object</code> are immediately followed by the name they declare.
-            Like a <code>val</code> declaration, a method declaration is not a top-level declaration and must be wrapped in an <code>object</code> declaration (or other top-level declaration) when written in a file.</p>
+            <p>The <code>def</code> is immediately followed by the name of the method, in this case <code>boxes</code>, in the same way that <code>val</code> and <code>object</code> are immediately followed by the name they declare.</p>
             <p>Next we have the method parameters, defined in brackets (<code>()</code>).
             The method parameters are the parts that the caller can &quot;plug-in&quot; to the expression that the method evaluates.
             When declaring method parameters we must give them both a name and a type.
@@ -191,56 +191,62 @@
             Type inference, however, cannot infer the type of method parameters so we must provide them.</p>
             <p>After the method parameters comes the result type.
             The result type is the type of the value the method evaluates to when it is called.
-            Unlike parameter types Scala can infer the result type, but it is good practice to include it and we will do so throughout Creative Scala.</p>
+            Unlike parameter types Scala can infer the result type, but it is good practice to include it and we will do so throughout the book.</p>
             <p>Finally, the body expression of the method calculates the result of calling the method.
             A body can be a block expression, as in <code>boxes</code> above, or just a single expression.</p>
-            <p>&lt;div class=&quot;callout callout-info&quot;&gt;</p>
-            
-            <h4 id="method-declaration-syntax">Method Declaration Syntax {-}</h4>
-            <p>The syntax for a method declaration is</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">methodName</span><span>(</span><span class="identifier">param1</span><span>: </span><span class="type-name">Param1Type</span><span>, ...): </span><span class="type-name">ResultType</span><span> =
+            <div class="callout info">
+              
+              <h4 id="method-declaration-syntax">Method Declaration Syntax</h4>
+              <p>The syntax for a method declaration is</p>
+              <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">methodName</span><span>(</span><span class="identifier">param1</span><span>: </span><span class="type-name">Param1Type</span><span>, ...): </span><span class="type-name">ResultType</span><span> =
   </span><span class="identifier">bodyExpression</span></code></pre>
-            <p>where</p>
-            <ul>
-              <li><code>methodName</code> is the name of the method;</li>
-              <li>the optional <code>param1 : Param1Type, ...</code> are one or more pairs of parameter name and parameter type;</li>
-              <li>the optional <code>ResultType</code> is the type of the result of calling the method; and</li>
-              <li><code>bodyExpression</code> is the expression that is evaluated to yield the result of calling the method.
-              &lt;/div&gt;</li>
-            </ul>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
+              <p>where</p>
+              <ul>
+                <li><code>methodName</code> is the name of the method;</li>
+                <li>the optional <code>param1 : Param1Type, ...</code> are one or more pairs of parameter name and parameter type;</li>
+                <li>the optional <code>ResultType</code> is the type of the result of calling the method; and</li>
+                <li><code>bodyExpression</code> is the expression that is evaluated to yield the result of calling the method.</li>
+              </ul>
+            </div>
             <p>Let&#39;s practice declaring methods by writing some simple examples.</p>
-            
-            <h4 id="square" class="section">Square {-}</h4>
-            <p>Write a method <code>square</code> that accepts an <code>Int</code> argument and returns the <code>Int</code> square of it&#39;s argument. (Squaring a number is multiplying it by itself.)</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            The solution is</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+            <div class="exercise">
+              
+              <h4 id="exercise-square">Exercise: Square</h4>
+              <p>Write a method <code>square</code> that accepts an <code>Int</code> argument and returns the <code>Int</code> square of it&#39;s argument. (Squaring a number is multiplying it by itself.)</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>The solution is</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span></code></pre>
-            <p>We can arrive at the solution by the following steps.</p>
-            <p>We&#39;re given the name (<code>square</code>), the type of the parameter (<code>Int</code>), and the type of the result (<code>Int</code>).
-            From this we can write the method skeleton</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+                <p>We can arrive at the solution by the following steps.</p>
+                <p>We&#39;re given the name (<code>square</code>), the type of the parameter (<code>Int</code>), and the type of the result (<code>Int</code>).
+                From this we can write the method skeleton</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">square</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   ???</span></code></pre>
-            <p>where we have chosen <code>x</code> as the name of the parameter.
-            This is a fairly arbitrary choice.
-            Where there is no meaningful name you often see one-letter names such as <code>x</code>, <code>v</code>, or <code>i</code> used.</p>
-            <p>By the way this is valid code.
-            Enter it into the console and see!
-            What happens if you call <code>square</code> when it&#39;s defined like so?</p>
-            <p>Now we need to complete the body.
-            We&#39;ve been told that squaring is multiplying a number by itself, so <code>x * x</code> is what we replace the <code>???</code> with.
-            We don&#39;t need to wrap this in braces as there is only a single expression in the body.
-            &lt;/div&gt;</p>
-            
-            <h4 id="halve" class="section">Halve {-}</h4>
-            <p>Write a method <code>halve</code> that accepts a <code>Double</code> argument and returns the <code>Double</code> that is half of it&#39;s argument.</p>
-            <p>&lt;div class=&quot;solution&quot;&gt;</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">halve</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Double</span><span> =
+                <p>where we have chosen <code>x</code> as the name of the parameter.
+                This is a fairly arbitrary choice.
+                Where there is no meaningful name you often see one-letter names such as <code>x</code>, <code>v</code>, or <code>i</code> used.</p>
+                <p>By the way this is valid code.
+                Try it and see!
+                What happens if you call <code>square</code> when it&#39;s defined like so?</p>
+                <p>Now we need to complete the body.
+                We&#39;ve been told that squaring is multiplying a number by itself, so <code>x * x</code> is what we replace the <code>???</code> with.
+                We don&#39;t need to wrap this in braces as there is only a single expression in the body.</p>
+              </div>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>Write a method <code>halve</code> that accepts a <code>Double</code> argument and returns the <code>Double</code> that is half of it&#39;s argument.</p>
+              </div>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">halve</span><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Double</span><span>): </span><span class="type-name">Double</span><span> =
  </span><span class="identifier">x</span><span> / </span><span class="number-literal">2.0</span></code></pre>
-            <p>We can follow the same process as for <code>square</code> above to arrive at the solution.
-            &lt;/div&gt;</p>
+                <p>We can follow the same process as for <code>square</code> above to arrive at the solution.</p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="methods.html">←Methods</a> <a class="pageNavigation" href="semantics.html">Method Semantics→</a>
             </div>

@@ -247,7 +247,7 @@
             This is great!
             However the substitutions are quite complex and difficult to keep track of without writing them down.</p>
             
-            <h3 id="reasoning-about-structural-recursion" class="section">Reasoning About Structural Recursion</h3>
+            <h2 id="reasoning-about-structural-recursion" class="section">Reasoning About Structural Recursion</h2>
             <p>There is a more practical way to reason about structural recursion. Structural recursion guarantees the overall recursion is correct if we get the individual components correct. There are two parts to the structural recursion; the base case and the recursive case. The base case we can check just by looking at it. The recursive case has the recursive call (the method calling itself) but <em>we don&#39;t have to consider this</em>. It is given to us by structural recursion so it will be correct so long as the other parts are correct. We can simply assume the recursive call it correct and then check that we are doing the right thing with the result of this call.</p>
             <p>Let&#39;s apply this to reasoning about <code>boxes</code>.</p>
             <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">boxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
@@ -261,11 +261,12 @@
             The answer is yes: if the recursion <code>boxes(n-1)</code> creates <code>n-1</code> boxes in a line, sticking a box in front of them is the right thing to do.
             Since the individual cases are correct the whole thing is guaranted correct by structural recursion.</p>
             <p>This way of reasoning is much more compact than using substitution <em>and</em> guaranteed to work <em>if</em> we&#39;re using structural recursion.</p>
-            
-            <h3 id="exercises" class="section">Exercises {-}</h3>
-            <p>Below are some rather silly examples of structural recursion.
-            Work out if the methods do what they claim to do <em>without</em> running them.</p>
-            <pre><code class="nohighlight"><span class="comment">// Given a natural number, returns that number
+            <div class="exercise">
+              
+              <h4 id="exercise-reasonable-recursion">Exercise: Reasonable Recursion</h4>
+              <p>Below are some rather silly examples of structural recursion.
+              Work out if the methods do what they claim to do <em>without</em> running them.</p>
+              <pre><code class="nohighlight"><span class="comment">// Given a natural number, returns that number
 // Examples:
 //   identity(0) == 0
 //   identity(3) == 3
@@ -274,12 +275,15 @@
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">1</span><span> + </span><span class="identifier">identity</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
   }</span></code></pre>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            It sure does!
-            The base case is straightforward.
-            Looking at the recursive case, we assume that <code>identity(n-1)</code> returns the identity for <code>n-1</code> (which is exactly <code>n-1</code>).
-            The identity for <code>n</code> is then <code>1 + identity(n-1)</code>.
-            &lt;/div&gt;</p>
+            </div>
+            <div class="solution">
+              <div class="solution-body">
+                <p>It sure does!
+                The base case is straightforward.
+                Looking at the recursive case, we assume that <code>identity(n-1)</code> returns the identity for <code>n-1</code> (which is exactly <code>n-1</code>).
+                The identity for <code>n</code> is then <code>1 + identity(n-1)</code>.</p>
+              </div>
+            </div>
             <pre><code class="nohighlight"><span class="comment">// Given a natural number, double that number
 // Examples:
 //   double(0) == 0
@@ -289,28 +293,30 @@
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">2</span><span> * </span><span class="identifier">double</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
   }</span></code></pre>
-            <p>&lt;div class=&quot;solution&quot;&gt;
-            No way!
-            This method is broken in two different ways.
-            Firstly, because we&#39;re multiplying in the recursive case we will eventualy end up multiplying by base case of zero, and therefore the entire result will be zero.</p>
-            <p>We might try and fix this by adding a case for <code>1</code> (and perhaps wonder why the structural recursion skeleton let us down).</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+            <div class="solution">
+              <div class="solution-body">
+                <p>No way!
+                This method is broken in two different ways.
+                Firstly, because we&#39;re multiplying in the recursive case we will eventualy end up multiplying by base case of zero, and therefore the entire result will be zero.</p>
+                <p>We might try and fix this by adding a case for <code>1</code> (and perhaps wonder why the structural recursion skeleton let us down).</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
     </span><span class="keyword">case</span><span> </span><span class="number-literal">1</span><span> =&gt; </span><span class="number-literal">1</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">2</span><span> * </span><span class="identifier">double</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
   }</span></code></pre>
-            <p>This doesn&#39;t give us the correct result, however! We&#39;re doing the wrong thing at the recursive case: we should be adding, not multiplying.</p>
-            <p>A bit of algebra:</p>
-            <pre><code class="nohighlight"><span class="number-literal">2</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span> + </span><span class="number-literal">1</span><span>) == </span><span class="number-literal">2</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>) + </span><span class="number-literal">2</span></code></pre>
-            <p>So if <code>double(n-1)</code> is <code>2(n-1)</code> then we should <em>add</em> 2, not multiply by 2.
-            The correct method is</p>
-            <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
+                <p>This doesn&#39;t give us the correct result, however! We&#39;re doing the wrong thing at the recursive case: we should be adding, not multiplying.</p>
+                <p>A bit of algebra:</p>
+                <pre><code class="nohighlight"><span class="number-literal">2</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span> + </span><span class="number-literal">1</span><span>) == </span><span class="number-literal">2</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>) + </span><span class="number-literal">2</span></code></pre>
+                <p>So if <code>double(n-1)</code> is <code>2(n-1)</code> then we should <em>add</em> 2, not multiply by 2.
+                The correct method is</p>
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">double</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Int</span><span> =
   </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="number-literal">0</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt; </span><span class="number-literal">2</span><span> + </span><span class="identifier">double</span><span>(</span><span class="identifier">n</span><span>-</span><span class="number-literal">1</span><span>)
   }</span></code></pre>
-            <p>&lt;/div&gt;</p>
+              </div>
+            </div>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="match.html">←Match Expressions</a> <a class="pageNavigation" href="conclusions.html">Conclusions→</a>
             </div>
