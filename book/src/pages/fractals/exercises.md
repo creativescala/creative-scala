@@ -1,11 +1,11 @@
-## Exercises
+# Exercises
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
 We now have a number of new tools in our toolbox. It's time to get some practice putting them all together.
@@ -33,7 +33,7 @@ def chessboard(count: Int, color: Color): Image =
   }
 ```
 
-@:figure{ img = "./src/pages/fractals/chessboard-2.pdf+svg", key = "#fig:fractals:chessboard-2", caption = "Chessboard with colors evolving at each recursive step.  " }
+@:figure{ img = "chessboard-2.svg", key = "#fig:fractals:chessboard-2", caption = "Chessboard with colors evolving at each recursive step.  " }
 
 
 Your mission is to take the ideas we've seen in this chapter, perhaps using the chessboard example for inspiration, and create your own artwork. No other guidelines this time; it's up to you and your imagination.

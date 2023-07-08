@@ -1,11 +1,11 @@
-## Nested Methods
+# Nested Methods
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 
 A method is a declaration.
@@ -75,11 +75,11 @@ The point of this enormous expansion is to demonstrate that we're recreating `un
 We can prove this is true by printing something every time `unit` is created.
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 ```scala mdoc
 def cross(count: Int): Image = {
@@ -101,10 +101,10 @@ This doesn't matter greatly for `unit` because it's very small, but we could be 
 We could solve this by shifting `unit` outside of `cross`.
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
 ```
 ```scala mdoc
 val unit = {
@@ -126,11 +126,11 @@ This is undesirable because `unit` now has a larger scope than needed.
 A better solution it to use a nested or internal method.
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 ```scala mdoc
 def cross(count: Int): Image = {
@@ -159,16 +159,13 @@ I usually name this sort of internal method `loop` or `iter` (short for iterate)
 This technique is just a small variation of what we've done already, but let's do a few exercises to make sure we've got the pattern.
 
 
-### Exercises {-}
-
-#### Chessboard {-}
-
+@:exercise(Chessboard)
 Rewrite `chessboard` using a nested method so that `blackSquare`, `redSquare`, and `base` are only created once when `chessboard` is called.
 
 ```scala mdoc
 def chessboard(count: Int): Image = {
-  val blackSquare = Image.square(30) fillColor Color.black
-  val redSquare   = Image.square(30) fillColor Color.red
+  val blackSquare = Image.square(30).fillColor(Color.black)
+  val redSquare   = Image.square(30).fillColor(Color.red)
 
   val base =
     (redSquare   beside blackSquare) above (blackSquare beside redSquare)
@@ -180,17 +177,17 @@ def chessboard(count: Int): Image = {
   }
 }
 ```
+@:@
 
-<div class="solution">
-
-Here's how we did it. It has exactly the same pattern we used with `boxes`.
+@:solution
+Here's how I did it. It has exactly the same pattern we used with `boxes`.
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 ```scala mdoc
 def chessboard(count: Int): Image = {
@@ -209,9 +206,9 @@ def chessboard(count: Int): Image = {
   loop(count)
 }
 ```
-</div>
+@:@
 
-#### Boxing Clever {-}
+@:exercise(Boxing Clever)
 
 Rewrite `boxes`, shown below, so that `aBox` is only in scope within `boxes` and only created once when `boxes` is called.
 
@@ -224,24 +221,24 @@ def boxes(count: Int): Image =
     case n => aBox.beside(boxes(n-1))
   }
 ```
+@:@
 
-<div class="solution">
-
+@:solution
 We can do this in two stages, first moving `aBox` within `boxes`.
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 ```scala mdoc:silent
 def boxes(count: Int): Image = {
   val aBox = Image.square(20).fillColor(Color.royalBlue)
   count match {
     case 0 => Image.empty
-    case n => aBox beside boxes(n-1)
+    case n => aBox.beside(boxes(n-1))
   }
 }
 ```
@@ -249,11 +246,11 @@ def boxes(count: Int): Image = {
 Then we can use an internal method to avoid recreating `aBox` on every recursion.
 
 ```scala mdoc:reset:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 ```
 ```scala mdoc:silent
 def boxes(count: Int): Image = {
@@ -261,10 +258,10 @@ def boxes(count: Int): Image = {
   def loop(count: Int): Image =
     count match {
       case 0 => Image.empty
-      case n => aBox beside loop(n-1)
+      case n => aBox.beside(loop(n-1))
     }
 
   loop(count)
 }
 ```
-</div>
+@:@

@@ -1,11 +1,11 @@
-## Auxiliary Parameters
+# Auxiliary Parameters
 
 ```scala mdoc:invisible
-import doodle.core._
-import doodle.image._
-import doodle.syntax.all._
-import doodle.image.syntax.all._
-import doodle.java2d._
+import doodle.core.*
+import doodle.image.*
+import doodle.syntax.all.*
+import doodle.image.syntax.all.*
+import doodle.java2d.*
 val aBox = Image.square(20).fillColor(Color.royalBlue)
 ```
 
@@ -13,9 +13,9 @@ We've seen how to use structural recursion over the natural numbers to write a n
 In this section we're going to learn how *auxillary parameters* allow us to write more complex programs.
 An auxiliary parameter is just an additional parameter to our method that allows us to pass extra information down the recursive call.
 
-For example, imagine creating the picture in @:fref(recursion:growing-boxes), which shows a line of boxes that grow in size as we move along the line.
+For example, imagine creating the picture below which shows a line of boxes that grow in size as we move along the line.
 
-@:figure{ img = "./src/pages/recursion/growing-boxes.pdf+svg", key = "#fig:recursion:growing-boxes", caption = "Boxes that grow in size with each recursion." }
+@:figure{ img = "growing-boxes.svg", key = "#fig:recursion:growing-boxes", caption = "Boxes that grow in size with each recursion." }
 
 How can we create this image?
 
@@ -74,17 +74,18 @@ The auxiliary parameter method has two advantages: we only have to think about w
 
 Now we've seen the auxiliary parameter method let's practice using it.
 
-#### Gradient Boxes {-}
+@:exercise(Gradient Boxes)
 
-In this exercise we're going to draw a picture like that in @:fref(recursion:gradient-boxes).
+In this exercise we're going to draw a picture like that shown below
 We already know how to draw a line of boxes.
 The challenge in this exercise is to make the color change at each step.
 
 Hint: you can `spin` the fill color at each recursion.
 
-@:figure{ img = "./src/pages/recursion/gradient-boxes.pdf+svg", key = "#fig:recursion:gradient-boxes", caption = "Five boxes filled with changing colors starting from Royal Blue" }
+@:figure{ img = "gradient-boxes.svg", key = "#fig:recursion:gradient-boxes", caption = "Five boxes filled with changing colors starting from Royal Blue" }
+@:@
 
-<div class="solution">
+@:solution
 There are two ways to implement a solution.
 The auxiliary parameter method is to add an extra parameter to `gradientBoxes` and pass the `Color` through the structural recursion.
 
@@ -111,15 +112,17 @@ def gradientBoxes(n: Int): Image =
         .beside(gradientBoxes(n - 1))
   }
 ```
-</div>
+@:@
 
-#### Concentric Circles {-}
 
-Now let's try a variation on the theme, drawing concentric circles as shown in @:fref(recursion:concentric-circles). Here we are changing the size rather than the color of the image at each step. Otherwise the pattern stays the same. Have a go at implementing it.
+@:exercise(Concentric Circles)
 
-@:figure{ img = "./src/pages/recursion/concentric-circles.pdf+svg", key = "#fig:recursion:concentric-circles", caption = "Concentric circles, colored Royal Blue" }
+Now let's try a variation on the theme, drawing concentric circles as in the picture below. Here we are changing the size rather than the color of the image at each step. Otherwise the pattern stays the same. Have a go at implementing it.
 
-<div class="solution">
+@:figure{ img = "concentric-circles.svg", key = "#fig:recursion:concentric-circles", caption = "Concentric circles, colored Royal Blue" }
+@:@
+
+@:solution
 This is almost identical to `growingBoxes`.
 
 ```scala mdoc:silent
@@ -132,16 +135,17 @@ def concentricCircles(count: Int, size: Int): Image =
         .on(concentricCircles(n-1, size + 5))
   }
 ```
-</div>
+@:@
 
-#### Once More, With Feeling {-}
+@:exercise(Once More, With Feeling)
 
-Now let's combine both techniques to change size and color on each step, giving results like those shown in @:fref(recursion:colorful-circles).
+Now let's combine both techniques to change size and color on each step, giving results like those shown below.
 Experiment until you find something you like.
 
-@:figure{ img = "./src/pages/recursion/colorful-circles.pdf+svg", key = "#fig:recursion:colorful-circles", caption = "Concentric circles with interesting color variations" }
+@:figure{ img = "colorful-circles.svg", key = "#fig:recursion:colorful-circles", caption = "Concentric circles with interesting color variations" }
+@:@
 
-<div class="solution">
+@:solution
 Here's our solution, where we've tried to break the problem into reusable parts and reduce the amount of repeated code.
 We still have a lot of repetition as we don't yet have the tools to get rid of more.
 We'll come to that soon.
@@ -170,4 +174,4 @@ def image: Image =
   fadeCircles(20, 50, Color.red)
     .beside(gradientCircles(20, 50, Color.royalBlue))
 ```
-</div>
+@:@
