@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="Laika 0.19.0" />
-    <title>Conclusions</title>
+    <title>Working Without Worksheets</title>
     
     
     <meta name="description" content="book" />
@@ -24,9 +24,9 @@
 </head>
 
 <body>
-    <nav id="topbar"><p><a href="exercises.html">←</a></p>
+    <nav id="topbar"><p><a href="names.html">←</a></p>
 <p><a href="../../">Creative Scala: Form and Function</a></p>
-<p><a href="../polygons/">→</a></p></nav>
+<p><a href="abstraction.html">→</a></p></nav>
     <nav id="sidebar">
         <ul class="nav-list">
           <li class="level1 nav-leaf"><a href="../">Creative Scala: Form and Function</a></li>
@@ -57,13 +57,13 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/04-creating-color.html">Creating Colors</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/05-exercises.html">Exercises</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/06-conclusions.html">Conclusions</a></li>
-          <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/outside-worksheet.html">Working Without Worksheets</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/conclusions.html">Conclusions</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/sbt.html">Using The Build System</a></li>
+          <li class="level1 nav-node"><a href="index.html">Writing Larger Programs</a></li>
+          <li class="level2 nav-leaf"><a href="names.html">Names</a></li>
+          <li class="level2 active nav-leaf"><a href="#">Working Without Worksheets</a></li>
+          <li class="level2 nav-leaf"><a href="abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="sbt.html">Using The Build System</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
@@ -81,12 +81,12 @@
           <li class="level2 nav-leaf"><a href="../recursion/match.html">Match Expressions</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/substitution.html">Reasoning about Recursion</a></li>
           <li class="level2 nav-leaf"><a href="../recursion/conclusions.html">Conclusions</a></li>
-          <li class="level1 nav-node"><a href="index.html">Fractals</a></li>
-          <li class="level2 nav-leaf"><a href="fractals.html">Fun with Fractals</a></li>
-          <li class="level2 nav-leaf"><a href="nested-methods.html">Nested Methods</a></li>
-          <li class="level2 nav-leaf"><a href="auxillary-parameter.html">Auxiliary Parameters</a></li>
-          <li class="level2 nav-leaf"><a href="exercises.html">Exercises</a></li>
-          <li class="level2 active nav-leaf"><a href="#">Conclusions</a></li>
+          <li class="level1 nav-node"><a href="../fractals/">Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/fractals.html">Fun with Fractals</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/nested-methods.html">Nested Methods</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/auxillary-parameter.html">Auxiliary Parameters</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/exercises.html">Exercises</a></li>
+          <li class="level2 nav-leaf"><a href="../fractals/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../polygons/">Points, Paths, and Polygons</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/02-polar.html">Polar Coordinates</a></li>
           <li class="level2 nav-leaf"><a href="../polygons/03-path.html">Paths</a></li>
@@ -167,12 +167,115 @@
 
     <div id="content">
         <main class="content">
-            <h1 id="conclusions" class="title">Conclusions</h1>
-            <p>In this chapter we&#39;ve learned how to create fractals, deepening our understanding of structural recursion.
-            We&#39;ve also seen how we can extend the basic structural recursion strategy with nested methods and auxillary parameters. 
-            This extends the expressiveness of structural recursion over the natural numbers, and gives us new creative possibilities in our coding.</p>
+            <h1 id="working-without-worksheets" class="title">Working Without Worksheets</h1>
+            <p>Worksheets are convenient for short programs and quick experiments.
+            Long worksheets, however, are difficult to read and don&#39;t lend themselves to comprehensible code organization.
+            For larger programs we will need to learn how to work outside of a worksheet.</p>
+            <p>The first thing we need to know is where we put code that is outside of a worksheet.
+            We need to save files in the directory <code>src/main/scala</code> so that Scala compiler (actually, the build system, but we haven&#39;t talked about that yet) can find them.
+            If you are using the Creative Scala template you already have this directory and there is an example file within it.</p>
+            <p>Let&#39;s create another file to practice the process.
+            We will create a file called <code>Circles.scala</code>,
+            containing an object called <code>Circles</code>.
+            If you&#39;re using Visual Studio Code, follow this process:</p>
+            <ol class="arabic">
+              <li>Right-click on the directory <code>src/main/scala</code></li>
+              <li>Select &quot;New Scala File&quot;</li>
+              <li>Choose &quot;Object&quot; as the type of file</li>
+              <li>Name the object <code>Circles</code></li>
+            </ol>
+            <p>You should have a file that looks like</p>
+            <pre><code class="nohighlight"><span class="keyword">object</span><span> </span><span class="type-name">Circles</span><span> {
+}</span></code></pre>
+            <p>Now try the following:
+            define and draw a circle.</p>
+            <pre><code class="nohighlight"><span class="keyword">object</span><span> </span><span class="type-name">Circles</span><span> {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+  </span><span class="identifier">circle</span><span>.</span><span class="identifier">draw</span><span>()
+}</span></code></pre>
+            <p>You should see a problem, that says something like <code>Not Found: Image</code>.
+            If you are using Visual Studio Code you should see a red underline on some code.
+            This is saying that the compiler doesn&#39;t know what the name <code>Image</code> refers to.
+            This is caused by the missing imports.
+            Let&#39;s add them in.
+            Your file should look like the following.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="identifier">unsafe</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">global</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.*
+
+</span><span class="keyword">object</span><span> </span><span class="type-name">Circles</span><span> {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+  </span><span class="identifier">circle</span><span>.</span><span class="identifier">draw</span><span>()
+}</span></code></pre>
+            <p>There shouldn&#39;t be any errors now,
+            but how do we run our code?</p>
+            <p>Unlike a worksheet, any code we write is not automatically run.
+            We need to add a <em>main method</em> to make our code runnable.
+            A main method is a method that is evaluates when the program starts running.
+            We have used lots of methods already, but haven&#39;t defined our own.
+            In a later chapter we&#39;ll learn all about how to define our own methods.
+            For now, just copy the example below.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="identifier">unsafe</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">global</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.*
+
+</span><span class="keyword">object</span><span> </span><span class="type-name">Circles</span><span> {
+  </span><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+  
+  </span><span class="annotation">@main</span><span> </span><span class="keyword">def</span><span> </span><span class="declaration-name">go</span><span>() = {
+    </span><span class="identifier">circle</span><span>.</span><span class="identifier">draw</span><span>()
+  }
+}</span></code></pre>
+            <p>In Visual Studio Code you should now see a little link you can click to run the code,
+            and a circle should appear as normal.</p>
+            <p>You may wonder why we put the code within an <code>object</code>.
+            We didn&#39;t have to do this in a worksheet.
+            Try the below.</p>
+            <pre><code class="nohighlight"><span class="keyword">import</span><span> </span><span class="identifier">cats</span><span>.</span><span class="identifier">effect</span><span>.</span><span class="identifier">unsafe</span><span>.</span><span class="identifier">implicits</span><span>.</span><span class="identifier">global</span><span>
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">core</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">image</span><span>.</span><span class="identifier">syntax</span><span>.</span><span class="identifier">all</span><span>.*
+</span><span class="keyword">import</span><span> </span><span class="identifier">doodle</span><span>.</span><span class="identifier">java2d</span><span>.*
+
+</span><span class="keyword">val</span><span> </span><span class="identifier">circle</span><span> = </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span>)
+
+</span><span class="annotation">@main</span><span> </span><span class="keyword">def</span><span> </span><span class="declaration-name">go</span><span>() = {
+  </span><span class="identifier">circle</span><span>.</span><span class="identifier">draw</span><span>()
+}</span></code></pre>
+            <p>This also works.
+            So why do we bother wrapping the code in an object?
+            There are two good reasons.
+            One is controlling the scope of declarations.
+            As programs grow in size the chance increases that we&#39;ll use the same name for more than one declaration.
+            If these declarations are in the same scope we&#39;ll have problems.
+            We&#39;ve seen that <code>object</code> creates a new scope,
+            so putting our declarations within an object means the names don&#39;t collide with other declarations in other parts of our program.
+            The other reason is a restriction on the code we can write at the <em>top-level</em>.
+            Let&#39;s learn about the top-level now.</p>
+            
+            <h3 id="the-top-level" class="section">The Top-Level</h3>
+            <p>Scala distinguishes between what is called the top-level and other code.
+            Code at the top-level is code that doesn&#39;t have any other code wrapped around.
+            So the code we&#39;ve just seen declares <code>circle</code> and <code>go</code> at the top-level.</p>
+            <p>In Scala, only declarations can be written at the top-level.
+            We cannot write a top-level expression.
+            Try putting, say, <code>1 + 1</code> on a separate line in the file.
+            You should see an error.</p>
+            <div class="callout info">
+              
+              <h4 id="the-top-level-in-scala-2-and-scala-3">The Top-level in Scala 2 and Scala 3</h4>
+              <p>In Scala 3 you can write any declaration at the top-level.</p>
+              <p>In Scala 2 you cannot have <code>val</code> or <code>def</code> at the top-level, only object literals, classes, and traits (the later two of which we haven&#39;t yet seen.)</p>
+            </div>
             <div class="flex flex-row justify-between">
-                <a class="pageNavigation" href="exercises.html">←Exercises</a> <a class="pageNavigation" href="../polygons/">Points, Paths, and Polygons→</a>
+                <a class="pageNavigation" href="names.html">←Names</a> <a class="pageNavigation" href="abstraction.html">Abstraction→</a>
             </div>
         </main>
         <footer>Creative Scala is copyright Noel Welsh</footer>

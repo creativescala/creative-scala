@@ -759,10 +759,15 @@ pre {
   background-color: rgb(191 219 254 / var(--tw-bg-opacity));
 }
 
+.content div.warn {
+  --tw-bg-opacity: 1;
+  background-color: rgb(253 230 138 / var(--tw-bg-opacity));
+}
+
 details summary {
   cursor: pointer;
   --tw-text-opacity: 1;
-  color: rgb(157 23 77 / var(--tw-text-opacity));
+  color: rgb(133 77 14 / var(--tw-text-opacity));
 }
 
 details summary > * {

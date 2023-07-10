@@ -58,11 +58,12 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/05-exercises.html">Exercises</a></li>
           <li class="level2 nav-leaf"><a href="../expressive-expressions/06-conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/console.html">Working Within the Console</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/outside-console.html">Working Without Worksheets</a></li>
           <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-worksheet.html">Working Without Worksheets</a></li>
           <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
           <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/conclusions.html">Conclusions</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/sbt.html">Using The Build System</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
@@ -360,15 +361,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$14388/0x0000000103cdc040@35cc4aae
+//           f = cats.free.Free$$Lambda$14333/0x0000000103ce4040@291c5a59
 //         ),
-//         f = cats.free.Free$$Lambda$14388/0x0000000103cdc040@383523ab
+//         f = cats.free.Free$$Lambda$14333/0x0000000103ce4040@7829ba5a
 //       ),
-//       f = cats.free.Free$$Lambda$14388/0x0000000103cdc040@1448e56b
+//       f = cats.free.Free$$Lambda$14333/0x0000000103ce4040@5d080161
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$14405/0x0000000103ced040@76df8c4c
+//     f = repl.MdocSession$MdocApp5$$Lambda$14350/0x0000000103cfa840@12acf519
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$14408/0x0000000103cea840@21112103
+//   f = repl.MdocSession$MdocApp5$$Lambda$14353/0x0000000103cfd040@5929bb87
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -389,7 +390,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$14388/0x0000000103cdc040@302876f1
+//   f = cats.free.Free$$Lambda$14333/0x0000000103ce4040@6c673192
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -397,9 +398,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$14388/0x0000000103cdc040@302876f1
+//     f = cats.free.Free$$Lambda$14333/0x0000000103ce4040@6c673192
 //   ),
-//   f = cats.free.Free$$Lambda$14388/0x0000000103cdc040@6398ae22
+//   f = cats.free.Free$$Lambda$14333/0x0000000103ce4040@71793676
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
