@@ -107,9 +107,12 @@ pre {
 .content div.info {
     @apply bg-blue-200;
 }
+.content div.warn {
+    @apply bg-amber-200;
+}
 details summary {
     cursor: pointer;
-    @apply text-pink-800;
+    @apply text-yellow-800;
 }
 details summary > * {
     display: inline;

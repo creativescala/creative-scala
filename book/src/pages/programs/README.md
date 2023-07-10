@@ -1,9 +1,9 @@
 # Writing Larger Programs
 
-In this chapter we'll learn about two tools for writing larger programs:
+In this chapter we'll learn about tools for writing larger programs:
 
-* writing programs in code files outside of a worksheet; and
-* giving names to values so we can reuse them.
+* giving names to values so we can reuse them; and
+* working with programs out of a worksheet.
 
 @:callout(info)
 You will need to start your code with the following imports to make Doodle available.

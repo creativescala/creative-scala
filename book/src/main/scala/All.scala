@@ -1,9 +1,10 @@
 package creativescala
 
 object All extends App {
+  cycles.All
   expressive.All
   flowers.All
-  cycles.All
-  recursion.All
   fractals.All
+  programs.All
+  recursion.All
 }
