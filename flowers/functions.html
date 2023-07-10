@@ -59,11 +59,11 @@
           <li class="level2 nav-leaf"><a href="../expressive-expressions/06-conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../programs/">Writing Larger Programs</a></li>
           <li class="level2 nav-leaf"><a href="../programs/names.html">Names</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/outside-worksheet.html">Working Without Worksheets</a></li>
           <li class="level2 nav-leaf"><a href="../programs/abstraction.html">Abstraction</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/outside-worksheet.html">Working Without Worksheets</a></li>
           <li class="level2 nav-leaf"><a href="../programs/imports.html">Packages and Imports</a></li>
-          <li class="level2 nav-leaf"><a href="../programs/conclusions.html">Conclusions</a></li>
           <li class="level2 nav-leaf"><a href="../programs/sbt.html">Using The Build System</a></li>
+          <li class="level2 nav-leaf"><a href="../programs/conclusions.html">Conclusions</a></li>
           <li class="level1 nav-node"><a href="../substitution/">The Substitution Model of Evaluation</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/substitution.html">Substitution</a></li>
           <li class="level2 nav-leaf"><a href="../substitution/order.html">Order of Evaluation</a></li>
@@ -352,17 +352,17 @@
               <div class="solution-body">
                 <p>The first function is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">x</span><span>: </span><span class="type-name">Int</span><span>) =&gt; </span><span class="identifier">x</span><span> * </span><span class="identifier">x</span><span>
-</span><span class="comment">// res10: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$14270/0x0000000103cac840@10e7629e</span></code></pre>
+</span><span class="comment">// res10: Function1[Int, Int] = repl.MdocSession$MdocApp0$$Lambda$14396/0x0000000103ccd040@6358aefa</span></code></pre>
                 <p>The second is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">c</span><span>: </span><span class="type-name">Color</span><span>) =&gt; </span><span class="identifier">c</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)
-</span><span class="comment">// res11: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$14271/0x0000000103cab840@393ef5bc</span></code></pre>
+</span><span class="comment">// res11: Function1[Color, HSLA] = repl.MdocSession$MdocApp0$$Lambda$14397/0x0000000103ccc840@288c5319</span></code></pre>
                 <p>The third is</p>
                 <pre><code class="nohighlight"><span>(</span><span class="identifier">image</span><span>: </span><span class="type-name">Image</span><span>) =&gt; 
   </span><span class="identifier">image</span><span>.</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">90</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">180</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">270</span><span>.</span><span class="identifier">degrees</span><span>))
     .</span><span class="identifier">beside</span><span>(</span><span class="identifier">image</span><span>.</span><span class="identifier">rotate</span><span>(</span><span class="number-literal">360</span><span>.</span><span class="identifier">degrees</span><span>))
-</span><span class="comment">// res12: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$14272/0x0000000103cab040@632fcfed</span></code></pre>
+</span><span class="comment">// res12: Function1[Image, Image] = repl.MdocSession$MdocApp0$$Lambda$14398/0x0000000103ccb840@10cfb1e</span></code></pre>
               </div>
             </div>
             <div class="exercise">
