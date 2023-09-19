@@ -1,6 +1,6 @@
 ## IntelliJ
 
-IntelliJ is an integrated development environment (IDE) for Scala and other programming languages. It integrates an number of programming tools into one application, and we recommend it for people who are used to using other IDEs such as Visual Studiol or Eclipse.
+IntelliJ is an integrated development environment (IDE) for Scala and other programming languages. It integrates an number of programming tools into one application. We do not recommend using IntelliJ, but some people are used to using it or other IDEs such as Visual Studio or Eclipse and so we have instructions here.
 
 Start by [downloading][intellij-download] and installing IntelliJ. You can use the free community edition for Creative Scala. When installing IntelliJ you will be asked a lot of questions. You can accept the defaults for the most part. When you are asked about "featured plugins", *make sure you install the Scala plug-in*.
 
