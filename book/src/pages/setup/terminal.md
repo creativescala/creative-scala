@@ -38,7 +38,7 @@ After installing [Coursier][coursier]:
 
 6. Now we will use Git to get an SBT project that will work with Creative Scala. Type
     ```bash
-    git clone https://github.com/creative-scala/creative-scala-template.git
+    git clone https://github.com/creativescala/creative-scala-template.git
     ```
 
 @:callout(info)
@@ -76,7 +76,7 @@ After installing [Coursier][coursier]:
 3. Download and install [Git](https://git-scm.com). At the very end of the installer it gives you the option to open Git. Select that option. A window will open up with a command prompt.
 4. In the Git command prompt type
     ```bash
-    git clone https://github.com/underscoreio/creative-scala-template.git
+    git clone https://github.com/creativescala/creative-scala-template.git
     ```
 
 @:callout(info)
