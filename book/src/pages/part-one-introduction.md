@@ -1,7 +1,7 @@
 # Part One: Introduction
 
 With the setup complete we're ready to start learning to program! 
-In this first part of the book, which cover several chapters, we have four learning goals:
+In this first part of the book, which covers several chapters, we have four learning goals:
 
 1. to understand a basic model of how code runs, known as the substitution model of evaluation;
 2. to apply structural recursion over the natural numbers;
