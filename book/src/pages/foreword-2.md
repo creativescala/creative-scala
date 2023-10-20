@@ -18,3 +18,8 @@ Many things will stay the same:
 - a target audience of programmers who are new to coding and without a STEM background. This means some material on process that might be absent when targetting more experienced developers.
 
 One more thing: the name may change as well! I'm not sure Creative Scala fits the book I'm aiming for.
+
+
+## Acknowledgements
+
+The members of ScalaBridge London 
