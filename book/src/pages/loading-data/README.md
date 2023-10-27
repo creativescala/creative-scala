@@ -5,7 +5,7 @@ We'll start our exploration of data science by looking at climate data. Climate 
 To start we'll need some data.  ... data location ... HadCRUT5 temperature anomaly data.
 Description.
 
-HadCRUT.5 data were obtained from http://www.metoffice.gov.uk/hadobs/hadcrut5 on [date downloaded] and are © British Crown Copyright, Met Office [year of first publication], provided under an Open Government License, http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
+HadCRUT.5 data were obtained from http://www.metoffice.gov.uk/hadobs/hadcrut5 on 27 October 2023 and are © British Crown Copyright, Met Office 2021, provided under an Open Government License, http://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/
 
 This data set has one reading for each month from 1850 to 2023, making 2084 readings. This gives us enough data that working with it will be interesting but not so much that it's overwhelming.
 
