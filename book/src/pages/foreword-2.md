@@ -22,4 +22,6 @@ One more thing: the name may change as well! I'm not sure Creative Scala fits th
 
 ## Acknowledgements
 
-The members of ScalaBridge London 
+The members of ScalaBridge London, with particular mention to the following for reporting bugs and suggesting improvements:
+
+- Jess Gordon
