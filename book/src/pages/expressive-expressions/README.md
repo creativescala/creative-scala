@@ -6,7 +6,7 @@ In later chapters we'll learn much more about creating images alongside learning
 
 To create image we will use a library called [Doodle](https://www.creativescala.org/doodle/).
 
-@callout(info)
+@:callout(info)
 You will need to add the following to the worksheet to be able to use Doodle.
 
 ```scala mdoc:silent
