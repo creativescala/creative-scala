@@ -103,7 +103,7 @@ We don't need to wrap this in braces as there is only a single expression in the
 @:@
 
 
-@:solution(Halve)
+@:exercise(Halve)
 
 Write a method `halve` that accepts a `Double` argument and returns the `Double` that is half of it's argument.
 @:@
