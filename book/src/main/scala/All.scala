@@ -5,6 +5,7 @@ object All extends App {
   expressive.All
   flowers.All
   fractals.All
+  methods.All
   programs.All
   recursion.All
 }

@@ -84,10 +84,10 @@ import doodle.java2d.*
 ```
 ```scala mdoc:silent
 def box(color: Color, spin: Angle): Image =
-  Image.rectangle(40, 40).
-    strokeWidth(5.0).
-    strokeColor(color.spin(spin + 30.degrees)).
-    fillColor(color.spin(spin)) 
+  Image.rectangle(40, 40)
+    .strokeWidth(5.0)
+    .strokeColor(color.spin(spin + 30.degrees))
+    .fillColor(color.spin(spin)) 
 
 def gradientBoxes(color: Color): Image = {
   box(color, 0.degrees) beside 
@@ -100,14 +100,15 @@ def gradientBoxes(color: Color): Image = {
 @:@
 
 
-#### Gradient Concentric Circles {-}
+@:exercise(Gradient Concentric Circles)
 
 Now implement methods to draw a picture similar to @:fref(methods:gradient-concentric-circles).
-You should follow a design similar to `gradientBoxes` to reduce the amount of code you write, but we're not going to give the method skeletons this time---you have to work it out yourself.
+You should follow a design similar to `gradientBoxes` to reduce the amount of code you write, but we're not going to give the method skeletons this time; you have to work it out yourself.
 
-@:figure{ img = "./src/pages/recursion/gradient-concentric-circles.pdf+svg", key = "#fig:methods:gradient-concentric-circles", caption = "Five concentric circles filled with a gradient starting from Royal Blue" }
+@:figure{ img = "gradient-concentric-circles.svg", key = "#fig:methods:gradient-concentric-circles", caption = "Five concentric circles filled with a gradient starting from Royal Blue" }
+@:@
 
-<div class="solution">
+@:solution
 There are a number of different ways to write this. 
 We expect you would have two methods, `circle` and `gradientConcentricCircles` mirroring the design of `box` and `gradientBoxes` above.
 The exact implementation of these two methods, particularly `circle` is where we'll see the most difference.
@@ -131,4 +132,4 @@ def concentricCircles(color: Color): Image = {
 
 We could have made `circle` have separate parameters for the size and spin, but we decided to compute the size and spin from a single number.
 This gives us less flexibility (they cannot vary independently) but more compact code.
-</div>
+@:@

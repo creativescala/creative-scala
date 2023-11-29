@@ -3,7 +3,7 @@ import laika.config.LaikaKeys
 import laika.theme.Theme
 
 val scala213 = "2.13.11"
-val scala3 = "3.3.0"
+val scala3 = "3.3.1"
 
 ThisBuild / organization := "org.creativescala"
 ThisBuild / organizationName := "Creative Scala"
