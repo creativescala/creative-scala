@@ -102,7 +102,7 @@ def gradientBoxes(color: Color): Image = {
 
 @:exercise(Gradient Concentric Circles)
 
-Now implement methods to draw a picture similar to @:fref(methods:gradient-concentric-circles).
+Now implement methods to draw a picture similar to the one below.
 You should follow a design similar to `gradientBoxes` to reduce the amount of code you write, but we're not going to give the method skeletons this time; you have to work it out yourself.
 
 @:figure{ img = "gradient-concentric-circles.svg", key = "#fig:methods:gradient-concentric-circles", caption = "Five concentric circles filled with a gradient starting from Royal Blue" }
@@ -115,7 +115,7 @@ The exact implementation of these two methods, particularly `circle` is where we
 
 Here's our implementation.
 
-```tut:silent:book
+```scala mdoc:silent
 def circle(color: Color, n: Int): Image = 
   Image.circle(50 + (n * 10)).
     strokeColor(color.spin((15 * n).degrees)).
