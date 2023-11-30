@@ -230,7 +230,7 @@
             <div class="exercise">
               
               <h4 id="exercise-gradient-concentric-circles">Exercise: Gradient Concentric Circles</h4>
-              <p>Now implement methods to draw a picture similar to Figure methods:gradient-concentric-circles.
+              <p>Now implement methods to draw a picture similar to the one below.
               You should follow a design similar to <code>gradientBoxes</code> to reduce the amount of code you write, but we&#39;re not going to give the method skeletons this time; you have to work it out yourself.</p>
               <p><img src="gradient-concentric-circles.svg" alt="Five concentric circles filled with a gradient starting from Royal Blue" title="Figure Some(#fig:methods:gradient-concentric-circles): caption"></p>
             </div>
@@ -240,18 +240,18 @@
                 We expect you would have two methods, <code>circle</code> and <code>gradientConcentricCircles</code> mirroring the design of <code>box</code> and <code>gradientBoxes</code> above.
                 The exact implementation of these two methods, particularly <code>circle</code> is where we&#39;ll see the most difference.</p>
                 <p>Here&#39;s our implementation.</p>
-                <pre><code class="tut:silent:book">def circle(color: Color, n: Int): Image = 
-  Image.circle(50 + (n * 10)).
-    strokeColor(color.spin((15 * n).degrees)).
-    strokeWidth(3)
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">circle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>, </span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> = 
+  </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">50</span><span> + (</span><span class="identifier">n</span><span> * </span><span class="number-literal">10</span><span>)).
+    </span><span class="identifier">strokeColor</span><span>(</span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>((</span><span class="number-literal">15</span><span> * </span><span class="identifier">n</span><span>).</span><span class="identifier">degrees</span><span>)).
+    </span><span class="identifier">strokeWidth</span><span>(</span><span class="number-literal">3</span><span>)
     
-def concentricCircles(color: Color): Image = {
-  circle(color, 0) on
-  circle(color, 1) on
-  circle(color, 2) on
-  circle(color, 3) on
-  circle(color, 4)
-}</code></pre>
+</span><span class="keyword">def</span><span> </span><span class="declaration-name">concentricCircles</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> = {
+  </span><span class="identifier">circle</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">0</span><span>) </span><span class="identifier">on</span><span>
+  </span><span class="identifier">circle</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">1</span><span>) </span><span class="identifier">on</span><span>
+  </span><span class="identifier">circle</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">2</span><span>) </span><span class="identifier">on</span><span>
+  </span><span class="identifier">circle</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">3</span><span>) </span><span class="identifier">on</span><span>
+  </span><span class="identifier">circle</span><span>(</span><span class="identifier">color</span><span>, </span><span class="number-literal">4</span><span>)
+}</span></code></pre>
                 <p>We could have made <code>circle</code> have separate parameters for the size and spin, but we decided to compute the size and spin from a single number.
                 This gives us less flexibility (they cannot vary independently) but more compact code.</p>
               </div>
