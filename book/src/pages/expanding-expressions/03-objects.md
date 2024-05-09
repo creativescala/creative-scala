@@ -69,7 +69,7 @@ where
 
 We have said that all values are objects, and we call methods with the syntax `object.methodName(parameter)`. How then do we explain expressions like `1 + 2`?
 
-In Scala, and expression written `a.b(c)` can be written `a b c`. So these are equivalent:
+In Scala, any expression written `a.b(c)` can be written `a b c`. So these are equivalent:
 
 ```scala mdoc
 1 + 2
