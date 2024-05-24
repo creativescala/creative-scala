@@ -66,15 +66,17 @@ Then try to check your guesses using the worksheet. If you guessed wrong, try to
 @:@
 
 @:solution
-```scala mdoc
+```scala
 1 + 2
 ```
 
 Easy example as we've seen this one before. This expression has type `Int` and evaluates to `3`.
 
 
-```scala mdoc:fail
+```scala
 1 ? 2
+// error:
+// value ? is not a member of Int
 ```
 
 This is not a valid expression and does not compile. As such it doesn't have a type.
@@ -91,7 +93,7 @@ This expression has type `Int` and evaluates to `2`.
 
 This expression has type `Int` and evaluates to `0`. People coming from dynamically typed languages will sometimes guess that this evaluates to `0.5` and hence the type would be a floating point number. This would require we pass information back from the run-time to compile-time, which is not possible.
 
-```scala mdoc:fail
+```scala mdoc:crash
 1 / 0
 ```
 
