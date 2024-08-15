@@ -14,3 +14,9 @@ Exploratory data analysis is part of the larger field of *data science*, which l
 We will take a computational approach to statistics.
 This means we'll get the computer, rather than fancy mathematics, to do the work for us,
 which I think leads to a clearer understanding of these topics (particularly if you are a programmer!)
+
+
+## Setup
+
+To work through this part of the book use a new project.
+Download from Github.

@@ -1,6 +1,6 @@
 # Loading Data
 
-We'll start our exploration of data science by looking at climate data. Climate data is readily available and climate is a topical issue. 
+We'll start our exploration of data by looking at climate data. Climate data is readily available and climate is a topical issue. 
 
 To start we'll need some data.  ... data location ... HadCRUT5 temperature anomaly data.
 Description.
