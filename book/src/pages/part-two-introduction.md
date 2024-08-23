@@ -18,7 +18,6 @@ which I think leads to a clearer understanding of these topics (particularly if 
 
 ## Setup
 
-To work through this part of the book use a new project.
-Download the [creative-scala-data-template][template] from Github.
+To work through this part of the book, use the [creative-scala-data-template][template] from Github.
 
 [template]: https://github.com/creativescala/creative-scala-data-template
