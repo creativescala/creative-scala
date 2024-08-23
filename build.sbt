@@ -1,6 +1,6 @@
 import scala.sys.process._
-import laika.config.LaikaKeys
-import laika.theme.Theme
+import laika.config.LinkConfig
+import laika.config.ApiLinks
 
 val scala213 = "2.13.11"
 val scala3 = "3.3.1"
@@ -29,8 +29,7 @@ lazy val build = taskKey[Unit]("Build the book")
 
 val commonSettings = Seq(
   libraryDependencies ++= Seq(
-    "org.creativescala" %%% "doodle" % "0.19.0",
-    "org.creativescala" %%% "doodle-svg" % "0.16.1"
+    "org.creativescala" %%% "doodle" % "0.23.0"
   )
 )
 
@@ -52,20 +51,18 @@ lazy val book = project
     mdocOut := target.value / "pages",
     Laika / sourceDirectories := Seq(
       mdocOut.value,
-      sourceDirectory.value / "templates",
       sourceDirectory.value / "js",
       (examples / Compile / fastOptJS / artifactPath).value
         .getParentFile() / s"${(examples / moduleName).value}-fastopt"
     ),
     laikaExtensions ++= Seq(
-      laika.markdown.github.GitHubFlavor,
-      laika.parse.code.SyntaxHighlighting,
-      CreativeScalaDirectives
+      laika.format.Markdown.GitHubFlavor,
+      laika.config.SyntaxHighlighting,
     ),
     laikaSite / target := target.value / "creative-scala",
     laikaIncludeEPUB := false,
     laikaIncludePDF := false,
-    laikaTheme := Theme.empty,
+    laikaTheme := CreativeScalaTheme.empty.build,
     css := {
       val src = sourceDirectory.value / "css"
       val dest1 = mdocOut.value
