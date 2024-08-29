@@ -52,8 +52,8 @@ lazy val book = project
     Laika / sourceDirectories := Seq(
       mdocOut.value,
       sourceDirectory.value / "js",
-      (examples / Compile / fastOptJS / artifactPath).value
-        .getParentFile() / s"${(examples / moduleName).value}-fastopt"
+      (examples.js / Compile / fastOptJS / artifactPath).value
+        .getParentFile() / s"${(examples.js / moduleName).value}-fastopt"
     ),
     laikaExtensions ++= Seq(
       laika.format.Markdown.GitHubFlavor,
@@ -77,15 +77,16 @@ lazy val book = project
     }
   )
   .enablePlugins(MdocPlugin, LaikaPlugin)
+  .dependsOn(examples.jvm)
 
-lazy val examples = project
-  .in(file("examples"))
-  .settings(commonSettings)
-  .enablePlugins(ScalaJSPlugin)
+lazy val examples =
+  crossProject(JSPlatform, JVMPlatform)
+    .in(file("examples"))
+    .settings(commonSettings)
 
 build := Def
   .sequential(
-    (examples / Compile / fastLinkJS),
+    (examples.js / Compile / fastLinkJS),
     (book / Compile / run).toTask(""),
     (book / mdoc).toTask(""),
     book / css,
