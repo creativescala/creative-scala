@@ -105,6 +105,7 @@
           <li class="level1 nav-leaf"><a href="../part-two-introduction.html">Part Two: Introduction</a></li>
           <li class="level1 nav-node"><a href="../2-explore/">Exploring Exploratory Data Analysis</a></li>
           <li class="level2 nav-leaf"><a href="../2-explore/loading.html">Loading Data</a></li>
+          <li class="level2 nav-leaf"><a href="../2-explore/initial.html">Initial Investigations</a></li>
           <li class="level1 nav-node"><a href="../2-loading-data/">Loading Data</a></li>
           <li class="level2 nav-leaf"><a href="../2-loading-data/source.html">Loading Data Using a Source</a></li>
           <li class="level1 nav-header">adt</li>
@@ -248,6 +249,7 @@
           <li class="level1 nav-leaf"><a href="../part-two-introduction.html">Part Two: Introduction</a></li>
           <li class="level1 nav-node"><a href="../2-explore/">Exploring Exploratory Data Analysis</a></li>
           <li class="level2 nav-leaf"><a href="../2-explore/loading.html">Loading Data</a></li>
+          <li class="level2 nav-leaf"><a href="../2-explore/initial.html">Initial Investigations</a></li>
           <li class="level1 nav-node"><a href="../2-loading-data/">Loading Data</a></li>
           <li class="level2 nav-leaf"><a href="../2-loading-data/source.html">Loading Data Using a Source</a></li>
           <li class="level1 nav-header">adt</li>
@@ -497,15 +499,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$14775/0x0000000103993040@573d787
+//           f = cats.free.Free$$Lambda$15084/0x0000000103ade840@b09bc23
 //         ),
-//         f = cats.free.Free$$Lambda$14775/0x0000000103993040@1c800238
+//         f = cats.free.Free$$Lambda$15084/0x0000000103ade840@5e88d1aa
 //       ),
-//       f = cats.free.Free$$Lambda$14775/0x0000000103993040@64b30a45
+//       f = cats.free.Free$$Lambda$15084/0x0000000103ade840@3e41b7ac
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$14792/0x000000010399d040@4706e2dc
+//     f = repl.MdocSession$MdocApp5$$Lambda$15101/0x0000000103ae5040@b33a04a
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$14795/0x00000001038f6040@5cd2da54
+//   f = repl.MdocSession$MdocApp5$$Lambda$15104/0x0000000103a44840@4d9dfdab
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -526,7 +528,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$14775/0x0000000103993040@405f9234
+//   f = cats.free.Free$$Lambda$15084/0x0000000103ade840@55006033
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -534,9 +536,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$14775/0x0000000103993040@405f9234
+//     f = cats.free.Free$$Lambda$15084/0x0000000103ade840@55006033
 //   ),
-//   f = cats.free.Free$$Lambda$14775/0x0000000103993040@3cc24958
+//   f = cats.free.Free$$Lambda$15084/0x0000000103ade840@66cf41e8
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
