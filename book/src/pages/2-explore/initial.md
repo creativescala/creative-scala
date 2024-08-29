@@ -69,3 +69,16 @@ The trend is not exactly the same as before, but it is simlar enough.
 
 
 @:exercise(Statistics is the Grammar of Science)
+
+Can you think of other ways we could analyse the data, apart from extracting data by decade and visualizing it? This is an open-ended question; any answers are good answers!
+@:@
+
+@:solution
+There are no right and wrong answers to this, but the more you've studied statistics the more answers (and the more complex those answers) are likely to.
+
+Here are some ideas:
+
+- We could try looking at differences between, say, the first 50 years and the last 50 years of data in the data set
+
+- We could try to 
+@:@
