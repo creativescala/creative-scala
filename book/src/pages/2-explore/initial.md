@@ -70,15 +70,15 @@ The trend is not exactly the same as before, but it is simlar enough.
 
 @:exercise(Statistics is the Grammar of Science)
 
-Can you think of other ways we could analyse the data, apart from extracting data by decade and visualizing it? This is an open-ended question; any answers are good answers!
+Can you think of other ways we could analyse the data to see if there is a difference in temperature over time, apart from extracting data by decade and visualizing it? This is an open-ended question; any answers are good answers!
 @:@
 
 @:solution
 There are no right and wrong answers to this, but the more you've studied statistics the more answers (and the more complex those answers) are likely to.
 
-Here are some ideas:
+Here are just a few ideas:
 
-- We could try looking at differences between, say, the first 50 years and the last 50 years of data in the data set
+- The main data point is the divergence from the baseline of 1961-1990. So perhaps we could sum the divergences before that period and compare them to the sum of divergences after that baseline? We could also compute sums by month, and compare those, if we suspect the divergence changes by month.
 
-- We could try to 
+- As a variation on the above idea
 @:@
