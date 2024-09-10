@@ -25,7 +25,7 @@ def average(a: Double, b: Double): Double =
 However, that doesn't help us work with, say, 18 data points (if we sample once per decade), or 173 points (if we sample once per year), or 2082 points (if we include all the data). What we need is a way that works with an arbitrary amount of data, which is what a `List` represents. Here's how we can define `average` on a `List`.
 
 ```scala mdoc:silent
-define average(data: List[Double]): Double =
+def average(data: List[Double]): Double =
   data.sum / data.size
 ```
 
