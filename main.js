@@ -3229,13 +3229,13 @@ $c_Lcycles_Epicycles$.prototype.epicycleTwoWheels__T__V = (function(id) {
   var runtime = $m_Lcats_effect_unsafe_IORuntime$().global__Lcats_effect_unsafe_IORuntime();
   $f_Ldoodle_interact_animation_Transducer__animate__O__Ldoodle_interact_effect_AnimationRenderer__Ldoodle_effect_Renderer__Ldoodle_interact_algebra_Redraw__s_$less$colon$less__Lcats_effect_unsafe_IORuntime__V(this$19, frame, a, e, r, ev, runtime);
 });
-$c_Lcycles_Epicycles$.prototype.epicycle = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.epicycle__T__V(prep0);
-});
 $c_Lcycles_Epicycles$.prototype.epicycleTwoWheels = (function(arg) {
   var prep0 = $as_T(arg);
   this.epicycleTwoWheels__T__V(prep0);
+});
+$c_Lcycles_Epicycles$.prototype.epicycle = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.epicycle__T__V(prep0);
 });
 var $d_Lcycles_Epicycles$ = new $TypeData().initClass($c_Lcycles_Epicycles$, "cycles.Epicycles$", ({
   Lcycles_Epicycles$: 1
@@ -13134,13 +13134,13 @@ $c_Lpolygons_Creative$.prototype.curvygonExercise__T__V = (function(id) {
   var runtime = $m_Lcats_effect_unsafe_IORuntime$().global__Lcats_effect_unsafe_IORuntime();
   $f_Ldoodle_interact_animation_Transducer__animate__O__Ldoodle_interact_effect_AnimationRenderer__Ldoodle_effect_Renderer__Ldoodle_interact_algebra_Redraw__s_$less$colon$less__Lcats_effect_unsafe_IORuntime__V(this$22, frame, a, e, r, ev, runtime);
 });
-$c_Lpolygons_Creative$.prototype.curvygonExercise = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.curvygonExercise__T__V(prep0);
-});
 $c_Lpolygons_Creative$.prototype.starPolygonExercise = (function(arg) {
   var prep0 = $as_T(arg);
   this.starPolygonExercise__T__V(prep0);
+});
+$c_Lpolygons_Creative$.prototype.curvygonExercise = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.curvygonExercise__T__V(prep0);
 });
 $c_Lpolygons_Creative$.prototype.spiralExercise = (function(arg) {
   var prep0 = $as_T(arg);
