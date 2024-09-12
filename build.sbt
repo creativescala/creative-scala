@@ -1,9 +1,10 @@
 import scala.sys.process._
 import laika.config.LinkConfig
 import laika.config.ApiLinks
+import laika.ast.Path
 
-val scala213 = "2.13.11"
-val scala3 = "3.3.1"
+val scala213 = "2.13.14"
+val scala3 = "3.3.3"
 
 ThisBuild / organization := "org.creativescala"
 ThisBuild / organizationName := "Creative Scala"
@@ -62,7 +63,7 @@ lazy val book = project
     laikaSite / target := target.value / "creative-scala",
     laikaIncludeEPUB := false,
     laikaIncludePDF := false,
-    laikaTheme := CreativeScalaTheme.empty.build,
+    laikaTheme := CreativeScalaTheme.empty.addJs(Path.Root / "main.js").build,
     css := {
       val src = sourceDirectory.value / "css"
       val dest1 = mdocOut.value
