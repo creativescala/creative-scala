@@ -13134,10 +13134,6 @@ $c_Lpolygons_Creative$.prototype.curvygonExercise__T__V = (function(id) {
   var runtime = $m_Lcats_effect_unsafe_IORuntime$().global__Lcats_effect_unsafe_IORuntime();
   $f_Ldoodle_interact_animation_Transducer__animate__O__Ldoodle_interact_effect_AnimationRenderer__Ldoodle_effect_Renderer__Ldoodle_interact_algebra_Redraw__s_$less$colon$less__Lcats_effect_unsafe_IORuntime__V(this$22, frame, a, e, r, ev, runtime);
 });
-$c_Lpolygons_Creative$.prototype.bezierCurveAnimation = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.bezierCurveAnimation__T__V(prep0);
-});
 $c_Lpolygons_Creative$.prototype.starPolygonConstruction = (function(arg) {
   var prep0 = $as_T(arg);
   this.starPolygonConstruction__T__V(prep0);
@@ -13145,6 +13141,10 @@ $c_Lpolygons_Creative$.prototype.starPolygonConstruction = (function(arg) {
 $c_Lpolygons_Creative$.prototype.spiralExercise = (function(arg) {
   var prep0 = $as_T(arg);
   this.spiralExercise__T__V(prep0);
+});
+$c_Lpolygons_Creative$.prototype.bezierCurveAnimation = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.bezierCurveAnimation__T__V(prep0);
 });
 $c_Lpolygons_Creative$.prototype.curvygonExercise = (function(arg) {
   var prep0 = $as_T(arg);
