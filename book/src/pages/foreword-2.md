@@ -15,7 +15,7 @@ Compared to the first edition, the intention for the second edition of Creative 
 Many things will stay the same:
 
 - a focus on fundamentals of programming language theory, such as models of evaluation, and the patterns behind programming, such as structural recursion; and
-- a target audience of programmers who are new to coding and without a STEM background. This means some material on process that might be absent when targetting more experienced developers.
+- a target audience of programmers who are new to coding and without a STEM background. This means some material on processes might be absent when targetting more experienced developers.
 
 One more thing: the name may change as well! I'm not sure Creative Scala fits the book I'm aiming for.
 

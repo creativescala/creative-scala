@@ -11,7 +11,7 @@ If you're not, this will hopefully give some useful context to the software we'l
 Back when the world was young and computing was in its infancy, the common user interface of graphical windows, a cursor controlled by a mouse, and interaction by *direct manipulation* didn't exist.
 Instead users typed in commands at a device called a *terminal*.
 The direct manipulation interface is superior for most uses, but there are some cases for which the terminal or *command line* is preferable.
-For example, if we wanted to work out how much space was used by all the files which names starting with `data` in Linux or OS X we can execute the command
+For example, if we wanted to work out how much space was used by all the files with names starting with `data` in Linux or OS X we can execute the command
 
 ```bash
 du -hs data*
@@ -58,9 +58,8 @@ As it does this it performs certain checks on the code.
 If these checks don't pass the code won't be compiled and the compiler will print an error message instead.
 We'll learn more about what the compiler can check and what it can't in the rest of this book.
 
-When we said the compiler translates the code is something the computer can run, this is not the complete truth in the case of Scala.
+When we said the compiler translates the code into something the computer can run, this is not the complete truth in the case of Scala.
 The output of the compiler is something called bytecode, and another program, called the Java Virtual Machine (JVM), runs this code@:fnref(complications).
-
 
 ### Integrated Development Environments
 
@@ -74,7 +73,7 @@ If you're already used to an IDE then IntelliJ IDEA is currently the best IDE fo
 
 Version control is the final tool we'll use.
 A version control system is a program that allows us to keep a record of all the changes that have been made to a group of files.
-It's very useful for allowing multiple people to work on a project at the same time, and it ensures people don't accidentally overwrite each others changes.
+It's very useful for allowing multiple people to work on a project at the same time, and it ensures people don't accidentally overwrite each other's changes.
 This is not a huge concern in Creative Scala, but it is good to get some exposure to version control now.
 
 The version control software we'll use is called Git.

@@ -49,7 +49,7 @@ dropShadow(star)
 
 This shows how the composed function applies the output of the first function to the second function: we first mirror the star and then add a drop shadow.
 
-Let's see how we can apply function composition to our examples of parametric curves. One limitation of the parametric cures we've created so far is that their size is fixed. For example when we defined `parametricCircle` we fixed the radius at 200.
+Let's see how we can apply function composition to our examples of parametric curves. One limitation of the parametric curves we've created so far is that their size is fixed. For example when we defined `parametricCircle` we fixed the radius at 200.
 
 ```scala mdoc:silent
 def parametricCircle(angle: Angle): Point =

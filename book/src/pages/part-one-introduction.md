@@ -5,7 +5,7 @@ In this first part of the book, which covers several chapters, we have four lear
 
 1. to understand a basic model of how code runs, known as the substitution model of evaluation;
 2. to apply structural recursion over the natural numbers;
-3. tou understand composition and abstraction using functions; and
+3. to understand composition and abstraction using functions; and
 4. to get comfortable writing, running, and debugging code.
 
 We'll do this by creating computer graphics, part of subfield of computing known as [creative coding](https://en.wikipedia.org/wiki/Creative_coding).
