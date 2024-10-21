@@ -59,7 +59,7 @@ cd creative-scala-template
 sbt
 ```
 
-sbt should start. Within sbt type `run` and an image should appear. It it does you have everything correctly installed!
+sbt should start. Within sbt type `run` and an image should appear. If it does you have everything correctly installed!
 
 The final step is to load Visual Studio Code and use it to open `Example.scala`, which you can find in `src/main/scala`.
 
@@ -78,17 +78,6 @@ After installing [Coursier][coursier]:
     ```bash
     git clone https://github.com/creativescala/creative-scala-template.git
     ```
-
-@:callout(info)
-#### Sharing Your Work
-
-There is an alternative setup that involves first forking the Creative Scala template project, and then cloning it to your computer.
-This is the setup to choose if you want to share your work with other people; for example you might be taking Creative Scala with a remote instructor or you might just (quite rightfully) be proud of your work.
-
-In this setup you first *fork* the Creative Scala template.
-Then you make a clone of *your* fork.
-This alternative setup is described in more detail in the section on GitHub later in this chapter.
-@:@
 
 5. Open a normal command-prompt. Click on the Windows icon on the bottom left of the screen. In the search box enter "cmd" and run the program it finds. In the window that is opened up type
 

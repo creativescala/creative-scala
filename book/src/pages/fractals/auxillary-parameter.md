@@ -76,7 +76,7 @@ Now we've seen the auxiliary parameter method let's practice using it.
 
 @:exercise(Gradient Boxes)
 
-In this exercise we're going to draw a picture like that shown below
+In this exercise we're going to draw a picture like that shown below.
 We already know how to draw a line of boxes.
 The challenge in this exercise is to make the color change at each step.
 

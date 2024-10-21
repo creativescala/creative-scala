@@ -7,7 +7,7 @@ import doodle.syntax.all._
 import doodle.image.syntax.all._
 ```
 
-Let's motivate functions by look at structural recursion over the natural numbers, and trying to capture in code the pattern we've used many times.
+Let's motivate functions by looking at structural recursion over the natural numbers, and trying to capture in code the pattern we've used many times.
 
 We have written a lot of structural recursions over the natural numbers. We started with code like
 

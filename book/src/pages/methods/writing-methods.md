@@ -49,7 +49,7 @@ Let's turn `boxes` up to eleven by making the color of the boxes change in a smo
 
 To minimise the amount of code we have to write, implement this by writing *two* methods.
 The first method, `box`, should accept a `Color` and an `Angle` and create a box with the color spun by the angle.
-The second method, `graidentBoxes`, should accept a `Color` and return an `Image` of five boxes filled with a gradient starting from the given color and changing by `15.degrees` at each successive box. `gradientBoxes` should make use of `box`.
+The second method, `gradientBoxes`, should accept a `Color` and return an `Image` of five boxes filled with a gradient starting from the given color and changing by `15.degrees` at each successive box. `gradientBoxes` should make use of `box`.
 Remember to write out the method skeletons first.
 
 @:figure{ img = "gradient-boxes.svg", key = "#fig:methods:gradient-boxes", caption = "Five boxes filled with a gradient starting from Royal Blue" }
@@ -92,7 +92,7 @@ def box(color: Color, spin: Angle): Image =
 def gradientBoxes(color: Color): Image = {
   box(color, 0.degrees) beside 
   box(color, 15.degrees) beside
-  box(color, 20.degrees) beside
+  box(color, 30.degrees) beside
   box(color, 45.degrees) beside
   box(color, 60.degrees)
 }
