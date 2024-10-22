@@ -2,7 +2,7 @@
 [github-creative-scala]: https://github.com/underscoreio/creative-scala
 [essential-scala]: http://underscore.io/training/courses/essential-scala
 [underscore-github]: https://github.com/underscoreio
-[underscore-gitter]: https://gitter.im/underscoreio/scala
+[creative-scala-discord]: https://discord.com/invite/rRhcFbJxVG
 [underscore]: http://underscore.io
 [twitter-dave]: http://twitter.com/davegurnell
 [twitter-jono]: http://twitter.com/jonoabroad

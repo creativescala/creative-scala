@@ -38,8 +38,8 @@ A bit of exploration should convince you that yes, Scala does maintain the stand
 
 Below we've written a number of expressions. For each expression, try to answer the questions:
 
-1. It will compile?
-2. If it compiles, what is it's type?
+1. Will it compile?
+2. If it compiles, what is its type?
 3. If it compiles can it be evaluated, or will it fail at run-time?
 
 Then try to check your guesses using the worksheet. If you guessed wrong, try to think about what part of your understanding is incorrect. 

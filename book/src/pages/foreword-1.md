@@ -85,8 +85,7 @@ This is an *early access* release of Creative Scala.
 There may be typos and other errors in the text and examples.
 
 If you spot any mistakes or would like to provide feedback,
-please let us know via our [Gitter chat room][underscore-gitter]
-or by email:
+please let us know via our [Discord server][creative-scala-discord] or by email:
 
  - Dave Gurnell ([dave@underscore.io](mailto:dave@underscore.io))
  - Noel Welsh ([noel@underscore.io](mailto:noel@underscore.io))
