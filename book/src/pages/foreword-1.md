@@ -65,14 +65,14 @@ For further advancement we recommend considering one of the many excellent
 Scala textbooks out there, including our own [Essential Scala][essential-scala].
 
 If you are working through the exercises on your own,
-we highly recommend joining our [Gitter chat room][underscore-gitter]
+we highly recommend joining our [Discord server][creative-scala-discord]
 to provide get help with the exercises and provide feedback on the book.
 
 The text of [Creative Scala][github-creative-scala] is open source,
 as is the source code for the [Doodle][github-doodle]
 drawing library used in the exercises.
 You can grab the code from our [GitHub account][underscore-github].
-Contact us on Gitter or by email if you would like to contribute.
+Contact us on Discord or by email if you would like to contribute.
 
 Thanks for downloading and happy creative programming!
 
