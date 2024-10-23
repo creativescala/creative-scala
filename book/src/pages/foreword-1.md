@@ -18,7 +18,7 @@ Firstly, we believe that functional programming is the future.
 Since we're assuming you have little programming experience we won't go into the details of the differences between functional programming and object-oriented programming that you may have already experienced.
 Suffice to say there are different ways to think about and write computer programs, and we've chosen the functional programming approach.
 
-The reason for choosing functional programming are more interesting.
+The reasons for choosing functional programming are more interesting.
 It's common to teach programming by what we call the "bag of syntax" approach.
 In this approach a programming language is taught a collection of syntactical features (variables, for loops, while loops, methods) and students are left to figure out on their own when to use each feature.
 We've seen this method fail both when we were undergraduates learning programming, and as postgraduates teaching programming, as students simply have no systematic way to break down a problem and turn it into code.
@@ -27,7 +27,7 @@ The students that remained tended to, like us, already have extensive programmin
 
 Let's think back to primary school maths, specifically column addition.
 This is the basic way we're taught to add up numbers when they're too big to do in our head.
-So, for example, adding up 266 + 385, we would line up the columns, carry the tens and so on.
+So, for example, if we were adding up 266 + 385, we would line up the columns, carry the tens and so on.
 Now maybe maths wasn't your favorite subject but there are some important lessons here.
 The first is that we're given a systematic way to arrive at the solution.
 We can *calculate* the solution once we realise this is a problem that requires column addition.
@@ -43,7 +43,7 @@ The code itself is not the interesting part.
 We're teaching functional programming using Scala, but not Scala itself.
 Scala is a language that is in demand right now.
 Scala programmers can relatively easily get jobs in a variety of industries, and this is an important motivation for learning Scala.
-One of the reasons for Scala's popularity is that is straddles object-oriented programming, the old way of programming, and functional programming.
+One of the reasons for Scala's popularity is that it straddles object-oriented programming, the old way of programming, and functional programming.
 There is a lot of code written in an object-oriented style, and a lot of programmers who are used to that style.
 Scala gives a gentle way from object-oriented programming to functional programming.
 However this means Scala is a large language, and the interaction between the object-oriented and functional parts can be confusing.
@@ -66,7 +66,8 @@ Scala textbooks out there, including our own [Essential Scala][essential-scala].
 
 If you are working through the exercises on your own,
 we highly recommend joining our [Discord server][creative-scala-discord]
-to provide get help with the exercises and provide feedback on the book.
+to get help with the exercises and provide feedback on the book.
+
 
 The text of [Creative Scala][github-creative-scala] is open source,
 as is the source code for the [Doodle][github-doodle]
