@@ -234,7 +234,7 @@ discussing and demonstrating core design patterns and the benefits they offer.
 
 If you want to challenge yourself,
 try drawing something more complex with Doodle and
-sharing it with us via [Gitter][underscore-gitter].
+sharing it with us via [Discord][creative-scala-discord].
 There are lots of things you can try---check the `examples` directory
 in the Doodle codebase for some suggestions:
 
