@@ -4,7 +4,7 @@ import laika.config.ApiLinks
 import laika.ast.Path
 
 val scala213 = "2.13.14"
-val scala3 = "3.3.3"
+val scala3 = "3.3.4"
 
 ThisBuild / organization := "org.creativescala"
 ThisBuild / organizationName := "Creative Scala"
