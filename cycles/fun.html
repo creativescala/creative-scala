@@ -348,11 +348,10 @@
   </span><span class="type-name">Image</span><span>.</span><span class="identifier">circle</span><span>(</span><span class="number-literal">100</span><span> + </span><span class="number-literal">24</span><span>*</span><span class="identifier">n</span><span>).</span><span class="identifier">strokeColor</span><span>(</span><span class="type-name">Color</span><span>.</span><span class="identifier">red</span><span>)
 
 </span><span class="keyword">val</span><span> </span><span class="identifier">redCircles</span><span>: </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">redCircle</span><span> </span><span class="identifier">_</span><span>)</span></code></pre>
+  </span><span class="identifier">concentricShapes</span><span>(</span><span class="number-literal">10</span><span>, </span><span class="identifier">redCircle</span><span>)</span></code></pre>
             <p><img src="./red-black-circles.svg" alt="Black and Red Concentric Circles" title="Figure Some(#fig:cycles:red-black-circles): caption"></p>
-            <p>You might notice two things about this example: we&#39;re not using function composition, and we duplication in the definitions. 
+            <p>You might notice two things about this example: we&#39;re not using function composition, and we have duplication in the definitions.
             In both cases we draw circles, but they differ in color.
-            No problem.
             This feels like a problem we can solve with function composition.
             Let&#39;s give it a go.</p>
             <p>In both cases the radius of the circle is <code>100 + 24*n</code>, where <code>n</code> is the iteration count.
