@@ -58,14 +58,13 @@ def redCircle(n: Int): Image =
   Image.circle(100 + 24*n).strokeColor(Color.red)
 
 val redCircles: Image =
-  concentricShapes(10, redCircle _)
+  concentricShapes(10, redCircle)
 ```
 
 @:figure{ img = "./red-black-circles.svg", key = "#fig:cycles:red-black-circles", caption = "Black and Red Concentric Circles" }
 
-You might notice two things about this example: we're not using function composition, and we duplication in the definitions. 
+You might notice two things about this example: we're not using function composition, and we have duplication in the definitions.
 In both cases we draw circles, but they differ in color.
-No problem.
 This feels like a problem we can solve with function composition.
 Let's give it a go.
 
@@ -91,7 +90,7 @@ def strokeColor(color: Color): Image => Image =
 
 With this we can construct the functions we need.
 
-```scala mdoc:silent
+```scala mdoc:silent:nest
 val blackCircle = circle // Black is the default stroke
 val redCircle = size.andThen(circle).andThen(strokeColor(Color.red))
 ```
