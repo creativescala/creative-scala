@@ -318,6 +318,24 @@
             <h1 id="loading-data" class="title">Loading Data</h1>
             <p>Acquiring data, and transforming it into a workable state, can be one of the most time consuming parts of data analysis. In a later chapter we&#39;ll look at this process in more detail, but right now we&#39;re going to take a short-cut. If you&#39;re using the <a href="https://github.com/creativescala/creative-scala-data-template">project template</a>, as described in the introduction, the data is already available and ready to go.</p>
             <p>Open up the file <code>Explore.scala</code></p>
+            <p><code>data</code> is defined. Let&#39;s take a sneak peek at it.</p>
+            <pre><code class="nohighlight"><span class="identifier">creativescala</span><span>.</span><span class="type-name">Explore</span><span>.</span><span class="identifier">data</span><span>
+</span><span class="keyword">val</span><span> </span><span class="identifier">res0</span><span>: </span><span class="type-name">List</span><span>[</span><span class="identifier">creativescala</span><span>.</span><span class="identifier">data</span><span>.</span><span class="type-name">HadCrut5</span><span>.</span><span class="type-name">Record</span><span>] =
+  </span><span class="type-name">List</span><span>(
+    </span><span class="type-name">Record</span><span>(</span><span class="number-literal">1850</span><span>,</span><span class="number-literal">1</span><span>,-</span><span class="number-literal">0.67456436</span><span>,-</span><span class="number-literal">0.98177195</span><span>,-</span><span class="number-literal">0.3673568</span><span>),
+    </span><span class="type-name">Record</span><span>(</span><span class="number-literal">1850</span><span>,</span><span class="number-literal">2</span><span>,-</span><span class="number-literal">0.333416</span><span>,-</span><span class="number-literal">0.700901</span><span>,</span><span class="number-literal">0.034069024</span><span>),
+    </span><span class="type-name">Record</span><span>(</span><span class="number-literal">1850</span><span>,</span><span class="number-literal">3</span><span>,-</span><span class="number-literal">0.59132266</span><span>,-</span><span class="number-literal">0.9339191</span><span>,-</span><span class="number-literal">0.2487262</span><span>),
+    ...</span></code></pre>
+            <p>Explain the data.</p>
+            <p><code>Record</code> is year, month, anomaly, lower, upper.</p>
+            <p>What is a <code>List</code>? Zero or more elements, with a defined order.</p>
+            <p>How can we get an understanding of the data?</p>
+            <pre><code class="nohighlight"><span class="identifier">creativescala</span><span>.</span><span class="type-name">Explore</span><span>.</span><span class="identifier">data</span><span>.</span><span class="identifier">size</span><span>
+</span><span class="comment">// 2082</span></code></pre>
+            <pre><code class="nohighlight"><span class="identifier">creativescala</span><span>.</span><span class="type-name">Explore</span><span>.</span><span class="identifier">data</span><span>.</span><span class="identifier">head</span><span>
+</span><span class="comment">// creativescala.data.HadCrut5.Record = Record(1850,1,-0.67456436,-0.98177195,-0.3673568)</span></code></pre>
+            <p>This won&#39;t scale. Better to visualize the data.
+            What should we visualize? For each year as a line of month versus anomaly.</p>
             <div class="flex flex-row justify-between">
                 <a class="pageNavigation" href="index.html">←Exploring Data Science</a> <a class="pageNavigation" href="initial.html">Initial Investigations→</a>
             </div>
