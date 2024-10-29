@@ -501,15 +501,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda$15225/0x0000000103af3040@7eb0f4ef
+//           f = cats.free.Free$$Lambda$14378/0x00000001038e7840@6d827cf2
 //         ),
-//         f = cats.free.Free$$Lambda$15225/0x0000000103af3040@61b85210
+//         f = cats.free.Free$$Lambda$14378/0x00000001038e7840@202091b9
 //       ),
-//       f = cats.free.Free$$Lambda$15225/0x0000000103af3040@29ec77c9
+//       f = cats.free.Free$$Lambda$14378/0x00000001038e7840@4479f03a
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda$15242/0x0000000103b65040@20da50e
+//     f = repl.MdocSession$MdocApp5$$Lambda$14395/0x000000010397d040@4cc7933
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda$15245/0x0000000103b71840@7b633e2c
+//   f = repl.MdocSession$MdocApp5$$Lambda$14398/0x000000010397a840@7a57e0b4
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -530,7 +530,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda$15225/0x0000000103af3040@58e8cb82
+//   f = cats.free.Free$$Lambda$14378/0x00000001038e7840@5ede1b1e
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -538,9 +538,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda$15225/0x0000000103af3040@58e8cb82
+//     f = cats.free.Free$$Lambda$14378/0x00000001038e7840@5ede1b1e
 //   ),
-//   f = cats.free.Free$$Lambda$15225/0x0000000103af3040@1270bd69
+//   f = cats.free.Free$$Lambda$14378/0x00000001038e7840@55adc8df
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
