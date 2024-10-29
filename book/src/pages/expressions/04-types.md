@@ -10,13 +10,16 @@ A type of `Int` means if the expression is successfully evaluated, then the valu
 
 We determine the type of an expression without running it. This means that *types are a property of expressions*. We can give a type to an expression even if, when we evaluate it, the computation fails. This is also why the type doesn't tell us the specific value the expression evaluates to: we'd have to evaluate the expression to know that.
 
-Types are worked out in a process known as a *type-checking*, which is part of *compilation*. Before a Scala program is run, it must be *compiled*. Compilation checks that a program makes sense. It must be syntactically correct, meaning it must be written according to the rules of Scala. For example `(1 + 2)` is syntactically correct, but `(1 + 2` is not because there is no `)` to match the `(`. 
-Here, "syntax" is the term we use for the rules defining the structure of symbols in a programming language. 
-In English, we are taught that a sentence can be constructed using the rule: subject + verb + object e.g. "the artist paints a cat".
-A programming language might have a different set of rules and symbols to read `Artist.paint(cat);`. 
-This is a general example—languages have syntax variations—and it is worth noting that the English sentence is purely descriptive while the general code example is instructing the computer to paint a cat using 'Artist', which could be a library or object. 
+Types are worked out in a process known as *compilation*. Before a Scala program is run, it must be *compiled*. Compilation checks that a program makes sense. There are two main checks that the compiler performs: it checks *syntax*, and it checks types.
 
-It must also *type check*, meaning the types must be correct for the operations we're trying to do. `1 + 2` type checks (we are adding integers), but `1.toUpperCase` does not (there is no concept of upper and lower case for integers.)
+
+Syntax is the term we use for the rules defining the structure of symbols in a language. 
+In English we are taught that a sentence can be constructed using the rule: subject + verb + object. For example, "the artist paints a cat" follows this structure.
+A programming language might have a different set of rules and symbols to read `Artist.paint(cat)`. 
+This is a general example—languages have syntax variations—and it is worth noting that the English sentence is purely descriptive while the general code example is instructing the computer to paint a cat using `Artist`, which could be a library or object. 
+Nonetheless, our Scala programs must be syntactically correct, meaning they must be written according to the rules of Scala. For example `(1 + 2)` is syntactically correct, but `(1 + 2` is not because there is no `)` to match the `(`. 
+
+Scala programs must also *type check*, meaning the types must be correct for the operations we're trying to do. `1 + 2` type checks (we are adding integers), but `1.toUpperCase` does not (there is no concept of upper and lower case for integers.) Natural languages, like English, have concepts that are similar to type checks. For example, the determiners "less" and "fewer" must agree with the nouns to which they apply. Fewer is used when the noun refers to discrete objects that can be easily counted. For example, "put fewer eggs in the cake". Less is used when this is not the case. For example, "put less flour in the cake".
 
 Only programs that successfully compile can be run. We can think of compilation as being analogous to the rules of grammar in writing. The sentence "FaRf  fjrmn;l df.fd" is syntactically incorrect in English. The arrangement of letters doesn't form any words. The sentence "dog flying a here no" is made out of valid words but their arrangement breaks the rules of grammar, which is analogous to the type checks that Scala performs.
 
