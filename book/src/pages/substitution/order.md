@@ -21,15 +21,15 @@ We have already used one impure expression, the method `draw`.
 If we evaluate
 
 ```scala
-Image.circle(100).draw
-Image.rectangle(100, 50).draw
+Image.circle(100).draw()
+Image.rectangle(100, 50).draw()
 ```
 
 and
 
 ```scala
-Image.rectangle(100, 50).draw
-Image.circle(100).draw
+Image.rectangle(100, 50).draw()
+Image.circle(100).draw()
 ```
 
 the windows containing the images will appear in different orders.
