@@ -501,15 +501,15 @@
 //       c = FlatMapped(
 //         c = FlatMapped(
 //           c = Suspend(a = RDouble),
-//           f = cats.free.Free$$Lambda/0x00007fe30a4c3858@34d9248c
+//           f = cats.free.Free$$Lambda/0x00007f134e373648@3baab11b
 //         ),
-//         f = cats.free.Free$$Lambda/0x00007fe30a4c3858@2c29c653
+//         f = cats.free.Free$$Lambda/0x00007f134e373648@146e4e7d
 //       ),
-//       f = cats.free.Free$$Lambda/0x00007fe30a4c3858@16a2dfa5
+//       f = cats.free.Free$$Lambda/0x00007f134e373648@1a521198
 //     ),
-//     f = repl.MdocSession$MdocApp5$$Lambda/0x00007fe30a4d43b8@44738797
+//     f = repl.MdocSession$MdocApp5$$Lambda/0x00007f134e3843b8@317fe2fe
 //   ),
-//   f = repl.MdocSession$MdocApp5$$Lambda/0x00007fe30a4d5528@397326d1
+//   f = repl.MdocSession$MdocApp5$$Lambda/0x00007f134e385528@5fb3afa3
 // )</span></code></pre>
             <p>which makes it clearer that we&#39;re generating three different circles.
             &lt;/div&gt;</p>
@@ -530,7 +530,7 @@
   </span><span class="type-name">Random</span><span>.</span><span class="identifier">double</span><span>.</span><span class="identifier">map</span><span>(</span><span class="identifier">x</span><span> =&gt; </span><span class="identifier">x</span><span>.</span><span class="identifier">turns</span><span>)
 </span><span class="comment">// randomAngle: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Angle] = FlatMapped(
 //   c = Suspend(a = RDouble),
-//   f = cats.free.Free$$Lambda/0x00007fe30a4c3858@5b8a64f2
+//   f = cats.free.Free$$Lambda/0x00007f134e373648@39480f8e
 // )
 </span><span>
 </span><span class="keyword">val</span><span> </span><span class="identifier">randomColor</span><span>: </span><span class="type-name">Random</span><span>[</span><span class="type-name">Color</span><span>] =
@@ -538,9 +538,9 @@
 </span><span class="comment">// randomColor: Free[[A &gt;: Nothing &lt;: Any] =&gt; RandomOp[A], Color] = FlatMapped(
 //   c = FlatMapped(
 //     c = Suspend(a = RDouble),
-//     f = cats.free.Free$$Lambda/0x00007fe30a4c3858@5b8a64f2
+//     f = cats.free.Free$$Lambda/0x00007f134e373648@39480f8e
 //   ),
-//   f = cats.free.Free$$Lambda/0x00007fe30a4c3858@5bd5d7d1
+//   f = cats.free.Free$$Lambda/0x00007f134e373648@331c07ee
 // )
 </span><span>
 </span><span class="keyword">def</span><span> </span><span class="declaration-name">coloredRectangle</span><span>(</span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
