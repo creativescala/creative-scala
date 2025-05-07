@@ -119,7 +119,7 @@ However the substitutions are quite complex and difficult to keep track of witho
 
 ## Reasoning About Structural Recursion
 
-There is a more practical way to reason about structural recursion. Structural recursion guarantees the overall recursion is correct if we get the individual components correct. There are two parts to the structural recursion; the base case and the recursive case. The base case we can check just by looking at it. The recursive case has the recursive call (the method calling itself) but *we don't have to consider this*. It is given to us by structural recursion so it will be correct so long as the other parts are correct. We can simply assume the recursive call it correct and then check that we are doing the right thing with the result of this call.
+There is a more practical way to reason about structural recursion. Structural recursion guarantees the overall recursion is correct if we get the individual components correct. There are two parts to the structural recursion; the base case and the recursive case. The base case we can check just by looking at it. The recursive case has the recursive call (the method calling itself) but *we don't have to consider this*. It is given to us by structural recursion so it will be correct so long as the other parts are correct. We can simply assume the recursive call is correct and then check that we are doing the right thing with the result of this call.
 
 Let's apply this to reasoning about `boxes`.
 
