@@ -8,7 +8,7 @@ import doodle.image.syntax.all.*
 import doodle.java2d.*
 
 object Boxes {
-  val aBox = Image.square(20).fillColor(Color.royalBlue)
+  val aBox = Image.square(30).fillColor(Color.royalBlue)
 
   val sequentialBoxes =
     aBox.beside(aBox).beside(aBox).beside(aBox).beside(aBox)
