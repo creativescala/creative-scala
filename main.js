@@ -13134,6 +13134,10 @@ $c_Lpolygons_Creative$.prototype.curvygonExercise__T__V = (function(id) {
   var runtime = $m_Lcats_effect_unsafe_IORuntime$().global__Lcats_effect_unsafe_IORuntime();
   $f_Ldoodle_interact_animation_Transducer__animate__O__Ldoodle_interact_effect_AnimationRenderer__Ldoodle_effect_Renderer__Ldoodle_interact_algebra_Redraw__s_$less$colon$less__Lcats_effect_unsafe_IORuntime__V(this$22, frame, a, e, r, ev, runtime);
 });
+$c_Lpolygons_Creative$.prototype.bezierCurveAnimation = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.bezierCurveAnimation__T__V(prep0);
+});
 $c_Lpolygons_Creative$.prototype.curvygonExercise = (function(arg) {
   var prep0 = $as_T(arg);
   this.curvygonExercise__T__V(prep0);
@@ -13153,10 +13157,6 @@ $c_Lpolygons_Creative$.prototype.concentricExercise = (function(arg) {
 $c_Lpolygons_Creative$.prototype.spiralExercise = (function(arg) {
   var prep0 = $as_T(arg);
   this.spiralExercise__T__V(prep0);
-});
-$c_Lpolygons_Creative$.prototype.bezierCurveAnimation = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.bezierCurveAnimation__T__V(prep0);
 });
 var $d_Lpolygons_Creative$ = new $TypeData().initClass($c_Lpolygons_Creative$, "polygons.Creative$", ({
   Lpolygons_Creative$: 1
@@ -13532,10 +13532,6 @@ $c_Lpolygons_Polygons$.prototype.polygonPointsExercise__T__V = (function(id) {
   var this$11 = $m_Ldoodle_image_syntax_package$all$();
   new $c_Ldoodle_image_syntax_AbstractImageSyntax$ImageOps(this$11, image).drawWithFrame__O__Ldoodle_effect_Renderer__Lcats_effect_unsafe_IORuntime__V($n($m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_Frame).apply__T__Ldoodle_svg_effect_Frame(id), $m_Ldoodle_svg_package$().Ldoodle_svg_package$__f_svgRenderer, $m_Lcats_effect_unsafe_IORuntime$().global__Lcats_effect_unsafe_IORuntime());
 });
-$c_Lpolygons_Polygons$.prototype.polygonPointsExercise = (function(arg) {
-  var prep0 = $as_T(arg);
-  this.polygonPointsExercise__T__V(prep0);
-});
 $c_Lpolygons_Polygons$.prototype.points = (function(arg) {
   var prep0 = $as_T(arg);
   this.points__T__V(prep0);
@@ -13543,6 +13539,10 @@ $c_Lpolygons_Polygons$.prototype.points = (function(arg) {
 $c_Lpolygons_Polygons$.prototype.vertices = (function(arg) {
   var prep0 = $as_T(arg);
   this.vertices__T__V(prep0);
+});
+$c_Lpolygons_Polygons$.prototype.polygonPointsExercise = (function(arg) {
+  var prep0 = $as_T(arg);
+  this.polygonPointsExercise__T__V(prep0);
 });
 var $d_Lpolygons_Polygons$ = new $TypeData().initClass($c_Lpolygons_Polygons$, "polygons.Polygons$", ({
   Lpolygons_Polygons$: 1
