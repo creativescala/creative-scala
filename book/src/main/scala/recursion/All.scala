@@ -3,4 +3,5 @@ package recursion
 
 object All {
   NaturalNumbers
+  Boxes
 }
