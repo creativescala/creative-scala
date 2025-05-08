@@ -90,11 +90,11 @@ def box(color: Color, spin: Angle): Image =
     .fillColor(color.spin(spin)) 
 
 def gradientBoxes(color: Color): Image = {
-  box(color, 0.degrees) beside 
-  box(color, 15.degrees) beside
-  box(color, 30.degrees) beside
-  box(color, 45.degrees) beside
-  box(color, 60.degrees)
+  box(color, 0.degrees)
+    .beside(box(color, 15.degrees))
+    .beside(box(color, 30.degrees))
+    .beside(box(color, 45.degrees))
+    .beside(box(color, 60.degrees))
 }
 ```
 @:@
@@ -122,11 +122,11 @@ def circle(color: Color, n: Int): Image =
     strokeWidth(3)
     
 def concentricCircles(color: Color): Image = {
-  circle(color, 0) on
-  circle(color, 1) on
-  circle(color, 2) on
-  circle(color, 3) on
-  circle(color, 4)
+  circle(color, 0)
+    .on(circle(color, 1))
+    .on(circle(color, 2))
+    .on(circle(color, 3))
+    .on(circle(color, 4))
 }
 ```
 
