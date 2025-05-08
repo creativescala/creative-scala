@@ -139,7 +139,7 @@ Even before we get into the details of `match` expressions you should be able to
 
 At this point we're trying to get used to the syntax of `match`, so rather than copying and pasting `boxes` write it all out by hand again to get some practice.
 
-@:figure{ img = "sequential-boxes.svg", key = "#fig:recursion:stacked-boxes", caption = "Three stacked boxes filled with Royal Blue" }
+@:figure{ img = "stacked-boxes.svg", key = "#fig:recursion:stacked-boxes", caption = "Three stacked boxes filled with Royal Blue" }
 @:@
 
 @:solution
