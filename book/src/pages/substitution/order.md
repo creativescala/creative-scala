@@ -105,7 +105,7 @@ Therefore we cannot freely use substitution in the presence of side effects, and
 @:@
 
 
-@:(Madness to our Methods)
+@:exercise(Madness to our Methods)
 
 When we introduced scopes we also introduced block expressions.
 A block is created by curly braces (`{}`). 
@@ -164,7 +164,7 @@ Color.hsl({ println("a"); 0.degrees },
 @:@
 
 
-@:(The Last Order)
+@:exercise(The Last Order)
 
 In what order are Scala expressions evaluated?
 Perform whatever experiments you need to determine an answer to this question to your own satisfaction.
