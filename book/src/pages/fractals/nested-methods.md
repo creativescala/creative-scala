@@ -115,7 +115,7 @@ val unit = {
 def cross(count: Int): Image = {
   count match {
     case 0 => unit
-    case n => unit beside (unit above cross(n-1) above unit) beside unit
+    case n => unit.beside(unit.above(cross(n-1)).above(unit)).beside(unit)
   }
 }
 
@@ -141,7 +141,7 @@ def cross(count: Int): Image = {
   def loop(count: Int): Image = {
     count match {
       case 0 => unit
-      case n => unit beside (unit above loop(n-1) above unit) beside unit
+      case n => unit.beside(unit.above(loop(n-1)).above(unit)).beside(unit)
     }
   }
 
