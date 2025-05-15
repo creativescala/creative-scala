@@ -370,8 +370,8 @@
               <div class="solution-body">
                 <p>There are two ways to implement a solution.
                 The auxiliary parameter method is to add an extra parameter to <code>gradientBoxes</code> and pass the <code>Color</code> through the structural recursion.</p>
-                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>, </span><span class="identifier">color</span><span>: </span><span class="type-name">Color</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
       </span><span class="identifier">aBox</span><span>
@@ -379,8 +379,8 @@
         .</span><span class="identifier">beside</span><span>(</span><span class="identifier">gradientBoxes</span><span>(</span><span class="identifier">n</span><span> - </span><span class="number-literal">1</span><span>, </span><span class="identifier">color</span><span>.</span><span class="identifier">spin</span><span>(</span><span class="number-literal">15</span><span>.</span><span class="identifier">degrees</span><span>)))
   }</span></code></pre>
                 <p>We could also make the fill color a function of <code>n</code>, as we demonstrated with the box size in <code>growingBoxes</code> above.</p>
-                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">n</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
-  </span><span class="identifier">n</span><span> </span><span class="keyword">match</span><span> {
+                <pre><code class="nohighlight"><span class="keyword">def</span><span> </span><span class="declaration-name">gradientBoxes</span><span>(</span><span class="identifier">count</span><span>: </span><span class="type-name">Int</span><span>): </span><span class="type-name">Image</span><span> =
+  </span><span class="identifier">count</span><span> </span><span class="keyword">match</span><span> {
     </span><span class="keyword">case</span><span> </span><span class="number-literal">0</span><span> =&gt; </span><span class="type-name">Image</span><span>.</span><span class="identifier">empty</span><span>
     </span><span class="keyword">case</span><span> </span><span class="identifier">n</span><span> =&gt;
       </span><span class="identifier">aBox</span><span>
