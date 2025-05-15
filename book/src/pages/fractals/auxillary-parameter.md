@@ -90,8 +90,8 @@ There are two ways to implement a solution.
 The auxiliary parameter method is to add an extra parameter to `gradientBoxes` and pass the `Color` through the structural recursion.
 
 ```scala mdoc:silent
-def gradientBoxes(n: Int, color: Color): Image =
-  n match {
+def gradientBoxes(count: Int, color: Color): Image =
+  count match {
     case 0 => Image.empty
     case n =>
       aBox
@@ -103,8 +103,8 @@ def gradientBoxes(n: Int, color: Color): Image =
 We could also make the fill color a function of `n`, as we demonstrated with the box size in `growingBoxes` above.
 
 ```scala mdoc:silent
-def gradientBoxes(n: Int): Image =
-  n match {
+def gradientBoxes(count: Int): Image =
+  count match {
     case 0 => Image.empty
     case n =>
       aBox
