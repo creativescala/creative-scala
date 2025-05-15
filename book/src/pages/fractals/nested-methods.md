@@ -168,12 +168,12 @@ def chessboard(count: Int): Image = {
   val redSquare   = Image.square(30).fillColor(Color.red)
 
   val base =
-    (redSquare   beside blackSquare) above (blackSquare beside redSquare)
+    (redSquare.beside(blackSquare)).above(blackSquare.beside(redSquare))
   count match {
     case 0 => base
     case n =>
       val unit = cross(n-1)
-      (unit beside unit) above (unit beside unit)
+      (unit.beside(unit)).above(unit.beside(unit))
   }
 }
 ```
@@ -194,13 +194,13 @@ def chessboard(count: Int): Image = {
   val blackSquare = Image.square(30) fillColor Color.black
   val redSquare   = Image.square(30) fillColor Color.red
   val base =
-    (redSquare   beside blackSquare) above (blackSquare beside redSquare)
+    (redSquare.beside(blackSquare)).above(blackSquare.beside(redSquare))
   def loop(count: Int): Image =
     count match {
       case 0 => base
       case n =>
         val unit = loop(n-1)
-        (unit beside unit) above (unit beside unit)
+        (unit.beside(unit)).above(unit.beside(unit))
     }
 
   loop(count)
