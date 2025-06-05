@@ -70,7 +70,7 @@ Drawing this gives the output shown below.
 
 ### Flexible Layout with `at`
 
-The example above uses a method we haven't seen before: `at`. This is another tool for laying out images, like `on`, `beside`, and `above`. `at` changes the position of an image relative to its origin. The understand this, and why we have to place the dots `on` each other, we need to understand how layout works in Doodle.
+The example above uses a method we haven't seen before: `at`. This is another tool for laying out images, like `on`, `beside`, and `above`. `at` changes the position of an image relative to its origin. To understand this, and why we have to place the dots `on` each other, we need to understand how layout works in Doodle.
 
 Every `Image` in Doodle has a point called its *origin*, and a *bounding box* which determines the extent of the image. By convention the origin is in the center of the bounding box but this is not required. We can see the origin and bounding box of an `Image` by calling the `debug` method.
 
