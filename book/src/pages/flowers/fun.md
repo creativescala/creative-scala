@@ -19,7 +19,10 @@ def fold(count: Int, build: (Int, Image) => Image): Image =
 
 Let's see if that is really the case, and get a bit more practice using functions.
 
+@:exercise(Gradient Boxes Revisited)
+
 Below is an example of a row of boxes, where the color changes from each box to the next. We've already written this as a method. Now I want you to rewrite it using `fold` and a function you create.
+@:@
 
 @:doodle("gradient-boxes", "FlowersFun.gradientBoxesExample")
 
@@ -68,7 +71,10 @@ case n =>
 and turning it into a function.
 @:@
 
+@:exercise(Decreasing Dots)
+
 Here's a variation on that idea, which changes size as well as changing color. Write this using `fold` and a function of your own construction.
+@:@
 
 @:doodle("growing-circles", "FlowersFun.growingCirclesExample")
 
@@ -90,7 +96,10 @@ fold(5, growingCircles)
 ```
 @:@
 
+@:exercise(Feeling Fractal)
+
 Let's try a fractal. Below is the Sierpinski triangle. Can you write this using `fold`? If not, why not? Can you change `fold` so you can write it using `fold`?
+@:@
 
 @:doodle("sierpinski", "FlowersSierpinski.sierpinskiExample")
 
